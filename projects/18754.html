@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AMIGHO: Automated Metadata Ingest for GNSS Hydrology within OODT | NASA TechPort Project 18754</title>
+  <meta name="description" content="GNSS sites installed by surveyors and geophysicists to measure land motions can also provide valuable and cost-efficient information about three critical hydrologic variables: soil moisture, snow depth/snow water equivalent, and vegetation water content. A pil">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/18754">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 18754</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">AIST</span>
+          <span class="badge">TX11.4.2</span>
+        </div>
+        <h1>AMIGHO: Automated Metadata Ingest for GNSS Hydrology within OODT</h1>
+        <div class="meta-id">NASA TechPort Project ID: 18754</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/18754" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          GNSS sites installed by surveyors and geophysicists to measure land motions can also provide valuable and cost-efficient information about three critical hydrologic variables: soil moisture, snow depth/snow water equivalent, and vegetation water content. A pilot project in the western U.S. has demonstrated that these GNSS reflection data can be produced operationally, with data latency necessary for weather forecasting and measurement frequency appropriate for climate studies and satellite validation. Reflections from coastal GNSS sites can also be used to accurately measure water levels such as tidal motions. Some of the 12,000+ existing continuously-operating GNSS sites globally could be producing hydrology and sea level measurements at minimal cost (GNSS H2O), but information technology limitations preclude inclusion of more than a handful of subnetworks in current systems. To address this problem, we will advance the technology of the software that acquires and processes data from disparate and variable sources. Our objectives are to 1. Enable operators of GNSS networks to provide current and past data to the GNSS H2O system. 2. Build an infrastructure system to automatically ingest GNSS observations, evaluate station metadata, and produce hydrologic products from the GNSS data. 3. Enable improved understanding of the GNSS water products through development and maintenance of a portal for visualization, mining, and data sharing. We will leverage the proven Apache OODT (Object Oriented Data Technology) framework. This open-source system currently serves as the infrastructure backbone for various JPL, NASA, and non-NASA science data systems. Apache OODT framework provides configuration-driven components that can fulfill the GNSS H2O system's requirements and provide the scalability and extensibility required to ingest and process thousands of new data streams. Although OODT has proven to be a robust suite of software components for developing and operating a diverse array of science data systems, it does require a software developer's expertise and effort to configure an existing system for new data streams. This project looks to advance the technology of this software suite by designing and developing an automatic configuration layer that incorporates the software developer's expertise for configuring OODT components. In order to automate this process, we will first define a standard set of metadata for describing a GNSS station and its data and design and develop a web-based interface for submitting this metadata to the system. We will utilize a portion of this metadata to determine the suitability of a station's reflection data for generating hydrologic products. For example, we will pre-process the station metadata to determine (using Google maps and other publicly available geological data) the close proximity of roads and other geographical factors near the station that would render any of the GPS reflection data unusable for hydrologic products or sea level measurements. Our technology will also benefit any current or potential OODT user with variable, heterogeneous data sources. This project will demonstrate technology that enhances NASA's ability to efficiently provide Earth science data to scientists and the broader water management community, including urban planners that study coastal resilience for sea level rise and storm inundation. It is directly responsive to the Data-Centric Technologies core topic of this opportunity in that it will improve information re-use, facilitate collaboration within the research community, and increase the speed with which scientific results are produced. Airborne or in situ science data systems based on the OODT framework, similar to the Carbon in Arctic Reservoirs Vulnerability Experiment (CARVE), will also benefit greatly from our automated configuration technology.
+        </div>
+
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>18754</td></tr>
+<tr><th>Acronym</th><td>AMIGHO</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Advanced Information Systems Technology (AIST)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.4.2: Intelligent Data Understanding</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2015-06-01</td></tr>
+<tr><th>Project End Date</th><td>2018-05-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>NASA Headquarters (HQ) — Washington, District of Columbia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Colorado Boulder — Boulder, Colorado; Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Colorado (CO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Kristine N Davis (Principal Investigator) &lt;kristine.davis@nasa.gov&gt;; Angelyn W Moore (Co-Investigator) &lt;angelyn.w.moore@jpl.nasa.gov&gt;; Sean H Hardman (Co-Investigator) &lt;sean.h.hardman@jpl.nasa.gov&gt;; Dana J Freeborn (Co-Investigator) &lt;dana.j.freeborn@jpl.nasa.gov&gt;; Anselmo Serralheiro (Co-Investigator); Susan E Owen-Mccollum (Co-Investigator) &lt;susan.e.owen@jpl.nasa.gov&gt;; Eric E Small (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Michael S Seablom (Program Director) &lt;michael.s.seablom@nasa.gov&gt;; Laura J Rogers (Program Manager) &lt;laura.j.rogers@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-07-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Link]</strong> Closeout Link</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/18754">https://techport.nasa.gov/projects/18754</a>
+    </div>
+  </div>
+</body>
+</html>

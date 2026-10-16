@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>An Active Learning Framework for Increasing Generalizability of Machine Learning Models | NASA TechPort Project 156759</title>
+  <meta name="description" content="Recent years have witnessed a fast development of deep learning and significant success in practical application, such as object detection, recognition, image classification, and natural language processing. Deep learning has also been applied to space explora">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/156759">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 156759</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">OSTEM</span>
+          <span class="badge">EPSCoR</span>
+          <span class="badge">TX11.4.2</span>
+        </div>
+        <h1>An Active Learning Framework for Increasing Generalizability of Machine Learning Models</h1>
+        <div class="meta-id">NASA TechPort Project ID: 156759</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/156759" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Recent years have witnessed a fast development of deep learning and significant success in practical application, such as object detection, recognition, image classification, and natural language processing. Deep learning has also been applied to space exploration, like the recognition of environmental features and classification of planets and supernova. The state-of-the-art deep learning methods require a huge amount of labeled data to train the neural networks, and the training process is computationally expensive and time-consuming. Although many learning models have achieved very impressive performance on benchmark datasets, they all face the issue of generalizability. Most machine learning models, even being well trained on very large datasets, suffer a big loss (4% to 10%) in accuracy for unseen data. Generalizability is still an open problem in machine learning since all learning models, once trained, have to be applied to new environments with new data that have not seen before.</p><p>This project aims to solve the generalization challenge of the learned models. We propose an intelligent learning framework by integrating the strategy of active and reinforcement learning to refine the model for unseen datasets. The overall idea is motivated by the observation of children learning to interact with their environment. The proposed framework is composed of three steps mimicking the learning process of children: Observe, practice, and improve, through which the machine can learn the knowledge incrementally from previous tasks and adapt it seamlessly in learning new tasks. Thus, the system can incrementally improve its performance during practical applications. This strategy has a potential impact on current leaning systems.</p><p>In addition to its scientific significance, the project has a great impact on NASA and Kansas economy. First, the project fulfills NASA’s strategic goal to advance technological innovations for NASA’s scientific missions. With large volumes of data collected from various missions of NASA, it is essential to develop new approaches for analysis and discovery by taking advantage of the fast development of artificial intelligence. Second, the study has a significant impact on the economic and scientific development of Kansas. It is reported that about one in five Kansas City jobs is predicted to have high exposure to AI, especially in computers, business, and finance. AI also has a significant impact on the manufacturing and agriculture of Kansas.</p><p>The project will also increase the level of education and research of Kansas. Many students want to take AI-related courses, and the project will help the involved students obtain hands-on research experience in AI. Many professors and researchers in Kansas are starting to use machine learning in their research. The proposed solution will benefit all researchers working in machine learning and enable many other related research topics. Moreover, the project will collaborate with NASA JPL and a local high-tech company. These collaborations will significantly increase Kansas’s existing research strength in artificial intelligence, as well as our competitiveness in obtaining external research funding.
+        </div>
+
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>156759</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Office of STEM Engagement (OSTEM)</td></tr>
+<tr><th>NASA Program</th><td>Established Program to Stimulate Competitive Research (EPSCoR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.4.2: Intelligent Data Understanding</td></tr>
+<tr><th>Project Start Date</th><td>2020-07-01</td></tr>
+<tr><th>Project End Date</th><td>2021-06-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Wichita State University — Wichita, Kansas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Kansas — Lawrence, Kansas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Kansas (KS)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Leonard S Miller (Principal Investigator); John Tomblin (Co-Investigator); Guanghui Wang (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Kathleen B Loftin (Program Director) &lt;kathleen.b.loftin@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-10-23</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/156759">https://techport.nasa.gov/projects/156759</a>
+    </div>
+  </div>
+</body>
+</html>

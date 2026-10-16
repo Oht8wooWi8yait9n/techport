@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algorithms and Techniques for Environmental Sensing and Spacecraft Monitoring | NASA TechPort Project 93917</title>
+  <meta name="description" content="To achieve NASA&#x27;s fundamental goals of continuing to explore and expand human and robotic presence to Mars and beyond (NASA Strategic Plan 2014, Objective 1), spacecraft must be able to identify hazards in their external environment and to monitor and respond ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/93917">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 93917</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX11.4.1</span>
+        </div>
+        <h1>Algorithms and Techniques for Environmental Sensing and Spacecraft Monitoring</h1>
+        <div class="meta-id">NASA TechPort Project ID: 93917</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/93917" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          To achieve NASA's fundamental goals of continuing to explore and expand human and robotic presence to Mars and beyond (NASA Strategic Plan 2014, Objective 1), spacecraft must be able to identify hazards in their external environment and to monitor and respond to maintain their own system health, safety, and performance. The space environment both within our own magnetosphere and at interplanetary distances within our solar system has known hostile regions (such as the Van Allen Belts and the Jovian radiation environment) as well as unknown environments and the risk of significant disturbances from our Sun. For deep space exploration far from Earth, mission durations are longer and require more robust spacecraft systems that are risk-aware, have greater reliability, and can gracefully adapt to compensate for or respond to spacecraft aging and performance degradation. As spacecraft venture beyond distances where real-time  command and control through communications systems is feasible, spacecraft must be able to inform on-board decision-making with little or no ground interaction. That capacity will require spacecraft not only to understand their external environments, but also to have software that can internally monitor the system and make decisions based on status. The primary deliverable will be a suite of algorithms used characterize the external environment and to detect atypical behavior in spacecraft telemetry, collecting the raw results across the spacecraft system and reporting the weighted results to on-board decision-making routines. By evaluating previous mission data compared to known space environment conditions (space weather events), I will determine the telemetry response to the external space environment. The telemetry response findings will be a deliverable of this proposal as well. Using the known telemetry responses, I will develop algorithms that will be able to characterize the external environment by matching on-board responses to the telemetry response findings corresponding to different space weather events. In addition, I will deliver technology that will detect and diagnose atypical performance and hiccups in their system or individual components on-board. In contrast to current spacecraft as a sensor  methods (e.g. neural networks), the proposed algorithms do not make assumptions about the underlying distributions and does not impose any component- or satellite-specific parameters or thresholds. This approach is consistent with a general approach known as change-point detection  and allows the algorithms to be used for the entire satellite system without operator input. By combining findings from the telemetry feeds using sensor fusion data association techniques (e.g. K-means), the spacecraft will be made more aware of it's own internal and external state, yielding a state estimation  current health and performance state of the spacecraft system and the current state of the environment  at any one time, allowing for autonomous and intelligent on-board decision-making. The findings through data analysis of previous mission data allow for more risk-aware algorithms for future missions. For example, NASA's Juno mission does not carry any space environment detectors. However, if information can be gathered from the Juno telemetry, valuable knowledge about the Jovian environment can be used for the Europa mission and other future Jovian missions. The proposed algorithms allow for longer mission durations by providing greater reliability to external environment hazards and adaptability to evolving missions. The proposed algorithms directly support Objective 1 in NASA's Strategic Plan to expand our human and robotic presence to Mars and beyond. The exploration leads to spacecraft encountering unknown and hazardous environments that the spacecraft will need to react to. Therefore, in addition, the proposed algorithms enable greater sustainability and risk reduction when integrated with FDIR systems.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Allows for longer mission durations by providing greater reliability to external environment hazards and adaptability to evolving missions, in addition to enabling greater sustainability and risk reduction.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>93917</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.4.1: Science, Engineering, and Mission Data Life Cycle</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2016-08-01</td></tr>
+<tr><th>Project End Date</th><td>2018-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Massachusetts Institute of Technology (MIT) — Cambridge, Massachusetts</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Massachusetts (MA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Outside the Solar System, Sun</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Kerri Cahoy (Principal Investigator); Ashley Carlton (Co-Investigator); Ann Patterson-hine (Project Manager) &lt;Ann.Patterson-Hine@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The space environment is hazardous: harsh radiation in the form of ionized, highly energetic particles and space weather events affect the operation, performance, and lifetime of spacecraft and their instruments. And, space is becoming more populated, with new constellations of several hundreds of small satellites planned over the next decade to provide communications and navigation services upon which society has become increasingly reliant. This drives a need for spacecraft to be able to quickly identify and react to hazards as well a greater need for situational awareness. In addition, satellites need increased autonomy to improve responsivity and reduce the load on human operators. Dedicated instruments to monitor the environment are not always included on spacecraft due to resource constraints. The goal of this work is to enable characterization of the external high-energy radiation environment, monitoring of system performance, and identification of hazards by developing techniques using existing hardware on spacecraft. The research efforts using this grant have been two-fold. In the first part of the work, using spacecraft housekeeping telemetry, we have developed algorithms that identify unusual behavior in satellite health telemetry. Once these events have been identified, we collect and analyze them, along with assessing space weather observations and operational environment factors. Our approach uses transient event detection and change-point event detection techniques that use a sliding window-based median, statistically evaluating the telemetry stream compared to a local norm. This approach allows application of the algorithms to any spacecraft platform because there is no reliance in the algorithms on satellite- or component-specific parameters, and it does not require a priori knowledge about the data distribution. We apply these event detection algorithms to individual telemetry data streams on geostationary Earth orbit (GEO) communications satellites (ComSats), examining telemetry from solid-state power amplifiers and amplifier thermistors from 32 GEO ComSats from 1991 to 2015, resulting in a compiled list of unusual events for each satellite. This approach identifies up to six events that affect 51 of 53 telemetry streams at once, indicative of a spacecraft system-level event. In two satellites, the same top event date (4 December 2008) occurs over more than 10 years of telemetry from both satellites. Of the five spacecraft with known maneuvers, the algorithms identify the maneuvers in all cases. Event dates are compared to known operational activities, space weather events, and available anomaly lists to assess the use of event detection algorithms for spacecraft monitoring and sensing of the space environment. In the second part of this work, we have developed a technique to quantitatively characterize the high-energy electron environment using scientific imager radiation “noise”. Solid-state detectors are commonly used as scientific imagers on spacecraft. In addition to being sensitive to incoming photons, semiconductor devices also are affected by incoming charged particles collected during integration and detector readout. These radiation hits from the space environment are typically considered “noise” at the detector. We post-process raw images to obtain frames with only the radiation contribution. The camera settings are used to compute the energy deposited in each pixel, which corresponds to the intensity of the observed radiation hits. The energy deposited in the pixels by incident particles from processed images are compared with the results from 3D Monte Carlo particle transport simulations of the imaging instrument using Geant4. We demonstrate the technique using data from the Solid-State Imaging (SSI) instrument, which is a silicon charge-coupled device (CCD) on the Galileo spacecraft, in orbit around Jupiter from 1996 to 2003. Jupiter has the largest and strongest magnetosphere of all of the planets in the solar system and it is dominated by high-energy electrons. Measuring and characterizing megaelectron volt (MeV) particles is fundamental for understanding the energetic processes powering the magnetosphere, interactions of the particles with surfaces of the Jovian satellites, and the effects of these particles on spacecraft near or in Jovian orbit. Electrons in Jupiter’s magnetosphere can interact with spacecraft and lead to component failures, degradation of sensors and solar panels, and physical damage to materials. Measurements of the high-energy (&gt;1 MeV) electron environment at Jupiter are currently spatially and temporally limited, predominantly coming from the Energetic Particle Detector (EPD) on the Galileo spacecraft. Simulating the response of the SSI instrument to mono-energetic electron environments, we find that the SSI is capable of detecting ≥10 MeV electrons (&gt;90% of 11 MeV integral flux channel. We find agreement with the EPD data within 3-sigma of the EPD data for 43 out of 43 (100%) of the SSI images evaluated. 62% of fluxes are also within 1-sigma of the EPD data. To demonstrate that the general technique is applicable to other imagers, we also analyze the Galileo Near-Infrared Mapping Spectrometer (NIMS). We find that NIMS is sensitive to ≥5 MeV electrons and the calculated fluxes are consistent with the EPD. This approach can be applied to other sets of imaging data (star trackers, etc.) in energetic electron environments, such as those found in geostationary Earth orbit. This work also includes a summary of required and recommended information (tests, models, etc.) for the use of science imagers as high-energy electron sensors.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="http://dx.doi.org/10.1109/tns.2018.2883985" target="_blank" rel="noopener noreferrer">Using the Galileo Solid-State Imaging Instrument as a Sensor of Jovian Energetic Electrons</a></li><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/93917">https://techport.nasa.gov/projects/93917</a>
+    </div>
+  </div>
+</body>
+</html>

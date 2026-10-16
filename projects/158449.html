@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexible Levitation on a Track (FLOAT) | NASA TechPort Project 158449</title>
+  <meta name="description" content="We want to build the first lunar railway system, which will provide reliable, autonomous, and efficient payload transport on the Moon. A durable, long-life robotic transport system will be critical to the daily operations of a sustainable lunar base in the 203">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158449">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158449</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">NIAC</span>
+          <span class="badge">TX07.2.3</span>
+        </div>
+        <h1>Flexible Levitation on a Track (FLOAT)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158449</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158449" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>We want to build the first lunar railway system, which will provide reliable, autonomous, and efficient payload transport on the Moon. A durable, long-life robotic transport system will be critical to the daily operations of a sustainable lunar base in the 2030’s, as envisioned in NASA’s Moon to Mars plan and mission concepts like the Robotic Lunar Surface Operations 2 (RLSO2), to:</p><p>— Transport regolith mined for ISRU consumables (H2O, LOX, LH2) or construction</p><p>— Transport payloads around the lunar base and to / from landing zones or other outposts</p><p>We propose developing FLOAT — Flexible Levitation on a Track — to meet these transportation needs.</p><p>The FLOAT system employs unpowered magnetic robots that levitate over a 3-layer flexible film track: a graphite layer enables robots to passively float over tracks using diamagnetic levitation, a flex-circuit layer generates electromagnetic thrust to controllably propel</p><p>robots along tracks, and an optional thin-film solar panel layer generates power for the base when in sunlight. FLOAT robots have no moving parts and levitate over the track to minimize lunar dust abrasion / wear, unlike lunar robots with wheels, legs, or tracks.</p><p>FLOAT tracks unroll directly onto the lunar regolith to avoid major on-site construction — unlike conventional roads, railways, or cableways. Individual FLOAT robots will be able to transport payloads of varying shape / size (>30 kg/m^2) at useful speeds (>0.5m/s), and a large-scale FLOAT system will be capable of moving up to 100,000s kg of regolith / payload multiple kilometers per day. FLOAT will operate autonomously in the dusty, inhospitable lunar environment with minimal site preparation, and its network of tracks can be rolled-up / reconfigured over time to match evolving lunar base mission requirements.</p><p>In Phase 2, we will continue to retire risks related to the manufacture, deployment, control, and long-term operation of meter-scale robots / km-scale tracks that support human exploration (HEO) activities on the Moon, by accomplishing the following key tasks:</p><p>— Design, manufacture, and test a series of sub-scale robot / track prototypes, culminating with a demonstration in a lunar-analog testbed (that includes testing various site preparation and track deployment strategies)</p><p>— Investigate impacts of environmental effects (e.g. temperature, radiation, charging, lunar regolith simulant contamination, etc.) on system performance and longevity</p><p>— Investigate / define a technology roadmap to address technology gaps and mature manufacturing capability for critical hardware (e.g. large-area magnetic arrays with mm-scale magnetic domains, and large-area flex-circuit boards)</p><p>— Continue refining simulations of FLOAT system designs with increased fidelity, to provide improved performance estimates under the RLSO2 mission concept We will also leverage these sub-scale prototypes to explore opportunities for follow-on technology demonstrations on sub-orbital flights (via Flight Opportunities / TechFlights) or lunar technology demos (via LSII / CLPS landers)</p>
+        </div>
+
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158449</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>NASA Innovative Advanced Concepts (NIAC)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX07.2.3: Surface Construction and Assembly</td></tr>
+<tr><th>Project Start Date</th><td>2024-05-15</td></tr>
+<tr><th>Project End Date</th><td>2026-05-15</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Vianni Ricano Cadenas (Program Manager) &lt;vianni.ricanocadenas@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-05-06</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Poster: FLOAT – Flexible Levitation on a Track</strong></li><li><strong>Phase2 mp4 video.</strong></li><li><a href="https://www.nasa.gov/directorates/stmd/niac/niac-studies/flexible-levitation-on-a-track-float/" target="_blank" rel="noopener noreferrer">Article: Flexible Levitation on a Track (FLOAT)</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158449">https://techport.nasa.gov/projects/158449</a>
+    </div>
+  </div>
+</body>
+</html>

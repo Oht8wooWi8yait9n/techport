@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIIP Simulations of CSF, Hemodynamics and Ocular Risk (VIIP SCHOLAR) | NASA TechPort Project 95458</title>
+  <meta name="description" content="Visual Impairment/Intracranial Pressure (VIIP) syndrome [Ed. note July 2018: now referred to as Spaceflight Associated Neuro-ocular Syndrome (SANS)] occurs in a significant fraction of astronauts undergoing long-duration space flight, and is characterized by a">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/95458">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 95458</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX11.2.3</span>
+        </div>
+        <h1>VIIP Simulations of CSF, Hemodynamics and Ocular Risk (VIIP SCHOLAR)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 95458</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/95458" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Visual Impairment/Intracranial Pressure (VIIP) syndrome [Ed. note July 2018: now referred to as Spaceflight Associated Neuro-ocular Syndrome (SANS)] occurs in a significant fraction of astronauts undergoing long-duration space flight, and is characterized by a spectrum of ophthalmic changes. Astronauts with VIIP can suffer permanent loss of visual acuity, and thus this condition is a major health concern for NASA. The pathophysiology of VIIP is poorly understood. However, evidence points to an important role for alterations in cerebrospinal fluid (CSF) and vascular flow dynamics/pressures in microgravity.      <p></p> In view of the above, we hypothesize that the pathophysiology of VIIP involves alterations in biomechanical loads on the neural and connective tissues of the posterior globe/optic nerve due to changed CSF/blood pressures in microgravity. We further postulate that risk factors for VIIP can be identified through numerical modeling of these processes, and that such models can be used to evaluate proposed VIIP countermeasures.     <p></p> In this proposal we will develop modeling tools that: (i) compute fluid shifts in microgravity; (ii) compute how these shifts lead to biomechanical insult to the optic nerve in astronauts; and (iii) estimate the effect that these insults have on optic nerve function. These tools will directly build upon, and interface with, models of ocular biomechanics and fluid shifts that we are currently developing in our NASA-funded MONSTR Sim project. Towards this end, we propose 4 specific aims:     <p></p> SA1: Measure key physiologic parameters needed for modeling, including effects of intracranial pressure on optic nerve sheath diameter, optic nerve tortuosity, craniospinal volume, and cerebral blood flow.      <p></p> SA2: Incorporate “quasi-1D” effects into existing compartment models, allowing us to evaluate the effects of microgravity and countermeasures on CSF and blood flows/pressures.      <p></p> SA3: Extend finite element models of ocular biomechanics, specifically modeling: (i) optic nerve kinking, and (ii) compression of optic nerve fiber bundles in the lamina cribrosa; and relate kinking/compression to an index of axoplasmic insult/stasis.      <p></p> SA4: Carry out parametric studies integrating the above models to identify individual-specific factors that: (i) predispose for the development of VIIP syndrome, and (ii) influence the efficacy of proposed countermeasures, both useful for risk profiling.      <p></p> The resulting models will provide a powerful platform for better understanding individual-specific risks for VIIP and, eventually, for evaluating VIIP mitigation strategies, thus contributing to astronaut health. More specifically, these models will allow us to quantify the biomechanical environment of the optic nerve at the level of individual nerve fiber bundles, with outcome measures designed to predict the risk of two specific clinical features of VIIP: optic nerve kinking and papilledema.     <p></p> This proposal directly addresses an explicit requirement of NASA Research Announcement NNJ15ZSA001N, namely to “...to develop and deliver detailed numerical models that quantify how CSF and vascular flow dynamics are altered in microgravity, and the propagative effects on the structure of the eye.  The models must also be developed with the capability to interact with other pre-existing numerical models of the cardiovascular system, central nervous system, and eye ...”      <p></p> The team assembled for this work has highly complementary skills that together address all relevant aspects of this complex, interdisciplinary problem. In addition to Ethier (Principal Investigator (PI) at Georgia Tech; expertise in modeling optic nerve head and ocular biomechanics), co-investigators include Myers (NASA Glenn; expertise in cephalad fluid shift models and space physiology); Samuels (Alabama; expertise in clinical ophthalmology and neuroscience); Oshinski (Georgia Tech/Emory; expertise in MR imaging of CSF and blood flow dynamics); and Martin (Idaho; expertise in modeling CSF dynamics). <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          May also help the understanding of idiopathic intracranial hypertension, an analogous condition that occurs in patients on Earth. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>95458</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.2.3: Human-System Performance Modeling</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 5 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2016-10-01</td></tr>
+<tr><th>Project End Date</th><td>2020-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Georgia Institute of Technology-Main Campus (GA Tech) — Atlanta, Georgia; University of Alabama at Birmingham — Birmingham, Alabama; Emory University — Atlanta, Georgia; University of Idaho — Moscow, Idaho</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Georgia (GA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Christopher R Ethier (Principal Investigator); Jerry G Myers (Co-Investigator) &lt;jerry.g.myers@nasa.gov&gt;; Brian C Samuels (Co-Investigator); Bryn A Martin (Co-Investigator); John N Oshinski (Co-Investigator); Peter Norsk (Project Manager) &lt;peter.norsk@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: FINAL REPORTING DECEMBER 2020 We acquired MRI scans of the eye and optic nerve sheath in 18 volunteers before and after head down tilt (HDT), as an acute analog of microgravity. Further, the MRI acquisition protocol was repeated in one subject, to assess test-retest variability. We acquired multiple pieces of information from each scan: (i) anatomic information (optic nerve sheath shape, globe shape), and (ii) flow in major cerebral arteries, veins, and CSF spaces. We used this data for several purposes. First, we quantified optic nerve sheath (ONS) enlargement due to HDT, and then conducted finite element modeling to determine in vivo optic nerve sheath material properties. This work established a methodology for the determination of ONS mechanical properties in human subjects, opening the possibility of monitoring changes in such properties due to spaceflight. It also has provided much-improved values of such properties, correcting several errors in the literature. Second, we developed tools to quantify the anatomy of the optic nerve and ocular globe, including: 1) tortuosity, 2) vitreous chamber depth, 3) optic chiasm-to-ONH distance, 4) 3D bulbar subarachnoid space geometries, and 5) 3D posterior globe deformation. We applied these tools in both human volunteers and also astronauts who had undergone long-duration space flight, quantifying changes in ocular globe dimensions and their relationship to SANS. Third, we also measured blood flow and cerebrospinal fluid (CSF) flow in volunteers before and after HDT. We found that that acute application of 15° HDT caused a reduction in CSF flow variables (systolic peak flow and peak-to-peak pulse amplitude) which, when coupled with a decrease in average cerebral arterial flow, systolic peak flow, and peak-to-peak pulse amplitude, is consistent with a decrease in cardiac-related pulsatile CSF flow. These results suggest that decreases in cerebral arterial inflow were the principal drivers of decreases in CSF pulsatile flow. In addition to the MRI data set, we conducted a meta-analysis of data in the literature on how intraocular pressure (IOP) depends on body position. We found a &quot;universal&quot; relationship between body posture and IOP, specifically determining that posturally induced IOP change can be explained by hydrostatic forcing plus an autoregulatory contribution that is dependent on hydrostatic effects. This study will be useful for future work considering postural change in relation to ocular physiology, intraocular pressure, ocular blood flow and aqueous humor dynamics. Finally, we have continued the development of a system model of regulation functions and validation studies with a Whole Body Model of fluid shifts, focusing on relevant pressures and volumes for space flight analogies. This work has been documented in 6 refereed journal papers (3 accepted and 3 in various stages of revision) and multiple conference presentations. ANNUAL REPORTING JULY 2019 We have acquired MRI scans of the eye and optic nerve sheath in 16 volunteers before and after head down tilt, and the acquisition protocol has been repeated in one subject. Using these data, we obtained 1) tortuosity, 2) vitreous chamber depth, 3) optic chiasm-to-ONH distance, 4) 3D bulbar subarachnoid space geometries, and 5) 3D posterior globe deformation parameters, which were used for subsequent finite element (FE) modeling. We have focused on estimating optic nerve sheath (ONS) stiffness using the subject-specific FEM models derived from MRI scans, necessary for future exploration of possible effects of microgravity and elevated CSF pressure on ocular function. We have also investigated the relationship between ONS stiffness and subject characteristics such as age, BMI (body mass index), and gender to obtain insight of risk factors for SANS. We have continued investigation of the system modeling of regulation functions and validation studies with a Whole Body Model of fluid shifts, focusing on relevant pressures and volumes for space flight analogies.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Articles in Peer-reviewed Journals</strong> — Sater SH, Sass AM, Rohr JJ, Marshall-Goebel K, Ploutz-Snyder RJ, Ethier CR, Stenger MB, Kramer LA, Martin BA, Macias BR. &quot;Automated MRI-based quantification of posterior ocular globe flattening and recovery after long-duration spaceflight.&quot; Eye (Lond). Published: 29 January 2021. https://doi.org/10.1038/s41433-021-01408-1 ; PMID: 33514895 , Jan-2021</li><li><strong>Articles in Peer-reviewed Journals</strong> — Nelson ES, Myers JG Jr, Lewandowski BE, Ethier CR, Samuels BC. &quot;Acute effects of posture on intraocular pressure.&quot; PLoS One. 2020 Feb 6;15(2):e0226915. https://doi.org/10.1371/journal.pone.0226915 ; PMID: 32027692; PMCID: PMC7004359 , Feb-2020</li><li><strong>Abstracts for Journals and Proceedings</strong> — Sass AM, Sater S, Rohr JJ, Macias B, Oshinski JN, Ethier CR, Stenger M, Martin BA. &quot;Methods for Quantifying Tortuosity and 3d Geometry Changes Occurring to the Optic Nerve During Long-Duration Spaceflight.&quot; University of Idaho Undergraduate Research Symposium, Moscow, ID, April 30, 2018. University of Idaho Undergraduate Research Symposium, Moscow, ID, April 30, 2018., Apr-2018</li><li><strong>Abstracts for Journals and Proceedings</strong> — Lee C, Rohr JJ, Sass AM, Sater S, Martin BA, Zahid A, Oshinski JN, Ethier CR. &quot;In vivo estimation of optic nerve sheath stiffness using noninvasive MRI measurements and finite element modeling.&quot; Poster presentation at Summer Biomechanics, Bioengineering, and Biotransport Conference, Seven Springs, PA, Jun 25-28, 2019. Conference book of 2019 SB3C, Seven Springs, PA, Jun 25-28, 2019. Poster Presentation #261. http://archive.sb3c.org/ ; accessed 2/11/21., Jun-2019</li><li><strong>Articles in Peer-reviewed Journals</strong> — Zahid AM, Martin B, Collins S, Oshinski JN, Ethier CR. &quot;Quantification of arterial, venous, and cerebrospinal fluid flow dynamics by magnetic resonance imaging under simulated micro-gravity conditions: A prospective cohort study.&quot; Fluids Barriers CNS. 2021 Feb;18(1):8. https://doi.org/10.1186/s12987-021-00238-3 ; PMID: 33579319; PMCID: PMC7879666 , Feb-2021</li><li><strong>Articles in Peer-reviewed Journals</strong> — Feola AJ, Nelson ES, Myers JG, Ethier CR, Samuels BC. &quot;The impact of choroidal swelling on optic nerve head deformation. &quot; Invest Ophthalmol Vis Sci. 2018 Aug 1;59(10):4172-81. https://doi.org/10.1167/iovs.18-24463 ; PubMed PMID: 30120486 [Note: reported in June 2018 as in press] , Aug-2018</li><li><strong>Awards</strong> — Zahid A. &quot;TL1 Blue Ribbon Award for: A. Zahid, J. Oshinski, B. Martin, S. Collins and C.R. Ethier, Changes in Arterial, Venous, and CSF Flow Dynamics Under Simulated Micro-Gravity Conditions. Translational Science 2019, Washington DC, March 5-8, 2019.&quot; Mar-2019</li><li><strong>Articles in Peer-reviewed Journals</strong> — Sater SH, Sass AM, Seiner A, Natividad GC, Shrestha D, Fu AQ, Oshinski JN, Ethier CR, Martin BA. &quot;MRI-based quantification of ophthalmic changes in healthy volunteers during acute 15° head-down tilt as an analogue to microgravity.&quot; J R Soc Interface. 2021 Apr;18(177):20200920. https://doi.org/10.1098/rsif.2020.0920 ; PMID: 33906382 , Apr-2021</li><li><strong>Abstracts for Journals and Proceedings</strong> — Rohr JJ, Sass AM, Sater S, Aldrimk B, Stenger M, Macias B, Ethier CR, Sargsyan A, Martin BA. &quot;Inter-operator Reliability Assessment of Optic Nerve Tortuosity in Long-duration Flight Astronauts.&quot; 33rd Annual Meeting of the American Society for Gravitational and Space Research, Seattle, WA, October 25-28, 2017. 33rd Annual Meeting of the American Society for Gravitational and Space Research, Seattle, WA, October 25-28, 2017., Oct-2017</li><li><strong>Abstracts for Journals and Proceedings</strong> — Myers J, Werner C, Nelson E, Feola A, Raykin J, Samuels B, Ethier CR. &quot;Modeling Microgravity Induced Fluid Redistribution: Physiological Parameters.&quot; 2017 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 23-26, 2017. 2017 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 23-26, 2017., Jan-2017</li><li><strong>Abstracts for Journals and Proceedings</strong> — Ethier CR, Myers JG, Nelson E, Martin B, Oshninski JN, Samules B, Feola AJ. &quot;Effects of CSF Pressure on the Eye: A Computational-Experimental Comparison.&quot; 2018 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2018. 2018 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2018., Jan-2018</li><li><strong>Abstracts for Journals and Proceedings</strong> — Martin BA, Rohr JJ, Sass AM, Sater S, Macias B, Stenger M. &quot;Magnetic Resonance Imaging Quantification of Ophthalmic Changes due to Space Flight.&quot; Presented at 2019 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2019. Program book of 2019 2019 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2019, p. 47., Jan-2019</li><li><strong>Abstracts for Journals and Proceedings</strong> — Martin BA. &quot;Quantification of ophthalmic changes in astronauts.&quot; Invited technical lecture at NASA Glenn Research Center, Cleveland, OH, July 2, 2018. Technical lecture at NASA Glenn Research Center, Cleveland, OH, July 2, 2018., Jul-2018</li><li><strong>Abstracts for Journals and Proceedings</strong> — Martin BA, Rohr JJ, Sass AM, Sater S, Oshinski JN, Ethier CR, Lee C. &quot;Non-invasive quantification of optic nerve and sheath geometric changes and mechanical properties by head-down tilt magnetic resonance imaging.&quot; Poster presentation at 2019 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2019. Program book of 2019 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2019, p. 37., Jan-2019</li><li><strong>Abstracts for Journals and Proceedings</strong> — Ethier CR, Feola AJ, Nelson ES, Meyers JG, Samuels BC. &quot;Choroidal thickening imparts significant mechanical insult to ONH tissues.&quot; Poster presentation at 2019 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2019. Program book 2019 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2019, p. 35., Jan-2019</li><li><strong>Abstracts for Journals and Proceedings</strong> — Martin BA. &quot;Advanced quantification of ophthalmic structural changes in long-duration spaceflight astronauts using MR imaging.&quot; Presented at NASA Ocular Health Research Symposium, Johnson Space Center, Houston, TX, May 12, 2019. Program of NASA Ocular Health Research Symposium, Johnson Space Center, Houston, TX, May 12, 2019., May-2019</li><li><strong>Articles in Peer-reviewed Journals</strong> — Rohr JJ, Sater S, Sass AM, Marshall-Goebel K, Ploutz-Snyder RJ, Ethier CR, Stenger MB, Martin BA, Macias BR. &quot;Quantitative magnetic resonance image assessment of the optic nerve and surrounding sheath after spaceflight.&quot; npj Microgravity. 2020 Oct 8;6(1):30. https://doi.org/10.1038/s41526-020-00119-3 ; PMID: 33083526; PMCID: PMC7545196 , Oct-2020</li><li><strong>Abstracts for Journals and Proceedings</strong> — Sass AM, Rohr JJ, Stenger M, Macias B, Ethier CR, Sargsyan AE, Martin BA. &quot;Automated Method to Quantify 3D Geometric Alterations of the Optic Nerve and Sheath in Astronauts.&quot; 2018 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2018. The Gateway to Mars. 2018 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2018., Jan-2018</li><li><strong>Abstracts for Journals and Proceedings</strong> — Rohr JJ, Sass AM, Sater S, Macias B, Oshinski JN, Ethier CR, Stenger M, Martin BA. &quot;MRI-based quantification of optic nerve tortuosity and subarachnoid space 3d geometry: reliability assessment.&quot; 2018 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2018. 2018 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2018., Jan-2018</li><li><strong>Abstracts for Journals and Proceedings</strong> — Zahid A, Oshinski J, Martin B, Collins S, Ethier CR. &quot;Changes in Arterial, Venous, and CSF Flow Dynamics Under Simulated Micro-Gravity Conditions.&quot; Presented at Georgia Clinical &amp; Translational Science Conference 2019, Callaway Gardens, GA, February 28-March 1, 2019. Abstract book of the 2nd Annual Georgia Clinical &amp; Translational Science Conference, Callaway Gardens, GA, February 28-March 1, 2019., Feb-2019</li><li><strong>Articles in Peer-reviewed Journals</strong> — Lee C, Rohr J, Sass A, Sater S, Zahid A, Macias B, Stenger MB, Samuels BC, Martin BA, Oshinski JN, Ethier CR. &quot;In vivo estimation of optic nerve sheath stiffness using noninvasive MRI measurements and finite element modeling.&quot; J Mech Behav Biomed Mater. 2020 Oct;110:103924. Epub 2020 Jul 8. https://doi.org/10.1016/j.jmbbm.2020.103924 ; PMID: 32957219. , Oct-2020</li><li><strong>Abstracts for Journals and Proceedings</strong> — Zahid A, Oshinski J, Martin B, Collins S, Ethier CR. &quot;Changes in Arterial, Venous, and CSF Flow Dynamics Under Simulated Micro-Gravity Conditions.&quot; Presented at Translational Science 2019, Washington DC, March 5-8, 2019. Program and abstracts. Translational Science 2019, Washington DC, March 5-8, 2019., Mar-2019</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/95458">https://techport.nasa.gov/projects/95458</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space Human Factors and Habitability MIDAS-FAST:  Development and Validation of a Tool to Support Function Allocation | NASA TechPort Project 92120</title>
+  <meta name="description" content="In this project, the research team 1) developed and validated a model- and simulation-based tool to allow researchers to evaluate various function allocation strategies in space robotics missions and 2) conducted empirical research to investigate human-automat">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/92120">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 92120</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX11.2.3</span>
+        </div>
+        <h1>Space Human Factors and Habitability MIDAS-FAST:  Development and Validation of a Tool to Support Function Allocation</h1>
+        <div class="meta-id">NASA TechPort Project ID: 92120</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/92120" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          In this project, the research team 1) developed and validated a model- and simulation-based tool to allow researchers to evaluate various function allocation strategies in space robotics missions and 2) conducted empirical research to investigate human-automation interaction (HAI). The purpose of this tool is to allow human performance researchers and system designers to evaluate potential HAI systems early in the design process. The tool leverages the Man-Machine Integration Design and Analysis System (MIDAS, developed for NASA Ames), and the Basic Operational Robotics Instructional System (BORIS, a NASA Johnson Space Center (JSC) training simulation) to provide MIDAS-FAST (Function Allocation Simulation Tool).     <p></p> The research proceeded along five partially parallel tracks: (1) developing the function allocation tradeoff model, (2) carrying out empirical human in the loop (HITL) research,  (3) developing and  (4) validating a computational model of the robotics operator, and (5) implementing the model in the context of the MIDAS-FAST tool. These five major components will be described separately:    <p></p> 1.	Function allocation model. A key aspect of function allocation between human and automation is the degree of automation: that is, the relative amount of perceptual, cognitive, and motor “work” carried out by the automation versus human in their collaborative effort in completing task goals. A taxonomy of stages and levels of automation developed by Parasuraman, Sheridan, and Wickens (2000, 2008) describes this degree of automation. One of the important components of the degree of automation is the stage of task information processing at which automation operates to support or replace human activity. Earlier stages involve information acquisition and integration to support situation assessment. Later stages involve action selection and implementation to support task completion.   The function allocation tradeoff model underlying FAST proposes that later stages of automation better support routine human-system performance and lower human workload. However these later stages become more problematic if automation fails to perform its functions appropriately, a failure caused in part by the loss of situation awareness. Our review of the literature on human-automation interaction, incorporated into a meta-analysis, supported these tradeoff relationships with statistically significant trends; and the guidance from this FAST tradeoff model have been incorporated into the MIDAS FAST tool (see Items 4 and 5 below).    <p></p> Using this model, we identified several different types of automation to include in the robotic simulation.  These required modifications to the existing BORIS software.  Trajectory control automation was implemented in one of three degrees:  manual, guided, and automated. To help ensure consistency in experimental participant behavior, we developed 3-segment trajectories that crossed a table (an obstruction) in the operating environment.  The first and third segments required movement in 1 axis only; the second segment required movement along 2 axes.  Manual trajectories were performed without guidance being given to participants.  They were informed of the trajectory to follow, but they were required to determine how to implement it, and to move the arm using the hand controllers.  In the automation guided condition, participants were shown a trajectory (or “flight path”) to follow.  In the autocontrol condition, the trajectory was shown, and the automation executed the trajectory. Hazard alerting and hazard avoidance automation were identified and included.  Hazard alerting included color coding to indicate to participants when they had encountered a no-fly zone;  hazard avoidance included the color coding as well as stopping the arm to prevent a collision.  Camera recommendation logic was also developed.  Manual camera control required the operator to make decisions about camera selection, whereas the camera recommendation automation provided a visual alert to suggest a camera switch when needed, and recommended which camera to use.  These different types of automation allowed us to research different stages and levels of automation as identified by our framework.     <p></p> 2.	Three empirical studies were performed to investigate human performance with different types of robotic arm system automation.  The first experiment examined different interface designs, including enhanced (over the current BORIS simulation) graphics for presenting hazards, integrated graphical hazard alerting, and tactile alerting.  The second experiment - used for model parameterization and validation - matched the modeling conditions, and examined human performance in conditions with different degrees of automation and with unreliable automation.  The third experiment (also used for model validation efforts) investigated adaptive versus adaptable versus fixed automation.    <p></p> 3.	The team developed human performance models of scenarios of interest, based on robotic arm task analyses performed in cooperation with subject matter experts (SMEs). The team verified the task analyses by talk-through sessions with SMEs. Human performance model and human-automation interaction predictions were validated in empirical, Human in the loop (HITL) studies identified in Item 2.  Results of the validations were used to refine the models.  The models included sub models (also referred to as modules) to predict operator visual scanning, operator performance decrements due to poor camera views, and operator decision making.  The scanning model is based on SEEV (Salience, Expectancy, Effort and Value) and the performance impacts of camera view quality were predicted using FORT (Frame of Reference Transformation).  SEEV and FORT are relatively mature models, having been developed, refined, and validated under previous NASA research efforts.  The decision model was developed specifically for tasks associated with the robotic arm, based on the Generic Robotics Training.     <p></p> 4.	A primary goal of this research was to verify and validate our model of the robotic arm operator, to be employed in the function allocation tool, and to collect data that would further validate the Function Allocation Support Tool tradeoff model. To accomplish these purposes, data from the Human in the loop (HITL) Experiments 2 and 3 were analyzed, and both models developed and refined.     <p></p> 5.	One particular focus of the project was on developing the MIDAS-FAST tool, a prototype model- and simulation-based product that is both usable and useful for researchers, allowing them to easily modify robotic arm scenarios and evaluate different potential automation conditions. This tool offers data entry screens that guide the user through the process of building a scenario. It allows the researchers to specify numerous relevant factors, e.g., operators, tasks, environmental conditions, and function allocation strategy. It offers a visualization capability that provides an animation of the scenario, showing operators interacting with the simulation. The output of the model run includes, in addition to the animation, data files with parameters of interest such as predicted operator situation awareness, workload, visual scanning, camera selection, and trajectory control.    <p></p> In summary, the MIDAS-FAST project provided a validated model- and simulation based tool for predicting operator performance when working with a robotic arm in different function allocation situations.  The function allocation model developed, and the empirical research conducted in this effort were used to identify conditions and provide data development of the tool. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The research provided (and empirically validated) a tool, MIDAS-FAST, to evaluate the effects of human-automation function allocation strategies on human-system performance in robotic tasks involving remote control of a mechanical arm.  While the tool was developed specifically for space robotic tasks, we anticipate that the model predictions will also apply to Earth-based robotic tasks.      <p></p> MIDAS-FAST allows analysts (e.g., researchers, system developers, and concept developers) to enter data regarding the proposed robotic system, allocation of tasks, and the type of automation that is included.  The tool uses a variety of sub-models, called modules, to evaluate particular aspects of operator performance (e.g., focus of visual attention, situation awareness, disorientation, and performance decrements due to control-response incompatibilities).  The tool provides feedback on predicted operator performance (e.g., time to complete task; trajectory deviations), workload, situation awareness, visual scanning, and camera selection.  This will help analysts evaluate and compare potential robotic systems in terms of their predicted effects on operator performance.  Model predictions were evaluated and refined with data collected during two human in the loop studies.    <p></p> Three human in the loop experimental studies, and one meta-analytic literature review conducted during this effort provide empirical data to extend the scientific research in human-automation interaction.  All four studies have been submitted for publication in either the Human Factors Journal or presentation at the Human Factors and Ergonomics annual conference. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>92120</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.2.3: Human-System Performance Modeling</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2009-09-01</td></tr>
+<tr><th>Project End Date</th><td>2013-04-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Michigan-Ann Arbor — Ann Arbor, Michigan; San Jose State University Research Foundation — San Jose, California; Alion Science And Technology Corporation — Boulder, Colorado</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Angelia Sebok (Principal Investigator); Nadine Sarter (Co-Investigator); Brian F Gore (Co-Investigator) &lt;brian.f.gore@nasa.gov&gt;; Douglas T Wong (Project Manager) &lt;douglas.t.wong@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2020-10-27</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: In the third year of the contract, a number of results were achieved. Briefly summarized, the major accomplishments were the completion of the second and third experimental studies, and model parameterization and validation efforts. This resulted in a number of minor modifications to the human performance model, to simulate more accurately actual operator performance during the robotics tasks. Final development efforts were implemented prior to delivering the software, and a user manual was written. In addition, the project was presented and the MIDAS-FAST tool was shown during a live demonstration as part of an Office of Management and Budget (OMB) deliverable (August 14, 2012). A primary goal of year 3 was to verify and validate our model of the robotic arm operator, to be employed in the function allocation tool, and to collect data that would further validate the Function Allocation Support Tool tradeoff model. To accomplish these purposes, data from the Human in the loop (HITL) Experiments 2 and 3 were analyzed, and both models developed and refined. The nature of Experiment 2, which was the most critical in both validations, will first be described in some detail. HITL simulation: In Experiment 2, 36 participants were first trained extensively to manually operate a simulated version of the robotic arm manipulation task, in which a payload was first raised, then moved across a horizontal “table top”, and then lowered to a target destination. While maneuvering, participants needed to avoid proximity with hazards (wall and the table top) and joint states that would freeze the arm motion. In carrying out the task, they were assisted by three forms of automation. (1) All participants were alerted when proximity to a hazard was violated. (2) All participants were advised, on half the trials, as to the appropriate selection of two of the 4 possible camera views that would provide them with optimal viewing perspective. Finally, (3) participants were divided into three groups receiving different levels of trajectory control automation: none, presence of a 3D guidance path for the correct trajectory (autoguidance), and full autopilot control (autocontrol). In terms of the FAST tradeoff model, the two automation conditions varied in the stage of automation supported (early versus late). Automation of all types functioned correctly through most of the trials. However on the final trial (last few minutes of the 6 hour experiment), both automation systems “failed.” Either the line directed the arm too close to a hazard (autoguidance), or the autopilot actually moved the arm into this close proximity with the hazard (autocontrol). In both instances, the collision warning system also failed. Consistent with our FAST tradeoff model, increasing degrees of automation (from none, to autoguidance, to autocontrol) produced progressively better routine performance and lower workload. However, also consistent with the tradeoff model, late stage automation produced significantly worse performance in automation failure management on this final trial, and was associated with a significantly different visual scan path. The camera advisory automation was not failed. The advice of this automation was complied with, and did improve participant’s view of the workspace. Validation of robotic arm operator model. We developed a computational model of the robotic arm operator on MIDAS. Because it was MIDAS controlling Boris, we called the model MORIS. MORIS consisted of three primary sub models: (1) A decision model, based on utility theory, chose the best camera views and decided which 4D trajectories to take (XYZ and speed) to reach the ultimate goal and avoid hazards. (2) A spatial cognition model called FORT (Frame of reference transformation) continuously calculated the challenges to spatial cognition caused by different levels of motion ambiguity (portrayed by camera views), control incompatibility (created by misalignment between control motion and perceived display motion), and by visibility challenges within the workplace. (3) a visual scanning model, across the workplace, known as SEEV, which controls simulated eye movement particularly on the basis of the bandwidth of information source changes, their value to the task, and their location in the workplace. MORIS then generated outputs of performance time, trajectory error, workload, camera selection, and scan-based situation awareness. Predictions were different across the three degrees of trajectory automation (none, autoguidance, autocontrol). MORIS model parameters were adjusted so that close fits were obtained between MORIS predictions and the empirical data from the HITL. While the proceeding was essentially “parameterization” of the model, two efforts were made to make true validation: that is, predictions of the model in which the model parameters were not adjusted to maximize the fit with what was predicted. First, we predicted reasonably well, performance of participants in the one condition of experiment 3 that corresponded to one of our conditions in experiment 2. Second, and more significantly, we used MORIS to predict performance of participants in all three conditions in responding to the unexpected automation failures (see above). We did this by modeling, with MORIS, a reduction in the scanning of critical displays, thereby using SEEV to produce an automation complacency prediction. It was this prediction that was validated, with a high correlation between predicted and obtained failure management performance, with the actual performance of participants in the three conditions. In fact, as predicted by the FAST (Function Allocation Simulation Tool) tradeoff model, our complacency measure precisely predicted the poorer performance in the auto-control, compared to the auto-guidance automation. The third experimental study evaluated context-sensitive function allocation. Specifically, four conditions were used to compare operator performance: (1) adaptable automation, where changes in the allocation of functions are initiated by the user, (2) adaptive automation, where the automation triggers changes based on operator or system performance, (3) a hybrid approach, where the system and operator collaborate on selecting and activating automation levels, and (4) a fixed automation approach, in which moderate degrees of automation were consistently applied. Twelve participants (university students with 6-9 hours of previous robotics experience) worked with the BORIS simulation. They were instructed to perform their tasks (executing 3-segment trajectories) in a safe, accurate, and efficient manner. All subjects performed tasks in all 4 automation conditions (within-subjects design). Performance measures included trajectory completion time, trajectory deviation, subjective workload, and subjective preferences regarding automation type. Results indicate that trajectory deviations were significantly smaller in the adaptive, adaptable, and hybrid automation conditions compared with the fixed automation condition. Further, deviations in the hybrid automation condition were smaller than deviations in the adaptive and adaptable conditions. While the difference in time to complete the trajectory was not significant, the trend showed the similar results (slowest for fixed automation, fastest for hybrid). Workload was highest in the fixed condition, and lowest in both the adaptable and hybrid conditions. Finally, participants preferred the adaptable and hybrid automation types for the control it allowed them and – in the hybrid condition – the knowledge that the system was monitoring their performance. In summary, Experiment 3 identified empirical support for the adaptable and hybrid automation schemes over fixed and adaptive schemes. The experiment also provided data (from the fixed and hybrid conditions) for validation of model predictions, described previously. Based on the parameterization and validation efforts, the robotics operator model was updated. Further refinements in the model and simulation integration were implemented. New capabilities were added to the MIDAS-FAST tool, to allow researchers to examine a variety of potential conditions. Further, a user manual was developed and provided as part of the project deliverables. During the third year of research, long-term hospitalization of two key personnel (different issues) resulted in a no-cost extension of the contract until April 30, 2013. On June 5, 2013, the MIDAS-FAST tool was delivered to NASA Johnson Space Center (JSC) and a final briefing was delivered. This briefing included a summary of the project (purpose, goals, approach) with a focus on the experimental results and model parameterization and validation efforts (methods, results). The final report and user manual were also delivered to NASA.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Abstracts for Journals and Proceedings</strong> — Li H, Sarter N, Sebok A, Wickens C. &quot;The Design and Evaluation of Visual and Tactile Warnings in Support of Space Teleoperation.&quot; To be presented at the 56th Annual Meeting of the Human Factors and Ergonomics Society, Boston, MA, October 22-26, 2012. To be presented at the 56th Annual Meeting of the Human Factors and Ergonomics Society, Boston, MA, October 22-26, 2012., Jul-2012</li><li><strong>Articles in Peer-reviewed Journals</strong> — Li H, Sarter N, Wickens C, Sebok A. &quot;Supporting human-automation collaboration through dynamic function allocation: the case of space teleoperation.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting 2013. 2013 Sep;57(1):359-63. http://dx.doi.org/10.1177/1541931213571078 , Sep-2013</li><li><strong>Dissertations and Theses</strong> — Li H. &quot;Supporting Human-Automation Collaboration through Dynamic Function Allocation: The Case of Space Teleoperation.&quot; Dissertation, University of Michigan, Ann Arbor, December 2012. Appears in Deep Blue, http://deepblue.lib.umich.edu/handle/2027.42/97801 ; accessed 2/18/2015., Dec-2012</li><li><strong>Articles in Peer-reviewed Journals</strong> — Sebok A, Wickens CD. &quot;Implementing lumberjacks and black swans into model-based tools to support human-automation interaction.&quot; Hum Factors. 2017 Mar;59(2):189-203. Epub 2016 Sep 27. http://dx.doi.org/10.1177/0018720816665201 ; PubMed PMID: 27591210 , Mar-2017</li><li><strong>Articles in Peer-reviewed Journals</strong> — Li H, Sarter N, Sebok A, Wickens C. &quot;The design and evaluation of visual and tactile warnings in support of space teleoperation.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting 2012 Sep;56(1):1331-5. http://dx.doi.org/10.1177/1071181312561384 , Sep-2012</li><li><strong>Articles in Peer-reviewed Journals</strong> — Wickens CD, Li H, Santamaria A, Sebok A, Sarter N. &quot;Stages and levels of automation: An integrated meta-analysis.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2010 Sep;54(4):389-93. http://dx.doi.org/10.1177/154193121005400425 , Sep-2010</li><li><strong>Abstracts for Journals and Proceedings</strong> — Sebok A, Wickens CD, Gacy AM, Brehon M, Scott-Nash S, Sarter N, Li H, Gore BF, Hooey BL. &quot;MIDAS-FAST: A Modeling and Simulation Based Tool to Predict Operator Performance in Human-Robotic Automation Systems.&quot; Presented at the 4th International Conference on Applied Human Factors and Ergonomics and 1st International Conference on Human Factors in Transportation, San Francisco, CA, July 21-25, 2012. 4th International Conference on Applied Human Factors and Ergonomics and 1st International Conference on Human Factors in Transportation, San Francisco, CA, July 21-25, 2012., Jul-2012</li><li><strong>Articles in Peer-reviewed Journals</strong> — Li H, Wickens C, Sarter N, Sebok A. &quot;Stages and levels of automation in support of space teleoperations.&quot; Hum Factors. 2014 Sep;56(6):1050-61. PubMed PMID: 25277016 (originally reported as in press as of July 2013), Sep-2014</li><li><strong>Abstracts for Journals and Proceedings</strong> — Sebok A, Wickens C, Gacy AM. &quot;Using modeling and simulation tools to support performance in robotic automation systems.&quot; Invited talk. Presented at the 8th International Topical Meeting on Nuclear Plant Instrumentation, Control and Human Machine Interface Technologies (NPIC&amp;HMIT 2012), San Diego, CA, July 22-26, 2012. 8th International Topical Meeting on Nuclear Plant Instrumentation, Control and Human Machine Interface Technologies (NPIC&amp;HMIT 2012), San Diego, CA, July 22-26, 2012., Jul-2012</li><li><strong>Articles in Peer-reviewed Journals</strong> — Wickens CD, Sebok A, Li H, Sarter N, Gacy AM. &quot;Using modeling and simulation to predict operator performance and automation-induced complacency with robotic automation: a case study and empirical validation.&quot; Human Factors. 2015 Sep;57(6):959-75. Epub 2015 Jan 12. PubMed PMID: 25850111 ; http://dx.doi.org/10.1177/0018720814566454 , Sep-2015</li><li><strong>Abstracts for Journals and Proceedings</strong> — Sebok A, Wickens C, Gacy M. &quot;Automation for Human-Robotic Interaction: Modeling and Predicting Operator Performance&quot; Presented at and published in the Proceedings of the 16th International Symposium on Aviation Psychology, Dayton, OH, May 2-5, 2011. Proceedings of the 16th International Symposium on Aviation Psychology. Dayton, OH : Wright State University, 2011. p. 621-626., May-2011</li><li><strong>Abstracts for Journals and Proceedings</strong> — Li H, Sarter N, Wickens C, Sebok A. &quot;Supporting Human-Automation Collaboration through Dynamic Function Allocation: The Case of Space Teleoperation.&quot; 57th Annual Meeting of the Human Factors and Ergonomics Society, San Diego, CA, September 30-October 4, 2013. 57th Annual Meeting of the Human Factors and Ergonomics Society, San Diego, CA, September 30-October 4, 2013., Jul-2013</li><li><strong>Articles in Peer-reviewed Journals</strong> — Gacy AM, Wickens CD, Sebok A, Gore BF, Hooey BL. &quot;Modeling operator performance and cognition in robotic missions.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2011 Sep;55(1):861-5. (55th Annual Meeting of the Human Factors and Ergonomics Society, Las Vegas, NV, September 19-23, 2011.) http://dx.doi.org/10.1177/1071181311551179 , Sep-2011</li><li><strong>Papers from Meeting Proceedings</strong> — Wickens C, Li H, Sebok A, Gacy AM, Sarter N. &quot;Validating a Model of the Automation Supporting the Robotic Arm Controller.&quot; 17th International Symposium on Aviation Psychology, May 6-9, 2013. In: Proceedings of the 17th International Symposium on Aviation Psychology, May 6-9, 2013. Dayton, OH : Wright State University, 2013. p. 542-547. (Printed by Curran Associates, Inc.) TOC available at http://toc.proceedings.com/20581webtoc.pdf ; accessed 2/18/2015., May-2013</li><li><strong>Abstracts for Journals and Proceedings</strong> — Sebok A, Wickens CD, Sarter N, Gore B, Hooey B, Li H, Gacy M, Brehon M, Santamaria A. &quot;MIDAS-FAST: Development and Validation of a Tool to Support Function Allocation.&quot; Presented at the 18th IAA Humans in Space Symposium, Houston, TX, April 11-15, 2011. 18th IAA Humans in Space Symposium, Houston, TX, April 11-15, 2011., Apr-2011</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/92120">https://techport.nasa.gov/projects/92120</a>
+    </div>
+  </div>
+</body>
+</html>

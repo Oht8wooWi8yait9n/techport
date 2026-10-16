@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Astrobotic Terrain Relative Navigation and Visual Velocimetry Sensor (ATRN-TP) | NASA TechPort Project 116335</title>
+  <meta name="description" content="Develop a low-cost, reliable, high-performance, stand-alone Terrain Relative Navigation (TRN) and Visual Velocimetry sensor and an accompanying Mission technology suite to precisely deliver robotic landers to planetary surfaces, enabling high-impact science an">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/116335">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 116335</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">GCD</span>
+          <span class="badge">TX09.5</span>
+        </div>
+        <h1>Astrobotic Terrain Relative Navigation and Visual Velocimetry Sensor (ATRN-TP)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 116335</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/116335" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Develop a low-cost, reliable, high-performance, stand-alone Terrain Relative Navigation (TRN) and Visual Velocimetry sensor and an accompanying Mission technology suite to precisely deliver robotic landers to planetary surfaces, enabling high-impact science and commercial missions. The proposing team of Astrobotic Technology, Inc., Moog Space and Defense, Moog Broad Reach, NASA Jet Propulsion Laboratory (JPL), and NASA Johnson Space Center (JSC) will develop a low-cost, reliable, high-performance, stand-alone Terrain Relative Navigation (TRN) and Visual Velocimetry (VV) sensor and an accompanying Mission technology suite (including simulation and map generation tools). The low-mass (~2.5 kg), low power (~15 W peak), passive-optical TRN sensor is designed to precisely deliver robotic landers to planetary surfaces, enabling high-impact science and commercial missions. Following a rigorous terrestrial development campaign, the team will raise the sensor to TRL 7 by flying it to the lunar surface as a technology demonstration on a commercial lander. Demonstrating these capabilities will allow the team to help NASA dramatically increase the capabilities of any commercial lunar or other deep space mission and infuse TRN capabilities into high-priority NASA missions such as Mars Sample Return, a Europa lander mission, and numerous New Frontiers- and Discovery-class missions at a low cost. <span style="font-size:13.2px">TRN is an enabling technology that will drive an increase in public and private landed missions and activities. Additionally, customers of precision landing will be able to purchase the developed TRN sensor “off-the-shelf,” as they would a star tracker. <span style="font-size:13.2px">These navigation capabilities will enable access the related markets of space infrastructure monitoring and satellite servicing, generating a broader commercial and OGA market for optical navigation to further reduce development costs for NASA and future NASA missions.</span></span><br />
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Terrain Relative Navigation provides an onboard capabiltity to use camera images to provide precision-level landing accuracy (roughly 100 m). TRN requires only a camera with a view of the planetary object's surface and a processor. This is a very powerful capability without the need to develop a specialized GN&C sensor. Under this agreement, JPL will provide expertise and consultation to Astrobotic to mature the TRN algorithm to flight quality. Astrobotic will demonstrate the algorithm at the Moon on a robotic lunar mission. Astrobotic will also develop a commercial capability to provide TRN sensors and/or services to other commercial companies. The resulting products will be directly applicable to high-priority NASA missions and will benefit all future missions requiring precision landing and surface access. Once TRN is affordable and reliable, it is difficult to imagine any science or commercial mission that would not use the capability. The technology has the potential to greatly reduce mission costs by reducing traverse distances between a landing site and scientific targets.<br /><br />
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>116335</td></tr>
+<tr><th>Acronym</th><td>ATRN-TP</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Game Changing Development (GCD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.5: Flight Mechanics and GN&amp;C for Entry, Descent, and Safe Precise Landing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 9 | Target End TRL: 9</td></tr>
+<tr><th>Project Start Date</th><td>2018-10-01</td></tr>
+<tr><th>Project End Date</th><td>2024-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Astrobotic Technology, Inc. — Pittsburgh, Pennsylvania</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas; Moog, Inc (MOOG) — East Aurora, New York; Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Arizona (AZ), California (CA), New York (NY), Pennsylvania (PA), Texas (TX)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Cinnamon A Wright (Project Manager) &lt;cinnamon.a.wright@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Mark N Thornblom (Program Manager) &lt;mark.n.thornblom@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Astrobotic’s OPAL Sensor is a commercial product designed from the outset for precision landing on planetary bodies. The system has been developed under a NASA Tipping Point contract that kicked off in May 2019. During the performance period, the team developed the flight software, avionics, map generation software, and ground support tools for the OPAL sensor and characterized sensor performance through simulation and environmental testing. The work included terrestrial flight testing, space qualification, and culminated in a technology demonstration of the sensor on Astrobotic’s first mission in January 2024. Astrobotic is the prime for this work which included subcontracts for Moog, Inc., JPL, and NASA JSC. Moog provided avionics, facilities for environmental testing, and broad systems engineering expertise. JPL provided flight-proven FPGA computer vision modules for TRN and architectural and testing guidance. JSC’s Electro-Optics Lab (EOL) facility provided hardware-in-the-loop testing and performance validation, minimizing integration and test risks of a multi-mission, multi-destination OPAL sensor product. Under the NASA contract, Astrobotic and JPL collaborated to integrate the TRN flight software (FSW), the primary subsystem of the OPAL Sensor. Moog delivered avionics and structure for the OPAL Sensor leveraging their flight-proven hardware. Astrobotic led the development of ground support software for lunar mapping and visual simulation, refining its advanced rendering tools to rapidly produce accurate lunar maps and simulate descent imagery for in-the-loop testing. Astrobotic and JSC completed a simulation and field test campaign that exercised the OPAL Sensor in simulation and terrestrial flight. Finally, Astrobotic integrated the system aboard the company’s first lunar lander to demonstrate the technology in space toward the commercial product development of the OPAL system.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/116335">https://techport.nasa.gov/projects/116335</a>
+    </div>
+  </div>
+</body>
+</html>

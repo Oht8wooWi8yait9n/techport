@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seismometer for a Lunar Network (SLN) | NASA TechPort Project 96492</title>
+  <meta name="description" content="Seismic studies provide definitive knowledge of internal planetary structure. Reexamination of seismic data from the Moon has provided an important glimpse of its mantle and core structure, which has bearing on its thermal, petrological, and rotational history">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/96492">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 96492</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">DALI</span>
+          <span class="badge">TX08.3</span>
+        </div>
+        <h1>Seismometer for a Lunar Network (SLN)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 96492</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/96492" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Seismic studies provide definitive knowledge of internal planetary structure. Reexamination of seismic data from the Moon has provided an important glimpse of its mantle and core structure, which has bearing on its thermal, petrological, and rotational history. Data suggest the presence of a fluid-like transition layer between the lunar core and mantle. The Moon may therefore still be undergoing chemical segregation and thermal layering. The seismologist’s challenge is substantiating this view. Further investigation of internal structure hinges on innovative development of a Lunar Geophysical Network (LGN) that includes advanced seismic sensors and deployment methods. This network will need to overcome the limitations of an initially sparse grid and improve upon the quality of Apollo-era seismograms. The best design for such instruments, considering they will likely be delivered by a new class of small commercial landers, is currently underdeveloped. We propose to raise the TRL of a Silicon Audio commercial-off-the-shelf geophone from 4 to 6. This instrument is a novel combination of a classic seismic geophone and a laser interferometer. Micron-scale movements of an internal mass are recorded as induced current, while submicron-scale motions are recorded by the laser system. This allows for a small (&lt;300gm), sensitive (1x10-8 m/s2/Hz1/2) broadband (0.01-100Hz) seismic instrument that is competitive with state of the art planetary seismometers. The 3-axis instrument is insensitive to tilt over 180º. Here we pursue a redesign of this system to partition the electronics, replace commercial parts with flight-worthy parts and perform environmental tests to demonstrate a sensor suitable for deployment on the Moon. In partnership with Honeybee Robotics, we will also pursue subsurface deployment using a pneumatic drilling technique, which is enabled by the small size of the Silicon Audio device. Drilling is accomplished by compressed gas jetting through a cylindrical, 3-axis, seismic probe, stirring up the soil underneath and lofting the regolith out of the hole. Burial will enable lower mass and power by automatically creating an isothermal environment, will improve seismic coupling, and reduce noise from the lander. This approach was successfully demonstrated in a previous SBIR project in a vacuum chamber with compacted (1.9 g/cc) lunar soil simulant. In the proposed effort, the deployment system will demonstrate seismic sensor implantation to 50 cm depth in compacted lunar soil simulant under vacuum, advanced from its current TRL 4 to TRL 5. Goals: 1) Raise the TRL of a redesigned Silicon Audio optical three-axis seismometer from 4 to 6. 2) Demonstrate burial with the Honeybee system raising the TRL from 4 to 5. Methodology. 1) Redesign the existing seismic instrument by partitioning electronics from the sensor-head. Replace the laser and photodiode with parts suitable for deployment on the Moon. Redesign the remaining electronics to be housed in a support electronics box. Test the sensor prototype in a relevant environment. 2) Demonstrate burial of the seismic sensor with the gas jet system in a simulated lunar regolith, in vacuum. Relevance: The objectives of the DALI program are to “develop new technologies that significantly improve instrument measurement capabilities for lunar science missions.” LGN is identified as a priority New Frontiers mission in the Planetary Decadal Survey. Demonstration of the combined sensor and deployment system will position us for rapid response to upcoming commercial launch and landing opportunities, expected as early as 2019. An early landed commercial payload could test three deployment scenarios: buried in the regolith, sitting on the surface, and integrated into the body of the lander. Comparing the quality of data from each scenario will allow us to assess the level of science that can be achieved, which is directly relevant to future LGN-level instrumentation.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Improved scientific instruments for future Lunar science missions.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>96492</td></tr>
+<tr><th>Acronym</th><td>SLN</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Development and Advancement of Lunar Instrumentation (DALI)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.3: In Situ Instruments and Sensors</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 5 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2018-12-01</td></tr>
+<tr><th>Project End Date</th><td>2025-04-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Arizona — Tucson, Arizona</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Honeybee Robotics, Ltd. — Pasadena, California; Marshall Space Flight Center (MSFC) — Huntsville, Alabama; Planetary Science Institute (PSI) — Tucson, Arizona; University of Notre Dame — Notre Dame, Indiana; Institut Supérieur de L&#x27;aéronautique et de l&#x27;Espace (ISAE-SUPAERO) — Toulouse, Outside the United States, France; Silicon Audio — Austin, Texas; University of Maryland-College Park (UMCP) — College Park, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL), Arizona (AZ), California (CA), Indiana (IN), Maryland (MD), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Samuel H Bailey (Principal Investigator); Naomi A Murdoch (Co-Investigator); Kris Zacny (Co-Investigator); Brad Avenson (Co-Investigator); Nicholas Schmerr (Co-Investigator); Matthew A Siegler (Co-Investigator); Mary Gerrow (Co-Investigator); Clive R Neal (Co-Investigator); Veronica J Bray (Co-Investigator); Renee C Weber (Co-Investigator) &lt;renee.c.weber@nasa.gov&gt;; Daniella N DellaGiustina (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Erica N Montbach (Program Director) &lt;erica.n.montbach@nasa.gov&gt;; Anna Maria T Pal (Program Manager) &lt;a.pal@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-05</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Technology Specifications and Quad Chart_updated</strong></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/96492">https://techport.nasa.gov/projects/96492</a>
+    </div>
+  </div>
+</body>
+</html>

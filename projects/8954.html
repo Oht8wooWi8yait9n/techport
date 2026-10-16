@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent-Based Collaborative Traffic Flow Management | NASA TechPort Project 8954</title>
+  <meta name="description" content="We propose agent-based game-theoretic approaches for simulation of strategies involved in multi-objective collaborative traffic flow management (CTFM). Intelligent agents represent two types of entities / players: FAA Traffic Management Unit (TMU) representati">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/8954">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 8954</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX02.1.5</span>
+        </div>
+        <h1>Agent-Based Collaborative Traffic Flow Management</h1>
+        <div class="meta-id">NASA TechPort Project ID: 8954</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/8954" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          We propose agent-based game-theoretic approaches for simulation of strategies involved in multi-objective collaborative traffic flow management (CTFM). Intelligent agents represent two types of entities / players: FAA Traffic Management Unit (TMU) representatives, and Airline Operations Center (AOC) coordinators. The software modules resulting from this work are intended to be part of the NASA ARC multi-agent simulation toolkit for CTFM. The goal is to utilize game theory to understand the behavior of AOCs so that the CTFM system may be designed to yield improved performance of the NextGen AirSpace without compromising safety. We consider a spectrum of information sharing cases, from complete information sharing to incomplete information sharing where AOCs limit the transparency of their strategies to the FAA TMU. This agent-based simulation software will enhance the ability of the FAA (and other parties including NASA) to design proper collaboration protocols and incentives by studying the effects of different strategies by both types of players. We call this a "co-opetition" simulation tool since it allows analysis of competitive strategies between AOCs, while providing insights into how the TMU can promote greater cooperation by the AOCs for the common good. We should emphasize that the intent of the proposed software is NOT to design effective AOC strategies since that will be determined by the individual airlines, and not the CTFM system designers.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Other members of the Joint Planning and Development Office (JPDO), such as the Department of Defense (DoD) and the Department of Transportation (DoT), have similar CTFM needs. In particular, the proposed game-theoretic CTFM approach is very relevant to the integration of UAVs into the NAS. The DoD is interested in increasing the number of UAVs that can be controlled by one operator. Agent-based automation of coordination between UAVs, and between UAVs and other aircraft, will become an increasing need; the proposed game-theoretic approach is one solution to this problem. The agent-based game-theoretic negotiation strategies can also be integrated into a wide variety of modeling and simulation tools currently employed by the DoD, to help improve the fidelity of such simulations.<br /> <br />We build on the ongoing research performed by NASA ARC researcher Shawn Wolfe and his colleagues, on the CTFM simulation system built using the Brahms multi-agent simulation environment. Our game theory module will be a "plug-in" to this toolkit and will enable the CTFM system designers to better appreciate the dynamics of cooperation and competition between the AOCs and the TMU. The obvious technology transition is to the NextGen Airspace project in the area of traffic flow management. The tool can be used both for simulation and for operational automation of CTFM concepts. There are many other potential NASA applications involving multi-agent negotiation and co-opetition, for example in scheduling rocket launches using global coordination.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>8954</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX02.1.5: High-Performance Field-Programmable Gate Arrays</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2010-01-29</td></tr>
+<tr><th>Project End Date</th><td>2010-07-29</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Vcrsoft, LLC — Arlington, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Vc Ramesh (Principal Investigator); Kapil Sheth (Project Manager) &lt;Kapil.Sheth@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/8954">https://techport.nasa.gov/projects/8954</a>
+    </div>
+  </div>
+</body>
+</html>

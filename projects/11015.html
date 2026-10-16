@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Increasing NASA SSC Range Safety by Developing the Framework to Monitor Airspace and Enforce Restrictions Project | NASA TechPort Project 11015</title>
+  <meta name="description" content="The NASA John C. Stennis Space Center (SSC) Office of Safety and Mission Assurance (SMA) has a safety concern associated with unauthorized aircraft entering Restricted Airspace R-4403, located within the SSC Fee Area. SSC has limited ability to detect aircraft">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/11015">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 11015</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SSC CIF</span>
+          
+        </div>
+        <h1>Increasing NASA SSC Range Safety by Developing the Framework to Monitor Airspace and Enforce Restrictions Project</h1>
+        <div class="meta-id">NASA TechPort Project ID: 11015</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/11015" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The NASA John C. Stennis Space Center (SSC) Office of Safety and Mission Assurance (SMA) has a safety concern associated with unauthorized aircraft entering Restricted Airspace R-4403, located within the SSC Fee Area. SSC has limited ability to detect aircraft that may breach the restricted airspace, which is especially important during rocket propulsion test operations. In order to protect lives and property, appropriate technology is required to monitor the airspace, warn aircraft of impending danger, warn NASA test operations, and, if necessary, provide NASA with data to make an informed decision whether or not to interrupt engine testing. A systematic evaluation of potential technologies to comprehensively address the problem of unauthorized aircraft entering Restricted area/R-4403, Gainsville, Mississippi (MS) was performed. The objective of this project was to provide a small set of cost effective solutions that would provide appropriate personnel the necessary information to make informed safety decisions in near-real time. A range of potential solutions, comprising Federal Aviation Administration (FAA) radar- and satellite-based technologies, commercial software and internet technologies, and additional alternate technologies, were considered. The technology solutions were assessed against monitoring requirements defined by NASA SSC. Ultimately, however, it was determined that an alternative to acquiring new technology at SSC was to utilize existing FAA capabilities and procedures more effectively. Conversations with airspace specialists at Houston Center Air Route Traffic Control Center (ARTCC), responsible for R-4403, revealed that the airspace is considered open for public flights and not actively monitored, which is consistent with the agreement defined by the 1988 memo between NASA and FAA. For Houston Center to refuse clearance to aircraft requesting access to R-4403, a Notice to Airmen (NOTAM) or Temporary Flight Restriction (TFR) would have to be issued for the airspace. Therefore, a refined notification procedure to follow in advance of test operations was recommended for implementation. Engine testing at NASA SSC poses a significant risk to general aviation due to potential smoke and excessive turbulence. The airspace over Stennis has been designated as restricted from 0600 - 2300 at altitudes below 5000 feet. SSC has limited ability to detect aircraft that have breeched the restricted airspace. In order to protect lives and property, a systematic evaluation of the potential technologies was requested to identify and define options to monitor the airspace, warn aircraft of impending danger, warn NASA test operations, and if necessary provide NASA test operations data so that an informed, timely decision could be made on whether or not to interrupt engine tests. This project systematically evaluated potential technologies that could address the problem of unauthorized aircraft entering Restricted Airspace/R-4403; a primary focus of this activity was on protecting the SSC Fee and Buffer Zone during an engine test or other sensitive operation. The research began with the findings and technology identified in the SSC Facility Safety Assessment Report. In 2010, a Facility Safety Assessment was performed for SMA to identify hazards associated with the SSC multiuser test range. During this assessment, a top system level safety hazard concerning unauthorized aircraft entering the SSC Restricted Airspace during test range operations, as well as twelve other hazards that directly or indirectly relate to the top hazard, were identified. SSC has limited ability to detect aircraft that may have intentionally or unintentionally breached R-4403. Because the restricted airspace is controlled by Houston ARTCC, controllers at Gulfport-Biloxi International Airport (GPT) and Louis Armstrong New Orleans International Airport (MSY) are not required to monitor or alert aircraft to avoid R-4403. The purpose of the project was to evaluate monitoring techniques to address the problem of aircraft entering R-4403, primarily focusing on access to the SSC Buffer Zone during an engine test or other sensitive operation. The objective was to provide a small set of cost effective solutions that enable appropriate personnel to make informed safety decisions in near-real time. A number of different existing and prototype technologies were considered against the monitoring requirements defined by NASA. During this project, several different types of aircraft monitoring technologies were investigated. The project intended to prototype these potential technology solutions based on information and assessments performed. Potential software approaches to be prototyped included: phone apps, e-mail alerts, and desk top displays. Each was assessed against NASA's airspace monitoring requirements, which included the ability to monitor the entire buffer zone plus an additional 5 mile radius for both transponder and non-transponder equipped aircraft and, if possible, low-altitude UASs. Some technologies were eliminated because they are unable to track non-transponder equipped aircraft, while others are not capable of operating in all weather and illumination conditions. The remaining technologies represent potential solutions to monitoring the restricted airspace at SSC. Ultimately, the technologies investigated were not required and a refined notification procedure to follow in advance of test operations was implemented to insure NASA SSC Range Safety.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The benefits to NASA funded missions include being able to provide safety to aircraft within the immediate vicinity of the Stennis Propulsion Test Site where test rocket engines are tested while simultaneously addressing multi-use needs of the air space around/surrounding the test complex. The benefits to NASA unfunded missions and planned missions, are similar to those that would be provided to currently funded missions to conduct rocket engine testing at Stennis Space Center, and is expected to continue. The safety to aircrafts within the immediate vicinity of the SSC Test Complex facility will be enabled, and potential future multi-use needs of the air space in the test-complex area could be enabled. Benefits to the commercial space industry would be similar to those provided to NASA. As SSC continues to provide support and do business with the commercial spaceflight industry, safety to aircraft within the immediate vicinity of the Stennis Propulsion Test Site will be required in order to continue to test rocket engines. As use by the commercial sector for rocket engine testing increases, so do the needs to protect and efficiently use resources that have multiple uses. The benefits to other government agencies that are co-located at Stennis, would be similar to those enabled by NASA. SSC is federal city that has numerous other federal and state agencies, including Department of Defense, Department of Energy, Department of Commerce, Department of Interior. Environmental Protection Agency, Mississippi Enterprise for Technology and Louisiana Technology Transfer Office, that would all benefit by enabling multi-use needs of the airspace in and surrounding SSC.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>11015</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: SSC CIF (SSC CIF)</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2011-09-01</td></tr>
+<tr><th>Project End Date</th><td>2012-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Stennis Space Center (SSC) — Stennis Space Center, Mississippi</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Mississippi (MS)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Kara Holecamp (Principal Investigator) &lt;kara.holekamp@ssc.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Summary of Evaluated Technologies</strong> — Summary of Evaluated Technologies</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/11015">https://techport.nasa.gov/projects/11015</a>
+    </div>
+  </div>
+</body>
+</html>

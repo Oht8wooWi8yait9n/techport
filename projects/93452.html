@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Distributed Contact Solver for 3D Dynamics Simulation of Drive Systems with Defects | NASA TechPort Project 93452</title>
+  <meta name="description" content="We propose a novel computational method for generating data needed to create decision strategies for condition-based monitoring algorithms that can effectively differentiate between a healthy system and different types of defects in a damaged system. Currently">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/93452">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 93452</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX02.1.4</span>
+        </div>
+        <h1>Distributed Contact Solver for 3D Dynamics Simulation of Drive Systems with Defects</h1>
+        <div class="meta-id">NASA TechPort Project ID: 93452</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/93452" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          We propose a novel computational method for generating data needed to create decision strategies for condition-based monitoring algorithms that can effectively differentiate between a healthy system and different types of defects in a damaged system. Currently, the only means available to generate this data are physical testing which is time consuming and expensive, and simplified computer models- either lumped parameter models or 2D models. The most advanced current computational model of drive systems with surface and crack damage can only be deployed on stand-alone computers. The existing contact algorithm relies on shared memory between CPUs, and quickly saturates memory bandwidth. We propose innovative modifications to the algorithm so that models may be efficiently deployed on very large clusters of computers connected by high speed networks. These changes will make possible realistic time-domain 3D modeling of drive systems with surface and crack damage.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          1) Condition Based Monitoring: The primary application of this work for NASA, is as a tool that can be used for creating, testing, and fine-tuning condition-monitoring strategies for rotor craft drive systems. The distributed contact analysis will enable dynamic analysis of full drive system models, both in a healthy state as well as with various kinds of damage. Both surface damage as well cracks can be studied. 2) Life Estimation: Current component life prediction tools are constrained by the limited accuracy of simplified dynamic stress prediction methods. The proposed work will, make it possible run very accurate simulations under dynamic conditions. 3) Dynamic Factors: The proposed work will enable NASA to compute accurate dynamic factors for use during the design evaluation stage of gear boxes. These dynamic factors can be used to account for steady state dynamics, as well as for transients caused by short duration events.<br /> <br />1) Vibration Prediction in Time-Domain: To date, only frequency domain based vibration calculations with linear models have been commercially available. But Time-domain models are necessary to correctly include contact and kinematics induced non-linearities. Having the fast contact solver will allow very realistic drive system dynamic models, to run in the time domain. 2) Impact Dynamics: It will be possible to make predictions for survivability of drive systems subjected to transients caused by short duration events such as a load spikes. This is an important consideration in the wind-turbine and off-highway equipment industries. Modeling these transient dynamics can only be done in the time-domain. A fast contact solver will allow realistic prediction of these effects. 3) Automatic optimization: Access to a very fast solver will make it possible to run fast static analyses inside the optimization loop of a commercial general-purpose optimizer. It will be possible to optimize metrics such as gear contact patterns, transmission error, and stress while automatically varying the surface modifications and other design parameters. 4) Manufacturing Error Studies: Each manufacturing error has a unique probability distribution. A very fast solver will enable Monte Carlo type studies of manufacturing errors with realistic random distributions. The output will be the probability distribution functions of performance and failure metrics for the drive system.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>93452</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX02.1.4: High-Performance Memories</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 6 | Current TRL: 9 | Target End TRL: 9</td></tr>
+<tr><th>Project Start Date</th><td>2017-04-12</td></tr>
+<tr><th>Project End Date</th><td>2019-04-11</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Advanced Numerical Solutions LLC — Hilliard, Ohio</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Ohio (OH)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Sandeep M Vijayakar (Principal Investigator); Paula Dempsey (Project Manager) &lt;Paula.J.Dempsey@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li><li><strong>Briefing Chart</strong> — Distributed Contact Solver for 3D Dynamics Simulation of Drive Systems with Defects, Phase II Briefing Chart</li><li><strong>Final Summary Chart Image</strong> — Final Summary Chart Image</li><li><strong>Briefing Chart Image</strong> — Distributed Contact Solver for 3D Dynamics Simulation of Drive Systems with Defects, Phase II Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/93452">https://techport.nasa.gov/projects/93452</a>
+    </div>
+  </div>
+</body>
+</html>

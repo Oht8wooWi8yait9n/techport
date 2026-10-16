@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>On-Line Flutter Prediction Tool for Wind Tunnel Flutter Testing using Parameter Varying Estimation Methodology | NASA TechPort Project 8663</title>
+  <meta name="description" content="ZONA Technology, Inc. (ZONA) proposes to develop an on-line flutter prediction tool for wind tunnel model using the parameter varying estimation (PVE) technique to ensure the safety of the flutter model as well as the wind tunnel system. This tool will be appl">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/8663">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 8663</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX15.1.8</span>
+        </div>
+        <h1>On-Line Flutter Prediction Tool for Wind Tunnel Flutter Testing using Parameter Varying Estimation Methodology</h1>
+        <div class="meta-id">NASA TechPort Project ID: 8663</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/8663" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          ZONA Technology, Inc. (ZONA) proposes to develop an on-line flutter prediction tool for wind tunnel model using the parameter varying estimation (PVE) technique to ensure the safety of the flutter model as well as the wind tunnel system. This tool will be applied to rapidly evaluate parameters, such as modal damping and frequency, which are required to assess the flutter boundary of a wind tunnel model in the pre-flutter test conditions. In this PVE Toolbox, system identification techniques such as Polymax and Subspace methods are employed to consistently estimate the damping/frequency of the physical modes, followed by the implementation of Zimmerman-Weissenburger flutter margin method, linear parameter varying modeling combined with µ analysis, and/or thin plate interpolation method for flutter boundary prediction. In order to minimize the dependence on the experience for obtaining a reliable flutter prediction, an accurate estimation of the auto-spectrum of the output data, k-mean stochastic algorithm for automate modes selection are developed to enhance the on-line capability of the PVE Toolbox. The end product PVE Toolbox can be used by the test engineer as an on-line flutter prediction tool in the wind tunnel to effectively make a timely decision for proceeding to the next test point.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The potential non-NASA customers for this tool include the R & D arms of USAF, Navy, Army, and the defense industry complex. It can be readily adapted by a wide class of aerospace vehicles ranging from current to next-generation designs such as: (a) USAF's F-22 and F-35 aircrafts at Edwards AFB, (b) UASF's Hilda and/or sensorcraft aircrafts, (c) USAF's next generation stealth and morphing UAV/UCAV, (d) DARPA's new Switchblade Flying Wing Program, and for (e) Micro Air Vehicle (MAV) with enhanced control/maneuver capability.<br /> <br />Comprehensive flutter prediction software is still non-existing; leading to cautious and expensive wind tunnel test programs. ZONA envisions that the proposed Phase I research effort will result in a commercial product, called the PVE Toolbox. This Toolbox can assist NASA in its goal to dramatically reduce the cost and time required to ensure the safety of the flutter model as well as the wind tunnel hardware system.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>8663</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX15.1.8: Ground and Flight Test Technologies</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 5 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2010-01-29</td></tr>
+<tr><th>Project End Date</th><td>2010-07-29</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>ZONA Technology, Inc. — Scottsdale, Arizona</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Armstrong Flight Research Center (AFRC) — Edwards, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Arizona (AZ), California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jie Zeng (Principal Investigator); Jie Zeng (Principal Investigator); Sunil L Kukreja (Project Manager) &lt;sunil.l.kukreja@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/8663">https://techport.nasa.gov/projects/8663</a>
+    </div>
+  </div>
+</body>
+</html>

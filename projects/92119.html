@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autonomous Diagnostic Imaging Performed by Untrained Operators Using Augmented Reality as a Form of &#x27;Just-in-Time&#x27; Training | NASA TechPort Project 92119</title>
+  <meta name="description" content="Introduction Imaging technologies are key to the diagnosis and treatment of medical conditions that astronauts on an exploration mission might encounter and to research activities that characterize and understand the adaptations to micro- and partial gravity e">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/92119">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 92119</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.6.2</span>
+        </div>
+        <h1>Autonomous Diagnostic Imaging Performed by Untrained Operators Using Augmented Reality as a Form of &#x27;Just-in-Time&#x27; Training</h1>
+        <div class="meta-id">NASA TechPort Project ID: 92119</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/92119" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Introduction     <p></p> Imaging technologies are key to the diagnosis and treatment of medical conditions that astronauts on an exploration mission might encounter and to research activities that characterize and understand the adaptations to micro- and partial gravity environments. Key limitations of the currently available imaging capabilities include the complexity and operator dependency of the procedures to acquire high quality results. Currently, two imaging procedures critical to space medicine and research, ultrasound and optical coherence tomography (OCT), are performed on the International Space Station (ISS) by astronauts with the assistance of real-time communication with experts on the ground using a method called remote guidance. With this methodology astronauts have acquired diagnostic and research quality data that are central to our understanding of the physiological consequences of weightlessness, including altered cardiac function, muscle atrophy, and the spaceflight-associated neuro-ocular syndrome (SANS). However, with the time delay in communications that will be inherent in exploration missions while traveling great distances from Earth, remote guidance will no longer be practical, particularly when one-way transmissions may take up to 10 minutes or more. To fill this gap, we developed advanced audio-visual training modules, a form of just-in-time (JIT) training, to acquire medically necessary and research-relevant images. Building on our extensive experience with remote guidance of ISS astronauts and demonstrated success with just-in-time training, we employed an augmented reality (AR) system (Microsoft HoloLens) that included three-dimensional graphics of relevant anatomy, step-by-step audio instruction, reference images demonstrating adequate and inadequate quality, and troubleshooting guides. The ability of untrained subject-operators to acquire high-quality ultrasound and OCT images was evaluated by expert reviewers and compared to current JIT techniques for quality and time efficiency.     <p></p> Methods     <p></p> Tutorials to acquire ultrasound and OCT images were adapted for use as a PowerPoint presentation viewed either on a laptop computer or using an augmented reality platform with a heads-up display. Instructional material presented by the two different training modalities was identical, except that the augmented reality tutorial provided additional spatial guidance to complete the scanning protocols. Additional guidance included arrows superimposed on the ultrasound and OCT keyboards when specific controls were needed and virtual green dots superimposed on the body over the ultrasound targets' approximate locations to guide ultrasound probe placement. Twenty subjects attempted to acquire ultrasound and OCT images using the tutorials provided viewed on a laptop computer, and 20 subjects attempted the same diagnostic imaging procedures with instructions viewed using the AR system. No subject had prior experience performing these procedures or using this imaging hardware, and no subject participated in this study as a member of both groups. Subjects used guidance from the tutorials to acquire five ultrasound targets that constitute a subset of images in a trauma-induced injury assessment protocol (images of the heart, lungs, liver, kidney and spleen) and a single thirteen-line, vertical raster scan centered on the macula of the left eye using OCT. Time limits were imposed upon the subjects to acquire each of the ultrasound or OCT targets. This is not dissimilar to the environment on ISS or anticipated on future exploration missions in which communication windows or mission objectives can impact the available time to complete imaging procedures.     <p></p> After the data collection session, subjects completed a survey to capture their thought about the equipment, procedures, instructional material, and future improvements. Images were stored by the subjects and evaluated off-line in a blinded fashion by imaging professionals. Four radiologists from Vanderbilt University with training in ultrasound analyses evaluated the ultrasound images. Four trained evaluators at the Doheny Image Reading Center (University of California, Los Angeles), with previous experience using the grading techniques utilized in this study, evaluated the OCT images. Somers' D was used to assess the effect of the use of either laptop or HoloLens on the resulting image scores.     <p></p> Results and Discussion     <p></p> Nearly 70% of the ultrasound images and 53% of OCT scans that these previously untrained subjects acquired were considered to be diagnostically adequate. The quality scores for OCT images and 3 of the 5 ultrasound targets were not different between groups, but the laptop group performed better for the other 2 ultrasound targets. The time to acquire ultrasound images was, on average, shorter for the AR group (52 compared to 57 minutes). Interestingly, the survey results indicated that the AR group did not find the instructional material as helpful as the laptop group (p= 0.042), even though the content was the same for both. While it is evident that both the augmented reality and laptop groups struggled with the complexity of both ultrasound and OCT, there was a subset of subjects who appeared to embrace the technological challenge and performed well. This might be related to the education level, learning styles, or comfort level with technology, but these factors were not specifically evaluated. While some subjects embraced the technology, some were overwhelmed by the task of familiarizing themselves with a new technology (i.e., AR) while concurrently attempting complex, operator-dependent imaging which also was new to them. The inclusion of subjects not necessarily representative of the astronaut corps represents a limitation of the study. Additionally, the degree of familiarity with laptop computers and PowerPoint may have created a bias for the laptop group. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This study sought to evaluate a technique to help facilitate autonomous use of operator-dependent, non-invasive medical imaging devices in a subject population without prior ultrasound or optical coherence tomography (OCT) training. While the imaging protocols chosen for this study were based upon the health and medical risks identified as concerns for long-duration spaceflight, particularly exploration missions, these imaging protocols also are routinely used on Earth. Through this work we have developed and tested an augmented reality (AR) tutorial to guide inexperienced or untrained operators through complex, operator-dependent procedures for specific ultrasound and OCT applications. While originally developed for astronaut use beyond the range of timely communication with Earth, AR could enable more general uses in any remote or extreme environment lacking trained professionals. Ultrasound has been used in remote and extreme environments, including special forces military units in Afghanistan, Mount Everest expeditions, and rural locations without adequate medical expertise. Lessons learned from this project will facilitate the development of AR programs for similar applications. It should be noted that this type of training is not preferable to a study performed by a sonographer or other qualified medical professional trained in ultrasound. However, similar to defibrillators, if the equipment and adequate instruction is available, AR instruction could be used when equipment is available, but trained professionals are not. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>92119</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.6.2: Training</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2016-06-01</td></tr>
+<tr><th>Project End Date</th><td>2017-05-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>National Space Biomedical Research Institute (NSBRI) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Wyle Laboratories, Inc. — Houston, Texas; Wyle Integrated Science and Engineering Group</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>David S Martin (Principal Investigator) &lt;david.s.martin@nasa.gov&gt;; Lui Wang (Co-Investigator) &lt;lui.wang-1@nasa.gov&gt;; Michael B Stenger (Co-Investigator) &lt;michael.b.stenger@nasa.gov&gt;; Stuart M Lee (Co-Investigator) &lt;stuart.lee-1@nasa.gov&gt;; Steven S Laurie (Co-Investigator) &lt;steven.laurie@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: This research project did not receive formal funding until November, 2016. The entire project, from planning to initiation of testing to completion of data collection and analysis, was conducted using a compressed schedule of 6 months.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/92119">https://techport.nasa.gov/projects/92119</a>
+    </div>
+  </div>
+</body>
+</html>

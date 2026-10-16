@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample Return Regolith Sorter Design Challenge | NASA TechPort Project 117533</title>
+  <meta name="description" content="NASA is seeking to challenge the GrabCAD Community by sponsoring an open competition in which participants design a sampling system to collect lunar surface materials for return to Earth and subsequent scientific analysis. The competition will be to design a s">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/117533">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 117533</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">PCC</span>
+          <span class="badge">TX12.2.1</span>
+        </div>
+        <h1>Sample Return Regolith Sorter Design Challenge</h1>
+        <div class="meta-id">NASA TechPort Project ID: 117533</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/117533" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          NASA is seeking to challenge the GrabCAD Community by sponsoring an open competition in which participants design a sampling system to collect lunar surface materials for return to Earth and subsequent scientific analysis. The competition will be to design a sampling system that is capable of acquiring a defined amount of regolith (rocks and dust) within specific size ranges while operating under the provided constraints. The winning designs will be built and tested by NASA and used to inform potential future sample return missions on possible sampling methods. Sample return missions are constrained by mass, power, and operating time. There is a need for a lightweight, low power sampling system that is capable of sorting the collected regolith so only specific types of materials are returned. Rocks in the ~1 cm size range are well suited for scientific analysis. Prioritizing the collection of these materials within the design constraints is the main goal of the competition.<br \> NASA is seeking participants to design a sampling system to collect lunar surface materials for return to Earth and subsequent scientific analysis. The competition will be to design a sampling system that is capable of acquiring a defined amount of regolith (rocks and dust) within specific size ranges while operating under the provided constraints. The winning designs will be built and tested by NASA and used to inform potential future sample return missions on possible sampling methods. NASA is seeking to challenge the GrabCAD Community by sponsoring an open competition in which participants design a sampling system to collect lunar surface materials for return to Earth and subsequent scientific analysis. The competition will be to design a sampling system that is capable of acquiring a defined amount of regolith (rocks and dust) within specific size ranges while operating under the provided constraints. The winning designs will be built and tested by NASA and used to inform potential future sample return missions on possible sampling methods. Sample return missions are constrained by mass, power, and operating time. There is a need for a lightweight, low power sampling system that is capable of sorting the collected regolith so only specific types of materials are returned. Rocks in the ~1 cm size range are well suited for scientific analysis. Prioritizing the collection of these materials within the design constraints is the main goal of the competition.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Good experience. Hit or miss – more chance of getting a hit. Less of an end goal – more creative b/c 200+ people. New perspective out of left field type of designs #1. In general, we liked it. Seeing models and participants that made real videos – and printed them out. Really liked seeing people testing them. Wouldn’t have time to design test and print. Got a lot more for our money and enjoyed the challenge process. Don Draper branch chief – really liked what he/they got out of this experience. Lauri Link lauri.link https://grabcad.com/lauri.link Tallinn Estonia M N Individual 1st Place $3,000 Lunar sampling system Whisk - This design was unique amongst all of the competition entries and we considered it very innovative compared to the traditional methods for acquiring samples. While there are some challenges to overcome in using a system like this, the novel design impressed the team. The system is lightweight, low-power, and simple to operate. Further testing will be done to verify the effectiveness of the whisk but if proven capable it could provide mission designers with the capability to easily collect specific samples from planetary surfaces. Specifically, the winning design allows for the sample collection operation to be simple and straightforward while still providing the required filtering of the materials. The team liked the use of vibration motors on the scoop to shake loose dust while leaving behind the larger rocks. Adding a vibration motor to the sample canister enables the tight packing of the fine regolith and rocks which will protect the samples from moving around within the canister. The multiple videos of real-world testing served as evidence of the efficacy of the design. The simplicity of the design will allow us to quickly build a version for testing. The Simple Regolith Sampler System - The use of a mesh for filtering was interesting and well-received by the team. The openness of the design allows for great visibility during sample collection and filter operations. Mounting the sample canister to the acquisition system could introduce some operational challenges but it could be separated from the sampler with a few tweaks to the design. The detailed documentation, including a narrated video of testing, was highly appreciated by the team. The NASA Lunar Sampler - The gas system would be effective for transferring the collected material from the scoop to the canister. The designer attached the sample canister to the scoop but with the gas system it could be moved to a new location while still allowing for easy material transferring. The openness of the scoop would provide good visibility during sampling and sorting operations. NASA Lunar Sampling System - The multi-compartment design with various filter sizes should allow for easy sorting of materials. The trapdoor configuration would allow unwanted materials to be dumped from one compartment while retaining wanted materials in the other compartment.<br />Significantly Advanced Towards a Solution<br />Planned for future implementation<br />CAD/Mech Design</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>117533</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Prizes, Challenges, and Crowdsourcing (PCC)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX12.2.1: Lightweight Concepts</td></tr>
+<tr><th>Project Start Date</th><td>2018-07-24</td></tr>
+<tr><th>Project End Date</th><td>2018-12-03</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>GrabCAD — Cambridge, Massachusetts</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Kenton R Fisher (Project Manager) &lt;kenton.r.fisher@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jarah A Meador (Program Director) &lt;jarah.meador-1@nasa.gov&gt;; Jennifer E Edmunson (Program Manager) &lt;jennifer.e.edmunson@nasa.gov&gt;; Ryon C Stewart (Program Manager) &lt;ryon.stewart@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Significantly advanced towards a solution Planned for future implementation Good experience. Hit or miss ? more chance of getting a hit. Less of an end goal ? more creative b/c 200+ people. New perspective out of left field type of designs #1. In general, we liked it. Seeing models and participants that made real videos ? and printed them out. Really liked seeing people testing them. Wouldn&#x27;t have time to design test and print. Got a lot more for our money and enjoyed the challenge process. Don Draper branch chief ? really liked what he/they got out of this experience. Lauri Link lauri.link https://grabcad.com/lauri.link Tallinn Estonia M N Individual 1st Place $3,000 Lunar sampling system Whisk - This design was unique amongst all of the competition entries and we considered it very innovative compared to the traditional methods for acquiring samples. While there are some challenges to overcome in using a system like this, the novel design impressed the team. The system is lightweight, low-power, and simple to operate. Further testing will be done to verify the effectiveness of the whisk but if proven capable it could provide mission designers with the capability to easily collect specific samples from planetary surfaces. Specifically, the winning design allows for the sample collection operation to be simple and straightforward while still providing the required filtering of the materials. The team liked the use of vibration motors on the scoop to shake loose dust while leaving behind the larger rocks. Adding a vibration motor to the sample canister enables the tight packing of the fine regolith and rocks which will protect the samples from moving around within the canister. The multiple videos of real-world testing served as evidence of the efficacy of the design. The simplicity of the design will allow us to quickly build a version for testing. The Simple Regolith Sampler System - The use of a mesh for filtering was interesting and well-received by the team. The openness of the design allows for great visibility during sample collection and filter operations. Mounting the sample canister to the acquisition system could introduce some operational challenges but it could be separated from the sampler with a few tweaks to the design. The detailed documentation, including a narrated video of testing, was highly appreciated by the team. The NASA Lunar Sampler - The gas system would be effective for transferring the collected material from the scoop to the canister. The designer attached the sample canister to the scoop but with the gas system it could be moved to a new location while still allowing for easy material transferring. The openness of the scoop would provide good visibility during sampling and sorting operations. NASA Lunar Sampling System - The multi-compartment design with various filter sizes should allow for easy sorting of materials. The trapdoor configuration would allow unwanted materials to be dumped from one compartment while retaining wanted materials in the other compartment.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Sample Return Regolith Sorter Design Challenge Close Out Report (Feedback Section)</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/117533">https://techport.nasa.gov/projects/117533</a>
+    </div>
+  </div>
+</body>
+</html>

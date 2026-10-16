@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>An Interactive Visual Analytics Tool for NASA&#x27;s General Mission Analysis Tool | NASA TechPort Project 18294</title>
+  <meta name="description" content="The goal of any spacecraft trajectory design process is to identify a path that transfers a vehicle from its point of origin to some specific destination in the presence of path and mission level constraints. From the mission designer perspective, this process">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/18294">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 18294</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX11.1.8</span>
+        </div>
+        <h1>An Interactive Visual Analytics Tool for NASA&#x27;s General Mission Analysis Tool</h1>
+        <div class="meta-id">NASA TechPort Project ID: 18294</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/18294" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The goal of any spacecraft trajectory design process is to identify a path that transfers a vehicle from its point of origin to some specific destination in the presence of path and mission level constraints. From the mission designer perspective, this process is divided into two primary tasks: (a) the identification of candidate startup arcs, and (b) the subsequent refinement of those solutions, via targeting or optimization processes, to meet some pre-defined mission requirements. The work proposed here seeks to address the first aspect directly, while addressing the second indirectly, using NASA's General Mission Analysis Tool (GMAT) as the underlying demonstration platform. Phase I of this effort is focused on developing a prototype for an Interactive Visual Analytics Tool (IVAT) for GMAT. The goal of the IVAT module is to provide a modern, interactive, preliminary design tool that allows analysts to more efficiently explore and mine the space of candidate solutions prior to selecting a specific mission for the refinement phase. The development leverages GMAT's Advanced Path Planning (APP) and Dynamical Systems Analysis Toolbox (DSAT), developed by DECISIVE ANALYTICS Corporation (DAC). IVAT is envisioned as a preliminary design tool that can be readily integrated with gradient based optimal or sub-optimal refinement tools, such as but not limited to those provided by GMAT. However, for this effort we focus on GMAT as our selected technology demonstration platform.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          IVAT's goal, over the course of Phase I and II, are first to facilitate the process of simultaneously considering and analyzing large data sets of candidate solutions by mapping them into a lower-dimensional space and displaying them on a versatile and navigable interactive map and second to allow the analyst to map selected points back to their corresponding trajectory arcs, and assemble a coherent arc for subsequent refinement based on the selected candidates. Our technology demonstration integrates IVAT with GMAT, but IVAT is generally designed to further support stand-alone operation. The flexibility of the software architecture provides two paths toward commercialization of the software itself: Leverage our existing partnerships with well-known software vendors to integrate into commercial-off-the-shelf astrodynamics planning tools, and/or seek direct program dollars to further enhance the tool as a component of GMAT to meet the needs of specific NASA missions. We will also seek services revenue to provide subject matter expertise in the application of the tool directly through dedicated Phase III contracts or through partners with existing support contracts.<br /> <br />Through partnership with vendors of well-known commercial-off-the-shelf software tools in this technology area, we expect that we can access at least three key non-NASA markets: 1. United States Department of Defense, which will have its own mission planning needs in parallel to NASA's; 2. Foreign sales (subject to compliance with all appropriate ITAR restrictions); and 3. Private sector space operators. DECISIVE ANALTYICS Corporation has existing business campaigns in each of these areas that will further support commercialization of the technology developed under this solicitation including relevant performance with the U.S. Air Force and an International Sector with active contracts in Asia and strong ties to NATO. As in the NASA market, our overall commercialization approach will consist of a mix of sales of software itself with labor hours provided as subject matter experts in the mission planning area. In addition, we will explore markets beyond space mission planning specifically leveraging the fact that the Poincare mapping approach is a mathematical technique applicable to any dynamical system. This will include specific applications of dynamical systems theory in other problem domains in addition to the potential to provide it as a general tool as, for example, as third-party product for Matlab.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>18294</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.1.8: Software Analysis and Design Tools</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2014-06-20</td></tr>
+<tr><th>Project End Date</th><td>2014-12-19</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Decisive Analytics Corporation — Arlington, Virginia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD), Virginia (VA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Belinda G Marchand (Principal Investigator); Belinda Marchand (Principal Investigator); Joel J Parker (Project Manager) &lt;joel.j.parker@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li><li><strong>Briefing Chart</strong></li><li><strong>Project Image</strong> — An Interactive Visual Analytics Tool for NASA&#x27;s General Mission Analysis Tool Project Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/18294">https://techport.nasa.gov/projects/18294</a>
+    </div>
+  </div>
+</body>
+</html>

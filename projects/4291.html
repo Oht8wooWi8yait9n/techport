@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control of Resident Space Objects through Eddy-Current Actuation | NASA TechPort Project 4291</title>
+  <meta name="description" content="Essentially all common methods of accurately manipulating macroscopic objects in space require direct physical contact, whether through linkages, wires or simple grapplers. The contact between an actuator and an object not specifically designed to accept the a">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/4291">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 4291</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX04.2.3</span>
+        </div>
+        <h1>Control of Resident Space Objects through Eddy-Current Actuation</h1>
+        <div class="meta-id">NASA TechPort Project ID: 4291</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/4291" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Essentially all common methods of accurately manipulating macroscopic objects in space require direct physical contact, whether through linkages, wires or simple grapplers. The contact between an actuator and an object not specifically designed to accept the actuation can be dangerous: a grappler may apply excessive force and damage the object, or unanticipated movement of the target may result in a catastrophic collision. Current technology does not allow for actuation with multiple degrees of freedom without direct physical contact or receptors on both objects and closed loop control. Time-varying magnetic flux through a conductor can induce a current opposing the change in the magnetic flux, also known as an "eddy current." The resulting force from the interaction between the eddy current and the changing magnetic field acts not only radially but also in three spatial directions. Additionally, eddy currents can be formed in any conductor, making them very useful in a space environment, where virtually all man-made objects, and a number of natural ones are composed of conductors. While eddy currents have been modeled for use in other applications, such as vibration damping , no previous work has attempted to model or implement them for use as an actuator. In order to solve the problem presented by a lack of accurate, contactless actuation, this work would use eddy currents in conductive materials to create six degree of freedom actuation. Key Objectives The primary objective: to develop the physical and algorithmic bases for an actuator capable of providing six degrees of contactless actuation through the control of eddy currents. This goal comprises several smaller key objectives:  Identify the most efficient system for generating magnetic fields with controllable rates of change  Develop a model of eddy current dynamics and the resulting forces on a conductor in a space environment  Design a control system for the eddy current actuator  Implement a prototype control system and actuator
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This project aims to develop the physical and algorithmic bases for an actuator capable of providing six degrees of contactless actuation through the control of eddy currents.  Essentially all common methods of accurately manipulating macroscopic objects in space require direct physical contact, whether through linkages, wires or simple grapplers. The contact between an actuator and an object not specifically designed to accept the actuation can be dangerous: a grappler may apply excessive force and damage the object, or unanticipated movement of the target may result in a catastrophic collision. Current technology does not allow for actuation with multiple degrees of freedom without direct physical contact or receptors on both objects and closed loop control.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>4291</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX04.2.3: Small-Body and Microgravity Mobility</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-08-16</td></tr>
+<tr><th>Project End Date</th><td>2015-08-15</td></tr>
+<tr><th>Lead Organization / Center</th><td>Cornell University — Mableton, Georgia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>New York (NY)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Mason A Peck (Principal Investigator) &lt;mason.a.peck@nasa.gov&gt;; Benjamin Z Reinhardt (Co-Investigator); Brian H Wilcox (Project Manager) &lt;brian.h.wilcox@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The overall technical goal of this project is to produce a multiple degree-of-freedom eddy current actuator. This goal can be broken down into three major components: a. Development and verification of a model for eddy-current kinetics b. Design and implementation an eddy-current actuator system c. Design and implementation of a control law for the eddy current actuator system The research investigation set out to design and develop a system for contactless space actuation. We successfully developed a prototype Induction Coupler system that uses spinning permanent magnets to actuate a robotic inspector near a target’s conductive surface. The technology is still at a low readiness level, but this investigation set the stage for further development into a flightready actuation system. Some of the most significant findings: 1. Spinning permanent magnets are less powerful but far more efficient for producing eddycurrent actuation. 2. Induction Couplers can produce 6-DoF actuation contingent on surface geometry. 3. Induction Couplers with torque force feedback can actively detumble a resident space object much faster than passive eddy-current drag. 4. An inspection robot can compose motion primitives to navigate a target’s 3D surface. 5. The design space for Induction coupler systems is huge. Genetic algorithms can generate coupled control systems and mechanical designs more effectively than humans.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>4291-1363119338776.jpg</strong> — Project Image Control of Resident Space Objects through Eddy-Current Actuation</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/4291">https://techport.nasa.gov/projects/4291</a>
+    </div>
+  </div>
+</body>
+</html>

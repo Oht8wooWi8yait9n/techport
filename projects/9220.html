@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>An ADS-B derived ATC linked ER System for NextGen Safety | NASA TechPort Project 9220</title>
+  <meta name="description" content="Munro offer an innovatiive, intelligent, fully integrated hardware and software cockpit system solution for handling many General Aviation (GA) and UAV emergencies so as to minimize NextGen ATM disruption while saving lives. This ADS-B-ER system will provide G">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/9220">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 9220</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX01.2.1</span>
+        </div>
+        <h1>An ADS-B derived ATC linked ER System for NextGen Safety</h1>
+        <div class="meta-id">NASA TechPort Project ID: 9220</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/9220" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Munro offer an innovatiive, intelligent, fully integrated hardware and software cockpit system solution for handling many General Aviation (GA) and UAV emergencies so as to minimize NextGen ATM disruption while saving lives. This ADS-B-ER system will provide GA airplanes and UAVs automated -ER trajectories to the nearest suitable airport avoiding terrain/obstacles, hazardous weather and restricted airspace. The ADS-B-ER will also provide NextGen's ANSP "controllers" with the –ER trajectory via a 911 ADS-B datastream offering collaborative capability. In a GA or UAV emergency or impending emergency this ADS-B-ER datastream will serve as an interactive datalink between airplane and NextGen, providing the safest optimum trajectory option to the flight crew as well as to the FAA and DOD NextGen ANSP controllers for dealing with the emergency so that they are both dealing with the same information base. Within the last month a military UAV went "rogue" and penetrated the Washington ADIZ, pointing to the vital need for our innovative solution. Our demonstration system will be designed to be compatible with the advanced cockpit systems work underway in the NASA LaRC Cirrus airplane and will also serve its UAV testbed needs. It will be available for installation and integration with other systems in NASA's airplanes or UAV and simulator facilities. We will develop the R&D into a unified ADS-B system for commercial deployment in all types of GA airplanes and UAVs thus provide a more consistent safety response compared to today's ATC intense human only response thereby accelerating fleet deployment which is a major FAA concern today.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Munro Phase III goal for the SBIR, is to deliver the tested prototype ADS-B-ER hardware with –ER trajectory optimizing (Wx, terrain, traffic, airspace) software to NASA NASA Langley's Aviation Safety Program for its Cirrus airplane. The Phase I prototype system will be capable of interfacing to the Cirrus S-Tec autopilot GPSS system, to its auto-throttle systema and to its UAV testbed ADS-B system by design. It will also have software interface capability to the NASA ATOL simulator and its other NextGen R&D labs. Munro & MISATS also plan to progressively provide Phase I lab prototype and PhaseII prototype systems to NASA. The ADS-B-ER software package and serve NASA to evaluate the performance of their own NextGen optimum trajectory generator. NASA Aviation Safety program can use this software package, modify it as needed for use in their Cirrus SR-22 Research airplane for UAV and ADS-B testing. A detailed training manual and Webinar will be provided to NASA.<br /> <br />Many sources project a safe, reliable and affordable personal air travel need for the nation. However, as long as small airplanes travel remains beyond the reach of most of middle America this will not happen and hence the ADS-B-ER ~$2,500 cockpit system based on leveragingCOTS component design while existing ADS-B non-ER systems are over $5,000. The Munro's commercial goal is to custom design and sell affordable ADS-B-ER cockpit systems in the GA market - for 21st century new and retrofitted airplanes. A production factory will be set-up in partnership with MISATS members (Alternative Avionics) that will incorporate greater cost savings, quality, lower energy useage, reliability, and volume flexible manufacturing at the Pontiac, MI airport. MUNRO's team expects to be in position to take advantage of the design technology that will be created by this SBIR partnership. The time for this is now because MUNRO strongly feels that the FAA mandate that all airplanes must be equipped by 2020 creates market awareness and so will create a natural interest in our system that has a value added competitive edge over the companies currently making ADS-B systems at twice our projected price. There is no other market focused product development effort that has the potential to provide such an ADS-B-ER.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>9220</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.2.1: Integrated Systems and Ancillary Technologies</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2012-02-23</td></tr>
+<tr><th>Project End Date</th><td>2012-08-23</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Munro and Associates — Troy, Michigan</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Michigan (MI), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Richard E Weiss (Principal Investigator) &lt;richard.e.weiss@nasa.gov&gt;; Richard Weiss (Principal Investigator); Frank P Jones (Project Manager) &lt;Frank.P.Jones@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/9220">https://techport.nasa.gov/projects/9220</a>
+    </div>
+  </div>
+</body>
+</html>

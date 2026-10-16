@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auditory Presentation of H/OZ Critical Flight Data | NASA TechPort Project 9855</title>
+  <meta name="description" content="Automation of a flight control system to perform functions normally attributed to humans is often not robust and limited to specific operating conditions and types of operation and a small set of fixed behaviors (i.e. modes). eSky has shown that metrics such a">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/9855">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 9855</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX06.2.3</span>
+        </div>
+        <h1>Auditory Presentation of H/OZ Critical Flight Data</h1>
+        <div class="meta-id">NASA TechPort Project ID: 9855</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/9855" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Automation of a flight control system to perform functions normally attributed to humans is often not robust and limited to specific operating conditions and types of operation and a small set of fixed behaviors (i.e. modes). eSky has shown that metrics such as the time delay between a required control input from the crew and the actual input is sensitive to crew functional degradation through external distraction. We are currently developing strategies for using such crew state metrics to modulate the level of automation support provided to the flight crew. Dynamic reallocation of function between crew and automation can reduce the cognitive workload on the crew, enhance their ability to supervise the automation and help them intervene in the event of any failure or operation outside the desired operating conditions. eSky is exploring function reallocation in a collaborative flight control system (HFCS) design pioneered at NASA Langley. HFCS combines precise flight control automation with rudimentary intelligence that the flight crew can guide using relatively simple mechanisms. HFCS automation manages short-term control tasks (e.g. path following) while the crew is required to direct every significant trajectory change using flight controls rather than an FMS interface to keep them engaged in conduct of the flight. The automation communicates intentions to the pilot through visual and haptic (tactile) feedback; the crew communicates intentions to the automation through conventional controls. The HFCS user interface is primarily visual and tactile with limited auditory elements, mainly limited to a few alerts and warnings. eSky proposes to establish the auditory channel as a key element in providing flight dynamic information and cueing of required crew in puts in addition to envelope protection warnings. These new interface elements will be integrated into eSky's evolving strategies for functionality reallocation of between automation and crew.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The aim of this project is to develop auditory presentation methodology for flight dynamic information as a supplement to conventional, primarily visual, pilot display systems and provide a higher level of support for complex tasks in high workload situations. In an aircraft with a flight control system that supports dynamic reallocation of function between automation and crew, these methodologies can be part of a function reallocation and support modulation strategy to keep the crew engaged and aware of the flight situation at all times, reducing loss of performance capability due to distraction, fatigue, hypoxia and other sources of performance degradation. Any flight control system can add auditory flight dynamic information presentation to its flight crew interface in any aircraft or spacecraft flown by non-NASA organizations and personnel<br /> <br />The aim of this project is to develop auditory presentation methodology for flight dynamic information as a supplement to conventional, primarily visual, pilot display systems and provide a higher level of support for complex tasks in high workload situations. In an aircraft with a flight control system that supports dynamic reallocation of function between automation and crew, these methodologies can be part of a function reallocation and support modulation strategy to keep the crew engaged and aware of the flight situation at all times, reducing loss of performance capability due to distraction, fatigue, hypoxia and other sources of performance degradation. Any flight control system can add auditory flight dynamic information presentation to its flight crew interface in any aircraft or spacecraft flown by NASA.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>9855</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.2.3: Informatics and Decision Support Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 6 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2011-02-18</td></tr>
+<tr><th>Project End Date</th><td>2011-09-29</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Emerald Sky Technologies, LLC — Columbia, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Steven L Fritz (Principal Investigator); Paul Schutte (Project Manager) &lt;Paul.C.Schutte@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/9855">https://techport.nasa.gov/projects/9855</a>
+    </div>
+  </div>
+</body>
+</html>

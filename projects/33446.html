@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TFM Performance Monitoring and Review System | NASA TechPort Project 33446</title>
+  <meta name="description" content="A wide variety of flow management techniques is employed every day in the NAS, from strategic Ground Delay Programs (GDP&#x27;s) with national scope to local Miles-In-Trail (MIT) restrictions that affect traffic over a specific fix. The choice of the flow managemen">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/33446">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 33446</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX15.1.5</span>
+        </div>
+        <h1>TFM Performance Monitoring and Review System</h1>
+        <div class="meta-id">NASA TechPort Project ID: 33446</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/33446" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          A wide variety of flow management techniques is employed every day in the NAS, from strategic Ground Delay Programs (GDP's) with national scope to local Miles-In-Trail (MIT) restrictions that affect traffic over a specific fix. The choice of the flow management technique to employ and the timing, extent, and other parameters associated with the technique are determined by controller judgment informed by experience. However, experience is only as useful as the information that can be assimilated from it, and in the case of flow management decisions the available information is limited and biased. We propose to research and prototype a system that will provide controllers with the metrics they need to understand how their past decisions fared. Our proposal in this Phase I SBIR is to perform the research to determine how well such metrics could be made to function. Phase II would extend the work to implement metrics that could be used within NASA efforts and later transitioned to the FAA for its use. The proposed metrics do not attempt to determine what the "correct" level of restrictions would have been. The appropriate amount of restriction to apply in any situation is a matter of judgment that must weigh the certainty of the information on which it is based as well as the outcomes that would result from errors in either direction. Rather, the metric would quantify the restrictions' performance in hindsight. To quantify performance of a GDP, for instance, it would measure the degree to which tactical flow management had to make up for excessive airborne demand for the airport, and the degree to which insufficient demand was available to fill the airport's capacity. Second-order effects the metric would quantify include the degree to which the traffic originating in-center, in tier one, in tier two, and farther away gained or lost priority relative to each other, indicative of the GDP's timing relative to the timing of the demand/capacity imbalance.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This work is central to NASA's mission to understand and to improve the safety and efficiency of the National Airspace System (NAS). Flow management is critical to maintaining the safety of the NAS, but when overdone results in large but unquantified costs to the system. The results of this work would lead to metrics that would quantify the costs and risks in the NAS due to overly or insufficiently restrictive flow management. The main product to be used by NASA from this research will be a system to measure these inefficiencies in flow management actions taken across the NAS. The quantification of the need for more research into flow management techniques, decision aids, and related systems will be greatly improved by the product of the proposed research. Further, the design of solutions to the flow management problems identified will be guided by the product's findings. The proposed product would allow NASA to understand not only how great the inefficiencies in the real world are, but it would also be embeddable in simulation tools such as SMART-NAS for measurement of the inefficiencies of proposed improvements to the NAS. Without a solid understanding of the problems inherent in the operation of the NAS, it is very difficult to identify solutions that need to be developed. The product to be developed from this research will provide NASA a clear understanding of the problems, which will point the way to effective solutions needed to further NASA's objectives.<br /> <br />The two anticipated non-NASA commercial applications are applications for ANSP's such as the FAA, and applications for airspace users such as major commercial airlines. Both applications are anticipated to help the customer refine their approach to flow management. Large commercial airlines that dominate operations at an airport at times run ground delay programs on their own to avoid the need for an ANSP-run GDP. UPS and others have experimented with more tactical flow management as well, such as by coordinating airspeeds and spacing to try to deliver an efficient flow of aircraft to the destination while minimizing fuel burns. In undertaking either type of flow management, the airline must weigh the tradeoffs in their decisions of when to start restrictions, when to end restrictions, the level of the restrictions, and the flights to be involved in the restrictions. ANSP's have to make the same types of decisions, but for a broader set of operators and with less detailed knowledge of each flight's operating and financial characteristics. In both cases, the ability to measure past performance is critical to improving performance in the future. The results of our proposed research will be applicable to helping both types of organizations to improve flow management decisions.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>33446</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX15.1.5: Propulsion Flowpath and Interactions</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2015-06-17</td></tr>
+<tr><th>Project End Date</th><td>2015-12-17</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Mosaic ATM, Inc. — Leesburg, Virginia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>William Hall (Principal Investigator); Karl Bilimoria (Project Manager) &lt;Karl.D.Bilimoria@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: TFM Performance Monitoring and Review System, Phase I Project Image</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart Image</li><li><strong>Briefing Chart</strong> — TFM Performance Monitoring and Review System Briefing Chart</li><li><strong>Briefing Chart Image</strong> — TFM Performance Monitoring and Review System, Phase I</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/33446">https://techport.nasa.gov/projects/33446</a>
+    </div>
+  </div>
+</body>
+</html>

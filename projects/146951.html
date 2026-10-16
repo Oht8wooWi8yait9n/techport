@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parallel, frequency-domain Solvers for Wave Propagation in 3D, Spatially Inhomogeneous Media (SWaP-SIM3D) | NASA TechPort Project 146951</title>
+  <meta name="description" content="We propose a renewal of the Project SWaP-SIM3D to address the problem-size bottleneck in frequency domain (FD) computations of wave propagation via high-risk algorithmic improvements, to allow high-fidelity parameter studies in practical aerospace applications">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/146951">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 146951</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">LaRC CIF</span>
+          <span class="badge">TX15.1.7</span>
+        </div>
+        <h1>Parallel, frequency-domain Solvers for Wave Propagation in 3D, Spatially Inhomogeneous Media (SWaP-SIM3D)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 146951</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/146951" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>We propose a renewal of the Project SWaP-SIM3D to address the problem-size bottleneck in frequency domain (FD) computations of wave propagation via high-risk algorithmic improvements, to allow high-fidelity parameter studies in practical aerospace applications. The proposed activities would (if successful) provide enabling technologies for multi-dimensional instability wave analysis of practical configurations. An increase in problem size (DOF) of 6 orders of magnitude is potentially achievable. Multiple NASA projects (AATT, CST, HTP, RVLT) will gain high-fidelity prediction capability after project completion, including laminar-turbulent transition, aeroacoustic & vibration simulations related to airframe/propulsive sources of noise, and selected aspects of flow control, buffet onset, stall, etc. We anticipate technical risk due to iterative convergence sensitivity resulting from 1) configuration details, and 2) problem size, which would lead to reduced robustness of the proposed approach. We expect to overcome the difficulty by addressing specific characteristics of the stalled convergence, and thus to achieve the target outcome of developing a robust and efficient, high-fidelity prediction capability that is highly useful in practical applications.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Besides establishing the feasibility of iterative solvers for parameter studies of wave propagation problems, a successful effort will lead to prototype capability for both single and multiblock structured mesh and unstructured FEM configurations with O(10^6-10^11) degrees of freedom, allowing the solution of fully 3D problems of realistic complexity. The year I effort concretely identified the source of the extraordinary ill-conditioning pervasive in FD solvers of any scale. As always, half the battle is to truly understand the problem. The second half will be more routine. Future work on unstructured grid implementations, chemical reaction effects, and generalized solvers that account for multiple frequencies and nonlinear interactions are now within grasp. The outcome of this development could be plugged into current NASA capability for high fidelity transition analyses & provide a unique, new capability for advanced aeroacoustic predictions, to address specific applications under multiple NASA projects, with a modest effort on integration and user interface development. Lacking such high-fidelity prediction tools would result in slower and less reliable development of greener technologies for both subsonic and high-speed transports, such as increased laminar flow (AATT, CST, HTP) and effective engine noise shielding via propulsion-airframe integration (AATT, AAM), as well as a higher risk of losing technical leadership in advanced tool development (CST, HTP), putting the US at a competitive disadvantage in the long run.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>146951</td></tr>
+<tr><th>Acronym</th><td>SWaP-SIM3D</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: LaRC CIF (LaRC CIF)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX15.1.7: Computational Fluid Dynamics Technologies</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX11.3.3: Model-Based Systems Engineering; TX11.3.5: Exascale Simulation; TX15.1.2: Aerothermodynamics; TX15.1.4: Aeroacoustics</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 2 | Target End TRL: 2</td></tr>
+<tr><th>Project Start Date</th><td>2023-10-01</td></tr>
+<tr><th>Project End Date</th><td>2024-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Virginia (VA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Mark H Carpenter (Principal Investigator) &lt;mark.h.carpenter@nasa.gov&gt;; Stephen L Wood (Co-Investigator) &lt;stephen.l.wood@nasa.gov&gt;; Meelan M Choudhari (Co-Investigator) &lt;m.m.choudhari@nasa.gov&gt;; Joseph M Derlaga (Co-Investigator) &lt;joseph.m.derlaga@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/146951">https://techport.nasa.gov/projects/146951</a>
+    </div>
+  </div>
+</body>
+</html>

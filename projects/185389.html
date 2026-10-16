@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loss Of Control Observer for Safety Assurance | NASA TechPort Project 185389</title>
+  <meta name="description" content="Recent FAA-sponsored work on certification considerations for advanced aerial mobility (AAM) aircraft has developed an algorithmic approach for detecting the onset of loss-of-control (LOC) events through monitoring of the aircraft remaining control power (RCP)">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/185389">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 185389</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX16</span>
+        </div>
+        <h1>Loss Of Control Observer for Safety Assurance</h1>
+        <div class="meta-id">NASA TechPort Project ID: 185389</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/185389" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Recent FAA-sponsored work on certification considerations for advanced aerial mobility (AAM) aircraft has developed an algorithmic approach for detecting the onset of loss-of-control (LOC) events through monitoring of the aircraft remaining control power (RCP).  This model-based, recursive filter approach, while powerful, presumes knowledge of the vehicle control effectiveness as a function of flight condition and configuration in the determination of both RCP and disturbance wind conditions.  The proposed work plans to significantly expand this capability to address possible LOC events when the control effectiveness itself deteriorates due to unusual flight conditions (such a vortex ring state) or environmental effects (icing, shear flows).  The expanded detection capability would provide assurance of autonomy of the associated flight control system to indicate the potential onset of conditions that would degrade vehicle control capability.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Avoidance and mitigation of potential Loss Of Control (LOC) flight conditions is important for all flying vehicles, but perhaps critically so for supporting autonomous aviation. NASA would benefit in the expansion of methodologies for enhanced autonomy and safety of research vehicles that are to be developed without an active pilot at the controls.  Similar NASA research for ensuring safe UAS vehicle operations in beyond-line-of-sight (BLOS) applications would inform development of airspace management options, such as the In-Time Aviation Safety Management System (IASM) that would minimize operational risk to both users and the general community at large.  Since the proposed algorithm for development provides both a real-time metric of remaining control power (RCP), control effectiveness, and a statistical indication of the potential for a LOC event, it can directly feed decision support tools for generating vehicle operation strategies. Additional NASA applications can include supporting current flight test activities using specialized research aircraft, as an aid in identification of potential LOC occurrences during testing.  Monitoring would aid envelope expansion processes and safety assessment of each test point, accelerating the flight test process.  LOC metrics for avoiding pilot induced oscillation (PIO) events could easily be derived through monitoring of remaining control rate capability on actuator channels, as rate limits have been shown to often be the generator of loop closure phase lags that generate PIO events.  Finally, NASA interest in flying qualities of novel configurations could use metrics for RCP in simulation studies to determine the maneuver capabilities and gust disturbance reduction performance of the modeled flight control configuration, possibly suggesting the addition or removal of control features on that aircraft design.  Use of this algorithm approach would potentially mitigate having to solve handling qualities issues in flight test Autonomy assurance for LOC event avoidance can be used with UAS vehicles as a safety credit as part of BLOS operations.  Bounds on RCP and its statistics could trigger a UAS “safe mode” response that would initiate a return-to-base or land-immediately response to avoid catastrophic loss of the platform and damage to its surroundings.  This technology can also be applied for safety assurance in commercial AAM operations as a performance-based certification basis, precluding the necessity of providing additional safety systems having additional weight or performance penalties.  Some rotor-borne powered lift AAM concepts do not have traditional helicopter autorotative options nor fixed wings for providing lift in the event of power loss, and thus a system that monitors degradation of thrust control would provide indicators for safely modifying vehicle lift generation or even pre-emptively terminating flight prior to full loss of that component. Other non-NASA applications could include having the algorithm provide documented metrics on test aircraft RCP values during certification flight testing, as a means to indicate adequate controllability of the aircraft during specific maneuvers or while operating in a measured level of environmental disturbances.  Maneuver and operational limits can thus be quantified and documented within the certificated aircraft flight manual for that vehicle. Finally, DoD applications could include the use of this algorithm to help identify safe operating limitations of both crewed aircraft and UAS systems operating from confined locations.  A specific example would include the generation of the Navy’s Ship Helicopter Operating Limitation envelopes, that specify acceptable operations for specific combinations of small-deck ships and VTOL aircraft.  Those envelopes provide polar plots showing limits on wind-over-deck magnitude and direction that represent tested limits where control limits have not impeded save launch and recovery operations.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>185389</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX16: Air Traffic Management and Range Tracking Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2025-09-29</td></tr>
+<tr><th>Project End Date</th><td>2026-03-27</td></tr>
+<tr><th>Lead Organization / Center</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>New Jersey (NJ), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Robert Mckillip (Principal Investigator); Kasey A Ackerman (Project Manager) &lt;kasey.a.ackerman@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-19</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/185389">https://techport.nasa.gov/projects/185389</a>
+    </div>
+  </div>
+</body>
+</html>

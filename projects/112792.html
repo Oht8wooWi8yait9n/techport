@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Physics NTR Safety Analyses | NASA TechPort Project 112792</title>
+  <meta name="description" content="Nuclear Thermal Propulsion (NTP) offers high promise to reduce launch mass, decrease mission costs and increase mission effectiveness, particularly for crewed missions to the planets. However, NTP has been plagued with high uncertainties in cost, schedule and ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/112792">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 112792</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX01.4.3</span>
+        </div>
+        <h1>Multi-Physics NTR Safety Analyses</h1>
+        <div class="meta-id">NASA TechPort Project ID: 112792</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/112792" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Nuclear Thermal Propulsion (NTP) offers high promise to reduce launch mass, decrease mission costs and increase mission effectiveness, particularly for crewed missions to the planets. However, NTP has been plagued with high uncertainties in cost, schedule and safety, particularly launch safety. To reduce programmatic uncertainty, an unambiguous approach to documenting NTP safety prior to, during and after launch needs to be made. Until recently, the multi-physics models and computing power were not available to perform compelling analyses, and testing is prohibitively expensive, and unrevealing in many cases. This proposal directly addresses programmatic uncertainty by providing benchmarked, definitive product capable of documenting the safety of a NTP system during all launch phases. The proposal takes work performed by the SBC under IR&D which has performed detailed hydrocode modeling of a NTP impacting an unyielding surface from heights of 50 and 150 meters. To initiate the effort, it is important to start with simple compaction model, which was accomplished in Phase I with the Taylor impact simulation. Instead of a single neutronics code, LPS demonstrated viability with three codes to better insure reliable results. Phase II will extend this work. It will continue to update the SCCTE-2 NTR design and include any design modifications by NASA contractors. The NTR model will be updated to include important peripherals suchs as turbooo pump assemblies, thrust vector control hardware, plumbing and a propellant tank. These are essential items for a more realistic impact scenario. Further, during Phase I, LPS determined there are a number of materials whose mechanical database is insufficient for unambiguous hydrocode simulations. LPS will deliver a comprhensive test program plan, costs and schedule to resolve these deficiencies. The technical readiness will be improved so End to End Software elements are implemented and interfaced with existing system concepts.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          LPS is already working with NASA nuclear program managers to integrate the tools, methods, and capabilities of this SBIR into its nuclear launch and operations safety effort, including ground testing and handling. Indeed, this project, while being used primarily for launch safety analyses and documentation for nuclear thermal propulsion, is equally applicable to all nuclear payloads: nuclear thermal propulsion, nuclear electric power systems for in-space and surface operations and also radioisotope power sources. There are no current commercial entities capable of providing these services. At the end of Phase II, LPS will be in a singularly unique position to provide these commercially based, multi-physics modeling capabilities for nuclear safety to NASA, the Department of Defense and the Department of Energy. While primarily directed toward nuclear systems, this capability can be applied to other hazardous payloads, whether launched into space or involved in over-the-road transportation.<br /> <br />Because of the pioneering work performed by the NASA Marshall Space Flight Center, we now know some NTR configurations are feasible with Low Enriched Uranium (LEU). This will dramatically reduce security and development costs, and result in a more affordable system. Because of the LEU approach, commercial companies may be enticed to become involved, because the costs can be more well defined. The PI and other are looking to engage certain commercial space entities about becoming involved. Some entities which would benefit from this work include Lockheed Martin, Boeing Space Systems, and other defense contractors. The Missile Defense Agency has been contacted regarding the recrudescence of the neutral particle beam system for missile defense, and space nuclear power would provide the system with the requisite power and maneuverability for mission operations.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>112792</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.4.3: Nuclear Thermal Propulsion</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2018-06-13</td></tr>
+<tr><th>Project End Date</th><td>2022-02-15</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Little Prairie Services LLC — Edgewood, New Mexico</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Stennis Space Center (SSC) — Stennis Space Center, Mississippi</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Mississippi (MS), New Mexico (NM)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Roger X Lenard (Principal Investigator); Glen A Guzik (Project Manager) &lt;glen.a.guzik@nasa.gov&gt;; Niklas M Adam (Project Manager) &lt;niklas.m.adam@nasa.gov&gt;; Thomas M Stanley (Project Manager) &lt;thomas.m.stanley@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong></li><li><strong>Advanced From</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li><li><strong>Final Summary Chart Image</strong> — Final Summary Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/112792">https://techport.nasa.gov/projects/112792</a>
+    </div>
+  </div>
+</body>
+</html>

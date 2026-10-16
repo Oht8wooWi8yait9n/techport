@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Utilizing Bosch Generated Carbon for Additive Manufacturing | NASA TechPort Project 95046</title>
+  <meta name="description" content="For long duration life support missions, oxygen recovery from metabolic CO 2 is essential. Currently, the ISS oxygen recovery system is capable of recovering approximately 50% of the oxygen from metabolic carbon dioxide. However, for long duration manned missi">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/95046">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 95046</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">MSFC IRAD</span>
+          <span class="badge">TX07.2.1</span>
+        </div>
+        <h1>Utilizing Bosch Generated Carbon for Additive Manufacturing</h1>
+        <div class="meta-id">NASA TechPort Project ID: 95046</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/95046" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>For long duration life support missions, oxygen recovery from metabolic CO<sub>2</sub> is essential. Currently, the ISS oxygen recovery system is capable of recovering approximately 50% of the oxygen from metabolic carbon dioxide. However, for long duration manned missions, a minimum of 75% with a target of 90% of oxygen recovery is required. Theoretically, the Bosch process can recover 100% of oxygen from metabolic CO<sub>2</sub>, making it a desirable technology for oxygen recovery for long duration missions. The Bosch process reacts carbon dioxide (CO<sub>2</sub>) with hydrogen (H<sub>2</sub>) to produce water (H<sub>2</sub>O) and elemental carbon (C) in the presence of a catalyst. The water that is produced in the Bosch process is fed to the Oxygen Generation Assembly (OGA) where it is then electrolyzed to form gaseous H<sub>2</sub> and O<sub>2</sub>. H<sub>2</sub> is recycled back to the Bosch process and O<sub>2</sub> is returned to the atmosphere. Carbon builds up and fouls the catalyst at a rate of 1 kg per day. Finding useful ways to utilize the carbon produced in the Bosch process would be very beneficial. One area of particular interest is additive manufacturing. Additive manufacturing onboard ISS provides the ability to manufacture parts on demand allowing for critical replacement parts and tools to be manufactured without the need to wait for them to arrive. ABS filament is used on ISS for additive manufacturing, and although ABS is a relatively strong plastic, when ABS manufactured parts are used as tools there is a great chance of the manufactured parts to fracture. The addition of carbon to the ABS filament is likely to solve this issue. A materials physical, electrical, and optical characteristics can be improved by the addition of carbon. Carbon has long been used in industry as a reinforcement providing structural strength to materials. The addition of Bosch carbon to ABS filament could greatly increase the structural strength of manufactured parts allowing for more durable and reliable parts to be printed, as well as utilizing a waste product of the Bosch reaction.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>For long duration manned missions, oxygen recovery is essential. Currently, the ISS the oxygen recovery system recovers approximately 50 percent of the oxygen from metabolic CO<sub>2</sub>. Future missions will require a minimum oxygen recovery of 75% with a target of greater than 90% which will allow for limited resupply mass and logistical requirements. Theoretically, the Bosch process can recover 100% of oxygen from metabolic CO<sub>2</sub>. The Bosch process reacts CO<sub>2</sub> to form H<sub>2</sub>O and solid carbon (C(s)) in the presence of an iron, nickel, or cobalt catalyst.</p>  <p>For space flight, the Bosch process would be combined with water electrolysis which would convert the H<sub>2</sub>O from the Bosch process into H<sub>2</sub> and O<sub>2</sub>. The H<sub>2</sub> would be recycled back to the Bosch process and the O<sub>2</sub> would be released into the cabin for crew consumption. There are three reactions that occur during the Bosch process that ultimately converts CO<sub>2</sub> into water and solid carbon.</p>  <p>The carbon that is produced in the process coats and fouls the catalyst at a rate of 1 kg per day. Figure 1 shows carbon coated iron wool generated from the Bosch process. Historically, the carbon and catalyst have been discarded as waste product. In the interest of limiting storage and mass, it would be beneficial to utilize the carbon produced during the process. The ability to manufacture on demand is a capability that has endless possibilities for the future of space exploration. This allows for repairs of critical parts without the need to wait for replacement parts to arrive and also for the construction of critical tools needed for installation of new manufactured hardware, which will be beneficial for long duration mission beyond Low Earth Orbit (LEO). Additive manufacturing capabilities are currently available on the ISS (Figure 2) in which ABS filament is being used. Replacement parts and tools need to be reliable, and while ABS is a relatively strong plastic, manufactured ABS parts are likely to fracture under certain stresses and conditions. The addition of carbon to the ABS filament is likely to solve this issue.</p>  <p>The addition of carbon can greatly improve a materials physical, electrical, and optical characteristics. In industry, carbon has long been used as a reinforcement agent providing structural strength to materials. It has been shown that carbon filled materials have comparable properties to metals, therefore the addition of Bosch carbon to ABS filament could greatly increase the structural strength of manufactured parts. Recycling Bosch carbon would also increase the amount of additive manufacturing material available. By creating the filament in space, it may be possible to recycle additional materials to further reduce weight, such as using soft stowage support or packaging made from ABS. Bosch-Carbon ABS filament will allow for more durable and reliable parts to be printed as well as utilizing a waste product of the Bosch reaction. This CIF will be focused on successfully generating Bosch-Carbon ABS filament and determining the mechanical properties and effects of carbon on the matrix of Bosch-Carbon ABS samples. ABS will be purchased from a supplier, and the carbon needed for infusing the ABS filament has been generated by the Bosch process using the CO<sub>2</sub> Reduction Catalyst Test Stand (COR-CaTS) at Marshall Space Flight Center. Prior to manufacturing samples using the Bosch-Carbon ABS filament, it is important to determine what exactly was generated during the infusion process. Therefore once the Bosch-Carbon ABS filament is successfully generated, the filament will undergo thermal analysis in order to determine the thermal properties of the filament. The thermal properties will help predict the behavior of the filament going through the nozzle of the printer which is critical in achieving successful prints. After thermal analysis is complete, the manufacturing of Bosch-Carbon ABS filament samples will begin. Samples will include simple blocks that will be sent to the Materials, Test, Chemical & Contaminant Control Branch (EM22) to undergo testing to determine the mechanical properties and the effects of carbon on the matrix. The structural stability of a carbon infused part depends on the way the carbon aligns in the matrix of that part. To determine the effects on the structural matrix of the samples, the samples will be cut and sent to EM22 where the sample will undergo analysis.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>95046</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: MSFC IRAD (MSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX07.2.1: Logistics Management</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 1 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2017-10-01</td></tr>
+<tr><th>Project End Date</th><td>2021-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Office of the Chief Technologist (OCT)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Others Inside the Solar System, Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Brittany R Brown (Principal Investigator) &lt;brittany.brown@nasa.gov&gt;; Enrique M Jackson (Co-Investigator) &lt;enrique.m.jackson@nasa.gov&gt;; Brittany R Brown (Project Manager) &lt;brittany.brown@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>John W Dankanich (Program Manager) &lt;john.dankanich@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-02</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: TBD</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/95046">https://techport.nasa.gov/projects/95046</a>
+    </div>
+  </div>
+</body>
+</html>

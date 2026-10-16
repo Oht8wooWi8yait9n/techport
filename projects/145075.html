@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mahina Color Camera: Snapshot Multispectral Imaging for Lunar Applications | NASA TechPort Project 145075</title>
+  <meta name="description" content="Objectives: The goal is to develop and test a simple multispectral framing (&amp;#34;snapshot&amp;#34;) camera that will provide a combination of morphology imaging with spectral parameter mapping, e.g., for a lander or rover panoramic or stereo mast camera, the close">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/145075">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 145075</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">DALI</span>
+          <span class="badge">TX08.1</span>
+        </div>
+        <h1>Mahina Color Camera: Snapshot Multispectral Imaging for Lunar Applications</h1>
+        <div class="meta-id">NASA TechPort Project ID: 145075</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/145075" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Objectives: The goal is to develop and test a simple multispectral framing (&#34;snapshot&#34;) camera that will provide a combination of morphology imaging with spectral parameter mapping, e.g., for a lander or rover panoramic or stereo mast camera, the close-up camera used in a sample-acquisition system, or a sensor carried or tended by astronauts. The imaging concept is applicable to missions to essentially any planetary body; for DALI we focus on colors (wavelengths) that are relevant to the Moon. The specific lunar science goals include determination of the composition of rocks and soils, study of the evolution that turns rocks into regolith, mapping of wavelength-dependent photometric parameters, and the search for lunar horizon glow (levitated dust movement). Methods: MahinaCam is a customized, ruggedized version of a commercial-off-the-shelf (COTS) multi-spectral camera. (&#34;Mahina&#34; is the Hawaiian word for &#34;Moon&#34;.) This camera consists of a standard COTS camera core (electronics module) with the addition of rad-hard optical interference filters deposited directly on the CMOS image sensor on a pixel-by-pixel basis in a pattern similar to Bayer color filters. For this lunar science application, we will select three medium-band (~70-nm FWHM) filters at ~450, 750, and 940 nm that permit construction of the standard spectral parameters for mapping of lunar composition (iron and titanium content) and optical maturity that were developed by Lucey et al. (1995, 1998, 2000). We will work with two commercial partners. One partner will install the custom filter set on a CMOS focal-plane array (FPA). Selection of the specific FPA will be guided by the experience of our other partner, which sells flight-qualified CMOS cameras. We will select flight-ready telecentric fore-optics, and design and build a simple thermal housing for the camera. The camera&#39;s electronics enable implementation of processing steps such as multi-frame averaging, binning, and high dynamic range, important for operation in lower-illumination conditions such as early morning, late afternoon, or at high lunar latitudes. Calibration of the fully integrated MahinaCam will be performed with measurements of spectral transmission, geometric distortion, and system-level modulation transfer function (MTF) at APL&#39;s test facility. System radiometric performance will be characterized at a set of temperatures over the operational range. Vibration and thermal vacuum testing will be performed to flight qualify MahinaCam. We will also carry out lab data collections in order to develop in-flight image calibration procedures. Relevance: The goal of the proposed effort is to develop a simple, low-cost multispectral camera that can accomplish morphological, compositional, and space-weathering mapping for lunar applications. The use of wavelength filters selected especially for study of lunar rocks and soils will provide a major increase in the science return compared to traditional RGB cameras (e.g., those on the Chinese Chang&#39;E landers and rovers, and on other spacecraft including early CLPS landers). Therefore, the proposed work is relevant to the DALI program, which &#34;supports the advanced development of instruments that show promise for use in future lunar missions including expected commercial ventures and NASA’s Artemis Program.&#34; At the conclusion of this DALI effort, we will have created a new imaging capability and MahinaCam will be ready to propose to NASA solicitations such as PRISM, the Artemis Deployed Instruments Program, or the Lunar Terrain Vehicle Instruments Program.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Improved scientific instruments for future Lunar science missions.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>145075</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Development and Advancement of Lunar Instrumentation (DALI)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1: Remote Sensing Instruments and Sensors</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX08.3: In Situ Instruments and Sensors</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2023-02-01</td></tr>
+<tr><th>Project End Date</th><td>2025-03-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johns Hopkins University — Baltimore, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johns Hopkins University: Applied Physics Laboratory (JHU/APL) — Laurel, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>David T Blewett (Principal Investigator); Bryan Maas (Co-Investigator); Charles A Hibbitts (Co-Investigator); Brett W Denevi (Co-Investigator); Heather Meyer (Co-Investigator); Felicia Hastings (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Erica N Montbach (Program Director) &lt;erica.n.montbach@nasa.gov&gt;; Anna Maria T Pal (Program Manager) &lt;a.pal@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-08-22</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Technology Specifications and Quad Chart</strong></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/145075">https://techport.nasa.gov/projects/145075</a>
+    </div>
+  </div>
+</body>
+</html>

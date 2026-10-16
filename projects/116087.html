@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sun Coronal Ejection Tracker (SunCET) | NASA TechPort Project 116087</title>
+  <meta name="description" content="Objectives: The Sun Coronal Ejection Tracker (SunCET) CubeSat fills a crucial gap in the Heliophysics System Observatory (HSO). Coronal Mass Ejections (CMEs) accelerate through the low and middle corona (≤4 solar radii) – corresponding exactly to a longstandin">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/116087">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 116087</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">HFORT</span>
+          <span class="badge">TX08</span>
+        </div>
+        <h1>Sun Coronal Ejection Tracker (SunCET)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 116087</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/116087" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Objectives: The Sun Coronal Ejection Tracker (SunCET) CubeSat fills a crucial gap in the Heliophysics System Observatory (HSO). Coronal Mass Ejections (CMEs) accelerate through the low and middle corona (≤4 solar radii) – corresponding exactly to a longstanding, underobserved region in the HSO due to the technical challenges in observing this extremely high dynamic range area. There are many competing models to describe the physics of CMEs, each of which produce unique predictions for acceleration as a function of time and altitude. However, the altitude where these profiles distinguish themselves is often precisely in the HSO gap. Without SunCET, there have not been hard constraints on the models. With SunCET, the models must get the 3D magnetic field configuration and dynamics in the low and middle corona correct in order for the modeled kinematic profiles to match the observed ones. SunCET observations will finally allow us to address the question: What are the dominant physical mechanisms for CME acceleration as a function of altitude and time?  Methods: SunCET is a solar-pointed, 3-axis-controlled, 6U CubeSat to observe the sun from 0 to 4 solar radii in the extreme ultraviolet (EUV; 170-200 Å). This wide field of view (FOV) captures the entire bright solar disk (where CMEs typically originate) to the top of the middle corona where CME brightness can fall by a factor of ~100,000. SunCET achieves a dynamic range of 2 million. This exceptionally high dynamic range (HDR) is obtained using a novel simultaneous-HDR technique that allows for different portions of the sensor to be read out with different exposure times. SunCET exposes the solar disk at 0.035 seconds and the middle corona at 15 seconds. Traditional HDR requires sequential, full-frame exposures that are then combined in software but this can lead to image artifacts as pixels overflow in the long exposure, or short exposures may not be short enough due to limitations in full-frame readout times given other telescope optimizations for capturing faint signals. This new technology, which has been recently developed at LASP and flown on a sounding rocket, allows SunCET to circumvent the technical challenges of prior missions targeting CMEs. SunCET need not occult the bright solar disk. This allows the complete tracking of CME initiation and acceleration with a single instrument – no challenging multi-instrument, multi-wavelength combinations required. SunCET achieves this in a very compact design. The telescope and camera occupy ~3U of volume and the spacecraft bus leverages high-heritage components. SunCET can be flown in any common orbit -- though a sun-synchronous, dawn-dusk orbit is preferable. Mission operations are handled by the highly-experienced team at LASP from our dedicated CubeSat ground network control center.  Significance: Beyond the standalone science objective, SunCET is timely. NASA’s Parker Solar Probe (PSP) defines a unique moment in heliophysics with its unprecedented dives into the high solar corona. Multiple PSP perihelia will occur during the SunCET mission. SunCET observations will inform PSP measurements by providing context of the low and middle corona, for example identifying weak white-light signals in PSP/WISPR as erupting flux ropes. NASA’s PUNCH SMEX will fly concurrently with SunCET. PUNCH will track CMEs transitioning from the high corona to the heliosphere but SunCET is needed to track CME initiation and acceleration in order to complete the picture. NASA has invested heavily in the HSO and SunCET fills an observational gap that will enhance the science return from those observatories. Additionally, this project will develop and raise the readiness level of technology: the aforementioned novel HDR detector as well as new EUV mirror coatings already under development from a funded HTIDES18 project. These technologies have applications across all the NASA SMD divisions.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Enabling lower cost innovative remote sensing instrument development from concept through breadboard and demonstration
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>116087</td></tr>
+<tr><th>Acronym</th><td>SunCET</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Heliophysics Flight Opportunities in Research &amp; Technology (HFORT)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08: Sensors and Instruments</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX08.1: Remote Sensing Instruments and Sensors; TX08.2: Observatories</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 6 | Target End TRL: 9</td></tr>
+<tr><th>Project Start Date</th><td>2021-11-26</td></tr>
+<tr><th>Project End Date</th><td>2025-06-26</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Colorado Boulder — Boulder, Colorado</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Graz — Graz, Outside the United States, Austria; Goddard Space Flight Center (GSFC) — Greenbelt, Maryland; University Corporation for Atmospheric Research (UCAR) — Boulder, Colorado; NorthWest Research Associates — Boulder, Colorado; National Center for Atmospheric Research (NCAR) — Lowell, Massachusetts</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO), District of Columbia (DC), Maryland (MD)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>James P Mason (Principal Investigator); Matthew J West (Co-Investigator); Andrew R Jones (Co-Investigator); William D Pesnell (Co-Investigator); Joan Burkepile (Co-Investigator); Andrew May (Co-Investigator); Barbara J Thompson (Co-Investigator) &lt;barbara.j.thompson@nasa.gov&gt;; Karin Dissauer (Co-Investigator); Thomas N Woods (Co-Investigator); Phillip C Chamberlin (Co-Investigator); Richard A Kohnert (Co-Investigator); Francis G Eparvier (Co-Investigator); Daniel B Seaton (Co-Investigator); Astrid M Veronig (Co-Investigator); Kimberly Dawn Leka (Co-Investigator); Robin Colaninno (Co-Investigator); Sarah E Gibson (Co-Investigator); Michael S Kirk (Co-Investigator) &lt;michael.s.kirk@nasa.gov&gt;; Yuhong Fan (Co-Investigator); Christina D Kay (Co-Investigator) &lt;christina.d.kay@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>John D Moses (Program Director) &lt;dan.moses@nasa.gov&gt;; Ennio R Sanchez (Program Manager) &lt;ennio.r.sanchez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-05-29</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/116087">https://techport.nasa.gov/projects/116087</a>
+    </div>
+  </div>
+</body>
+</html>

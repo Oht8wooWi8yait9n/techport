@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optimization of Multiphase Injector Dynamics for Rotating Detonation Rocket Engines | NASA TechPort Project 158067</title>
+  <meta name="description" content="Designing an ultra-high-performance Rotating Detonation Rocket Engine (RDRE) is challenging due to the lack of in-depth understanding of many key mixing and combustion processes.The design of ultra-high-performance RDRE injectors requires improved understandin">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158067">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158067</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX01</span>
+        </div>
+        <h1>Optimization of Multiphase Injector Dynamics for Rotating Detonation Rocket Engines</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158067</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158067" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Designing an ultra-high-performance Rotating Detonation Rocket Engine (RDRE) is challenging due to the lack of in-depth understanding of many key mixing and combustion processes.The design of ultra-high-performance RDRE injectors requires improved understanding of how the injector design affects its response and performance under the highly unsteady and impulsive detonation environment. These injectors must be optimized for (i) the ability to improve and control gaseous and liquid injector diodicity, while also minimizing the forward direction injector pressure drop to improve overall system performance, (ii) the ability to optimize the relative injector response and recovery of the fuel and oxidizer to achieve the desired mixture ratio and minimize deflagration losses, and (iii) the ability to control the mixing rate to ensure reliable detonation at the ideal lift-off position.The proposed research effort will develop ultra-high-performance injector solutions that meet these requirements. The Phase II overall goals are twofold: (1) design, test, and evaluate high diodicity single-element monophase and multi-element multiphase injectors in cold flow and hot-fire RDE experiments, with the CFD design optimization driving some of the injector concepts, and (2) initiating the development of a design methodology that is supported by CFD optimization and experimental validation. These steps will guide the transition and development beyond Phase II for infusion into more relevant and practical systems. The outcomes of the effort will lead to the development of validated accurate rules and tools that can be used for designing ultra-high-performance RDRE injectors. The expansion of scientific knowledge regarding injector design, detonation combustion, and global performance will provide NASA an experimental dataset to anchor future modeling and simulations.   	Injector design for the Rotating Detonation Rocket Engine (RDRE) is limited and empirical and currently does not provide sufficient performance to reduce injector backflow, leading to many non-ideal performance loss processes 	The development of ultra-high-performance injector solutions based on a concurrent design of experiments approach using CFD design optimization and experimental approaches 	The development of multi-phase high&nbsp;diodicity&nbsp;injectors, evaluated with high-speed advanced imaging measurements. Validated accurate computational tools that can be used for RDRE injector design optimization.&nbsp;Enables one-to-one comparison between measured and modeled quantities. 	The expansion of scientific knowledge regarding high-performance-injector design which will provide NASA and other interested government agencies injectors that achieve high RDRE performance as well as an experimental dataset to anchor future modeling and simulations.   A summary of the technical objectives (TO) and work plan (WP):  (TO1) Design single-element gaseous and liquid injectors for RDRE applications  (WP) Design of experiments for single stream single-element injectors that have high&nbsp;diodicity.&nbsp;  (TO2) Perform and evaluate CFD-driven design optimization of gaseous/liquid injectors for RDRE applications  (WP) Extend and evaluate current URANS numerical modeling of gaseous and liquid single-injector behavior and couple with a design optimization approach  (TO3) Manufacture the single-element injectors and evaluate the methodology  (WP) Explore/evaluate conventional and additive manufacturing of the single-element injectors  (TO4) Evaluate the single-element injector behavior in cold-flow experiments and then a laboratory-scale optical RDE test rig  (WP) Perform cold-flow experiments to measure forward and reverse discharge coefficient&nbsp;  (WP) Perform hot-fire RDE experiments, subjecting the injector flow to cyclical detonation waves. Perform high-speed imaging measurements to quantify injector behavior.  (TO5) Scaling and full annular injector testing in an RDE at more relevant conditions  (WP) Testing of the RDE with performance measurements to provide insight into RDE injector effects on overall performance, as well as validation of the injector design methodology
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The proposed work seeks to modernize the injector technology for RDEs for rocket applications. This includes design methodology, manufacturing, and hardware designs capable of providing high injector diodicity at reduced injector pressure drops. Detailed designs and measurements of the injector behavior will be compared to numerical simulations, and multidisciplinary design optimization will &nbsp;produce optimized injector designs that will be evaluated in an RDE test rig. This will benefit new technologies in air-breathing and rocket propulsion.&nbsp;  Non-NASA applications of the proposed efforts include ultra-high-performance injector technology for RDE applications, enabling the infusion of pressure gain and combustion size benefits into practical systems. Commercial applications include air-breathing propulsion, missiles, stationary power generation.&nbsp;
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158067</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01: Propulsion Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 4 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2023-06-26</td></tr>
+<tr><th>Project End Date</th><td>2026-12-24</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Spectral Energies, LLC — Dayton, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Ohio (OH)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Christopher Fugger (Principal Investigator); Hugh D Perkins (Project Manager) &lt;hugh.d.perkins@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-07-29</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158067">https://techport.nasa.gov/projects/158067</a>
+    </div>
+  </div>
+</body>
+</html>

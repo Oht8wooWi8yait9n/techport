@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planetary Trajectory Design Using Generative AI Tools | NASA TechPort Project 157657</title>
+  <meta name="description" content="Developing planetary trajectories involves massive trade studies over large spans of launch dates, propulsion systems, gravity assist bodies, launch vehicles, etc. Such work requires rapid computation and optimization of many thousands of trajectories to chara">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/157657">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 157657</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX15.2.1</span>
+        </div>
+        <h1>Planetary Trajectory Design Using Generative AI Tools</h1>
+        <div class="meta-id">NASA TechPort Project ID: 157657</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/157657" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Developing planetary trajectories involves massive trade studies over large spans of launch dates, propulsion systems, gravity assist bodies, launch vehicles, etc. Such work requires rapid computation and optimization of many thousands of trajectories to characterize the solution space. This work requires regular development of in-house software (primarily the Evolutionary Mission Trajectory Generator, EMTG) to solve new types of problems often introduced by each new project. Working in this highly-coupled workflow of physics, engineering/design, optimization, and software development, pushes trajectory designers outside their areas of expertise—particularly for software development—costing valuable time that can hold up entire projects.</p><p>The overall objectives of this work are to integrate Large-Language Models (LLMs) into the end-to-end workflow for planetary trajectory design (at least, the workflow as it is done at NASA-GSFC) and identify the most effective ways to leverage LLMs in that process. Both closed-source and open-source LLMs will be considered. This work is done in collaboration with NASA’s Chief Artificial Intelligence Office and uses approved cloud-computing services to access a variety of LLM models, including GPT-4o, Llama 3.2, and Claude 3.5).</p><p>The key objectives of this work are as follows:</p><p><i>1) Assistant Setup</i></p><p>The LLM needs to be informed of our in-house documents, software, and data in order to help users with any queries related to our design process. With existing context-window limits, most LLMs (at the time of writing this description) are not able to ingest an entire repository of files by attaching them to a prompt. As such, our in-house files will first be processed and vectorized for retrieval-augmented generation (RAG), which will allow the LLMs to conduct quick context-based searches of our repository documents, code and data when responding to user queries. The goal of the RAG setup is to have the LLM behave as if it did have all of our files in its context window or was otherwise trained on them.</p><p>With the LLM informed of our files, it can be tested with various prompts to determine its ability to respond to various user queries. Some specific queries to be tested will include: installing our in-house software, setting up and running our software, how the software works and what models it’s using. In this objective and all others, various prompts will be investigated with those found to be most effective documented for future users. Queries regarding the code will be a larger area of focus as described in the next objective.</p><p><i>2) Code Development</i></p><p>The LLM’s knowledge of our software will be evaluated by checking its responses to questions pertaining to the code base (e.g. class structure, functions, trajectory models, etc.). The LLMs ability to write new code for our software will also be investigated, from small tweaks of existing code to large additions of new code. The evaluation of code quality will include executability, validation of function, readability (e.g. organization, simplicity, commenting, etc.), and whether any debugging was required. The expected time saved as a result of using an LLM to assist in code writing in this manor is on the order of weeks to months.</p><p><i>3) Data Analysis</i></p><p>Process trajectory data with LLMs and generate various data products, such as a 3-D visualization of the trajectory in various coordinate frames, a csv file of specified trajectory characteristics, scatter plots, and other graphics and/or animations. </p><p>To help mitigate any errors or “hallucinations” created by the LLM, it will be instructed to create Python scripts to generate such products, rather than to generate the data products directly, so that the code can be evaluated for accuracy and ensure that the LLM is not fabricating or otherwise misrepresenting data. This overlaps with Objective 2 in that code writing is involved, but here, we’re working with more basic Python scripts rather than our in-house software’s source code. The nature of the requests for the LLM for these visualization scripts will also differ from Objective 2.</p><p>In the case of ephemeris data, specialized data formats will be considered, such as “SPK” files, which are commonly used but require programs and/or code packages to parse. If unable to process directly, the LLM can interface with the ephemeris data via the Python package SpiceyPy which uses the NASA-JPL SPICE Toolkit.</p><p>We will also test the LLM’s ability to query our data for various beneficial characteristics, such as good observation opportunities for a particular instrument (which can be laborious to assess manually) or that have issues, such as solutions with low perihelion. Any such responses would need to be investigated and verified, but finding such solutions out of massive trajectory databases will save our team days or weeks of work. For some of these applications, a combination of asking the LLM for a direct solution followed by checking with a script is likely to be more efficient while still being able to verify the accuracy of the LLM’s response.</p><p><i>4) Trajectory Design</i></p><p>The ability of the LLM to provide a good initial guess for our trajectory optimization software, EMTG, will be investigated. EMTG designs and optimizes trajectories by conducting a stochastic global search with a gradient-based local-optimization. EMTG does not require an initial guess by the user to initiate the global search, but when not given an initial guess, a basic uniform random distribution is used to provide one. This works well for many problems, but when many gravity assists are required, the global search can take a long time to find a solution (potentially too long for the user to wait for it). By training a customized version of an LLM using archived EMTG input files with the provided optimal solution, the LLM can provide an initial guess. In the case of EMTG, the LLM only has to do better than a uniformly-distributed random initial guess, and we anticipate that it will do much better.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The AI assistant developed for this work will help current and future planetary trajectory designers in nearly all aspects of their workflow. For the existing experts in this area at GSFC, this will save many hours of one-on-one time to help newer users. Additionally, building an AI with such a comprehensive knowledge of our workflow will help to retain our highly specialized knowledge base and custom-built software for future employees.<br /><br />More broadly, the implementation of this AI assistant includes many elements that will be beneficial to many engineers and scientists across NASA and elsewhere. Anyone who works with specialized data and code should benefit from this effort. Any scripts developed for this work for setting up the AI assistant will be made available, as well as any notable prompts or prompting techniques that are identified.<br /><br />LLMs are already bringing about a major change in nearly every field of work. The models available today are the worst we'll ever use, and we haven't yet determined how best to use the models we have now. Despite the ongoing study and experimentation with LLMs, they have already been shown to provide enough benefit to many jobs to be adopted. As such, the integration of LLMs into future workflows seems inevitable. How to best adapt the roles of scientists and engineers in the presence of LLMs, and other implementations of AI, will be up to those scientists and engineers. This work will provide insight into what that new role may look like for planetary trajectory design and any other field of work with a similar or analogous workflow.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>157657</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX15.2.1: Trajectory Design and Analysis</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX11.1: Software Development, Engineering, and Integrity; TX11.2: Modeling; TX11.4: Information Processing and Artificial Intelligence; TX11.5: Mission Architecture, Systems Analysis, and Concept Development</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2024-10-01</td></tr>
+<tr><th>Project End Date</th><td>2025-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Mars, Moon and Cislunar, Sun, Others Inside the Solar System, Outside the Solar System, Foundational Knowledge, Low Earth Orbit</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Kyle M Hughes (Principal Investigator) &lt;kyle.m.hughes@nasa.gov&gt;; Lavida D Cooper (Project Manager) &lt;lavida.d.cooper@nasa.gov&gt;; Cheryl J Gramling (Project Manager) &lt;cheryl.j.gramling@nasa.gov&gt;; Umeshkumar D Patel (Project Manager) &lt;umeshkumar.d.patel@nasa.gov&gt;; Kendall D Mauldin (Project Manager) &lt;kendall.d.mauldin@nasa.gov&gt;; Tiffany H Hoerbelt (Project Manager) &lt;tiffany.hoerbelt@nasa.gov&gt;; Bradley T Hill (Project Manager) &lt;bradley.t.hill@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-05-01</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: A data processing and embedding system was developed to allow an LLM to respond to queries (i.e. using Retrieval Augmented Generation, RAG) using custom data from our planetary trajectory design team, including source code for our in-house design and optimization software tool EMTG. Detailed metadata was stored in each embedding to allow for a thorough check of all relevant in-house data for a given query. Sub-agents were also investigated for verification of critical information, or at the request of the user, which included providing a screenshot of a table, figure, or equation for the user to verify directly, in addition to providing the source info to the user. For our relatively small database however, our team recommends using multiple subagents in parallel to quickly search each document in the repo to report to the primary assistant which data files were relevant to the query. This allows for more thorough retrieval, but would be impractical for larger datasets. For code development in particular, so many advancements in code agents were available by the end of this IRAD effort that our team preferred tools like OpenAI&#x27;s Codex agent for development and the data retrieval used within it. The coding assistant tools tested during the study were the VS Code extensions Continue, Roo Code, and Cline, as well as OpenAI&#x27;s coding agent Codex. These were tested with various models including GPTs 4o, o3, o4-mini, 4.1, 4.1-mini, 5, 5.1, and 5.1-codex; as well as, Claude Sonnet 3.5 and 3.7. The thinking versions of models were generally used whenever an option was available to do so. We found that Codex was the most successful at developing our code, but the Roo and Cline interfaces were preferred due to the live visibility of the code changes within the files. The capability of these coding agents extraordinary due to the access to tools, subagent calls, and direct access to local files, that they are useful for many tasks outside of coding. We recommend that assistants/agentic frameworks in the future consider using one of these coding agents as a base, potentially with subagents to parse in-house data (via RAG or parallel subagent search) and potentially have the main agent or select subagents fine tuned on niche data sets and documents. The completion of a project does not necessarily indicate that the development work has stopped. The work could potentially continue in the future as a follow-on IRAD; or be used in collaboration or partnership with Academia, Industry, and other Government Agencies. Goddard Space Flight Center’s IRAD program is managed under its Office of Chief Technologist. Activities develop concepts, reduce technology risk, and advance human capital and technological capabilities. Goddard’s IRAD program is highly competitive, opportunity-driven, and 100% strategically aligned with NASA&#x27;s and Goddard&#x27;s strategic priorities. A significant portion of the program is focused on Early Stage Innovations for high-risk, strategically aligned, potential high-payoff technologies that are longer-term or lower TRL.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://etd.gsfc.nasa.gov/" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/157657">https://techport.nasa.gov/projects/157657</a>
+    </div>
+  </div>
+</body>
+</html>

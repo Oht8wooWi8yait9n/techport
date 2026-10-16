@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experimental and Numerical Investigation of Ablation Kinetics | NASA TechPort Project 91459</title>
+  <meta name="description" content="The University of Vermont (UVM) and the University of Michigan (UMI) propose a 2-year experimental and numerical research effort aimed at providing critically needed information on the state of pyrolysis gases leaving a porous char material for a carbon/phenol">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91459">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91459</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX09.1.1</span>
+        </div>
+        <h1>Experimental and Numerical Investigation of Ablation Kinetics</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91459</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91459" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The University of Vermont (UVM) and the University of Michigan (UMI) propose a 2-year experimental and numerical research effort aimed at providing critically needed information on the state of pyrolysis gases leaving a porous char material for a carbon/phenolic ablator and reacting with hot boundary layer species.  This proposed activity directly addresses 1) finite-rate gas-surface interactions; 2) finite-rate chemistry of pyrolysis and boundary layer gas interaction; and 3) resin decomposition.  The experimental approach for these elements is the use of species-selective, laser-spectroscopic measurement techniques to quantify the chemical composition and thermal state of the gases as they leave the char surface and interact with the plasma boundary layer.  The justification for addressing these elements is the lack of such experimental data to guide model development.  The proposed experiments involve exposing selected carbon/phenolic material samples to high-temperature plasmas with varying composition (argon, nitrogen, oxygen, and air) in the UVM 30 kW Inductively Coupled Plasma (ICP) Torch Facility.  During the tests the interaction zone will be probed using tailored, time-resolved Diode-Laser Absorption Spectroscopy (DLAS) and emission spectroscopic instrumentation.  These experiments will establish which species leave the material, and how the composition varies with the introduction of different reacting plasma species (Ar, N, O). A parallel experimental effort will be devoted to developing novel sample test configurations that provide a constant char surface location in the plasma stream by allowing sample movement within the holder. The objective of this work is to establish quasi-steady test conditions to enable spatially resolved Laser-Induced Fluorescence (LIF) measurements of key species. Computations performed by UMI will support the development of this capability by simulating the experimental configuration and test conditions using state-of-the-art numerical codes that include pyrolysis and plasma species interaction chemistry.  UMI has direct prior experience of simulating the flow in the UVM ICP Torch Facility.  These simulations will help define test configurations and conditions as well as provide continuous feedback on experimental findings. The proposed investigation addresses three of the physical processes of Topic 1 with a set of carefully designed experiments that take advantage of existing laser spectroscopic instrumentation to quantify concentrations and gradients of key reacting species: O, N, H, C, CN, CH, OH.  Based on prior work some of these measurements determine surface reaction rates, but in all cases the data will provide a valuable resource for validating the chemistry of advanced ablation models. These validation data sets will be comprised of in situ measurements of key species within the non-equilibrium reaction zone, along with carefully measured plasma test conditions and uncertainty estimates for all measured values.  This will facilitate the development of better ablation models, which, in turn, enable more reliable and better-understood heat shields, leading to increased payload and/or mission flexibility.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Based on prior work some of these measurements determine surface reaction rates, but in all cases the data will provide a valuable resource for validating the chemistry of advanced ablation models. These validation data sets will be comprised of in situ measurements of key species within the non-equilibrium reaction zone, along with carefully measured plasma test conditions and uncertainty estimates for all measured values.  This will facilitate the development of better ablation models, which, in turn, enable more reliable and better-understood heat shields, leading to increased payload and/or mission flexibility.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91459</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.1.1: Thermal Protection Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2015-01-16</td></tr>
+<tr><th>Project End Date</th><td>2018-08-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Vermont — Burlington, Vermont</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Vermont (VT)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Douglas G Fletcher (Principal Investigator); Scott C Splinter (Project Manager) &lt;scott.c.splinter@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong>: The objective of this research was to perform a detailed investigation of pyrolysis gas and plasma interactions for a commonly studied ablative thermal protection material known commonly as PICA. Experiments were conducted at University of Vermont (UVM) to provide benchmark data on key interaction species at well-documented plasma test conditions. Numerical studies were carried out at University of Michigan (UMi) to aid in the design of the experiments and to compare the experimental results with predictions based on current finite-rate chemical kinetic models. Four different experimental activities were conducted during this investigation, starting with tests of PICA and FiberForm (the PICA substrate) in different plasmas to characterize the spectral emission and identify the key species resulting from pyrolysis-plasma interaction as a function of time from heating onset. Concurrently with these initial tests, two new gas-injection probes were developed to allow steady-state pyrolysis gas flow simulation. The third activity entailed using the better injection probe to identify the most suitable gases and flow rates to inject into the plasma stream to reproduce the spectral signature of PICA. Tests were conducted with the optimal injection conditions to examine the spatial distribution of the key emitting species as they interacted with different plasma test gases under steady injection and heating conditions. Finally, Laser-Induced Fluorescence (LIF) measurements of key species were made to assess ground state populations of CO and H. Numerical simulations performed by UMi were compared with the experimental results for two injection cases, and these comparisons provided a critical assessment of the finite-rate kinetics that pertain to these cases. Specific accomplishments from the experimental investigation included: 1) demonstrating that buffering the a reactive plasma gas with argon slowed pyrolysis and substrate burning significantly, while apparently having minimal impact on the chemical kinetics; 2) after an initial period of intense emission from carbon bearing species (C2-Swan, CN-Violet, CN-Red), the spectral signature for air plasma tests included emission from OH, NH, CN and H from the pyrolysis gas and plasma interaction, along with Na and Cs as impurities from substrate material; 3) toward the end of the PICA tests the spectral signature asymptotically approached that of the substrate, FiberForm; 4) emission from the cyanogen radical provides a reliable visual indication Page 2 – Revised 02/2018 of the pyrolysis gas penetration depth; 5) steady-state injection of a H2-CO2 gas mixture through a porous graphite plug reproduces the spectrally resolved emission from PICA pyrolysis in the interaction zone near the surface; 6) local thermodynamic equilibrium analysis of the Ar (and H) atomic transitions provided reliable temperature values for characterizing plasma stream conditions; and 7) the numerical simulations used CFD (LeMANS) combined with a radiative transport model (NEQAIR v14.0) to show good agreement with the experimental emission spectra for the atomic species (Ar and H), but over-predicted the CN and OH molecular band emission. The difference was attributed to the chemical kinetic rates used in the simulation. All of the experimental data have been archived for NASA researchers and others interested in testing computational models of pyrolysis and plasma interaction. Through multiple conference proceedings, the UVM design and the development of the gas injection probe to replicate steadystate pyrolysis has been made available to the aero-thermal testing community. Researchers at the University of Texas have recently used the UVM approach for a similar study [1 (p. 99)].</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91459">https://techport.nasa.gov/projects/91459</a>
+    </div>
+  </div>
+</body>
+</html>

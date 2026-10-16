@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airport Movement Area Closure Planner | NASA TechPort Project 93361</title>
+  <meta name="description" content="This SBIR research develops an automation tool improving temporary and permanent runway closure management. The Movement Area Closure Planner (MACP) provides airport stakeholder capability to improve decision processes and decision outcomes during surface clos">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/93361">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 93361</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX01.3.1</span>
+        </div>
+        <h1>Airport Movement Area Closure Planner</h1>
+        <div class="meta-id">NASA TechPort Project ID: 93361</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/93361" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          This SBIR research develops an automation tool improving temporary and permanent runway closure management. The Movement Area Closure Planner (MACP) provides airport stakeholder capability to improve decision processes and decision outcomes during surface closure events by developing a what-if simulation functionality to explore multiple operational decision choices during surface closure events. MACP ensures realistic simulation of airport traffic operations by relying on a high-fidelity airport simulator which has been used in multiple high-fidelity airport operations analyses for FAA and airport operational improvement evaluation projects. The key innovation added to a high-fidelity simulator is a machine learning based predictive engine which realistically projects multiple probable future evolution trajectories for key factors influencing the airport operations under surface closure events (e.g., predicted gate pushback rates, predicted runway arrival and departure demands, predicted departure queue lengths, predicted de-ice pad queue lengths). Reliable what-if analysis is enabled by taking each of these probable evolution trajectories of key variables and kicking off multiple airport traffic simulations, each simulating airport traffic under one of these probable scenarios. Another variable input for the simulations is surface closure operational decision parameters, e.g., start and end times for runway closure. Multiple probable futures are simulated for each choice of surface closure operational decision parameter, thereby enabling us to predict not just one value for key airport performance metrics, but multiple probable values each associated with its probability of occurrence.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          MACP is relevant to NASA's AORG that supports R&D airline focused work, including the airline operations center (AOC) & flight deck. AORG seeks to integrate industry ideas with NASA solutions to develop innovative and automated solutions for increasing airline operations efficiency and safety. The AORG is gaining a better understanding of the effects of winter storms on NAS operations (especially airports) and developing knowledge and tools needed to improve efficiency (reduce cancelations and delays). AORG developed a tool called FACT. FACT is a web-based application that would improve winter weather operations within the AOC and at airports. Accessing the MACP would represent a significant shift in airport runway closure decision making processes. The ability to create a reliable data driven CDM process automates the decision process during irregular (non-emergency) operational situations, namely prediction. By having predictive data at hand when multiple decision making processes are active, airport staff have a greater flexibility to focus on safety related aspects - thereby enhancing safety. A quick and easy tool that can provide efficiency and safety benefits, reduce staff workload, and drive data into the multiple management decision making layers would be highly desirable for commercial application. Deploying this tool across a wide variety of airport sizes and types could have a significant positive efficiency impact on the NAS.<br /> <br />What-if scenario analysis decision support tool supports runway closure decision making at the FAA ATCSCC, FAA ARTCCs and AOCs supporting NAS-wide what-if analyses while planning and negotiating potential TMI actions under a CDM operational paradigm. MACP input portals can also be installed at busy TRACONs and Towers so controllers or Traffic Management Coordinators (TMCs) at those facilities can provide real-time inputs on current or forecast local conditions. Airport operations staff is the most reliable local runway closure forecast source and MACP portals provide an expedient approach for generating the most reliable forecasts. Deploying MACP as a web based tool enables airlines and ATCT to share data with central airport tools to improve CDM. Airlines providing expected gate pushback times, high-value flight preferences, ATCT can share data on the expected arrival landing rates, airspace configuration (e.g., what departure-fixes are open for use), expected runway configuration changes, etc. Enhanced non-NASA application includes predicting and managing the closure of any movement area during any selected airfield irregular operational condition. Movement areas may include any surface between the gate and the departure runway surface or may be limited to portions between those points. Movement area closures can be more disruptive to airlines than a runway closure due to extended taxi times, fuel burn, and overall delay.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>93361</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.3.1: Integrated Systems and Ancillary Technologies</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2017-06-09</td></tr>
+<tr><th>Project End Date</th><td>2017-12-08</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>ATAC — Santa Clara, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>William Keller (Principal Investigator); Hanbong Lee (Project Manager) &lt;hanbong.lee@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong> — Airport Movement Area Closure Planner, Phase I Briefing Chart</li><li><strong>Briefing Chart Image</strong> — Airport Movement Area Closure Planner, Phase I Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/93361">https://techport.nasa.gov/projects/93361</a>
+    </div>
+  </div>
+</body>
+</html>

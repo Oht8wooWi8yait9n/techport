@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testing and Extension of Onboard Maneuver Planning Algorithms | NASA TechPort Project 146775</title>
+  <meta name="description" content="The goal of this IRAD is to develop a flight software (FSW) implementation of a maneuver planning algorithm to include in Goddard’s software for autonomous navigation, guidance, and control, called autoNGC. The primary focus of this early-stage innovation is i">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/146775">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 146775</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX17.1.2</span>
+        </div>
+        <h1>Testing and Extension of Onboard Maneuver Planning Algorithms</h1>
+        <div class="meta-id">NASA TechPort Project ID: 146775</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/146775" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The goal of this IRAD is to develop a flight software (FSW) implementation of a maneuver planning algorithm to include in Goddard’s software for autonomous navigation, guidance, and control, called autoNGC. The primary focus of this early-stage innovation is in-house development of maneuver planning FSW, and a secondary focus is cooperating with other NASA centers to assess the potential for incorporating their maneuver planning FSW tools within autoNGC. Developing an autonomous maneuver planning capability for autoNGC meets several key technology needs, including enabling autonomy for position, navigation, and timing (PNT) networks or other distributed systems missions (DSM).</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This research effort will equip NASA&#39;s autoNGC software with enhanced maneuver planning capabilities that can lead to future NASA missions being more autonomous. Innovation is required to transform the more advanced maneuver planning algorithms typically used on the ground into software that can reliably perform autonomously on-orbit with limited computational resources. Ultimately, the autonomous maneuver planning enabled by this work can offer substantial improvements in cost and science return compared to the traditional maneuver planning approach which requires ground operators to remain in-the-loop.</p>  <p>Autonomous maneuver planning supports several key technology need areas that will aid NASA in its pursuit of upcoming targets and opportunities. This IRAD creates resilient autonomous onboard techniques and strategies that support the development of autonomous PNT capabilities. Such PNT abilities are desired for the development of communications networks that support lunar operations and for highly elliptical orbit (HEO), geosynchronous earth orbit (GEO), libration point, planetary, and small body missions that require greater autonomy. Furthermore, autonomous maneuver planning can be enabling of DSM, particularly if these missions are scaled beyond the cislunar regime where light-time delays increase the scheduling impact of keeping ground operators in-the-loop. Even apart from light-time delays some events of scientific interest are highly transient, e.g., plumes at Enceladus, and can only be obtained via an autonomous spacecraft.</p>  <p>Finally, this work will equip engineers with the skills needed to understand software at multiple NASA centers that is created for the purpose of autonomous maneuver planning, and which could be incorporated into the autoNGC architecture. Cross-center collaboration is necessary to ensure the unique capabilities of each center are utilized. </p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>146775</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX17.1.2: Targeting Algorithms</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX10.2.3: Path Planning; TX17.3.1: Onboard Maneuvering, Pointing, Stabilization, and Flight Control Algorithms</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2023-10-01</td></tr>
+<tr><th>Project End Date</th><td>2025-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Moon and Cislunar, Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Robert E Pritchett (Principal Investigator) &lt;robert.e.pritchett@nasa.gov&gt;; Ian M Hammer (Co-Investigator) &lt;ian.m.hammer@nasa.gov&gt;; Lavida D Cooper (Project Manager) &lt;lavida.d.cooper@nasa.gov&gt;; Kendall D Mauldin (Project Manager) &lt;kendall.d.mauldin@nasa.gov&gt;; Bradley T Hill (Project Manager) &lt;bradley.t.hill@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-06-11</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: This project successfully achieved its proposed objectives by implementing and testing onboard maneuver planning algorithms for the autoNGC system on both Starling and CAPSTONE missions. The team completed comprehensive testing from Software-in-the-Loop through Processor-in-the-Loop, validating algorithm performance and establishing operational procedures for flight demonstrations, advancing the technology from TRL 3 to TRL 6 during the IRAD performance period. These accomplishments positioned autoNGC for its first flight demonstrations of autonomous spacecraft operations capabilities in February 2026, which will advance the technology to TRL 7 upon successful completion. The autoNGC project secured significant follow-on funding from the Space Communications and Navigation (SCaN) Program, demonstrating strong return on investment and establishing GSFC&#x27;s competitive position for future missions requiring autonomous navigation and control. The completion of a project does not necessarily indicate that the development work has stopped. The work could potentially continue in the future as a follow-on IRAD; or be used in collaboration or partnership with Academia, Industry, and other Government Agencies. Goddard Space Flight Center’s IRAD program is managed under its Office of Chief Technologist. Activities develop concepts, reduce technology risk, and advance human capital and technological capabilities. Goddard’s IRAD program is highly competitive, opportunity-driven, and 100% strategically aligned with NASA&#x27;s and Goddard&#x27;s strategic priorities. A significant portion of the program is focused on Early Stage Innovations for high-risk, strategically aligned, potential high-payoff technologies that are longer-term or lower TRL.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://etd.gsfc.nasa.gov/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>Diagram of autoNGC cFS Architecture Including Maneuver Planning Capability</strong> — Diagram of autoNGC cFS Architecture Including Maneuver Planning Capability</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/146775">https://techport.nasa.gov/projects/146775</a>
+    </div>
+  </div>
+</body>
+</html>

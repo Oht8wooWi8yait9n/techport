@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objective Detection, Evaluation and Countermeasures for In-flight Depression | NASA TechPort Project 23269</title>
+  <meta name="description" content="Spaceflight environmental and psychological stressors can significantly disrupt one&#x27;s ability to function effectively and efficiently, and the associated performance deficits can seriously jeopardize space missions. Mission success can be jeopardized either di">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23269">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23269</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.3</span>
+        </div>
+        <h1>Objective Detection, Evaluation and Countermeasures for In-flight Depression</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23269</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23269" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Spaceflight environmental and psychological stressors can significantly disrupt one's ability to function effectively and efficiently, and the associated performance deficits can seriously jeopardize space missions. Mission success can be jeopardized either directly, from the potentially life threatening consequences of lapses in performance, or indirectly, by adding to the workload and stress of other crewmembers. The substantial likelihood and potentially serious consequences of neurobehavioral conditions during spaceflight, such as depression, helps explain why the Bioastronautics Roadmap Risk of human performance failure due to neurobehavioral problems is a high priority risk for all mission types (International Space Station (ISS), Moon, Mars). For depression, a variety of therapies are already available, including preventative measures, medications, and psychological consultations with ground-crews. However, current methods to decide whether a therapy needs to be used rely heavily on subjective self-report. The biological basis of mood disorders suggests that neural biomarkers may be able to provide a more objective method for assessing depression and potential performance deficits. The goal of this proposal was to identify neural biomarkers sensitive to, and specific for both detecting depression and assessment of depression severity. In this project, we identified multiple putative brain biomarkers of both the presence/absence of depression as well as of depression severity. These included both structural alterations in regional cerebral gray and white matter, as well as changes in brain function. This work strongly supports the feasibility of using brain measures to more objectively detect and assess depression. While these findings were promising, there is currently no reliable way to monitor brain state or function in spaceflight. Thus, the second important component of our project was development, evaluation, and validation of a novel and flight-capable neuroimaging technology: near-infrared neuromonitoring (NIN). We first developed a novel, noninvasive NINscan 2a device, and then sought to test it in suitable analog settings. A parabolic flight test demonstrated the device's performance in microgravity, and also identified differences in cerebral versus systemic hemodynamic response to changing gravitational fields. The NINscan 2a prototype was also tested during three separate treks to the peak of Mt. Kilimanjaro. These treks demonstrated (1) the system's robustness to remote and extreme environments, (2) its usability by non-experts, and (3) its sensitivity to brain tissue by identifying cerebral hemodynamic changes associated with both altitude and acute mountain sickness induced by hypoxia and hypobaria.     <p></p> In a head-down tilt analog study, we further demonstrated that the NIN technology is only minimally affected by the headward fluid shifts associated with microgravity. Since the NINscan 2a prototype was found to be only modestly sensitive to the small signals associated with brain function, we therefore began development of a second and third new NINscan prototype (3a and TD). Both were designed for significantly improved sensitivity and flexibility. The most recent, NINscan TD, included a novel embedded microcontroller that could serve as the foundation for developing a whole-head NIN imaging instrument. In sum, we identified a number of putative brain-based biomarkers for more objectively detecting depression and assessing its severity. We simultaneously developed and tested novel prototype devices for brain monitoring, including multiple independent tests in analog environments, and demonstration of NIN sensitivity to cerebral hemodynamics. Jointly, these efforts substantially increase the readiness level of using brain monitoring technologies to more objectively assess in-flight depression and perform in-flight brain assessment in general. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Our research activities are expected to have two primary impacts. First, identification of brain-based biomarkers for depression would be useful for the millions of individuals suffering from depression on Earth, by providing a more objective and potentially less expensive and more readily accessible method for evaluating depression. Such a biologically based assessment method could also be used to more objectively track responses to various forms of treatment, including drugs or cognitive/behavior therapy.     <p></p> Second, our technology development efforts have moved the technology readiness level (TRL) of near-infrared neuroimaging to TRL 6, based on our multiple prototypes and five separate analog tests, conducted in parabolic flight, extreme (remote and high altitude) environments, and a head-down tilt fluidic analog of microgravity. Our focus on lightweight, inexpensive and unobtrusive NIN technology will enable brain imaging and monitoring not only during spaceflight, but also in a variety of novel Earth-based contexts including in-office neuroimaging, home-based monitoring (e.g., of sleep apnea), ambulatory monitoring (e.g., of syncope) in rural areas or under-served communities, and first-responder settings (e.g., sporting events, accident scenes, or cases of suspected stroke). Mobile neuromonitoring and neuroimaging is therefore expected to open up entirely new domains of clinical research and practice. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23269</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.3: Behavioral Health and Performance</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2007-10-01</td></tr>
+<tr><th>Project End Date</th><td>2011-10-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>National Space Biomedical Research Institute (NSBRI) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Brigham And Women&#x27;s Hospital, Inc. — Boston, Massachusetts; Massachusetts General Hospital — Charlestown, Massachusetts</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Massachusetts (MA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Gary E Strangman (Principal Investigator); Quan Zhang (Co-Investigator); James Cartreine nee Carter (Co-Investigator); Maurizio Fava (Co-Investigator); Albert Yeung (Co-Investigator); Gregory Feldman (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2020-10-27</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: In the past year, we made significant progress in three primary areas: experimental, computational, and technology development. On the experimental front we completed our neuroimaging study of depression. The goal was to identify more objective brain biomarkers for detecting depression and for assessing depression severity. We recruited 20 depressed individuals (age 30-60, Bachelor&#x27;s degree or higher, un-medicated) along with 19 matched healthy controls and collected data on multiple structural and functional MRI (magnetic resonance imaging) and NIN measures. Measures were examined for (1) their ability to detect depression (Aim 1a), and (2) their ability to assess depression severity (Aim 1b). We identified multiple putative brain biomarkers for both detection and assessment, including both structural and functional brain measures. Manuscripts are in preparation. We also completed data analysis for two analog tests. In our head-down tilt (HDT) study, headward fluid shifts were hypothesized to adversely affect NIN sensitivity while performing our depression study&#x27;s working memory tasks. Modest sensitivity loss was observed during acute -6 degree HDT relative to +45 degree head up tilt, but similar functional activation was still detected by NIN. This demonstrated the sensitivity of NIN to brain function in these tasks (Aim 3), as well as the robustness of NIN to HDT. In our Aug 2010 Kilimanjaro analog study, we examined data from 6 hikers at 6 different altitudes performing Valsalva and Mueller maneuvers. We observed significant increases in cerebral blood volume (CBV) with altitude, but significant decreases in CBV in individuals affected by acute mountain sickness. This demonstrated (1) the ability to perform NIN experiments monitoring cerebral physiology in an extreme environment, (2) the sensitivity of NINscan 2a to cerebral hemodynamics (Aim 3), and (3) provided preliminary evidence that cerebral edema and mild increases in intracranial pressure are involved in acute mountain sickness. On the computational front, we completed analysis of our simulations modeling the distribution of photons migrating through the head. This generated the most detailed maps to date of NIN sensitivity to brain tissue and also supports Aim 3. Sensitivity was found to be more spatially variable than previously assumed, but we identified ways to design probes and devices to compensate for such sensitivity differences. Two manuscripts describing the results of this work are currently under review. On the technology development front, we completed NINscan 3a, a next-generation device that is considerably more sensitive and capable than NINscan 2a. We also completed NINscan TD, a microcontroller-based design that provides even more flexibility (including light and detector gain controls) as well as a proof of concept design for scaling to whole-head neuroimaging. These efforts strongly support the goal of developing technologies suitable for brain imaging in spaceflight (Aim 2).</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Articles in Peer-reviewed Journals</strong> — Strangman GE, Zhang Q, Li Z. &quot;Near infrared photon propagation in the Colin27 brain template: II. Influence of overlying scalp and skull tissue layers.&quot; NeuroImage. In press, as of February 2012., Feb-2012</li><li><strong>Abstracts for Journals and Proceedings</strong> — Zhang Q, Parikh N, Strangman GE. &quot;Filtering Motion and Physiological Artifacts for Mobile Near-Infrared Neuroimaging.&quot; 18th IAA Humans in Space Symposium, Houston, TX, April 11-15, 2011. 18th IAA Humans in Space Symposium, Houston, TX, April 11-15, 2011., Apr-2011</li><li><strong>Articles in Peer-reviewed Journals</strong> — Strangman GE, Zhang Q, Zeffiro T. &quot;Near-infrared neuroimaging with NinPy.&quot; Frontiers in Neuroinformatics 2009;3:12. Published online 2009 May 29. http://dx.doi.org/10.3389/neuro.11.012.2009 ; PMCID: PMC2698776, May-2009</li><li><strong>Articles in Peer-reviewed Journals</strong> — Zhang Q, Yan X, Strangman GE. &quot;Development of motion resistant instrumentation for ambulatory near-infrared spectroscopy.&quot; J Biomed Opt. 2011 Aug;16(8):087008. http://dx.doi.org/10.1117/1.3615248 ; PubMed PMID: 21895335, Aug-2011</li><li><strong>Abstracts for Journals and Proceedings</strong> — Strangman,GE, Parikh N, Zhang Q. &quot;Minimizing motion and physiological artifacts for mobile neuroimaging.&quot; 82nd Annual Scientific Meeting, Aerospace Medical Association, Anchorage, AK, May 8-12, 2011. Aviation, Space, and Environmental Medicine, 2011 Mar; 82(3):231., Mar-2011</li><li><strong>Abstracts for Journals and Proceedings</strong> — Strangman GE, Zhang Q, Zeffiro TA. &quot;Cognitive and sensorimotor assessment via mobile functional near-infrared neuroimaging.&quot; 80th Annual Aerospace Medical Association Scientific Meeting, Los Angeles, CA, May 4-7, 2009. Aviat Space Environ Med. 2009 Mar;80(3):287., Mar-2009</li><li><strong>Abstracts for Journals and Proceedings</strong> — Strangman GE, Supelana C, Holper L, Zeffiro TA. &quot;Brain activity changes measured with near-infrared neuroimaging in a head-down tilt spaceflight analog.&quot; 81st Annual Scientific Meeting of the Aerospace Medical Association, Phoenix, AZ, May 9-14, 2010. Aviation, Space, and Environmental Medicine 2010 Mar;81(3):263., Mar-2010</li><li><strong>Abstracts for Journals and Proceedings</strong> — Strangman GE, Zhang Q. &quot;Applications for Mobile Near Infrared Neuroimaging.&quot; 1st Functional Near Infrared Spectroscopy Meeting, Cambridge, MA, Oct 15-17, 2010. 1st Functional Near Infrared Spectroscopy Meeting, Cambridge, MA, Oct 15-17, 2010. Abstract book, Oct, 2010., Oct-2010</li><li><strong>Abstracts for Journals and Proceedings</strong> — Zeffiro TA, Supelana C, Soulieres I, Strangman GE. &quot;Detection of Prefrontal Cortex Dysfunction Using Functional Neuroimaging.&quot; 18th IAA Humans in Space Symposium, Houston, TX, April 11-15, 2011. 18th IAA Humans in Space Symposium, Houston, TX, April 11-15, 2011., Apr-2011</li><li><strong>Abstracts for Journals and Proceedings</strong> — Zeffiro TA, Zhang Q, Supelana C, Strangman GE. &quot;Brain hemodynamic changes in microgravity measured with near-infrared neuroimaging.&quot; 81st Annual Scientific Meeting of the Aerospace Medical Association, Phoenix, AZ, May 9-14, 2010. Aviation, Space, and Environmental Medicine 2010 Mar;81(3):263., Mar-2010</li><li><strong>Abstracts for Journals and Proceedings</strong> — Zeffiro TA, Zhang Q, Strangman GE. &quot;Brain hemodynamic changes measures with near-infrared spectroscopy during altered gravity.&quot; Next-Generation Suborbital Researchers Conference, Boulder, CO, February 18-20, 2010. Next-Generation Suborbital Researchers Conference Program, February 2010. Abstract #4016. http://www.lpi.usra.edu/meetings/nsrc2010/pdf/4016.pdf, Feb-2010</li><li><strong>Abstracts for Journals and Proceedings</strong> — Zeffiro TA, Marshburn TH, Strauss M, Thompson J, Strangman GE. &quot;Neural mechanisms engaged during spacecraft docking maneuvers.&quot; 80th Annual Aerospace Medical Association Scientific Meeting, Los Angeles, CA, May 4-7, 2009. Aviat Space Environ Med. 2009 Mar;80(3):287., Mar-2009</li><li><strong>Abstracts for Journals and Proceedings</strong> — Strangman GE, Zhang Q. &quot;Developing Neuroimaging Capabilities for Spaceflight.&quot; 18th IAA Humans in Space Symposium, Houston, TX, April 11-15, 2011. 18th IAA Humans in Space Symposium, Houston, TX, April 11-15, 2011., Apr-2011</li><li><strong>Articles in Peer-reviewed Journals</strong> — Strangman GE, Zhang Q, Li Z. &quot;Scalp and skull influence on near infrared photon propagation in the Colin27 brain template.&quot; Neuroimage. 2014 Jan 15;85 Pt 1:136-49. Epub 2013 May 7. http://dx.doi.org/10.1016/j.neuroimage.2013.04.090 ; PubMed PMID: 23660029, Jan-2014</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23269">https://techport.nasa.gov/projects/23269</a>
+    </div>
+  </div>
+</body>
+</html>

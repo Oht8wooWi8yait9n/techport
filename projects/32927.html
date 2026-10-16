@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Use of NDE Techniques for Compliance Verification of Suspect Counterfeit EEE Parts | NASA TechPort Project 32927</title>
+  <meta name="description" content="Genuine microelectronics components are critical to NASA for Human Rating Requirement (HRR) for Manned Follow-On Vehicles and for planetary missions.&amp;nbsp; Counterfeited electrical components could cause failure resulting in loss of mission or, in the case of ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/32927">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 32927</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">OSMA</span>
+          <span class="badge">NDE</span>
+          <span class="badge">TX13.1.5</span>
+        </div>
+        <h1>Use of NDE Techniques for Compliance Verification of Suspect Counterfeit EEE Parts</h1>
+        <div class="meta-id">NASA TechPort Project ID: 32927</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/32927" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Genuine microelectronics components are critical to NASA for Human Rating Requirement (HRR) for Manned Follow-On Vehicles and for planetary missions.&nbsp; Counterfeited electrical components could cause failure resulting in loss of mission or, in the case of manned missions, loss of life.&nbsp; There exists a wide variation of fraudulent/counterfeit electronic components due to the various types of components and their packaging construction.&nbsp; Currently, there exists no single standard inspection test to detect suspect fraudulent/counterfeit parts or to verify component integrity.&nbsp;This task&nbsp;identifies and/or develops nondestructive evaluation methods that can be used by NASA Centers and their suppliers to mitigate the risk of fraudulent/counterfeit electronic parts.&nbsp; The methods will first be implemented by the distributor or their test provider or during the incoming receiving inspection process at the Center.&nbsp; In addition, the methods will be used as a control of in-process (post acceptance) and in-service investigations of suspect fraudulent/counterfeit parts.&nbsp; This will purge NASA hardware of such non-conforming parts and thus increase safety and mission success.</p> <p><strong>Specific inspection issue being addressed and history of inspection problems.</strong><br />Genuine microelectronics components are critical to NASA for Human Rating Requirement (HRR) for Manned Follow-On Vehicles and for planetary missions.&nbsp; Counterfeited electrical components could cause failure resulting in loss of mission or, in the case of manned missions, loss of life.&nbsp; There exists a wide variation of fraudulent/counterfeit electronic components due to the various types of components and their packaging construction.&nbsp; The following examples of suspect counterfeit electronic components in recent Government-Industry Data Exchange Program reports demonstrate this variety:</p><p>Currently, there exists no single standard inspection test to detect suspect fraudulent/counterfeit parts or to verify component integrity.&nbsp; Although loosely used, this process is not called authentication because the term &quot;authentication&quot; is reserved for a process conducted by the original component manufacturer.&nbsp; The original component manufacturer owns the intellectual property and the original test hardware and software used in the original manufacturing of the component.&nbsp; However, once the parts enter the supply chain, the manufacturer will never retest the parts.&nbsp; Testing conducted by distributors or by independent third party test service providers is called &quot;product verification&quot;.&nbsp; Industry product verification in the supply chain must then be conducted as a series of nondestructive and destructive tests because counterfeiters of electronic parts continue to evolve their methods to mask evidence of remarking or resurfacing.&nbsp; Most recent counterfeiters are now assembling used parts, with unknown history and reliability issues, into new packages that have no evidence or remarking or resurfacing.&nbsp; These practices force the user or test service providers to continually upgrade product verification methods.</p><p>&nbsp;</p><p><strong>Details on how completion of this task will increase safety and mission assurance.</strong><br />It is the intention of this task to identify and/or develop nondestructive evaluation methods that can be used by NASA Centers and their suppliers to mitigate the risk of fraudulent/counterfeit electronic parts.&nbsp; The methods will first be implemented by the distributor or their test provider or during the incoming receiving inspection process at the Center.&nbsp; In addition, the methods will be used as a control of in-process (post acceptance) and in-service investigations of suspect fraudulent/counterfeit parts.&nbsp; This will purge NASA hardware of such non-conforming parts and thus increase safety and mission success.</p><p>Details on how this work supports specific Programs and Program elements.<br />Nondestructive evaluation methods for component verification will form a key part of the overall NASA risk mitigation methods for addressing the threat of fraudulent/counterfeit electronic parts that could be installed in NASA hardware.&nbsp; This work supports all programs as specified in NASA Policy Directive, NPD 8730.2C, released in November 2008.&nbsp; Specifically, this NASA (electrical, electronic, and electromechanical) Parts policy addresses &quot;mandatory&quot; mitigation of counterfeit electronic parts and applies to NASA Headquarters, NASA Centers, including Component Facilities, NASA programs and projects, and to the JPL and other NASA contractors and grantees as delineated in their contracts or grants.&nbsp; In addition, NPD 8730.2C applies to flight hardware, critical ground support equipment (GSE), and critical ground test systems used in Category 1 and Category 2 projects as defined by NPR 7120.5D, NASA Space Flight Program and Project Management Requirements, and/or Class A, B, or C payloads as defined by NPR 8705.4, Risk Classification for NASA Payloads, Appendix A.</p><p>&nbsp;</p><p><strong>What achievements, to date, have been made on the task?</strong><br />A novel non-destructive method has been identified for detection of counterfeit hardware.&nbsp; The method is referred to as the DTEK Quantitative Optical Inspection system and involves optically measuring or quantifying the surface of electronic components to subsequently use for comparative analysis.&nbsp; Electronic parts are placed under the optical measurement machine, which quantifies the subtle patterns on the surface of the component.&nbsp; These patterns are then compared to a &quot;known gold standard&quot; or to each other.&nbsp; The software can detect pattern differences and identify any components that fall out of the expected limits of variation.&nbsp; The method is very quick and can easily be incorporated into receiving inspection type operations.&nbsp; The company, Covisus, maintains the software and library of gold standards along with the analysis.&nbsp; The service and machine are provided for a yearly fee.&nbsp; A contract has been completed between JPL and Covisus and the machine is currently set up in the JPL Receiving Inspection area.&nbsp;&nbsp;&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p><strong>What still needs to be done and when is it expected to be completed?</strong><br />The DTEK Quantitative Optical Inspection machine needs to be incorporated into the Receiving Inspection flow, gold standards developed and an analysis performed to assess the cost and benefit of using the machine.&nbsp; In addition, JPL must partner with other centers to share the current technique information, potentially share libraries and also identify any other non-destructive techniques that may be explored.&nbsp;</p><p>&nbsp;</p><p><strong>Center Point of Contact</strong><br />John E. O&#39;Donnell, (818) 354-4636</p><p>&nbsp;</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>It is the intention of this task to identify and/or develop nondestructive evaluation methods that can be used by NASA Centers and their suppliers to mitigate the risk of fraudulent/counterfeit electronic parts.&nbsp; The methods will first be implemented by the distributor or their test provider or during the incoming receiving inspection process at the Center.&nbsp; In addition, the methods will be used as a control of in-process (post acceptance) and in-service investigations of suspect fraudulent/counterfeit parts.&nbsp; This will purge NASA hardware of such non-conforming parts and thus increase safety and mission success.</p><p>Details on how this work supports specific Programs and Program elements.<br />Nondestructive evaluation methods for component verification will form a key part of the overall NASA risk mitigation methods for addressing the threat of fraudulent/counterfeit electronic parts that could be installed in NASA hardware.&nbsp; This work supports all programs as specified in NASA Policy Directive, NPD 8730.2C, released in November 2008.&nbsp; Specifically, this NASA (electrical, electronic, and electromechanical) Parts policy addresses &quot;mandatory&quot; mitigation of counterfeit electronic parts and applies to NASA Headquarters, NASA Centers, including Component Facilities, NASA programs and projects, and to the JPL and other NASA contractors and grantees as delineated in their contracts or grants.&nbsp; In addition, NPD 8730.2C applies to flight hardware, critical ground support equipment (GSE), and critical ground test systems used in Category 1 and Category 2 projects as defined by NPR 7120.5D, NASA Space Flight Program and Project Management Requirements, and/or Class A, B, or C payloads as defined by NPR 8705.4, Risk Classification for NASA Payloads, Appendix A.</p> <p>Same as above.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>32927</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Office of Safety and Mission Assurance (OSMA)</td></tr>
+<tr><th>NASA Program</th><td>Nondestructive Evaluation Program (NDE)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX13.1.5: Ground and Surface Logistics</td></tr>
+<tr><th>Project Start Date</th><td>2013-10-01</td></tr>
+<tr><th>Project End Date</th><td>2015-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jose C Abesamis (Project Manager) &lt;jose.carlos.s.abesamis@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Terrence W Wilcutt (Program Director); Jason P Moore (Program Manager) &lt;jason.p.moore@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2018-10-10</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="http://nnwg.org/innovations/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><a href="http://trs-new.jpl.nasa.gov/dspace/bitstream/2014/43866/1/11-2642_A1b.pdf" target="_blank" rel="noopener noreferrer">Counterfeit Parts Avoidance Training for EEE Parts, Carlo Abesamis, 16-Sep-2011</a></li><li><strong>DTEK 2.0 </strong> — Counterfeit part avoidance system</li><li><strong>Groupings</strong> — There is a clear difference between counterfeit and authentic groupings using the DTEK Quantitative Optical Inspection machine.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/32927">https://techport.nasa.gov/projects/32927</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Design and Integration of a Distributed Fan Propulsion System within a Split-Wing | NASA TechPort Project 8493</title>
+  <meta name="description" content="A baseline propulsion system has been designed as a starting point in a previous SBIR effort for this project which consists of two turboshaft engines, a generator coupled directly (no gearbox) with each engine, and electric cables to motors that drive shroude">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/8493">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 8493</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX01.3.9</span>
+        </div>
+        <h1>The Design and Integration of a Distributed Fan Propulsion System within a Split-Wing</h1>
+        <div class="meta-id">NASA TechPort Project ID: 8493</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/8493" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          A baseline propulsion system has been designed as a starting point in a previous SBIR effort for this project which consists of two turboshaft engines, a generator coupled directly (no gearbox) with each engine, and electric cables to motors that drive shrouded fans installed in or over the wing. For this baseline, there are eight fans per wing, and the turboshaft engines use kerosene fuel as the energy source. One major issue faced by this type of configuration is the propulsion integration of not only the structure with motors in a split wing, but also the aerodynamics of such a configuration. In the previous study, high pressure recovery inlets, exhaust nozzle area control, thrust vectoring and variable pitch fans were considered, along with the initial layout of the entire structural integration. The work proposed here aims to further address these concerns and outline a potential fan, inlet and nozzle design methodology for split-wing distributed propulsion. This methodology can be turned into a design tool, for which the framework will be created as part of this study to be fully completed in a possible Phase II. In addition, and most important to this topic, several aerodynamic aircraft concepts have also been looked at under currently supported work with California Polytechnic State University on their N+2 NRA contract to study future CESTOL aircraft and during internal study efforts at ESAero. The work proposed here will complement much of that work by taking a better look at some novel integration arrangements in the configurations. This will specifically address overall vehicle efficiency by looking at the aerodynamic concepts inherently designed into the aircraft. This will be an important part of the study, as a properly integrated distributed propulsion system will offer the means to reduce "specific" fuel consumption, thereby increasing aircraft operating efficiencies to reduce overall mission fuel burn.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Currently, three major military tactical airlift vehicles are being considered. The C-130 replacement, the EAGL C-5 replacement out of AFRL, and the Joint Future Theater Lift also out of AFRL. The design methodology applied here to regional airliners can be modified for various sizes of cargo aircraft in a straightforward manner, and can be provided as early as the end of Phase I to these organizations to these on-going military mission studies. The propulsion system additionally can be applied to all of the programs. With the anticipated volume of the wings, fuselage and empennage of the anticipated transport aircraft, there is plenty of adequate room to integrate a cryogenically-cooled electric distributed propulsion system with minimal effect on the outer moldlines of the chosen configuration, as the design and integration and potential Phase II analysis would demonstrate. The resulting UAVs from the methodology would be smaller and more efficient than current fuel powered aircraft. With the considerations currently being discussed within NASA and FAA, the noise of the proposed propulsion system and aerodynamic concepts would be less than that of UAVs flying today. A large UAS, like the Global Hawk, or the maritime version, Broad Area Maritime Surveillance can benefit greatly from the proposed propulsion system as an increase of efficiency will lead to longer loiter times for the BAMS mission and longer range flights for Air Force Reconnaissance missions.<br /> <br />The benefits to civil aviation literally apply to all of the important goals established by NASA for the N+3 time frame. These goals include reduced fuel burn with the attendant reduction in emissions, reduced community noise due to the very low jet velocities of the distributed fans, improved safety with the use of a common electrical bus connecting the engine power to the fans and a prospect for STOL aircraft design due to the versatility of engine and fan cycles between takeoff and cruise. Funding this research could provide the NASA with a better look at the cryogenically cooled superconducting electric distributed propulsion system, which was shown in a previous SBIR proposal to carry substantial benefits over SOTA and even future competing propulsion systems. The Tasks proposed here are directly applicable to NASA's current SSFW directives and a complement to its current activities in not only the SBIR arena, but also the NRA arena specific to these types of aircraft. NASA is looking for improved subsonic transport aerodynamics and noise improvements, of which need to be incorporated early in the aircraft design process.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>8493</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.3.9: Hybrid Electric Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2010-01-29</td></tr>
+<tr><th>Project End Date</th><td>2010-07-29</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Empirical Systems Aerospace, Inc. (ESAero) — Pismo Beach, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Ohio (OH)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Mark Waters (Principal Investigator); Mark A Waters (Principal Investigator) &lt;mark.a.waters@nasa.gov&gt;; Hyun D Kim (Project Manager) &lt;hyun.d.kim@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/8493">https://techport.nasa.gov/projects/8493</a>
+    </div>
+  </div>
+</body>
+</html>

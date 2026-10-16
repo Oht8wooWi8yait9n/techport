@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Substrucured, Meshless and Parametric Modeling of Vibroacoustic Systems | NASA TechPort Project 16791</title>
+  <meta name="description" content="Aerospace structures are often subjected to a broad spectrum of mechanical and/or aerodynamic excitations and, therefore, there is a real need for the development of a modeling technique which can be used for the vibroacoustic analysis, with high fidelity and ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/16791">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 16791</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX12.5.2</span>
+        </div>
+        <h1>Substrucured, Meshless and Parametric Modeling of Vibroacoustic Systems</h1>
+        <div class="meta-id">NASA TechPort Project ID: 16791</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/16791" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Aerospace structures are often subjected to a broad spectrum of mechanical and/or aerodynamic excitations and, therefore, there is a real need for the development of a modeling technique which can be used for the vibroacoustic analysis, with high fidelity and adequate spatial and spectral resolutions, of complex systems over the entire frequency range. A dynamic system typically exhibits distinctively different response characteristics as frequency increases. In recognizing the complicated behavior of a structure, the modeling methods in dynamic analysis are usually classified into low, mid, and high frequency models. A substructure-based modeling technique, based on enhanced Fourier Spectral Element Method (FSEM), that is applicable all frequencies, is proposed for the modeling of complex dynamic systems. This method also does not require meshing as is traditionally used in discretization methods such as finite and boundary element methods.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Engineering tools that increase the quality of the environment and life of instruments are very important. For example, the development of space vehicles and space stations requires the prediction of vibration levels to assess the fatigue life of critical components and noise levels to ensure the comfort and functionality levels of crew members. The software product developed as part of the proposed project will enable NASA to effectively evaluate and apply noise and vibration control procedures spanning the entire frequency spectrum. It will also substantially reduce the effort involved in the design of products since the proposed development offers a truly unique and far-advanced modeling capability and unparalleled ease-of-use at mid-frequencies without involving any secondary artificial or derived model variables. The software will also enhance NASA's ability to evaluate the acoustic environment and resulting vibration in the payload bay of launch vehicles, diffuse sound field excitation on payloads during rocket launch, ground qualification, and structural integrity of airframes. Manufacturers of aircraft engines and components will also find the software useful for analysis and design.<br /> <br />The proposed development will also extend and enhance the computational modeling capabilities in many industries such as automotive, naval, heavy equipment and consumer products. Customers often equate quality of a product with its sound and vibration performance. As a result of elevated demand for quieter products from customers together with the increased government regulations, manufactures of products with noise problem in all industries are searching for effective ways to make products with improved noise characteristics. For example, in automotive industry, the increased use of multi-media and telemetric devices demands quieter vehicle interiors and the manufacturers and suppliers of interior products not only need to consider functionality, but also the noise control capability of the products. Consequently, there is increasing demand for tools based on computer simulation that can be used to guide design at the early design stage. Furthermore, the software can be adapted to evaluate and improve radiated noise from engines, exhaust, tires, etc. It can be used to evaluate and improve consumer products such as compressors, air conditioners, hair dryers, vacuum cleaners, and washing machines.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>16791</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX12.5.2: Vibroacoustics</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2013-05-23</td></tr>
+<tr><th>Project End Date</th><td>2013-11-23</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Comet Technology Corporation — Ann Arbor, Michigan</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Michigan (MI), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Satha Raveendra (Principal Investigator); Albert R Allen (Project Manager) &lt;albert.r.allen@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-05-06</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Substrucured, Meshless and Parametric Modeling of Vibroacoustic Systems, Phase I Project Image</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart Image</li><li><strong>Briefing Chart</strong> — Substrucured, Meshless and Parametric Modeling of Vibroacoustic Systems, Phase I</li><li><strong>Briefing Chart Image</strong> — Substrucured, Meshless and Parametric Modeling of Vibroacoustic Systems, Phase I</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/16791">https://techport.nasa.gov/projects/16791</a>
+    </div>
+  </div>
+</body>
+</html>

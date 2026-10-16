@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dual Output Bidirectional DC-DC Isolated SiC-based Power Converter | NASA TechPort Project 125316</title>
+  <meta name="description" content="The current trend in power electronics is to create a module solution to achieve higher densities and functionality. The advanced current and future NASA missions need more plug and play solutions, therefore the concept of combining power electronics modules t">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/125316">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 125316</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX03</span>
+        </div>
+        <h1>Dual Output Bidirectional DC-DC Isolated SiC-based Power Converter</h1>
+        <div class="meta-id">NASA TechPort Project ID: 125316</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/125316" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The current trend in power electronics is to create a module solution to achieve higher densities and functionality. The advanced current and future NASA missions need more plug and play solutions, therefore the concept of combining power electronics modules to create a compact multi-input and multi-output power box is becoming the norm in advancing the state-of-the-art. Hence, the goal of this project is to develop multi-port and multi-direction power modules, which are modular / interchangeable and highly efficient, resulting in design flexibility, improved control, as well as weight and volume savings. The project outcomes are also expected to give rise to expanded mission range, expanded operational envelope, and increased prime power for instrumentation and propulsion.  The goal is to advance the development of a modular triple active bridge (TAB) DC-DC power conversion interface as part of DC distribution systems or local DC microgrids in international space stations or spacecrafts. Of particular interest is the development of a versatile power module for use in lunar and planetary surface power management and distribution systems.  We are targeting to achieve (a) a low weight and thermally efficient compact design, yielding to a gravimetric power density of 6.6kW/kg and specific power density of 9.15kW/L, using an efficient design and a high-frequency PCB-wound planar transformer. The proposed novel control and modulation technique is likely to facilitate (a) minimization of conduction and switching losses, (b) loop decoupling to enable simultaneous regulated power flow toward both the output ports, (c) bidirectional power flow enabling both DC bus-to-battery charging and battery-to-other DC loads discharging capabilities, and (d) a high rated load efficiency at full load, and a much higher efficiency compared to conventional TAB converters in light load and non-unity voltage gain operation.    To extend the space mission lifetime, radiation tolerant SiC MOSFETs, and power circuits that take advantage of these power devices are extremely valuable. CoolCAD&rsquo;s SiC technology provides an efficient and high-density power circuit solution for use in conjunction with solar panels, batteries as well as other power management and distribution systems. Our technology blends the innovation in power device as well as power converter circuit and control level to enable a bidirectional triple active bridge (TAB) dual output DC-DC conversion interface. The converter with 6.6 kW/kg power density can transfer regulated power flow with 97% rated-load and 91% light-load efficiency that are 6% to 8% higher compared to conventional TAB converters. Higher possible operable temperature of SiC MOSFETs and hence lower cooling needs cut down the cost of missions and allow more real estate for critical payload. The high-degree of modularity and configurability of the proposed design eases down the output power scalability and thus considerably relaxes R&amp;D effort in any subsequent modifications.  &nbsp;    Technical Objectives:&nbsp;   	 	97% efficient three-port isolated DC-DC power converter with 150 W/in3 power density and 6.6 kW/kg specific power 	 	 	Radiation tolerant SiC power device modeling and fabrication 	 	 	Omnidirectional regulated power flow with port voltage control and its implementation on a digital platform 	 	 	Maximum efficiency tracking over a wide load power and voltage gain range enabled by multi-variable switching modulation 	 	 	Machine learning-enabled auto-tuning of TAB control parameters for loss minimization with voltage regulation&nbsp; 	 	 	PCB-integrated planar magnetics-enabled power density enhancement of the power converter 	     Deliverables:&nbsp;   	 	Design: Optimization, characterization, and fabrication of SiC dual-output three-port DC-DC converter (projected efficiency: 97% at 10 kW rated load, power density: 9.15kW/L and 6.6kW/kg). 	 	 	Simulation: Electro-thermal coupled co-simulations of the TAB converter verified through CoolSPICE/MATLAB 	 	 	Hardware: Prototype: Fault-tolerant and EMI-compliant dual-output DC-DC power converter prototype with SiC MOSFETs 	 	 	Report: Electrical simulation model of the complete system (power converter and control/driver circuit) and experimental results (including raw data of the voltage/current waveforms and thermal images) 	 	 	Documentation: Tutorial written to NASA on fabricating SiC multi-port DC-DC converter with SiC gate driver integrated circuits 	   &nbsp;
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The planned space stations such as Gateway, and the future lunar and planetary surface missions for establishing bases, for example, on the Moon and eventually on Mars, require low mass and high efficiency modular power electronic regulators. The plug-and-play power module units with autonomous smart control schemes similar to those that we build are pivotal to manage and distribute power across a grid such as that needed, for example, at a future lunar base. Such a base requires high power levels and long distribution networks.  &nbsp;  Applications of harsh environment SiC power electronics include (a) power management and distribution systems in military and commercial vehicles, (b) automotive engine control electronics, (c) electrical actuators and motor drives for aircraft jet engines, (d) compressors in geothermal, oil and gas extraction, (e) deep-well drilling telemetry modules and gas turbine electric actuation systems.  &nbsp;
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>125316</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX03: Aerospace Power and Energy Storage</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 4 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2022-04-14</td></tr>
+<tr><th>Project End Date</th><td>2026-01-31</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>CoolCAD Electronics, LLC — College Park, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD), Ohio (OH)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Akin Akturk (Principal Investigator); Xavier Collazo Fernandez (Project Manager) &lt;xavier.collazofernandez@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/125316">https://techport.nasa.gov/projects/125316</a>
+    </div>
+  </div>
+</body>
+</html>

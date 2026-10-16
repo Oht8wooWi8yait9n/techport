@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapid Data Analytics Platform using Machine Learning | NASA TechPort Project 158748</title>
+  <meta name="description" content="NASAs vast collection of simulated, experimental, and observational datasets has paved the way for groundbreaking advancements in addressing real-world physical challenges. In particular, NASA has made significant investments in developing state-of-the-art sim">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158748">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158748</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX11</span>
+        </div>
+        <h1>Rapid Data Analytics Platform using Machine Learning</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158748</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158748" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          NASAs vast collection of simulated, experimental, and observational datasets has paved the way for groundbreaking advancements in addressing real-world physical challenges. In particular, NASA has made significant investments in developing state-of-the-art simulation software for climate modeling, aerodynamics, space vehicle launch environments, etc. These software tools along with large computing resources available to NASA scientists enable highly detailed simulations of physical phenomena. There is a need to address the big data bottleneck so that these data can be efficiently stored, shared, and analyzed while providing accessibility to a range of users, from the scientists with large HPC resources at their disposal to downstream users lacking the said resources.  In this Phase II SBIR project, RNET and FAU will develop an advanced data management and analytics platform that is designed specifically to address the big data challenges associated with high-fidelity scientific simulation data hosted by NASA and other agencies. We employ a reduce-then-analyze strategy. Our approach combines modern machine learning and traditional computational mechanics based discretization to provide robust and interpretable compression. The use of a computational mechanics framework makes the compressed data amenable to accelerated data analytics without the need to first decompress. The platform aims to provide best-in-class compression-to-error ratios, exceptionally fast point-wise decompression, and a geometry-preserving data format to significantly reduce computational, storage, and bandwidth costs. Seamlessly assimilated into existing scientific data analytics pipelines (e.g., NetCDF, HDF5, PANGEO) and engineered to operate on a wide range of compute resources, this powerful platform will ensure that scientists across all levels of expertise can harness the transformative capabilities embedded in highly detailed simulation datasets.  NASA has made significant investments in developing state-of-the-art simulation software for climate modeling, aerodynamics, space vehicle launch environments, etc. These software tools along with access to large computing resources enable highly detailed simulations of physical phenomena. There is a need to address the big data bottleneck so that these data can be efficiently stored, shared, and analyzed while providing accessibility to a range of users.  In this project, RNET and FAU will develop an advanced data analytics platform. Anchored by a state-of-the-art data reduction algorithm, this platform will use best-in-class compression-to-error ratios, fast point-wise decompression, and a geometry-preserving data format to significantly reduce the computational, storage, and bandwidth costs typical of high-fidelity data analytics. &nbsp;Seamlessly assimilated into existing data analytics pipelines, and engineered to operate on a wide range of compute resources, this platform will ensure that users across all levels can harness the transformative capabilities of high-fidelity datasets.  The Phase II effort will focus on three technical objectives; 1) further optimization of the climate modeling (for example, GEOS-5 data) compressor; 2) tight integration of the developed platform with the existing data management and analytics workflows for seamless operation and adaptability our tool; and 3) demonstrate the potential of our DLS rapid analytics platform in fields outside of climate modeling.&nbsp;  The goal of the first technical objective is to increase the compression ratios achieved using the Phase I GEOS-5 compressor. Increased compression ratios will be achieved through 3D compression, Bit Grooming, and adaptive enrichment selection. To achieve the second objective, the team will develop a DLS HDF5 filter plugin; a Python-based, PANGEO compatible, rapid analytics package; and a rapid analytics command line tool. For the final objective, the project team will develop a DLS rapid analytics pipeline for fast, simple, and accurate processing of FUN3D simulation data.&nbsp; &nbsp;
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The platform will have an immediate impact on applications that deal with huge volumes of scientific data. NASA programs that would see a near-instant impact from this platform include the Earth Information System (EIS), the Earth Science Data and Information System (ESDIS) Project, the EarthData Citizen Science for Earth Systems Program (CSESP), the Making Earth System Data Records for Use in Research Environments (MEaSUREs), and the ESDS MultiMission Data Processing System Study.&nbsp;  Beyond NASA, the proposed platform will have an immediate impact on industries that use high-fidelity simulation data as part of an informed decision-making process, including the Automotive industry, the Aerospace industry, and the Oil and Gas industry.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158748</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11: Software, Modeling, Simulation, and Information Processing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 3 | Target End TRL: 7</td></tr>
+<tr><th>Project Start Date</th><td>2024-07-08</td></tr>
+<tr><th>Project End Date</th><td>2027-07-07</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>RNET Technologies, Inc. — Dayton, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Ohio (OH)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Ben O&#x27;Neill (Principal Investigator); Sharadchandra N Gavali (Project Manager) &lt;sharad.gavali@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-07-29</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158748">https://techport.nasa.gov/projects/158748</a>
+    </div>
+  </div>
+</body>
+</html>

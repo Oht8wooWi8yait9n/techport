@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deorbit Object with Navigation (DOWN) | NASA TechPort Project 185549</title>
+  <meta name="description" content="NASA seeks a low-cost and effective method to ensure that all future satellites have postmission disposal. NASA-STD-8719.14C states “NASA space programs and projects are to plan for the disposal of a space structure,,,at the end of their respective missions.” ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/185549">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 185549</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX09</span>
+        </div>
+        <h1>Deorbit Object with Navigation (DOWN)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 185549</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/185549" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          NASA seeks a low-cost and effective method to ensure that all future satellites have postmission disposal.  NASA-STD-8719.14C states “NASA space programs and projects are to plan for the disposal of a space structure,,,at the end of their respective missions.” More than 8 million kgs of debris has accumulated in the near-Earth space environment and if the growth of debris continues, then collisions between satellites and debris will increase in frequency resulting in even more debris. The best way to prevent these future collisions is to remove satellites at the end of their mission. There currently is not a bolt-on non-toxic propulsion system that can provide both a means to deorbit the satellite and do so in a controlled way. What is needed is a smart bolt-on and productized propulsion system that uses autonomous navigation software to coordinate and manage a controlled deorbit. This new system would enable an entire constellation of satellites to be disposed of with minimal human effort.   Benchmark Space Systems (BSS) is a leader in space mobility and has multiple commercial product propulsion solutions. BSS proposes to adapt our current bolt-on kits into a Deorbit Object with Navigation (DOWN) bolt-on kit utilizing our in-development ASCENT thrusters and our SmartAIM™ GNC control software for rapid, safe, and controlled disposal of satellites either with direct reentry or Earth escape. The utilization of existing BSS bolt-on kits to base DOWN on greatly accelerates this project. BSS will develop a conceptual design (TRL 4) of the DOWN kit family and perform a system-level analysis as a proof-of-concept to validate the design.  Intended markets for this include any companies or agencies manufacturing satellites or developing missions that require controlled disposal at the end of the mission. Additional customers of interest include companies engaged in the building of a constellation of satellites such as Starlink or Project Kuiper.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Ensuring that future spacecraft are disposed of at mission’s end and stopping the proliferation of orbital debris is of critical importance and relevance to NASA. NASA-STD-8719.14C states that “collision with orbital debris is a risk of growing concern as historically-accepted practices and procedures have allowed artificial objects to accumulate in Earth orbit. To limit future debris generation, NPR 8715.6 requires each program and project to conduct a formal assessment of the potential to generate orbital debris during deployment, mission operations, and after the mission has been terminated.” The desire is to avoid the Kessler Syndrome where debris impacts beget more debris impacts exponentially until LEO is littered with mission-ending fragments. It goes on to direct “postmission disposal maneuvers are to be carefully planned to avoid collisions with other tracked objects in the environment.” Controlled disposal is of critical importance if we want to avoid collisions that will create more debris. In 2023, 97% of all satellites launched were small satellites with a mass less than 1201 kg. Therefore, adding propulsion to small satellites so they can be reliably disposed of in a safe controlled way is extremely important to NASA, the DOD, and satellite companies.  Potential NASA applications of the DOWN kit are the disposal of satellites and other spacecraft at the end of their mission in a controlled and economical manner, collision avoidance with other spacecraft, safe orbital insertion of satellites, stationkeeping, and control moment gyro desaturation (if equipped).  Phase I aims to achieve progress towards “1430 – Small Spacecraft Propulsion” and “701-Green Propellant Propulsion Systems” of NASA’s 2024 Civil Space Shortfall Ranking. It will also provide NASA, the DOD, and satellite customers with a reliable and controlled means to dispose of their spacecraft with varying levels of autonomy.  Future regulations will likely mandate that all satellites be easily disposed of after use. Customers such as commercial satellite operators (e.g. Viasat or OneWeb) will want to stay compliant by having a reliable means of disposing their satellites and will direct satellite manufacturers (such as Blue Canyon Technologies) to provide it for sale.  The US Department of Defense (DOD), specifically the US Space Force, has a vested interest in reducing the amount of space debris in Earth orbit to protect their expensive and vitally important tranche of satellites. As such, the DOD will direct that their future satellite acquisitions include a reliable means of disposal that does not put other DOD space assets in danger of collision.  The DOWN kit can also easily be modified to become a kick stage for small satellites or to avoid collisions with other satellites. These are all capabilities that the space Market has been requesting for years if done in an economical and timely manner. There is also the possibility of using the DOWN-equipped satellite to push a derelict satellite for a “two for one” disposal.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>185549</td></tr>
+<tr><th>Acronym</th><td>DOWN</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09: Entry, Descent, and Landing</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX17: GN&amp;C</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2025-09-29</td></tr>
+<tr><th>Project End Date</th><td>2026-03-27</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Vermont (VT)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Low Earth Orbit</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Mark W Mcelroy (Principal Investigator) &lt;mark.w.mcelroy@nasa.gov&gt;; Michael T Gaunce (Project Manager) &lt;michael.t.gaunce@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-19</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/185549">https://techport.nasa.gov/projects/185549</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doppler Wind and Temperature Sounder: IR Limb Emission Sensor Development | NASA TechPort Project 94411</title>
+  <meta name="description" content="Key Objectives: We propose to develop and test, in the laboratory and from a balloon platform, a prototype limb emission sensor that will eventually be the basis for a space based high altitude temperature and wind sounder referred to as DWTS (Doppler Wind and">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/94411">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 94411</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">H-TIDeS</span>
+          <span class="badge">TX08.1.1</span>
+        </div>
+        <h1>Doppler Wind and Temperature Sounder: IR Limb Emission Sensor Development</h1>
+        <div class="meta-id">NASA TechPort Project ID: 94411</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/94411" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Key Objectives: We propose to develop and test, in the laboratory and from a balloon platform, a prototype limb emission sensor that will eventually be the basis for a space based high altitude temperature and wind sounder referred to as DWTS (Doppler Wind and Temperature Sounder). The goal of the proposed work is to further the development of this sensor and to verify in-orbit calibration procedures by flying it on a high altitude balloon. This will bring the DWTS technology to a high TRL level in preparation for orbital operations.  Objective Details: The project objectives are to 1. Build a prototype DWTS instrument, 2. Demonstrate the required performance of the critical subsystems in the laboratory, then 3. Further demonstrate the performance on a number of high altitude balloon flights that will exercise the in-orbit calibration procedures. Most critical of these is the calibration and removal of stray light for which we will demonstrate the efficacy of on-board procedures using the sun and moon as natural calibration sources. GATS Inc. of Newport News, VA will lead instrument design, development and construction through contracts to LASP of Boulder, CO and Brandywine Photonics of Exton, PA.  Instrument testing will produce detailed characterization of the instrument, including, but not limited to, absolute pixel response, spectral response, stray light, pixel flat fielding, and response to thermal changes. We will also develop and demonstrate an on-board data processing system required for an orbiting DWTS instrument.  Virginia Tech of Blacksburg, VA will perform integration and operation of the balloon flights. This work will also be part of a small satellite initiative designed to train Virginia Tech students in space mission technology. All DWTS sensor components are commercial-off-the-shelf, or minor modification of COTS components.  Significance: DWTS is a very simple system composed of one or more channels, with each channel comprised of an IR camera and spectral filtering provided by a gas cell along with a broadband filter. By using a novel implementation of gas filter correlation radiometry (GFCR), this simple, small, static, inexpensive IR camera can measure the Doppler broadening and shift of thermal emission spectra, allowing the simultaneous inference of wind and temperature from lower mid stratosphere to over 200 kilometers, continuously, day and night, every 10 kilometers along-track. DWTS could revolutionize global monitoring of upper altitude winds and temperature. Therefore, the data provided by such a system directly addresses ITM science. Beyond the ITM, data from a constellation of DWTS sensors could provide the next leap in both long-term surface weather forecasting and space weather “now casting”, by supplying global coverage of high altitude temperature and winds at unprecedented accuracy and spatial resolution. In addition, the instruments will provide a wealth of thermosphere research data, including the extension of temperature and nitric oxide emission products now being supplied by the SABER instrument on the aging HSO TIMED mission. DWTS measurements would directly address the NASA Heliophysics STP program goal of understanding the dynamical coupling between lower and upper atmosphere. DWTS could supply data to understand these mechanisms continuously from lower stratosphere up to mesosphere and into the mid to upper thermosphere, and the goal of forecasting upper atmosphere weather.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Support NASA's Heliophysics strategic science objectives to understand the Sun and its interactions with Earth and the solar system, including space weather. This will be achieved by developing/demonstrating instrumentation technology necessary to address the following science goals: Explore the physical processes in the space environment from the Sun to the Earth and throughout the solar system; Advance our understanding of the connections that link the Sun, the Earth, planetary space environments, and the outer reaches of our solar system; Develop the knowledge and capability to detect and predict extreme conditions in space to protect life and society and to safeguard human and robotic explorers beyond Earth.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>94411</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Heliophysics Technology and Instrument Development for Science (H-TIDeS)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.1: Detectors and Focal Planes</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 4 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2018-01-21</td></tr>
+<tr><th>Project End Date</th><td>2023-12-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>GLOBAL ATMOSPHERIC TECHNOLOGIES AND SCIENCES (GATS) — Newport News, Virginia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Brandywine Photonics LLC; University of Colorado Boulder Laboratory for Atmospheric and Space Physics (LASP) — Boulder, Colorado; Virginia Polytechnic Institute and State University (VA Tech) — Blacksburg, Virginia; GATS, Inc. — Newport News, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO), Pennsylvania (PA), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Sun</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Larry L Gordley (Principal Investigator); Brentha Thurairajah (Co-Investigator); John Fisher (Co-Investigator); Amal Chandran (Co-Investigator); Scott M Bailey (Co-Investigator); Justin Carstens (Co-Investigator); Della L Boscana (Co-Investigator); Benjamin T Marshall (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Roshanak Hakimzadeh (Program Director) &lt;hakimzadeh@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-03-03</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/94411">https://techport.nasa.gov/projects/94411</a>
+    </div>
+  </div>
+</body>
+</html>

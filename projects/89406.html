@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developing Principles for Effective Human Collaboration with Free-Flying Robots | NASA TechPort Project 89406</title>
+  <meta name="description" content="Aerial robots hold great promise in supporting human activities during space missions and terrestrial operations. For example, free-flying robots may automate environmental data collection, serve as maneuverable remote monitoring platforms, and effectively exp">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/89406">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 89406</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX04.4.1</span>
+        </div>
+        <h1>Developing Principles for Effective Human Collaboration with Free-Flying Robots</h1>
+        <div class="meta-id">NASA TechPort Project ID: 89406</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/89406" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Aerial robots hold great promise in supporting human activities during space missions and terrestrial operations. For example, free-flying robots may automate environmental data collection, serve as maneuverable remote monitoring platforms, and effectively explore and map new environments. Such activities will depend on seamless integration of human-robot systems. The objective of this research is to advance fundamental knowledge of human-robot interaction (HRI) principles for aerial robots by developing new methods for communicating robot status at a glance as well as robot interface technologies that support both proximal and distal operation. This work will design a signaling module that maps robot communicative goals to signaling mechanisms, which can be used in robot software architectures in a manner analogous to common robot motion planning modules. Additionally, this work will examine how robot interface design requirements differ for crew and ground control and develop techniques for scaling control systems across interaction distances.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This research will advance fundamental knowledge of human-robot interaction (HRI) principles for aerial robots by developing new methods for communicating robot status at a glance as well as robot interface technologies that support both proximal and distal operation.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>89406</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX04.4.1: Multimodal and Proximate Interaction</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2016-10-03</td></tr>
+<tr><th>Project End Date</th><td>2020-10-02</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Colorado Boulder — Boulder, Colorado</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Daniel Szafir (Principal Investigator); Terrence W Fong (Project Manager) &lt;terry.fong@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong>: NASA missions increasingly depend on the seamless integration of human-robot systems to accomplish critical mission goals. In particular, an emerging class of free-flying robots appears to hold great promise in complementing human space exploration activities. For example, remotely operated or semi-autonomous free-flyers on board the International Space Station (ISS), such as the Astrobee platform, may assist mission endeavors by automating environmental data collection (e.g., ISS housekeeping and in-flight maintenance), serving as a maneuverable remote monitoring platform for ground control, and acting as a robotic telepresence platform. In addition, free-flyers might also support lunar or planetary surface exploration (e.g., as with the Mars Ingenuity platform), working in conjunction with mobile ground robots (“rovers”) and potentially human astronauts as part of a diverse team. This research focused on building knowledge regarding how such robots may effectively collaborate with users and integrate into human environments, such as the ISS. In exploring how such robots may serve as collaborative partners for human activities in NASA work contexts, our two primary objectives have been developing: (1)new methods for communicating robot status at a glance and (2) scalable robot interface technologies that support both proximal and distal operation. Over the course of this award, we have advanced the state-of-the-art across both of these objectives while also investigating several additional topics related to human-robot teaming, including developing new computational models for robots interacting with groups of humans, exploring robots that can change shape to enhance safety and/or communicate with users, and investigating how robots may recover from failures. This award has led to 10 full conference publications, of which 2 won Best Papers and another won a Best Paper Nominee, 2 journal publications, and 7 workshop papers, posters, and other presentations. We provide more details on the various aspects of these research contributions in the next sections.</li><li><strong>Transitioned To</strong>: the project team will develop better understandings of responders&#x27; needs and concerns around robot-collected data, algorithms and visualizations that meet those needs using augmented reality technologies, and systems that integrate well with responders&#x27; actual work practices.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/89406">https://techport.nasa.gov/projects/89406</a>
+    </div>
+  </div>
+</body>
+</html>

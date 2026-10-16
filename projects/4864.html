@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interfacial Instability in Two-Phase Flow: Manipulating Coalescence and Condensation | NASA TechPort Project 4864</title>
+  <meta name="description" content="Two-phase flow under microgravity conditions presents a number of technical challenges ( and ). Life support and habitation depend on systems that use two-phase flow (Human Health, Life Support and Habitation Systems, , Figure 2) as do Thermal Management Syste">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/4864">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 4864</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX14.2.2</span>
+        </div>
+        <h1>Interfacial Instability in Two-Phase Flow: Manipulating Coalescence and Condensation</h1>
+        <div class="meta-id">NASA TechPort Project ID: 4864</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/4864" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Two-phase flow under microgravity conditions presents a number of technical challenges ( and ). Life support and habitation depend on systems that use two-phase flow (Human Health, Life Support and Habitation Systems, , Figure 2) as do Thermal Management Systems (). The central goal stated in is to develop systems with reduced mass that are capable of handling high heat loads with fine temperature control. For example, this applies to a two-phase pumped loop system (section 2.2.3.2) where waste heat is stored as latent heat. In order to achieve the goals stated above, it is necessary to understand how the physics of pool boiling and drop-wise condensation are affected by low gravity. Maintenance of high heat-transfer in both processes along with efficient means of condensate removal and collection are keys to achieving high heat loads. In pool boiling, the heat transfer is limited by how fast the bubbles can be removed from the heat-transfer surface. Under microgravity where buoyancy is absent, coalescence of smaller sized bubbles into a larger bubble next to the surface is favored. Therefore the heat transfer will be substantially lower because of the inability to sustain liquid contact at the heater surface. Furthermore, forced convection will be weaker because of slower detachment rates. In drop-wise condensation, traditional condensate removal methods have relied on gravity. The proposed work seeks to overcome the limitations of low-gravity by instituting both passive (surface-energy gradients) and active (mechanical excitation) ways to control wettability of drops, thereby allowing for directed drop motion. The drop transport rate, or the rate at which the drops can be cleared from the surface, will be a function of nucleation, growth and coalescence rates. A device which 'simulates' condensation under low gravity will be used to decouple and quantify these effects. The device consists of a perforated glass plate where the drops are fed through the micron-sized holes using a syringe pump from a reservoir connected below the plate. Nucleation rates will be studied by modeling the dependence of drop shape, contact-line deformation, and growth rate of nucleating drops on the type and geometry of surface inhomogeneity (cavity versus long skinny crack) and density of sites. A physical model predicting under what conditions liquid will remain trapped in a cavity will also be developed. Drop growth will be studied by modeling how the dynamic contact-angle, position and velocity of the drop change for each of the three potential modes of growth: coalescence with other drops, collection of the liquid film trail left by another drop, and condensation from the saturated vapor directly onto the drop. Image analysis will be used to calculate the parameters of interest stated above. A final goal will be to compare and contrast the 'simulated' condensation with actual condensation.  Three surface treatments will be used on the device: a purely superhydrophobic coating, a wettability gradient created by vapor-diffusion of a silane compound, and a series of nanoscale spikes which force the drop into a Cassie state combined with application of a macroscopic wettability gradient. Questions such as how the distribution of the drops will change with time, how the distributions will affect nucleation, growth and coalescence rates and how the distributions will vary between the three surfaces will be answered by collecting statistics on the drops. The distributions will be used as a diagnostic tool to figure out the dominate rates.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Life support and habitation depend on systems that use two-phase flow (Human Health, Life Support and Habitation Systems) as do Thermal Management Systems. The central goal stated is to develop systems with reduced mass that are capable of handling high heat loads with fine temperature control. In order to achieve those goals, it is necessary to understand how the physics of pool boiling and drop-wise condensation are affected by low gravity. Maintenance of high heat-transfer in both processes along with efficient means of condensate removal and collection are keys to achieving high heat loads.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>4864</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX14.2.2: Heat Transport</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-08-01</td></tr>
+<tr><th>Project End Date</th><td>2015-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Cornell University — Mableton, Georgia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>New York (NY)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Paul Steen (Principal Investigator); Ashley M Macner (Co-Investigator) &lt;ashley.m.macner@nasa.gov&gt;; Eugene K Ungar (Project Manager) &lt;eugene.k.ungar@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: During dropwise condensation from vapor onto a cooled surface, distributions of drops evolve by nucleation, growth, and coalescence. Drop surface coverage dictates the heat transfer characteristics and depends on both drop size and number of drops present on the surface at any given time. Thus, manipulating drop distributions is crucial to maximizing heat transfer. On earth, manipulation means sweeping or dripping of larger drops, which is achieved with gravity. However, in applications for small length scales or in low gravity environments, other methods of removal, such as a surface energy gradient, are required. This study examines how chemical modification of a cooled surface affects drop growth and coalescence, which in turn influences how a population of drops evolves. Steam is condensed onto the underside of a horizontally oriented surface that has been treated by silanization to deliver either a spatially uniform contact angle (hydrophilic, hydrophobic) or a continuous radial gradient of contact angles (hydrophobic to hydrophilic). The time evolution of number density and associated drop size distributions are measured. For a uniform surface, the shape of the drop size distribution is unique and can be used to identify the progress of condensation. In contrast, the drop size distribution for a gradient surface, relative to that for a uniform surface, shifts toward a population of small drops. The frequent sweeping of drops truncates maturation of the first generation of large drops and locks the distribution shape at the initial distribution. The absence of a distribution shape change indicates that dropwise condensation has reached a steady state. Previous reports of heat transfer enhancement on chemical gradient surfaces can be explained by this shift toward smaller drops. Higher heat transfer coefficients in dropwise condensation are attributed to smaller median drop size. Terrestrial applications using gravity as the primary removal mechanism also stand to benefit from inclusion of gradient surfaces because the critical threshold size required for drop movement is reduced. Traditional condensing substrates were restricted to copper and other metals and the substrates were chemically treated to promote dropwise condensation. More recently, other alternatives to traditional metal substrates such as silicon wafers, glass, and plastics, are being investigated for use as condensing substrates. Both silicon wafers and plastics can be physically textured. The atomic smoothness of silicon wafers make them ideal substrates for nanofabrication of micro- and nano-sized structures to create a physically textured landscape. In the case of plastic substrates, the commercialization of 3D printing has opened up endless possibilities in terms of printing low cost substrates with different physical textures. Currently, the highest resolution available is on the order of a few microns. As the technology improves and higher resolutions are obtained (on the order of a few nm), then 3D printing of substrates could pave the way for low cost ‘designer’ surfaces. The main disadvantages of these designer surfaces, in addition to glass and silicon wafers, is their low thermal conductivity. Consequently, the heat transfer coefficient for these surfaces is much lower than that of metallic surfaces. For a low thermal conductivity surface, the latent heat released by the drop as it condenses is not conducted away fast enough before more heat is transferred through the drop. This leads to a competition of time scales between the drop and the substrate. If the thermal conductivity of the substrate is poor enough, the growth rate of the drop could slow down and eventually stop because of the retention of heat by the substrate. In previous literature, a steady-state conduction model for a single drop with the assumption of a constant temperature difference between the steam and the condensing surface is always used. This approach is only valid when the substrate is infinitely conductive. In the case of low thermal conductivity, as will be the case for 3D printed designer surfaces, glass, and silicon wafers, this model is not appropriate because there will be a severe reduction in heat transfer for a range of drop sizes. The value of the cutoff depends on both the thermal properties of the substrate and of the condensate. To this end, we simulate the entire transient portion of dropwise condensation with a Matlab routine for the cases of an assumed constant temperature difference and a measured single drop growth rate. While statistical steady state condensation at longer times is of interest from a technology standpoint, accurate simulation of the transient state is important to understanding steady-state. Steady-state dropwise condensation is really a statistical state consisting of a collection of transient dropwise condensation cycles occurring in parallel. Traditional simulation of dropwise condensation has focused on making comparisons with experimental drop-size distributions at single instants in time, typically at later times, after the process has reached a statistical steady-state. The measured constant growth rate, not the constant temperature difference model, is required for agreement between simulation and experiment for low thermal conductivity substrates. The constant temperature difference was inadequate at capturing the growth rate of the largest sized drops which contributed the most to the total condensed volume. The population averaged drop growth rate was measured from experiment using a single drop tracking algorithm, also developed in Matlab, to track a collection of drops. The simulation reasonably predicted the time evolution of the number density of drops, the fractional coverage, the normalized condensate volume, and the median drop radius for condensation experiments performed on a horizontal hydrophobic surface exposed to coolant temperatures of 1°C, 3°C, 30°C, and 50°C. The surface was a glass substrate that had been chemically coated with dodecyltricholorosilane via vapor deposition. It was found that use of a constant temperature difference grossly under predicted the heat transfer, as measured by calculating the condensate volume from images at each instant. Additionally, the amount of liquid condensed on the surface was independent of the cooling temperature for the coolant temperature range investigated. Also, it was observed that simulating with fixed nucleation sites yields good agreement at earlier times whereas simulating with random nucleation yielded better agreement at later times. This surprising result suggests that more nucleation sites are being activated as condensation progresses. The nucleation sites might get activated as drops coalesce and sweep adjacent surface areas, possibly leaving behind small packets of liquid on the defects. Finally, it was shown with a prototype 1D steady-state conduction model for growth of a single cylindrical film on a substrate that the growth rate of the film thickness is constant for a low thermal conductivity substrate and inversely proportional to the film height for an infinitely conducting solid. As the field move towards lighter materials for condenser surfaces, it will be important to develop different computational tools that are better able to predict the progression of condensation on a low thermal conductivity substrate because of the important implications for energy costs in heat transfer applications.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>4864-1363186966406.jpg</strong> — Project Image Interfacial Instability in Two-Phase Flow: Manipulating Coalescence and Condensation</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/4864">https://techport.nasa.gov/projects/4864</a>
+    </div>
+  </div>
+</body>
+</html>

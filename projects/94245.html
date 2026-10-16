@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fire Danger Assessment System (FDAS) | NASA TechPort Project 94245</title>
+  <meta name="description" content="A fire danger dataset for the continental US based on satellite hydrology information, this can be updated monthly and used operationally to distribute fire response resources. &amp;nbsp;The project involved working together with fire-community end-users and devel">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/94245">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 94245</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">JPL IRAD</span>
+          <span class="badge">TX11.2.4</span>
+        </div>
+        <h1>Fire Danger Assessment System (FDAS)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 94245</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/94245" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>A fire danger dataset for the continental US based on satellite hydrology information, this can be updated monthly and used operationally to distribute fire response resources. &nbsp;The project involved working together with fire-community end-users and developing a data product that can be utilized for future NASA research solicitations in hydrology, disasters, and applied sciences programs, as well as other agency (e.g. NOAA) program solicitations.</p><p>Quantify fire-moisture relationships. &nbsp;At seasonal to annual time-scales, we will use the published relationships between sea surface temperatures and regional fire likelihood as a baseline predictor for a good or bad fire year [Chen et al., 2016], and extend this methodology to include terrestrial water storage information from GRACE. &nbsp;That long-term prediction will then be combined with a seasonal-to-monthly predictive approach based on surface moisture conditions [Rousseau et al., 2015]. &nbsp;We also will use GRACE-assimilated land surface model outputs of surface soil moisture (top 2.5 cm) at 12.5-km resolution in the continental US. &nbsp;At sub-seasonal time-scales (i.e. daily to monthly) we will use assimilated soil moisture and AIRS VPD to estimate future fire risk [e.g., Stavros et al., 2014]. &nbsp;The GFED4 fire occurrence and burned area database [Giglio et al., 2013], which has several significant improvements compared with earlierGFED versions, will be used with the predictor variables in a multi-regression approach that employs efficient parameterization. This results in a multi-variable algorithm for global seasonal/monthly/weekly fire danger. &nbsp;Two additional exploratory analyses will be undertaken if time permits: (i) Investigation of whether canopy and ground fuel moisture can be predicted using the SMAP vegetation water content product; (ii) Investigation of ECOSTRESS data usefulness and predictive viability. &nbsp;Both are subject to data quality and availability limitations. A remote sensing-based methodology for wall-to-wall fuel moisture levels would be extremely valuable to fire managers for optimizing suppression and firefighting resources.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The simultaneous existence of multiple JPL water cycle satellite missions (SMAP, AIRS, GRACE/GRACE-FO) now creates the opportunity to make major advancements in operational fire-risk assessment. It is now possible and worth developing a global fire prediction system, based on NASA Earth satellite observations to bridge a relationship with the operational fire community in the US and globally. Early research efforts have laid the technical foundation for a global fire prediction system, now we endeavor to combine these techniques and make the system fully realized.</p><p>By assessing the current capabilities and based on the outcomes of the proposed research we will identify key observational gaps and requirements to enhance prediction of fire potential and provide insights on the type of airborne or satellite observing system that can help fill the gaps. &nbsp;This work will also expand the JPL Climate Center portfolio as fire occurrence and intensity are expected to grow in a warming climate.</p><p>A system like this does not currently exist. &nbsp;In the United States, operational fire risk assessment is based on atmospheric reanalysis, and is limited to the timescales of a weather forecast (i.e. on the order of 3-10 days). &nbsp;Full information on pre-season conditions has been demonstrated to be useful, but is currently limited by interpolation between sparse networks. NASA satellites are one of the only means of obtaining this type of information on surface and atmospheric conditions with sufficient spatiotemporal coverage and resolution. This is expected to be useful for NOAA and the US forest service in their seasonal fire-risk assesments.</p><p>Fires are costly in terms of lives and property lost, as well as in the resources spent in their prevention and suppresion. Before the fire season in the United States, significant federal resources are allocated to regions nationally based on the pre-season fire risk assessment. &nbsp;This is done by the National Interagency Fire Center (NIFC). &nbsp;However, gaps in the methodology leading to these risk assessments have been identified, limiting its ability to inform resource managers. &nbsp;These gaps include a lack of quantitative data on the environmental conditions that lead to fire occurrence, and a reliance on a relatively sparse network of fuel moisture measurements. &nbsp;Fire danger is a function of availability and amount of fuels, moisture of fuels, atmospheric and meteorological conditions and ignition risk. &nbsp;Furthermore, the driving agent of fire danger varies by region. &nbsp;Current operational risk assessments don&#39;t use NASA satellite observations of these variables to assess fire danger.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>94245</td></tr>
+<tr><th>Acronym</th><td>FDAS</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: JPL IRAD (JPL IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.2.4: Science Modeling</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 7 | Current TRL: 8 | Target End TRL: 9</td></tr>
+<tr><th>Project Start Date</th><td>2016-10-01</td></tr>
+<tr><th>Project End Date</th><td>2018-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of California-Irvine — Irvine, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>John T Reager (Principal Investigator) &lt;john.reager@jpl.nasa.gov&gt;; Ali Behrangi (Co-Investigator); Natasha Stavors (Co-Investigator) &lt;Erica.N.Stavros@jpl.nasa.gov&gt;; Fred Y Hadaegh (Project Manager) &lt;fred.y.hadaegh@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Fred Y Hadaegh (Program Manager) &lt;fred.y.hadaegh@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-04-24</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Fire Danger Assesment System</strong> — This is an image of (a) individual fire occurrence and (b) burned area for the continental U.S., compared with the observed fire occurrence (c) and observed burned area (d).</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/94245">https://techport.nasa.gov/projects/94245</a>
+    </div>
+  </div>
+</body>
+</html>

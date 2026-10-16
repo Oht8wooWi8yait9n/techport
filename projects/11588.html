@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CubeSat Proximity Operations Demonstration (CPOD) | NASA TechPort Project 11588</title>
+  <meta name="description" content="The CubeSat Proximity Operations Demonstration (CPOD) project will demonstrate rendezvous, proximity operations and docking (RPOD) using two 3-unit (3U) CubeSats. Each CubeSat is a satellite with the dimensions 4 inches x 4 inches x 13 inches (10 centimeters x">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/11588">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 11588</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SST</span>
+          <span class="badge">TX17.2.5</span>
+        </div>
+        <h1>CubeSat Proximity Operations Demonstration (CPOD)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 11588</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/11588" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The CubeSat Proximity Operations Demonstration (CPOD) project will demonstrate rendezvous, proximity operations and docking (RPOD) using two 3-unit (3U) CubeSats. Each CubeSat is a satellite with the dimensions 4 inches x 4 inches x 13 inches (10 centimeters x 10 centimeters x 33 centimeters) and weighing approximately 11 pounds (5 kilograms). This flight demonstration will validate and characterize many new miniature low-power proximity operations technologies applicable to future missions. This mission will advance technologies for nanosatellite attitude determination, navigation and control systems, in addition to demonstrating relative navigation capabilities.</p><p>CPOD will demonstrate the ability of the two spacecraft to remain at determined points relative to each other, which is known as relative station keeping. CPOD will also demonstrate precision circumnavigation and docking. Docking will employ the use of a novel universal docking device, imaging sensors, and a multi-thruster cold gas propulsion system.</p><p>Many of the proximity operations test scenarios will be performed autonomously using high-performance, on-board processors and flight software. The satellite design leverages existing and next-generation, high performance systems, including sensors and flight software for guidance, navigation and control. The CPOD satellites have 3-axis attitude determination and control and large power charging capacity and storage. The system also contains a half-duplex (one-way communication) ultra high frequency (UHF) communications system with a high-speed, S-band downlink for payload data transfer.</p><p>The two satellites will be deployed into orbit together and will initially undergo a series of checkout steps to ensure proper operation and maneuvering capability. Once the initial checkout is complete, the two spacecraft will separate and continue checkout to then begin the proximity operations. The space-to-ground data link from each satellite will enable transmission of images of the other satellite. The two spacecraft will use an inter-satellite link to share GPS and other data.</p><p>Using on-board navigation systems, one satellite will perform a series of circumnavigation maneuvers relative to the second satellite in order to validate and characterize performance of the new miniature sensors. After the sensors have been characterized, the chaser satellite will begin closing the distance to the first satellite during a series of planned maneuvers. Finally, when they have reached a close relative range, they will conduct the last portion of the mission by engaging the docking mechanism and performing a full docking of the two spacecraft.</p><p>This mission opens a new frontier for exploration and operations with small spacecraft. The maturation of these capabilities will enable new applications for small spacecraft to explore asteroids, planets, moons, and to inspect other spacecraft. In addition, the CPOD mission enhances the capability of small spacecraft to work in coordination with one another for observations or to become in space building blocks for more sophisticated systems.</p><p><strong>Fast Facts:</strong></p><ul><li>The entire sequence of rendezvous, proximity operations, and docking (RPOD) of CPOD’s two 3U CubeSats will mark the first occurrence of this operation between 3U CubeSats in orbit.</li><li>The RPOD operational sequence will be performed autonomously, without control from the ground.</li><li>CPOD’s propulsion system occupies the center section of each 3U spacecraft. A total of eight thrusters per spacecraft allow the precise maneuvering required for the RPOD sequence.</li><li>The CPOD mission launched on May 25, 2022 from Cape Canaveral Space Force Station in Florida aboard a Falcon 9 rocket as part of SpaceX’s Transporter-5 mission.</li></ul>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The CPOD mission will validate and characterize several miniature, low-power proximity operations and relative station keeping technologies applicable to future science, exploration and space operations missions. In addition to demonstrating relative navigation capabilities, the mission will advance the state of the art in nanosatellite attitude determination, navigation and control systems.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>11588</td></tr>
+<tr><th>Acronym</th><td>CPOD</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Spacecraft Technology (SST)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX17.2.5: Rendezvous, Proximity Operations, and Capture Sensor Processing and Processors</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 5 | Current TRL: 7 | Target End TRL: 7</td></tr>
+<tr><th>Project Start Date</th><td>2012-11-01</td></tr>
+<tr><th>Project End Date</th><td>2022-12-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Tyvak Nano-Satellite Systems Inc. — Irvine, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California; Applied Defense Solutions Inc.; California Polytechnic State University-San Luis Obispo (Cal Poly) — San Luis Obispo, California; Vacco Industries — El Monte, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Marco A Villa (Principal Investigator) &lt;marco.a.villa@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Christopher E Baker (Program Director) &lt;christopher.e.baker@nasa.gov&gt;; Roger Hunter (Program Manager) &lt;roger.c.hunter@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>CPOD Factsheet</strong></li><li><a href="https://doi.org/10.1109/AERO.2015.7119124" target="_blank" rel="noopener noreferrer">CubeSat Proximity Operations Demonstration (CPOD) mission update (2015 IEEE Conference)</a></li><li><a href="https://www.nasa.gov/directorates/spacetech/small_spacecraft/cpod_project.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><a href="https://www.nasa.gov/image-article/nasa-partner-demonstrate-first-time-orbit-docking-of-two-cubesats/" target="_blank" rel="noopener noreferrer">NASA, Partner to Demonstrate First-Time In-Orbit Docking of Two CubeSats</a></li><li><a href="https://doi.org/10.1016/j.actaastro.2018.03.033" target="_blank" rel="noopener noreferrer">Overview and GNC design of the CubeSat Proximity Operations Demonstration (CPOD) mission (Acta Astronautica Volume 153, December 2018)</a></li><li><a href="https://www.nasa.gov/smallspacecraft/cpod-project/" target="_blank" rel="noopener noreferrer">CPOD Project Page</a></li><li><a href="https://digitalcommons.usu.edu/smallsat/2015/all2015/17/" target="_blank" rel="noopener noreferrer">CubeSat based Rendezvous, Proximity Operations, and Docking in the CPOD Mission (2015)</a></li><li><strong>CPOD Docking</strong> — The Tyvak Nano-Satellite Systems, Inc. de-signed CPOD 3U CubeSat incorporates a suite of RPOD sensors, high performance low power processors, modular flight soft-ware, and an advanced control system that includes a multi-thruster propulsion system.</li><li><strong>CPOD Team</strong> — Image of CPOD spacecraft with team from Terran Orbital.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/11588">https://techport.nasa.gov/projects/11588</a>
+    </div>
+  </div>
+</body>
+</html>

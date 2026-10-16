@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scalable Data Acquisition System for MKID Detectors | NASA TechPort Project 158687</title>
+  <meta name="description" content="Alphacore is developing a low cost, scalable data acquisition system (SDAS) centered around an innovative application-specific integrated circuit (ASIC) for Microwave Kinetic Inductance Detectors (MKIDs). The SDAS ASIC will have 14 bits for digitization (Analo">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158687">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158687</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX08</span>
+        </div>
+        <h1>Scalable Data Acquisition System for MKID Detectors</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158687</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158687" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Alphacore is developing a low cost, scalable data acquisition system (SDAS) centered around an innovative application-specific integrated circuit (ASIC) for Microwave Kinetic Inductance Detectors (MKIDs). The SDAS ASIC will have 14 bits for digitization (Analog to Digital Conversion  ADC) and 14 bits or more precision for carrier tone generation (Digital to Analog Conversion  DAC), with each channel handling 4GHz of bandwidth (instantaneous bandwidth of  8GHz at 4GS/s per ASIC and tunable bandwidth range of 16GHz) along with an on-chip low jitter PLL while consuming very low power per detector readout chain. In Phase I we successfully optimized, fabricated, and tested high-speed, low-power 5GS/s ADC and DAC CMOS designs, proving functionality of the chips at room temperature and pre-irradiation, completed radiation testing, and developed strategies include a sophisticated model for improving the radiation tolerance of the parts. The single-channel SDAS ASIC prototype complete system was successfully integrated using optimized ADC, DDS and interface with DSP. Full radiation testing of the ADC was also completed with very successful results: it was established that these designs clearly meet the hardness requirements of the target missions. The ADC and DAC designs are silicon tested and optimized for resolution. A second tapeout is scheduled in Feb 2024 (using Alphacores internal funding) that will easily surpass NASA requirements. Firmware including RTL code for AMD/Xylinx Ultrascale MPSoC has been developed and hardware demonstrated. A combination of low power, time-interleaving ADC/DACs with innovative calibration architectures enabled Alphacores designs to achieve high frequency operation at high resolution while consuming ultra-low power. Current estimation of total power, including the MPSoCs FPGA computation, is less than 5.2W/1GHz, which will also be improved in Phase II.   Far-infrared (FIR) space astrophysics missions have used arrays of cryogenically cooled bolometers and photoconductors for imaging and direct detection spectroscopy. Superconducting TES bolometers and MKIDs are currently the leading sensors used for sensitive, large-format detector arrays for far-infrared through millimeter-wave instruments. Both these sensors are operated in cryogenic temperatures and need room-temperature operating SDAS systems for both biasing of the sensor and readout of the sensor data. Current SOTA readout electronics are mostly built using COTS components incorporated into custom boards &nbsp;that do not meet the requirements for power consumption and radiation tolerance required for space missions, while still being expensive. To alleviate this problem, Alphacore is developing a low cost, scalable data acquisition system (SDAS) centered around an innovative rad-hard silicon ASIC. The development of this commercial solution will enable wider accessibility, lower cost, provide opportunities for use in other applications and improve reliability and support.  Objectives: 1.&nbsp;&nbsp; &nbsp;Optimize the ADC, DAC and low jitter PLL designs based on the Phase I radiation testing results 2.&nbsp;&nbsp; &nbsp;Integration of full system ASIC (PLL+ ADC + DAC) and use Alphacore&rsquo;s existing high speed I/O and send the readout ASIC for fabrication 3.&nbsp;&nbsp; &nbsp;Complete package design, RF board design and ASIC evaluation 4.&nbsp;&nbsp; &nbsp;Design interface boards to couple ADCs and DACs to commercial FPGA development boards (e.g. Kintex Ultrascale radhard MPSoC) using FMC-like connector- Couple ADCs and DACs to SpaceCube interface (GSFC)&nbsp; 5.&nbsp;&nbsp; &nbsp;Complete impelentation of firmware and software on MPSoC 6.&nbsp;&nbsp; &nbsp;Complete MKID SDAS system tests and characterization of performance Deliverables: 1.&nbsp;&nbsp; &nbsp;Kickoff meeting within 30 days of contract start. 2.&nbsp;&nbsp; &nbsp;Technical review within six months 3.&nbsp;&nbsp; &nbsp;Software for MKID Readout Implemented on MPSoC 4.&nbsp;&nbsp; &nbsp;2 Evaluation boards to evaluate the SDAS ASIC Delivered to NASA (with the ASICs on them) 5.&nbsp;&nbsp; &nbsp;Final report including detailed ASIC layout and simulation results &nbsp;
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Alphacore&#39;s ASIC will support NASA radiometer microwave sensors for a wide range of Earth observation missions. The ASIC can be scaled to support the KID array readout. In addition, it will offer critical data collection benefits to the &ldquo;eight prioritized programs&rdquo; identified by NASA in its 2023 Decadal Survey as medium-class New Frontiers Missions, namely: Centaur orbiter and lander, Ceres sample return, Comet surface sample return, Enceladus multiple flyby, Lunar Geophysical Network, Saturn probe, Titan orbiter, and Venus In Situ Explorer.  Non-NASA applications for this technology includes future CMB experiments and transition-edge sensor bolometer and MKID type of superconducting photon. They will also help axion and weakly interreacting massive particle searches.&nbsp; The SDAS can also support readout for large array MKIDs used to provide visibility through degraded visual environments such as dense fog.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158687</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08: Sensors and Instruments</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 5 | Current TRL: 5 | Target End TRL: 7</td></tr>
+<tr><th>Project Start Date</th><td>2024-07-27</td></tr>
+<tr><th>Project End Date</th><td>2026-07-26</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Alphacore, Inc. — Tempe, Arizona</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Arizona (AZ), California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Outside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Phaneendra Bikkina (Principal Investigator); Lynn M Torres (Project Manager) &lt;lynn.m.torres@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-07-29</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158687">https://techport.nasa.gov/projects/158687</a>
+    </div>
+  </div>
+</body>
+</html>

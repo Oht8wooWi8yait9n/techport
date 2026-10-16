@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leveraging Chaos in Mission Design | NASA TechPort Project 24751</title>
+  <meta name="description" content="A trajectory design tool is sought to leverage chaos and nonlinear dynamics present in multi-body gravitational fields to design ultra-low energy transfer trajectories, with applications to continuously thrusting spacecraft. Specifically invariant manifolds as">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/24751">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 24751</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX11.5.1</span>
+        </div>
+        <h1>Leveraging Chaos in Mission Design</h1>
+        <div class="meta-id">NASA TechPort Project ID: 24751</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/24751" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          A trajectory design tool is sought to leverage chaos and nonlinear dynamics present in multi-body gravitational fields to design ultra-low energy transfer trajectories, with applications to continuously thrusting spacecraft. Specifically invariant manifolds associated with liberation points will be leveraged in an algorithm to generate initial solutions which will be fed into higher fidelity optimization tools. The tool will be used in a case study to design an interplanetary transfer trajectory for a CubeSat using solar electric propulsion. By combining the inherent efficiency of solar electric propulsion, with the fuel savings available through invariant manifold trajectory design, it is expected the required fuel will be cut significantly, as compared to spacecraft using chemical rockets and Hohmann transfers. The research will contribute to the proliferation of new in-space propulsion systems by providing a simulation-based design tool specifically targeted at such systems. Thus the research answers the call of TABS sections 2.4, In-Space Propulsion Supporting Technology, and 11.18 Simulation Based Systems Engineering.  Furthermore, as the algorithm is computationally improved, the trajectory software may be implemented onboard spacecraft, enabling online trajectory design and optimization. Therefore the research meets the call of TABS section 4.5, Autonomy. Finally, ultra-low energy trajectories can be used to cheaply send scouting spacecraft for precursor missions. CubeSat missions, enabled by the proposed research, could serve to study and map human exploration destinations prior to human arrival. Thus the proposed research meets the calls for Destination, Reconnaissance and Mapping, as in section 7.1.1, as well as Modeling, Simulations and Destination Characterization, as in section 7.6.1.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The research will contribute to the proliferation of new in-space propulsion systems by providing a simulation-based design tool specifically targeted at such systems. Thus the research answers the call of TABS sections 2.4, In-Space Propulsion Supporting Technology, and 11.18 Simulation Based Systems Engineering.  Furthermore, as the algorithm is computationally improved, the trajectory software may be implemented onboard spacecraft, enabling online trajectory design and optimization. Therefore the research meets the call of TABS section 4.5, Autonomy. Finally, ultra-low energy trajectories can be used to cheaply send scouting spacecraft for precursor missions. CubeSat missions, enabled by the proposed research, could serve to study and map human exploration destinations prior to human arrival. Thus the proposed research meets the calls for Destination, Reconnaissance and Mapping, as in section 7.1.1, as well as Modeling, Simulations and Destination Characterization, as in section 7.6.1.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>24751</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.5.1: Tools and Methodologies for Defining Mission Architectures and Mission Design</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2014-08-01</td></tr>
+<tr><th>Project End Date</th><td>2018-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Stanford University — Stanford, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Sigrid Close (Principal Investigator); Travis Swenson (Co-Investigator) &lt;travis.e.swenson@jpl.nasa.gov&gt;; Martin W Lo (Project Manager) &lt;martin.w.lo@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: In recent years there has been a growing interest in missions to multibody systems. In particular, Jupiter and its Galilean moons have become targets of a great deal of scientific investigation, and are now a primary focus of space exploration efforts because they are believed to have the potential to harbor life. Several missions to explore these icy moons are planned for the upcoming decades, including the Jupiter Icy Moon Explorer (JUICE), Europa Clipper, and Europa Lander. These missions have complex architectures that demand innovative trajectory solutions leveraging the dynamics of multibody systems, as well as the ability to perform rapid and well-informed design iteration. The qualitative exploration of multibody trajectory solutions requires knowledge of the underlying dynamical structures, invariant manifolds, tube-like structures formed by the set of trajectories asymptotic to a given periodic orbit, which form the basis of multibody analysis and design. Although our understanding multibody dynamics has advanced greatly in recent decades, there is still much to learn. In particular, the range of energies over which invariant manifolds govern transit orbits in the three-body problem is unknown. In the four-body problem there exists no strong theorems on this subject at all. In order to meet mission requirements, a deeper understanding of the dynamical structures present in multibody systems is needed. To address these gaps in knowledge, we investigate the role of invariant manifolds in controlling transit orbits of the planar three-body and four-body problems. This objective is achieved through a study of the topology of the equilibrium regions, the spaces surrounding Lagrange points, of the three-body and four-body problems. By visualizing trajectories directly in the energy surface, we will make clear the governing role of invariant manifolds at the most basic, physical level. With this insight we build upon Conley&#x27;s foundational theorems and show that invariant manifolds of the three-body problem govern transit orbits over a much larger range of energies than previously proven. Our understanding of the topology of the neck region, the bottleneck shaped region of allowable motion near the first and second Lagrange points, will allow us to Page 2 – Revised 02/2018 derive a method to approximate the four-body problem as an effective three-body problem at a perturbed energy level, and show that the invariant manifolds of the effective three-body problem control transit orbits of the four-body problem. This effectively reduces the four-body analysis and design challenge to a three-body analysis and design challenge. We then apply these theories to practical examples from dynamical astronomy and mission design. Through a study of Lyapunov orbits, halo orbits, and their associated invariant manifolds, we show that periodic orbits act as gateways to the region surrounding Jupiter, and that invariant manifolds controlled the capture of comet Shoemaker-Levy 9 (SL9), ultimately leading to its impact with Jupiter in 1994. The study of small solar system bodies like SL9 is vital for assessing the Earth-impact risk, but also informs mission design. Using insights from dynamical astronomy we design initial capture, landing, and end-of-life trajectories for the Europa Lander mission. We demonstrate that dynamical structures in multibody systems provide a means to rapidly generate fuel efficient solutions. Our invariant manifold-informed trajectory designs are shown to significantly outperform two-body baseline designs, enabling mission architectures that would otherwise be infeasible.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/24751">https://techport.nasa.gov/projects/24751</a>
+    </div>
+  </div>
+</body>
+</html>

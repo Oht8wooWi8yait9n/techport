@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CANDLE:  Calibration using an Artificial star with NIST-traceable Distribution of Luminous Energy. An Engineering Demonstration Unit for Astrophysics | NASA TechPort Project 117307</title>
+  <meta name="description" content="The Astro 2020 Decadal Survey (DS) lays out an ambitious suite of programs to address key 21st Century astrophysics in its three themes, noting that the data archives from these programs are also an invaluable resource in their own right. It also unequivocally">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/117307">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 117307</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">APRA</span>
+          <span class="badge">TX08.1.1</span>
+        </div>
+        <h1>CANDLE:  Calibration using an Artificial star with NIST-traceable Distribution of Luminous Energy. An Engineering Demonstration Unit for Astrophysics</h1>
+        <div class="meta-id">NASA TechPort Project ID: 117307</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/117307" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The Astro 2020 Decadal Survey (DS) lays out an ambitious suite of programs to address key 21st Century astrophysics in its three themes, noting that the data archives from these programs are also an invaluable resource in their own right.   It also unequivocally states that calibration is essential:   "the most complex and precise measurements would mean nothing without pipelines to calibrate and process the raw data..."   Because the science requirements to address some of the most  fundamental questions of 21st Century Astrophysics e.g. the nature of dark energy? - are demanding, it is essential that calibration activities support the  accurate measurements of the signals from astronomical sources. Dark energy investigations need absolute flux calibration with a precision that is 10 times better than achieved to date.  Two general approaches to establishing fundamental flux calibrations are a) use stars whose spectral energy distributions are accurately determined and b) project a calibrated light source into the instrument.  A solution to calibration that supports the Decadal Survey's science objectives is a NIST-traceable calibrated light source that behaves as an artificial star and is  accessible to our space based observatories like JWST, The Roman Space Telescope and future IR/VIS/UV  telescopes or ground-based systems like Rubin Observatory and the planned extremely large telescopes.   This points to a  calibration payload that could  piggy-back on a star shade or be deployed as an independent payload in a suitable orbit for space-based observatories, or placed in an Earth-orbiting satellite like ORCAS and accessible to ground-based telescopes.   We propose to design, build and test an SI-traceable, artificial star engineering demonstration unit (EDU) designed to fit in a volume less than 12U (1U=1000cc), where the technology readiness levels of its components can be raised to at least TRL 4.  CANDLE (Calibration using an Artificial star with NIST-traceable Distribution of Luminous Energy) will provide calibrated light between 0.4 and 2.5 microns to match the wavelength range of planned surveys for dark energy studies with Roman and Rubin Observatories.  Further, to enable cross-checks and mitigate systematic effects,  CANDLE will consist of at least two complementary modes: single mode fiber lasers and reflected sunlight. A possible third mode is a programmable spectrum mode that mimics celestial source spectral energy distributions.  The EDU will enable the calibration of the output beam profiles, characterization of the error budget, and establish performance parameters for the trade space between different orbits.   The project will provide a path for  achieving the flux calibration precision and accuracy that will support not only the immediate  objectives of the Decada Survey's  key science but will also ensure that the  vast data archives from NASA's astrophysics missions can maximize science well into the future.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The Astrophysics Research and Analysis program (APRA) supports suborbital and suborbital-class investigations, development of detectors and supporting technology, laboratory astrophysics, and limited ground based observing. Basic research proposals in these areas are solicited for investigations that are relevant to NASA's programs in astronomy and astrophysics, including the entire range of photons, gravitational waves, and particle astrophysics. The emphasis of this solicitation is on technologies and investigations that advance NASA astrophysics missions and goals.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>117307</td></tr>
+<tr><th>Acronym</th><td>CANDLE</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Astrophysics Research and Analysis (APRA)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.1: Detectors and Focal Planes</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2022-10-01</td></tr>
+<tr><th>Project End Date</th><td>2026-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>National Institute of Standards and Technology (NIST) — Boulder, Colorado</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Deutsches Elektronen-Synchrotron (DESY) — Zeuthen, Outside the United States, Germany; University of Colorado Boulder Laboratory for Atmospheric and Space Physics (LASP) — Boulder, Colorado; Goddard Space Flight Center (GSFC) — Greenbelt, Maryland; Association of Universities for Research in Astronomy (AURA) — Baltimore, Maryland; Duke University — Durham, North Carolina; Lawrence Berkeley National Laboratory (LBNL) — Berkeley, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Colorado (CO), Maryland (MD), North Carolina (NC)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Susana E Deustua (Principal Investigator) &lt;susana.e.deustua@nasa.gov&gt;; Justin E Albert (Co-Investigator); Daniel Kuesters (Co-Investigator); Eliad Peretz (Co-Investigator) &lt;eliad.peretz@nasa.gov&gt;; Joseph P Rice (Co-Investigator); Thinh Q Bui (Co-Investigator); Margaret A Robinson (Co-Investigator); Greg Aldering (Co-Investigator); Brian G Alberding (Co-Investigator); Dmitry Vorobiev (Co-Investigator); ralph c bohlin (Co-Investigator); Eric L Shirley (Co-Investigator); John C Mather (Co-Investigator) &lt;john.c.mather@nasa.gov&gt;; Benjamin M Rose (Co-Investigator); Bert A Pasquale (Co-Investigator) &lt;bert.a.pasquale@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Dominic J Benford (Program Director) &lt;dominic.j.benford@nasa.gov&gt;; David C Morris (Program Manager) &lt;david.c.morris@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-08-22</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/117307">https://techport.nasa.gov/projects/117307</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IR Thermography Based Real-time In-situ Defect Detection and Elimination of Defect Propagation for In-Space Additively Manufactured Structures | NASA TechPort Project 158230</title>
+  <meta name="description" content="The ability to perform In-Space Manufacturing (ISM) is critical for sustainable, flexible missions in orbit, in transit, and on the surface of the Moon or Mars. ISM offers on-demand fabrication of necessary supplies, such as tools, bolts, brackets, wire clamps">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158230">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158230</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX08</span>
+        </div>
+        <h1>IR Thermography Based Real-time In-situ Defect Detection and Elimination of Defect Propagation for In-Space Additively Manufactured Structures</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158230</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158230" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The ability to perform In-Space Manufacturing (ISM) is critical for sustainable, flexible missions in orbit, in transit, and on the surface of the Moon or Mars. ISM offers on-demand fabrication of necessary supplies, such as tools, bolts, brackets, wire clamps, and other items needed for mission logistics and maintenance/repair of critical systems. Additive manufacturing (AM) was first performed and demonstrated on the International Space Station in 2014. Since then, numerous parts have been 3D printed in space using polymers. NASA is considering using lunar regolith as a local material for lunar infrastructure. One of the potential ways to print infrastructure with regolith-polymer mixture is to use a 3D print head that heats and extrudes the mixture to generate a desired geometry. While this approach is a game changer for prototype development of a single component, mass production of such infrastructural parts needs to overcome quality issues encountered in traditional extrusion-based AM. One of the major challenges going forward with ISM is verifying that the printed parts meet requirements. Currently, in-space inspection capabilities are limited to post-build visual inspection of the part. But the goal is to be able to inspect the part in-situ, during the build process, so that the part is “born certified.”  On Earth, infrared (IR) thermography is one of the most common nondestructive evaluation methods used for defect detection in materials. Thermography can be used on nearly all material types, and not only can it detect surface flaws, but it can also generate real-time images of structural components, which is essential to verify structural integrity. In this project, a system for in-situ defect detection and elimination of defect propagation using IR thermography will be developed. It is proposed to integrate a traveling, non-contact, IR camera with the extruder head to detect defects in the part in real time as it is being printed.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          It is anticipated that the first application of the technology will be the integration into NASA’s on-orbit NDE processes on ISS and Gateway, as well as future bases and habitats on the Moon and Mars. In addition, this in-situ NDE technology will also benefit Earth-based programs such as NASA’s HiCAM program by reducing part rejection after manufacturing and eliminating time-consuming post-manufacturing NDE, thus ensuring high-rate production of quality materials. Non-NASA customers include companies that are developing in-space manufacturing capabilities, such as SpaceX, Blue Origin, Northrop Grumman, and Sierra Space, as well as early start-ups such as Techshot. While the customers can also be competitors, Advent’s in-situ NDE technology can be easily integrated into existing additive manufacturing processes used by any of the competitor companies.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158230</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08: Sensors and Instruments</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 2 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2024-08-07</td></tr>
+<tr><th>Project End Date</th><td>2025-02-06</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Advent Innovations Limited — Columbia, South Carolina</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>South Carolina (SC), Virginia (VA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Shawn Beard (Principal Investigator); Peter D Juarez (Project Manager) &lt;peter.d.juarez@nasa.gov&gt;; Ritubarna Banerjee (Primary Point of Contact)</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158230">https://techport.nasa.gov/projects/158230</a>
+    </div>
+  </div>
+</body>
+</html>

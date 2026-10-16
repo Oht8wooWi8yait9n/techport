@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developing Predictive Measures of Sensorimotor Adaptability to Produce Customized Countermeasure Prescriptions | NASA TechPort Project 23257</title>
+  <meta name="description" content="Astronauts experience sensorimotor disturbances during the initial exposure to microgravity and during the readaptation phase following a return to an Earth-gravitational environment. These alterations may lead to disruption in the ability to perform mission c">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23257">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23257</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.2</span>
+        </div>
+        <h1>Developing Predictive Measures of Sensorimotor Adaptability to Produce Customized Countermeasure Prescriptions</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23257</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23257" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Astronauts experience sensorimotor disturbances during the initial exposure to microgravity and during the readaptation phase following a return to an Earth-gravitational environment. These alterations may lead to disruption in the ability to perform mission critical functional tasks required during these gravitational transitions. Astronauts show significant inter-subject variation in adaptive capability following gravitational transitions. The ability to predict the manner and degree to which each individual astronaut will be affected would improve the effectiveness of a countermeasure comprised of a training program designed to enhance sensorimotor adaptability. Therefore the goal of this project was to develop a set of predictive measures capable of identifying individual differences in sensorimotor adaptability to aid in the design of sensorimotor adaptability training countermeasures that are customized for each crewmember's individual sensory bias and adaptive capacity.     <p></p> To achieve these goals we pursued the following specific aims:     <p></p> Specific Aim 1: Determine whether behavioral metrics of individual sensory bias predicts strategic responses and sensorimotor adaptability to novel sensory environments.     <p></p> Specific Aim 2: Develop predictors of strategic responses and sensorimotor adaptability using brain structural and functional metrics.     <p></p> Specific Aim 3: Determine whether specific genetic polymorphisms are associated with individual differences in strategic responses and sensorimotor adaptability to novel sensory environments.     <p></p> Subjects performed behavioral tests that delineated individual sensory bias in tests of visual, vestibular, and proprioceptive function. Subjects were also tested for individual differences in brain white matter integrity (using diffusion tensor imaging, or DTI), functional network integrity (using resting state functional connectivity MRI), and functional MRI activation associated with sensorimotor adaptation task performance. We also determined whether specific genotypes were associated with individual differences in sensorimotor adaptability. Three distinct motor learning tests were used to characterize individual behavioral strategic responses and motor learning capability. The Locomotor Balance Test characterized the strategic initial locomotor responses to a novel walking environment. The Adaptive Functional Mobility Test (AFMT) and the Adaptive Manual Control Test represented tasks producing plastic-adaptive response to a novel sensory environment. Subjects performed these tests to determine if behavioral, neuroimaging and genetic metrics predicted individual strategic and motor learning capability. Behavioral metrics related to proprioceptive function, visual dependency, and sensory integration served as the best predictors of individual strategic and motor learning capability. Behavioral results indicated that performance and adaptability are specific to the environment being tested.     <p></p> This study explored relationships between behavioral parameters and performance on three different types of adaptation tasks. Each task had a different combination of significant parameters and no single parameter was significant for all three motor learning tasks. Diffusion Tensor Imaging (DTI) is an MRI technique used to assess white matter quality in the brain. The DTI results indicated that white matter microstructural integrity plays a role in how well individuals are able to respond to novel sensorimotor disturbances. Importantly, the white matter integrity of the corpus callosum was associated with enhanced performance suggesting that intact inter-hemispheric connectivity is an important factor for optimal responsiveness to novel changes in the sensory environment. Resting state functional connectivity MRI (fcMRI) was used to investigate individual differences in large-scale brain networks. These results demonstrated that specific patterns of functional connectivity between resting state networks involved in motor control and cognition are associated with individual differences in sensorimotor adaptation. The fMRI results indicated that a variety of frontal, temporal, and cingulate cortical and subcortical areas in which activation was predictive of individual differences in adaptability during a manual adaptation task. This suggests that some people might be more proficient at recruiting neural areas that allow for efficient adaptation learning. We determined whether genotypes for COMT, DRD2, BDNF, and Alpha 2 adrenergic receptor (DraI) single nucleotide polymorphisms (SNPs) were associated with individual differences in strategic responses and sensorimotor adaptability to novel sensory environments. The DraI and COMT SNPs showed a trend towards distinguishing subjects who exhibit faster or slower responses and adaptation rates on two locomotor tasks. These findings were limited by small sample size, but show promising initial results that may be improved upon by collecting more subject data.     <p></p> In conclusion this study revealed that behavioral, neuroimaging, and genetic metrics can predict individual responses to novel sensory environments and motor learning capability. Predictive power may be enhanced using composite measures composed of a mix of behavioral, neuroimaging, and genetic metrics. Further investigations with astronauts in actual spaceflight conditions will serve to further validate potential predictive metrics of adaptability. These results have important implications for adaptation training programs that facilitate astronaut adaptation to novel environments and for rehabilitation. Specifically, the prospect of identifying people who will likely have difficulty with sensorimotor adaptation would allow for more targeted training programs. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Sensorimotor adaptability training programs have Earthbound application in rehabilitation of patients with balance disorders, and for fall prevention training among seniors. We have previously shown that training using variation in visual flow during treadmill exercise improves functional mobility in healthy older adults who were experiencing age-related postural instabilities (Buccello-Stout et al. 2008; 2013). Personalized medicine has become an important research topic. Many brain stimulation, physical therapy, and pharmacological approaches to movement disorders are efficacious for some individuals but not others. The ability to predict ahead of time which patients would be most responsive to differing types of treatments would clearly save time and costs, and increase patients' quality of life by providing targeted rehabilitation interventions targeted at individual sensory biases and ability to process sensory information.    <p></p> Buccello-Stout, RR, Bloomberg, JJ, Cohen, HS, Whorton, EB, Weaver, GD, & Cromwell, RL. Effects of sensorimotor adaptation training on functional mobility in older adults. J Gerontol B Psychol Sci Soc Sci. 63(5): 295-300. 2008.    <p></p> Buccello-Stout RR, Cromwell RL, Bloomberg JJ, Whorton EB. Effects of sensorimotor adaptation training on head stability movement control in response to a lateral perturbation in older adults. The Journal of Aging and Physical Activity. 21: 272-289. 2013. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23257</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.2: Prevention and Countermeasures</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2012-10-01</td></tr>
+<tr><th>Project End Date</th><td>2016-05-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>National Space Biomedical Research Institute (NSBRI) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas; Wyle Laboratories, Inc. — Houston, Texas; Azusa Pacific University — Azusa, California; Wyle Integrated Science and Engineering Group; Baylor College of Medicine — Houston, Texas; Universities Space Research Association (USRA) — San Francisco, California; University of Michigan-Ann Arbor — Ann Arbor, Michigan</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jacob J Bloomberg (Principal Investigator) &lt;jacob.j.bloomberg@nasa.gov&gt;; Helen Cohen (Co-Investigator); Brian T Peters (Co-Investigator) &lt;brian.peters@nasa.gov&gt;; Regina R Buccello-Stout (Co-Investigator) &lt;regina.buccello-stout-1@nasa.gov&gt;; Rachel A Brady (Co-Investigator) &lt;rachel.brady-1@nasa.gov&gt;; Ajitkumar P Mulavara (Co-Investigator) &lt;ajitkumar.p.mulavara@nasa.gov&gt;; Scott A Wood (Co-Investigator) &lt;scott.wood-1@nasa.gov&gt;; Rachael Seidler (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: In an effort to increase efficiency and maximize the predictive power of our measures we collected data for Specific Aims 1 and 2 simultaneously on the same subjects. This involved behavioral testing in our labs at NASA/Johnson Space Center and neuroimaging at the University of Texas Medical Branch Victory Lakes Facility, which is located offsite. This approach had a number of benefits including increased data capture. By having the same subject perform both specific aims we were able to enhance our ability to detect how a wider range factors and their groupings can predict adaptability in a specific individual. This provides a much richer data base and potentially a better understanding of the predictive power of the selected factors. Dr. Mulavara is currently conducting a complementary National Space Biomedical Research Institute (NSBRI) study titled Developing Personalized Countermeasures for Sensorimotor Adaptability: A Bed Rest Study. This study will recall subjects who participated in the recent bed rest CFT70 campaign and spaceflight subjects (Functional Task Test) to investigate if predictive metrics based on behavioral, brain, and genetic markers can be used to retrospectively predict sensorimotor adaptability in post bed rest and spaceflight subjects. To aid this effort and to develop a complete set of predictive metrics we added several new behavioral measures. We also added genetic tests previously used to detect sensorimotor adaptability as possible metrics of adaptability. We called back our original subjects and tested them on these new metrics, which were added to the original set of potential predictive metrics obtained previously. During this reporting period data collection analysis was completed. Data Collection at Azusa Pacific University (APU): The focus of the data collection at Dr. Wood&#x27;s APU laboratory was to expand the set of behavioral predictive measures capable of identifying individual differences in the ability to adapt to novel discordant sensory environments. In the APU study the inter-subject variability during adaption to visual distortion lenses was measured in 27 subjects over 3 sessions. During this reporting period data collection analysis for the studies at APU was completed. During this reporting period the following manuscripts were published: Seidler RD, Mulavara AP, Bloomberg JJ, Peters BT. Individual predictors of sensorimotor adaptability. Front. Syst. Neurosci. 9:100. doi: 10.3389/fnsys.2015.00100, 2015. Bloomberg JJ, Peters BT, Cohen HS and Mulavara AP. Enhancing astronaut performance using sensorimotor adaptability training. Front. Syst. Neurosci. 9:129.doi: 10.3389/fnsys.2015.00129, 2015. In addition, during this reporting period 17 presentations at meetings were completed. See also Bibliography section below.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Articles in Peer-reviewed Journals</strong> — Buccello-Stout RR, Cromwell RL, Bloomberg JJ, Whorton EB. &quot;Sensorimotor adaptation training&#x27;s effect on head stabilization in response to a lateral perturbation in older adults.&quot; The Journal of Aging and Physical Activity. 2013 Jul;21(3):272-89. Epub 2012 Sep 18. PubMed PMID: 23006335, Jul-2013</li><li><strong>Articles in Other Journals or Periodicals</strong> — Eikema DA, Chien JH, Scott-Pandorf M, Peters BT, Bloomberg JJ, Myers S, Stergiou N, Mukherjee M. &quot;Locomotor adaptation to support surface roll oscillations: reductions in postural coupling with the environment is enhanced by noisy plantar tactile stimulation.&quot; Experimental Brain Research, submitted as of October 2016. [Ed. note: recategorized as Other Journals since not yet published as of 8/28/2018], Oct-2016</li><li><strong>Articles in Peer-reviewed Journals</strong> — Goel R, Kofman I, Jeevarajan J, De Dios Y, Cohen HS, Bloomberg JJ, Mulavara AP. &quot;Using low levels of stochastic vestibular stimulation to improve balance function.&quot; PLoS One. 2015 Aug 21;10(8):e0136335. eCollection 2015. http://dx.doi.org/10.1371/journal.pone.0136335 ; PubMed PMID: 26295807; PubMed Central PMCID: PMC4546608, Aug-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Seidler RD, Mulavara AP, Bloomberg JJ, Peters BT. &quot;Individual predictors of sensorimotor adaptability.&quot; Front Syst Neurosci. 2015 Jul 6;9:100. eCollection 2015. Review. http://dx.doi.org/10.3389/fnsys.2015.00100 ; PubMed PMID: 26217197; PubMed Central PMCID: PMC4491631, Jul-2015</li><li><strong>Abstracts for Journals and Proceedings</strong> — Eikema D-J A, Chien JH, Stergiou N, Scott-Pandorf M, Peters B, Bloomberg J, Mukherjee M. &quot;Locomotor adaptation to support surface perturbations is characterized by environmental decoupling.&quot; Neuroscience 2014, Washington, DC, November 15-19, 2014. Neuroscience 2014, Washington, DC, November 15-19, 2014. Available at: http://www.abstractsonline.com/Plan/ViewAbstract.aspx?sKey=90c50d3d-1fe0-4684-a570-af1687df8a9e&amp;cKey=17ec2b51-be12-4f05-be03-693379037e55&amp;mKey=54c85d94-6d69-4b09-afaa-502c0e680ca7 ; accessed 9/23/16., Nov-2014</li><li><strong>Articles in Peer-reviewed Journals</strong> — Ruitenberg MFL, Koppelmans V, De Dios YE, Gadd NE, Wood SJ, Reuter-Lorenz PA, Kofman I, Bloomberg JJ, Mulavara AP, Seidler RD. &quot;Neural correlates of multi-day learning and savings in sensorimotor adaptation.&quot; Sci Rep. 2018 Sep 24;8(1):14286. https://doi.org/10.1038/s41598-018-32689-4 ; PubMed PMID: 30250049; PubMed Central PMCID: PMC6155344 , Sep-2018</li><li><strong>Articles in Peer-reviewed Journals</strong> — Cohen HS, Stitz J, Sangi-Haghpeykar H, Williams SP, Mulavara AP, Peters BT, Bloomberg JJ. &quot;Tandem walking as a quick screening test for vestibular disorders.&quot; Laryngoscope. 2018 Jul;128(7):1687-91. Epub 2017 Dec 11. https://doi.org/10.1002/lary.27022 ; PubMed PMID: 29226324 ; PubMed Central PMCID: PMC5995610, Jul-2018</li><li><strong>Abstracts for Journals and Proceedings</strong> — Bloomberg JJ, Peters BT, Mulavara AP, Miller CA, Batson CD, Wood SJ, Guined JR, Cohen HS, Buccello-Stout R, De Dios YE, Kofman IS, Szcesy DL, Erdeniz B, Koppelmans V, Seidler RD. &quot;Customizing countermeasure prescriptions using predictive measures of sensorimotor adaptability.&quot; 2014 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-13, 2014. 2014 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-13, 2014. http://www.hou.usra.edu/meetings/hrp2014/pdf/3121.pdf , Feb-2014</li><li><strong>Articles in Peer-reviewed Journals</strong> — Ruitenberg MFL, De Dios YE, Gadd NE, Wood SJ, Reuter-Lorenz PA, Kofman I, Bloomberg JJ, Mulavara AP, Seidler RD. &quot;Multi-day adaptation and savings in manual and locomotor tasks.&quot; J Mot Behav. 2018 Sep-Oct;50(5):517-27. Epub 2017 Sep 22. https://doi.org/10.1080/00222895.2017.1371110 ; PubMed PMID: 28937868 [Note: originally reported in October 2016 as &quot;J Mot Behav. 2017 Sep 22:1-11. Published online: 22 Sep 2017.&quot;], Sep-2018</li><li><strong>Articles in Peer-reviewed Journals</strong> — Mulavara AP, Kofman IS, De Dios YE, Miller C, Peters BT, Goel R, Galvan-Garza R, Bloomberg JJ. &quot;Using low levels of stochastic vestibular stimulation to improve locomotor stability.&quot; Front Syst Neurosci. 2015 Aug 24;9:117. eCollection 2015. https://doi.org/10.3389/fnsys.2015.00117 ; PubMed PMID: 26347619; PubMed Central PMCID: PMC4547107 , Aug-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Nair MA, Mulavara AP, Bloomberg JJ, Sangi-Haghpeykar H, Cohen HS. &quot;Visual dependence and spatial orientation in benign paroxysmal positional vertigo.&quot; J Vestib Res. 2018;27(5-6):279-86. https://doi.org/10.3233/VES-170623 ; PubMed PMID: 29400684; PubMed Central PMCID: PMC5801771, Feb-2018</li><li><strong>Articles in Peer-reviewed Journals</strong> — Eikema DJ, Chien JH, Stergiou N, Myers SA, Scott-Pandorf MM, Bloomberg JJ, Mukherjee M. &quot;Optic flow improves adaptability of spatiotemporal characteristics during split-belt locomotor adaptation with tactile stimulation.&quot; Exp Brain Res. 2016 Feb;234(2):511-22. Epub 2015 Nov 2. https://doi.org/10.1007/s00221-015-4484-5 ; PubMed PMID: 26525712; PubMed Central PMCID: PMC4732903 , Feb-2016</li><li><strong>Articles in Peer-reviewed Journals</strong> — Oddsson LI, Finkelstein MJ, Meissner S. &quot;Feasibility of early functional rehabilitation in acute stroke survivors using the Balance-Bed–A technology that emulates microgravity.&quot; Front Syst Neurosci. 2015 May 27;9:83. http://dx.doi.org/10.3389/fnsys.2015.00083 ; PubMed PMID: 26074789; PubMed Central PMCID: PMC4445307 , May-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Schubert MC, Stitz J, Cohen HS, Sangi-Haghpeykar H, Mulavara AP, Peters BT, Bloomberg JJ. &quot;Prototype tests of vertical and torsional alignment nulling for screening vestibular function.&quot; J Vestib Res. 2017;27(2-3):173-6. https://doi.org/10.3233/VES-170618 ; PubMed PMID: 29064832 ; PubMed Central PMCID: PMC5659207, Jun-2017</li><li><strong>Awards</strong> — Bloomberg J. &quot;American Astronautical Society Award, June 2014.&quot; Jun-2014</li><li><strong>Articles in Peer-reviewed Journals</strong> — Cohen HS, Stitz J, Sangi-Haghpeykar H, Williams SP, Mulavara AP, Peters BT, Bloomberg JJ. &quot;Utility of quick oculomotor tests for screening the vestibular system in the subacute and chronic populations.&quot; Acta Otolaryngol. 2018 Apr;138(4):382-6. Published online 16 Nov 2017. https://doi.org/10.1080/00016489.2017.1398838 ; PubMed PMID: 29141478 ; PubMed Central PMCID: PMC5864528, Apr-2018</li><li><strong>Articles in Peer-reviewed Journals</strong> — Mukherjee M, Eikema DJ, Chien JH, Myers SA, Scott-Pandorf M, Bloomberg JJ, Stergiou N. &quot;Plantar tactile perturbations enhance transfer of split-belt locomotor adaptation.&quot; Exp Brain Res. 2015 Oct;233(10):3005-12. Epub 2015 Jul 14. https://doi.org/10.1007/s00221-015-4370-1 ; PubMed PMID: 26169104; PubMed Central PMCID: PMC4575864 , Oct-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Peters BT, Brady RA, Batson CD, Guined JR, Ploutz-Snyder RJ, Mulavara AP, Bloomberg JJ. &quot;Adaptation in locomotor stability, cognition, and metabolic cost during sensory discordance.&quot; Aviation, Space, and Environmental Medicine. 2013 Jun;84(6):567-72. PubMed PMID: 23745284 ; http://dx.doi.org/10.3357/ASEM.3529.2013 , Jun-2013</li><li><strong>Abstracts for Journals and Proceedings</strong> — Galvan RC, Bloomberg JJ, Mulavara AP, Clark TK, Merfeld DM, Oman CM. &quot;Improving sensorimotor function and adaptation using stochastic vestibular stimulation.&quot; 2014 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-13, 2014. 2014 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-13, 2014. http://www.hou.usra.edu/meetings/hrp2014/pdf/3102.pdf , Feb-2014</li><li><strong>Awards</strong> — Bloomberg J. &quot;JSC Group Achievement Award for the Development of the Sensorimotor Adaptability Training System, June 2013.&quot; Jun-2013</li><li><strong>Abstracts for Journals and Proceedings</strong> — Bloomberg JJ, Mulavara AP, Peters BT, Wood SJ, Reschke MF. &quot;Sensorimotor countermeasures: Improving performance during gravitational transitions.&quot; 84th Annual Scientific Meeting, Aerospace Medical Association, Chicago, IL, May 12-16, 2013. Aviation, Space, and Environmental Medicine. 2013 Apr;84(4):422., Apr-2013</li><li><strong>Abstracts for Journals and Proceedings</strong> — Bloomberg JJ, Peters BT, Mulavara AP, Brady RA, Buccello-Stout R, Miller CA, Batson CD, Wood SJ, Cohen HS, Seidler RD. &quot;Developing predictive measures of sensorimotor adaptability to produce customized countermeasure prescriptions.&quot; 2013 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-14, 2013. 2013 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-14, 2013., Feb-2013</li><li><strong>Articles in Peer-reviewed Journals</strong> — Goel R, De Dios YE, Gadd NE, Caldwell EE, Peters BT, Reschke MF, Bloomberg JJ, Oddsson LIE, Mulavara AP. &quot;Assessing somatosensory utilization during unipedal postural control.&quot; Front Syst Neurosci. 2017 Apr 11;11:21. eCollection 2017. https://doi.org/10.3389/fnsys.2017.00021 ; PubMed PMID: 28443004; PubMed Central PMCID: PMC5387047, Apr-2017</li><li><strong>Articles in Peer-reviewed Journals</strong> — Cohen HS, Mulavara AP, Stitz J, Sangi-Haghpeykar H, Williams SP, Peters BT, Bloomberg JJ. &quot;Screening for vestibular disorders using the modified clinical test of sensory interaction and balance and tandem walking with eyes closed.&quot; Otol Neurotol. 2019 Jun;40(5):658-65. https://doi.org/10.1097/MAO.0000000000002173 ; PubMed PMID: 31083095; PubMed Central PMCID: PMC6530479 [originally reported as &quot;2019 Feb 27. [Epub ahead of print]&quot;], Jun-2019</li><li><strong>Abstracts for Journals and Proceedings</strong> — Bloomberg JJ, Batson CD, Buxton RE, Feiveson AH, Kofman IS, Lee SMC, Miller CA, Mulavara AP, Peters BT, Phillips T, Platts SH, Ploutz-Snyder LL, Reschke MF, Ryder JW, Stenger MB, Taylor LC, Wood SJ. &quot;Understanding the effects of long-duration space flight on astronaut functional task performance.&quot; 3rd Annual International Space Station (ISS) Research and Development Conference, Chicago, Illinois, June 17-19, 2014. 3rd Annual International Space Station (ISS) Research and Development Conference, Chicago, Illinois, June 17-19, 2014. http://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20140005022.pdf ; accessed 9/23/16., Jun-2014</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23257">https://techport.nasa.gov/projects/23257</a>
+    </div>
+  </div>
+</body>
+</html>

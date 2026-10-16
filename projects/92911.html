@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developing a JPL Planetary Mass Spectrometer | NASA TechPort Project 92911</title>
+  <meta name="description" content="The overarching objectives of the strategic research and technology development (SRTD) initiative are to: mature the Technology Readiness Level (TRL) of the JPL quadrupole ion trap mass spectrometer (QITMS) and supporting sub-assemblies to TRL 6 by the end of ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/92911">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 92911</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">JPL IRAD</span>
+          <span class="badge">TX08.3.2</span>
+        </div>
+        <h1>Developing a JPL Planetary Mass Spectrometer</h1>
+        <div class="meta-id">NASA TechPort Project ID: 92911</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/92911" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The overarching objectives of the strategic research and technology development (SRTD) initiative are to: mature the Technology Readiness Level (TRL) of the JPL quadrupole ion trap mass spectrometer (QITMS) and supporting sub-assemblies to TRL 6 by the end of FY17; submit competitive proposals to the NASA ROSES Maturation of Instruments for Solar System Exploration (MatISSE) Announcement of Opportunities (AOs); and win a JPL MS on a planetary mission within the next decade.</p><p>Maturation of a MS for In-Situ Venus Atmospheric Descent Probe Mission Concept: &nbsp;Under SRTD funding, the JPL QITMS met its goal of being packaged and validated through testing, into a prototype TRL 5 instrument for future Venus atmospheric probe mission concepts. &nbsp;We&rsquo;ve demonstrated the MS operational capability to selectively trap species, enabling trace species abundance measurements by excluding the major constituent species of terrestrial atmosphere. &nbsp;This ability would be used in a Venus experiment to exclude the CO<sub>2</sub> and N<sub>2</sub> species, enabling measurements of trace sulfur-cycle species (e.g. SO<sub>2</sub> and H<sub>2</sub>S). &nbsp;We have also demonstrated the ability to measure the light elemental isotopes of <sup>32</sup>S and <sup>34</sup>S from SO<sub>2</sub> in a Venus atmospheric sample.&nbsp;</p><p>Maturation of a MS for Cupid&rsquo;s Arrow-type Atmospheric Probe Mission Concept: &nbsp;The Cupid&rsquo;s Arrow (CA) concept has been developed as a novel low-cost atmospheric probe for orbiter/flyby missions. &nbsp;CA is a small cubesat-sized spacecraft, containing the JPL MS, that is assumed to be deployed by the main spacecraft, coasts to the planet, dips into the atmosphere, and acquires a trapped volume of atmospheric gases which are then analyzed by the MS. &nbsp;For Venus, the simple low-cost CA concept would measure the noble gas abundances and isotopic ratios, answering the top four Venus decadal survey questions. &nbsp;We have demonstrated the ability to measure very small (&lt;10<sup>-8</sup> torr) quantities of noble gases without consumption. &nbsp;The non-consumption of species is important as this enables a very small quantity of atmospheric gas to be acquired and simply perform measurements until the required statistical accuracies are achieved.</p><p>Maturation of a MS-based Instrument for a Europa Lander Mission Concept: &nbsp;The liquid-based separation technique of capillary electrophoresis (CE), coupled with the most powerful organic detection and characterization technique, mass spectrometry (MS), overcomes the limitations of gas-phase techniques and holds unique promise in the search for signatures of life on ocean worlds such as Europa. &nbsp;As such, JPL has targeted a CE-MS system for the Europa Lander instrument AO expected in 2018. &nbsp; Under STRD funding the primary subsystems for the CE-MS system (Sample Handling (SH), CE, and MS) started the design and maturation necessary to meet this opportunity. &nbsp;During the 2016 SRTD effort the technology readiness level (TRL) of the SH, CE, and MS subsystems advanced from 2/3 to 3/4. &nbsp; Significant advancements were made in the SH and MS subsystems, where prototype TRL 4/5 hardware devices were designed and are currently under integrated and test. An upgraded TRL 5 Revision 2 of the MS electronics were fabricated for CEMS, sufficient for thermal-vac testing which will occur in FY17. A TRL 4 benchtop MS system was also integrated to start work on interfacing the CE electrospray ionization source to the ion trap MS. &nbsp; For the CE subsystem, primary proof-of-concept measurements were performed to validate a CE system could be employed for the Europa mission concept. &nbsp;Specifically, under SRTD funding it was successfully demonstrated that: 1) The required analysis of amino acids in the presence of high salt concentrations can be performed by the CE. &nbsp;2) That a candidate CE + electrospray ionization source, from SCIEX Inc., meets the analytical requirements for amino acid analysis. 3) &nbsp;Initial designs of an integrated CEMS instrument were completed. At the lowest salt concentration studied (0.3 M), it was possible to analyze the amino acid mixture with both types of injection. It is important to mention that the concentration of amino acids was only 5 nM, so the sample contained 6x10<sup>4</sup> times the concentration of salt in the sample compared to the amino acids and still it didn&rsquo;t hinder their detection. In both cases there are changes in peak shape due to difference in ionic strength between the sample plug and the separation buffer. &nbsp;For electrokinetic injection we observe an increase in response for some amino acids. This is most likely due to a stacking effect. Even with the highest concentration of sodium chloride we studied (3 M) which corresponds to five times the concentration on Earth oceans we were able to detect all the amino acids in the mixture. We observed that peak shape is better when using pressure injection and it is easier to identify the peaks. These results demonstrate that CE-LIF is not only tolerant to salts, but also, that salts can actually enhance the response of amino acids.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The Spacecraft Atmosphere Monitor (S.A.M.) is a miniature gas chromatograph (GC)<br />mass spectrometer (MS) intended for assessing trace volatile organic compounds and the&nbsp;major constituents in the atmosphere of present (the International Space Station) and future&nbsp;crewed spacecraft. As such, S.A.M. will continuously sample concentrations of major air&nbsp;constituents (CH<sub>4</sub>, H<sub>2</sub>O, N<sub>2</sub>, O<sub>2</sub>, and CO<sub>2</sub>) and report results in two-second intervals. The&nbsp;S.A.M. is a technology demonstration planned to launch in 2018 funded by NASA Advance Exploration Systems (AES). The S.A.M. is mechanically designed to operate under hi-G loads present during&nbsp;launch events and can operate at sub-atmospheric pressures relevant to extra-vehicular&nbsp;activities. Total instrument mass is projected at 9.5 kg with power consumption estimated at&nbsp;35 W. The S.A.M. instrument will provide on-demand reporting on trace volatile organic&nbsp;compounds (VOC) at ppm to ppb levels of 40+ species relevant for astronaut health.</p><p>MS for In-Situ Venus Atmospheric Descent Probe Concept: The results for the Venus atmospheric probe instrument concept are very significant in that, for the first time ever, a MS alone has been demonstrated to satisfy science requirements for a probe mission. &nbsp;The instrument has met the requirements for the noble gas abundance and isotopic ratios, the trace species abundances, and light elemental abundance. &nbsp;As such, there is no necessity to for addition of other instruments (e.g. tunable laser spectrometer (TLS)). &nbsp;This will enable planetary probes to be more than 50% smaller than previously engineered (since previously they needed both a MS and TLS). &nbsp;Due to the results obtained during the 2016 SRTD the JPL MS was selected by to be part of the Venus In Situ Atmospheric and Geophysical Explorer (VISAGE) mission concept that will be proposed to the 2017 New Frontiers AO.</p><p>MS for Cupid&rsquo;s Arrow-type Atmospheric Probe Concept: The CA concept enables a simple low-cost addition to primary missions that address decadal survey questions. &nbsp;As a result of the SRTD technology maturation, CA was proposed as part of the VERITAS mission proposal for the 2016 Discovery AO as the requested Technology Demonstration Objectives (TDO) in the AO. &nbsp;Unfortunately CA was not chosen by VERITAS to continue through the Step 2 Discovery proposal. &nbsp;However, the JPL MS has been selected to be part of the Titan Orbiter mission concept that will be proposed to the 2017 New Frontiers AO. &nbsp;The CA concept would be employed as a critical component of the mission, where during the orbiter spacecraft aero braking maneuvers a sample of the Titan atmosphere would be captured and analyze it to ascertain the noble gas abundances and isotopic ratios.</p><p>CEMS Instrument for a Europa Lander Mission Concept: The proposed ocean world&rsquo;s organic/life-detection system would be a JPL unique instrument with unrivaled capabilities. &nbsp;Due to the non-volatile nature of most of the key species in these science investigations, conventional gas chromatography (GC) does not meet requirements. &nbsp;The chemical derivatization necessary to volatilize biomolecules for GCMS analysis typically result in sensitivities that are 1000 &ndash; 10,000x less sensitive than CEMS. &nbsp; &nbsp;There are currently no available instruments capable of measuring enantiomeric excesses of amino acids or other key distributions of organic molecules indicative of life in ice with parts-per-billion sensitivity. These capabilities are essential for a life-detection mission to the surface of an ocean world. For this reason, the capabilities provided by OCEANS hold the promise of enabling one of potentially greatest discoveries of our time &ndash; detection of life on Europa. &nbsp;&nbsp;</p><p>The JPL Mass Spectrometer, especially in its Spacecraft Atmosphere Monitor (S.A.M.) implementation, can benefit commercial crewed vehicles. It is ideal for monitoring trace volatile organic compounds and the major constituents in the cabin atmosphere.</p><p>This technology project will demonstrate &amp; validate a reliable, capable, and cost effective atomoic and molecular species detection technology that can be used on partnerships with other government agencies.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>92911</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: JPL IRAD (JPL IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.3.2: Atomic and Molecular Species Assessment</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 5 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2016-10-01</td></tr>
+<tr><th>Project End Date</th><td>2018-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Atmospheric &amp; Space Technology Research Associates, LLC (ASTRA) — Louisville, Colorado</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Colorado (CO), Montana (MT)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Murray R Darrach (Principal Investigator) &lt;murray.r.darrach@jpl.nasa.gov&gt;; Dragan Nikolic (Co-Investigator) &lt;dragan.nikolic@jpl.nasa.gov&gt;; Rembrandt T Schaefer (Co-Investigator) &lt;rembrandt.t.schaefer@jpl.nasa.gov&gt;; Timothy Minton (Co-Investigator); Stojan Madzunkov (Co-Investigator) &lt;stojan.m.madzunkov@jpl.nasa.gov&gt;; Richard D Kidd (Co-Investigator) &lt;richard.d.kidd@jpl.nasa.gov&gt;; Jurij Simcic (Co-Investigator) &lt;jurij.simcic@jpl.nasa.gov&gt;; Marcin D Pilinski (Co-Investigator); Fred Y Hadaegh (Project Manager) &lt;fred.y.hadaegh@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Fred Y Hadaegh (Program Manager) &lt;fred.y.hadaegh@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-04-24</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>JPL_IRAD_Activities Project Image</strong> — Picture of 10 mm trap.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/92911">https://techport.nasa.gov/projects/92911</a>
+    </div>
+  </div>
+</body>
+</html>

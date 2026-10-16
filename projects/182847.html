@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deep Throttling Monopropellant Engine | NASA TechPort Project 182847</title>
+  <meta name="description" content="Any spacecraft that is designed to land on a planetary body, such as the moon or Mars, requires a method of slowing itself down as it descends in order to execute a gentle landing. The terminal descent of nearly all lunar and planetary landers to date has been">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/182847">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 182847</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">MEP</span>
+          <span class="badge">TX09.3.2</span>
+        </div>
+        <h1>Deep Throttling Monopropellant Engine</h1>
+        <div class="meta-id">NASA TechPort Project ID: 182847</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/182847" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Any spacecraft that is designed to land on a planetary body, such as the moon or Mars, requires a method of slowing itself down as it descends in order to execute a gentle landing. The terminal descent of nearly all lunar and planetary landers to date has been accomplished via rocket engines. Rocket engines that are suitable for landing must involve either a method of throttling across a range of thrust-to-weight ratios or off-pulsing, also known as Pulse Width Modulation (PWM). The ability to throttle engine thrust enables smaller, lower-cost landers as compared with PWM propulsion systems. Throttled engines avoid all of the following: complex and expensive propulsion system development required for PWM systems (including avoiding propulsion subsystem hot fire testing), more difficult and expensive entry descent and landing algorithms and modeling, increased plume/surface interactions produced by PWM systems, and the mass penalties and loss of landing precision of airbags. This effort is focused on developing a deep throttling monopropellant engine for precision landing of small payloads on Mars. Such an engine could also be used for future lunar and asteroid belt landers. </p><p>The primary focus of this effort is the design and test of a new Small Thruster Throttle Valve (STTV) capable of mating to a heritage, fixed-thrust 300 N (70-lbf) class monopropellant engine to produce a throttling engine. The STTV is designed to achieve a 10:1 throttle range, with flow rates in family with the demonstrated operating limits of the monopropellant engine. The STTV is designed to remain in cavitation across the full throttle range. Cavitation across the valve removes any concerns with potential feed-couple instabilities or flow coupling between different engines in the propulsion system (a key aspect of avoiding the need for a system hot fire test). The valve is also designed to seal closed following touchdown without requiring electrical power to maintain that state. All wetted valve materials are selected for compatibility with hydrazine. The valve is actuated by a custom actuator which utilizes a number of Commercial Off-The-Shelf (COTS) components including the motor and controller. The project will progress the valve and actuator design from an initial concept, through PDR, early development testing, CDR, to manufacture and water flow testing of an Engineering Model of the assembled STTV. In a potential follow-on effort, the STTV would be mated to an existing thruster and hot-fire tested.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p><strong>This effort will enable:</strong></p><ul><li>A 10X reduction in landed mass that can be accommodated with an affordable throttling propulsion system compared to current industry SOA.</li><li>>5X reduction in combined valve and engine mass compared to state of the art in throttling monopropellant engines.</li><li>Elimination of the need for any dedicated shut off valves for landed spacecraft. These shut off valves added an additional 20kg for the SRL Lander design.</li><li>The use of robust throttling propulsion for small landers to achieve:<ul><li>Reduced propulsion development costs to support low-cost missions (eliminate the need for propulsion system hot fire test).</li><li>Reduction in plume/surface interactions compared to pulsed systems.</li><li>Simplified GNC analysis and modelling </li><li>Improved dynamic environment for sensitive hardware (e.g. terrain relative navigation cameras)</li></ul></li></ul>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>182847</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Mars Exploration Program (MEP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.3.2: Propulsion Systems for Landing</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX01: Propulsion Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 4 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2024-11-01</td></tr>
+<tr><th>Project End Date</th><td>2025-12-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars, Moon and Cislunar, Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Elizabeth T Jens (Principal Investigator) &lt;elizabeth.jens@jpl.nasa.gov&gt;; Kevin R Mark (Co-Investigator) &lt;kevin.r.mark@jpl.nasa.gov&gt;; Maggie M Stewart (Co-Investigator) &lt;maggie.stewart@jpl.nasa.gov&gt;; Cory A Timmons (Co-Investigator) &lt;cory.a.timmons@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Erica N Montbach (Program Director) &lt;erica.n.montbach@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-02</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Small Thruster Throttle Valve Prototype</strong> — Additively manufactured prototype of the Small Thruster Throttle Valve (STTV)</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/182847">https://techport.nasa.gov/projects/182847</a>
+    </div>
+  </div>
+</body>
+</html>

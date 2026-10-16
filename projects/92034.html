@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developing fine-pixel CdTe detectors for the next generation of high-resolution hard x-ray telescopes | NASA TechPort Project 92034</title>
+  <meta name="description" content="Over the past decade, the NASA Marshall Space Flight Center (MSFC) has been improving the angular resolution of hard X-ray (HXR; ~20–70 keV) optics to the point that we now routinely manufacture optics modules with an angular resolution of 20 arcsec Half Power">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/92034">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 92034</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">APRA</span>
+          <span class="badge">TX08.1.1</span>
+        </div>
+        <h1>Developing fine-pixel CdTe detectors for the next generation of high-resolution hard x-ray telescopes</h1>
+        <div class="meta-id">NASA TechPort Project ID: 92034</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/92034" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Over the past decade, the NASA Marshall Space Flight Center (MSFC) has been improving the angular resolution of hard X-ray (HXR; ~20–70 keV) optics to the point that we now routinely manufacture optics modules with an angular resolution of 20 arcsec Half Power Diameter (HDP), almost three times the performance of NuSTAR optics (Ramsey et al. 2013; Gubarev et al. 2013a; Atkins et al. 2013). New techniques are currently being developed to provide even higher angular resolution.  High angular resolution HXR optics require detectors with a large number of fine pixels in order to adequately sample the telescope point spread function (PSF) over the entire field of view. Excessively over-sampling the PSF will increase readout noise and require more processing with no appreciable increase in image quality. An appropriate level of over-sampling is to have 3 pixels within the HPD. For the HERO mirrors, where the HPD is 26 arcsec over a 6-m focal length converts to 750 µm, the optimum pixel size is around 250 µm. At a 10-m focal length these detectors can support a 16 arcsec HPD. Of course, the detectors must also have high efficiency in the HXR region, good energy resolution, low background, low power requirements, and low sensitivity to radiation damage (Ramsey 2001). The ability to handle high counting rates is also desirable for efficient calibration.  A collaboration between Goddard Space Flight Center (GSFC), MSFC, and Rutherford Appleton Laboratory (RAL) in the UK is developing precisely such detectors under an ongoing, funded APRA program (FY2015 to FY2017). The detectors use the RAL-developed Application Specific Integrated Circuit (ASIC) dubbed HEXITEC, for High Energy X-Ray Imaging Technology. These HEXITEC ASICs can be bonded to 1- or 2- mm-thick Cadmium Telluride (CdTe) or Cadmium-Zinc-Telluride (CZT) to create a fine (250 µm pitch) HXR detector (Jones et al. 2009; Seller et al. 2011). The objectives of this funded effort are to develop and test a HEXITEC-based detector system through the (1) design, manufacture, and test of front-end electronics instrument boards and (2) calibration of the detectors to assess their performance and (3) vibration and environmental testing. By the end of this program, multiple detector assemblies will be built and characterized, and can be used as part of future instruments.  We propose to augment the existing effort with the development of an anti-coincidence shield for these HEXITEC-based detector assemblies to maximize sensitivity. Designing the anti-coincidence shield is enabled by the addition of a new team member, Wayne Baumgartner, who has recently and fortuitously joined the existing effort. Dr. Baumgartner has valuable and relevant past experience with a similar shield systems developed for NuSTAR and the InFOCµS x-ray telescope.  We are asking for a modest amount of additional funding in this proposal year, as it coincides with a key time in the characterization and environmental testing of the detector assemblies. Characterization and environmental testing of the bare assemblies is already funded under the current effort. The addition of this active shield will allow for a more complete detector module vibration and environment test at the end of the existing development program so that this project results in a detector system with a demonstrated TRL of 6: "System/subsystem model or prototype demonstration in a relevant environment. "
+        </div>
+
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>92034</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Astrophysics Research and Analysis (APRA)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.1: Detectors and Focal Planes</td></tr>
+<tr><th>Project Start Date</th><td>2016-10-01</td></tr>
+<tr><th>Project End Date</th><td>2017-09-30</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL), Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Outside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Steven D Christe (Principal Investigator) &lt;steven.d.christe@nasa.gov&gt;; Albert Y Shih (Co-Investigator) &lt;albert.y.shih@nasa.gov&gt;; Colleen A Wilson-Hodge (Co-Investigator) &lt;colleen.wilson@nasa.gov&gt;; David T Leisawitz (Co-Investigator) &lt;david.t.leisawitz@nasa.gov&gt;; Wayne H Baumgartner (Co-Investigator) &lt;wayne@milkyway.gsfc.nasa.gov&gt;; Jessica A Gaskin (Co-Investigator) &lt;jessica.gaskin@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Dominic J Benford (Program Director) &lt;dominic.j.benford@nasa.gov&gt;; David C Morris (Program Manager) &lt;david.c.morris@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2018-10-10</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/92034">https://techport.nasa.gov/projects/92034</a>
+    </div>
+  </div>
+</body>
+</html>

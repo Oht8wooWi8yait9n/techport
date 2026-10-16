@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stochastic Optimal Control for Powered Descent Guidance | NASA TechPort Project 93981</title>
+  <meta name="description" content="Entry, descent, and landing (EDL) is the process of a spacecraft entering a planet&#x27;s atmosphere, decelerating from orbit, and descending to a safe landing on the planet&#x27;s surface. Extreme heat, high aerodynamic loads, difficulties in communication and localiza">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/93981">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 93981</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX09.5</span>
+        </div>
+        <h1>Stochastic Optimal Control for Powered Descent Guidance</h1>
+        <div class="meta-id">NASA TechPort Project ID: 93981</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/93981" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Entry, descent, and landing (EDL) is the process of a spacecraft entering a planet's atmosphere, decelerating from orbit, and descending to a safe landing on the planet's surface. Extreme heat, high aerodynamic loads, difficulties in communication and localization, and small guidance margins characterize EDL. NASA Technology Area (TA) 9.2.6 (Large Divert Guidance) identifies a guarantee on satisfaction of constraints, optimal or near-optimal fuel consumption, and on-board computational feasibility as necessary components of a next generation solution. To date, the most accurate EDL procedure was performed on the MSL mission with a landing target ellipse of 10 km while technology requirements (TA 9.2.6) call out a landing ellipse requirement on the order of 1 km. State-of-the-art descent guidance methods rely on deterministic formulations of spacecraft dynamics, and hence any statement of fuel-consumption optimality can only be made with respect to a deterministic model. Since there exist unmodeled disturbances in practical application, we cannot make strong statements regarding optimality when applying deterministic controllers in real scenarios. For a certain class of systems, controllers designed using stochastic optimal control theory have been shown to outperform classical controllers. Furthermore, recent developments in stochastic optimal control theory have shown that linear time-varying systems with Weiner process noise can be steered from initial to final state mean and covariance. While not yet extended to EDL, these developments in stochastic optimal control theory may be relevant to construction of better performing descent guidance systems. This proposed research will constitute an analysis of stochastic process theory as applied to the descent guidance problem, with the expectation of improved fuel performance. Additionally, stochastic methods provide explicit definition of state covariance, hence allowing a system designer to consider trades of covariance bounds on fuel cost, potentially leading to improved system performance. Expected products of this research will include publications introducing extensions to stochastic control theory for cases relevant to powered descent guidance. This work will also produce simulation results comparing performance of deterministic and stochastic controllers.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This proposed research has the potential to improve fuel performance and lead to improved system performance. Expected products of this research will include publications introducing extensions to stochastic control theory for cases relevant to powered descent guidance. This work will also produce simulation results comparing performance of deterministic and stochastic controllers.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>93981</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.5: Flight Mechanics and GN&amp;C for Entry, Descent, and Safe Precise Landing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2017-08-01</td></tr>
+<tr><th>Project End Date</th><td>2021-05-07</td></tr>
+<tr><th>Lead Organization / Center</th><td>Georgia Institute of Technology-Main Campus (GA Tech) — Atlanta, Georgia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Georgia (GA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Panagiotis Tsiotras (Principal Investigator); Jack Ridderhof (Co-Investigator); Soumyo Dutta (Project Manager) &lt;soumyo.dutta@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Optimal control theory has been successfully applied to a wide range of a problems in spacecraft trajectory optimization. Historically, the identification and management of uncertainty in spaceflight applications has been a separate endeavor from optimal trajectory design, with the exception of heuristic margins applied on the deterministic optimal trajectory. Following a stochastic optimal control approach, on the other hand, leads to the direct consideration of uncertainty for the design of closed-loop trajectories with probabilistic constraints. Resulting control laws are designed with respect to all possible trajectory and control input realizations, and the performance is evaluated over measures of the aggregate, or expected, state and control trajectories. This research focuses on specific applications of stochastic optimal control for spacecraft guidance, namely: powered descent guidance (PDG), atmospheric entry guidance, and aerocapture guidance. In addition, extensions are developed, which have further applications for spacecraft guidance, to the general theory of applying convex optimization to jointly steer the mean and covariance of stochastic systems, subject to probabilistic constraints. For minimum-fuel PDG, the problem of setting non-conservative thrust margins is addressed by application of minimum-variance, covariance-constrained stochastic optimal control. The resulting closed-loop PDG process does not, with high probability, either saturate thrust commands or deviate too far from the desired landing site. Next, entry guidance in an atmosphere with spatially-dependent random variations in the atmospheric density is posed as a chance-constrained stochastic optimal control problem; the resulting targeting accuracy is shown to be better than the current state-of-the-art Apollo-derived entry guidance. Finally, in order to address the problem of aerocapture guidance around a planet with an unknown atmosphere, a successive convex programming-based method is developed to solve chance-constrained stochastic optimal control problems for systems acting in the presence of a Gaussian random field. In a numerical example of an aerocapture mission with bank angle control, the developed method is used to solve for a control law that explicitly minimizes the 99th percentile of the required Delta-V, subject to constraints on the probability distribution of the closed-loop bank angle during atmospheric flight.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/93981">https://techport.nasa.gov/projects/93981</a>
+    </div>
+  </div>
+</body>
+</html>

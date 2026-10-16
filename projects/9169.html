@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>High Fidelity Simulation of Jet Noise Emissions from Rectangular Nozzles | NASA TechPort Project 9169</title>
+  <meta name="description" content="The proposed SBIR Phase II program will lead to the validation of a state-of-the-art Large Eddy Simulation (LES) model, coupled with a Ffowcs-Williams-Hawkings (FW-H) farfield acoustic solver, for supporting the development of advanced engine concepts, includi">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/9169">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 9169</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX15.1.4</span>
+        </div>
+        <h1>High Fidelity Simulation of Jet Noise Emissions from Rectangular Nozzles</h1>
+        <div class="meta-id">NASA TechPort Project ID: 9169</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/9169" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The proposed SBIR Phase II program will lead to the validation of a state-of-the-art Large Eddy Simulation (LES) model, coupled with a Ffowcs-Williams-Hawkings (FW-H) farfield acoustic solver, for supporting the development of advanced engine concepts, including innovative flow control strategies for attenuation of their jet noise emissions. During Phase I, the LES/FW-H model was validated against matched sets of flowfield and companion acoustic data acquired at NASA/GRC for round nozzles. The flowfield validation included detailed comparisons against imagery, mean flow measurements and turbulence statistics. During Phase II, the end-to-end LES/FW-H noise prediction model will be demonstrated and validated by applying it to high aspect-ratio rectangular nozzle designs, proposed for testing at NASA GRC under the Fundamental Aeronautics Program. The model will also be validated against acoustic and flowfield data from a realistic jet-pylon experiment, thereby significantly advancing the state-of-the-art for LES. This critical validation will provide the foundation for proceeding to application of this innovative methodology in supporting the design and optimization of control concepts, e.g. chevrons, bevels, etc., as well as ultimately performing predictions of noise emissions from full-scale, realistic nozzles with complex exhaust flowpaths, airframe/propulsive jet interactions, etc.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The research proposed is of direct relevance to NASA's Fundamental Aeronautics Program, with its focus on development of supersonic commercial flight, while meeting current and future noise certification levels. In parallel with airframe design for supersonic flight, advanced propulsion concepts are also under development, with non-axisymmetric, rectangular nozzle designs that incorporate noise control concepts. The engines that will be used with these aircrafts require significant advances in noise control technology – an undertaking for which high-fidelity LES modeling will prove crucial in providing insight into physics and also complementing laboratory tests. The validated model will support NASA's upcoming tests of scale-model single or dual rectangular nozzles, as well as nozzles with chevrons and bevels. The same high-aspect ratio rectangular nozzles are also of interest to the Subsonic Fixed Wing Project.<br /><br />The proposed research is directly applicable to the US Navy's development of noise suppression technology for the F/A-18 E/F and JSF/F-35B programs. The F/A-18 E/F program office is currently engaged in development of retrofits for the General Electric F414-400 engine that entail the replacement of their nozzle seals with a new design of seals which feature chevron extensions at the trailing-edge. Comparable modifications are also being considered for the General Electric F404-400 engine for the F/A-18 C/D aircraft. Over the longer-term, the Navy's focus is shifting towards advanced suppressions concepts beyond chevrons, etc. for next-generation propulsion systems, where high-fidelity modeling will be crucial in supporting technology development. The proposed technology also has applicability in the automobile industry. Although significant resources are being spent in reducing noise from vortex shedding from side-view mirrors, the efforts are presently hindered by the absence of high fidelity predictive tools.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>9169</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX15.1.4: Aeroacoustics</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2012-04-30</td></tr>
+<tr><th>Project End Date</th><td>2016-04-30</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Combustion Research and Flow Technology — Pipersville, Pennsylvania</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Ohio (OH), Pennsylvania (PA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Neeraj Sinha (Principal Investigator); Lennart S Hultgren (Project Manager) &lt;Lennart.Hultgren@grc.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li><li><strong>Transitioned To</strong> (Pratt and Whitney): Large Eddy Simulations for jet clients GE and Pratt &amp; Whitney</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Project Image</strong> — High Fidelity Simulation of Jet Noise Emissions from Rectangular Nozzles Project Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/9169">https://techport.nasa.gov/projects/9169</a>
+    </div>
+  </div>
+</body>
+</html>

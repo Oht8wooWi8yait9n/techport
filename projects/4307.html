@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incorporation of GNSS Multipath to Improve Autonomous Rendezvous, Docking and Proximity Operations in Space | NASA TechPort Project 4307</title>
+  <meta name="description" content="Autonomous rendezvous and docking (AR&amp;D) operations depend critically on accurate, real-time knowledge of the relative position and velocity between two space vehicles. Presently, Global Navigation Satellite System (GNSS) techniques have evolved to become a so">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/4307">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 4307</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX17.2.6</span>
+        </div>
+        <h1>Incorporation of GNSS Multipath to Improve Autonomous Rendezvous, Docking and Proximity Operations in Space</h1>
+        <div class="meta-id">NASA TechPort Project ID: 4307</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/4307" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Autonomous rendezvous and docking (AR&D) operations depend critically on accurate, real-time knowledge of the relative position and velocity between two space vehicles. Presently, Global Navigation Satellite System (GNSS) techniques have evolved to become a source of high-integrity positioning, velocity and time (PVT) information in nearly all regimes of Earth orbit, from LEO to GEO. Unfortunately, GNSS capabilities remain severely limited in close proximity to large space structures due to significant multipath effects and signal blockage. The proposed research will investigate techniques to improve GNSS navigation in the close proximity of large space structures through the incorporation of multipath as a potential source of new range information, rather than an interference to be mitigated. This analysis is made possible by the newly acquired, full-spectrum GNSS measurements collected on the STS-125 Hubble Servicing Mission 4 (HSM4). This unique data set makes development of these advanced methods for space navigation possible for the first time. The 195 GB of GNSS data from STS-125 will be processed to generate waveforms for all visible satellites. Then a model of the HST-Shuttle geometry will be constructed, employing the Geometric Theory of Diffraction, producing amplitude, delay and phase for each ray path to generate model correlation waveforms. These waveforms will be compared to those extracted from the raw data. The Multipath Estimating Delay Lock Loop (MEDLL) will be applied to the STS-125 data to separate the contributions from each ray path. A simplified geometry model will then be used to define the relationship between the multipath and line of sight rays. The individual delays from the MEDLL will be used to invert this geometry, estimating the relative position vector and attitude. The results of the proposed research will enable the long-term objectives outlined in the NASA Communication and Navigation Systems Roadmap, in particular those in Technology Area Breakdown Structure (TABS) 5.4; Position, Navigation and Timing (PNT).
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The results of the proposed research will enable the long-term objectives outlined in the NASA Communication and Navigation Systems Roadmap, in particular those in Technology Area Breakdown Structure (TABS) 5.4; Position, Navigation and Timing (PNT).
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>4307</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX17.2.6: Rendezvous, Proximity Operations, and Capture Trajectory Design and Orbit Determination</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-08-01</td></tr>
+<tr><th>Project End Date</th><td>2015-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Purdue University-Main Campus — West Lafayette, Indiana</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Indiana (IN)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>James Garrison (Principal Investigator); Benjamin W Ashman (Co-Investigator) &lt;benjamin.w.ashman@nasa.gov&gt;; Luke M Winternitz (Project Manager) &lt;luke.b.winternitz@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Accurately model the raw GNSS signal received during rendezvous and close proximity operations around large space structures and use this information to improve relative navigation accuracy and integrity. An outline of material developed under this grant is shown below in Figure 1. The project components are color-coded as follows: green and blue indicate actual and simulated data respectively, both used as software inputs; salmon indicates original software; yellow indicates software outputs. Hubble Servicing Mission 4 (HSM4) was used as a case study for this research because of unique, sampled intermediate frequency Global Positioning System (GPS) data obtained from the mission. During HSM4, the Relative Navigation Sensor (RNS) experiment collected several hours of imagery and other data for estimating the space telescope’s relative position and attitude from the shuttle cargo bay. Two GPS antennas were included as part of this experiment, one right-hand circularly polarized (RCP), intended for receiving direct signals, the other left-hand circularly polarized (LCP), intended for receiving reflected signals. The two resulting data sets cover several hours of rendezvous, docking and deploy of the Hubble Space Telescope (HST) and are represented in Figure 1 by the “HSM4 Data” block. In order to estimate receiver environment features from multipath, such as the distance of a reflecting “target” spacecraft from a receiver, it is necessary to characterize the relationship between the environment features of interest and the observable multipath signal properties. First the “truth” geometry of HSM4 was constructed. Absolute position and attitude of the shuttle was taken from the United Space Alliance’s Post-flight Attitude and Trajectory History (PATH) data product, a standard product for shuttle missions. The position of HST relative to the shuttle was computed from a composite of the United Space Alliance product Relative Best Estimate Trajectory (RELBET) and vision processing estimates from the RNS experiment. The truth geometry was used to construct a simulation in Simulation Tool Kit (STK) in order to visualize the mission and compute geometric features such as GPS satellite visibility. Using the truth geometry and a model of HST, a simulation was constructed in electromagnetic (EM) ray trace software, WinProp. In collaboration with Professor Penina Axelrad and Jeanette Veldman at the University of Colorado Boulder, a ray trace simulation was run to find all ray paths of GPS signals reflected off HST and their properties (PRN source, azimuth, elevation, relative delay, relative E field strength, type of interaction, time of arrival). These reflected signal properties relative to the line of sight (LOS) signals were combined with scenario geometry in a MATLAB GPS signal simulator to simulate HSM4 data, shown in Figure 1 as “Simulated Raw Measurements.” The signal simulator, GSFC Siggen, was developed in collaboration with fellowship mentor Dr. Luke Winternitz. A custom MATLAB software receiver was constructed, the Relative Navigation Sensor Software Defined Radio (RNS SDR), and used to produce code pseudorange measurements from both the simulated and experimental data. A model was derived for the effect of reflected signals, or “multipath,” on the code correlations at the output of the Delay Lock Loop (DLL), where M is the number of multipath rays, τe the delay estimate error, τd the early-late correlator spacing of the DLL (in chips), αi the ratio of the i-th multipath ray amplitude to the LOS ray amplitude, and δi and ψi the code delay and carrier phase of the i-th multipath signal relative to the LOS signal respectively. The error due to multipath in the propagation delay measurement (i.e., pseudorange) can be calculated by finding the null of Equation 1. In the simulation case, the scenario geometry can be used to calculate a true pseudorange. The differences between the measured and true pseudoranges were shown to agree with Equation 1 for the true multipath parameters from ray tracing supplied to the signal simulator. An example with a single reflected ray is shown in Figure 2 for PRN 9 starting at 16:23:45 UTC during docking. In the top plot the excess pseudorange measured from tracking simulated data is plotted with that calculated using Equation 1 from the reflected signal’s relative code and carrier phases (middle plot) and amplitude (bottom plot). Excess pseudorange measurements have not yet been made from the HSM4 data; the narrow front-end bandwidth used in collecting the data (2 MHz) had a smoothing effect on the code correlations so other techniques for extracting multipath observables are being pursued. In the meantime, a navigation algorithm was developed using an Extended Kalman Filter (EKF) to estimate receiver and target spacecraft states. In a rendezvous and docking scenario, the target spacecraft is the non-cooperative space vehicle that the controlled spacecraft, or “chaser,” is docking with. Using original code, as well as programs from Goddard’s Orbit Determination Toolbox (ODTBX), a simulation of HSM4 was constructed. As an initial step, direct and reflected pseudoranges are used as measurements and modeled using the Bistatic Radar Equation and a perfectly conducting sphere for HST’s radar cross section. Position errors are shown in Figure 3 for the receiver and target for fifty different runs demonstrating successful estimation of both spacecraft to meter-level accuracy under these simplified conditions.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>4307-1363186704546.jpg</strong> — Project Image Incorporation of GNSS Multipath to Improve Autonomous Rendezvous, Docking and Proximity Operations in Space</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/4307">https://techport.nasa.gov/projects/4307</a>
+    </div>
+  </div>
+</body>
+</html>

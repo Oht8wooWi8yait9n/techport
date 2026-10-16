@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quantitative Measurements of Ablation-Products Transport for Turbulence Model Validation | NASA TechPort Project 4315</title>
+  <meta name="description" content="In recent years NASA has developed renewed interest in the study of ablation owing to the need to develop suitable thermal protection systems for spacecraft that undergo planetary entry. Ablation is a complex multi-physics process, and codes that predict it re">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/4315">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 4315</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX09.1.1</span>
+        </div>
+        <h1>Quantitative Measurements of Ablation-Products Transport for Turbulence Model Validation</h1>
+        <div class="meta-id">NASA TechPort Project ID: 4315</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/4315" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>In recent years NASA has developed renewed interest in the study of ablation owing to the need to develop suitable thermal protection systems for spacecraft that undergo planetary entry. Ablation is a complex multi-physics process, and codes that predict it require a number of coupled submodels, each of which requires validation. For example, Reynolds-averaged Navier Stokes (RANS) and large-eddy simulation (LES) codes require models of the turbulent transport of ablation products under variable compressibility and pressure gradient conditions; however, suitable scalar-velocity data under relevant conditions are very rare. One means of obtaining such data is to transpire a gas, such as NO, into a turbulent boundary layer and to measure its dispersion with a technique such as planar laser-induced fluorescence (PLIF). Alternatively, a new technique has been developed at The University of Texas at Austin that uses PLIF of a low-temperature sublimating ablator (naphthalene) to enable visualization of the ablation products in a hypersonic turbulent boundary layer. However, for either the transpired gas or low-temperature ablation techniques to be useful, their fluorescence signals must first be studied over the wide range of pressures and temperatures that may be present in a given wind tunnel. Fluorescence models of NO and naphthalene vapor will be obtained by monitoring the fluorescence signals of these species in a pressure and temperature controlled test cell. The goal of this project is to conduct the fundamental spectroscopic measurements that are required to enable the acquisition of quantitative images of the transport of the ablation products of a re-entry vehicle model in a supersonic wind tunnel. The proposed work will mainly be conducted at research laboratories on the campus of the University of Texas at Austin under the supervision of Dr. Noel Clemens. This work will complement the NO PLIF work being conducted in the Mach 10 wind tunnel at NASA's LaRC, since recent work has demonstrated problems with making the measurements quantitative. This proposal relates directly to sections 14.3.1 (Entry and Ascent TPS) and 9.1.1 (Rigid TPS) of NASA's Space Technology Roadmaps Technology Area Breakdown Structure.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The goal of this project is to conduct the fundamental spectroscopic measurements that are required to enable the acquisition of quantitative images of the transport of the ablation products of a re-entry vehicle model in a supersonic wind tunnel.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>4315</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.1.1: Thermal Protection Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-08-01</td></tr>
+<tr><th>Project End Date</th><td>2015-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>The University of Texas at Austin — Austin, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Noel Clemens (Principal Investigator); Christopher S Combs (Co-Investigator) &lt;christopher.s.combs@nasa.gov&gt;; Paul M Danehy (Project Manager) &lt;paul.m.danehy@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Transitioned To</strong>: Ablation Products Validation: &quot;Acquired quantitative images of the transport of the ablation products in a supersonic turbulent boundary layer on a scaled Orion MPCV shaped model; these data are being used by NASA for CFD validation.&quot; By developing and applying new instrumentation to study the problem of ablation, Christopher was able to collect quantitative measurements of scalar transport in a Mach 5 Wind Tunnel, as well as quantitative and qualitative measurements of ablation product transport from a scaled Orion capsule model with a naphthalene heat shield at various angles of attack. The high quality data generated in this project is a unique resource that is now available for validating ablation process models with real, quantitative data.</li><li><strong>Closed Out</strong>: The goal of this project is to conduct the fundamental spectroscopic measurements that are required to enable the acquisition of quantitative images of the transport of the ablation products in a supersonic turbulent boundary layer and collect said quantitative images. A recently-developed experimental technique based on the sublimation of naphthalene, which enables imaging of the dispersion of a passive scalar using planar laser-induced fluorescence (PLIF), is applied to a Mach 5 turbulent boundary layer and a NASA Orion capsule flowfield. To enable the quantification of naphthalene PLIF images, quantitative fluorescence and quenching measurements were made in a temperature- and pressure-regulated test cell. The test cell measurements were of the naphthalene fluorescence lifetime and integrated fluorescence signal over the temperature range of 100 K to 525 K and pressure range of 1 kPa to 40 kPa in air. These data enabled the calculation of naphthalene fluorescence yield and absorption cross section over the range of temperatures and pressures tested, which were then fit to simple functional forms for use in the calibration of the PLIF images. Quantitative naphthalene PLIF images in the Mach 5 boundary layer revealed large-scale naphthalene vapor structures that were regularly ejected out to wall distances of approximately y/δ = 0.6 for a field of view that spanned 3δ to 5δ downstream of the trailing edge of the naphthalene insert. The magnitude of the calculated naphthalene mole fraction in these structures at y/δ = 0.2 ranged from approximately 1-6% of the saturation mole fraction at the wind tunnel recovery temperature and static pressure. An uncertainty analysis showed that the uncertainty in the inferred naphthalene mole fraction measurements was ± 20%. Mean mole fraction profiles collected at different streamwise locations were normalized by the mole fraction measured at the wall and a characteristic height of the scalar boundary layer, causing the profiles to collapse into one “universal” mole fraction profile. Two-dimensional fields of naphthalene mole fraction were also obtained simultaneously with velocity by using particle image velocimetry (PIV) and PLIF. The images show large-scale naphthalene vapor structures that coincide with regions of relatively low streamwise velocity. The covariance of naphthalene mole fraction with velocity indicates that an ejection mechanism is transporting low-momentum, high-scalar-concentration fluid away from the wall, resulting in the protrusions of naphthalene vapor evident in the instantaneous PLIF images. Lastly, naphthalene PLIF was used to visualize the dispersion of gas-phase ablation products on a scaled Orion capsule model at four different angles of attack at Mach 5. High concentrations of scalar were imaged in the capsule recirculation region. Additionally, intermittent turbulent structures were visualized on the heat shield surface, particularly for the 12° and 52° AoA cases.</li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>4315-1363263423478.jpg</strong> — Project Image Quantitative Measurements of Ablation-Products Transport for Turbulence Model Validation</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/4315">https://techport.nasa.gov/projects/4315</a>
+    </div>
+  </div>
+</body>
+</html>

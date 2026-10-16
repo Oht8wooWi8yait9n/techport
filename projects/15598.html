@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-flight Training of Autonomic Responses for Mitigating the Effects of Spatial Disorientation During Spaceflight | NASA TechPort Project 15598</title>
+  <meta name="description" content="Space motion sickness is characterized by symptoms of spatial disorientation, nausea, and vomiting. It affects approximately 70% of the crew during space travel and symptoms are commonly treated with intramuscular injections of promethazine. However, this coun">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/15598">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 15598</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.2</span>
+        </div>
+        <h1>Pre-flight Training of Autonomic Responses for Mitigating the Effects of Spatial Disorientation During Spaceflight</h1>
+        <div class="meta-id">NASA TechPort Project ID: 15598</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/15598" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Space motion sickness is characterized by symptoms of spatial disorientation, nausea, and vomiting. It affects approximately 70% of the crew during space travel and symptoms are commonly treated with intramuscular injections of promethazine. However, this countermeasure has had limited effectiveness and produces unwanted side-effects that include drowsiness and impaired performance. This study addresses PRD Risks: Risk of Therapeutic Failure due to Ineffectiveness of Medication; Risk of Impaired Control of Spacecraft, Associated Systems and Immediate Vehicle Egress due to Vestibular/Sensorimotor Alterations Associated with Spaceflight. Integrated Research Plan (IRP) Gap SM11: Can crewmember spatiomotor abilities be more accurately predicted and countermeasures and training techniques developed to mitigate spatial disorientation during spaceflight? The purpose of the proposed research is to evaluate an alternative countermeasure for mitigating symptoms without the side effects commonly observed with anti-motion sickness medications. Autogenic-Feedback Training Exercise (AFTE) is a 6-hour physiological training program that has proven to be a highly efficient and effective method for enabling people to monitor and voluntarily control up to 20 of their own physiological responses, thereby suppressing motion sickness symptoms. In an earlier flight study, three astronauts were given AFTE during preflight training and three other astronauts participated as controls and were given a pharmacologic treatment. Shuttle crews were required to record data during launch, waking hours on mission days 1 to 3, and during reentry. They were required to practice AFTE for 15-minute inflight and apply control if symptoms occurred. Our findings indicate that 2 of the 3 astronauts receiving AFTE were successful at controlling symptoms in flight, while 2 of 3 controls were severely debilitated despite given anti-motion sickness medications.    <p></p> Specific Objectives: 1) To determine individual baselines of physiological responses and tolerances to spatial disorientation in a rotating chair test simulating the  cross-coupled angular acceleration effects anticipated for Orion space craft re-entry; and 2) To evaluate AFTE effects for mitigating symptoms and improving tolerances to spatial disorientation.     <p></p> Methods: Establish capability for providing remote AFTE training to any location. The study will include two groups of men and women, 10 subjects per group: Treatment - AFTE and Control no treatment. Each group will receive 4 exposures to rotating chair tests at one week intervals. All subjects will receive training on a manual dexterity and short-term memory task between tests 1 and 2. Subjects in the treatment group will receive a total of 6-hours AFTE training (two hours before the second, third, and fourth tests).     <p></p> Deliverable: NASA Technical Memorandum and peer-reviewed journal article(s). We anticipate results of this study will demonstrate that AFTE provides crews with significantly better protection from the effects of spatial disorientation than adaptation training alone and without the side-effects of medication, thereby improving health,safety, and operational efficiency. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The training used to mitigate the effects of spatial disorientation during a simulated Orion re-entry test, can also mitigate symptoms of motion sickness on Earth. Training benefits have been demonstrated with dysautonomia patients as well as other biomedical problems. This training can  benefit people with behavioral problems (e.g., anxiety, depression, sleep deprivation) and has been shown to improve performance in extreme environments. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>15598</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.2: Prevention and Countermeasures</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2014-10-01</td></tr>
+<tr><th>Project End Date</th><td>2016-02-28</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Patricia S Cowings (Principal Investigator) &lt;patricia.s.cowings@nasa.gov&gt;; William B Toscano (Co-Investigator) &lt;bill.toscano@nasa.gov&gt;; April E Ronca Finco (Project Manager) &lt;april.e.ronca-1@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-01-27</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: NASA has identified a potential risk to future astronauts during re-entry of some vehicles like Orion; where medications to control symptoms of dizziness or nausea may not be effective for all crew and often lead to adverse side effects. For example, Orion&amp;rsquo;s re-entry will potentially produce large cross-coupled angular accelerations, which will have significant impacts on crew, including their ability to operate the vehicle and egress. Thus, the purpose of this study, led by Dr. Patricia Cowings at Ames Research Center, was to test the ability of a 6-hr physiological training procedure, Autogenic-Feedback Training Exercise (AFTE), to help astronauts adapt to spaceflight and re-adapt to Earth to mitigate these effects. Twenty subjects were randomly assigned to two groups AFTE (N=10) and Control (N=10) and were matched for motion sickness susceptibility and gender. Physiological measures recorded were: heart rate, respiration, muscle activity of arms and legs, skin conductance, blood pressure, peripheral blood flow, cardiac output, and stroke volume. Procedures for all subjects included: a standard rotating chair test to determine initial motion sickness susceptibility; four exposures to a simulated Orion re-entry test in the rotating chair once per week; three training sessions on consecutive days for a manual performance task. In addition, treatment subjects were given two hours of AFTE training before simulated Orion re-entry test 2, 3, and 4 (total 6-hours). A standard diagnostic scale was used to evaluate motion sickness symptom severity on all tests. Results showed that following two hours of AFTE motion sickness symptoms were significantly reduced during a simulated Orion re-entry in a rotating chair. As instructed during the training sessions, AFTE subjects were also able to maintain lower heart rates during the 3rd and 4th Orion simulation tests than the control group as well as a constant rate and volume of breathing, whereas the control subjects showed no significant changes in these physiological responses across tests. Trends show that performance parameters (accuracy and response speed) were less degraded for AFTE subjects. The results of this study and earlier investigations on AFTE indicate that astronauts could benefit from receiving at least 2 to 4 hours of preflight training and during missions could practice physiologic self-regulations using small mobile feedback devices.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>NASA Technical Documents</strong> — Cowings PS, Toscano W, Reschke MF, Gebreyesus F, Rocha C. &quot;Autogenic-Feedback Training Exercise (AFTE) Mitigates the Effects of Spatial Disorientation to Simulated Orion Spacecraft Re-entry: Individual Differences.&quot; Moffett Field, CA : NASA Ames Research Center, 2017. NASA/TM—2017–219511. https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20170006194.pdf , Mar-2017</li><li><strong>Articles in Peer-reviewed Journals</strong> — Cowings PS, Toscano WB, Reschke MF, Tsehay A. &quot;Psychophysiological assessment and correction of spatial disorientation during simulated Orion spacecraft re-entry.&quot; Int J Psychophysiol. 2018 Sep;131:102-12. Epub 2018 Mar 2. https://doi.org/10.1016/j.ijpsycho.2018.03.001 ; PubMed PMID: 29505848 , Sep-2018</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/15598">https://techport.nasa.gov/projects/15598</a>
+    </div>
+  </div>
+</body>
+</html>

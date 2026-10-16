@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integrating ISHM with Flight Avionics Architectures for Cyber-Physical Space Systems | NASA TechPort Project 90375</title>
+  <meta name="description" content="Autonomous, avionic and robotic systems are used in a variety of applications including launch vehicles, robotic precursor platforms, etc. Most avionic innovations are based on software-embedded systems, and this has resulted in an increase in the number of in">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/90375">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 90375</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX07.3.2</span>
+        </div>
+        <h1>Integrating ISHM with Flight Avionics Architectures for Cyber-Physical Space Systems</h1>
+        <div class="meta-id">NASA TechPort Project ID: 90375</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/90375" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Autonomous, avionic and robotic systems are used in a variety of applications including launch vehicles, robotic precursor platforms, etc. Most avionic innovations are based on software-embedded systems, and this has resulted in an increase in the number of interactions (coupling) among heterogeneous subsystems. Avionic systems degrade in performance due to gradual development of anomalies and unanticipated failures ranging from issues affecting a single hardware or software subsystem to issues occurring as a result of coupling among multiple subsystems. In addition, system usage and operating conditions may lead to different failure modes necessating multiple recovery procedures possibly causing conflicts and deadlocks among recovery steps. QSI intends to address these challenges by leveraging the current capabilities of model-based fault management and supportability solutions of TEAMS to efficiently sequence individual steps within each procedure, including adding/deleting steps, and resolve conflicts and deadlocks in recovery procedures. TEAMS-RT, the real-time inference engine, has multiple fault diagnosis capability built-in. Additionally, TEAMS-RDS (TEAMS-remote diagnostic server) already exploits commonalities among test steps during guided troubleshooting, where each test is represented as a chain of pre-setup, post-setup and action nodes with Do and Undo steps interspersed. The proposed effort will extend this to more general digraphs of test and recovery/repair procedures and also embed this capability in a solution linked to enhanced TEAMS-RT for automated /crew-initiated recovery and resolution of conflicts and deadlocks in recovery procedures. This proposal aims to enhance QSI?s existing probabilistic inference engine to handle multiple, intermittent and coupled failure scenarios and developing an ISHM response engine module that dynamically assembles feasible and near-optimal recovery procedures to handle multiple failure scenarios.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          NASA is developing increasingly autonomous systems that can perform missions with a high degree of certainty with minimal human intervention. Examples of such mission include rovers operating in Mars, where the missions are extremely long, and therefore multiple components and subsystems will degrade and fail over the duration of the mission. However, due to the long communication delays between Mars and Earth, these systems cannot be monitored and diagnosed by mission control like any other near-earth mission. The proposed capability will be invaluable to NASA for such operations by (a) Predicting failures before they disrupt the mission, (b) Reducing false positives of such prediction with the proposed inference engine under multiple failure scenarios, and (c) merging multiple recovery procedures that may have conflict. This will enable NASA to fill the gap between the current flight avionics CW FDIR systems and desired ISHM systems handling multiple failure high stress situations.<br /> <br />Among the other agencies, DoD, US Air Force, US Navy, and commercial aviation (e.g., SpaceX) are the most potential customer for the resulting technologies. Large scale military systems (systems of systems) such as NORAD, Space Command ground segments, the Joint Strike Fighter fleet, the Navy shipboard platforms, Submarine Commands and ballistic missile defense (BMD) systems can be potential areas to field the proposed technology. In addition, UAVs, UMGs and other unmanned submersible vehicle markets could also be potential target for the proposed technology. The product is also expected to be of commercial value to the manufacturers of DoD and military?s remotely guided weapons and reconnaissance systems.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>90375</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX07.3.2: Integrated Flight Operations Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2016-06-10</td></tr>
+<tr><th>Project End Date</th><td>2016-12-09</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Qualtech Systems, Inc. — Rocky Hill, Connecticut</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Connecticut (CT)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Sudipto Ghoshal (Principal Investigator) &lt;sudipto.ghoshal@nasa.gov&gt;; Gordon B Aaseng (Project Manager) &lt;gordon.b.aaseng@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li><li><strong>Briefing Chart</strong> — Integrating ISHM with Flight Avionics Architectures for Cyber-Physical Space Systems, Phase I Briefing Chart</li><li><strong>Briefing Chart Image</strong> — Integrating ISHM with Flight Avionics Architectures for Cyber-Physical Space Systems, Phase I</li><li><strong>Final Summary Chart Image</strong> — Integrating ISHM with Flight Avionics Architectures for Cyber-Physical Space Systems, Phase I Project Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/90375">https://techport.nasa.gov/projects/90375</a>
+    </div>
+  </div>
+</body>
+</html>

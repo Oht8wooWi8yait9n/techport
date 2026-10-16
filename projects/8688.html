@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAFE-P: System for Assurance of Flight Executable Procedures | NASA TechPort Project 8688</title>
+  <meta name="description" content="NASA operates manned spacecraft according to rigorously-defined standard operating procedures. Unfortunately, operating procedures are often written in different languages. For example, Orion will use automatic procedures written in SCL, the Spacecraft Command">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/8688">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 8688</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX11.1.5</span>
+        </div>
+        <h1>SAFE-P: System for Assurance of Flight Executable Procedures</h1>
+        <div class="meta-id">NASA TechPort Project ID: 8688</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/8688" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          NASA operates manned spacecraft according to rigorously-defined standard operating procedures. Unfortunately, operating procedures are often written in different languages. For example, Orion will use automatic procedures written in SCL, the Spacecraft Command Language, while backup manual procedures may be developed in PRL, the Procedure Representation Language. However, procedures developed in different languages may diverge, so that the backup PRL procedures do not operate in the same way as the SCL procedures. This could lead to unintended effects that may range from simply unexpected to inefficient or even catastrophic. We propose to develop the SAFE-P tool, which will use formal model-checking methods to prove that PRL and SCL procedures have the same underlying execution semantics. Our Phase 1 effort validated the effectiveness of our approach; Phase 2 will completely automate the model checking process and integrate with the Procedure Integrated Development Environment (PRIDE). SAFE-P will thus allow procedure authors to easily compare procedures as they are being developed. When differences are found by SAFE-P, they will be highlighted immediately in the PRIDE interface, allowing the operators to either fix problems or annotate the respective procedures to explain the differences. Using SAFE-P, NASA personnel will rapidly and confidently verify that if an automatic SCL program cannot be executed, a backup manual procedure in PRL will be equivalent and safe. Furthermore, as automatic translators are developed to transform procedures in one language into another NASA-relevant language (e.g., Tietronix's current effort to translate PRL into SCL), the SAFE-P tool will provide a critical validation mechanism to double-check the correctness of the translation and highlight areas where the translator makes mistakes (or deliberate approximations that yield different behavior).
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Large-scale industrial control systems, in particular oil refineries, paper mills, and food processing plants, also maintain a large library of standard operating procedures which have been developed by system designers and installers. These must be adapted on a daily basis to the specific system configuration and product targets for manual or automatic execution. The SAFE-P technology will be directly applicable to ensuring that industrial plants' daily operating plans and scripts conform to the standard operating procedures. SAFE-P technology may also be applied when manually-operated industrial control systems are being transitioned to more automated control systems, to verify that newly-written executable control scripts conform to legacy manual (textual) operating procedures.<br /> <br />The proposed SAFE-P tool will be applicable to a wide variety of NASA missions including ISS, Shuttle, and Constellation operations. For manned and unmanned spacecraft operations, SAFE-P will bridge a critical gap in NASA's safety procedures, preventing the possibility of inadvertent commands that do not conform to standard operating procedures and that could lead to dangerous or even catastrophic consequences. SAFE-P fits directly within NASA's Automation for Operations (A4O) system concept, helping support significant reductions in operations costs and increases in operational efficiency while maintaining or improving system safety. The SAFE-P tool will be designed to integrate with NASA's Procedure Integrated Development Environment (PRIDE), seamlessly supporting efficient development of future executable procedures and scripts.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>8688</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.1.5: Architecture and Design of Software systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 5 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2010-02-19</td></tr>
+<tr><th>Project End Date</th><td>2013-02-18</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>SIFT, LLC — Minneapolis, Minnesota</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Minnesota (MN)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>David J Musliner (Principal Investigator); Joseph Coughlan (Project Manager) &lt;Joseph.C.Coughlan@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/8688">https://techport.nasa.gov/projects/8688</a>
+    </div>
+  </div>
+</body>
+</html>

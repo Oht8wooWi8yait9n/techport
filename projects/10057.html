@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Implementation of Extreme STOL Capability in Cruise Efficient Aircraft, Phase I | NASA TechPort Project 10057</title>
+  <meta name="description" content="Aerotonomy, Incorporated and the Georgia Tech Research Institute (GTRI), will develop enabling technologies for an aircraft that is capable of Extreme Short Takeoff and Landing (ESTOL), while retaining efficient transonic cruise performance, by applying a comp">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/10057">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 10057</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX14.1.3</span>
+        </div>
+        <h1>Implementation of Extreme STOL Capability in Cruise Efficient Aircraft, Phase I</h1>
+        <div class="meta-id">NASA TechPort Project ID: 10057</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/10057" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Aerotonomy, Incorporated and the Georgia Tech Research Institute (GTRI), will develop enabling technologies for an aircraft that is capable of Extreme Short Takeoff and Landing (ESTOL), while retaining efficient transonic cruise performance, by applying a comprehensive, systems-based design and analysis approach to innovative combinations of active flow control methodologies.  The development of this technology directly supports the four strategic goals of NASA's Next Generation Air Transportation System (NGATS), namely 1) increased capacity, 2) improved safety and reliability, 3) increased efficiency and performance, and 4) reduced energy consumption and environmental impact. Individual circulation control technologies have been explored over the years, and have been demonstrated to provide highly effective force and moment augmentation and improved control capabilities.  However, previous investigations generally did not focus on combining these CC systems into a cohesive and functional aircraft subsystem, nor did they examine CC impacts on other aircraft subsystems or overall integration issues. The primary innovation in the proposed project will be an optimal Combined Circulation Control (C3) system that maximizes net CC performance benefits over all flight phases, determined through a comprehensive set of systems-impact trades, including examinations of impacts on power requirements, propulsion system performance, noise characteristics, cost, reliability and aircraft weight.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This technology has potential applications in commercial airliners, business jets, and regional transports.  In general, equipping these aircraft with cruise-efficient high-lift devices can enhance airport options, give the user more valid runway choices at existing airports, and help alleviate the noise problem near airports by allowing steeper climb-outs and approaches.  Manufacturers of these aircraft include Boeing, Gulfstream, and Cessna, among others. There are many obvious military applications of the proposed technology.  Some of these include ESTOL cargo and troop transport aircraft and shipboard aircraft, including the Navy UCAV.  Super-circulation can be an enabling technology for launching and recovering medium and large UAVs from short and unprepared fields, without requiring specialized launch and recovery equipment and without incurring large cruise performance penalties due to conventional high lift systems.  The technology proposed herein directly supports all four of NASA's Next Generation Air Transportation System (NGATS) strategic goals, namely: 1) increased capacity, 2) improved safety and reliability, 3) increased efficiency and performance, and 4) reduced energy consumption and environmental impact.  Also, Panel B (Propulsion and Power) of the NASA funded National Research Council (NRC) Decadal Survey on Civil Aeronautics recommended ESTOL capability as a way of addressing the NGATS goals. The technology developed in this project will have application to ESTOL-capable small transport aircraft with efficient transonic cruise capabilities, thereby increasing capacity and efficiency of the air transportation system by creating opportunities to develop airports in areas where they would have previously been unfeasible, and by enabling use of existing shorter runways at airports that are now underutilized.  Also, these technologies have application to planetary aircraft for atmospheric science/exploration on planets where density and dynamic pressure are very low, such as Mars, Io, Titan, and Venus.  The super-circulation technologies developed in this project for ESTOL applications may enable these aircraft to operate efficiently with greater payload capacity at lower dynamic pressures.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>10057</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX14.1.3: Thermal Conditioning for Sensors, Instruments, Samples, and High-Efficiency Electric Motors</td></tr>
+<tr><th>Project Start Date</th><td>2007-01-19</td></tr>
+<tr><th>Project End Date</th><td>2008-01-18</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Armstrong Flight Research Center (AFRC) — Edwards, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Aerotonomy, Inc. — Lithia Springs, Georgia; Georgia Tech Research Corporation (GTRC) — Atlanta, Georgia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Georgia (GA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Chris Gibson (Principal Investigator); Jennifer H Cole (Project Manager) &lt;jennifer.h.cole@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-01-27</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/10057">https://techport.nasa.gov/projects/10057</a>
+    </div>
+  </div>
+</body>
+</html>

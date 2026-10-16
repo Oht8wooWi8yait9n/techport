@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Establishing a proto-LTC with Two-Way Satellite Time Transfer (TWSTT) at the Moon | NASA TechPort Project 184927</title>
+  <meta name="description" content="This ECI project seeks to address these critical timing needs to develop a system capability for a “proto”- coordinated lunar time (LTC) scale and determine its empirical relationship with the standard terrestrial time scale. Complementary efforts are focused ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/184927">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 184927</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">STMD</span>
+          <span class="badge">ECI</span>
+          
+        </div>
+        <h1>Establishing a proto-LTC with Two-Way Satellite Time Transfer (TWSTT) at the Moon</h1>
+        <div class="meta-id">NASA TechPort Project ID: 184927</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/184927" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>This ECI project seeks to address these critical timing needs to develop a system <br />capability for a “proto”- coordinated lunar time (LTC) scale and determine its <br />empirical relationship with the standard terrestrial time scale. Complementary <br />efforts are focused on defining an interoperable framework for communication, PNT, <br />and auxiliary services in cislunar space (known as LunaNet) or advancing low TRL next <br />generation highly stable clock technologies (such as the Spaceflight Compatible Optical <br />Atomic Strontium Ion Clock, or OASIC). This proposed concept is focused on the <br />development of a low small size, weight, and power (low SWaP) clock ensemble using <br />flight-rated COTS parts to be deployed on the lunar surface, and the long-distance twoway satellite time transfer (TWSTT) procedure necessary for defining and tracing the<br />lunar time relationship to UTC. This is a key technological effort because it will establish <br />a feasible means to close the current gap in lunar timing service infrastructure in the <br />next 3-5 years. Systems designed to obtain and distribute measurements of proper<br />lunar time from the lunar surface are needed by lunar PNT systems such as LCRNS.<br />The steady increase in missions going to the Moon will continue to strain the ground <br />station infrastructure to meet cislunar missions’ needs for ranging, Doppler, and timing, <br />when in view. The availability of a timing source providing a stable LTC reference to<br />users on the lunar surface and in orbit can: 1) improve the navigation solutions of <br />cislunar and lunar surface missions, when used as a source for the LunaNet PNT <br />services, thereby unifying the distribution of a common lunar reference system <br />commensurate with LTC; 2) reduce the timing burden on cislunar users by allowing <br />them to use lower SWaP receivers, clocks, and processing power since the LTC time <br />broadcast by the LunaNet Service Provider (LNSP) nodes are orbiting the same central <br />body, are close by, and can more frequently provide time updates through the one-way <br />broadcast; 3) serve as the foundation to establish a common time system for the <br />Moon, analogous to International Atomic Time (TAI) or UTC on Earth.<br /> </p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The decades ahead will witness monumental advances in the exploration of cislunar <br />space. Following the success of Artemis I and the Commercial Lunar Payload Services<br />(CLPS), subsequent missions will return astronauts, robotic explorers, and science <br />instruments to lunar orbit and the lunar surface, with the goal of establishing an <br />enduring human presence on the Moon and vibrant lunar ecosystem in preparing for<br />Mars. Critical to these endeavors will be establishing a time system at the <br />Moon, to perform experiments of fundamental physics, testing predictions of <br />relativity, and support a permanent presence on the lunar surface and <br />sustained activities from private industry and government. The establishment of a <br />Coordinated Lunar Time (LTC) is essential to enable safe navigation in cislunar <br />space long term and facilitate interoperability between lunar assets and with <br />Earth. The development and maintenance of a LTC at the moon will mature the <br />technology and establish the processes necessary build and maintain a system for <br />Mars. NASA’s Space Communications and Navigation (SCaN) program is working to <br />enhance and develop new network assets for the Artemis program. The Lunar <br />Communications Relay and Navigation System (LCRNS) includes a proposed Global <br />Navigation Satellite System (GNSS)-like constellation of relay satellites to provide <br />communication and PNT services primarily at the Moon’s South Pole region. The <br />constellation has three phases of deployment beginning in 2026 and ending in 2029<br />after the deployment of a minimum of 4 nodes in the constellation. However, the initial <br />LCRNS node(s) may be limited to mathematically defined offsets from the Earth <br />standard Coordinated Universal Time (UTC) which could introduce timing errors, since <br />no proper clock yet exists on the lunar surface to obtain empirical measurements. A <br />clock or ensemble of clocks on the lunar surface can measure a realized time on <br />the lunar geoid and be the first to establish LTC for the Moon. Like the GNSS <br />constellations at Earth, the LCRNS nodes can broadcast the realized LTC time to users <br />on the surface and in cislunar space around the South Pole. In turn, this capability <br />will reduce the Size, Weight, and Power (SWaP) of user’s receiver, clock, and <br />processing requirements for time transfer in the same way GNSS receivers are <br />small and ubiquitous on Earth [5]. The positive outcome to achieve safe navigation <br />based on realized LTC can not be overstated.<br /> </p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>184927</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Early Career Initiative (ECI)</td></tr>
+<tr><th>Project Start Date</th><td>2026-04-01</td></tr>
+<tr><th>Project End Date</th><td>2027-09-30</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Nathan K Esantsi (Principal Investigator) &lt;nathan.k.esantsi@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-07-28</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/184927">https://techport.nasa.gov/projects/184927</a>
+    </div>
+  </div>
+</body>
+</html>

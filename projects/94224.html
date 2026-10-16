@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System-level Uncertainty Quantification Method Development and Validation (HTP TC-1) | NASA TechPort Project 94224</title>
+  <meta name="description" content="The purpose of the System-level Uncertainty Quantification Method Development and Validation (TC-1) is to develop and validate a system level uncertainty propagation methodology to guide uncertainty-informed decision-making by identifying fundamental research ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/94224">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 94224</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">ARMD</span>
+          <span class="badge">AAVP</span>
+          <span class="badge">TX11.3.6</span>
+        </div>
+        <h1>System-level Uncertainty Quantification Method Development and Validation (HTP TC-1)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 94224</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/94224" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The purpose of the System-level Uncertainty Quantification Method Development and Validation (TC-1) is to develop and validate a system level uncertainty propagation methodology to guide uncertainty-informed decision-making by identifying fundamental research areas that will reduce the system performance uncertainty.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>At the conclusion of TC-1, the first comprehensive hypersonic systems UQ methodology will be established. This methodology and any tools that are developed will be available to the hypersonics research community as well as a new knowledge of the impact of uncertainty on systems performance. This will allow for the establishment of a UQ standard for hypersonic systems. Tools will be made available to the community for use in ongoing and future projects.<br />Sources of uncertainty will be identified and the largest contributors to system performance uncertainty will be known. The conceptual design process can be improved by expending time and resources into areas that have the largest contribution to performance uncertainty which will add credibility to performance predictions, particularly for vehicles that are developed into operational systems. This should also decrease the incidence of expensive vehicle re-designs. Finally, experience and knowledge in hypersonic systems UQ will allow contract and mission / design requirements to be written to include uncertainty as a metric for performance.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>94224</td></tr>
+<tr><th>Acronym</th><td>HTP TC-1</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Aeronautics Research Mission Directorate (ARMD)</td></tr>
+<tr><th>NASA Program</th><td>Advanced Air Vehicles Program (AAVP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.3.6: Uncertainty Quantification and Nondeterministic Simulation Methods</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2016-10-01</td></tr>
+<tr><th>Project End Date</th><td>2022-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Charles P Leonard (Project Manager) &lt;charles.p.leonard@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Nateri K Madavan (Program Director) &lt;nateri.k.madavan@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-12-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Upon the completion of TC-1, several enabling technical advancements in UQ were made along with multiple applications to relevant hypersonic vehicle components and systems. Advancements in UQ include novel approaches to model-form uncertainty estimation, extensions of multifidelity UQ to design and optimization, and scalable approaches to numerical error estimation and forward uncertainty propagation. TC-1 workforce developed expertise in UQ and communication of UQ-based results and findings through applications of UQ methods to several problems of interest to the hypersonics community. TC-1 outcomes and accomplishments enable uncertainty informed design and decision making of hypersonic air-breathing propulsion systems. Tools and methods developed under TC-1 were shown to be applicable to many problems of interest of the hypersonics community. Capabilities, tools, and lessons learned are being leveraged by industry and academic partners. TC-1 results and applications may be used to inform future UQ research directions at NASA. Newly trained workforce can be leveraged within and outside of HTP to enhance NASA projects. Internal project reports: Applicability of Uncertainty Quantification Standards and Methodologies to Hypersonic, Airbreathing Vehicle Systems, 2017. Model Validation Under Mixed Uncertainty with Applications to Hypersonic Flows, 2021. Model Calibration and Design Under Uncertainty of Hypersonic Air-breathing Propulsion Systems, 2022. Technical Challenge 1: System-Level Uncertainty Quantification and Validation, 2022. Conference papers: Brune, A. J., West IV, T. K., and White, L. M., “Uncertainty Analysis of Probe Surface Predictions for the Hypersonic Material Environmental Test System Facility”, AIAA 2019-0242. White, L. M., et al., “CFD Validation Study of a Hypersonic Cone-Slice-Flap Configuration”, AIAA 2021-1074. West, T. K. and Bynum, M. D., “HiFIRE Flight 2 Unstart Reliability Analysis”, AIAA 2021-4139. Burt, J. et al., “CFD Analysis of a Subscale Hypersonic Vehicle-Integrated Nozzle Under Transonic Flight Conditions”, JANNAF APS 2022. DiGregorio, N. J. and West, T. K., “Robust Design Under Uncertainty of Hypersonic Inlets”, AIAA 2022-3862. White, L. M., et al., “CFD Validation of a Hypersonic Cone-Slice-Flap Variable Geometry Configuration”, To be presented at AIAA Aviation 2023. Lin, L., Santos, M. and White, L. M., “Statistical Calibration of a HIFiRE Flight 2 Combustion Model”, to be presented at AIAA Aviation 2023. Journal papers: Brune, A. J., West IV, T. K., and White, L. M., “Calibration Probe Uncertainty and Validation for the Hypersonic Material Environment Test System Facility”, Journal of Thermophysics and Heat Transfer , Vol. 34, No. 2, Apr. 2020. White, L. M., et al., “CFD Validation Study of a Hypersonic Cone-Slice-Flap Configuration”, under review in AIAA Journal . West, T. K. and Bynum, M. D., “HiFIRE Flight 2 Unstart Reliability Analysis”, under review in Journal of Propulsion and Power .</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> AAVP Technical Challenge (TC) Closeout Record, AAVP20 HTP TC-1</li><li><a href="https://www.nasa.gov/aeroresearch/programs/aavp/ht" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/94224">https://techport.nasa.gov/projects/94224</a>
+    </div>
+  </div>
+</body>
+</html>

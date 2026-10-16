@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autonomy Strategies: Ontology and Implementation | NASA TechPort Project 95539</title>
+  <meta name="description" content="The project will address a crucial gap in the development and implementation of autonomy strategies to enable Thinking Autonomy. Experts from SSC and JPL will collaborate to develop a substantive list of autonomy strategies founded on experience. The project t">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/95539">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 95539</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SSC CIF</span>
+          <span class="badge">TX10.2.1</span>
+        </div>
+        <h1>Autonomy Strategies: Ontology and Implementation</h1>
+        <div class="meta-id">NASA TechPort Project ID: 95539</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/95539" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The project will address a crucial gap in the development and implementation of autonomy strategies to enable Thinking Autonomy. Experts from SSC and JPL will collaborate to develop a substantive list of autonomy strategies founded on experience. The project team will also seek input from the Autonomous Systems Capability Leadership Team (the PI and JPL partner are members). With this data, a taxonomy, architecture, and language for autonomy strategies will be developed and properly documented, leveraging also a current CIF project of the PI on ontology and taxonomy for autonomous operations. The ontology (taxonomy, architecture, language) for autonomy strategies is needed in addition to an ontology for autonomous operations that deals with capabilities for planning and scheduling. Autonomy strategies are strategies to manage unforeseen/unplanned events, which the autonomous system should be able to identify and carry out solutions with available system resources and according to policies and concepts of operations. In parallel, the technology will be implemented as a module of NPAS, and will be validated on ongoing applications for ground (SSC High Pressure Gas Facility) and space (gateway autonomy). The resulting capability will enable the autonomous system to create and apply strategies on its own. For example, in addressing the use of redundancy for autonomy, the autonomous system will\n\u2022 Identify redundant elements/subsystems/processes in the application,\n\u2022 Identify what elements may be replacements for others that fail in the application, and\n\u2022 Apply autonomy strategies such as using a replacement item when the original becomes faulty under circumstances/constraints guided by Con-Ops and mission objectives.\nIn year one, we will work on an initial effort to conceptualize and formulate an ontology for autonomy strategies at high levels of abstraction, and generate some initial language modules for space habitat (e.g. power, ECLSS) and the Nitrogen system at SSC (storage and distribution of Nitrogen). In parallel, we will begin implementation of the capability in SSC's NASA Platform for Autonomous Systems (NPAS) and carry out verifications. In the second year, language modules for NASA's classes of ground and space systems will be developed and tools for implementation will be coded in NPAS. Also; description, training, and user documents will be created for dissemination. It is possible that a NASA handbook of autonomy strategies (processes, tools, implementation, and operations) can also be created.\n
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Autonomy strategies enable a system to overcome unplanned events that affect the nominal execution of a mission. Often strategies are worked out on the spot when an event happens (e.g. a sensor used to make a decision fails, or a rover gets stuck and can't continue its trajectory), or to address events that one expects could happen (a pump failure in the environmental control system). Using this approach, solutions are usually specific to an application (a particular rover on Mars doing a particular task). However, as we advance to more capable Thinking Autonomy (TA), strategic autonomy solutions must be developed onboard by the systems themselves. This requires treatment of strategies at higher conceptual and abstraction levels where reasoning provides solutions to a broad range of applications. For example, many autonomy strategies are based on the concept of redundancy, e.g. use of a replacement (a kind of redundant) component that meets certain criteria.\n\nThe goal is two-fold: (1) Conceptualize and formulate an ontology (taxonomy, architecture, language) for autonomy strategies at high levels of abstraction, and (2) Implement the capability in SSC's NASA Platform for Autonomous Systems (NPAS) and validate leveraging ongoing applications of ground and space autonomy.\n The project, in combination with the evolution of the NASA Platform for Autonomous Systems (NPAS), will make possible a new paradigm for implementation of autonomy that will result in "true" autonomy, whereby the systems (e.g. space habitat module) are able to "think" and apply knowledge models and strategies required for autonomous operations in deep space. The most present beneficiary is the Gateway activity, but the benefits will continue to persist and increase to support the Artemis mission for decades to come. The PI is currently using NPAS for initial autonomy implementations for Gateway, having NASA and private industry (NGIS, Lockheed Martin) as stakeholders.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>95539</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: SSC CIF (SSC CIF)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX10.2.1: Mission Planning and Scheduling</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2018-10-01</td></tr>
+<tr><th>Project End Date</th><td>2019-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Stennis Space Center (SSC) — Stennis Space Center, Mississippi</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Lockheed Martin Inc. — Palo Alto, California; Jet Propulsion Laboratory (JPL) — Pasadena, California; Northrop Grumman Aerospace Systems (NGAS) — Redondo Beach, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Mississippi (MS)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jorge F Figueroa (Principal Investigator) &lt;fernando.figueroa@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The project seeks to advance a key foundation for autonomy technologies that will lead to “Thinking” Autonomy capability. It seeks to develop an ontology and language to enable reasoning and decision making on-board, encompassing models and strategies used by domain experts. It also seeks to incorporate the ontology and language in a platform that enables implementation of autonomy applications, the NASA Platform for Autonomous Systems (NPAS). The future of “true” autonomous systems requires independent thinking and reasoning so that the need for persistent updates is eliminated, unforeseen human oversight is prevented, passive monitoring of the progress of a task when desirable is enabled, and awareness for rapid comprehension and action by operators is made possible. Humans use foundational models to analyze and make decisions about classes of systems, providing assurance that solutions are reached for all possible scenarios and not just those that can be imagined and solved off-line by experts (hence the concept of Thinking Autonomy). The desired outcome is to enable NPAS and other autonomy platforms to support autonomy requirements and concepts-of-operations required for Gateway and the Artemis Mission, to make possible travel to Mars and the establishment of a Lunar/Mars Settlements. In year one, we are working on an initial effort to conceptualize and formulate an ontology for autonomy strategies at high levels of abstraction, and generate some initial language modules for space habitat autonomy (e.g. power, ECLSS) and the Nitrogen system at SSC (storage and distribution of Nitrogen). In parallel, we are beginning implementation of the capability in SSC’s NASA Platform for Autonomous Systems (NPAS) and carrying out verifications.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/innovation_fund/index.html#.VQb6gUjJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/95539">https://techport.nasa.gov/projects/95539</a>
+    </div>
+  </div>
+</body>
+</html>

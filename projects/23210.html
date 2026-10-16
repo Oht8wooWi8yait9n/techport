@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noninvasive Biosensor Algorithms for Continuous Metabolic Rate Determination--SMS01302 | NASA TechPort Project 23210</title>
+  <meta name="description" content="Ed. note (November 2011): Principal Investigator (PI) changed affiliation around October 2010 from University of Massachusetts Medical School to Reflectance Medical Inc., at which time this new grant was issued by NSBRI (National Space Biomedical Research Inst">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23210">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23210</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.4</span>
+        </div>
+        <h1>Noninvasive Biosensor Algorithms for Continuous Metabolic Rate Determination--SMS01302</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23210</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23210" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Ed. note (November 2011): Principal Investigator (PI) changed affiliation around October 2010 from University of Massachusetts Medical School to Reflectance Medical Inc., at which time this new grant was issued by NSBRI (National Space Biomedical Research Institute). See grant NCC 9-58-SMS01301 for reports prior to FY2011.</p><p>NASA is designing new spacesuits to meet the needs of future space exploration. Real-time measurement of metabolic rate during astronaut activity is a key function of the biosensor suite which is planned for the new spacesuit. This project developed novel near infrared spectroscopic (NIRS) algorithms and sensors for real-time assessment of metabolic rate (measured as the rate of oxygen consumption, VO2). This capability was intended to be incorporated into a smart system advising astronauts on their use of consumables during extravehicular activity (EVA). The specific aims of this project include the development of algorithms to calculate VO2 from NIRS spectra and validation of the algorithms during exercise in ground-based protocols which simulate plasma volume reduction during spaceflight. An additional aim of this project is to support the EVA suit testing program by developing small, lightweight, and robust sensors which can be used within the spacesuit to evaluate metabolic cost of the suit itself, on individual muscles.</p><p>In the final year of this project we completed the development of an algorithm that determines VO2 during cycling using NIRS to determine muscle oxygen saturation (SmO2) data along with heart rate. We demonstrated acceptable performance during exercise on subjects in both a normovolemic and hypovolemic state. With synergistic funds from the US Army Medical Research Command we completed the development of a solid state sensor and software algorithms to support its ability to correct spectra for interferences related to skin pigment and fat. A prototype of this system was provided to NASA Johnson Space Center (JSC) and a study of blood flow restricted exercise was completed with the sensor. Two commercial-grade systems were sent to the NASA-JSC Cardiovascular Lab. This project has produced a wearable sensor that terrestrial doctors and their patients can use to track and optimize exercise in the management health and fitness, as well as during related applications in the care of critically ill patients.</p><p>A company, Reflectance Medical Inc., has been formed to commercialize the sensor. The company received clearance from the Food &amp; Drug Administration (FDA) to sell the CareGuide Oximeter 1100, a hospital-based system to noninvasively and continuously determine SmO2. The company has submitted its second 510(k) application for the mobile CareGuide 2100 Oximeter, which is a battery powered SmO2 sensor that displays results on an Android tablet or the Sotera ViSi Mobile wrist worn vital sign monitor. The CareGuide 3100 development is complete. The 3100 updates the CareGuide 2100 software to calculate pHm and hematocrit (Hct) from the same spectra. The CareGuide 3100 is targeted for submission to the FDA by the end of 2012.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This work has several direct Earth-based applications. First, the fitness and exercise applications we are developing can be used to assist in the training and evaluation of elite and recreational athletes. Training programs might be prescribed based upon data from this system, and workouts could be monitored in real-time to assure that the correct exercise intensity is being achieved. The device could be used in a similar manner to train astronauts before, during, and after spaceflight as well as in patients participating in physical therapy and reconditioning programs following illness or injury. The sensor, which also is of tremendous interest to the Army, will have application in emergency response vehicles, emergency rooms, and hospitals. Pre-hospital applications include assessing the severity of shock and triaging multiple casualties, as well as providing a sensor for a smart medical system to guide resuscitation from hemorrhage. In the Intensive Care Unit (ICU) we expect that this monitor will find application in helping provide early identification of patients with hemodynamic instability before they go into shock. We are partnering with the Armed Forces Research Institute of Medical Science (AFRIMS) in Bangkok, Thailand to study the application of our sensor for the early identification of shock in children with Dengue hemorrhagic fever. This study is funded by Telemedicine &amp; Advanced Technology Research Center (TATRC).</p><p>Data collection in the first year of this study was shown to provide an early indication of patients who had significant plasma leakage and were at risk for shock. The company formed to commercialize the sensor, Reflectance Medical, has received substantial funding from the US Army Medical Research and Materiel Command. The company received clearance from the FDA to sell the CareGuide Oximeter 1100, a hospital-based system to noninvasively and continuously determine SmO2. The company has submitted its second 510(k) application for the mobile CareGuide 2100 Oximeter, which is a battery powered SmO2 sensor that displays results on an Android tablet or the Sotera ViSi mobile wrist worn vital sign monitor. The CareGuide 3100 development is complete. The 3100 updates the CareGuide 2100 software to calculate pHm and hematocrit (Hct) from the same spectra. The CareGuide 3100 is targeted for submission to the FDA by the end of 2012.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23210</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.4: Contactless and Wearable Human Health and Performance Monitoring</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2010-10-01</td></tr>
+<tr><th>Project End Date</th><td>2012-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>National Space Biomedical Research Institute (NSBRI) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Wyle Integrated Science and Engineering Group; Reflectance Medical Inc.</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Massachusetts (MA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Babs R Soller (Principal Investigator); Stuart M Lee (Co-Investigator) &lt;stuart.lee-1@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2020-10-27</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: This is the final year of the project. During 2012 we completed the development of an algorithm for calculating VO2 during cycling using data from the Near Infrared Spectroscopic Sensor to determine muscle oxygen saturation (SmO2) and heart rate. This algorithm was demonstrated to be accurate for 11 subjects who completed a cycling protocol in both a normovolemic and hypovolemic state. Reflectance Medical, with synergistic funding from the US Army Medical Research and Materiel Command, completed the development of a wearable, lightweight solid state NIRS sensor which is small and lightweight enough to be worn under the spacesuit. The system has been shown to reliably determine SmO2, pH, and blood hematocrit for both light and dark skin individuals with a range of fat thicknesses over the muscle. Reflectance Medical has received clearance from the FDA to market the SmO2 sensor, and will soon submit an application to add pH and hematocrit capability to the sensor. This sensor is slated to be included in a newly approved NASA flight study to examine the effects of fluid shifts in space (Distribution of body fluids during long duration space flight and subsequent effects on intraocular pressure and vision disturbances, Dr. Michael Stenger, PI).</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Articles in Peer-reviewed Journals</strong> — Lee SM, Clarke MS, O&#x27;Connor DP, Stroud L, Ellerby GE, Soller BR. &amp;quot;Near infrared spectroscopy-derived interstitial hydrogen ion concentration and tissue oxygen saturation during ambulation.&amp;quot; European Journal of Applied Physiology. 2011 Aug;111(8):1705-14. Epub 2011 Jan 7. http://dx.doi.org/10.1007/s00421-010-1797-8 ; PubMed PMID: 21212975, Aug-2011</li><li><strong>Abstracts for Journals and Proceedings</strong> — Lee SMC, Everett ME, Crowell JB, Westby CM, Soller BR. &amp;quot;NIRS-derived tissue oxygen saturation and hydrogen ion concentration following bed rest.&amp;quot; American College of Sports Medicine 58th Annual Meeting, Denver, CO, May 31-June 4, 2011. Medicine &amp;amp; Science in Sports &amp;amp; Exercise. 2011 May;43(5 Suppl):823. http://dx.doi.org/10.1249/01.MSS.0000402293.26570.88 , May-2011</li><li><strong>Abstracts for Journals and Proceedings</strong> — Ellerby GEC, Lee SMC, Paunescu LA, Pereira C, Smith CP, Soller BR. &amp;quot;Near-infrared spectroscopic measurement of the effect of leg dominance on muscle oxygen saturation during cycling.&amp;quot; American College of Sports Medicine 59th Annual Meeting, San Francisco, CA, May 29-June 2, 2012. Medicine &amp;amp; Science in Sports &amp;amp; Exercise. 2012 May;44(5 Suppl):S455., May-2012</li><li><strong>Articles in Peer-reviewed Journals</strong> — Soller BR, Sliwa J, Yang Y, Zou F, Ryan KL, Rickards CA, Convertino VA. &amp;quot;Simultaneous spectroscopic determination of forearm muscle pH and oxygen saturation during simulated haemorrhage.&amp;quot; Journal of Near Infrared Spectroscopy. 2012 Mar;20(1):141-50. Special Issue on Medical Applications of NIR Spectroscopy. http://dx.doi.org/10.1255/jnirs.968 , Mar-2012</li><li><strong>Articles in Peer-reviewed Journals</strong> — Soller BR, Zou F, Ryan KL, Rickards CA, Ward K, Convertino VA. &amp;quot;Lightweight noninvasive trauma monitor for early indication of central hypovolemia and tissue acidosis: a review.&amp;quot; Journal of Trauma Acute Care Surgery. 2012 Aug;73(2 Suppl 1):S106-11. Review. http://dx.doi.org/10.1097/TA.0b013e318260a928 ; PubMed PMID: 22847078, Aug-2012</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23210">https://techport.nasa.gov/projects/23210</a>
+    </div>
+  </div>
+</body>
+</html>

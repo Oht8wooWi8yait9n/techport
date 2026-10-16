@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Compact Safe Cold-Start (CS2) System for Scramjets using Dilute Triethylaluminum Fuel Mixtures | NASA TechPort Project 8611</title>
+  <meta name="description" content="This proposal addresses the cold-start requirements of scramjet engines by developing a safe, energy-dense, and low volume hydrocarbon fuel conditioning system based on the hydrolysis reaction of water with triethylaluminum (TEA). TEA is an organometallic liqu">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/8611">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 8611</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX03.2.2</span>
+        </div>
+        <h1>A Compact Safe Cold-Start (CS2) System for Scramjets using Dilute Triethylaluminum Fuel Mixtures</h1>
+        <div class="meta-id">NASA TechPort Project ID: 8611</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/8611" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          This proposal addresses the cold-start requirements of scramjet engines by developing a safe, energy-dense, and low volume hydrocarbon fuel conditioning system based on the hydrolysis reaction of water with triethylaluminum (TEA). TEA is an organometallic liquid that reacts exothermically with water and burns readily in air when not diluted in hydrocarbon mixtures. We propose to use the hydrolysis of nonpyrophoric dilute TEA/JP fuel mixtures in an integrated mixing/injection apparatus to heat and vaporize liquid hydrocarbon fuel to enable cold-start capability in regeneratively cooled scramjets. In addition, the hydrolysis reaction also produces ethane gas, which serves the dual purpose of atomizing any remaining liquid by effervescence as well as producing an ethane-rich injectant that is more readily ignitable than the vaporized JP fuel. Furthermore, since TEA is pyrophoric, any remaining TEA in the mixture could serve as an ignition aid once it comes in contact with air. Hence, through a straightforward hydrolysis mechanism, the proposed system would preheat and vaporize the fuel, atomize any remaining liquid through effervescence, add readily ignitable ethane to the mixture, and provide a potential ignition source with any TEA leftover from the hydrolysis reaction. The proposed Phase 1 and 2 research will result in the Compact Safe Cold-Start (CS2) system which will be a key enabling technology for future operational hypersonic vehicles.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The key advantage of a TEA based system over currently used single-function engine start techniques is that it provides multi-faceted benefits over other cold start systems such as intense energy release, readily ignitable ethane gas, atomization of the fuel through effervescence, and pyrophoricity for ignition. As such, it likely has utility to assist in not only the cold-start of scramjets but the re-light of turbojets with minimal modifications. If developed for such an approach, the TEA based system would be capable of providing engine start functionality for both the turbojet and scramjet in a turbine-based combined-cycle vehicle, significantly reducing overall system complexity. Companies such as Pratt & Whitney Rocketdyne that develop both turbojets and scramjets would find such a capable and simplifying system to be of great benefit in meeting the system requirements of a combined-cycle hypersonic vehicle. The DoD is interested in developing these types of vehicles as well as scramjet powered missile systems to gain a hypersonic strike capability to stay ahead of competing foreign entities. In addition the system may find use in the high altitude relight of turbine engines in fighter and UAV applications.<br /> <br />A dilute TEA-based scramjet cold start system is expected to have significant mass and volume savings compared to equivalent and more traditional scramjet cold start techniques such as silane and ethylene when compared on an equivalence ratio basis. These mass and volume savings translate directly into additional capability and can alleviate some of the system packaging requirements of future hypersonic vehicle systems. Safety is also enhanced over the more traditional high pressure gaseous systems by using low pressure, non-pyrophoric, liquid reactants. It is only upon mixing the dilute TEA/JP with water that heat , ethane, and pyrophoric TEA are released. In addition, the potential low Mach capability of a TEA based system helps extend the utility of scramjet engines proposed for turbine-based combined cycle hypersonic vehicles to lower Mach numbers, providing flexibility in selecting high-speed turbines capable of generating the required Mach number for scramjet takeover. NASA is interested in these types of vehicles as potential solutions for cheaper, reusable, more effective access to space.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>8611</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX03.2.2: Electrochemical Storage: Fuel Cells</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2010-01-29</td></tr>
+<tr><th>Project End Date</th><td>2010-07-29</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>ACENT Laboratories LLC — Manorville, New York</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>New York (NY), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Scott Gallimore (Principal Investigator); Diego P Capriotti (Project Manager) &lt;diego.p.capriotti@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/8611">https://techport.nasa.gov/projects/8611</a>
+    </div>
+  </div>
+</body>
+</html>

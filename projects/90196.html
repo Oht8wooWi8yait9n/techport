@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compact Telescoping Array Design and Development | NASA TechPort Project 90196</title>
+  <meta name="description" content="Solar arrays power the vast majority of space missions. Solar arrays with higher power, better mass efficiency and improved packaging are critical, especially given NASA interest in solar electric propulsion (SEP). The Phase I results shows that the Compact Te">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/90196">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 90196</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX12.2.1</span>
+        </div>
+        <h1>Compact Telescoping Array Design and Development</h1>
+        <div class="meta-id">NASA TechPort Project ID: 90196</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/90196" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Solar arrays power the vast majority of space missions. Solar arrays with higher power, better mass efficiency and improved packaging are critical, especially given NASA interest in solar electric propulsion (SEP). The Phase I results shows that the Compact Telescoping Array (CTA) architecture, originally conceived by a NASA sponsored team, is a very promising new technology. Not only has CTA shown outstanding performance metrics, but it does so in a manner that is scalable, reliable and offers compact stowage. The proposed innovation is a solar array design consisting of a single central truss structure flanked by tensioned flexible photovoltaic blankets. This configuration has been shown in multiple analytical studies to be the most mass efficient for a cantilevered solar array. Phase I results confirm that CTA has very low structural mass which, with state-of-practice cell technology, allows the platform to deliver excellent specific power. For example, sub-200 kW systems show specific power approaching 190 W/kg and mega-Watt versions of CTA still produce better than 150 W/kg. The CTA stowed wing achieves the ?compact? attribute due to the fact that the two primary components of the system, the boom and the PV blankets, though by different methods, both stow into highly volume-efficient packages. The individual boom segments all nest neatly inside one another while the PV blankets stow into compact Z-folded stacks. The result is a system that is capable of delivering compactness in excess of 100 kW/m?, far beyond expectations. The CTA system, although a new solar array configuration, is shown through Phase I research to have high reliability. This is achieved by leveraging heritage mechanical subsystems and by minimizing new mechanism design, thereby effectively delivering a higher TRL than would ordinarily be associated with a new system. The CTA design draws heavily from heritage designs of Angstrom Designs subcontractor Orbital ATK Goleta.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Potential CTA Phase II and Phase III SBIR contracts will build demonstration units representing 17 and 30 kW systems respectively. This will advance CTA technology to TRL 6. Increasing power level step by step advances CTA technology toward larger systems by taking advantage of the natural scalability of the CTA platform. This will bring SEP power class systems 50 kW and higher well within reach. NASA programs involving large solar arrays would be particularly interested in this technology development path as it directly supports mass-critical SEP mission requirements. The Asteroid Redirect Mission (ARM) is one relatively near term NASA mission that could benefit from CTA. Following Phase II and Phase III work, Angstrom Designs expects applications should be in the form of purchase contracts with our subcontractor and commercialization partner, Orbital ATK, to supply ARM or other NASA missions with efficient space power. Phase I results show that a CTA system could supply 50 kW for a potential ARM SEP mission delivering metrics of 190 W/kg specific power and 88 kW/m? power density. A future Mars cargo SEP mission could be fitted with 190 kW of CTA power with outstanding metrics: 187 W/kg and 98 kW/m?. Versatile packaging, exceptional performance and solid reliability over a wide range of power classes and g-loads all indicate that the CTA platform lends itself well to future NASA missions.<br /> <br />CTA is primarily the combination of flight-qualified components so the design is inherently lower risk than completely new arrays. After successful completion of the Phase II work, including building and testing a CTA wing, risk will be further reduced and the TRL of CTA will be significantly advanced. Phase II work will further reduce development costs and risks of future programs. CTA?s exceptional metrics and packaging versatility are also of great benefit to the non-NASA, commercial market. Phase II work will advance technology and lower risk to enable commercial infusion beyond NASA. Commercial satellite enterprises will be able to reap the benefits of reduced solar array mass in the form of increased payload capacity and/or reduced launch costs. CTA is also an excellent candidate for the advanced arrays needed for GEO-Comm satellites to take advantage of the cost benefits of using SEP and dual launch. The Phase II demonstrator CTA wing will be representative of a 17 kW system, a power level of interest to the suppliers in the GEO-Comm market. At least two suppliers of commercial satellites, Boeing and Orbital ATK, are currently seeking to replace rigid panel technology with flexible blanket systems in near term programs. Other high probability customers include the department of Defense, Air Force Research Laboratory and foreign governments all of whom have an interest in high power, low mass, low risk, low cost solar arrays.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>90196</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX12.2.1: Lightweight Concepts</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2016-04-27</td></tr>
+<tr><th>Project End Date</th><td>2018-05-26</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Angstrom Designs, Inc. — Santa Barbara, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Peter Sorensen (Principal Investigator); Geoff Rose (Project Manager) &lt;geoffrey.k.rose@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong> — Compact Telescoping Array Design and Development, Phase II Briefing Chart</li><li><strong>Briefing Chart Image</strong> — Compact Telescoping Array Design and Development, Phase II</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/90196">https://techport.nasa.gov/projects/90196</a>
+    </div>
+  </div>
+</body>
+</html>

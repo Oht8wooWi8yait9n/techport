@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NASA Platform for Autonomous Systems (NPAS) | NASA TechPort Project 94884</title>
+  <meta name="description" content="Autonomous operations are critical for the success, safety, and crew survival of NASA deep space missions, including Gateway and Artemis. Future human spaceflight missions will consist of crewed and un-crewed spacecraft that will involve travel to distances be">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/94884">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 94884</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">ESDMD</span>
+          <span class="badge">MCO</span>
+          <span class="badge">TX10.3.3</span>
+        </div>
+        <h1>NASA Platform for Autonomous Systems (NPAS)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 94884</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/94884" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Autonomous operations are critical for the success, safety, and crew survival of NASA deep space missions, including Gateway and Artemis. Future human spaceflight missions will consist of crewed and un-crewed spacecraft that will involve travel to distances beyond Low Earth Orbit (LEO), for extended periods of time with limited to no communication with Earth. These facts introduce complex requirements and challenges associated with autonomous operations, which affect both human life as well as the health and life of the spacecraft. For the past 10 years, Stennis Space Center (SSC) has been developing and evolving an innovative software platform, along with expertise and processes for implementation of autonomous operations.</p>  <p>The current version is called NASA Platform for Autonomous Systems (NPAS). The main goal with NPAS is to enable foundational capabilities for reusable implementation of distributed hierarchical autonomous operations, in support of and Artemis and Exploration Missions objectives. NPAS is developed using the G2 platform - a COTS product (a MIT derivative). NPAS provides the foundational technology and processes to enable a paradigm change from traditional “Brute-Force Autonomy” (BFA) towards innovative “Thinking Autonomy” (TA). NPAS applications encompass comprehensive SysML-like live-models that permit model-based real-time analysis and operations. NPAS uniquely extends the paradigm of model-based systems engineering (MBSE) beyond static models, into live models for real-time thinking autonomous operations that can be rapidly and affordably implemented, deployed, re-used and evolved.</p>  <p> Beyond developing algorithms for dealing with specific cases that warrant an autonomous response (or reaction), NPAS supports the concept that achieving autonomous operations must address implementing strategies for autonomy. These strategies are guided by a combination of requirements that include, policy, operations procedures, concepts of operations, and mission objectives. In this context, an autonomous system makes the best use of available resources to achieve the specified mission.</p>  <p>NPAS uniquely addresses and integrates primary functionalities for creating an integrated autonomy solution including: (1) autonomy strategies based on concepts of operation, while taking advantage of system attributes such as redundancy, persistence strategies such as repeating commands, and others; as well as comprehensive (real-time) operational knowledge models (beyond the comprehensiveness of SysML models) –capturing digital twin/digital thread information; (2) Integrated System Health Management (ISHM) strategies, for health assessment, anomaly detection, diagnostics and effects (FMEA), prognostics, and comprehensive awareness; (3) object libraries and infrastructure of system elements for electrical, mechanical, computer, and communications applications that can be used for a wide range of implementations to create knowledge models of applications (reusable); (4) infrastructure to create and execute mission operations encompassing plans, schedules, and sequences; and (5) infrastructure to develop user interfaces providing comprehensive awareness for users, developers, and management. NPAS represents an innovative approach and technology to rapidly implement and deploy intelligent/thinking autonomous operations.</p>  <p><strong>FY 2020 – FY 2021</strong></p>  <p>For FY21, NPAS, leveraged the integrated hierarchical distributed autonomy capability developed in FY20. From these FY20 projects, the NPAS, and corresponding engineering processes, rapidly achieved implementation of intelligent distributed autonomy encompassing a capability that is consistent with the current architecture and concepts of operations associated with Gateway. NPAS top level project goal objectives associated with FY21 commitments included the following activities:</p>  <ul><li>Support autonomous avionics risk reduction test activities that include demonstrating an NPAS VSM (Vehicle Systems Manager), MSM (Module System Manager), and SM (Subsystem Manager) for a prototype Gateway module 	<ul><li>Autonomous Avionics Risk Reduction Activities - a developmental project focused on autonomous avionics for deep space human exploration.</li><li>This activity was implemented through a Space Act Agreement in combination with a Lockheed Martin Internal Research and Development effort to elevate the maturity of autonomy via command, control, and fault management for Artemis missions at the Gateway. </li><li>This Autonomous Avionics Risk Reduction activity enabled the NPAS project to demonstrate a distributed hierarchical autonomy implementation for potential use in Gateway and other elements of Artemis missions, as an efficient, cost-effective, integrated, and unique autonomy software capability</li><li>This Autonomous Avionics Risk Reduction activity leveraged the NPAS infrastructure to create schedule and execute task timelines across multiple Gateway modules developed by separate teams</li><li>Results from work accomplished are included in the IEEE Aerospace 2022 paper titled: Risk Reduction Autonomy Implementation to Enable NASA Artemis Missions</li></ul> 	</li><li>Advanced G2 network integration software for core Flight Systems (cFS) by developing a G2 SBN (Software Bus Network) Bridge – Cooperative Agreement with Commercial Partner (Ignite Technologies). Demonstrated G2-SBN Bridge seamless integration and functionality with cFS core Gateway applications</li><li>In FY 21, NPAS began a partnership with NASA Marshall Space Flight Center (MSFC) Flight &amp; Ground Software Division (ES50) EPG, leveraging EPG expertise in engineering processes to guide implementation of improvements as per ES50’s Software Process Improvement and Software Assurance for NPAS to meet CMMI Dev 2.0 requirements, and prepared for and participated in appraisal in June 2022, achieving a CMMI Maturity Level 2 rating.</li></ul>  <p><strong>FY 2022 – FY 2023</strong></p>  <p>For FY22, NPAS planned activities to leverage previously developed autonomy operations tools, realigned these capabilities with current MCD EC Program and Resource Guidance (PRG), and implemented them to support Johnson Space Center’s (JSC) Crew Health and Performance (CHP) Spacesuit Future Capabilities Project. This activity is titled: NPAS Crew State &amp; Risk Model (CSRM) implementation with Crew Health and Performance (CHP) extravehicular Activity (EVA) model (Personalized EVA Informatics &amp; Decision Support - PersEIDS) to help improve CHP EVA Decision Support System (DSS) capabilities. The objective of this collaborative project is to leverage and demonstrate NPAS distributed, hierarchical autonomous operation capability as way to integrate at least one CSRM parameter within PersEIDS and demonstrate capability. An NPAS Reasoner was implemented in PersEIDS and demonstrated in September 2022 to meet the project’s milestone.</p>  <p>PersEIDS was developed to monitor consumable resources of an EVA crew member, such as inspired CO2 and expended BTUs, to provide recommendations to flight controllers managing simulated EVA timelines for crew members. PersEIDS determines the probability of success for the current planned EVA timeline, and if that timeline’s probability of success decreases below flight rules requirements, then a new timeline is proposed with an acceptable probability of success. The new timeline removes certain tasks to maximize EVA achievability, while still meeting probability of success criteria. During the September 2022 demonstration, EVA analog simulations were conducted with and without the use of PersEIDS. When using PersEIDS with the NPAS Reasoner, a simulated intravehicular activity (IVA) operator (acting as flight controller) was able to better modulate workload and pace of a simulated EVA crew member, allowing for a more “successful” mission profile to be completed.</p>  <p>As a result of the FY22 work, the NPAS team was also able to submit an NTR based on technology developed, titled: <em>Approximation of Cumulative Distribution Function (CDF) for Prediction of Total Exposure Time to Partial Pressure of Inspired CO2 during Extra-Vehicular Activities (EVAs)</em>.</p>  <p>In FY23, NPAS continues work with JSC partner to expand on previously developed capabilities by including additional physiologic monitoring and CSRM models. Work includes proposing multiple acceptable timelines, always proposing an “emergency return” timeline, and supporting a more comprehensive integration with the JSC partner.</p>  <p>Additionally, in FY 22 and FY 23, SSC was one of ten proposals selected for Project Polaris, a new initiative designed to develop new technologies required to meet the challenges of sending humans to the Moon and Mars. The project, Autonomous Satellite Technology for Resilient Applications (ASTRA), aims at proving flight heritage and demonstrating on-orbit autonomous capabilities. NPAS platform. Project Polaris is funded by the Mars Campaign Development Division (now Mars Campaign Office).</p>  <p>ASTRA utilizes the same distributed hierarchical autonomy paradigm defined by Gateway for implementing autonomous operations and leverages capabilities developed in FY20-21. ASTRA plans to implement a top-level VSM and two MSMs – (1) Guidance, Navigation, and Control (GNC) and (2) Electrical Power System (EPS). NPAS is partnered with Sidus Space, as a payload rider onboard their flagship LizzieSat<sup>TM </sup>-01 small satellite, to demonstrate on-orbit autonomous operations. ASTRA will operate in flight following mode throughout the first phase of the mission, and during this time will relay data to the ground which will then be used to simulate autonomous operations. Upon completion of all other payload rider success criteria, LizzieSat™-01 mission objectives, designation of LizzieSat™-01 end of life, and concurrence from Sidus Space, Sidus will permit ASTRA to send commands to LizzieSat™-01 to autonomously accomplish targeted mission opportunities.</p>  <p><strong>Other Activities</strong></p>  <p>Moon to Mars eXploration Systems and Habitation (M2M X-Hab) Academic Innovation Challenge – NPAS Project Sponsor:</p>  <ul><li>FY20-21 	<ul><li>Project Title: <em>Voice Interaction Management of Gateway</em>, <a href="https://www.nasa.gov/centers-and-facilities/langley/artemis-student-challenge-nasa-selects-university-teams-to-build-technologies-for-the-moons-darkest-areas/">Artemis Student Challenge: NASA Selects University Teams to Build Technologies for the Moon’s Darkest Areas - NASA</a></li><li>Results from work accomplished, includes IEEE Paper, Aerospace 2022, Enabling a Voice Management System for Space Applications, <a href="https://www.researchgate.net/publication/369906862_Enabling_a_Voice_Management_System_for_Space_Applications">Enabling a Voice Management System for Space Applications</a></li></ul> 	</li><li>FY21-22 	<ul><li>Project Title: <em>Power Rover Project</em>, award announcement, <a href="https://www.nasa.gov/humans-in-space/nasa-selects-university-teams-to-develop-moon-mars-mission-design-ideas/">NASA Selects University Teams to Develop Moon, Mars Mission Design Ideas - NASA</a></li></ul> 	</li><li>FY23-24 	<ul><li>Project Title: <em>Intelligent Devices/Equipment/Instruments (IDEI) for Enabling Crew Health and Performance on Mars</em>, award announcement, <a href="https://www.nasa.gov/humans-in-space/nasa-selects-four-university-teams-to-develop-technologies-to-enhance-moon-to-mars-missions/">NASA Selects Four University Teams to Develop Technologies to Enhance Moon to Mars Missions - NASA</a></li></ul> 	</li></ul>  <p> </p>  <p>Current Center Innovation Fund (CIF) Projects:</p>  <p><em>Note that these projects are STMD funded and are not included in the overall budget below.</em></p>  <ul><li>FY22-FY23: NPAS Autonomous Fuel Transfer System (NAFTS) 	<ul><li>NAFTS leverages NPAS re-usable libraries and extensive experience developing autonomous cryogenic management systems for rocket engine testing. NAFTS is developing a fuel transfer system (FTS) as an autonomous system, that will include an Autonomous System Manager (ASM) to perform the low-level autonomous operation of the FTS. This project has potential future use in supporting Gateway, which is currently conducting a risk-reduction activity for an in-space FTS. NAFTS autonomy design includes 7 distributed hierarchical autonomous elements: a VSM modeled after Halo; three MSMs modeled after Halo, Esprit, and Power Propulsion Element (PPE); and three Fuel Transfer System Managers (FT-SMs) modeled after Halo, Esprit, and PPE fuel transfer elements.</li></ul> 	</li><li>FY22-FY23: Edge Machine Learning Predictive Anomaly Detection for Autonomous Operations 	<ul><li>The objective of this project is to use historical data from SSC’s High Pressure Gas Facility (HPGF) to develop a predictive anomaly detection model. This project will use Machine Learning (ML) training methods on sensor data collected at the HPGF (specifically the Nitrogen distribution system) to recognize nominal operations. After baseline nominal operations are determined, the ML algorithm will be trained to detect anomalies. Once the ML algorithms are developed and tested to assess the HPGF systems performance, an interface to communicate with NPAS will be developed. </li></ul> 	</li></ul>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>NPAS software is being cultivated as a paradigm shift in the way NASA develops autonomous operation software that will enable cost effective, comprehensive, “thinking”, and evolutionary autonomy for future space and ground systems.</p>  <p>NPAS has reusable core capabilities</p>  <ul><li>Leverageable – system elements and modelling code applies to a wide range of system applications (reusable) </li><li>Sustainable (modular, knowledge-base that enables systematic changes, inherent integration that is maintained throughout the life cycle of NPAS applications).</li><li>Scalable within each autonomous application and across networked distributed autonomous applications</li><li>Affordable – long term cost savings</li><li>Reduced delivery time</li><li>Evolvable – enables systematic augmentation of knowledge and autonomy capability</li></ul>  <p>NPAS has cross-cutting relevance for autonomy across multiple applications, including ground test and launch systems, space systems, Lunar and Mars surface systems, In-Situ Resource Utilization (ISRU), satellite systems, Deep Space Network, Crew Health and Performance (CHP) Extravehicular Activity (EVA) model (crew state model), aeronautics, and science. NPAS software developers are targeting NPAS implementation processes to meet NASA&#39;s current avionics architecture requirements for Gateway, Artemis and space habitat modules, and continue to provide benefit to commercial space industry partners.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>94884</td></tr>
+<tr><th>Acronym</th><td>NPAS</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Exploration Systems Development Mission Directorate (ESDMD)</td></tr>
+<tr><th>NASA Program</th><td>Mars Campaign Office (MCO)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX10.3.3: Goal and Task Negotiation</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 5 | Current TRL: 6 | Target End TRL: 9</td></tr>
+<tr><th>Project Start Date</th><td>2016-09-01</td></tr>
+<tr><th>Project End Date</th><td>2024-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Stennis Space Center (SSC) — Stennis Space Center, Mississippi</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Mississippi (MS), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Moon and Cislunar, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Fernando Figueroa (Principal Investigator) &lt;fernando.figuerao@nasa.gov&gt;; Zachary H Lewton (Co-Investigator) &lt;zachary.h.lewton@nasa.gov&gt;; Mark G Walker (Co-Investigator) &lt;mark.g.walker@nasa.gov&gt;; Jonathan A Morris (Co-Investigator) &lt;jonathan.a.morris@nasa.gov&gt;; Lauren W Underwood (Project Manager) &lt;lauren.w.underwood@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Thomas W Inman (Program Director) &lt;thomas.w.inman@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> NPAS Close-Out Summary</li><li><strong>Integrated System Health Management (ISHM) and Autonomy -2018 AiAA SciTech paper</strong></li><li><strong>Hierarchical Distributed Autonomy: Implementation Platform and Process - 2020 IEEE Aerospace Paper</strong></li><li><strong>NASA Platform Autonomous Systems (NPAS) TechPort Closeout</strong></li><li><strong>NPAS Closeout</strong></li><li><strong>Risk-Reduction Autonomy Implementation to Enable NASA Artemis Missions - 2022 IEEE Aerospace Paper</strong></li><li><strong>Risk-Reduction Autonomy Implementation to Enable NASA Artemis Missions - 2022 IEEE Aerospace Presentation</strong></li><li><strong>Hierarchical Distributed Autonomy: Implementation Platform and Processes - 2020 IEEE Aerospace Presentation</strong></li><li><strong>NASA Platform for Autonomous Systems - 2019 AiAA SciTech paper</strong></li><li><a href="https://www.nasa.gov/centers/stennis/news/releases/2021/SSC-Gaining-Recognition-for-Cutting-Edge-Autonomous-Systems-Work" target="_blank" rel="noopener noreferrer">Stennis Space Center Gaining Recognition for Cutting-Edge Autonomous Systems Work</a></li><li><a href="https://www.nasa.gov/news-release/pending-launch-will-signal-start-of-historic-nasa-stennis-mission/" target="_blank" rel="noopener noreferrer">Pending Launch Will Signal Start of Historic NASA Stennis Mission</a></li><li><a href="https://www.nasa.gov/stennis/ssc-autonomous-systems/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><a href="https://www.nasa.gov/sites/default/files/atoms/files/autonomous_system_fact_sheet_4.pdf." target="_blank" rel="noopener noreferrer">NASA SSC Autonomous Systems Laboratory Fact Sheet</a></li><li><a href="https://www.nasa.gov/news-release/nasa-stennis-celebrates-milestone-for-historic-autonomous-systems-mission/" target="_blank" rel="noopener noreferrer">Stennis Celebrates Milestone for Historic Autonomous Systems Mission</a></li><li><strong>NPAS - Graphic</strong> — NASA Platform for Autonomous Systems</li><li><strong>NPAS Functional Architecture - Image</strong> — NPAS functional architecture overview</li><li><strong>Autonomous Systems Lab - Graphic</strong> — SSC Autonomous Systems Lab</li><li><strong>NPAS Graphic</strong> — NASA Platform for Autonomous Systems</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/94884">https://techport.nasa.gov/projects/94884</a>
+    </div>
+  </div>
+</body>
+</html>

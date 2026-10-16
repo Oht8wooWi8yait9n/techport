@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Run-Time Assurance for Safe UAS Operations with Reduced Human Oversight | NASA TechPort Project 89867</title>
+  <meta name="description" content="Current Unmanned Aircraft Systems (UAS) operations in the National Airspace System (NAS) rely heavily on human oversight, with the majority of commercial operations currently authorized by the FAA through the Section 333 exemption process restricted to visual ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/89867">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 89867</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX10.2.4</span>
+        </div>
+        <h1>Run-Time Assurance for Safe UAS Operations with Reduced Human Oversight</h1>
+        <div class="meta-id">NASA TechPort Project ID: 89867</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/89867" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Current Unmanned Aircraft Systems (UAS) operations in the National Airspace System (NAS) rely heavily on human oversight, with the majority of commercial operations currently authorized by the FAA through the Section 333 exemption process restricted to visual line of sight with a single vehicle controlled by an experienced UAS operator. Operation of SUAS may be highly automated, but human oversight is still required to provide a last line of defense against failures, especially those due to errors in the Guidance, Navigation and Control (GNC) system. Oversight of the systems is appropriate because the Verification, Validation, and Certification (V&V/C) activities required to achieve a high software Design Assurance Level (DAL) typically have not been conducted for these systems. In some cases this is because the GNC systems contain elements such as adaptive and learning capabilities that make V&V/C with existing methods difficult or impossible, while in other cases the issue is primarily cost, which can be prohibitive especially for small, low-cost systems. Barron Associates proposes development of automated monitoring capabilities that can assume the low-level monitoring responsibilities currently allocated to humans, enabling safe UAS operations with reduced human oversight. To develop these automated capabilities, the team will build on a rigorous Run-Time Assurance (RTA) framework developed by Barron Associates. Goals of the research effort include (1) building a safety monitor based on the rigorous theory of the RTA framework to enforce geo-fence boundaries for arbitrary vehicles, including fixed-wing vehicles, (2) rapidly advancing the TRL of the technology with a Phase II program that culminates in flight demonstrations, and (3) demonstrating that the RTA framework is a practical and powerful basis that can be used to enable reduced human oversight for a wide range of operating scenarios.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The proposed technology is closely aligned with several current NASA research areas. One example is the Unmanned Aerial System Traffic Management (UTM) effort, one of the stated goals of which is to "enable safe and efficient low-altitude airspace operations by providing services such as...dynamic geo-fencing". The proposed research effort will provide a highly assured geo-fence enforcement capability that can readily accommodate dynamic boundaries. The system will also be able to provide rapid feedback when a specific boundary change will lead to a geo-fence violation given the current vehicle states, and an estimate of how long it will be before the vehicle can comply with the new boundary. The proposed research effort would also complement work such as the SAFEGUARD effort at NASA Langley, which is developing independent monitoring hardware and geo-fence enforcement capabilities. The proposed work will complement NASA efforts by providing rigorously defined switching boundaries and a robust maneuver capability to guarantee fixed wing-aircraft remain in the geo-fenced area without unnecessarily constraining maneuvering near the boundary. The proposed technology also offers potential value as a safety system for NASA's research flight test activities.<br /> <br />The non-NASA commercial applications of the proposed technology are enormous. By August 2015, the FAA had issued over 1000 authorizations to operate UAS through the Section 333 Exemption process, and in just the last two weeks of January 2016, the FAA issued over 80 additional authorizations. This demonstrates that the UAS market is already substantial and is growing very rapidly. UAS operators need effective technologies, such as that currently proposed, to ensure a high level of safety. The rapidly increasing number of organizations offering commercial UAS services also means that cost competition is likely to be intense, and operators will have to be efficient to be successful. With the cost of vehicles and the operating cost per hour already fairly low, especially compared to manned aircraft, reducing labor costs is a compelling strategy for providers of UAS services to remain competitive. The proposed technology will help to reduce labor costs by reducing the required level of human oversight, allowing a single human operator to conduct operations with a focus on mission management, rather than requiring two people, one to manage the mission and one to maintain eyes on the vehicle and provide backup control. Ultimately, the proposed technology will help to enable one operator to control multiple vehicles and conduct beyond line of sight operations, for enhancing efficiency and operational flexibility.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>89867</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX10.2.4: Execution and Control</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2016-06-10</td></tr>
+<tr><th>Project End Date</th><td>2016-12-10</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Barron Associates, Inc. — Charlottesville, Virginia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Richard Adams (Principal Investigator); Alec Bateman (Principal Investigator); Evan T Dill (Project Manager) &lt;evan.t.dill@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li><li><strong>Briefing Chart</strong> — Run-time Assurance for Safe UAS Operations with Reduced Human Oversight, Phase I Briefing Chart</li><li><strong>Final Summary Chart Image</strong> — Run-time Assurance for Safe UAS Operations with Reduced Human Oversight, Phase I Project Image</li><li><strong>Briefing Chart Image</strong> — Run-time Assurance for Safe UAS Operations with Reduced Human Oversight, Phase I</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/89867">https://techport.nasa.gov/projects/89867</a>
+    </div>
+  </div>
+</body>
+</html>

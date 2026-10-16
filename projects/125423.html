@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Radiation Hardened, Digitally Controlled Single-Inductor Multiple-Output (SIMO) Buck Regulator | NASA TechPort Project 125423</title>
+  <meta name="description" content="In response to NASA SBIR topic S3.08 Command, Data Handling, and Electronics (SBIR), Alphacore Inc. will develop a single-inductor, multiple output (SIMO) high-efficiency point of load (POL) DC-DC converter. We have code-named this exciting technology POLESTAR">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/125423">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 125423</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX04</span>
+        </div>
+        <h1>A Radiation Hardened, Digitally Controlled Single-Inductor Multiple-Output (SIMO) Buck Regulator</h1>
+        <div class="meta-id">NASA TechPort Project ID: 125423</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/125423" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          In response to NASA SBIR topic S3.08 Command, Data Handling, and Electronics (SBIR), Alphacore Inc. will develop a single-inductor, multiple output (SIMO) high-efficiency point of load (POL) DC-DC converter. We have code-named this exciting technology POLESTAR (Point of Load converter with high Efficiency, SIMO architecture and Tolerance Against Radiation). The technology has excellent commercial potential.  For typical NASA missions, both mass and power consumption and wide temperature operation is a critical need. Especially for missions requiring mobility, overall SWaP as well as volume is dominated by motor drive and associated electronics. In the Phase II of this project, Alphacore Inc., will design, fabricate and test a buck DC-DC converter that can directly convert voltages from 11V to 36V, down to multiple required power rails ranging from 1.5V to 5V, while supporting at least 10A of current to the load. In the Phase I program, Alphacore Inc. designed a digitally intensive, high-efficiency, radiation hard, hybrid GaN/CMOS integrated single controller, enabling single-inductor multiple output (SIMO) operation. The developed controller enabled a reduced component count, enabling reduced failure modes, lower PCB area. This solution includes all controller circuitry and drivers integrated in a single CMOS ASIC chip, as well as the GaN-based primary DC-DC converters power stage in a single module. The hybrid module is planned to have a small form factor, namely 15mm x 15mm x 4mm that can generate 4 supply rails all from a single module.   There is an increasing need of DC-DC converters capable of generating many outputs while using a single inductor. This means reducing overall mass and decreasing power used, along with increasing the volume of the payload. Multiple supply levels requiring increased PCB area, increased number of external components, and the reduced reliability for the many inductors used, becomes problematic.  Alphacore Inc. will develop a single-inductor, multiple output (SIMO) high-efficiency point of load (POL) DC-DC converter, code-named &ldquo;POLESTAR&rdquo; (Point of Load converter with high Efficiency, SIMO architecture and Tolerance Against Radiation).  In the Phase I program, Alphacore designed a digitally intensive, high-efficiency, radiation hard, hybrid GaN/CMOS integrated single controller, enabling SIMO operation. The developed controller enabled a reduced component count, enabling reduced failure modes, lower PCB area. This solution includes all controller circuitry and drivers integrated in a single CMOS ASIC chip, as well as the GaN-based primary DC-DC converter&rsquo;s power stage in a single module. &nbsp;  Objective 1: Design and evaluate nested current-mode hysteretic 4-output SIMO converter major building blocks with a test chip Objective 2: Design and characterize an IC for closed-loop SIMO DC-DC converter Objective 3: Design and evaluate the complete high-efficiency, lightweight and radhard SIMO DC/DC converter module that meets customers&rsquo; specifications &nbsp;
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Alphacore&rsquo;s high performance DC/DC converters will bridge the gap in spacesuits designed for deep space and surface missions. They will be suitable for smart instruments and controllers used in spacesuit life support systems for NASA&rsquo;s human missions to Mars and the Deep Space Gateway missions. The proposed solution will also benefit NASA&rsquo;s robotic systems such as the SPIDER and the Canadaarm3. Our solution can efficiently power up to 3 loads with a single inductor, and enable significant reduction in size and weight for future NASA platforms. &nbsp;  Our design is an excellent fit for key SWaP, Hi-Rel, and high-radiation applications such as cubesats, nanosats, robotics, autonomous aircrafts/spacecrafts, and constellation satellites to be operated in environments ranging from LEO to deep space and planetary missions. Other applications include defense and aerospace-related power management for controllers and smart devices as well.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>125423</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX04: Robotic Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2022-05-03</td></tr>
+<tr><th>Project End Date</th><td>2025-12-15</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Alphacore, Inc. — Tempe, Arizona</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Arizona (AZ), California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Yu Long (Principal Investigator); Lynn M Torres (Project Manager) &lt;lynn.m.torres@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/125423">https://techport.nasa.gov/projects/125423</a>
+    </div>
+  </div>
+</body>
+</html>

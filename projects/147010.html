@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gravity Offloading and Analysis of Long Imperfection-Sensitive Elements (GOALIE - ACO) | NASA TechPort Project 147010</title>
+  <meta name="description" content="GOALIE is investigating a process to indirectly infer the as-manufactured shape and mechanical performance of composite booms under microgravity (i.e., flight-like) conditions by developing experimental methods to validate computational models of booms under t">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/147010">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 147010</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">GCD</span>
+          <span class="badge">TX12.2.4</span>
+        </div>
+        <h1>Gravity Offloading and Analysis of Long Imperfection-Sensitive Elements (GOALIE - ACO)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 147010</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/147010" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          GOALIE is investigating a process to indirectly infer the as-manufactured shape and mechanical performance of composite booms under microgravity (i.e., flight-like) conditions by developing experimental methods to validate computational models of booms under the influence of Earth’s gravity.Deployable space structures, such as booms, enable efficiencies of scale and reduce the number of rocket launches required for a complete structure compared to conventional rigid structures that are launched in their intended-use configuration. For example, support structures for deployable solar arrays have enabled much larger areas of solar capture, and therefore larger power generation, than would otherwise fit into a single launch vehicle payload. As new concepts, materials, and structures are developed, deployable space structures are becoming more flexible. Structures with higher flexibility are correspondingly more difficult to accurately characterize for as-manufactured geometrical shape and structural performance in mimicked microgravity using traditional horizontal gravity offloading techniques such as whippletrees. Triangular, Rollable, and Collapsible (or TRAC) booms are proposed for the solar sailing mission called Solar Cruiser. The TRAC boom design is extremely sensitive to torsional disturbances – so much so that structural testing experts are not confident that conventional horizontal whippletrees are good enough at supporting TRAC booms without influencing the shape of the boom even when mechanically unloaded. As a result, it is difficult to have confidence in computational predictions of the response of the booms under flight conditions because any realistic shape in microgravity is unknown. GOALIE is investigating TRAC boom shape and performance characterization while vertically hanging the booms from one end. In the vertical orientation, torsional disturbances are less likely to result in a collapse of the structure (often seen in horizontally offloaded configurations) while imparting minimal shape-changing effects due to gravity. Once the vertically oriented shape and performance of the boom, while under the influence of Earth's gravity, are able to be captured by numerical analyses, the GOALIE project will attempt to infer the true shape of the TRAC boom under microgravity-like conditions by removing gravity from the analysis and letting the structure resume an unloaded, stress-free state.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          When complete, missions using high-strain composite deployable space structures such as the booms studied in the GOALIE project will have higher confidence in numerical predictions of their response under flight-like microgravity conditions. Higher confidence in numerical predictions for deployable space structures can lead to 1) higher rates of mission success, 2) risk reduction through use of computational tools to inform flight-test-like performance without requiring to conduct physical flight tests, and 3) increased technology adaptation for concepts such as solar sails or other types of structures proposed for use with deployable booms. Higher confidence in numerical predictions result from achieving a better understanding of fundamental performance of deployable space structures such as the Triangular, Rollable, and Collapsible (or TRAC) boom investigated in the GOALIE project. The GOALIE project is investigating TRAC booms specifically because a future solar sailing science mission, Solar Cruiser, proposed to use TRAC booms to support the orders-of-magnitude-larger solar sail than what has previously flown (1,653 m2 compared to the few dozen m2 currently). However, there are some challenges in developing such large, flexible structures. Technology Readiness Level (TRL) 6 requirements state a demonstration of a system in “flight-like" conditions is needed before advancing to higher levels. On Earth's surface, flight-like conditions such as microgravity do not exist for highly flexible TRAC booms supporting a solar sail. Instead of physical demonstration of flight-like conditions, GOALIE aims to demonstrate one methodology to computationally infer the response of TRAC booms under microgravity conditions by developing validated models of booms under the influence of Earth's gravity.​
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>147010</td></tr>
+<tr><th>Acronym</th><td>GOALIE - ACO</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Game Changing Development (GCD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX12.2.4: Tests, Tools, and Methods</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 4 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2023-04-01</td></tr>
+<tr><th>Project End Date</th><td>2025-04-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Redwire Space Technologies, Inc. — Greenville, Indiana</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Cyrus J Kosztowny (Project Manager) &lt;cyrus.j.kosztowny@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Mark N Thornblom (Program Manager) &lt;mark.n.thornblom@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-05-08</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The Gravity Offloading and Analysis of Long Imperfection-sensitive Elements (GOALIE) Announcement of Collaborative Opportunity (ACO) project successfully completed mechanical experimental testing and computational analysis of a subscale 7-meter-long and a full-scale 30-meter-long triangular, rollable, and collapsible (TRAC) composite deployable boom in partnership with Redwire Deployable Solutions. The GOALIE project characterized and validated finite element analysis-based models with experimental test results of high-aspect ratio TRAC booms hung in a vertical orientation. TRAC booms are one structural concept baselined for NASA’s Solar Cruiser solar sailing science mission, a 1,651 m2 solar sail-propelled heliophysics mission. TRAC booms are sensitive to shape imperfections due to their thin-walled design, and TRAC booms are sensitive to conventional horizontally-supported gravity offloading systems such as whiffletrees due to their extremely low torsional stiffness. By hanging the subscale and full-scale TRAC booms vertically, gravity is acting along the length of the booms and therefore has reduced effect on changes to the shape of the cross section.Ground validation of deployable structures is a key part of the development of space systems, and validation of large-scale structures is challenging in Earth’s gravity environment because the operating loads on orbit (i.e., microgravity) can be significantly less than on Earth’s surface. As part of spacecraft system development, Technology Readiness Level (TRL) 6 requires system validation in flight-like environments. For deployable structures, this include microgravity environments. Therefore, developing test methods that minimize gravity’s effects on deployable structures is an important part of bringing future large-scale, mass-optimized structural systems to flight readiness. Development of analysis models in parallel with testing capabilities is crucial as validated models can provide increased confidence in structural system performance in microgravity environments without the requirement to fly or test in microgravity. By developing finite element analysis models of subscale and full-scale TRAC booms, the GOALIE project advanced computational prediction capabilities of large-scale deployable structures and structural systems. The experimental testing of subscale and full-scale TRAC booms provided high-quality data to improve the developed analysis models and validate the computational approach used. The TRAC booms performed within family of pretest predictions, though the thin-walled nature of the booms imparted increased sensitivity to shape and geometric imperfections. A significant reduction in the structural collapse load was observed for the as-manufactured test articles when compared with the nominal geometry booms studied for pretest predictions. When incorporating the observed as-manufactured state inclusive of changes to the cross-section and twisted shape about the long axis, the analysis models demonstrated improved agreement with the observed experimental response. Adaptation to other boom cross-section designs is possible to study other deployable boom structures, and further enhancements to the testing capability can enable the investigation of more complex test scenarios of large-scale and highly nonlinear structures.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/147010">https://techport.nasa.gov/projects/147010</a>
+    </div>
+  </div>
+</body>
+</html>

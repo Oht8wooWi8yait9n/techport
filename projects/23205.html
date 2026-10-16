@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optimizing Light for Long Duration Space Exploration | NASA TechPort Project 23205</title>
+  <meta name="description" content="The goal of this project is to determine the optimal lighting for use as a countermeasure to sleep and circadian disruption for astronauts. Sleep deficits that diminish alertness, cognitive ability, and psychomotor performance are a serious risk factor during ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23205">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23205</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.3</span>
+        </div>
+        <h1>Optimizing Light for Long Duration Space Exploration</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23205</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23205" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The goal of this project is to determine the optimal lighting for use as a countermeasure to sleep and circadian disruption for astronauts. Sleep deficits that diminish alertness, cognitive ability, and psychomotor performance are a serious risk factor during space missions. Currently, over 45% of all medications taken in space are sleep aids (Putcha et al., 1999). Despite their use, more than half of the astronauts still get only between 3 and 6 hours of sleep per night during spaceflight (Barger et al., 2009).      Light is the primary stimulus for human circadian regulation. On Earth, humans have a 24 h day/night cycle to maintain healthy circadian entrainment. In space, astronauts must contend with either rapidly changing or severely disrupted day/night cycles and must work in a dimly lit spacecraft interior with few windows. Bright white light has been implemented as a pre-launch countermeasure but has yet to be used during spaceflight. Providing sufficient light intensities to work areas in the International Space Station (ISS) as well as future vehicles and habitats raises several concerns, including heat production, energy consumption, and up-mass. Improving these factors requires a better understanding of how different light sources regulate the human circadian system. From these data it may be possible to optimize astronaut and ground crew light exposure both as a stimulus for vision as well as a countermeasure for sleep and circadian disruption during space missions.      Currently, NASA uses white fluorescent light for interior illumination of the ISS at relatively low intensities, and for a pre-launch lighting countermeasure for circadian disruption at much higher intensities. In the previous funding period, our National Space Biomedical Research Institute (NSBRI) research was supported to determine if those fluorescent lamps have increased efficacy for melatonin suppression and circadian phase-shifting when they are enriched in the blue portion of the spectrum. Philips Lighting, an NSBRI industry partner, provided prototype blue-enriched lamps and exposure systems for that study. In addition, we began characterizing the neuroendocrine potency of ambient light on the surface of Earth for comparison to extraterrestrial light that astronauts will encounter on the surfaces of the Moon and Mars.      To develop comprehensive lighting countermeasures for long duration space exploration, it is vital to determine the sensitivity of astronauts' circadian systems to both ambient and artificial lighting stimuli. In the current period of research, we shifted our efforts from testing fluorescent light sources to testing solid-state lights. Artificial illumination for future space vehicles and habitats will be provided predominantly by light emitting diodes (LEDs). The following list identifies the progress on our specific aims.      1. Assess the ocular safety of blue-enriched LED light at irradiances higher than those currently specified in space habitats. Working from national and international safety standards, hazard analyses were completed on blue-enriched lights to assure the ocular safety of our human volunteers.      2. Determine the potency of broad bandwidth LED light being developed for ISS as well as future space flight habitats. For this aim, we used 4' x 4' white LED lighting systems that emit white light with Correlated Color Temperatures (CCTs) of 4,000 K or 6,500 K. Two separate experiments with healthy subjects (N=8, each) and over 160 nighttime melatonin suppression studies have been completed. There was a distinct fluence-response relationship between light irradiance and melatonin suppression for both types of lamplight.      3. Evaluate selected polychromatic LED stimuli for supporting visual performance, color discernment, and neuroendocrine potency inside replicas of ISS Crew Sleeping Quarters (CQs). Replica CQs were illuminated by the ISS prototype solid state lamps (SSLM-R). Four separate nighttime melatonin suppression studies were completed within replicas of the CQs illuminated by white SSLM-R light with a CCT of 6,500 K, 4,800 K, or 2,700 K. These studies quantified the efficacy of the different light sources for neuroendocrine regulation. In addition, two studies were done on visual performance and color discernment within replicas of the CQs illuminated by different polychromatic light stimuli emitted by SSLM-Rs. Lastly, a multi-day pilot study, co-supported by NASA, assessed visual sensitivity, pre-sleep melatonin secretion, subjective alertness, objective alertness, neurobehavioral responses, and sleep parameters relative to different SSLA lighting stimuli in astronaut-aged males.      4. Assess the potency of ambient light on the Earth's surface for melatonin regulation. Astronaut-aged male and female subjects (N=8, 43.3 +/- 1.4 years) completed an Earth daylight study that used Ganzfeld exposures. The data show that simulated Earth daylight evokes a fluence-response curve for acute, nocturnal melatonin suppression. Together, the research from the two prior funding cycles along with the studies performed in the recent funding cycle provide significant progress towards the development of lighting countermeasures for sleep and circadian disruption in astronauts and ground crew members. Programmatically, it has provided information that was used in the revision of Constellation Program Human-Systems Integration Requirements (December, 2009). Further, the results will also impact the NASA Human Integration Design Handbook and the Space Flight Human Systems Standard, NASA-STD-3001, which provide guidance for crew health, habitability, environment, and human factors in human spaceflight.      Our progress addresses Critical Risk areas 9 (EVA--extravehicular activity--7) and 22 (Sleep 5, 9, and 10) in the NASA Human Research Program Integrated Risk Plan (2009). These areas concern countermeasures that will optimally mitigate performance problems associated with sleep loss and circadian disturbances and the mismatch between crew physical capabilities and task demands.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The knowledge gained from this research, though focused on space flight, also may benefit people on Earth. The circadian disruption experienced by astronauts during space flight can be considered a threat to the success of space missions (Longnecker and Molins, 2005; NASA Human Research Program Integrated Risk Plan, 2011). The resulting physiological and behavioral changes caused by circadian and sleep disruption can lead to diminished alertness, cognitive ability, and psychomotor performance (Dijk et al., 2001). Over 45% of all medications taken in space are sleep aids taken to counteract sleep deficits (Putcha et al., 1999). Although the studies in this project are focused on developing a non-pharmacological lighting countermeasure for space exploration, it is anticipated that there will be benefits to civilians. A significant portion of the global population suffers from chronic sleep loss and/or circadian-related disorders. Evidence for disease or illness due to a circadian disruption has mounted significantly. Nearly 22 million Americans do shift work that interferes with a biologically healthy nocturnal sleep cycle (U.S. Bureau of Labor Statistics, 2007). Shift workers have been shown to be more likely to suffer from a wide variety of ailments, including cardiovascular disease, gastrointestinal distress, and cognitive problems. Furthermore, epidemiological studies of female shift workers have shown that they are more likely to suffer from breast and colon cancers compared to day shift workers. The World Health Organization has identified shift work as a probable risk for cancer (The International Agency for Research on Cancer, 2007). This past year the American Medical Association acknowledged the harmful effects of widespread electrical lighting at night (Council on Science and Public Health Report, 2012). Our laboratory is involved in testing the hypothesis that night time exposure to light suppresses melatonin and contributes to cancer risk (Blask et al., 2005; Mao et al., 2012). Aside from evidence of a breakdown in physical health, the effects of circadian disruption and sleep loss have long been known to have potentially dangerous behavioral effects. Mental fatigue, diminished alertness, loss of psychomotor coordination, and decreased physical performance are all commonly found in individuals with sleep loss, sleep debt, or circadian misalignment. Many people also experience the same effects after air travel across several time zones. The impact of these deficits affects many industries, including transportation, manufacturing, communications, medicine, and homeland security. It has long been a source of concern for the military, as well. In the past, the U.S. Air Force has supported our laboratory to study the acute alerting effects of light (French et al., 1990; Brainard et al., 1996). Our past work for the National Institutes of Health (NIH) has continued this effort (Lockley et al., 2006). Existing therapeutic lighting interventions stand to benefit from enhancing our understanding of how different wavelengths of the spectrum affect human circadian and neurobehavioral regulation (Byrne and Brainard, 2012). A more efficient intervention with increased potency and/or fewer side effects could result. One such disorder currently being treated with bright white light is Seasonal Affective Disorder (SAD). It is estimated that as many as 1 in 5 Americans suffer from SAD or its milder version, sSAD (Lam and Levitt, 1999). Similar bright white light interventions also are used to treat jetlag. Side effects from exposure to bright white light for these and other therapies include: hypomania, headache, vision problems, nausea, dizziness, and anxiety. Optimizing the light spectrum for specific affective and/or circadian-related disorders could deliver the same medical impact with lower levels of light intensity and, potentially, with fewer side effects. Our group has completed Phase I testing of light therapy with blue solid-state lighting for patients with SAD (Glickman et al., 2006).
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23205</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.3: Behavioral Health and Performance</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2008-09-01</td></tr>
+<tr><th>Project End Date</th><td>2012-12-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>National Space Biomedical Research Institute (NSBRI) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Thomas Jefferson University — Philadelphia, Pennsylvania</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Pennsylvania (PA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>George C Brainard (Principal Investigator); Steven W Lockley (Co-Investigator); Maria Pineda (Co-Investigator); John Hanifin (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2020-10-27</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The goal of our work is to optimize lighting that supports vision and serves as a circadian countermeasure for astronauts and ground crew during space missions. Due to recent changes in NASA&#x27;s objectives for space exploration, NSBRI permitted the re-direction of our original specific aims to augment a separate feasibility, pilot project (NASA #NNX09AM68G). The research we proposed had time-sensitive relevance to implementation of the new lighting system for ISS. NSBRI&#x27;s decision enabled us to develop two replicas of Crew Sleeping Quarters (CQs) that had similar reflectance and dimensions as those currently onboard the ISS. Prototype solid-state lighting modules (SSLM-Rs) were used to illuminate these laboratory CQs. One of the new aims was to determine the potency of light emitted by the SSLM-Rs inside of the replicas of the ISS CQs for acute melatonin suppression. In two separate studies, young, healthy subjects were exposed to broad spectrum, white light (CCT of 6,500 K or 2,700 K) emitted by the SSLM-Rs. Completed tasks include: 186 nighttime light exposures, all associated melatonin assays, basic melatonin statistics (t-tests and analysis of variance), and pupillary dilation statistics. Preliminary melatonin suppression curve fits have been completed. NSBRI support also permitted the investigators to extend the number of subjects studied in the NASA feasibility, pilot study. The original NASA budget plan estimated that 6 subjects could be entered into the protocol. With augmented support from NSBRI, a total of 10 male, astronaut-aged subjects (37.8 +/- 2.7 years) passed extensive screening procedures and entered the 4-day protocol. Nine subjects completed the protocol. Data was collected on visual sensitivity, pre-sleep melatonin secretion, subjective alertness, objective alertness, neurobehavioral responses, and sleep parameters. This pilot study successfully demonstrated the feasibility of using a variety of physiological and behavioral measures within the very confined spaces of the replica ISS CQs. Despite the overall study being insufficiently powered to fully test hypotheses, the study provided the ability to determine which dependent variables could yield statistically significant results through power analyses. For examples: data on sleep efficiency, total slow wave sleep, and the 3 min psychomotor vigilance test indicated that N=30 per group in a crossover study design should yield statistically significant results. Thus, based on those three dependent variables, a properly powered study with a crossover design would include 60 subjects. The time until the installation of the solid state lighting system on ISS in 2015-2016 is relatively short. Given the intended use of this lighting system for supporting crewmember vision and serving as a countermeasure for sleep and circadian disruption, a study indicated by this power analysis would be valuable for guiding the operational use of this new technology.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Significant Media Coverage</strong> — Landers SJ. &quot;Discussed the Capitol Hill NSBRI demonstration.&quot; American Medical News, April 13, 2009., Apr-2009</li><li><strong>Patents</strong> — USPTO 14,273,971. Patent, August 28, 2014. Aug-2014 Brainard GC, Glickman G. &quot;Photoreceptor System for Melatonin Regulation and Phototherapy.&quot;</li><li><strong>Significant Media Coverage</strong> — McNamara M. &quot;Lights Out! Dr. Brainard discusses his NSBRI research in this documentary film about the effects of electric light and the 24-hour work day on humans. The film was produced for the Canadian Broadcasting Corporation.&quot; Aired on the CBC show &#x27;The Nature of Things&#x27; on December 6, 2012 at 8pm., Dec-2012</li><li><strong>Books/Book Chapters</strong> — Whitmire AM, Leveton LB, Barger L, Brainard G, Dinges DF, Klerman E, Shea C. &quot;Risk of performance errors due to sleep loss, circadian desynchronization, fatigue, and work overload.&quot; in &quot;The human health and performance risks of space exploration missions.&quot; Ed. J.C. McPhee, J.B. Charles. Houston, TX : NASA, Johnson Space Center, 2009, p. 85-116. (NASA SP-2009-3405), Dec-2009</li><li><strong>Significant Media Coverage</strong> — Kanellos M. &quot;A New Use for LEDs: Mind Control. Dr. Brainard discusses predicted health benefits of upcoming LED lighting in indoor environments, such as in the ISS, and building technology on the biological effects of light.&quot; NYTimes Green Blog. October 7, 2011. http://green.blogs.nytimes.com/2011/10/07/a-new-use-for-leds-mind-control/ ; accessed 2/3/2015., Oct-2011</li><li><strong>Significant Media Coverage</strong> — Holzman DC. &quot;Blue alert: The dark side of night light. Scientific article in a national publication describing Dr. Brainard&#x27;s research.&quot; New Scientist 2011 May;2811:44-7. http://www.newscientist.com/issue/2811 , May-2011</li><li><strong>Dissertations and Theses</strong> — Woida-O&#x27; Brien R, Smith P, Marshall B, Moores J, Warfield B, Hanifin JP, Brainard GC. &quot;Extraterrestrial light simulation instrumentation for human neuroendocrine response research.&quot; Master&#x27;s thesis, University of Arizona and Thomas Jefferson University, April 2009., Apr-2009</li><li><strong>Patents</strong> — USPTO 8,336,755. Patent, February 5, 2013. Feb-2013 Brainard GC, Glickman G. &quot;Photoreceptor System for Melatonin Regulation and Phototherapy.&quot;</li><li><strong>Significant Media Coverage</strong> — Avril T. &quot;Putting Astronauts to Sleep. In this article, Dr. Brainard explains his NSBRI and NASA research on how a new LED light system on the ISS will benefit the health of astronauts. his NSBRI and NASA research on how a new LED light system on the ISS will benefit the health of astronauts.&quot; Philadelphia Inquirer, July 2012., Jul-2012</li><li><strong>Significant Media Coverage</strong> — Jaffee MK. &quot;When Screen Time Affects Kids Zzz Time. How artificial light and light-emitting devices affect circadian rhythms and alertness in children; Dr. Brainard&#x27;s research is described.&quot; San Antonio Express News. December 13, 2011. http://www.mysanantonio.com/life/article/When-screen-time-affects-kids-zzz-time-2399716.php ; accessed 2/3/2015., Dec-2011</li><li><strong>Dissertations and Theses</strong> — Thiessen MA. &quot;A comparison of alertness measures in humans when exposed to equal photon density of blue-enriched fluorescent versus standard white fluorescent light.&quot; Master&#x27;s thesis, Thomas Jefferson University, April 2009., Apr-2009</li><li><strong>Significant Media Coverage</strong> — Cheney I. &quot;The City Dark. Feature-length documentary film (which picked up awards at the Yale and South by Southwest Film Festivals) exploring the complex issues surrounding light pollution.&quot; The City Dark, May 2011. , May-2011</li><li><strong>Significant Media Coverage</strong> — Selvin R. &quot;Feature: Haddon Township Ph.D.&#x27;s Research Aids Chilean Miners. Profile of Dr. Brainard and how his research can aid trapped miners, specifically the Chilean miners who were recently rescued after being trapped for weeks underground with little light.&quot; The Retrospect. October 29, 2010. http://theretrospect.com/feature-haddon-township-phds-research-aids-chilean-miners-p2592-1.htm , Oct-2010</li><li><strong>Significant Media Coverage</strong> — JMC Alumni Bulletin. &quot;Light Therapy for a Blue Planet and Beyond. Dr. Brainard discusses the differences of white vs blue-enriched light in treating SAD and applications to new light systems on the International Space Station.&quot; JMC Alumni Bulletin. 2012 Winter;61(1):14. http://jdc.jefferson.edu/alumni_bulletin/295 ; accessed 2/3/2015., Jan-2012</li><li><strong>Significant Media Coverage</strong> — Ruiz FP. (Fernando Pages Ruiz) &quot;New Research May Lead to Changes for Residential Lighting. Article discusses efficient and healthy lighting for new interior design, describing Dr. Brainard&#x27;s research.&quot; EcoHome, March 26, 2012. http://www.ecobuildingpulse.com/air-quality/new-research-may-lead-to-changes-for-residential.aspx ; accessed 2/3/2015., Mar-2012</li><li><strong>Books/Book Chapters</strong> — Doghramji K, Balaicuis JM, Brainard GC. &quot;Sleep and sleep disorders.&quot; in &quot;Integrative psychiatry.&quot; Ed. D.A. Monti, B. Beitman. Oxford ; New York : Oxford University Press, 2010. p. 195-239., Jan-2010</li><li><strong>Significant Media Coverage</strong> — Kanellos M. &quot;Will LED Light Bulbs Help You Fall Asleep? This article discusses resetting the circadian rhythm and how LEDs can help, quoting Dr. Brainard.&quot; Forbes. November 2, 2011. http://www.forbes.com/sites/michaelkanellos/2011/11/02/will-led-light-bulbs-help-you-fall-asleep/ ; accessed 2/3/2015., Nov-2011</li><li><strong>Significant Media Coverage</strong> — Flam F. &quot;Newspaper article on health risks to astronauts. Discussed sleep risks and role of short-wavelength light in circadian rhythms.&quot; Philadelphia Inquirer, Dec 1, 2008., Dec-2008</li><li><strong>Significant Media Coverage</strong> — Byrd D, Block J, Patterson L, Salazar J. &quot;Podcast discussing the potential role of blue and blue-enriched light in helping regulate circadian clocks of astronauts.&quot; Earth &amp; Sky radio series program 5651, November 2008., Nov-2008</li><li><strong>Significant Media Coverage</strong> — Raloff J. &quot;Night Light May Foster Depression. Scientific article discusses how light regulates mood and behavior outside of biological rhythms; Dr. Brainard is quoted.&quot; Science News. 2012 Aug 25;182(4):10., Aug-2012</li><li><strong>Significant Media Coverage</strong> — Spivey A. &quot;Light at night and breast cancer risk worldwide. Scientific article in a national publication exploring the link between exposure to light at night (LAN) and increased risk of cancer (such as breast or prostate) in which Dr. Brainard&#x27;s melatonin and cancer research is mentioned.&quot; Environmental Health Perspectives 2010 Dec;118(12):a525. PMID: 21123149 ; http://dx.doi.org/10.1289/ehp.118-a525 , Dec-2010</li><li><strong>Significant Media Coverage</strong> — Peeples L. &quot;Seasonal blues? Lack of blue light may be to blame. National feature article about the importance of blue light and its role in seasonal affective disorder; Dr. Brainard interviewed.&quot; http://www.cnn.com/2010/HEALTH/10/27/health.blue.light.moods/index.html (Primary interview). (Additional placements) Health.com, Topix.com, MedWorm.com, Newsique.com, WordPress.com, SurfWax.com, NewsRoomAmerica.com , October 2010., Oct-2010</li><li><strong>Significant Media Coverage</strong> — Teitell B. &quot;Dim View of Lighting Law. Dr. Brainard is quoted in this article that builds a positive argument for the changes made by phasing out old light bulbs regarding health and energy efficiency.&quot; Boston Globe, April 4, 2011., Aug-2011</li><li><strong>Significant Media Coverage</strong> — Guthrie C. &quot;&#x27;The Light-Cancer Connection.&#x27; An article explaining the ill-effects of a 24/7 lifestyle on the cancer-inhibiting hormone, melatonin. Dr. Brainard&#x27;s research is described.&quot; Prevention. November 2011. http://tinyurl.com/azzkk8l ; accessed 2/3/2015., Nov-2011</li><li><strong>Patents</strong> — Applied. Applied, July 2010. Jul-2010 Brainard GC, Glickman G. &quot;Photoreceptor system for melatonin regulation and phototherapy.&quot;</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23205">https://techport.nasa.gov/projects/23205</a>
+    </div>
+  </div>
+</body>
+</html>

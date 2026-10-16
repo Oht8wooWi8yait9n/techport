@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anomaly Detection to Improve Airspace Safety and Efficiency | NASA TechPort Project 33162</title>
+  <meta name="description" content="As the air transportation system becomes increasingly autonomous over the next twenty years, there will be an increasing need for monitoring capabilities that operate in the background to identify anomalous behaviors consistent with either safety or efficiency">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/33162">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 33162</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX01.3.1</span>
+        </div>
+        <h1>Anomaly Detection to Improve Airspace Safety and Efficiency</h1>
+        <div class="meta-id">NASA TechPort Project ID: 33162</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/33162" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          As the air transportation system becomes increasingly autonomous over the next twenty years, there will be an increasing need for monitoring capabilities that operate in the background to identify anomalous behaviors consistent with either safety or efficiency deficiencies. Today, these behaviors are largely detected after an incident has occurred. In July 2013, an Asiana Boeing 777 flew too low approaching San Francisco International Airport (SFO), its tail hitting a seawall and crashing into the runway. Three people died and 180 were injured. Since the weather was clear and visibility unimpeded, part of the instrument landing system (the glideslope transmitter) was offline for service, thus requiring pilots to land visually. The National Transportation Safety Board (NTSB) found that the Asiana pilots' reliance on the automated flight systems was a key factor in that crash. Further analysis by the Wall Street Journal revealed that foreign pilots required more "go-arounds" at SFO than U.S. pilots in the six weeks prior to the Asiana Airlines crash (i.e., when the glideslope transmitter was down), indicating a greater difficulty in executing the landing via visual approach. This type of anomalous behavior could have been detected prior to the crash. All of the data was available, but no one was looking at it to see these consistent, yet anomalous behaviors. Metron proposes to develop a semi-autonomous background monitoring system to apply this type of data mining and data discovery to recent historical track repositories in order to identify opportunities for improvements to safety and efficiency in airspace operations. Metron proposes a statistical approach that uses historical flight data to develop models of normal behavior, and then apply statistical methods to identify outliers under one or more indicators. Metron has used similar approaches for anomaly detection systems developed and delivered to operational customers in the land and maritime domains.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The long-term goal of this A3 Airspace Operations and Safety work is facilitating the development of autonomy in the future National Airspace System (NAS) through the modeling of how human behavior influences the details of flight path selection. The short-term goal is to improve the current NAS by identifying flights deemed "anomalous" by a suite of indicators designed to assess flight efficiency and safety. The transition path for NASA priorities begins with ATAC's flight repository, the source of the data for this project. ATAC's mission is to consolidate, to cleanse, and to otherwise add value to NAS data—the indicators we propose to develop for this project are designed to aid that mission. In preparation for a Phase II, we will work with ATAC to transition our short-term technology to an FAA NextGen program (e.g., Collaborative Air Traffic Management Technologies (CATMT)), and leverage these in-roads to begin transitioning our deeper human-behavior modeling effort.<br /> <br />For Non-NASA commercial applications, we plan to use the proposed work to extend our technical base of kinematic modeling and anomaly detection (which is land- and sea-oriented) to include air operations. This will allow us to break into new areas within agencies such as NGA that are already using our technology for land and sea. Much of our technical base was developed as a kinematic component of Maritime Domain Awareness (MDA) for the Navy, where it is important to understand the behavior of commercial shipping. We would use the extension of this work into the air domain to develop a similar capability for the Air Force, providing capabilities for them to interact more safely and effectively within the context of civilian airspace.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>33162</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.3.1: Integrated Systems and Ancillary Technologies</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2015-06-17</td></tr>
+<tr><th>Project End Date</th><td>2015-12-17</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Metron, Inc. — Reston, Virginia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Gregory A Godfrey (Principal Investigator); Gregory Godfrey (Principal Investigator); Robert W Mah (Project Manager) &lt;robert.w.mah@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced To</strong></li><li><strong>Closed Out</strong>: Anomaly Detection to Improve Airspace Safety and Efficiency, Phase I Project Image</li><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart Image</li><li><strong>Briefing Chart</strong> — Anomaly Detection to Improve Airspace Safety and Efficiency Briefing Chart</li><li><strong>Briefing Chart Image</strong> — Anomaly Detection to Improve Airspace Safety and Efficiency, Phase I</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/33162">https://techport.nasa.gov/projects/33162</a>
+    </div>
+  </div>
+</body>
+</html>

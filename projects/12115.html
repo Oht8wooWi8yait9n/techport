@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Ground Testbed to Advance US Capability in Autonomous Rendezvous and Docking | NASA TechPort Project 12115</title>
+  <meta name="description" content="This project will advance the Autonomous Rendezvous and Docking (AR&amp;D) GNC system by testing it on hardware, particularly in a flight processor, with a goal of testing it in IPAS with the Waypoint L2 AR&amp;D scenario. The entire Agency supports development of a C">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/12115">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 12115</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">JSC CIF</span>
+          <span class="badge">TX04.5.3</span>
+        </div>
+        <h1>A Ground Testbed to Advance US Capability in Autonomous Rendezvous and Docking</h1>
+        <div class="meta-id">NASA TechPort Project ID: 12115</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/12115" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>This project will advance the Autonomous Rendezvous and Docking (AR&D) GNC system by testing it on hardware, particularly in a flight processor, with a goal of testing it in IPAS with the Waypoint L2 AR&D scenario.  The entire Agency supports development of a Commodity for Autonomous Rendezvous and Docking (CARD) as outlined in the Agency-wide Community of Practice whitepaper entitled: "A Strategy for the U.S. to Develop and Maintain a Mainstream Capability for Automated/Autonomous Rendezvous and Docking in Low Earth Orbit and Beyond". The whitepaper establishes that 1) the US is in a continual state of AR&D point-designs and therefore there is no US "off-the-shelf" AR&D capability in existence today, 2) the US has fallen behind our foreign counterparts particularly in the autonomy of AR&D systems, 3) development of an AR&D commodity is a national need that would benefit NASA, our commercial partners, and DoD, and 4) an initial estimate indicates that the development of a standardized AR&D capability could save the US approximately $60M for each AR&D project and cut each project's AR&D flight system implementation time in half. <p/><p>The entire Agency supports development of a Commodity for Autonomous Rendezvous and Docking (CARD) as outlined in the Agency-wide Community of Practice whitepaper entitled: "A Strategy for the U.S. to Develop and Maintain a Mainstream Capability for Automated/Autonomous Rendezvous and Docking in Low Earth Orbit and Beyond". The whitepaper establishes that 1) the US is in a continual state of AR&D point-designs and therefore there is no US "off-the-shelf" AR&D capability in existence today, 2) the US has fallen behind our foreign counterparts particularly in the autonomy of AR&D systems, 3) development of an AR&D commodity is a national need that would benefit NASA, our commercial partners, and DoD, and 4) an initial estimate indicates that the development of a standardized AR&D capability could save the US approximately $60M for each AR&D project and cut each project's AR&D flight system implementation time in half.  As designed, each element of the AR&D commodity is to be evolvable so that as sensor, computer technology, and algorithm advances occur, the commodity will harness these advances and allow the new hardware and software to be integrated with a minimum of difficulty because the interfaces have been well-defined. Since the majority of the effort in any AR&D mission involves solving systems integration challenges, having an 80% solution will go a long way toward reducing time and cost – and risk -- of future missions. This project's objective is to develop a CARD software and hardware package (which goes well beyond this IR&D proposal and is a long-term endeavor) that will provide a cross-cutting starting point that will provide 80% of the functionality necessary to carry out any conceivable AR&D mission. The remaining 20% will need to be tailored to a particular mission. One of the key elements of this commodity is a set of well-defined, standardized interfaces.  To date, all of the work performed for AR&D has focused on either Low Earth Orbit (LEO) or Low Lunar Orbit (LLO). We seek to advance AR&D technology by focusing this IRaD on rendezvous in a weak gravity environment –either at L2 or around an asteroid. We choose to focus our IRaD effort on the AR&D algorithms and software for the Waypoint Mission, thus broadening our scope, maintaining our cutting-edge capability, and advancing US manned space exploration. Our goal is to be flexible enough to meet the needs of the NASA vision as it applies to any AR&D mission the Agency chooses to embark upon.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p><p>1) the US is in a continual state of AR&amp;D point-designs and therefore there is no US &ldquo;off-the-shelf&rdquo; AR&amp;D capability in existence today, 2) the US has fallen behind our foreign counterparts particularly in the autonomy of AR&amp;D systems, 3) development of an AR&amp;D commodity is a national need that would benefit NASA, our commercial partners, and DoD, and 4) an initial estimate indicates that the development of a standardized AR&amp;D capability could save the US approximately $60M for each AR&amp;D project and cut each project&rsquo;s AR&amp;D flight system implementation time in half.</p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>12115</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: JSC CIF (JSC CIF)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX04.5.3: Rendezvous, Proximity Operations, and Capture Flight and Ground Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 5 | Current TRL: 5 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2011-10-01</td></tr>
+<tr><th>Project End Date</th><td>2013-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>The Charles Stark Draper Laboratory, Inc. — Cambridge, Massachusetts; Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Christopher N D&#x27;Souza (Principal Investigator) &lt;chris.dsouza-1@nasa.gov&gt;; Christopher N D&#x27;Souza (Project Manager) &lt;chris.dsouza-1@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-02</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/12115">https://techport.nasa.gov/projects/12115</a>
+    </div>
+  </div>
+</body>
+</html>

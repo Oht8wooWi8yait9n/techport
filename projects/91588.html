@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stability Analysis of Spacecraft Motion in the Vicinity of Asteroids | NASA TechPort Project 91588</title>
+  <meta name="description" content="The objective of my proposal is to determine the stability of a spacecraft when in the vicinity of an asteroid. Orbiting an asteroid is a difficult task. The unique shapes in which asteroids are formed cause the gravity around them to be non-uniform. This caus">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91588">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91588</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX17.3.2</span>
+        </div>
+        <h1>Stability Analysis of Spacecraft Motion in the Vicinity of Asteroids</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91588</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91588" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The objective of my proposal is to determine the stability of a spacecraft when in the vicinity of an asteroid. Orbiting an asteroid is a difficult task. The unique shapes in which asteroids are formed cause the gravity around them to be non-uniform. This causes perturbations in the movement of a spacecraft around an asteroid. Solar radiation pressure can also alter the orbit of a spacecraft around an asteroid. With multiple perturbations on a spacecraft, orbiting an asteroid can become unstable over time. This instability could lead to the spacecraft escaping from the body or crashing into the asteroid. By determining an algorithm that can define the stability of a spacecraft around an asteroid, safe and stable orbits can be found for an operational spacecraft. In order to achieve a greater understanding of the stability of a spacecraft in the vicinity of an asteroid, the dynamics of the spacecraft around the asteroid must be well understood. All perturbing forces that will act on a spacecraft orbiting an asteroid must be accurately modeled. This includes mathematical modeling of the gravity around the asteroid due to its non-spherical shape, third-body dynamics from the sun, and solar radiation pressure. Rotation of the spacecraft and asteroid will also be part of accurately modeling the dynamics of this system. The largest portion of the research will be focused on determining what the proper definition of stability is for the spacecraft. Stability of a system can be defined in various ways using multiple stability analysis methods. Because these differing methods often result in subtle differences that have significant consequences, the determination of stability for a spacecraft mission can be difficult to find using mathematical definitions that apply to practical needs of the mission. Therefore finding a meaningful mathematical definition for stability that can be applied to an operation mission will be the core of my research. Lyapunov stability will used as a preliminary tool to give insight into more complex methods of determining stability. This includes the stability methods such as Lyapunov characteristic exponents, FLI, and MEGNO. For future missions to asteroids this allows the spacecraft to orbit naturally without as many correctional maneuvers. Also, understanding the stability of a spacecraft around an asteroid will give future missions more confidence in opting to orbit in close proximity of the asteroid, which will allow for more science to be obtained. Gaining knowledge on the behavior of a spacecraft around an asteroid will help define go tostable orbits that are dependable for the spacecraft to stay in for long periods of time. By better understanding the dynamics and stability of spacecraft motion around an asteroid, a spacecraft will be able to achieve better understanding of the asteroids size, shape, rotation, gravity field, and mass. Therefore it encourages a relationship where a better understanding of the dynamics of the spacecraft causes more science to be found; and with better science comes more refined models that improve the dynamics of the orbiting spacecraft. This information can be used for both scientific human missions and resource extraction missions to asteroids. NASA plans on landing humans on an asteroid with the next generation of crewed space flight vehicles. With human life on the line, knowledge of how the crew transport vehicle will behave orbiting the asteroid needs to be well known.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          For future missions to asteroids this allows the spacecraft to orbit naturally without as many correctional maneuvers. Also, understanding the stability of a spacecraft around an asteroid will give future missions more confidence in opting to orbit in close proximity of the asteroid, which will allow for more science to be obtained. Gaining knowledge on the behavior of a spacecraft around an asteroid will help define go tostable orbits that are dependable for the spacecraft to stay in for long periods of time. By better understanding the dynamics and stability of spacecraft motion around an asteroid, a spacecraft will be able to achieve better understanding of the asteroids size, shape, rotation, gravity field, and mass. Therefore it encourages a relationship where a better understanding of the dynamics of the spacecraft causes more science to be found; and with better science comes more refined models that improve the dynamics of the orbiting spacecraft. This information can be used for both scientific human missions and resource extraction missions to asteroids. NASA plans on landing humans on an asteroid with the next generation of crewed space flight vehicles. With human life on the line, knowledge of how the crew transport vehicle will behave orbiting the asteroid needs to be well known.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91588</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX17.3.2: Dynamics Analysis, Modeling, and Simulation Tools</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2013-09-01</td></tr>
+<tr><th>Project End Date</th><td>2017-12-21</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Colorado Boulder — Boulder, Colorado</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Daniel Scheeres (Principal Investigator); Samantha M Rieger (Co-Investigator) &lt;samantha.m.rieger@nasa.gov&gt;; Brent W Barbee (Project Manager) &lt;brent.w.barbee@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong>: Natural and artificial satellites are subject to perturbations when orbiting near-Earth asteroids. These perturbations include non-uniform gravity from the asteroid, third-body disturbances from the Sun, and solar radiation pressure. For small natural (1 cm-15 m) and artificial satellites, solar radiation pressure is the primary perturbation that will cause their orbits to go unstable. For the asteroid Bennu, the future target of the spacecraft OSIRIS-REx, the possibility of natural satellites having stable orbits around the asteroid and characterizing these stable regions is investigated. It has been found that the main orbital phenomena responsible for the stability or instability of these possible natural satellites are Sun-synchronous orbits, the modified Laplace plane, and the Kozai resonance. These findings are applied to other asteroids as well as to artificial satellites. There have been previous studies of stability around asteroids before, but predominantly with spacecraft, dust around main-belt asteroids, or large satellites not perturbed by solar radiation pressure. This is the first study that looks at objects over a large range of natural satellite diameters that could be stable around a near-Earth asteroid. This research will inform future NASA missions to small bodies and the types of natural satellites that could exist and may interfere with the mission planning and design. By understand where these objects could be stable contingency planning can be implemented beforehand to mitigate any issues and delays that can come from not preparing for a possibility of such an object’s existences around a small body. The re-emission of solar radiation pressure through BYORP is also investigated for binary asteroid systems. Specifically, the BYORP force is combined with the Laplace plane such that BYORP expands the orbit of the binary system along the Laplace surface where the secondary increases in inclination. For obliquities from 68.875°-111.125°the binary will eventually extend into the Laplace instability region, where the eccentricity of the orbit will increase. A subset of the instability region leads to eccentricities high enough that the secondary will impact the primary. This result inspired the development of a hypothesis of a contact-binary binary cycle. YORP will increase the spin rate of a contact binary while also driving the spin-pole to an obliquity of 90°. Eventually, the contact binary will fission. The binary will subsequently become double-synchronous, thus allowing the BYORP acceleration to have secular effects on the orbit. The orbit will then expand along the Laplace surface to the Laplace plane instability region eventually leading to an impact and the start of a new cycle with the YORP process. This research topic explores the possibility of a cycle where an asteroid will go between two main states: a single contact-binary asteroid and a binary asteroid system. This cycle could help explain two observations of the near-asteroid population. First, this would help explain why there are many contact-binary asteroids with a large range of high obliquities, where they have a tendency to be driven to obliquities of 90° as opposed to 0°/180°. Second, this cycle would help uphold the observation that 15% of near-Earth asteroids are binaries. This theory creates a cycle as opposed to an asteroid eventually losing its secondary, an asteroid will go through multiple time periods of being a binary asteroid and thus contribute to the significant population of binary asteroids that we observe.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91588">https://techport.nasa.gov/projects/91588</a>
+    </div>
+  </div>
+</body>
+</html>

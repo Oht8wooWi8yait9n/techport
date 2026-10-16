@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proximity Navigation Near and Mapping of Asteroids | NASA TechPort Project 91526</title>
+  <meta name="description" content="Sensor fusion algorithms are proposed that enable proximity navigation and mapping of an unknown space object, such as an asteroid. The sensors envisioned are a range sensor (Flash LIDAR), and a synchronized and co-registered HD video camera, and an IMU. The t">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91526">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91526</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX17.2.1</span>
+        </div>
+        <h1>Proximity Navigation Near and Mapping of Asteroids</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91526</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91526" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Sensor fusion algorithms are proposed that enable proximity navigation and mapping of an unknown space object, such as an asteroid. The sensors envisioned are a range sensor (Flash LIDAR), and a synchronized and co-registered HD video camera, and an IMU. The transition from intermediate to close proximity is considered wherein the observability early-on allows only the 3DOF range vector to be determined, and in close proximity where the full 6DOF relative pose is observeable and the object geometry can be recursively learned/estimated. Our algorithms are novel because of (i) unique utilization of sensor field overlap-induced information redundancy to eliminate poor features and retain the most consistent features on the object based on statistical hypothesis-testing and (ii) utilization of a recently discovered way to rigorously linearize the least square fusion of two overlapping point clouds, without approximation. End-to-end experiments in our laboratory http://lasr.tamu.edu/ are proposed to accelerate maturation and evaluation of the technology.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Our algorithms are novel because of (i) unique utilization of sensor field overlap-induced information redundancy to eliminate poor features and retain the most consistent features on the object based on statistical hypothesis-testing and (ii) utilization of a recently discovered way to rigorously linearize the least square fusion of two overlapping point clouds, without approximation.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91526</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX17.2.1: Onboard Navigation Algorithms</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2013-08-01</td></tr>
+<tr><th>Project End Date</th><td>2016-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Texas A &amp; M University-College Station (Texas A&amp;M) — College Station, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>John Junkins (Principal Investigator); Dylan T Conway (Co-Investigator) &lt;dylan.t.conway@jpl.nasa.gov&gt;; Peter T Spehar (Project Manager) &lt;peter.t.spehar@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The research undertaken during this fellowship has evolved significantly over three years. The primary motivation has been consistent: remove navigation as a constraint for future space missions. In particular, missions involving proximity operations near uncooperative targets such as planetary landings, small-body landings, and spacecraft repair all require a navigation solution relative to the target. Traditional visual cameras combined with recent advances in dense range sensors (scanning and flash LIDAR) have been proposed and demonstrated as a viable data source for such navigation systems. Unfortunately, systems using these sensors can be very sensitive to environmental artifacts such as shadowing, occlusion, non-Lambertian reflectance, and motion blurring, all of which can cause sudden failure of the navigation system. This can in turn cause mission failure if the vehicle uses a rapidly degrading navigation solution for feedback control. Underlying the apparent lack of robustness of vision-aided navigation solutions is a discrepancy between the assumptions used to design the state estimator and the reality of the environment-sensor interaction. The celebrated Kalman Filter (KF) and its nonlinear cousin, the Extended Kalman Filter (EKF), have served as the backbone of navigation system design: the estimation analog of PID control. The excellent theoretical properties of the KF require a perfectly modeled linear Gaussian system with errors uncorrelated in time. The EKF is an approximation for nonlinear systems that works well if the nonlinearity is ‘small’ and the Gaussian assumption is still met. In applying the EKF to real systems, significant effort is typically made in tuning the filter parameters and editing incoming data so that the Gaussian assumption is nearly met. These same efforts have been applied to state estimators using visual and ranging data. Such systems represent the state-of-the-art. However, visual and ranging data present certain challenges that are difficult to overcome. Visual and range measurements are a function of vehicle state and the environment. Therefore, parameters of the environment must be jointly estimated with vehicle state. This challenge is exacerbated by the fact that the number of environment parameters will typically grow with the number of measurements made. The probabilistic coupling of both environmental and state parameters makes traditional data editing techniques much more difficult. In addition, as has been shown in this research, the errors associated with these measurements are highly non-Gaussian and are significantly correlated in time. Both the neglect of these realities and the inability to account for them has hindered the robustness and viability of vision-aided navigation solutions in a broad class of applications. From the start of this research, the failure of existing vision-aided navigation solutions has been recognized and methods to overcome such difficulties have been developed. In the first two years of research, this focus was on leveraging new LIDAR sensing technology which can be fused with passive-visual measurements and other traditional sensors. Various methods to parameterize the environment and perform consistency checks between the different sensor modalities were developed. While this resulted in several successful demonstrations, a major underlying issue had gone unaddressed: what is a valid probabilistic model for visual measurements? The final year of research was primarily dedicated to developing probabilistic models for visual measurements, designing estimators around those models, and testing the resulting estimator performance. The models incorporate both a structural component and random component. The standard model used almost universally in the computer vision community, including the state-of-the-art systems, is to assume that the scene contains a set of point landmarks with fixed position. The pixel locations in image-space of these landmarks are measured by feature detectors which add zero-mean, independent, and identically distributed errors. Furthermore, these errors are often assumed to be either Gaussian or a mixture of Gaussian errors plus gross outliers. A systemic method of analyzing visual measurement errors was developed in this research which enabled the creation of more accurate models. Strong evidence of serial correlations in errors and non-Gaussian behavior was found. Models were developed to specifically incorporate this. Estimators were designed around these models and then implemented in software. Both simulated images with perfect ground truth data and real images with accurate laboratory ground truth data were used to evaluate the performance of the estimators. Improvements in accuracy and robustness were demonstrated over state-of-the-art algorithms. Finally, approximations to these batch estimators were made so that they can be applied to real-time sequential estimation. It is expected that such enhancements can enable navigation in future missions with a significant reduction in risk.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91526">https://techport.nasa.gov/projects/91526</a>
+    </div>
+  </div>
+</body>
+</html>

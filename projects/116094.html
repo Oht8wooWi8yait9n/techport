@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quantum Parametric Mode Sorting Lidar (QPMS) | NASA TechPort Project 116094</title>
+  <meta name="description" content="Lidars and laser altimeters have demonstrated that they can bring the third dimension to satellite remote sensing for Earth Science (ICESat, ICESat2, CALIPSO, GEDI, ADM Aeolus). For future lidars to increase scientific knowledge of our planet there will need t">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/116094">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 116094</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">IIP</span>
+          <span class="badge">TX08.1.5</span>
+        </div>
+        <h1>Quantum Parametric Mode Sorting Lidar (QPMS)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 116094</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/116094" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Lidars and laser altimeters have demonstrated that they can bring the third dimension to satellite remote sensing for Earth Science (ICESat, ICESat2, CALIPSO, GEDI, ADM Aeolus). For future lidars to increase scientific knowledge of our planet there will need to be new technologies and new techniques. Trending is important, but new understanding of our Earth using remote sensing requires new technologies. Some key lessons learned from these past lidars/altimeters are 1) solar background light always decreases their effectiveness during the day, and 2) scenes are easily obscured by cloud, blowing snow, or turbid water - again reducing measurement quality e.g., lowering detectability of objects below and introducing biases in the science products. With next generation systems in pre-phase A development, we need to look forward now to what will follow - development cycles are lengthy. The Quantum Parametric Mode Sorting (QPMS) lidar technique draws from developments created for Quantum Information Science (QIS). The technique uses a laser system tailored to emit in a unique Temporal-Frequency mode, a laser pulse made up of many photons all phase coherent within a pulse. The lidar receiver uses a nonlinear crystal carefully chosen to have a phase matching bandwidth smaller than the laser pulse bandwidth. This effectively creates a temporal/spectral filter, only photons in the correct mode are converted all other photons are rejected. This creates the perfect filter against background light. It also identifies signal photons that have passed through dense obscurations and still carry the precise time-of-flight to Earth scenes to allow mapping under a wider range of conditions. This is because highly multiple scattered photons will lose their intrapulse coherence and thus not be detected by the QPMS receiver. This is similar to Low-Coherence Interferometry, the basis to Optical Coherence Tomography, that allows imaging and ranging into dense tissue for medical applications. The system is currently at TRL 4 for 1550 nm having proven out the precise ranging even through optically dense obscuration and in the presence of strong background light. The most serious of limitations of traditional up-conversion technique have been addressed with funding from ESTO (ESTO ATI-QRS-20). For it to be useful for a broader range of Earth scenes the system must be adapted to the visible spectrum where there is much lower absorption, setting the entry of the proposed development to TRL 1 The proposed effort will extend the techniques to the visible and perform lab testing in snow and water scenes. For snow the objective is to precisely measure (mm resolution) snow depth up to 0.8 m and potentially characterize snowpack properties such as grain size/shape and snow water equivalent (SWE) a critical parameter as called out in the Decadal Survey. For water it is to increase the depth at which bathymetry can be performed in turbid water. The path to a packaged system for field demonstrations and eventual space application will be evaluated. This will advance the technique to TRL 3 and prepare it for actual Earth missions at NASA, e.g., for the future snow/hydrology missions and Surface Topography and Vegetation mission.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Enabling lower cost innovative remote sensing instrument development from concept through breadboard and demonstration
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>116094</td></tr>
+<tr><th>Acronym</th><td>QPMS</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Instrument Incubator (IIP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.5: Lasers</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2022-02-14</td></tr>
+<tr><th>Project End Date</th><td>2024-12-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ball Aerospace &amp; Technologies Corporation — Boulder, Colorado</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Arizona — Tucson, Arizona; Stevens Institute of Technology — Hoboken, New Jersey; Boise State University — Boise, Idaho; Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Arizona (AZ), Colorado (CO), Idaho (ID), New Jersey (NJ), Virginia (VA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Carl S Weimer (Principal Investigator); Hans-Peter Marshall (Co-Investigator); Jennifer Lee (Co-Investigator); Xubin Zeng (Co-Investigator); Knut Stamnes (Co-Investigator); Courtney L Coe (Co-Investigator); Yong Meng Sua (Co-Investigator); Yongxiang Hu (Co-Investigator) &lt;yongxiang.hu@nasa.gov&gt;; Yuping  Huang (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Michael S Seablom (Program Director) &lt;michael.s.seablom@nasa.gov&gt;; Parminder S Ghuman (Program Manager) &lt;p.ghuman@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-06-26</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Link]</strong> Closeout Link</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/116094">https://techport.nasa.gov/projects/116094</a>
+    </div>
+  </div>
+</body>
+</html>

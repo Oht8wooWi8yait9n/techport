@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>An Estimation Algorithm for Detecting and Reconstructing Optimal Maneuvers from Measurement Residuals | NASA TechPort Project 11522</title>
+  <meta name="description" content="This proposed research addresses the problem of optimal maneuver detection and reconstruction with regards to an astrodynamics application. Maneuver detection and reconstruction are processes by which an independent observer may determine when and how a body i">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/11522">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 11522</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX17.4.1</span>
+        </div>
+        <h1>An Estimation Algorithm for Detecting and Reconstructing Optimal Maneuvers from Measurement Residuals</h1>
+        <div class="meta-id">NASA TechPort Project ID: 11522</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/11522" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>This proposed research addresses the problem of optimal maneuver detection and reconstruction with regards to an astrodynamics application. Maneuver detection and reconstruction are processes by which an independent observer may determine when and how a body is moving in a dynamical system under the influence of unmodeled active control. This research shall specifically address the problem of how one can determine and reconstruct orbital maneuvers assuming they are performed optimally with respect to fuel expenditure. This assumption is valid due to limited availability of fuel for space-based missions and how important fuel is to a successful mission. The inevitable goal of this research is produce an estimation algorithm that accounts for the influences of unmodeled optimal control. Essentially, this research is uniting the fields of estimation and optimal control in an algorithm that is applicable to various disciplines. Algorithm development will involve merging current research in maneuver detection with lessons from various fields of study including astrodynamics, estimation, optimal control, information fusion, and Space Situational Awareness. The work will primarily be simulation-based, and actual mission data would likely be used to help quantify the algorithms accuracy. Initial work will start by investigating linear estimator algorithms, but eventually the work will be pushed to higher order, non-Gaussian filters. Understanding the dynamics of Earths orbital environment is of paramount concern. With the increase in orbital debris from recent collisions, and the increase in launch activity this environment is becoming increasingly crowded. Overcrowding in this environment increases the hazards associated with it due to increased potential for collisions. By gaining a better understanding of the dynamics (both natural and active) associated with this environment we can better pinpoint these potential hazards. Algorithms such as the one proposed in this paper help reduce the hazards associated with space-based missions, which is imperative to ensuring continued access to Earth-orbit and beyond.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Understanding the dynamics of Earths orbital environment is of paramount concern. With the increase in orbital debris from recent collisions, and the increase in launch activity this environment is becoming increasingly crowded. Overcrowding in this environment increases the hazards associated with it due to increased potential for collisions. By gaining a better understanding of the dynamics (both natural and active) associated with this environment we can better pinpoint these potential hazards. Algorithms such as the one proposed in this paper help reduce the hazards associated with space-based missions, which is imperative to ensuring continued access to Earth-orbit and beyond.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>11522</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX17.4.1: Onboard Attitude and Attitude Rate Estimation Algorithms</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2012-08-01</td></tr>
+<tr><th>Project End Date</th><td>2015-11-15</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Colorado Boulder — Boulder, Colorado</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Daniel Scheeres (Principal Investigator); Daniel P Lubey (Co-Investigator) &lt;daniel.p.lubey@jpl.nasa.gov&gt;; Johnny P Ruppert (Project Manager) &lt;john.p.ruppert@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Tracking objects in Earth orbit is fraught with complications introduced by a large population from increased launching and debris accumulation, passive (i.e. no direct communication) and data-sparse observation, and the presence of maneuvers and dynamics mismodeling. Accurate orbit determination in this environment requires an algorithm to capture both a system’s state and its state dynamics in order to account for mismodelings. This research project focused on developing an algorithm to address this problem. Beyond typical methods for dealing with dynamically mismodeled system like process noise and Gauss-Markov processes [11, 16, 21], there are many methods for dealing with mismodeled dynamics. Input estimation techniques [2,4,7] append control estimates to the state when a maneuver is detected through residuals, however these methods are generally more applicable to highly dynamical systems with a lot of information. SSA focused methods [6, 9, 15, 20] are well adapted problems within the SSA community, but often they are limited in application to specific orbit and/or observation types. Many methods in the field of system identification focus on understanding the dynamics of an unknown system, but most methods require control of the observed system and data-rich measurement sets [1, 5, 17]. Other methods within system identification [3,22] lift these limitations, but they are often designed for specific systems that do not have overlap with SSA problems. Multiple model estimation methods [8, 14] offer yet another approach to this problem, but these methods limit mismodeling to a finite number of models and the complexity of these methods may limit automated implementation. What we desire is an algorithm that fills the hole in the existing literature. That algorithm is the Optimal Control Based Estimator (OCBE). The OCBE is an algorithm that simultaneously estimates a system’s state and optimal control policies that represent dynamic mismodeling in the system for an arbitrary orbit-observer setup. The control policies and state estimates may be used to identify the presence of dynamic mismodeling, characterize that mismodeling, and reconstruct that mismodeling. The stochastic properties of these estimated controls are then used to determine the presence of mismodelings (maneuver detection), as well as characterize and reconstruct the mismodelings. This method was automated in order to create an adaptive version of the estimator that was capable of real-time application to tracking problems. Below is a bulleted list of the capabilities of the OCBE. • State estimation • Control estimation where the controls represent the dynamic mismodeling within the system • Real-time implementation via the adaptive version of the algorithm, which automatically detects and compensates for mismodeling • Application to arbitrary observer-target setup as long as the system is observable • Maneuver (a.k.a. dynamics mismodeling) detection, compensation, characterization, and reconstruction • State and control estimate smoothing • Application to data sparse systems with non-cooperative observation • Linear and nonlinear estimation • Natural dynamics estimation No existing algorithm has these combined properties, which are important to solving problems in orbit determination for Space Situational Awareness applications. In the following section, we give a brief description of this estimator and how it is formed. After this we provide some brief conclusions detailing what was accomplished in the research project. It should be noted that the full algorithm and examples of its application are provided in the Ph.D. thesis defining this work as well as the journal and conference papers associated with this work.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>11522-1363113964079.jpg</strong> — Project Image An Estimation Algorithm for Detecting and Reconstructing Optimal Maneuvers from Measurement Residuals</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/11522">https://techport.nasa.gov/projects/11522</a>
+    </div>
+  </div>
+</body>
+</html>

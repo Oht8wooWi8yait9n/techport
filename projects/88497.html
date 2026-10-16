@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Glider: Active Electrostatic Flight for Airless Body Exploration | NASA TechPort Project 88497</title>
+  <meta name="description" content="The environment near the surface of airless bodies (asteroids, comets, Moon) is electrically charged due to Sun&#x27;s photoelectric bombardment. Charged dust is ever present, even at high altitudes (dust fountains), following the Sun&#x27;s illumination. We envisage th">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/88497">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 88497</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">NIAC</span>
+          <span class="badge">TX09.4.5</span>
+        </div>
+        <h1>E-Glider: Active Electrostatic Flight for Airless Body Exploration</h1>
+        <div class="meta-id">NASA TechPort Project ID: 88497</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/88497" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The environment near the surface of airless bodies (asteroids, comets, Moon) is electrically charged due to Sun's photoelectric bombardment. Charged dust is ever present, even at high altitudes (dust fountains), following the Sun's illumination. We envisage the global scale exploration of airless bodies by a gliding vehicle that experiences its own electrostatic lift and drag by its interaction with the naturally charged particle environment near the surface. This Electrostatic Glider (E-Glider) lifts off by extending thin, charged, appendages, which are also articulated to direct the levitation force in the most convenient direction for propulsion and maneuvering. It thus carries out its science mission by circumnavigating the small body, and it lands, wherever it is most convenient, by retracting the appendages or by thruster/anchor.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This Electrostatic Glider (E-Glider) will enable the global scale exploration of airless bodies by circumnavigating the small body, and it lands, wherever it is most convenient, by retracting the appendages or by thruster/anchor.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>88497</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>NASA Innovative Advanced Concepts (NIAC)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.4.5: Integrated Modeling and Simulation for EDL</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 2 | Target End TRL: 2</td></tr>
+<tr><th>Project Start Date</th><td>2016-07-01</td></tr>
+<tr><th>Project End Date</th><td>2017-06-01</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of California-San Diego (UCSD) — La Jolla, California; University of Tokyo — Tokyo, Outside the United States, Japan; University of Colorado Boulder — Boulder, Colorado; California Institute of Technology (CalTech) — Pasadena, California; Polytechnic of Torino, Italy — Torino, Outside the United States, Italy</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Others Inside the Solar System, Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Bruno M Quadrelli (Principal Investigator) &lt;marco.b.quadrelli@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Vianni Ricano Cadenas (Program Manager) &lt;vianni.ricanocadenas@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The environment near the surface of asteroids, comets, and the Moon is electrically charged due to the Sun&#x27;s photoelectric bombardment and lofting dust, which follows the Sun illumination as the body spins. Charged dust is ever present, in the form of dusty plasma, even at high altitudes, following the solar illumination. If a body with high surface resistivity is exposed to the solar wind and solar radiation, sun-exposed areas and shadowed areas become differentially charged. The E-Glider (Electrostatic Glider) is an enabling capability for operation at airless bodies, a solution applicable to many types of in-situ mission concepts, which leverages the natural environment. With the E-Glider, we transform a problem (spacecraft charging) into an enabling technology, i.e. a new form of mobility in microgravity environments using new mechanisms and maneuvering based on the interaction of the vehicle with the environment. Consequently, the vision of the E-Glider is to enable global scale airless body exploration with a vehicle that uses, instead of avoids, the local electrically charged environment. This platform directly addresses the &quot;All Access Mobility&quot; Challenge, one of the NASA&#x27;s Space Technology Grand Challenges. Exploration of comets, asteroids, moons and planetary bodies is limited by mobility on those bodies. The lack of an atmosphere, the low gravity levels, and the unknown surface soil properties pose a very difficult challenge for all forms of know locomotion at airless bodies. This E-Glider levitates by extending thin, charged, appendages, which are also articulated to direct the levitation force in the most convenient direction for propulsion and maneuvering. The charging is maintained through continuous charge emission. It lands, wherever it is most convenient, by retracting the appendages or by firing a cold-gas thruster, or by deploying an anchor. The wings could be made of very thin Au-coated Mylar film, which are electrostatically inflated, and would provide the lift due to electrostatic repulsion with the naturally charged asteroid surface. Since the E-glider would follow the Sun&#x27;s illumination, the solar panels on the vehicle would constantly charge a battery. Further articulation at the root of the lateral strands or inflated membrane wings, would generate a component of lift depending on the articulation angle, hence a selective maneuvering capability which, to all effects, would lead to electrostatic (rather than aerodynamic) flight. Preliminary calculations indicate that a 1 kg mass can be electrostatically levitated in a microgravity field with a 2 m diameter electrostatically inflated ribbon structure at 19kV, hence the need for a balloon-like system. Due to the high density and the photo-electron sheath and associate small Debye length, significant power is required to levitate even a few kilograms. The power required is in the kilo-Watt range to maintain a constant charge level.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Report PDF\Final Report URL</li><li><strong>[Closeout Link]</strong> Closeout Link</li><li><a href="https://www.nasa.gov/feature/e-glider-active-electrostatic-flight-for-airless-body-exploration" target="_blank" rel="noopener noreferrer">NASA.gov Feature Article</a></li><li><a href="https://www.forbes.com/sites/elizabethhowell1/2022/01/03/hovering-moon-rover-concept-uses-an-electric-field-to-float/?sh=5fd0a4440923" target="_blank" rel="noopener noreferrer">Hovering Moon Rover Concept Uses An Electric Field To Float</a></li><li><strong>Project Image</strong> — The E-Glider (electrostatic Glider) is a small vehicle that levitates above the surface of an asteroid after extending strands of metallic film, forming the wings, so that it becomes “airborne”, but in the electrostatic vacuum lofting around the asteroid. By articulating the wings, the E-Glider can now hover, and maneuver around, without touching the surface. It is the first circumnavigation of an airless body by electrostatic forces, opening new avenues for low-cost, persistent, reconnaissance of airless bodies, leading to effective global scale prospecting of mineral-rich asteroids.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/88497">https://techport.nasa.gov/projects/88497</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Low SWaP Multichannel Analog Pulse Waveform Read-out on a Chip for Lidar | NASA TechPort Project 146788</title>
+  <meta name="description" content="This project is to adapt a novel multi-channel waveform recorder originally developed for nuclear physics for space lidar. The waveform recorder uses a fast switching network and a bank of small capacitors to sample and hold analog pulse waveforms as they occu">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/146788">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 146788</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX08.1</span>
+        </div>
+        <h1>Low SWaP Multichannel Analog Pulse Waveform Read-out on a Chip for Lidar</h1>
+        <div class="meta-id">NASA TechPort Project ID: 146788</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/146788" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>This project is to adapt a novel multi-channel waveform recorder originally developed for nuclear physics for space lidar. The waveform recorder uses a fast switching network and a bank of small capacitors to sample and hold analog pulse waveforms as they occur and digitize the stored waveforms after the event at a lower sampling rate but higher resolution. The technique was first used at the high energy particle collider to record the signals from multi-pixel photodetectors where all the events happen at once but the event rate is low. They can first capture the signals and hold them temporarily on the capacitor banks and digitize and download them during the down time. The technique uses far less real estate and power on the chip than conventional waveform recorders which digitize the waveforms and store the results in memory in real time. Lidars operation is similar to nuclear physics experiment at the colliders, where we need to capture the target returns as they arrive but have a relatively long time in between events. </p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The technique of sample and hold before digitization can fit many input channels on a single chip and achieve a much lower size, weight, and power (SWaP) compared to conventional waveform recorders.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>146788</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1: Remote Sensing Instruments and Sensors</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX09: Entry, Descent, and Landing; TX17: GN&amp;C</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2023-10-01</td></tr>
+<tr><th>Project End Date</th><td>2024-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Hawaii (HI)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Moon and Cislunar, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Xiaoli Sun (Principal Investigator) &lt;xiaoli.sun-1@nasa.gov&gt;; Gregory B Clarke (Co-Investigator) &lt;gregory.b.clarke@nasa.gov&gt;; Daniel R Cremons (Co-Investigator) &lt;daniel.cremons@nasa.gov&gt;; John F Cavanaugh (Co-Investigator) &lt;john.f.cavanaugh@nasa.gov&gt;; Terry A Hurford (Project Manager) &lt;terry.a.hurford@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-02</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: We successfully acquired a 32-channel High Density digitizer System on Chip (HDSoC) test system by modifying a 4-channel test system from an old SBIR-1 delivery and adding a new HDSoC evaluation board. We tested the system and showed the new HDSoC chip can be used in a multi-channel planetary lidar and greatly reduce the size, weight, and power (SWaP) compared to the conventional analog to digital converters. The HDSoC chip was found to have more features that we can take advantage to further simplify the lidar data acquisition system. This work also helped the company to better understand NASA&amp;#39;s needs and won an SBIR-II award to develop a 64-channel HDSoC lidar data acquisition system. The purpose of the Goddard Space Flight Center’s Internal Research and Development (IRAD) program is to support new technology development and to address scientific challenges. Each year, Principal Investigators (PIs) submit IRAD proposals and compete for funding for their development projects. Goddard’s IRAD program supports eight Lines of Business: Astrophysics; Communications and Navigation; Cross-Cutting Technology and Capabilities; Earth Science; Heliophysics; Planetary Science; Science Small Satellites Technology; and Suborbital Platforms and Range Services. Task progress is evaluated twice a year at the Mid-term IRAD review and the end of the year. When the funding period has ended, the PIs compete again for IRAD funding or seek new sources of development and research funding, or agree to external partnerships and collaborations. In some cases, when the development work has reached the appropriate Technology Readiness Level (TRL) level, the product is integrated into an actual NASA mission or used to support other government agencies. The technology may also be licensed out to the industry. The completion of a project does not necessarily indicate that the development work has stopped. The work could potentially continue in the future as a follow-on IRAD; or be used in collaboration or partnership with Academia, Industry, and other Government Agencies. If you are interested in partnering with NASA, see the TechPort Partnerships documentation available on the TechPort Help tab. http://techport.nasa.gov/help</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://sciences.gsfc.nasa.gov/sci/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>Untitled</strong> — High density waveform recording integrated circuit which sample and hold a group of signals as they arrive and digitize them in region of interest after the event.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/146788">https://techport.nasa.gov/projects/146788</a>
+    </div>
+  </div>
+</body>
+</html>

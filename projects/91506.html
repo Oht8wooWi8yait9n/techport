@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Combined Density Functional Theory and Molecular Dynamics Approach for Quantifying Catalytic Energies in a Liquid Environment | NASA TechPort Project 91506</title>
+  <meta name="description" content="The primary goals of this project are to develop a method for determining the equilibrium concentration of metal catalysts under actual conditions of liquid phase reactions and to use this method to determine the optimal catalyst alloy for a given system based">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91506">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91506</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX03.1.4</span>
+        </div>
+        <h1>A Combined Density Functional Theory and Molecular Dynamics Approach for Quantifying Catalytic Energies in a Liquid Environment</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91506</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91506" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The primary goals of this project are to develop a method for determining the equilibrium concentration of metal catalysts under actual conditions of liquid phase reactions and to use this method to determine the optimal catalyst alloy for a given system based on chemical reaction kinetics using computational simulations. While most previous computational research on heterogeneous catalysis has focused on gas phase reactions on pure metal catalysts, several groups have begun looking at effects of the reaction environment including solvation effects and adsorbate coverage effects.  Studies have been conducted analyzing solvation effects for single adsorbate cases while other studies have analyzed the effects of adsorbate coverage for heterogeneously catalyzed gas phase reactions, and both effects have been shown to be significant independently. However, to date, no group has included both of these effects concurrently.  The proposed project aims to develop a method to efficiently analyze the simultaneous effects of solvation and adsorbate coverage on each other as well as the reaction energy.	 This study will be accomplished by using the Vienna Ab initio Simulation Package (VASP) implementation of Density Functional Theory (DFT) to calculate the interaction energies between solvent molecules, coadsorbed molecules, and adsorbed reactants. These interaction energies will then be used to determine the equilibrium concentrations of the adsorbed reactants. The absorption of these adsorbates into the metal lattice and their subsequent interactions with metal atoms to form metal complexes, which may be more or less catalytically active than the pure metal, will then be studied.  Grand canonical Monte Carlo codes will be written to ensure sufficient ensembles are sampled for all phase equilibria calculations, including absorption and the subsequent absorption of the adsorbate molecules. Finally the equilibrium metal/metal complex composition will be used to determine reaction kinetics parameters for the rate-limiting anode reaction. This will allow for a comparison based on the starting catalyst alloy and enable us to suggest more cost-effective catalyst candidates. The specific system of interest will be the rate-limiting anode reaction of direct methanol fuel cells (DMFCs), the oxidation of carbon monoxide by hydroxide to form carboxylic acid, due to the aqueous reaction environment and wealth of previous literature data to compare to simulation results. This work will prove significant because it will yield a method that will be able to yield simulation results that provide a more accurate picture of molecular scale phenomena affecting heterogeneous catalysis. A more accurate molecular level understanding of the catalyzed reaction mechanism will enable the determination of superior catalyst alloys or even non-metal catalyst materials that provide better performance or are more cost effective than current transition metal alloys. NASA has used both hydrogen fuel cells and solid-oxide fuel cells for various applications in past missions, and the method developed here would be able to provide a greater understanding of molecular level phenomena and therefore the ability to develop superior catalyst materials for these fuel cells. This would allow for weight- and space-requirement reduction due to reduced catalyst quantities, as well as superior power output and reduced fuel consumption for these fuel cells. While this project focuses on fuel cells, it will be readily adaptable to any heterogeneously catalyzed reaction system with a fluid feed. Heterogeneous catalysis is also ubiquitous in industrial applications, and the knowledge gained from this project would be easily ported to have a widespread effect by enabling a more comprehensive study of optimal catalyst materials for these purposes.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This work will prove significant because it will yield a method that will be able to yield simulation results that provide a more accurate picture of molecular scale phenomena affecting heterogeneous catalysis. A more accurate molecular level understanding of the catalyzed reaction mechanism will enable the determination of superior catalyst alloys or even non-metal catalyst materials that provide better performance or are more cost effective than current transition metal alloys. NASA has used both hydrogen fuel cells and solid-oxide fuel cells for various applications in past missions, and the method developed here would be able to provide a greater understanding of molecular level phenomena and therefore the ability to develop superior catalyst materials for these fuel cells. This would allow for weight- and space-requirement reduction due to reduced catalyst quantities, as well as superior power output and reduced fuel consumption for these fuel cells. While this project focuses on fuel cells, it will be readily adaptable to any heterogeneously catalyzed reaction system with a fluid feed. Heterogeneous catalysis is also ubiquitous in industrial applications, and the knowledge gained from this project would be easily ported to have a widespread effect by enabling a more comprehensive study of optimal catalyst materials for these purposes.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91506</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX03.1.4: Dynamic Energy Conversion</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2014-08-01</td></tr>
+<tr><th>Project End Date</th><td>2018-12-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Clemson University — Clemson, South Carolina</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>South Carolina (SC)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge, Others Inside the Solar System, Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Rachel Getman (Principal Investigator); Cameron J Bodenschatz (Co-Investigator); Brian S Good (Project Manager) &lt;brian.s.good@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong>: Many systems relevant to NASA involve heterogeneous catalysis on metal surfaces under liquid-phase environments, but gaining an understanding of the molecular-level phenomena in these systems requires a balance of chemical accuracy and computational expense. A more complete understanding of these reactions at the molecular level could lead to development of more effective catalyst materials that decrease catalyst weight requirements or increase the output of desired products. For applications such as alcohol-based fuel cells, this work could lead to catalysts that increase power output at lower catalyst weights and fuel requirements. Since catalysis involves the breaking and forming of chemical bonds, quantum mechanics must be used, but the thermal fluctuations of the liquid-phase environment requires sampling a range of configurations. This work consists of developing a computational method that combines density functional theory (DFT) and classical, force field-based molecular dynamics (MD) simulations to calculate catalytic energies in a liquid environment. We applied this method to calculate the reaction thermodynamics for platinum-catalyzed methanol dehydrogenation to carbon monoxide under an aqueous-phase environment. We then adapted and applied this method to calculating activation barriers for a C—H cleavage reaction and an O—H cleavage reaction from the same methanol dehydrogenation reaction pathway. Finally, we used this data to calculate key kinetics parameters for these reactions. The first portion of this work entailed development and testing of the combined DFT/MD model for several test adsorbates on a platinum metal catalyst surface under aqueous phase.1 We used this method to calculate the interaction energies of CO*, CH2OH*, and C3H7O3* adsorbates (where * indicates an adsorbed species). Results were compared between several configuration-sampling methods and system variables such as water column height. A trend was established between the interaction energy and the number of hydrogen bonds formed between the adsorbate and liquid water molecules. Finally, DFT/MD simulations run at a range of temperatures were used to calculate the entropy of interaction for CO* and CH2OH* adsorbates. The interaction energies generated from the DFT/MD method were used to calculate reaction energies for reactions within the methanol dehydrogenation pathway (i.e., CH3OH  CO + 4 H). Using this method, the thermodynamically preferred pathway for Pt(111)-catalyzed methanol dehydrogenation in the aqueous phase was found to be dehydrogenation of all C-bound H atoms from CH3OH* to COH*, and finally followed by dehydrogenation of the hydroxyl H to CO*. This pathway is similar to the reported vacuum-phase pathway, but the energetics are different.2 The interaction energies generated from the DFT/MD method were also used to calculate activation barriers for two test reactions from the methanol dehydrogenation pathway under aqueous phase. The first was an O—H cleavage reaction, dehydrogenation of COH* to CO*. The second was a C—H cleavage reaction, the dehydrogenation of CH3OH* to CH2OH*. We studied these reactions with and without mediation by liquid H2O. Our results show that Pt(111)-catalyzed COH* dehydrogenation in an aqueous environment is kinetically favored when it is mediated by liquid H2O, while CH3OH* dehydrogenation is kinetically favored when it is not mediated by liquid H2O. O—H cleavage reactions via H2O mediation are favored due to the formation of hydrogen bonds between the adsorbate hydroxyl group and a liquid water molecule and the near 0 barrier for H transfers along hydrogen bonds, while C—H cleavage reactions do not benefit from the formation of hydrogen bonds. Finally, we developed a MD method for calculating kinetic pre-exponential factors for the Arrhenius rate law equation for both H2O-mediated and non-H2O-mediated surface catalyzed reactions in the aqueous environment. Using this method, we found that non-H2O-mediated reactions have higher pre-exponential factors for both O—H and C—H cleavages. However, H2O-mediated O—H cleavages have pre-exponential factors on the same order of magnitude as the non-mediated reactions while H2O-mediated C—H cleavages have pre-exponential factors orders of magnitude lower than the non-mediated reactions. We combined these pre-exponential factors with the calculated activation barriers to calculate the kinetic rate constant from the Arrhenius rate law, and find that H2O-mediated O—H cleavages are more kinetically favorable than the analogous non-mediated reactions, and, contrarily, non-mediated C—H cleavages are more kinetically favorable than the analogous H2O-mediated reactions. This work is currently being extended by further research in the Getman Research Group in the calculation of Linear Scaling Relationships and Transition State Scaling relationships for Pt(111)-catalyzed reactions in an aqueous environment. Additionally, force fields are being developed for adsorption reactions in aqueous environments, which would enable calculation of a more complete picture of these reactions for further study.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91506">https://techport.nasa.gov/projects/91506</a>
+    </div>
+  </div>
+</body>
+</html>

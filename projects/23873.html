@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modeling of an Adjustable Beam Solid State Light | NASA TechPort Project 23873</title>
+  <meta name="description" content="This proposal is for the development of a computational model of a prototype variable beam light source using optical modeling software, Zemax OpticStudio &amp;reg;. The variable beam light source&amp;nbsp;will be designed to generate flood, spot, and directional beam">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23873">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23873</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">JSC IRAD</span>
+          <span class="badge">TX06.1.4</span>
+        </div>
+        <h1>Modeling of an Adjustable Beam Solid State Light</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23873</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23873" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>This proposal is for the development of a computational model of a prototype variable beam light source using optical modeling software, Zemax OpticStudio &reg;. The variable beam light source&nbsp;will be designed to generate flood, spot, and directional beam patterns, while maintaining the same average power usage.&nbsp; The optical model&nbsp;will demonstrate the possibility of such a light source and its ability to address several issues:&nbsp; commonality of design, human task variability, and light source design process improvements.&nbsp; An adaptive lighting solution that utilizes the same electronics footprint and power constraints while addressing variability of lighting needed for the range of exploration tasks&nbsp;can save costs and allow the development of common avionics for lighting controls.&nbsp;</p>  <p>One of the risks of a multi-system approach to reaching Mars is the cost added due to unique designs driven by the use cases of each operational platform.&nbsp; The risk in developing a lighting solution for one platform, is that its design may not fully address the variability of tasks for other platforms, and due to vehicle time development scale, may become obsolete by the time the last vehicle component is developed.&nbsp;&nbsp; Because of the rigorous and expensive certification process for electronic hardware, it would be wise to develop lighting system components and control technologies that are modular and adaptive to a wide range of internal and external vehicle tasks.&nbsp; The introduction of&nbsp;the concept of computer based modeling of light sources prior to fabrication is a process improvement for spacecraft lighting design and its demonstration&nbsp;can show cost savings potential for the development of future lighting systems.&nbsp;</p>  <p>This project will use the lighting and optical modeling software, Zemax OpticStudio &reg;&nbsp;Premium, to build a model of an LED array.&nbsp; Zemax is a forward ray tracer that can model light source beam distribution, light source spectral wavelength, and material reflectance / transmittance properties.&nbsp; It can predict final beam distribution based on the designed optical system.&nbsp; Each LED in the array developed will represent currently manufactured LEDs intended for white light illumination.&nbsp; The light output of the LEDs will be controlled individually, while maintaining the same total flux output.&nbsp; The goal is to develop beam pattern distributions, from the same source that represent flood, spot, and directional lighting while consuming approximately the same power.&nbsp;</p>  <p>The deliverable will be a Zemax computational lighting model that can be interpreted, as a future project, into an end item specification for a variable beam light source.&nbsp; The computation model will show the type and number of LEDs, LED spacing, intensity of the LEDs used to generate each beam pattern, and constraints on diffuser optics.&nbsp;&nbsp; In addition to the computational model, Illumination Engineering Society (IES) beam pattern files for each beam type will be published.&nbsp;&nbsp; Beam pattern data will be interpreted for potential application in an installation as it relates to human task performance.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This project can provide a demonstration of how to reduce risk in development of engineered lighting systems for operations and habitats.&nbsp;&nbsp;Developing optical models before&nbsp;a light source is fabricated&nbsp;can be an immediate benefit to Orion and&nbsp;ISS for optimization of standards and end item specifications.&nbsp; It especially&nbsp;can be beneficial to projects that&nbsp;pose increased risk to the crew because of unknown or unpredictable operational lighting conditions.&nbsp; It&nbsp;can also help NASA increase the operational capability of spacecraft lighting systems while reducing the number of different types of lights that are needed to accommodate the wide range of interior and exterior operational tasks.&nbsp;&nbsp;The project&nbsp;will also demonstrate the advantage of modeling a light source before requirements are developed to increase the chances that&nbsp;lighting requirements will&nbsp;produce the intended product.</p>  <p>This project can benefit Human Spaceflight exploration and the Evolvable Mars Campaign by demonstrating the ability of a &quot;one light source does it all&quot; approach.&nbsp; If NASA&nbsp;is able to develop a modular, smart, adaptable lighting technology, the same comprehensive system&nbsp;can be installed throughout NASA exploration spacecraft.&nbsp;&nbsp; NASA&nbsp;can approach spacecraft architecture discussions from the perspective that the technology to make a lighting system fully adaptable to the needs of the crew is a standard solution with an approved standard system of parts and lighting system controls.&nbsp; By standardizing to a highly adaptable system, NASA&nbsp;can minimize fabrication of many different solutions (individual model numbers) and lighting control algorithms.&nbsp; Training and operations of spacecraft lighting&nbsp;can be standardized.&nbsp;&nbsp; Lifecycle costs and sparing&nbsp;can be simplified.&nbsp; By creating a flexible automated system that provides the range of lighting needed for tasks, NASA can also control the power budget for crewed tasks.</p>  <p>Adaptable lighting systems are a benefit to the commercial spaceflight industry servicing human spaceflight agendas.&nbsp; Commercial vendors can offer their passengers innovative lighting solutions that anticipate the variety of task lighting needs.&nbsp; Commercial vendors can also realize savings in weight and power usage by implementing a system that puts the light exactly where it needs to be while minimizing wasted energy.</p>  <p>This technology&nbsp;can benefit multiple Federal agencies and consumer markets.&nbsp; The FAA will potentially benefit&nbsp;by developing smart aircraft and airfield lighting systems.&nbsp; Society of Automotive Engineers (SAE) (automotive headlamp design)&nbsp;will benefit by making light sources for car headlamps that meet highway safety constraints but can dynamically adapt spot and flood to reduce glare related highway accidents.&nbsp; National Transportation Safety Board (NTSB) is benefited by incorporation of dynamic roadway lighting that adjusts beam patterns for the current highway traffic.&nbsp; Department of Energy (DOE) is benefited by introduction of smart, adaptable, modular lighting that&nbsp;can be implemented by commercial, institutional, and lighting utilities to reduce&nbsp;the U.S.&nbsp;energy footprint.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23873</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: JSC IRAD (JSC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.1.4: Habitation Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 2 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2015-05-01</td></tr>
+<tr><th>Project End Date</th><td>2015-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Wyle Laboratories, Inc. — Houston, Texas; Lockheed Martin Space Systems (LMSS) — Palo Alto, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Toni A Clark (Principal Investigator) &lt;toni.clark-1@nasa.gov&gt;; Toni A Clark (Project Manager) &lt;toni.clark-1@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Brian M Schwing (Program Manager) &lt;brian.m.schwing@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2018-10-10</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Modeling of an Adjustable Beam Solid State Light JSC 2015 ICA Project</strong> — Modeling of an Adjustable Beam Solid State Light JSC 2015 ICA Project presented at the JSC &amp;quot;Tech &amp;amp; Tell&amp;quot; Poster Session in December, 2015.</li><li><strong>False Color Intensity Map - Hemispherical Detector - Quad Spot Lighting</strong> — This false color polar detector shows light flux at 4 distinct directions intended for spot lighting.</li><li><strong>Example of Spot Lighting Using 5 Sources Pointing Normal To Floor 1 Meter Away.</strong> — This example shows 5 spot lights where the flux is coming out of light such that it is normal to the floor. The lamps are each 1 meter from each other on ceiling. Center is brighter because of overlap of light.</li><li><strong>False Color Intensity Map - Hemispherical Detector - Wide Distribution Constant Flux</strong> — This hemispherical intensity map shows the same light source but constant intensity at wide angles. The application is flood lighting.</li><li><strong>Example of Directional Spot Lighting Using 5 Sources Pointing at an Angle with Respect to the Normal to the Floor.</strong> — This example shows the light distribution on a 5x5 meter detector located 1 meter from ceiling. Each lamp is one meter from the other. Note how the light intensity is shifted.</li><li><strong>Example of the capabilities of computational lighting software</strong> — This image illustrates some of the capabilities possible with optical computational analysis software. This project will utilize those capabilities to explore the possiblity of a variable beam solid state light source.</li><li><strong>False Color Intensity Map - Hemispherical Detector - Light @ Center</strong> — This image represents intensity sampled at a constant radius from light source, with flux focused at center. This is an example of spot lighting.</li><li><strong>False Color Intensity Map - Hemispherical Detector @ 1M - Light to one side.</strong> — This image represents a hemispherical detector surface, which is set one meter away from the light source. The dectector is showing light source intensity. Light source flux is to the side instead of forward for directional spot lighting.</li><li><strong>False Color Intensity Map - Hemispherical Detector @ 1 Meter - Dual Spots</strong> — This false color intensity map shows flux from the same light source but split in two radial directions. It demonstrates the ability to make two spotlights.</li><li><strong>False Color Intensity Map @ 1 M - Hemispherical Detector - Distributed Intensity</strong> — This false color intensity plot of a polar detector shows light from the same light source distributed radially across the hemisphere. This represents a light configured for ambient flood lighting.</li><li><strong>False Color Image Showing Light Distribution for Wide Angle</strong> — This image represents light intensity at 1 meter from the light source on a hemispherical surface. It demonstrates an application in flood lighting.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23873">https://techport.nasa.gov/projects/23873</a>
+    </div>
+  </div>
+</body>
+</html>

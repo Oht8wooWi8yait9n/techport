@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centrifugal Sieve for Size-Segregation/ Beneficiation of Regolith | NASA TechPort Project 9253</title>
+  <meta name="description" content="Utilizing centrifugal force as the primary body-force, combined with both shearing flow and vibratory motion the proposed centrifugal-sieve separators can provide efficient gravity-level-independent size classification of granular feedstock like lunar regolith">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/9253">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 9253</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX07.1.2</span>
+        </div>
+        <h1>Centrifugal Sieve for Size-Segregation/ Beneficiation of Regolith</h1>
+        <div class="meta-id">NASA TechPort Project ID: 9253</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/9253" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Utilizing centrifugal force as the primary body-force, combined with both shearing flow and vibratory motion the proposed centrifugal-sieve separators can provide efficient gravity-level-independent size classification of granular feedstock like lunar regolith. Standard size separation methods for dry materials often depend on gravity as the primary body force. For separation of small sizes, gravity-force is usually supplemented with vibration and shearing flow. Granular materials naturally stratify during shear-flow with larger particles rising to the top. Depending on frequency and intensity, vibrations alone can induce large particles to rise to the top in a granular bed, independent of shear flow. The proposed centrifugal size-separators utilize the natural size stratification of flowing granular solids. They will function equally well under reduced gravity conditions and in vacuum. The nominal design is a configuration with only one moving part and no blades, or other high-wear components. Shearing flow and vibrations combined with a size-separating screen at the outside (or 'bottom') of the flow will separate particles, with the fines passing through the outer wall screen, and the coarse material passing axially through the continuous feed system. Multiple size separation streams are possible. Alternate designs with shear-enhancing blades, 'above' or inside the screen, will also be evaluated. Various approaches for screen deblinding, and other robustness enhancements, are part of the proposed designs. With appropriate selection of passing-screen size, and deblinding enhancements, the centrifugal-sieves could be used for regolith processor feedstock conditioning to remove material > 0.5cm diameter, and with alternate settings and screen size, also used for a degree of beneficiation, to select particular size ranges that have the highest percentage of desired mineral content. The centrifugal-sieve concept can be scaled to any desired mass flow rate.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Size classification is utilized throughout the mineral, chemical and pharmaceutical industries. Improved methods to achieve size separation, especially gentle methods suitable for friable materials, could have wide applications. Granular solids are an integral part of the multi-billion dollar fundamental chemicals and agriculture industries. Size segregation is a small but important aspect of the fundamental materials industries. A portion of the size-separation currently done with vibrating screens and gravity, could be replaced by the proposed method, and even a small slice of the solids separations business could be significant economically for a startup company.<br /> <br />Reliable, robust separation methods that operate independent of gravity level would be useful for granular materials size separation for regolith processor feedstock conditioning. For example, the proposed centrifugal-sieve could remove regolith particles > 0.5 cm diameter before dumping the material into a storage bin during excavation operations for oxygen extraction. The proposed centrifuging sieve could also be used for a degree of mineral beneficiation to separate particles by size and thus, increase the concentration of particular minerals which are more prevalent in certain size fractions of bulk regolith. The proposed centrifugal-sieves can operate in low-gravity (1/6-g and 3/8-g) and micro-gravity as well as utilize multiple feedstock sources. The proposed separation concept can be tested in 1/6 g flight experiments and ground vacuum environments. The Discrete Element method (DEM) regolith flow simulation software that will be enhanced and utilized in the selection and evaluation of sieve designs will also be of value as a verified simulation tool for ISRU equipment design.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>9253</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX07.1.2: Resource Acquisition, Isolation, and Preparation</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-02-18</td></tr>
+<tr><th>Project End Date</th><td>2011-09-29</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Grainflow Dynamics, Inc. — Livermore, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Ohio (OH)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Otis R Walton (Principal Investigator); Allen Wilkinson (Project Manager) &lt;R.A.Wilkinson@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/9253">https://techport.nasa.gov/projects/9253</a>
+    </div>
+  </div>
+</body>
+</html>

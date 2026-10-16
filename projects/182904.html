@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FireGPT: A Vision Language Model for Prescribed Burn Decision Support Using NASA Earth Science Data | NASA TechPort Project 182904</title>
+  <meta name="description" content="OpalAI proposes to develop FireGPT, an innovative prescribed burn decision-making tool that integrates NASA Earth Science Data with commercial remote sensing datasets to revolutionize wildland fire management. The key aspects include: Purpose: To create a Visi">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/182904">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 182904</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX11</span>
+        </div>
+        <h1>FireGPT: A Vision Language Model for Prescribed Burn Decision Support Using NASA Earth Science Data</h1>
+        <div class="meta-id">NASA TechPort Project ID: 182904</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/182904" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          OpalAI proposes to develop FireGPT, an innovative prescribed burn decision-making tool that integrates NASA Earth Science Data with commercial remote sensing datasets to revolutionize wildland fire management. The key aspects include:  Purpose: To create a Vision Language Model (VLM) decision support tool for prescribed burn management and wildfire impact assessment.  Intended use of funding: Develop quasi-real-time, on-demand fuel maps using VLMs Translate fuel maps into actionable prescribed burn decisions Evaluate the approach through partnerships with burn managers in the FASMEE program  Target markets: State Government Fire Agencies (e.g., CALFIRE) U.S. Forest Service (USFS) and Fire and Smoke Model Evaluation Experiment (FASMEE) Insurance companies and real estate developers  The proposal aims to leverage recent advancements in multi-modal large language models and new remote sensing datasets (e.g., NASA's NISAR, UAVSAR, Landsat, ECOSTRESS, and commercial SAR/EO data) to provide more accurate predictions of surface fuels. This will enable better-informed decisions on prescribed burns to prevent fire propagation.  The innovation addresses the critical need for timely and accurate information in wildfire management, offering potential benefits in ecological preservation, economic savings, and public safety. The proposed solution integrates various data sources with advanced AI capabilities to provide comprehensive insights for wildfire risk mitigation and post-fire recovery planning.  By the end of Phase I, OpalAI aims to deliver a comprehensive technical document and a fully functional software prototype, demonstrating the feasibility and practical application of their decision-making tool for wildfire management.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This technology can support the JPL wildfire support team, particularly benefiting Karen An, a researcher working on wildfires using UAVSAR. Additionally, it will greatly assist the NISAR mission when it becomes operational next year. Other NASA missions, including ECOSTRESS and EMIT, will also benefit from this work. OpalAI's FireGPT technology, a Vision Language Model for prescribed burn decision support, aligns with several NASA mission directives, particularly in Earth Science, disaster management, and climate research: Enhanced Earth Observation Data Utilization: By integrating NASA’s Earth Science Data (e.g., NISAR, UAVSAR, Landsat, and ECOSTRESS) with commercial remote sensing datasets, FireGPT can create accurate, real-time fuel maps. This enhances NASA’s efforts in monitoring environmental changes, vegetation health, and fire behavior. Disaster Management and Response: FireGPT’s AI-enhanced analysis of satellite imagery for wildfire detection and monitoring supports NASA’s Earth Science Disasters Program by improving disaster response strategies and mitigation efforts. The tool’s ability to provide real-time data can aid in managing and responding to wildfires more effectively. Climate Change Research: FireGPT can analyze long-term trends in vegetation and fire patterns, contributing to NASA’s climate change research. By understanding how climate variables influence wildfire behavior, NASA can improve climate models and predictions, aiding in the global effort to address climate change. Land Cover and Ecosystem Monitoring: The detailed fuel maps generated by FireGPT can enhance NASA’s capabilities in monitoring land cover changes and ecosystem health. This data is invaluable for ecological studies and environmental management, helping to protect and preserve natural habitats. By leveraging NASA’s extensive Earth Science data and integrating it with advanced AI capabilities, FireGPT has the potential to significantly contribute to different NASA’s missions. This work can be used for applications beyond NASA missions which some included below: 1. Wildfire Management & Prevention: - Real-Time Response: Fire departments and emergency services can leverage FireGPT's real-time fire detection and behavior predictions to optimize resource allocation, plan evacuations, and implement faster response strategies. - Prescribed Burns: Forestry agencies can use FireGPT to design and assess controlled burns, minimizing risks while maximizing effectiveness for forest health and wildfire mitigation. - Community Risk Assessment: FireGPT can help assess wildfire risks to communities, inform protection plans, and enhance public awareness and preparedness. 2. Insurance & Risk Management: - Property Risk Assessment: Insurance companies can integrate FireGPT into their risk models to assess wildfire risk to properties, adjust premiums, and develop homeowner mitigation strategies. - Infrastructure Protection: Utility companies can use FireGPT to monitor wildfire threats to power lines and infrastructure, enabling proactive measures to prevent damage and service disruptions. 3. Environmental Monitoring & Conservation: - Forest Health: FireGPT can monitor vegetation health, identify areas susceptible to disease, and track ecosystem changes, supporting conservation and sustainable forest management. - Wildlife Habitats: By analyzing vegetation and fire impacts, FireGPT helps researchers and conservationists monitor wildlife habitats and develop conservation strategies. 4. Climate Change: - Carbon Sequestration: FireGPT helps model carbon emissions from wildfires, informing strategies to mitigate climate change. - Climate Adaptation: FireGPT's insights into wildfire, climate, and ecosystems can inform adaptation strategies for at-risk communities. FireGPT's power to analyze data and generate actionable insights positions it as a valuable tool for future-facing increasing wildfire risks and a changing climate.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>182904</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11: Software, Modeling, Simulation, and Information Processing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2025-01-24</td></tr>
+<tr><th>Project End Date</th><td>2025-07-24</td></tr>
+<tr><th>Lead Organization / Center</th><td>NASA Headquarters (HQ) — Washington, District of Columbia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Opal AI Inc. — Beverly Hills, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), District of Columbia (DC)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Ryan S Alimo (Principal Investigator); Lynn M Torres (Project Manager) &lt;lynn.m.torres@nasa.gov&gt;; Ryan S Alimo (Primary Point of Contact)</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/182904">https://techport.nasa.gov/projects/182904</a>
+    </div>
+  </div>
+</body>
+</html>

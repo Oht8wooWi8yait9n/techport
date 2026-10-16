@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Satellite Integration of a PhoneSat-EDSN bus with a micro cathode arc thruster | NASA TechPort Project 14630</title>
+  <meta name="description" content="NASA Ames Research Center and GWU are investigating applications of Micro-Cathode Arc Thrusters (μCAT) sub-systems for attitude and orbit correction of a PhoneSat spacecraft. The ARC/GWUworked together to investigate the feasbility of integrating and controlli">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/14630">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 14630</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">ARC CIF</span>
+          <span class="badge">TX01.2.2</span>
+        </div>
+        <h1>Satellite Integration of a PhoneSat-EDSN bus with a micro cathode arc thruster</h1>
+        <div class="meta-id">NASA TechPort Project ID: 14630</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/14630" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          NASA Ames Research Center and GWU are investigating applications of Micro-Cathode Arc Thrusters (μCAT) sub-systems for attitude and orbit correction of a PhoneSat spacecraft. The ARC/GWUworked together to investigate the feasbility of integrating and controlling the GWU micro cathode arc thruster with the ARC PhoneSat bus avionics and software. At the conclusion of the feasibility study, the ARC/GWU team successfully demonstrated the integration and control of several micro cathode arc thrusters using the PhoneSat bus software architecture and a prototype bench model Plasma Processing Unit (PPU). The next task, in this effort to further mature this technology, is to develop bench model PPU (Plasma Processing Unit) into a Cubesat form factor and make it compatible with the PhoneSat-EDSN bus. Additionally this effort will demonstrate the performance of the integrated Phonesat, PPU and propulsion system in space or relevant environment. NASA ARC and the George Washington University have collaborated together to integrate the micro cathode arc thruster with the PhoneSat architecture bus. This effort successfully demonstrated the integration and control of a bench model Plasma Processing Unit (PPU) and multiple thrusters with the PhoneSat bus software architecture in the laboratory bench top environment. The next logical step is to integrate the PPU and thrusters onto a single Cubesat form factor PCB that can easily assembled into a PhonesSat-EDSN 1.5U bus. The integrated Thruster/PPU/PhoneSat-EDSN Bus can demonstrate performance of the propulsion system in space or relevant environment. The four main objectives of this proposal are: Design of a PCB that will accommodate the PPU and 2 thrusters that fits in a 0.25U CubeSat volume (which corresponds to the actual available space for payloads in the EDSN bus) Leverage all the EDSN design and make the necessary modifications to substitute the current payload (radiometer) by the thruster. This redesign is intended to be as minimal as possible Develop the software needed to detumble the satellite using the current magnetorquers, and then spin it up with the thrusters measuring the rotational speed with the gyros of the phone The completion of these objectives will not only provide a CubeSat with a propulsion system that could be tested in space, but will also confirm the adaptable design of the PhoneSat-EDSN bus to different payloads. Potential ISS flights and other opportunities will be considered in order to fly the satellite. The this project has utilized NASA Ames Space Shop facilities for laser cutting and 3D printing. It also used the Space Shop lab space to develop rapid circuit prototyping. The project will continue to use these facilities to be able to design quickly and low cost prototypes before integrating the entire system into a satellite. Innovation: In order to test the performance of the propulsion system in space, the thrusters will try to spin up the satellite along its long axis once it has detumbled. With the current design, the PhoneSat-EDSN architecture uses the magnetorquers to detumble the satellite. Measuring ∆V of a microNewton thruster would be very difficult for a short mission. However, it is certainly possible to spin up the satellite and measure its rotational speed using the phone's gyros. One the satellite spin rate is high enough, the magnetorquers will detumble the spacecraft again. This maneuver will be tested several times to confirm and measure the performance of the thruster This test flight will raise the TRL of the propulsion system from 5 to 7 and will be a first test for further CubeSats with propulsion systems, a key subsystem for long duration or interplanetary CubeSat missions.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This Element will benefit SSTP Technology Demonstration Missions. This technology will benefit future NASA Small Satellite based missions in need of low mass, low power reaction control and micropropulsion thrusters. Low cost, low power propulsion for Cubesats This technology will benefit the Commercial and Academic Small Satellite and specifically Cubesat community.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>14630</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: ARC CIF (ARC CIF)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.2.2: Electrostatic Propulsion</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2014-11-01</td></tr>
+<tr><th>Project End Date</th><td>2015-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>George Washington University — Washington, District of Columbia; Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), District of Columbia (DC), Ohio (OH)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Elwood F Agasid (Principal Investigator) &lt;elwood.f.agasid@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-15</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>PhoneSat-EDSN Bus with a Micro Cathode Arc Thruster Project Tested</strong></li><li><strong>1676 Approval #17536</strong> — Ames Approval 11/26/14</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/14630">https://techport.nasa.gov/projects/14630</a>
+    </div>
+  </div>
+</body>
+</html>

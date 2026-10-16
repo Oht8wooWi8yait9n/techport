@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulation of Lander Plume-Induced Particle Clouds and Surface Cratering | NASA TechPort Project 94971</title>
+  <meta name="description" content="Propulsive landing of robotic and human landers on Moon, Mars, and other exploration destinations results in high risk environments from dust particle cloud obscuration, plume flow driven regolith particle debris transport, and landing surface damage with unpr">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/94971">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 94971</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">MSFC IRAD</span>
+          <span class="badge">TX09.4.5</span>
+        </div>
+        <h1>Simulation of Lander Plume-Induced Particle Clouds and Surface Cratering</h1>
+        <div class="meta-id">NASA TechPort Project ID: 94971</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/94971" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Propulsive landing of robotic and human landers on Moon, Mars, and other exploration destinations results in high risk environments from dust particle cloud obscuration, plume flow driven regolith particle debris transport, and landing surface damage with unpredictable plume flow redirection towards the vehicle and surrounding assets. To address this risk, the MSFC Fluid Dynamics Branch has developed a simulation framework that provides plume-surface interaction simulation capability. This simulation tool was matured to production readiness in a FY18 Tip project but was limited to the ability to model a single regolith particle size. Realistic surface regolith features a wide range of sizes. The different regolith particle sizes segregate into different particle streams with the smaller dust size particles being lofted easily to form dust clouds, whereas the larger particles remain near the surface to dominate the surface cratering and debris transport. The existing gas-granular interaction simulation tool capabilities will be extended to enable the realistic capture of the segregation of the particle sizes and the resulting respective induced environments within a single simulation. The technology to extend the tool has recently been developed and successfully demonstrated under STTR Phase II-X development at a Technology Readiness Level (TRL) of 4. The upgraded tool components and the process to generate the more complex multi-size particle physics models will be ported to NASA supercomputers, the process of generating the required databases and integrating them into a simulation will be established, and the simulation capability matured to production readiness. Therefore, this TIP will bring the capability to model complex multi-size particle interactions to a TRL of 5 or 6 and this capability will be demonstrated for both Lunar and Martian examples.</p><p>&nbsp;</p><p>Once the process flow of database generation and plume-surface simulation has been established as production ready, simulation support can be tailor-made to customer specified surface regolith compositions, be it on the Moon or Mars. The current plume-surface simulation tools are already applied in support of the Human Mars Lander Entry, Descent, Landing, and Ascent (EDL&amp;A) development cycle coordinated through MSFC-ST24, and in support to companies under the lunar CATALYST program, Lunar Pallet Lander, and Mars <em>InSight </em>lander. MSFC has been designated the lead in the development of a National Lunar Demonstrator (NLD), which is part of the Advanced Cis-Lunar and Surface Capability (ACSC) program. The proposed improvements will elevate the simulation fidelity and capability to a level that will make MSFC as the go-to for production oriented plume-surface environments simulations</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>A significant risk to both human and robotic exploration missions is posed by the interaction of rocket engine plumes and unprepared Lunar or Martian regolith during spacecraft propulsive landing. To address this risk area, NASA has made simulation of plume surface interaction a high priority. All Lunars and Mars lander projects (both NASA and commercial partners) currently are requesting this simulation capability. MSFC-ER42 has stepped up to the challenge by developing the plume-surface effects simulations tools that are the foundation of this Technology Investment Project (TIP) project. Lander plume predictive modeling and simulation tools must capture all relevant physics of a landing to be useful to mission vehicle and instrumentation designers. Three induced environment risk factors must be addressed:</p><ol><li><p>Obscuration from cloud formation,</p></li><li><p>Crater formation,</p></li><li>Particle debris transport</li></ol><p>Obscuration, which is governed by relatively small sized particles rising easily, on the order of 1 to 50 micrometers (mm), will hinder instruments and landing hazard detection systems from operating properly. Instrument designers need to know the physics of the cloud (particle size, cloud density, etc.) to design their instruments to operate in this environment. The size and shape of craters, on the other hand, are governed by larger size particles, on the order of 100 mm up to small gravel and pebbles. Craters are not only a hazard because of landing surface degradation, but also because they can alter the reflected plume and forces imparted on the vehicle. The particle debris hazard can occur for all size particles and must be understood and accounted for.</p><p>To provide sophisticated plume-surface interaction capability, an integrated computational simulation framework was developed by the MSFC Fluid Dynamics Branch. This multi-physics framework integrates three simulation tools to achieve end-to-end spacecraft plume-surface interaction prediction. The three components are the Loci/CHEM Computational Fluid Dynamics (CFD) simulation tool, the Gas-Granular Flow Solver (GGFS), and the Debris Transport Analysis (DTA) toolkit. Loci/CHEM, often referred to as CHEM, is a computational fluid dynamics (CFD) tool used by the NASA MSFC Fluid Dynamics Branch. CHEM has capability for full three dimensional (3D), moving vehicle, multi-engine spacecraft plume interaction, and impingement effect analysis. Furthermore, CHEM has excellent scalability on NASA high performance computing assets.</p><p>GGFS was developed by CFD Research Corporation (CFDRC) and the University of Florida through the NASA Small Business Technology Transfer (STTR) Program and has been adopted by the MSFC Fluid Dynamics Branch for gas-granular effects modeling. Multi-phase GGFS features an Eulerian-Eulerian modeling approach, treating both the gas and granular material as continuum phases, to directly compute the interaction of the gas and granular phases at the surface and to directly simulate erosion, cratering and transport processes. The Lagrangian Discrete Element Method (DEM) offers the most detailed and accurate method of simulating the granular particle interactions and bulk flow behavior, and has been successfully applied for simple spherical as well as highly complex irregular particle shapes. However, the computational cost of DEM methods become prohibitive for granular flows on a landing site area where a simulation would have to track billions of particles individually. The Eulerian granular flow modeling approach allows simulation of granular flows with much lower computational cost when equipped with granular flow constituent models for inter-particle stress, viscosity, cohesion and kinetic energy across the range from densely packed to dilute particle phases. GGFS computational modeling makes use of both approaches; Lagrangian DEM and Eulerian continuum flow modeling. The DEM is applied as a first principle method to extract and formulate the granular material physics constituent models. Irregular shaped regolith particle shapes are modeled by glued-sphere composite particles. The interaction of particles of different sizes and/or shapes can be captured in a simulation. Multiple parametric variations of size/shape, mixture composition, packing, and other parameters are performed as individual simulations and result in a database that can be curve fitted or accessed directly. In this way, all aspects of irregular particle shape and particle size distribution can be captured. The granular material response closure models obtained from the small-scale detailed DEM simulations are implemented in the Eulerian granular flow algorithms to efficiently simulate the gas-granular multi-phase flow in the Eulerian-Eulerian framework.</p><p>The CHEM-GGFS-DTA toolkit was matured significantly during a fiscal year (FY) 2018 TIP, bringing it to a capability of simulating coupled plume-surface interaction for full-scale, descending, 3D multi-engine vehicles. As demonstrated, the ability to simulate the vehicle in three dimensions while it descends, and with multiple engines provides valuable insight into crater formation for realistic landers. The CHEM-GGFS-DTA toolkit operational at MSFC now has unique capability with no known equivalent, either at NASA, other government agencies, academia, or commercially.</p><p>In the simulations demonstrated for single plume and multiple plume lander configurations during the FY 2018 TIP, only single particle size physics could be represented. A single particle size of 100 mm was simulated, and surface crater formation and evolution could be predicted realistically, but no particles rose to form a suspended dust cloud for this size. A separate simulation with small particles would capture the dust cloud lofting, but would fail at properly representing the surface cratering physics. A multi-size particle mixture simulation capability is clearly essential.</p><p>This TIP project will extend the unique capability to simulate the full range of particle sizes, small dust particle clouds and the larger particle surface regolith flow in a single simulation. This requires the GGFS algorithms to be upgraded to simulate multiple particle sizes and to also access DEM generated particle interaction models for a mixture of multiple particles. An increased number of DEM simulations are required which now must account for the variation of particle size distributions, resulting in more expansive multi-variate databases. An efficient way to access this dataset must be added to the computational framework. These multi-size particle simulation capabilities are now available at a low, research level Technology Readiness Level (TRL) resulting from successful development in the STTR Phase II-X project. This capability must now be fully implemented, made operational on NASA supercomputers, and matured to production level TRL.</p><p>&nbsp;</p><p>An additional significant enabling capability will be the porting of the DEM database generation capability from the STTR University to NASA computers. The DEM simulations are generated <em>a priori </em>and external to the flow solver algorithm. Next, DEM results are provided to the flow solver algorithm in the form of a database. The DEM simulation capability will be ported to the NASA Ames Supercomputer (NAS) systems to enable massive speed-up of the database generation process. The NAS capacity enables executing hundreds of data point simulations simultaneously, whereas previous research at the University level requires weeks and months. The databases resulting from theses simulations will now be efficiently pre-processed with an existing Loci/CHEM Equation-Of-State (EOS) database generation tool that will pre-package the data in a form that can be operated by the Loci massively parallel computational framework. The process flow of setting up a series of DEM simulations, pre-processing the resulting data into a simulation ready dataset, and enabling the GGFS/CHEM simulation to apply this database will be the major thrust of this TIP project. All of these operations will require extensive tool insertion, modification, scaling to NAS, testing and verification. Furthermore, the TIP PI will exercise the tool vigorously for realistic Lunar and/or Martian vehicle simulations and become personally proficient, to assure that the tool is ready for other NASA fluid dynamics analysts.</p><p>Once this process flow has been matured, the capability will exist to generate, upon demand, customer specific simulations. The regolith composition can be tailor made for each particular customer, and will be applicable for generating Lunars, Mars, or other regolith simulations. One customer may require Lunar highlands regolith mixture, another, a Mars crater basin regolith.</p><p>The bulk of the particle model maturation effort can be accomplished with two-dimensional axisymmetric (2D / axi) simulations. This will reduce development time, particularly online simulation time. Once the database generation, database importation, and use of database information in the numerical algorithms is tested and proven in 2D / axi, the process will be extended to full 3D simulations. Application demonstrations will be performed for both Martian and Lunar environments. This TIP project will advance multi-particle physics interaction simulation capability from TRL 4 (i.e., fully functioning simulation process) to a TRL of 5 or 6, i.e., establishing a full production level simulation demonstration for lander concept development support.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>94971</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: MSFC IRAD (MSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.4.5: Integrated Modeling and Simulation for EDL</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 4 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2018-10-01</td></tr>
+<tr><th>Project End Date</th><td>2019-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Office of the Chief Technologist (OCT)</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Others Inside the Solar System, Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Douglas G Westra (Principal Investigator); Peter A Liever (Co-Investigator) &lt;peter.a.liever@nasa.gov&gt;; Tara P Polsgrove (Co-Investigator) &lt;tara.polsgrove@nasa.gov&gt;; Doug Westra (Project Manager) &lt;Douglas.G.Westra@msfc.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>John W Dankanich (Program Manager) &lt;john.dankanich@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2019-03-19</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: TBD</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/94971">https://techport.nasa.gov/projects/94971</a>
+    </div>
+  </div>
+</body>
+</html>

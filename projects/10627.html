@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computational Modeling of Ablative Materials: Application to Phenolic Pyrolysis | NASA TechPort Project 10627</title>
+  <meta name="description" content="Many NASA missions (ESMD, SMD), including crewed missions to Mars, are not possible with current ablative materials. Improved understanding will (1) facilitate the design of new, novel ablative materials and (2) improve material response models used for TSP de">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/10627">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 10627</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">ARC CIF</span>
+          
+        </div>
+        <h1>Computational Modeling of Ablative Materials: Application to Phenolic Pyrolysis</h1>
+        <div class="meta-id">NASA TechPort Project ID: 10627</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/10627" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Many NASA missions (ESMD, SMD), including crewed missions to Mars, are not possible with current ablative materials. Improved understanding will (1) facilitate the design of new, novel ablative materials and (2) improve material response models used for TSP design. We will demonstrate and validate phenolic pyrolysis simulation methods using reactive potentials (REAX), Density Functional Tight Binding (DFTB) and Density Functional Theory (DFT). Ablative materials are required for the most demanding atmospheric reentry missions. These materials are often carbon fibers embedded in a phenolic polymer matrix. At high temperature, phenolic undergoes pyrolysis where the polymer is transformed into a pure carbon solid called char. Pyrolysis is an endothermic, chemically reactive process, and is the only in-depth energy absorbing mechanism used in ablative systems. High char yield is desirable to minimize mass loss into gaseous products. Importantly, polymer char yields can vary substantially. Further, thermal and mechanical properties of the pyrolyzed material can be very different from the original material. Optimizing properties of the char surface layer is crucial, since it is the part of the TSP in direct contact with the hot reentry plasma. A robust pyrolysis simulation methodology (which does not currently exist) will aid in understanding the structure and properties of phenolic and in developing new polymers with higher char yield and char with improved properties. In addition, more accurate material response models, used to design TSP, will result, thereby leading to reduced safety margins, and thus reduced mass/cost of the TPS. We will perform atomistic pyrolysis simulations using REAX, DFTB and DFT to demonstrate the different methods, and in particular to validate REAX for pyrolysis of realistic polymers (phenolic and otherwise). In addition, we will obtain important insights into chemical kinetics of early stage pyrolysis. These same methods can also be applied to other reactive processes (oxidation, sublimation, etc) and other problems in ablative materials modeling (polymer properties, interfaces, materials design, etc). This project resulted in the following journal publications: "Comparison of REAXFF, DFTB and DFT for Phenolic Pyrolysis. 1. Molecular Dynamics Simulations", T. Qi, C.W. Bauschlicher, J.W. Lawson, T.G. Desai, E.J. Reed, J. Phys. Chem. A 117, (2013), p. 11115 "Comparison of REAXFF, DFTB and DFT for Phenolic Pyrolysis. 2. Elementary Reaction Paths", C.W. Bauschlicher, T. Qi, E.J. Reed, A. Lenfant, J.W. Lawson, T.G. Desai, J. Phys. Chem. A 117, (2013), p. 11126
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Many NASA missions (ESMD, SMD), including crewed missions to Mars, are not possible with current ablative materials. Computational modeling will enable the rapid and efficient development of the next generation of high performance ablators that are critical for NASA entry vehicles. We believe that this technology will enable ESMD and SMD missions.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>10627</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: ARC CIF (ARC CIF)</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 2 | Target End TRL: 2</td></tr>
+<tr><th>Project Start Date</th><td>2011-08-01</td></tr>
+<tr><th>Project End Date</th><td>2012-01-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>John G Lawson (Principal Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>1676 Approval (# 17536)</strong> — Ames Approval dated 11/26/14</li><li><a href="https://pubs.acs.org/doi/abs/10.1021/jp4081096" target="_blank" rel="noopener noreferrer">Comparison of ReaxFF, DFTB, and DFT for Phenolic Pyrolysis. 1. Molecular Dynamics Simulations</a></li><li><a href="https://pubs.acs.org/doi/abs/10.1021/jp408113w" target="_blank" rel="noopener noreferrer">Comparison of ReaxFF, DFTB, and DFT for Phenolic Pyrolysis. 2. Elementary Reaction Paths</a></li><li><strong>Graphical abstract</strong> — Combination of molecular dynamics simulations and computational chemistry was used to study thermal decomposition of phenolic resins</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/10627">https://techport.nasa.gov/projects/10627</a>
+    </div>
+  </div>
+</body>
+</html>

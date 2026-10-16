@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modeling Failure of 3D Fiber Reinforced Foam Core Sandwich Structures with Defects Using a Multi-Scale Finite Element Method | NASA TechPort Project 91175</title>
+  <meta name="description" content="Many structures designed today including spacecraft and launch vehicles utilize sandwich composites as primary structures. Current interest surrounds the engineering of these structures with the ability to tolerate damage with significant interest in the devel">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91175">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91175</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX12.2.2</span>
+        </div>
+        <h1>Modeling Failure of 3D Fiber Reinforced Foam Core Sandwich Structures with Defects Using a Multi-Scale Finite Element Method</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91175</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91175" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Many structures designed today including spacecraft and launch vehicles utilize sandwich composites as primary structures. Current interest surrounds the engineering of these structures with the ability to tolerate damage with significant interest in the development of new core materials. One class of core material being considered may alter their damage tolerance through the use of a three-dimensional, truss-like network of reinforcing fibers inside a lightweight foam core. This truss structure provides added paths for load transfer and acts to impede crack propagation within the foam. This research plan proposes to quantify the damage tolerance of 3D Fiber Reinforced Foam Core (3DFRFC) sandwich composites and develop a multi-scale finite element method to simulate the failure of three-dimensionally reinforced sandwich composites. The proposed research will be accomplished through the fabrication, non-destructive evaluation, and testing of 3DFRFC sandwich composites with and without defects to attain, experimentally, the effects of defects on the failure of the composites. Subsequent efforts will introduce failure modeling within the computational package ABAQUS by modeling the fracture of standard foam core sandwich composites and extending the model to the detailed microstructure of the 3DFRFC sandwich composite. Finally, implementation of the multi-scale behavior of the 3DFRFC will be introduced into the failure model. Results of both modeling phases will be compared to available experimental results. Currently, there is no ability to simulate and accurately predict the failure of the three-dimensionally reinforced foam core sandwich structures with defects, a critical ability necessary for the utilization of 3DFRFC sandwich composites as primary structures for launch vehicles and spacecraft. This proposed research has the goals of developing, implementing, and validating a modeling technique that will address this need. The outcomes of this research will provide the critical understanding and engineering tools required to fully exploit the benefits of advanced three-dimensionally reinforced sandwich structures in current and future spacecraft and launch vehicles, while having transformative impacts to the ability to utilize advanced materials in commercial aerospace and non-aerospace applications.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Currently, there is no ability to simulate and accurately predict the failure of the three-dimensionally reinforced foam core sandwich structures with defects, a critical ability necessary for the utilization of 3DFRFC sandwich composites as primary structures for launch vehicles and spacecraft. This proposed research has the goals of developing, implementing, and validating a modeling technique that will address this need. The outcomes of this research will provide the critical understanding and engineering tools required to fully exploit the benefits of advanced three-dimensionally reinforced sandwich structures in current and future spacecraft and launch vehicles, while having transformative impacts to the ability to utilize advanced materials in commercial aerospace and non-aerospace applications.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91175</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX12.2.2: Design and Certification Methods</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-09-01</td></tr>
+<tr><th>Project End Date</th><td>2015-05-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Michigan-Ann Arbor — Ann Arbor, Michigan</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>MT Aerospace — Augsburg, Outside the United States, Germany</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Michigan (MI)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Veera Sundararaghavan (Principal Investigator); Zachary T Kier (Co-Investigator) &lt;zachary.t.kier@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The goals to be attained by this research effort includes the experimental investigation of the failure of 3D fiber reinforced foam core (3DFRFC) sandwich composites and their sensitivity to defects across typical operating temperatures while developing a multiscale model capable of predicting the fracture behavior of these three dimensionally reinforced composites. The goals attained by this research effort include: • Development of periodic microstructure model to obtain homogenized core properties. • Development of test method to measure the fracture properties of the facesheet-to-core adhesive bonding interface. • Predict and experimentally verify the effect of facesheet-to-core debonds. • Predict and verify the effect of specimen size on the effective structural properties. • Experimentally evaluate the effect of cold temperatures on the through thickness failure of 3DFRFCs. • Determine viability of 3DFRFCs to replace standard foam cores in space structures Overall the research demonstrated the viability of 3DFRFCs for use in space structures whilst developing the engineering tools and methods necessary to support ongoing design and future use. An overview of the significant contributions contained in the thesis: • Development of a hierarchical multi-scale method and attained effective homogenized core properties that incorporate the localized interactions between the composite facesheet and truss-core microstructure. • Automated generation of reinforcement geometry for modeling arbitrarily large 3DFRFC sandwich panels. • Predicted and experimentally verified increased tolerance of 3DFRFC structures to facesheetto-core debonds subjected to edgewise compression loading. • Predicted and experimentally verified free edge effects in 3DFRFC structures. • Experimentally evaluated the through thickness performance of 3DFRFC structures demonstrating increased performance compared to a standard foam core of the same density. • Development of a successful Mode I fracture test of the facesheet-to-core interface in 3DFRFC sandwich structures. Results indicate a significant increase in resistance to crack propagation as compared to unreinforced foam cores.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91175">https://techport.nasa.gov/projects/91175</a>
+    </div>
+  </div>
+</body>
+</html>

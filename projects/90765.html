@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapid Mission Design for Dynamically Complex Environments | NASA TechPort Project 90765</title>
+  <meta name="description" content="Designing trajectories in dynamically complex environments is very challenging and easily becomes an intractable problem. More complex planning implies potentially numerous orbit options making it necessary to recast the problem to significantly reduce the des">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/90765">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 90765</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">GSFC CIF</span>
+          <span class="badge">TX17.2.6</span>
+        </div>
+        <h1>Rapid Mission Design for Dynamically Complex Environments</h1>
+        <div class="meta-id">NASA TechPort Project ID: 90765</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/90765" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Designing trajectories in dynamically complex environments is very challenging and easily becomes an intractable problem. More complex planning implies potentially numerous orbit options making it necessary to recast the problem to significantly reduce the design time and provide global solutions by leveraging the powerful search techniques from combinatorics such as Poincare-like mapping patterns and Graph Theory. The result of this effort is a computationally efficient search technique that determines potential or ideal trajectory concepts to meet unique mission design requirements.</p><p>It is typical to rely on a previous mission concept or to use the expanding knowledge of dynamical systems in multi-body problems for the next similar mission. However, the number of destinations/goals is ever increasing and it is not possible to immediately recognize the best orbit concept. Without some type of search, a traditional optimization strategy will not yield a globally satisfying result. This research will be the first of its kind within NASA to provide an innovative method called combinatorics to construct and improve trajectories and orbits that are very difficult and time consuming to design. It is not just optimizing trajectories or orbits but essentially providing a roadmap or concept for which trajectory types or orbit arcs are put together to meet science goals. Aspects of combinatorics include surveying orbit structures of a given set of characteristics (<a href="https://en.wikipedia.org/wiki/Enumerative_combinatorics">enumerative combinatorics</a>), deciding when certain criteria (science requirements or orbit mechanics) can be met, and constructing and analyzing the ordered linked set to meet the criteria. That is, finding &quot;largest&quot;, &quot;smallest&quot;, &quot;propellant-efficient&#39;, &quot;min TOF&quot;, or &quot;optimal&quot; trajectories or orbits and studying the combinatorial structures arising in an <a href="https://en.wikipedia.org/wiki/Algebra">algebraic</a> context.</p><p>This research leverages all the nonlinear dynamical knowledge available, the historically efficient pathways, and allows new entries (such as low-thrust) to move through an immense collection of data. Thus, it is necessary to recast the problem while significantly reducing the time it takes to design specific orbits (e.g., Mars-Phobos, Enceladus-Saturn, Europa-Jupiter, Cis-lunar, and even LEO). This is accomplished by leveraging the powerful search techniques from combinatorics such as Poincare-like mapping patterns and Graph Theory, to generate global solutions. The result is a computationally efficient search technique that determines potential or ideal concepts (various combinations of trajectory arcs that may include flybys/powered arcs/multiple destinations) to meet unique mission design requirements. With a complex set of goals, the number of options for a design plan is increasingly large and there is no single strategy to identify the most efficient concept.</p><p>This effort, a flexible exploration of the global solution space, satisfies mission concept and mission design technology maturation. Three simple illustrations are highlighted. The first is to develop a tour through the Trojan asteroids and is represented by graphs that reflect the nodes/vertices and links/edges in a graph construction. The nodes/vertices can represent asteroids types, flyby velocities, etc. The left figure is a simple construct posing a single path between each asteroid visit. The middle figure begins to explore multiple or optimal transfer options in this setting. Another more intuitive example is the right figure that shows the eccentricity and argument of periapsis evolution of selected lunar orbits. The contours demonstrate the relationship of these parameters to select initial conditions to meet the science goals.</p><p>This research is the obvious next step based on previous successes of dynamical systems applications, namely the Adaptive Trajectory Design (ATD) tool and the related innovative GSFC research which led to NASA&#39;s first implementation of trajectory manifolds now used NASA-wide. This effort also is aligned with improving upon and expanding the use of other innovative code 595 developed tools. These tools include the Evolutionary Mission Trajectory Generator (EMTG) which provides optimal interplanetary trajectories using low thrust (electric propulsion), chemical propulsion models, and launch vehicles capabilities, and the Schematic Window Methodology (SWM) tool that generates orbital launch parameters for transfer conditions to attain final science orbits. SWM provides target parameters such as inclination and ascending nodes that can minimize shadows and constrain communication distances. Both of these tools can generate numerous orbit options. Our combinatoric application (and graphing tools) will be incorporated with the above mission design tools providing a complete data analysis, from Cis-lunar space via manifolds, or interplanetary EP systems, to near Earth orbits. It applies to missions such as WFISRT/StarShade, SIMPLEx-II Phobos orbiters, and even the STAR-X ASTRO MIDEX proposal</p><p>In summary, the framework to solve the problem is to use combinatorics which focuses on defining the structures of a given kind and size of orbits and trajectory arcs, assessing the best conditions to meet certain criteria, then constructing and analyzing these orbits and arcs to meet such criteria. Maps and Graph Theory (mathematical structures used to model pairwise relations between trajectory parameters) are key in this process. The time horizon for mission/customer funding would be immediate once the tool has been proven in its use as it becomes part of the code 595 tool suite used for all mission support or proposals.</p><p>With a complex set of goals, the number of options for a mission design plan is increasingly large and there is no single strategy to identify the most efficient means to put the trajectory concept together. However, the number of destinations/goals ever increases and it is not possible to immediately recognize the best concept to pursue. Without some type of search, a traditional optimization strategy will not yield a globally satisfying result. Some critical information is already available. The methodologies and capabilities to compute arcs from various models of interest can currently be accomplished in general. For example, ATD is a database of many multi-body arcs that can be leveraged; the capability to construct low-thrust arcs (via EMTG) is expanding. Assuming that the basic trajectory arc options are available, a strategy to seek the best combination, that is, the optimal concept to meet the mission goals is sought - and it likely implies a vast set from which to explore for both the potentially feasible paths as well as the optimal trajectory segments. Given a specific mission scenario, the steps to design the optimal sequence and ultimately the successful trajectory path are fundamentally similar.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>&nbsp;</p><p>Cis-lunar and Libraiton Orbit mission designs.</p><p>&nbsp;</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>90765</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: GSFC CIF (GSFC CIF)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX17.2.6: Rendezvous, Proximity Operations, and Capture Trajectory Design and Orbit Determination</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 1 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2016-10-01</td></tr>
+<tr><th>Project End Date</th><td>2017-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Purdue University-Main Campus — West Lafayette, Indiana</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Indiana (IN), Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Others Inside the Solar System, Outside the Solar System, Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>David C Folta (Principal Investigator) &lt;david.c.folta@nasa.gov&gt;; Timothy D Beach (Project Manager) &lt;timothy.d.beach@nasa.gov&gt;; Jason W Mitchell (Project Manager) &lt;jason.w.mitchell@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2018-10-10</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The purpose of the Goddard Space Flight Center&amp;rsquo;s Internal Research and Development (IRAD) program is to support new technology development and to address scientific challenges.&amp;nbsp; Each year, Principal Investigators (PIs) submit IRAD proposals and compete for funding for their development projects.&amp;nbsp; Goddard&amp;rsquo;s IRAD program supports eight Lines of Business: Astrophysics; Communications and Navigation; Cross-Cutting Technology and Capabilities; Earth Science; Heliophysics; Planetary Science; Science Small Satellites Technology; and Suborbital Platforms and Range Services. Task progress is evaluated twice a year at the Mid-term IRAD review and the end of the year. When the funding period has ended, the PIs compete again for IRAD funding or seek new sources of development and research funding or agree to external partnerships and collaborations.&amp;nbsp; In some cases, when the development work has reached the appropriate Technology Readiness Level (TRL) level, the product is integrated into an actual NASA mission or used to support other government agencies. The technology may also be licensed out to the industry. The completion of a project does not necessarily indicate that the development work has stopped.&amp;nbsp; The work could potentially continue in the future as a follow-on IRAD; or used in collaboration or partnership with Academia, Industry and other Government Agencies. If you are interested in partnering with NASA, see the TechPort Partnerships documentation available on the TechPort Help tab. http://techport.nasa.gov/help</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="http://aetd.gsfc.nasa.gov/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>Example Combinatorics</strong> — An exasmple of the use of Combinatorics to aid in mission design</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/90765">https://techport.nasa.gov/projects/90765</a>
+    </div>
+  </div>
+</body>
+</html>

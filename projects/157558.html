@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developing Laboratory-Scale Active Segmented Telescopes to enable the next stage of Coronagraphic Testbeds | NASA TechPort Project 157558</title>
+  <meta name="description" content="Astro2020 envisions a large IROUV space telescope capable of surveying ~100 nearby star systems with the goal to characterize ~25 rocky planets. Laboratory testbeds for high-contrast imaging will have a central role in demonstrating the 10^-10 contrast needed ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/157558">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 157558</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">APRA</span>
+          <span class="badge">TX08.2</span>
+        </div>
+        <h1>Developing Laboratory-Scale Active Segmented Telescopes to enable the next stage of Coronagraphic Testbeds</h1>
+        <div class="meta-id">NASA TechPort Project ID: 157558</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/157558" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Astro2020 envisions a large IROUV space telescope capable of surveying ~100 nearby star systems with the goal to characterize ~25 rocky planets. Laboratory testbeds for high-contrast imaging will have a central role in demonstrating the 10^-10 contrast needed to search for bio-signatures on these Earth-like worlds. Over the last decade, our group has built a robust and flexible hardware testbed, the High-contrast Imager for Complex Aperture Telescopes (HiCAT), to advance the readiness level of coronagraphy on segmented apertures. For a direct imaging mission, the telescope, coronagraph, and science sensors are tightly coupled and must be developed as an integrated system to understand its performance and retire mission-scale risks. Our team has identified a missing capability in the roadmap to TRL-5: there exists no bench-top, laboratory-scale, segmented telescope that can provide a high-fidelity input stimulus to coronagraphic instrument testbeds with all the degrees of freedom a real telescope would embody.   In response to this gap, our team has developed the capability to fabricate active segmented telescopes on scales suited for laboratory high-contrast experiments.  The current state-of-the-art is far from flight-like, with the STScI HiCAT testbed relying on a MEMS segmented deformable mirror that is only 8 mm in size, with flat segments, and from a company that is now out of business. Meanwhile, the JPL Decadal Survey Testbed uses monolithic mirrors with a simple wire aperture screen to mimic “segment gaps”, but with no inter-segment degrees of freedom. Neither of those approaches captures the real complexity of the full integrated control system envisioned for IROUV, which should include edge sensors and thermal control as well as optical metrology and closed-loop wavefront sensing. A fully realistic scaled telescope model with flight-traceable actuator hardware, comparable to the testbed built for JWST, may eventually be needed as part of observatory-level demonstrations, but this is a major investment requiring many years. Furthermore, such a large mirror test article (D ~ 1 meter) will not fit into any existing high-contrast testbed. There is thus an urgent need to develop lab-scale segmented telescopes (D ~ 10-20 cm) with active actuation of real segments to enable integrated systems-level demonstrations much sooner in the IROUV development path, in parallel with flight-traceable segment hardware maturation.   We propose to meet this need by (1) building a new, segmented primary mirror based on extensive optical and functional prototypes with better-than-diffraction-limited performance, and degrees of freedom for active control of individual segments at the $\sim$10 pm resolution or better, and (2) validating the dynamical stability of this primary mirror prototype in the GSFC ultra-stability vacuum testbed, over timescales relevant to future high-contrast system-level testbed demonstrations. We have already invested significant internal funds to build multiple prototypes and test performances. Based on the results on hand from these hardware prototypes, we are extremely confident that we can build a complete segmented telescope surrogate with 10-20 cm diameter, with an off-axis segmented active parabolic mirror with IROUV-like surface quality (~10 nm rms). The remaining work is to optimize this for vacuum operation and qualify the dynamic stability, and optimize it to meet the 10^-10 contrast milestone.   The Active Segmented Surrogate for Integrated Systems Tests (ASSIST) will deliver a fully functional segmented mirror ready to integrate into a higher-fidelity, system-level demonstration combining wavefront sensing in a coronagraph with telescope metrology. Replicating ASSIST for other testbeds will optimize tech development funds for GOMAP and reduce overall mission risk for IROUV by enabling closed-loop tests with engineering traceability and lower cost compared to bespoke telescopes for each testbed.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The Astrophysics Research and Analysis program (APRA) supports suborbital and suborbital-class investigations, development of detectors and supporting technology, laboratory astrophysics, and limited ground-based observing. Basic research proposals in these areas are solicited for investigations that are relevant to NASA's programs in astronomy and astrophysics, including the entire range of photons, gravitational waves, and particle astrophysics. The emphasis of this solicitation is on technologies and investigations that advance NASA astrophysics missions and goals.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>157558</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Astrophysics Research and Analysis (APRA)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.2: Observatories</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2023-10-01</td></tr>
+<tr><th>Project End Date</th><td>2026-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Space Telescope Science Institute (STScI) — Baltimore, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Smithsonian Astrophysical Observatory (SAO) — Cambridge, Massachusetts; Goddard Space Flight Center (GSFC) — Greenbelt, Maryland; Ball Aerospace &amp; Technologies Corporation — Boulder, Colorado; Observatoire de Paris (PSL) — Paris, Outside the United States, France; Princeton University — Princeton, New Jersey; Sigma Space Corporation — Lanham, Maryland; Johns Hopkins University — Baltimore, Maryland; Aix Marseille University — Marseille, Outside the United States, France; Laboratoire d&#x27;Astrophysique de Marseille (LAM) — Marseille, Outside the United States, France</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Colorado (CO), Maryland (MD), Massachusetts (MA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Remi Soummer (Principal Investigator); Lee D Feinberg (Co-Investigator) &lt;lee.d.feinberg@nasa.gov&gt;; N. J Kasdin (Co-Investigator); Laurent A Pueyo (Co-Investigator); Emmanuel Hugot (Co-Investigator); Marc D Ferrari (Co-Investigator); Daniel S Acton (Co-Investigator) &lt;daniel.s.acton@nasa.gov&gt;; Sang C Park (Co-Investigator); Stephen A Smee (Co-Investigator); Sylvain Egron (Co-Investigator); Peter Petrone (Co-Investigator); Laura E Coyle (Co-Investigator); Perry E Greenfield (Co-Investigator); Jason B Tumlinson (Co-Investigator); Iva Laginja (Co-Investigator); Marshall D Perrin (Co-Investigator); Emiel Por (Co-Investigator); Alexander Klein (Co-Investigator); Iain N Reid (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Dominic J Benford (Program Director) &lt;dominic.j.benford@nasa.gov&gt;; David C Morris (Program Manager) &lt;david.c.morris@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-08-22</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/157558">https://techport.nasa.gov/projects/157558</a>
+    </div>
+  </div>
+</body>
+</html>

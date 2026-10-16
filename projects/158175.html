@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autonomous GNC Solution with Optical GEO Object Tracking | NASA TechPort Project 158175</title>
+  <meta name="description" content="Kayhan Space and TransAstra propose an innovative solution for autonomous Guidance, Navigation, and Control (GNC) with optical Geostationary Orbit (GEO) object tracking for cislunar spacecraft. This novel, passive method integrates Kayhan&#x27;s Dynamics, a high-fi">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158175">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158175</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX17</span>
+        </div>
+        <h1>Autonomous GNC Solution with Optical GEO Object Tracking</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158175</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158175" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Kayhan Space and TransAstra propose an innovative solution for autonomous Guidance, Navigation, and Control (GNC) with optical Geostationary Orbit (GEO) object tracking for cislunar spacecraft. This novel, passive method integrates Kayhan's Dynamics, a high-fidelity and computationally efficient orbit propagation and determination software, with TransAstra's Sutter Telescope Technology, known for its extreme optical sensitivity. This synergy enables the detection of distant, faint GEO belt satellites, which serve as waypoints for autonomous navigation, significantly reducing reliance on ground-based systems.  The primary goal is to demonstrate the feasibility of an onboard cislunar Position, Navigation, and Timing (PNT) capability that promises a low Size, Weight, Power, and Cost (SWaP-C) footprint, making it a scalable solution across a broad spectrum of missions. The turnkey PNT payload will facilitate more robust and efficient mission operations, boosting engineering and scientific returns.  This proposal outlines a plan to achieve these objectives through a phased approach, starting with a feasibility study, developing a high-fidelity simulation environment, and conducting comprehensive covariance analysis and trade studies. The proposed technology supports the rapidly expanding cislunar market, addressing the pressing need for sustainable space operations amidst the growing number of missions and strained ground-based systems.  Kayhan Space and TransAstra's collaboration brings together cutting-edge software and sensor technology to pioneer an autonomous navigation system that leverages the observable GEO belt satellites from lunar distances. This project not only showcases a path towards independent cislunar navigation but also paves the way for establishing a cislunar PNT ecosystem critical for future lunar and beyond-Earth missions.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Our technology, developed by Kayhan Space and TransAstra, offers an autonomous Guidance, Navigation, and Control (GNC) solution with optical GEO object tracking, tailored for cislunar spacecraft. This innovation directly addresses the challenges outlined by NASA's Office of Inspector General regarding the Deep Space Network's capacity constraints. By enabling spacecraft to autonomously generate Position, Navigation, and Timing (PNT) solutions using GEO belt satellites as waypoints, our technology minimizes dependency on ground-based systems.  The integration of TransAstra's Sutter Telescope Technology, known for its exceptional optical sensitivity, with Kayhan's Dynamics software allows for the detection of faint, distant objects, facilitating autonomous onboard PNT by observing GEO belt satellites from lunar distances. This capability is critical for sustaining the expanding number of national, international, and commercial missions in the cislunar region, as identified in NASA's directives for increased cislunar activities.  Our solution's low Size, Weight, Power, and Cost (SWaP-C) footprint makes it an ideal, scalable option for a wide range of missions, supporting NASA’s Artemis program and future lunar exploration goals. By proving the feasibility of an onboard cislunar PNT capability, we are paving the way for accurate, persistent, and sovereign navigation capabilities that are crucial for the sustainability of space operations.  This autonomous GNC solution not only enhances mission efficiency and scientific output but also contributes to the development of a cislunar PNT ecosystem. Such an ecosystem will support NASA's vision for a sustainable lunar exploration program and future endeavors in deep space, aligning with the strategic objectives of minimizing ground dependency and advancing autonomous navigation technologies. The Autonomous GNC Solution with Optical GEO Object Tracking technology presents significant commercialization opportunities within the rapidly expanding cislunar space economy. With NASA contracts exceeding $1 billion in the last three years and an additional $72 million awarded through AFRL for cislunar operations, the market trajectory is on a steep incline. The Artemis program's call for commercial collaboration in establishing a sustainable lunar exploration framework further underlines the demand for advanced navigation technologies in this sector.  Our technology, designed to enable autonomous spacecraft navigation with minimal reliance on ground-based systems, is positioned to capture a substantial share of this burgeoning market. The solution's appeal is broad, encompassing military, civil, and commercial space activities, including resource utilization, in-space servicing, manufacturing, and space tourism. With an estimated $63 billion projected for private sector lunar missions between 2024 and 2040, our autonomous GNC system is a strategic fit for entities aiming to pioneer cislunar and interplanetary operations.  The commercialization strategy will target initial customers such as DoD, DARPA, NASA, and commercial entities like Astrobotic, Intuitive Machines, and other CLPS providers. The technology's alignment with the communications systems segment, which currently holds the largest market share, positions it as a critical enabler for the future cislunar infrastructure, promising a competitive advantage in both the civil and commercial space sectors.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158175</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX17: GN&amp;C</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 1 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2024-08-07</td></tr>
+<tr><th>Project End Date</th><td>2025-02-06</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Kayhan Space Corp — Lafayette, Colorado</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO), Maryland (MD)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Siamak Hessar (Principal Investigator); Huai-Tzu You (Project Manager) &lt;huaizu.you@nasa.gov&gt;; Siamak G Hesar (Primary Point of Contact)</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158175">https://techport.nasa.gov/projects/158175</a>
+    </div>
+  </div>
+</body>
+</html>

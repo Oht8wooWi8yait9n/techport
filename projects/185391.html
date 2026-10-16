@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Health monitoring and pre-flight diagnostics for robust electrical machines | NASA TechPort Project 185391</title>
+  <meta name="description" content="Electrified powertrains have the potential to enable more economical, efficient, safe, and robust air vehicles. The electrical machine plays a central role in all of these topologies, whether configured as a generator or as a propulsive motor. Hinetics uses fa">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/185391">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 185391</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX10</span>
+        </div>
+        <h1>Health monitoring and pre-flight diagnostics for robust electrical machines</h1>
+        <div class="meta-id">NASA TechPort Project ID: 185391</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/185391" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Electrified powertrains have the potential to enable more economical, efficient, safe, and robust air vehicles. The electrical machine plays a central role in all of these topologies, whether configured as a generator or as a propulsive motor. Hinetics uses fault-tolerant design processes to limit the severity and likelihood of failures. However, once mounted to the vehicle, electrical machines are subjected to extreme environmental conditions and maintenance events with inherent uncertainty. To support the safety goals related to electrical machines, Hinetics proposes developing a health monitoring system and corresponding algorithm using multi-modal measurement sources, physics-based models, and advanced signal processing and machine learning techniques. The goal is to detect imminent failures and communicate them to the central controller or operator in order to take actions that limit the impact of the failure. In Phase I, Hinetics will: (1) tabulate an exhaustive list of failure modes, sources, and indicators in its slotless permanent magnet machine topology, (2) design and implement a sensor and data acquisition system, (3) characterize nominal and anomalous machine behavior for two key failure modes, and (4) develop and demonstrate the detection algorithm on its HITRACE testbed using one of Hinetics existing megawatt-class machines. Hinetics will also develop a pre-flight diagnostic routine to complete during taxi to detect failures prior to take-off. This work directly supports Hinetics’ commercialization plans by addressing key compliance requirements imposed by a potential airframer customer.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          NASA has heavily invested in electrified flight technologies involving electrical machines and distributed electric propulsion. Recently, Hinetics partnered with NASA to develop a 150 kW generator using Hinetics slotless permanent magnet machine topology for the 25% scale SUSAN hybrid-electric vehicle concept. Additionally, NASA created the Electrified Powertrain Flight Demonstration (EPFD) program that is funding GE and MagniX to demonstrate megawatt-scale hybrid-electric powertrains operating in flight. The need for improvements in the reliability and failure management of electric powertrains is substantiated by NASA’s X-57 development program, which specifically ran into unexpected mechanical failure modes in the propulsion motors that ultimately led to the program being cancelled. The goal of the proposed health monitoring system is to catch such failures during and prior to the flight before they endanger the pilot or passengers. The push for electric flight demonstrations in primarily happening in private industry. Several companies, such as Joby Aviation, Archer, Electra.Aero, Ampaire, and BETA, are already flying aircraft with some form of electric propulsion. As these airframers and powertrain integrators scale-up the size of their vehicles to those which require megawatt class electrical machines, Hinetics’ technology becomes a key enabler due to its efficiency and specific torque metrics at scale. Hinetics is working to meet this timeline by having a fully functional motor, drive, and health monitoring system ready by the time these airframers initiate flight demonstrations of their larger vehicles. Using the compliance requirements outlined by a potential customers as guidance, the work proposed in this project will help Hinetics achieve that goal and position ourselves as a critical supplier of advanced electrical machines for future electrified aircraft platforms.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>185391</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX10: Autonomous Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2025-09-29</td></tr>
+<tr><th>Project End Date</th><td>2026-03-27</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Illinois (IL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Thanatheepan Balachandran (Principal Investigator); Daniel E Hulse (Project Manager) &lt;daniel.e.hulse@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-19</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/185391">https://techport.nasa.gov/projects/185391</a>
+    </div>
+  </div>
+</body>
+</html>

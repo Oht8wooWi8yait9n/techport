@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modeling Propellant Tank Dynamics | NASA TechPort Project 4337</title>
+  <meta name="description" content="The main objective of my work will be to develop accurate models of self-pressurizing propellant tanks for use in designing hybrid rockets. The first key goal is to develop an accurate and computationally attractive equation of state for nitrous oxide. N2O is ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/4337">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 4337</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX01.1.5</span>
+        </div>
+        <h1>Modeling Propellant Tank Dynamics</h1>
+        <div class="meta-id">NASA TechPort Project ID: 4337</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/4337" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The main objective of my work will be to develop accurate models of self-pressurizing propellant tanks for use in designing hybrid rockets. The first key goal is to develop an accurate and computationally attractive equation of state for nitrous oxide. N2O is a popular self-pressurizing oxidizer but standard operating temperatures are close to the critical point and therefore the oxidizer's thermodynamic properties are non-ideal and difficult to predict. The next goal is to develop a dynamic model for the numerous processes occurring in an emptying tank. This includes heat and mass transfer between phases, heat transfer to and from the walls of the tank, and fluid dynamics induced by convection and the propellant flowing out of the tank. Third, extensive experimentation must be done in order to benchmark the model and assess the presence and importance of certain processes such as nucleation, boiling, and vaporization. Finally, a design study must be done in order to determine how the finalized model can best be used to increase the performance of hybrid rockets. Methods Previous works in the chemical engineering industry have identified proper functional forms for equations of state of varying accuracy and computational cost. However, when fitted to data for N2O, the empirical data used for the most commonly used model was incomplete and hence errors were introduced. By modifying a standard form slightly and by re-fitting the proper constants using a larger dataset, I will create a much better model. A dynamic model will be generated by first searching the literature for accurate expressions for heat and mass transfer through unsteady nucleation, boiling, vaporization, and condensation. In contrast, the current state of the art for propellant tank modeling includes only simple expressions for convection from flat plates, and an assumption of uniform temperatures. Experiments will then be conducted by building a custom tank that contains numerous temperature sensors, in addition to pressure and optical sensors. By measuring the temperature field throughout the tank and using the pressure data, I will be able to obtain an accurate global picture of the thermodynamic state of the nitrous oxide, and assess its uniformity. Optics will also be necessary in order to determine the presence and strength of nucleation and boiling within the tank. Using advanced optimization methods, the designs of hybrid rocket propulsion systems for various applications such as launch vehicles, sounding rockets, and in-space propulsion will be optimized. In this way, the benefits of using an accurate propellant tank model in the design process can be demonstrated. Significance Part of NASA's mission is to pioneer the future in space exploration. Hybrid rockets are a key component of that future because they will enable us to explore our solar system for a fraction of the cost of traditional rockets. This cost reduction is a result of both the inherent safety provided by a phase boundary between the solid fuel and liquid oxidizer, but also through the use of non-hazardous propellants like N2O. Nitrous oxide is an attractive oxidizer for hybrid rockets because it is self-pressurizing and therefore it can be pushed out of a propellant tank using only it's own high vapor pressure. This negates the need for turbopumps or inert gas pressurization systems, resulting in a more compact and lighter design. However, an accurate model for the tank's internal processes - and as a result the flowrate out of the tank - does not exist. Without such a model, development of hybrid rocket propulsion systems will be unnecessarily long and expensive because of the large amount of full-scale testing required to optimize the design.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Part of NASA's mission is to pioneer the future in space exploration. Hybrid rockets are a key component of that future because they will enable us to explore our solar system for a fraction of the cost of traditional rockets. This cost reduction is a result of both the inherent safety provided by a phase boundary between the solid fuel and liquid oxidizer, but also through the use of non-hazardous propellants like N2O. Nitrous oxide is an attractive oxidizer for hybrid rockets because it is self-pressurizing and therefore it can be pushed out of a propellant tank using only it's own high vapor pressure. This negates the need for turbopumps or inert gas pressurization systems, resulting in a more compact and lighter design. However, an accurate model for the tank's internal processes - and as a result the flowrate out of the tank - does not exist. Without such a model, development of hybrid rocket propulsion systems will be unnecessarily long and expensive because of the large amount of full-scale testing required to optimize the design.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>4337</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.1.5: Hybrids</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-09-01</td></tr>
+<tr><th>Project End Date</th><td>2015-08-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Stanford University — Stanford, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Stennis Space Center (SSC) — Stennis Space Center, Mississippi</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Brian Cantwell (Principal Investigator); Jonah E Zimmerman (Co-Investigator) &lt;jonah.e.zimmerman@nasa.gov&gt;; Harry M Ryan (Project Manager) &lt;harry.m.ryan@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The overall goal of this research was to develop a new model for self-pressurizing propellant tanks. In order to do so, first an experimental investigation was performed in order to identify the important physical phenomena. Once a full understanding of the dynamics was developed from these experiments, this information was used to develop a new model with improved accuracy. Visualization experiments were identified as an ideal way to gather the required knowledge about the heat and mass transfer phenomena that occur inside a self-pressurized propellant tank. By using a high speed camera and a pressure vessel with optical access, features such as boiling, condensation, and liquid level motion could all be easily identified. Additionally, since only the tank dynamics are of interest cold flow testing could be performed instead of rocket motor firings as long as the proper downstream boundary condition were replicated. The robustness of the general dynamics of the self-pressurizing propellant tank system has been demonstrated by the fact that few of these parameter variations caused substantial changes to the fundamental features that were described as the basic behavior. The final set of experimental testing compared the behavior of N2O and CO2 with the goal of demonstrating that carbon dioxide can be used as an accurate analog for nitrous oxide. This was done by simply performing tests with identical initial conditions with the two fluids and comparing the results. As an example of this work, figure 5 shows an image sequence from the early times of two of these tests. No significant differences were detected. Comparison tests between the two fluids were also performed including some of the parameter variations described earlier, such as flow rate, fill level, temperature, and vessel size. Again, no significant differences were observed. We can therefore conclude that carbon dioxide does function as a simulant fluid for nitrous oxide in this type of research. The only significant caveat to this is that the largest size scales examined here (∼ 1 L) are quite small compared to some practical propulsion systems (∼ 10 − 1, 000 L). Therefore any engineers or scientists studying larger vessels should demonstrate that CO2 still functions similarly to N2O before using CO2 as a simulant fluid in those systems. The single most important discovery from the experiments has been the importance of boiling. Boiling is the dominant heat and mass transfer mechanism between the liquid and ullage and is responsible for the transient pressure drop and recovery. For a model to accurately describe this system, a focus must be made on describing the complete bubble dynamics including heterogeneous nucleation, departure, growth, coalescence, and transfer of the vapor within the bubbles to the ullage when they reach the free surface. The ullage was observed to be an equilibrium two-phase mixture for much of the test in most experiments. The quality of the ullage had strong spatial gradients and also appeared to vary with time as well. Previous models assumed the ullage to be a saturated vapor, with a constant x = 1, an assumption that now appears to be inaccurate. Nevertheless, the ullage can likely still be modeled accurately with a single node, with 0 ≤ x ≤ 1. The liquid was observed to have superheats of up to ∼ 5◦C and due to the sensitivity of fluid properties to temperature and pressure it must be modeled as a metastable fluid. In many tests the liquid appeared spatially non-uniform during the transient regime but uniform in the steady state regime. In others the liquid was relatively uniform, such as the tests in the flat glass gauge and those at elevated temperature. Assuming a spatially uniform liquid is likely accurate in these cases and greatly simplifies the model development while still allowing for comparisons to experimental data. If the model is shown to be accurate in these cases it could be extended to have a non-uniform liquid in order to be usable in more situations. These conclusions from the experiments were used to develop a new hybrid 0-D/1-D model that leverages some aspects of existing models while building on them to capture bubble dynamics. The 0-D method is similar to that of previous researchers except that the ullage was assumed to be a two phase mixture, rather than simply saturated vapor. Conservation of mass and energy were then used to derive a set of 4 ordinary differential equations that could be used to find the mass and energy (or temperature) of each node with time. The 1-D method employs population balance modeling techniques to describe the bubble population as a function of time as well as vertical location within the tank. This is done by developing a set of partial differential equations for the parameters that approximate the bubble size distribution, a technique known as the direct quadrature method of moments (DQMOM). Numerous submodels were needed to determine physical quantities related to bubble dynamics, heat transfer rates, and critical flow through the orifice. These were taken from the literature however many were only derived as having the correct functional form, resulting in a set of adjustable constants within the model that must be fit using experimental data. The model was then compared with experimental data and produced accurate results, as demonstrated in figure 6, where an experimental pressure time history is compared to the model prediction. The model still deviates from the experimental data in some regions, notably in the transient regime where it predicts a pressure rise that is more rapid than that observed in the experiment. Near the end of the test the pressure gradually diverges from the experimental data somewhat as well. While the accuracy of this model still must be improved further, it has been built on a physically accurate foundation by using knowledge gained from the visualization experiments. Therefore future researchers may consider it a departure point for continued modeling efforts without requiring a new model to be derived from first principles.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>4337-1363193066794.jpg</strong> — Project Image Modeling Propellant Tank Dynamics</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/4337">https://techport.nasa.gov/projects/4337</a>
+    </div>
+  </div>
+</body>
+</html>

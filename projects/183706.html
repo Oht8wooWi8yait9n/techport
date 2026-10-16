@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kinetic Modeling of Carbon Mass Loss in Nuclear Thermal Propulsion | NASA TechPort Project 183706</title>
+  <meta name="description" content="Nuclear Thermal Propulsion (NTP) is a low-readiness-level technology that enables human space exploration with reduced travel times and costs. However, current solid-core NTP systems, which utilize hydrogen as a propellant, suffer from mass loss due to the int">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/183706">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 183706</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX01.4.3</span>
+        </div>
+        <h1>Kinetic Modeling of Carbon Mass Loss in Nuclear Thermal Propulsion</h1>
+        <div class="meta-id">NASA TechPort Project ID: 183706</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/183706" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Nuclear Thermal Propulsion (NTP) is a low-readiness-level technology that enables human space exploration with reduced travel times and costs. However, current solid-core NTP systems, which utilize hydrogen as a propellant, suffer from mass loss due to the interaction between hot hydrogen and the fuel element, particularly its carbon content. This corrosion process significantly reduces the performance and lifespan of NTP systems, impacting overall mission safety, reliability, and cost. The underlying cause of carbon mass loss involves phase transition and chemical reactions between gases and surfaces under NTP-relevant flow conditions. Unfortunately, our current understanding of this process remains largely empirical, limiting our ability to make accurate predictions and optimize designs. To address this, I propose developing a finite-rate chemical kinetic model for gas-surface reacting flow systems relevant to NTP conditions. The model will build on existing research in carbon particulate formation during combustion and carbon ablation in reentry scenarios. While the current focus is carbon, the model framework can be extended to other species. First, I will compile historical experimental data and identify kinetic pathways to create a baseline model that incorporates reactions of both gaseous and surface carbon. Carbon mass loss will be estimated by considering both sublimation and surface reactions. Next, I will test the model using plug flow reactors to evaluate the sensitivity of key reaction pathways and optimize rate parameters using additional experimental data. A detailed rate parameter uncertainty analysis will be performed to identify opportunities for future experiments. Lastly, I will integrate the model into a computational fluid dynamics framework to study the influence of multi-dimensional flow characteristics on mass loss. Specifically, I will explore methane doping as a strategy to reduce carbon loss, potentially offering a viable solution for future NTP systems. This project is within the scopes of the Go: Space Nuclear Propulsion and the GO: Advanced Propulsion NASA Envisioned Futures, as well as the NASA Technology Area1.4.3: Nuclear Thermal Propulsion.
+        </div>
+
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>183706</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.4.3: Nuclear Thermal Propulsion</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2025-08-01</td></tr>
+<tr><th>Project End Date</th><td>2029-08-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of California-Irvine — Irvine, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Others Inside the Solar System, Outside the Solar System, Low Earth Orbit</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Thomas Westenhofer (Co-Investigator); Fredrick N Michael (Project Manager) &lt;fredrick.n.michael@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-10</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/183706">https://techport.nasa.gov/projects/183706</a>
+    </div>
+  </div>
+</body>
+</html>

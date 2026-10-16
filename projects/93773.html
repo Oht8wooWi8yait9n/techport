@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spacecraft Position Estimation in Interplanetary Trajectories Using Star Trackers | NASA TechPort Project 93773</title>
+  <meta name="description" content="Lynntech proposes a novel spacecraft position estimation method that leverages existing star trackers on board of a vehicle in an interplanetary trajectory for exploration missions. The method is based on observing visible planets in the solar system with Star">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/93773">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 93773</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX17.2.3</span>
+        </div>
+        <h1>Spacecraft Position Estimation in Interplanetary Trajectories Using Star Trackers</h1>
+        <div class="meta-id">NASA TechPort Project ID: 93773</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/93773" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Lynntech proposes a novel spacecraft position estimation method that leverages existing star trackers on board of a vehicle in an interplanetary trajectory for exploration missions. The method is based on observing visible planets in the solar system with Star Trackers and being able to discriminate between planets and fixed stars. Thus the proposed method is autonomous and does not require assistance from ground facilities. Space vehicle autonomy is particularly important to enable long term human exploration of space. Star Trackers are ubiquitous in space vehicles, having the function of estimating the vehicle attitude with respect to the inertial reference frame. This is accomplished by observing the fixed stars and comparing them with the on-board star catalog. Planets may also be observed, but the Star Tracker typically ignores such observations. It is possible to discriminate between stars and other bright objects in the image, thus the direction of observed planets in the camera reference frame can be evaluated, and the planet identified combining a number of heuristics, including time. The proposed method is based on a closed-form least-squares solution obtained by minimizing the sum of the expected object-space squared distance errors. A weighted least-squares solution is provided by an iterative procedure. The weights are evaluated using the distances to the planets estimated by the least-squares solution. Such novel weighted approach only requires one iteration to converge and results in significant accuracy gains compared to the simple least squares approach. The light-time correction is also taken into account. The proposed work includes the development of a library of algorithms to augment star tracker capabilities by providing the interplanetary position estimation function. This can be used in new Star Tracker development or to augment existing capabilities, at no additional requirement of weight or size for the spacecraft.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Autonomous Position estimation is a key enabling capability for all kinds of spacecraft. Existing methods rely mostly on telemetry from the ground (e.g. RADAR, or other form of active tracking) or global navigation system (e.g. GPS). Long term exploration missions, such as human mission to Mars or asteroids, including asteroid mining, will require the ability to perform navigation autonomously, without assistance from Earth (which also involves significant delays due to the immense distances of space travel). This additional robustness is a must for NASA human exploration missions. Other classes of space vehicles would also benefit from having this capability because of the additional robustness granted to space-vehicle operations. Increased vehicle autonomy is a key requirement for the NASA technology development roadmap. The proposed technology favors dual-use of existing assets, the star trackers, and therefore does not burden the system engineers with additional weight, size, and significant power requirements, leaving more options for experiment and support payloads. In addition, the increased accuracy of the autonomous position estimation enables the vehicle to monitor and adjust its own orbit in the critical phases of orbit entry or aero-braking, when the spacecraft is obscured from Earth or the delay in communication proves critical.<br /> <br />The problem of autonomous position estimation is general to all spacecraft manufacturers and therefore is also of great commercial interest also outside NASA. In the future, private entities will also be involved in long distance missions; asteroid mining, for instance, has been proposed as a potentially important application of interplanetary travel. In this case, commercial entities will have the same autonomy requirements that NASA exploration missions already face. In addition, there is great interest in the Department of Defense (e.g. Air Force Space Command), to increase the resilience of their space assets to a deliberate attack to the GPS satellites by a hostile power. Increased autonomy of DOD space assets requires accurate position estimation. The proposed method could be extended to satellites orbiting Earth in GEO, thus providing important redundancy in position estimation in a GPS-denied environment.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>93773</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX17.2.3: Navigation Sensors</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2017-06-09</td></tr>
+<tr><th>Project End Date</th><td>2017-12-08</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Lynntech, Inc. — College Station, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Christian Bruccoleri (Principal Investigator); Evan J Anzalone (Project Manager) &lt;evan.j.anzalone@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong> — Spacecraft Position Estimation in Interplanetary Trajectories Using Star Trackers, Phase I Briefing Chart</li><li><strong>Briefing Chart Image</strong> — Spacecraft Position Estimation in Interplanetary Trajectories Using Star Trackers, Phase I Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/93773">https://techport.nasa.gov/projects/93773</a>
+    </div>
+  </div>
+</body>
+</html>

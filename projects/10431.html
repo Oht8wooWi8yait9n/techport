@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quantification of Uncertainties in Integrated Spacecraft System Models | NASA TechPort Project 10431</title>
+  <meta name="description" content="The objective for the Phase II effort will be to develop a comprehensive, efficient, and flexible uncertainty quantification (UQ) framework implemented within a matured user-friendly software, which will enable the modeling of both inherent and epistemic uncer">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/10431">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 10431</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX09.4.5</span>
+        </div>
+        <h1>Quantification of Uncertainties in Integrated Spacecraft System Models</h1>
+        <div class="meta-id">NASA TechPort Project ID: 10431</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/10431" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The objective for the Phase II effort will be to develop a comprehensive, efficient, and flexible uncertainty quantification (UQ) framework implemented within a matured user-friendly software, which will enable the modeling of both inherent and epistemic uncertainties in spacecraft system models, have a general quantification of margins and uncertainties (QMU) capability for system certification and reliability assessment, and utilize advanced methods based on non-intrusive polynomial chaos (NIPC) for efficient and accurate propagation of mixed (inherent+epistemic) uncertainties as also demonstrated under the Phase I effort. In the proposed project, an adaptive uncertainty quantification methodology, which will successively utilize different NIPC methods depending on the size of the problem along with the non-linear global sensitivity information, will be implemented to address the computational expense of UQ in complex spacecraft system simulations with large number of uncertain variables. The developed UQ framework and QMU capability will be demonstrated on a large-scale spacecraft system model that is of interest to NASA. This proposed work will compliment M4 Engineering's expertise in developing simulation technologies that solve relevant demonstration applications. The researchers from MS&T (RI) will guide the implementation of UQ and QMU methodologies and contribute to the proposed effort with their UQ expertise in aerospace simulations.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          M4 Engineering has active relationships with several prime contractors who are likely users of this technology. These include Boeing Phantom Works, Northrop Grumman, and Raytheon. These provide excellent commercialization opportunities for the technology. The application of these new uncertainty quantification techniques is expected to find wide application to many aerospace and non-aerospace products. The non-intrusive approach for uncertainty propagation is a widely applicable concept. Examples include aerospace/defense, turbomachinery, automotive, and alternative energy applications.<br /> <br />The first NASA application will be performed as a demonstration example during the Phase II project. One candidate for this example will be the SWOT program. It is also expected that this technology will be applicable to other research projects planned at JPL. The effectiveness in reducing the total runtime associated with UQ makes it an ideal candidate for use in computationally demanding systems requiring complex analyses to characterize the design space. Examples of potential application include future space systems, next generation launch and entry systems such as HMMES and HRRLS as well as exploration programs, high efficiency subsonic aircraft, quiet supersonic aircraft, high-altitude, long-endurance aircraft, and hypersonic aircraft. This effort will develop technologies to make use of high fidelity, physics-based UQ analysis earlier in the design cycle. It is therefore applicable in general to any NASA vehicle application. While initial implementation is expected for space applications, applications to future concepts in aeronautics also have potential. This proposal addresses NASA's goals by proposing state of the art advances in UQ methods. The tools developed can be used with an integration framework, and will be widely applicable to space systems as well as subsonic and supersonic vehicles including unconventional designs. By making these analyses available earlier in the design process, more effective vehicle systems can be generated while maintaining safety.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>10431</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.4.5: Integrated Modeling and Simulation for EDL</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2011-07-06</td></tr>
+<tr><th>Project End Date</th><td>2013-07-05</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>M4 Engineering, Inc. — Long Beach, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California; Missouri University of Science and Technology — Rolla, Missouri</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Missouri (MO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Tyler F Winter (Principal Investigator); Robert Jones (Project Manager) &lt;Robert.A.Jones@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/10431">https://techport.nasa.gov/projects/10431</a>
+    </div>
+  </div>
+</body>
+</html>

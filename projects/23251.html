@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S-PRINT: Development and Validation of a Tool to Predict, Evaluate, and Mitigate Excessive Workload Effects | NASA TechPort Project 23251</title>
+  <meta name="description" content="The purpose of this project was to research and model human performance in unexpected workload transitions. These situations, when addressed by fatigued astronauts, constitute worst case scenarios that require specific, in-depth investigation. The project addr">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23251">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23251</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX11.2.3</span>
+        </div>
+        <h1>S-PRINT: Development and Validation of a Tool to Predict, Evaluate, and Mitigate Excessive Workload Effects</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23251</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23251" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The purpose of this project was to research and model human performance in unexpected workload transitions.  These situations, when addressed by fatigued astronauts, constitute worst case scenarios that require specific, in-depth investigation.  The project addressed two NASA risk areas -- the risk of performance errors due to fatigue, and the risk of poor task design.  In addition, the research provided input for the Human Automation/Robotic Interaction research area at NASA. The project conducted integrative reviews of what was known and unknown, addressed where there was insufficient or conflicting existing research or theory for adequate quantitative prediction, and combined these insights to produce a new mechanism to understand and predict performance. This last goal was accomplished through the development of a prototype model-based tool to be used by NASA human performance researchers, automation system designers, mission planners, and astronauts to evaluate predicted astronaut performance on long-duration space missions during unexpected workload transition scenarios. The tool enables users to identify the effects of astronaut fatigue, automation system design, and task factors on predicted astronaut performance in unexpected off-nominal events (e.g., automation failures or other emergencies). The tool developed in this effort, called the Space Performance Research Integration Tool (S-PRINT), leverages the Improved Performance Research Integration Tool (IMPRINT) human performance modeling environment, and tailors it to space mission applications.    <p></p> IMPRINT was developed for the Army Research Laboratory, and is available, free of charge, to U.S. government agencies. IMPRINT includes algorithms to study performance shaping factors such as fatigue, training, and use of protective clothing with human performance models.  IMPRINT includes a sophisticated model of operator workload based on multiple resource theory.    <p></p> S-PRINT was developed based on extensive literature reviews and meta-analyses on fatigue, automation failure response, and workload overload. We systematically evaluated human-in-the-loop research to identify and quantify factors in long-term space missions that affect astronaut workload, fatigue, and performance. The results of these meta-analyses were used to update IMPRINT algorithms so they more accurately reflect space-specific conditions. In particular, the algorithms contain empirically validated models of sleep-related fatigue, automation failure management, and multitasking in workload overload situations. Further, the team conducted a series of focused human-in-the-loop studies to address specific components of performance that were not answered in the meta-analyses. The S-PRINT tool was developed so it can be used to evaluate performance in missions that are being planned or missions that are currently underway.    <p></p> The team identified two scenarios of interest for a prototype application of the tool.  The primary scenario includes a single astronaut manually controlling a robotic arm when a failure occurs in the environmental process control system.  When the astronaut notices the process control failure, s/he needs to prioritize among the different tasks.  We worked with NASA subject matter experts (SMEs) to develop human performance models that reflect those situations. The tasks combined in this specific type of situation were of sufficient complexity to be beyond the scope of previously existing models. The team conducted an empirical, human-in-the-loop validation study of the robotic and process control system tasks.  A second scenario, involving fire detection and suppression systems, was also implemented and included with the S-PRINT tool. Our scenario development and research efforts focused specifically on worst-case situations:  rapid workload transitions (e.g., automation failures, other off-nominal events) resulting in overload, with a single astronaut.      <p></p> The S-PRINT tool offers users access to the underlying IMPRINT modeling environment.  Users who are familiar with human performance modeling can build their own, customized scenarios, and are not limited to the two scenarios developed for this project.  S-PRINT also provides an easy-to-use interface in the form of data entry screens that guide the user through the process of building a scenario. It allows the researchers who are not modeling experts to specify numerous relevant factors, e.g., operators, tasks, automation support, use of protective clothing, and sleep history. The output of the model run (for both customized IMPRINT models and S-PRINT-specific models) includes parameters of interest such as operator workload, fatigue effects on task completion time and task accuracy, time to initiate tasks, time to complete tasks, results of task failures, and overall mission times, which can be used to compare relative success.      <p></p> The effort to provide a new, integrative framework proved highly successful. An empirical validation study of visual attention allocation predicted by the task overload model revealed high correlations (r > 0.95) with actual human performance.  This research provided a validated model-based tool to help NASA researchers evaluate potential long-duration missions, identify vulnerabilities, and test potential mitigation strategies to help ensure effective performance and safe space missions. The tool and associated scientific advances offer important insights both for future space scenarios, and for a wide range of other real-world situations. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The S-PRINT project offers several potential benefits to human performance research and industry on Earth.  These include contributions to the human performance literature and the development of a model-based tool to predict operator performance in workload transitions.    <p></p> The project resulted in numerous (19, as of March 2015) publications in peer-reviewed professional journals and conference proceedings.  These publications describe different aspects of the human performance research conducted under the grant.  In particular, two extensive meta-analyses were conducted to examine 1) the effects of sleep-related fatigue on complex task performance, and 2) the effects of task factors on task management, task switching and task shedding in overload situations.  These analyses provided an empirically-derived basis for algorithms that were developed and implemented in the Improved Performance Research Integration Tool (IMPRINT) human performance modeling environment and, in particular, response to unexpected automation failures.      <p></p> In addition to the meta-analyses, the project included multiple human-in-the-loop (HITL) studies to investigate 1) human-automation interaction (exploring, in particular, the effects of automation design factors and failure types on automation bias and complacency), 2) multitasking in overload situations.  The results of these studies have been published and contribute to the scientific knowledge in human-automation interaction and human performance in overload.  These two topic areas are relevant in numerous Earth-based domains.    <p></p> The second major contribution of the S-PRINT project was the development of component models to predict 1) the effects of fatigue (i.e., due to sleep deprivation, sleep restriction, sleep inertia, and circadian cycle effects) on task completion time and task accuracy, 2) the effects of automation design factors (e.g., reliability, degree of automation, or function allocation) on operator performance, 3) the effects of failure type on operator performance, and 4) the effects of task factors (i.e., salience, expectancy, effort, and value) on task selection in overload.  These models have been implemented in IMPRINT. All of these areas are relevant in Earth-based industries that require around-the-clock operations, involve the use of automation, and offer the potential for situations that put an operator in overload conditions.  Examples include medicine, process control, military operations, and transportation. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23251</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.2.3: Human-System Performance Modeling</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2012-04-01</td></tr>
+<tr><th>Project End Date</th><td>2015-03-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Colorado State University-Fort Collins — Fort Collins, Colorado; Alion Science And Technology Corporation — Boulder, Colorado</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Angelia Sebok (Principal Investigator); Christopher D Wickens (Co-Investigator) &lt;khanh.van-obrecht@nasa.gov&gt;; Benjamin Clegg (Co-Investigator); Robert Sargent (Co-Investigator); Brian F Gore (Project Manager) &lt;brian.f.gore@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The objective of this research was to develop tools and empirically-based guidelines that support human performance researchers, mission planners, automation designers, and astronauts in long-duration missions. Specifically, the products from this research will help users to (a) anticipate and avoid potential problems related to unexpected workload transitions by identifying the empirically established effects of operator fatigue, automation system design, and task factors on overload performance with particular emphasis on the fatigued operator’s response to unexpected emergencies; and (b) assure that systems can be designed in such a way as to minimize transient or longer-term impacts on performance in space exploration missions. The proposed work contributes to the Program Requirements Document (PRD) by helping to mitigate both 1) risk of errors due to poor task design, and 2) risk of performance errors due to sleep loss, circadian cycle, fatigue, and work overload, especially in instances when high workloads are imposed by off-nominal events. Alion Science and Technology, together with Dr. Christopher Wickens, Colorado State University, and Dr. Thomas Jones, proposed to develop and empirically validate the S-PRINT tool. S-PRINT is based on human-performance models that are accessed through a usable interface. S-PRINT allows users to evaluate the effects of automation system design, operator fatigue, and task factors on predicted performance in automation failure scenarios. The project consists of three main lines of work: 1) literature review and meta-analyses, 2) S-PRINT model and tool development, and 3) empirical data collection and validation studies. The literature review and meta-analyses were conducted to identify and evaluate factors that affect astronaut performance on long-duration space missions. In our literature review effort, we identified three primary areas of research: 1) fatigue and underload effects on performance, 2) human-automation interaction, including factors such as automation reliability and operator complacency, and 3) overload, multitasking, and operator strategies for performing tasks in these conditions. These three areas were researched in parallel to provide a qualitative understanding of the issues (goal of the literature review), and to provide empirically-based data to inform human performance model development (goal of the meta-analyses). The review provided sufficient data to develop analytic models for predicting the effects of sleep disruption fatigue on complex task performance, and for developing a preliminary model of task selection in overload conditions. It also revealed a need for targeted empirical research in the areas of human-automation interaction and in task selection in overload. The S-PRINT model and tool development area included four main subtasks: 1) S-PRINT tool development, 2) human performance model development, 3) implementation of analytic models and performance shaping factors developed from the meta-analyses and targeted experimentation, and 4) beta test evaluation and tool improvements. These were all completed in the project. The S-PRINT tool was developed and the models were implemented and tested. S-PRINT is included within the Improved Performance Research Integration Tool (IMPRINT), a tool that Alion has developed and maintains for the Army Research Laboratory. IMPRINT allows users to build task network models to predict human performance in complex scenarios. S-PRINT allows users to develop and evaluate scenarios using a particular model of operator performance. S-PRINT, as delivered to NASA in March, 2015, includes two library models, and it also provides the capability for users at NASA to build their own custom models using IMPRINT. S-PRINT provides an easy-to-use interface that allows users to create, run, and compare scenarios using already-existing library models. By changing input parameters regarding astronaut fatigue, automation system design, and task characteristics, S-PRINT users can create literally thousands of scenarios. The output from these scenarios can be compared to identify sleep mitigations, automation design changes, allocation of individuals to tasks, or task factor changes that can be adjusted to provide better performance. In addition, S-PRINT was evaluated at a beta test performed with potential system users at NASA. We identified two scenarios for the basis of the library models. The primary deliverable in S-PRINT was a long-duration mission scenario that would impose significant mental workload on an astronaut. It is of an astronaut working with a remotely-manipulated robotic arm and monitoring an environmental process control system. A fault occurs in the process control system, and rapidly becomes a high-workload off-nominal event. We developed the model of this scenario using data from NASA trainers, astronauts, and from our robotics and process control simulations. Another model, involving an operator using one of three different types of fire detection systems, was developed for testing the S-PRINT human-automation interaction capabilities and for the beta test. The third task in the tool and model development area – implementing the analytic models and performance shaping factors – has also been completed. The fatigue meta-analysis provided algorithms that specify performance degradations based on sleep deprivation (hours of continual wakefulness), restricted sleep, circadian cycle effects, and sleep inertia. These algorithms, considerably expanding on existing algorithms (e.g., SAFTE) have been added to IMPRINT. The human-automation interaction (HAI) literature review provided a robust HAI framework and relative importance measures of different factors such as automation reliability and automation failure salience. However, to parameterize the HAI model further, we conducted targeted research. The data collected from the research allowed us to develop a performance shaping factor that applies a benefit to performance when the scenario includes 1) automation that is implemented at a high degree (where most of the functions are allocated to the automation rather than the operator) and 2) is highly reliable, if the automation is functioning normally. This performance shaping factor applies a penalty (e.g., the time to perform tasks is longer, or the accuracy associated with task completion is degraded) in cases where highly automated, highly reliable systems fail. It also applies a penalty in automation failure situations when a salient failure indication is not provided. From the meta-analysis of task overload and multitasking that might apply to an unexpected emergency management situation, we developed a model of operator task selection and task shedding in overload. This is the Strategic Task Overload Management (STOM) model. The factors of task difficulty, salience (the presence of a reminder), priority, and engagement all affect the probability that an operator will select a given task and, by extension, neglect others. This model has also been implemented within S-PRINT. The data gathering and validation studies conducted in this effort included a set of ground-based human-in-the-loop (HITL) studies performed at Colorado State University (CSU), specifically designed to provide data for model development and validation. Experiments were conducted to investigate operator performance in working with automation, and in multitasking conditions. These experiments provided data regarding the effects of automation design on operator performance, and the interaction of automation design with fatigue and the interaction of multitasking with fatigue. Three experiments examined the effects of task factors on operator multi-task performance. In particular, within the long duration mission scenario of multi-tasking between robotic arm control and environmental control, the HITL experiment provided data used to validate the STOM model predictions. Over 95% of the variance in actual task switching behavior within this pair of complex, competing tasks was accounted for within the model. The experimental studies also provided data (e.g., times to complete tasks, probability of failure on a given task, performance distributions on the tasks) that was used to populate the human performance model of an astronaut controlling a robotic arm while also monitoring the environmental systems. The S-PRINT research project was successfully completed. We developed and tested a model-based tool that includes analytic models, performance shaping factors, and task network models of operator performance in complex human-automation interaction scenarios with workload transitions. The models have been developed and validated using empirical data.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Articles in Peer-reviewed Journals</strong> — Wickens CD, Vieane A, Clegg B, Sebok A, Janes J. &quot;Visual attention allocation between robotic arm and environmental process control: validating the STOM task switching model.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2015 Sep;59(1):617-21. (59th Annual Meeting of the Human Factors and Ergonomics Society, Los Angeles, CA, October 26–30, 2015.) http://dx.doi.org/10.1177/1541931215591135 , Sep-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Sebok A, Wickens CD. &quot;Implementing lumberjacks and black swans into model-based tools to support human-automation interaction.&quot; Hum Factors. 2017 Mar;59(2):189-203. Epub 2016 Sep 27. http://dx.doi.org/10.1177/0018720816665201 ; PubMed PMID: 27591210, Mar-2017</li><li><strong>Articles in Peer-reviewed Journals</strong> — Clegg BA, Vieane AZ, Wickens CD, Gutzwiller RS, Sebok AL. &quot;The effects of automation-induced complacency on fault diagnosis and management performance in process control.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2014 Sep;58(1):844-8. (58th Annual Meeting of the Human Factors and Ergonomics Society, Chicago, IL, October 27-31, 2014.) http://dx.doi.org/10.1177/1541931214581178 , Sep-2014</li><li><strong>Articles in Peer-reviewed Journals</strong> — Gutzwiller RS, Wickens CD, Clegg BA. &quot;Workload overload modeling: An experiment with MATB II to inform a computational model of task management.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2014 Sep;58(1):849-53. (58th Annual Meeting of the Human Factors and Ergonomics Society, Chicago, IL, October 27-31, 2014.) http://dx.doi.org/10.1177/1541931214581179 , Sep-2014</li><li><strong>Articles in Peer-reviewed Journals</strong> — Clegg B, Wickens CD, Vieane A, Gutzwiller RS, Sebok A. &quot;Circadian effects on simple components of complex task performance.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2015 Sep;59(1):627-31. (59th Annual Meeting of the Human Factors and Ergonomics Society, Los Angeles, CA, October 26–30, 2015.) http://dx.doi.org/10.1177/1541931215591137 , Sep-2015</li><li><strong>Articles in Other Journals or Periodicals</strong> — Gutzwiller R, Wickens C, Clegg B. &quot;Time on task and STOM model validation.&quot; Human Factors. Submitted, as of June 2015., Jun-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Gutzwiller RS, Clegg BA, Blitch JG. &quot;Part-task training in the context of automation: current and future directions.&quot; American Journal of Psychology. 2013 Winter;126(4):417-32. http://www.jstor.org/stable/10.5406/amerjpsyc.126.4.0417 , accessed 1/29/14 ; PubMed PMID: 24455809, Dec-2013</li><li><strong>Articles in Peer-reviewed Journals</strong> — Wickens CD, Hutchins SD, Laux L, Sebok A. &quot;The impact of sleep disruption on complex cognitive tasks: A meta-analysis.&quot; Human Factors. 2015 Sep;57(6):930-46. Epub 2015 Feb 20. PMID: 25850114 ; http://dx.doi.org/10.1177/0018720815571935 , Sep-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Gutzwiller RS, Clegg BA, Blitch JG. &quot;Part-task training in the context of automation: current and future directions.&quot; American Journal of Psychology. In press, February 2013. Expected publication November 2013., Feb-2013</li><li><strong>Articles in Peer-reviewed Journals</strong> — Sebok A, Wickens CD, Sargent R. &quot;Development, testing, and validation of a model-based yool to predict operator responses in unexpected workload transitions.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2015 Sep;59(1):622-6. (59th Annual Meeting of the Human Factors and Ergonomics Society, Los Angeles, CA, October 26–30, 2015.) http://dx.doi.org/10.1177/1541931215591136 , Sep-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Wickens CD, Clegg BA, Vieane AZ, Sebok AL. &quot;Complacency and automation bias in the use of imperfect automation.&quot; Human Factors. 2015 Aug;57(5):728-39. PubMed PMID: 25886768 ; http://dx.doi.org/10.1177/0018720815581940 , Aug-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Wickens C, Santamaria A, Sebok A. &quot;A computational model of task overload management and task switching.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2013 Sep;57(1):763-7. 57th Annual Meeting of the Human Factors and Ergonomics Society, San Diego, CA, September 30-October 4, 2013. http://dx.doi.org/10.1177/1541931213571167 , Sep-2013</li><li><strong>Articles in Peer-reviewed Journals</strong> — Sebok A, Wickens C, Clegg B, Sargent R. &quot;Using empirical research and computational modeling to predict operator responses to unexpected events.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2014 Sep;58(1):834-8. (58th Annual Meeting of the Human Factors and Ergonomics Society, Chicago, IL, October 27-31, 2014.) http://dx.doi.org/10.1177/1541931214581176 , Sep-2014</li><li><strong>Articles in Peer-reviewed Journals</strong> — Wickens C, Gutzwiller R, Santamaria A. &quot;Discrete task switching in overload: A meta-analysis and a model.&quot; International Journal of Human-Computer Studies. 2015 Jul;79:79-84. https://doi.org/10.1016/j.ijhcs.2015.01.002 , Jul-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Gutzwiller R, Wickens CD. &quot;The Role of Individual Differences in Executive Attentional Network and switching choices and multi-task management.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2015 Sep;59(1):632-6. (59th Annual Meeting of the Human Factors and Ergonomics Society, Los Angeles, CA, October 26–30, 2015.) http://dx.doi.org/10.1177/1541931215591138 , Sep-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Sebok A, Wickens C, Sargent R. &quot;Using meta-analyses results and data gathering to support human performance model development.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2013 Sep;57(1):783-7. 57th Annual Meeting of the Human Factors and Ergonomics Society, San Diego, CA, September 30-October 4, 2013. http://dx.doi.org/10.1177/1541931213571171 , Sep-2013</li><li><strong>Articles in Peer-reviewed Journals</strong> — Hutchins SD, Laux L, Wickens CD, Sebok A. &quot;The effect of continuous wakefulness on complex cognitive task performance: a quantitative synthesis of research.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2013 Sep;57(1):793-7. 57th Annual Meeting of the Human Factors and Ergonomics Society, San Diego, CA, September 30-October 4, 2013. http://dx.doi.org/10.1177/1541931213571173 , Sep-2013</li><li><strong>Articles in Peer-reviewed Journals</strong> — Wickens CD, Laux L, Hutchins SD, Sebok A. &quot;Effects of sleep restriction, sleep inertia, and overload on complex cognitive performance before and after workload transition: a meta analysis and two models.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2014 Sep;58(1):839-43. (58th Annual Meeting of the Human Factors and Ergonomics Society, Chicago, IL, October 27-31, 2014.) http://dx.doi.org/10.1177/1541931214581177 , Sep-2014</li><li><strong>Articles in Peer-reviewed Journals</strong> — Wickens CD, Gutzwiller RS, Vieane A, Clegg BA, Sebok A, Janes J. &quot;Time sharing between robotics and process control: Validating a model of attention switching.&quot; Hum Factors. 2016 Mar;58(2):322-43. Epub 2016 Jan 15. http://dx.doi.org/10.1177/0018720815622761 ; PubMed PMID: 26772605, Mar-2016</li><li><strong>Articles in Peer-reviewed Journals</strong> — Wickens CD, Gutzwiller RS. &quot;The status of the Strategic Task Overload Model (STOM) for predicting multi-task management.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2017 Sep;61(1):757-61. https://doi.org/10.1177/1541931213601674 , Sep-2017</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23251">https://techport.nasa.gov/projects/23251</a>
+    </div>
+  </div>
+</body>
+</html>

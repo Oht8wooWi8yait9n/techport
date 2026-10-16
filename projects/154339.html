@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spectroscopic System for the Accurate Determination of [O2], [CO2], d18O-O2, d13C-CO2, and Ethylene in Plant Chambers | NASA TechPort Project 154339</title>
+  <meta name="description" content="In this STTRprogram, Nikira Labs Inc. and Colorado State University (CSU) will collaborate to develop an analyzer that measures oxygen (O2), carbon dioxide (CO2), oxygen isotope (d18O-O2), carbon isotope (d13C-CO2), and ethylene fluxes in plant chambers for di">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/154339">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 154339</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX06</span>
+        </div>
+        <h1>Spectroscopic System for the Accurate Determination of [O2], [CO2], d18O-O2, d13C-CO2, and Ethylene in Plant Chambers</h1>
+        <div class="meta-id">NASA TechPort Project ID: 154339</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/154339" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          In this STTRprogram, Nikira Labs Inc. and Colorado State University (CSU) will collaborate to develop an analyzer that measures oxygen (O2), carbon dioxide (CO2), oxygen isotope (d18O-O2), carbon isotope (d13C-CO2), and ethylene fluxes in plant chambers for direct quantification of photosynthesis, respiration, and plant health.    In Phase I, Nikira Labs and CSU demonstrated technical feasibility by developing, testing, and deploying an analyzer for plant studies. The analyzer was found to measure [12CO2], [13CO2], [16O16O], and [18O16O] to better than 3.5 ppm, 0.85 ppm, 400 ppm, and 15 ppm (1 sigma, 30 s), sufficient to show photosynthesis and respiration. Moreover, the analyzer provided a linear response (R2  0.99) for all four isotopomers. The analyzer and was then deployed at CSU to study plants under a variety of conditions. Plants were measured under water, heat, and salinity stresses, showing changes inphotosynthesis, respiration, andassimilation/respiratory quotients. Another set of plants were subject to 13C-doping under dark and light conditions, showing13C fixing due to photosynthesis. Finally, the Phase I results were used to identifyimprovements for the Phase II instruments.    In Phase II, Nikira Labs and CSU will incorporatethe improvements to develop, test, deploy, and deliver 2 analyzers. The first analyzer will measure [12CO2], [13CO2], [16O16O], and [18O16O] with higher accuracy in a more compact form factor. The second unit will extend the technology to measure ethylene with ppb-level sensitivity. Both systems will be deployed at CSU and incorporated into a custom, controlled plant chamber for plant stress studies. Data analytics will be developed to identify abnormal behavior and signal initial signs of plant stress prior visual evidence. After extensive experimentation, both analyzers will be deployed at Kennedy Space Center into existing plant habitats. Finally, the analyzers will be delivered to NASA for further studies.  The prospect of growing plants in space has several advantages in life support systems, including CO2 removal, O2 generation, waste recycling, and food production.&nbsp; Such plants can be used for future human colonies on the Moon or Mars, and provide fresh vegetables for shorter missions.&nbsp; To this end, NASA has developed several plant growth chambers&nbsp;and&nbsp;found that plant growth in microgravity is impeded&nbsp;by altered fluid flow within plants, poor root aeration, and reduced mass transfer to leaves.&nbsp; In order to compensate for these factors, NASA must measure plant health and control system variables to optimize plant yield and recognize the aforementioned benefits.  &nbsp;  In this STTR&nbsp;program, Nikira Labs&nbsp;and Colorado State University&nbsp;will collaborate to develop an analyzer that measures oxygen (O2), carbon dioxide (CO2), oxygen isotopes (d18O-O2), carbon isotopes (d13C-CO2), and ethylene&nbsp;in plant chambers for quantification of photosynthesis, respiration, and plant health.&nbsp; This analyzer will provide an early indication of plant stress to allow for active control of plant growth.  Objective 1  Develop a compact, lightweight analyzer capable of making highly accurate measurements of [O2], [CO2], d18O-O2, and d13C-CO2.  &nbsp;  Objective 2  Extend the technology into the mid-infrared to measure trace, ppb-levels of ethylene in ambient air.  &nbsp;  Objective 3  Utilize both analyzers to measure plant chamber headspace under a variety of stresses and control conditions.  &nbsp;  Objective 4  Develop analytics and a control algorithm to detect of plant stress from the measured gases and perform mitigating actions respectively.  &nbsp;  Objective 5  Deploy the analyzers in NASA plant chambers and deliver the final unit to NASA for future studies.  &nbsp;  Phase II Deliverables  Nikira Labs and CSU will deliver 2 analyzers to NASA Kennedy Space Center.&nbsp; The first analyzer will measure [CO2], [O2], d13C-CO2, and d18O-O2.&nbsp; The second analyzer will measure ethylene at the ppb-level.&nbsp; Both analyzers will used with existing (e.g. VEGGIE, APH...) and future plant chambers.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Growing plants in space has advantages in life support systems, including CO2 removal, O2 generation, and food production.&nbsp; Plants can be used for human colonies&nbsp;and provide&nbsp;fresh vegetables for shorter missions.&nbsp; NASA has&nbsp;found that plant growth in microgravity is impeded.&nbsp; To compensate for this, NASA must&nbsp; measure plant health and control system variables.&nbsp; The STTR instrument can study plants and provide early indications of stress.&nbsp;&nbsp;It&nbsp;can also be used in other NASA functions to evaluate bioreactors and human health.&nbsp;  Nikira Labs is commercializing&nbsp;the technology for environmental research and semiconductor gas monitoring.&nbsp; Phase I&nbsp;innovations&nbsp;were incorporated into commercial instruments, yielding more than $200k&nbsp;in revenue.&nbsp; Within 5 years of the completion of the Phase II effort, we estimate&nbsp;commercial revenue of more than $20M from products resulting from this STTR effort.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>154339</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06: Human Health, Life Support, and Habitation Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2022-11-21</td></tr>
+<tr><th>Project End Date</th><td>2025-02-21</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Kennedy Space Center (KSC) — Kennedy Space Center, Florida</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Colorado State University-Pueblo — Pueblo, Colorado; Nikira Labs Inc. — Mountain View, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Florida (FL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Manish Gupta (Principal Investigator) &lt;manish.gupta@nasa.gov&gt;; Orlando Melendez (Project Manager) &lt;orlando.melendez-1@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/154339">https://techport.nasa.gov/projects/154339</a>
+    </div>
+  </div>
+</body>
+</html>

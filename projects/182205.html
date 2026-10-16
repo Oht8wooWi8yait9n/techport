@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weld-ASSIST: Weldability Assessment for In-Space Conditions using a Digital Twin | NASA TechPort Project 182205</title>
+  <meta name="description" content="In-space manufacturing and assembly are vital to NASA&#x27;s long-term exploration goals, especially for the Moon and Mars missions. Deploying welding technology in space enables the assembly and repair of structures, reducing logistical burdens and supply needs fr">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/182205">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 182205</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX12.4.2</span>
+        </div>
+        <h1>Weld-ASSIST: Weldability Assessment for In-Space Conditions using a Digital Twin</h1>
+        <div class="meta-id">NASA TechPort Project ID: 182205</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/182205" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>In-space manufacturing and assembly are vital to NASA's long-term exploration goals, especially for the Moon and Mars missions. Deploying welding technology in space enables the assembly and repair of structures, reducing logistical burdens and supply needs from Earth. The unique challenges and extreme conditions of space--high thermal variations, microgravity, and vacuum--require advanced welding techniques and computational tools to ensure reliability, repeatability, safety, and structural integrity in one-shot weld scenarios. For the first time, this project investigates these challenges by focusing on three key factors: (1) Very low temperatures in space degrade the weldability of high thermal conductivity materials, like aluminum alloys, making it harder to achieve strong, defect-free welds. (2) The extreme vacuum in space lowers the boiling points of alloying elements, altering the keyhole geometry during welding. This selective vaporization changes the weld’s final chemical composition, affecting its microstructure and properties. (3) Microgravity nearly eliminates buoyancy-driven flow of liquid metal inside the molten pool, preventing gas bubbles from escaping, which leads to porosity and defects in the welds. By examining these critical factors using multi-scale multi-physics models integrated with physics-informed machine learning, and forward/inverse uncertainty quantification techniques, this project provides the first-ever real-time digital twin platform to evaluate welding processes under extreme space/lunar conditions. The models are validated through Earth-based experiments, parabolic flight tests, and publicly available data from different databases and agencies worldwide. Moreover, the established models will facilitate extendibility to support in-situ resource utilization on the Moon, including construction and repair using locally sourced materials like regolith. The established fundamental scientific knowledge will minimize trial-and-error, enable high-quality one-shot welds in space, and reduce the need for reworks, significantly reducing the costs and time needed for space missions.</p>
+        </div>
+
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>182205</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX12.4.2: Digital Transformation Technologies for Manufacturing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2025-01-27</td></tr>
+<tr><th>Project End Date</th><td>2028-01-26</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Illinois Chicago — Chicago, Illinois</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Illinois (IL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Azadeh  Haghighi (Principal Investigator); Andrew J O&#x27;Connor (Project Manager) &lt;andrew.oconnor@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/182205">https://techport.nasa.gov/projects/182205</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design, analyze and verify the performance of a 5N Water-Electrolysis Small-SAT Propulsion System | NASA TechPort Project 95021</title>
+  <meta name="description" content="The proposed technology for in-space propulsion offers several benefits over traditional technologies: Electrolysis propulsion offers the high specific impulse (over 400 sec) normally associated with cryogenically stored H 2 /O 2 , but without the dry mass ass">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/95021">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 95021</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">MSFC IRAD</span>
+          <span class="badge">TX01.2.3</span>
+        </div>
+        <h1>Design, analyze and verify the performance of a 5N Water-Electrolysis Small-SAT Propulsion System</h1>
+        <div class="meta-id">NASA TechPort Project ID: 95021</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/95021" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The proposed technology for in-space propulsion offers several benefits over traditional technologies:</p><ul><li>Electrolysis propulsion offers the high specific impulse (over 400 sec) normally associated with cryogenically stored H<sub>2</sub>/O<sub>2</sub>, but without the dry mass associated with cryocoolers,&nbsp;high-pressure cryogenic tanks, associated cryovalves and other plumbing, thermal insulation, and turbo pumps.</li><li>In addition to offering higher Isp than hydrazine propulsion, the proposed technology eliminates the hazards and associated cost of working with highly toxic materials.</li><li>Water is a long-term storable and potentially replenishable fuel. Therefore, long-duration missions (e.g. to Mars) can be achieved with high-Isp propellant. In fact, a recent study shows that DRA 5.0 closes if this technology is incorporated in place of the baseline propulsion approach.</li><li>These substantial mass savings result in a far higher delta-V for the spacecraft, likely above 1000 m/s for a 6U CubeSat, for example, and at far lower cost than ion propulsion. It is an enabler for deep-space small sats.</li></ul><p>The proposed effort centers on three key areas:</p><ul><li>Theoretical and analytical modeling to predict the performance of a scaled-up version of Cornell&rsquo;s current prototype, which is suitable for a 3U CubeSat. While much of the analysis will take place at Cornell, it will be informed by design principles and related expertise at MSFC.</li><li>Maturation of a point design relevant to a near-term deep-space smallsat mission, an area that will involve close collaboration between MSFC (setting requirements and specifying interface technologies) and Cornell (related aspects of design and analysis).</li><li>Verification of performance predictions of a <strong>5N Electrolysis Propulsion System </strong>in test facilities at MSFC, with the goal of validating the proposed architecture and informing the models to extend their applicability to even larger scale.</li><li>&nbsp;</li></ul>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>We propose a collaboration on the development, testing, and characterization of an electrolysis propulsion system in the 5-22N thrust range and ultimately advance the technology to TRL-5.</p><p>Electrolysis propulsion is a hybrid of chemical and electric propulsion. Therefore, it can be compared in some ways to other electric propulsion technologies, such as ion thrusters. Although the specific impulse is much lower here, the thrust-per-unit-power is much higher. An electrolysis propulsion thruster requires 7.2 kW per N of continuous thrust; contrast with the NSTAR ion thruster which requires 23 kW per N of continuous thrust. For pulsed operations (the operations concept for the existing flight prototype), as little as 2W is sufficient to produce gaseous H2/O2 to fill the current combustion chamber in about 20 minutes. The larger chamber proposed here will be at least 4x the volume, requiring higher power or simply longer electrolysis time, but with the added benefit of longer thrust pulses and therefore higher Isp.</p><p>In the area of in-space propulsion, water-based propulsion offers extensive scalability. Electrolysis propulsion could be scaled up to the 1000N level, or greater, depending on mission requirements. The system, if large enough, could even include technologies like temporary cryogenic storage to take advantage of its high specific impulse while minimizing leak rates with the rest of propellant remaining in water and gaseous H2 and O2 storage. With the proper development, electrolysis propulsion could help the DRA 5.0 (humans to Mars) architecture close&ndash;providing an attractive alternative to cryogenic fuel storage concepts&ndash;as well as deep- space probe missions such as those in the <em>New Frontiers </em>program.</p><p>The Cornell Space Systems Design Studio already has extensive experience designing, manufacturing, assembling, and testing a 1N electrolysis propulsion system in a pulsed thrust configuration. This system is baselined for the CisLunar Explorer mission, an entry in the CubeQuest Centennial Challenge, that will launch on SLS EM-1. Building on this success, we propose to understand further the improvements possible at larger scale thanks to MSFC&rsquo;s expertise, to characterize the system in MSFC&rsquo;s superior facilities, and to inform small spacecraft missions in collaboration with MSFC. In order to do so, we propose working with MSFC to develop and test a prototype capable of 5N pulsed and continuous thrust and run a series of characterization tests on it.</p><p>We propose to design, analyze, and then test this 5N system under continuous thrust as well as additional pulsed thrust modes. During these firings, power usage, specific impulse, and thrust will be assessed. These experiments will validate the analysis that identifies the optimal length of thrust bursts to maximize Isp while minimizing the required electrical power and energy. It is known that continuous thrust will yield higher specific impulse values, but the question then becomes will this greater efficiency be worth the size, weight, and power (SWaP) cost to operate the electrolyzers at a higher rate? These tests will yield invaluable data that could provide answers to the above questions and will inform the future small-sate mission architecture of interest here and other spacecraft architectures that implement electrolysis propulsion.</p><p>At 500-1500 m/s delta-V and 5N of thrust, electrolysis propulsion offers significant advantages to traditional propellant technologies for in-space propulsion. Its higher specific impulse and lower dry mass enable it to outperform even ion propulsion. The propellant cost is negligible, and the low-pressure tanks and plumbing are inexpensive and available off-the-shelf for the most part. The green nature of this propellant also means that far more vendors and prime contractors&mdash;small companies, universities, <em>et al.</em>&mdash;can integrate and test small spacecraft with propulsion, broadening who can contribute to NASA&rsquo;s exploration and science objectives safely and cost-effectively. Furthermore, the modular nature of the current prototype system would carry over to the scaled up version and allow for the efficient division of design and assembly tasks between MSFC and Cornell.</p><p>Finally, the intricate geometries that optimize the combustion chamber H2 and O2 storage tanks at are best realized with advanced additive manufacturing. By leveraging MSFC&rsquo;s abilities in additive manufacturing, some system components, such as nozzle geometry can evolve over time, independent of the rest of the system, cutting costs and increasing flexibility.</p><p>The current system is a 1N thruster that operates in pulsed bursts. It will launch on the EM-1 mission of the SLS as part of the CisLunar Explorers Lunar CubeSat project, and is TRL-5. The system components are as follows:</p><ul><li>pressure sensors in the combustion chamber and storage tank</li><li>current seals are compression fitting and 1/4 NPT fittings</li><li>flame arrestor/check valve and heat sink device attached to the upstream piping from the combustion chamber to the solenoid valve</li><li>combustion chamber, and a modular nozzle (both made from 3D-printed Titanium)</li><li>check valve from the combustion chamber to the nozzle</li><li>solenoid valve from the fuel tank to the combustion chamber</li><li>water and gaseous hydrogen and oxygen, all stored in the same &ldquo;fuel&rdquo; tank</li><li>ignition device (glow plugs)</li></ul><p>The system functions via passive mechanical control and limited active electronic actuation. As electrolysis occurs, gaseous hydrogen and oxygen flow through the storage tank up to a solenoid valve connected to downstream piping that leads to the combustion chamber. Once the pressure from constant water electrolysis is high enough, as read by the pressure gauges in the fuel tank, the solenoid valve opens and allows the gaseous hydrogen and oxygen to travel through a flame arrestor/check valve and enter the combustion chamber. Once the pressure in the combustion chamber is adequate, the solenoid valve is closed, and the glow plug ignites the H2/O2 mixture. The resulting spike in pressure goes beyond the cracking pressure for the check valve of the nozzle (150 psi currently), thus allowing the combustion products to flow through the converging-diverging nozzle and out of the system.</p><p>In order to prevent water flowing from the fuel tank to the combustion chamber, on Earth, the system is stored in a cylindrical tank with plumbing from the top. The water remains at the bottom of the tank, while the less-dense pressurized hydrogen and oxygen remains at the top of the container, and can flow out of the tank to the combustion chamber. In order to prevent water ingestion on orbit, the spacecraft rotates about the nozzle&rsquo;s thrust axis. This spin field causes the hydrogen and oxygen gas to separate from the water, once electrolyzed When the check valve between the tank and the combustion chamber opens, these gases flow to the combustion chamber.</p><p>Current data from pulsed thrust testing have yielded the following results: Using only the 2W available from body-fixed solar panels, this prototype has demonstrated a sustained specific impulse of 450 seconds, with short 1 Ns pulses achieving a net specific impulse of 300 seconds.</p><p>Scaling the current 1N system up to be in the range of 5N to 22N requires specific hardware changes while keeping the same basic system architecture. Currently, the spacecraft relies on rotation to allow for H2, O2, and H2O storage in the same tank. To remove the current rotation requirement on the spacecraft, additional tanks can be added to store the H2 and O2 separately from the water. On higher-thrust tanks, it is also advisable to separate the H2 from the O2 prior to combustion, as a risk-reduction precaution. Higher mass flow from the system and a higher exit nozzle area will result in higher thrust, so changes to both the combustion chamber and nozzle geometry will be required. We hope to leverage MSFC&rsquo;s state-of-the-art 3D-printing capabilities using the EOS M100 to print the required larger combustion chamber and optimized nozzle geometries. It may also be employed to develop small, discrete, efficiently spaced H2, O2 and H2O storage tanks, in one single body. Furthermore, the modular design of nozzle attachment to the combustion chamber means that if multiple nozzle designs require testing, they can easily be switched out on one singular system architecture.</p><p>The proposed technology development approach is to achieve the following goals:</p><ol><li>Design, manufacture, and assemble a fully functional prototype <strong>5N electrolysis propulsion system </strong>capable of delivering 500-1500 m/s delta-V to small spacecraft/satellites in both continuous and pulsed thrust modes and that is able to fit within the confined spaces of 6U CubeSat launchers that reside on the Orion Stage Adapter.</li><li>Characterize the power usage, specific impulse, and thrust of the system in variable length thrust modes (continuous versus pulse thrusts), and construct publically available data on the trade-offs between continuous and pulsed thrust in electrolysis propulsion, particularly for small spacecraft but with scalability to larger projects as well.</li><li>Place the <strong>5N Electrolysis Propulsion System </strong>on a path to qualification as a propulsion solution for secondary payloads launched on NASA&rsquo;s Space Launch System (SLS).</li></ol><p>These goals, if achieved, would mature the <strong>5N Electrolysis Propulsion System </strong>to the broadest possible infusion potential.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>95021</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: MSFC IRAD (MSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.2.3: Electromagnetic Propulsion</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 1 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2018-10-01</td></tr>
+<tr><th>Project End Date</th><td>2019-04-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Cornell University — Mableton, Georgia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama; Office of the Chief Technologist (OCT)</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL), New York (NY)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Others Inside the Solar System, Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Mason Peck (Principal Investigator); Christopher G Burnside (Co-Investigator) &lt;christopher.g.burnside@nasa.gov&gt;; Daniel P Cavender (Co-Investigator) &lt;daniel.p.cavender@nasa.gov&gt;; Mason Peck (Project Manager)</td></tr>
+<tr><th>Program Management Contacts</th><td>John W Dankanich (Program Manager) &lt;john.dankanich@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2019-03-19</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: TBD</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/95021">https://techport.nasa.gov/projects/95021</a>
+    </div>
+  </div>
+</body>
+</html>

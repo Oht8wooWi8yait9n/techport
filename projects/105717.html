@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultra Low Frequency Sensor for Lunar Subsurface Characterization: Discovering ISRU Volatiles (ULFS) | NASA TechPort Project 105717</title>
+  <meta name="description" content="The goal of this project is to develop an ultra-low radio frequency (1 Hz-20 KHz) sensor and data processing techniques for planetary surface and subsurface dielectric spectroscopy. The hardware systems and data processing techniques will establish a baseline ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/105717">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 105717</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX08</span>
+        </div>
+        <h1>Ultra Low Frequency Sensor for Lunar Subsurface Characterization: Discovering ISRU Volatiles (ULFS)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 105717</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/105717" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The goal of this project is to develop an ultra-low radio frequency (1 Hz-20 KHz) sensor and data processing techniques for planetary surface and subsurface dielectric spectroscopy. The hardware systems and data processing techniques will establish a baseline option of ultra-low RF spectroscopic instruments for integration into future planetary science missions for Moon and Mars in the near term as well as the moons of other planets in the far term.</p>  <p>All materials including geological minerals have a complex index of refraction: complex electric permittivity and complex magnetic permeability. When excited with electromagnetic waves, all materials interacts with electromagnetic energy through either a relaxation or resonance process. Through these processes, electromagnetic energy is absorbed in minerals. These absorption processes and their wavelength dependence allows for the derivation of information about the chemistry of a mineral from reflected or emitted electromagnetic energy.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Before establishing a human outpost on the lunar surface via ARTEMIS (SPD-1), NASA requires assessment of ISRU resources for human exploration utilization. Resupplying such essential resources [water, oxygen] from the Earth will be very expensive in terms of “up-mass”. To address this issue, NASA is planning a series of in situ robotic investigations (VIPER, CLPS-payloads) for detecting, and identifying key in situ resources buried under the lunar surface (e.g., : <a href="https://gcc02.safelinks.protection.outlook.com/?url&#61;https%3A%2F%2Fwww.herox.com%2FNASApayload%2Fteams&amp;data&#61;04%7C01%7Cmanohar.d.deshpande%40nasa.gov%7C08a3f206a42b4737a72708d941552c42%7C7005d45845be48ae8140d43da96dd17b%7C0%7C0%7C637612656330419744%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&amp;sdata&#61;Tpqp4FVOHCLSGwReVMK3XbEM5PKPLqKmFnNQmddo%2BQA%3D&amp;reserved&#61;0">https://www.herox.com/NASApayload/teams</a> ). The development of the proposed ULF sensor concept will directly apply to definitive detection of water ice in the lunar subsurface. The proposed ULF sensor concept can be reconfigurable to be implemented in various robotic or human-relevant surface systems (CLPS landers, rovers, hoppers, or ARTEMIS HLS lander legs). As these platforms offer some sort of mobility across the lunar surface, the proposed ULF sensor system will enable definitive identification of ISRU-relevant resources buried to depths of several meters, as well as their electrical and geotechnical properties including bulk porosity, all without physical interactions such as drilling. NASA’s ARTEMIS (Moon to Mars) program will provide adequate near-term funding for maturing and subsequent flight opportunities for the proposed ULF sensor. Beyond VIPER and commercial ISRU landers/rovers, the conceptual ULF sensor could be safely and readily integrated into crew-based systems as well (HLS).</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>105717</td></tr>
+<tr><th>Acronym</th><td>ULFS</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08: Sensors and Instruments</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX11: Software, Modeling, Simulation, and Information Processing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2021-10-01</td></tr>
+<tr><th>Project End Date</th><td>2022-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Manohar D Deshpande (Principal Investigator) &lt;manohar.d.deshpande@nasa.gov&gt;; Michael J Amato (Project Manager) &lt;michael.j.amato@nasa.gov&gt;; Terry A Hurford (Project Manager) &lt;terry.a.hurford@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-02</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: 1. Designed and fabricated sensor array (3 x 3) to measure Capacitance matrix of medium. 2. 8-channel data accusation backend electronics has been designed and simulated using SPICE 3. Integration of Sensor Array and Data acquisition has been completed and initial testing of with simple uniform medium completed. 4. NTR report on this development is in progress The purpose of the Goddard Space Flight Center’s Internal Research and Development (IRAD) program is to support new technology development and to address scientific challenges. Each year, Principal Investigators (PIs) submit IRAD proposals and compete for funding for their development projects. Goddard’s IRAD program supports eight Lines of Business: Astrophysics; Communications and Navigation; Cross-Cutting Technology and Capabilities; Earth Science; Heliophysics; Planetary Science; Science Small Satellites Technology; and Suborbital Platforms and Range Services. Task progress is evaluated twice a year at the Mid-term IRAD review and the end of the year. When the funding period has ended, the PIs compete again for IRAD funding or seek new sources of development and research funding, or agree to external partnerships and collaborations. In some cases, when the development work has reached the appropriate Technology Readiness Level (TRL) level, the product is integrated into an actual NASA mission or used to support other government agencies. The technology may also be licensed out to the industry. The completion of a project does not necessarily indicate that the development work has stopped. The work could potentially continue in the future as a follow-on IRAD; or be used in collaboration or partnership with Academia, Industry, and other Government Agencies. If you are interested in partnering with NASA, see the TechPort Partnerships documentation available on the TechPort Help tab. http://techport.nasa.gov/help</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://twitter.com/intent/follow?screen_name&amp;#61;NASAGoddard" target="_blank" rel="noopener noreferrer">NASA Goddard Twitter</a></li><li><a href="https://etd.gsfc.nasa.gov/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><a href="http://www.nasa.gov/centers/goddard/home/index.html" target="_blank" rel="noopener noreferrer">NASA Goddard Website</a></li><li><a href="https://www.facebook.com/NASA.GSFC" target="_blank" rel="noopener noreferrer">NASA Goddard Facebook</a></li><li><strong>Ultra-Low Frequency Sensor</strong> — Ultra Low Frequency Sensor</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/105717">https://techport.nasa.gov/projects/105717</a>
+    </div>
+  </div>
+</body>
+</html>

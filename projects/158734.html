@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electronic Controller for Sunpower Stirling Power Convertor | NASA TechPort Project 158734</title>
+  <meta name="description" content="While many spaceborne systems utilize solar arrays for onboard power generation, a number of applications including deep space exploration and planetary missions must instead utilize alternate forms of power generation due to the lack of solar power flux and /">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158734">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158734</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX03</span>
+        </div>
+        <h1>Electronic Controller for Sunpower Stirling Power Convertor</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158734</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158734" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          While many spaceborne systems utilize solar arrays for onboard power generation, a number of applications including deep space exploration and planetary missions must instead utilize alternate forms of power generation due to the lack of solar power flux and / or the incompatibility of large solar arrays with mission constraints. For such systems, an attractive option is to utilize a radioisotope heat source coupled to a high-efficiency thermal / electrical power converter such as the Sunpower Robust Stirling Convertor (SRSC).  To this end, the West Coast Solutions (WCS) and Sunpower, Inc. team has successfully completed a Phase I development program for the Stirling Convertor Space Controller (SCSC). As its name implies, the SCSC is intended to be a space-compatible controller and power bus interface unit for the SRSC. The SCSC provides control for the SRSC, while also conditioning generated power such that it is compatible with the general spacecraft 28V bus for purposes related to battery charging, powering connected systems, etc.  The Phase I program included the design of a preliminary SCSC Flight Model system, including identification of critical space-compatible electrical components with sufficient packaging and radiation hardness characteristics for use in the intended environments. The proposed Phase II program continues SCSC maturation with an Engineering Model produced and qualified to TRL 6 via relevant environmental and functional testing.     	The Stirling Converter Space Controller (SCSC) is a radiation-hardened, space-compatible controller for the Sunpower Robust Stirling Converter (SRSC) 	The SCSC, SRSC and suitable radioisotope heat source work together to provide long-life power for missions that cannot utilize solar 	Compact SCSC design accepts AC power from the SRSC and provides conditioned DC power for a standard 28 V spacecraft bus (nominally ~70 Wdc provided to the DC bus) 	SCSC system includes an integral power shunt allowing it to internally dissipate excess converter power that cannot be utilized by the bus 	SCSC supports initial SRSC startup operations 	High efficiency electrical power conversion and conditioning works with the SRSC to provide end-to-end thermal / electrical efficiency of near 25% 	High net efficiency minimizes the amount of radioisotope required for a given power level 	High efficiency also reduces rejected waste heat, easing the system-level thermal design 	Built-in charge amplifier and Active Balancer drive for vibration reduction 	&nbsp;   Overall Goal: &nbsp;TRL 6 qualification of the SCSC   Approach: &nbsp;Environmental test (Shock / Vibration / Thermal Vacuum / EMI) of an Engineering Model SCSC  Technical Objectives:  1.&nbsp;&nbsp; &nbsp;Requirements Update  2.&nbsp;&nbsp; &nbsp;Design and Implement SRSC Simulator  3.&nbsp;&nbsp; &nbsp;Test Phase I Brassboard SCSC with SRSC Simulator  4.&nbsp;&nbsp; &nbsp;Update SCSC FM Schematic and Complete Design  5.&nbsp;&nbsp; &nbsp;Design, Build and Test SCSC Engineering Model  6.&nbsp;&nbsp; &nbsp;SCSC Qualification  7.&nbsp;&nbsp; &nbsp;Program Wrap-Up and Final Report   &nbsp;
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Any mission employing RPS, particularly deep space exploration and lunar power installations as this approach offers the key advantage of operating continuously over long-duration space missions, largely independent of changes in sunlight, temperature, charged particle radiation, or surface conditions like thick clouds of dust.&nbsp;  Deep space exploration and lunar power installations for DoD and potentially future commercial players, as well as potential DoD LEO applications demanding a more resilient power source.&nbsp;
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158734</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX03: Aerospace Power and Energy Storage</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 4 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2024-07-05</td></tr>
+<tr><th>Project End Date</th><td>2026-01-04</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Wecoso, INC — Huntington Beach, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Ohio (OH)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Robert Hon (Principal Investigator); Donguk M Yang (Project Manager) &lt;donguk.m.yang@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158734">https://techport.nasa.gov/projects/158734</a>
+    </div>
+  </div>
+</body>
+</html>

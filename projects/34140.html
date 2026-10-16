@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gust Load Estimation and Rejection With Application to Robust Flight Control Design for HALE Aircraft | NASA TechPort Project 34140</title>
+  <meta name="description" content="High Altitude Long Endurance (HALE) aircraft have garnered increased interest in recent years as they can serve several purposes, including many of the objectives of satellites while incurring a fraction of the cost to deploy. Examples applications include Int">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/34140">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 34140</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX15.1.3</span>
+        </div>
+        <h1>Gust Load Estimation and Rejection With Application to Robust Flight Control Design for HALE Aircraft</h1>
+        <div class="meta-id">NASA TechPort Project ID: 34140</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/34140" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          High Altitude Long Endurance (HALE) aircraft have garnered increased interest in recent years as they can serve several purposes, including many of the objectives of satellites while incurring a fraction of the cost to deploy. Examples applications include Intelligence, Surveillance, and Reconnaissance, communications relay systems, and environmental and atmospheric sensing. The requirements for HALE aircraft dictate that they have very high lift-to-drag ratios, and are extremely lightweight, resulting in high aspect ratios with significant structural flexibility. This results in a dynamically nonlinear vehicle with highly coupled rigid body and aeroelastic structural dynamics. Atmospheric turbulence and gust loading of substantial variance can significantly impact the performance of HALE aircraft. Due to the vast importance of gust loading on these lightweight aircraft platforms, Systems Technology, Inc. and the University of Michigan propose the development of the Disturbance Observer for Gust Load Alleviation (DOGLA) where the gust loading will be actively estimated and subsequently rejected. DOGLA will be implemented on a nonlinear HALE aircraft model in conjunction with a robust primary flight control design. Both the disturbance observer and primary flight control designs will be implemented within a novel gain-scheduling framework to address nonlinear dynamics and varying flight conditions.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          DOGLA falls under the NASA Aeronautical Research Mission Directorate (ARMD), which in 2014 announced six research thrusts. DOGLA applies to several of these thrusts. First, DOGLA directly contributes to the "assured autonomy for aviation transformation" thrust by allowing an automatic system to alleviate gust loading without impacting performance of the primary flight control system. The proposed innovation also supports the "real-time, system-wide safety assurance" and "ultra-efficient commercial vehicles" research thrusts. In terms of specific ARMD programs, DOGLA applies to: 1) the Fundamental Aeronautics Program wherein DOGLA provides an advanced technology to improve performance of current and future air vehicles; 2) Aviation Safety Program wherein the technology supports assurance of flight critical systems and assurance of safe and effective aircraft control under hazardous conditions; and 3) the Aeronautics Test Program wherein the technology can enhance test operations of new, novel technology demonstrators including the NASA Global Hawk HALE and the X-56A.<br /> <br />DOGLA has application to the worldwide aircraft manufacturing industry of both manned and unmanned aircraft, with focus on HALE aircraft. Current DoD programs that will benefit from DOGLA include the Boeing Phantom Eye and the DARPA Vulture, which are for long endurance advanced ISR, driven by current US military combat conditions. In the commercial market, HALE vehicles are garnering interest as communications relay systems. Both Google and Facebook are pursuing HALE technology to provide internet access to remote areas. Google and Facebook have recently purchased Titan Aerospace and Ascenta respectively, who have been developing solar powered HALE UAS for this purpose. Other companies that specialize in HALE aircraft that would benefit from DOGLA include Aurora Flight Sciences (Perseus and Theseus aircraft) and Solar Flight (Sunseeker and SUNSTAR solar powered aircraft). DOGLA has application to non-HALE flexible aircraft as well, and this includes airliners developed by both Boeing and Airbus.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>34140</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX15.1.3: Aeroelasticity</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2015-06-17</td></tr>
+<tr><th>Project End Date</th><td>2016-06-17</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Systems Technology, Inc. — Hawthorne, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Michigan-Ann Arbor — Ann Arbor, Michigan; Armstrong Flight Research Center (AFRC) — Edwards, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Michigan (MI)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Brian P Danowsky (Principal Investigator); Peter M Suh (Project Manager) &lt;peter.m.suh@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Gust load estimation and rejection with application to robust flight control design for HALE aircraft, Phase I Project Image</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart Image</li><li><strong>Briefing Chart</strong> — Gust load estimation and rejection with application to robust flight control design for HALE aircraft, Phase I Briefing Chart</li><li><strong>Final Summary Chart Image</strong> — Gust load estimation and rejection with application to robust flight control design for HALE aircraft, Phase I Project Image</li><li><strong>Briefing Chart Image</strong> — Gust load estimation and rejection with application to robust flight control design for HALE aircraft, Phase I</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/34140">https://techport.nasa.gov/projects/34140</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Towards a NU-WRF based Mega Wildfire Digital Twin: Smoke Transport Impact Scenarios on Air Quality, Cardiopulmonary Disease and Regional Deforestation | NASA TechPort Project 117198</title>
+  <meta name="description" content="Recent persistent droughts and extreme heatwave events over the Western states of the US and Canada are creating highly favorable conditions for mega wildfires that are generating broad regions of deforestation. Smoke from these Western wildfires, which depend">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/117198">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 117198</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">FireSense Technology</span>
+          <span class="badge">TX13.4</span>
+        </div>
+        <h1>Towards a NU-WRF based Mega Wildfire Digital Twin: Smoke Transport Impact Scenarios on Air Quality, Cardiopulmonary Disease and Regional Deforestation</h1>
+        <div class="meta-id">NASA TechPort Project ID: 117198</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/117198" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Recent persistent droughts and extreme heatwave events over the Western states of the US and Canada are creating highly favorable conditions for mega wildfires that are generating broad regions of deforestation. Smoke from these Western wildfires, which depend on their atmospheric states, their intensity, and the vegetation fueling them, can be observed in distant cities and towns over the Eastern US, significantly affecting the air quality of these communities and leading to adverse human health effects, such as increased Covid-19 morbidity cases owing to the smoke as well as respiratory and smoke-related heart disease. Such mega wildfire conditions are expected to continue occurring globally with increasing frequency and intensity over forested regions as reported by the IPCC AR6. Our goal is to develop and implement a Regional Wildfire Digital Twin (WDT) model with a sub-km resolution to enable the conduct of mega wildfire smoke impact scenarios at various spatial scales and arbitrary locations over N. America. WDT will provide a valuable planning tool to implement parameter impact scenarios by season, location, intensity, and atmospheric state. We will augment the NASA Unified WRF (NUWRF) model with an interactive locality fueled SFIRE parameterization (SFIRE) coupled to GOCART, CHEM and the HRRR4 physics. We will implement a data-driven, near time continuous, data assimilation scheme for ingesting and assimilating mixed boundary layer heights, cloud heights, and precipitation from a streaming sensor web of radars, ceilometers and satellite lidar observational systems into a nested regional WDT model. We will accelerate the NUWRF model performance to enable high resolution by emulating the microphysics and GOCART parameterizations with a deep dense machine learning progressive neural net architecture that can track the penetration of wildfire smoke into the planetary boundary layer. The SFIRE model will be a unique contribution to NUWRF, fully enabling the interaction of smoke aerosols with observed clouds, the microphysics precipitation, convection and the GOCART Chem, currently unavailable in other fire forecasting models. This proposal builds upon the AI expertise of CO-Is gained from a prior AIST incubation grant to explore the potential impact of machine learning technologies to infer boundary layer heights from Lidar aerosol backscatter. We have successfully implemented a sensor web to simultaneously stream, process and assimilate ceilometer data from Bristol, PA, Catonsville, MD and Blacksburg, VA in real-time data into the WRF model. In addition, our CO-Is from U/CO at Denver, SJSU and Howard university are the developers and analysts of the SFIRE data products and will implement the SFIRE system into NUWRF as a fully interactive physics package. This proposal is in keeping with the Science and Applications priorities of the Decadal Strategy for Earth Observations from Space 2018, which considers it most important to " Determine the effects of key boundary layer processes on weather, hydrological, and air quality forecasts at minutes to sub-seasonal time scales". Further, it supports the NASA diversity goals by engaging students at Howard U, an HBCU and three MSI schools, SJSU, U/C at Denver and UMBC. Thus, if awarded, we expect to transform NUWRF into a wildfire digital twin model from a current TRL 3/4 to achieve a TRL 6/7 by the end of Year 2. We are proposing for Year 3, the testing of an extension of the scenario implementations of WDT to global located forested regions, allowing one-way feedback interactions between the GFS and Geos global models and the NUWRF based WDT, thereby laying the groundwork towards a fully global interactive digital twin model for operational analytics. We further expect to test the implementation of the SFIRE and Data Assimilation System in the EPA operational Community Model for Air Quality.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Enhances the capabilities for existing science instruments for monitoring pre-fire, active-fire, and post-fire situations, reduces the power and mass of these instruments, and enables unprecedented observations in support of wildfire science through distributed observing systems and the information technologies needed for their support.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>117198</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>FireSense Technology</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX13.4: Mission Success Technologies</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2022-07-01</td></tr>
+<tr><th>Project End Date</th><td>2026-06-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Maryland-Baltimore County (UMBC) — Baltimore, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Maryland-College Park (UMCP) — College Park, Maryland; University of Maryland-College Park (UMCP) — College Park, Maryland; University of Colorado Denver (CU Denver) — Denver, Colorado; University of Colorado Denver (CU Denver) — Denver, Colorado; National Oceanic and Atmospheric Administration (NOAA) — College Park, Maryland; National Oceanic and Atmospheric Administration (NOAA) — College Park, Maryland; Lamont-Doherty Earth Observatory (LDEO) — Palisades, New York; Lamont-Doherty Earth Observatory (LDEO) — Palisades, New York; Howard University — Washington, District of Columbia; Howard University — Washington, District of Columbia; Goddard Space Flight Center (GSFC) — Greenbelt, Maryland; Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Colorado (CO), District of Columbia (DC), Florida (FL), Maryland (MD), New York (NY), Virginia (VA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Milton Halem (Principal Investigator); Cameron D McAdams (Co-Investigator); John D Sorkin (Co-Investigator); James P Mackinnon (Co-Investigator) &lt;james.mackinnon@nasa.gov&gt;; John E Dorband (Co-Investigator); Belay B Demoz (Co-Investigator); Zhifeng Yang (Co-Investigator); Ruben Delgado Gilewski (Co-Investigator); Robert M Atlas (Co-Investigator); Eugenia K Kalnay (Co-Investigator); Jan Mandel (Co-Investigator); Phuong T Nguyen (Co-Investigator) &lt;phuong.t.nguyen@nasa.gov&gt;; David R Chapman (Co-Investigator); Craig S Pelissier (Co-Investigator) &lt;craig.s.pelissier@nasa.gov&gt;; Vanessa A Caicedo (Co-Investigator); Carlos A Lopez Cruz (Co-Investigator) &lt;carlos.a.cruz@nasa.gov&gt;; Adam W Bargteil (Co-Investigator); Yaacov Yesha (Co-Investigator); Sen Chiao (Co-Investigator); Adam K Kochanski (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Michael S Seablom (Program Director) &lt;michael.s.seablom@nasa.gov&gt;; Teresa N Kauffman (Program Manager) &lt;teresa.n.kauffman@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-06-26</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://science.nasa.gov/science-research/science-enabling-technology/nasa-wildfire-digital-twin-pioneers-new-ai-models-and-streaming-data-techniques-for-forecasting-fire-and-smoke/" target="_blank" rel="noopener noreferrer">SMD Technology Highlight article</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/117198">https://techport.nasa.gov/projects/117198</a>
+    </div>
+  </div>
+</body>
+</html>

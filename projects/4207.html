@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guidance and Control for Entry Vehicles with Deployable Hypersonic Decelerators | NASA TechPort Project 4207</title>
+  <meta name="description" content="Entry, descent, and landing (EDL) missions to date have mostly relied on technology developed in the 1960s and 70s. Future EDL missions of interest at Earth, Mars, Venus, Titan, and the outer planets will require a significant increase in the performance capab">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/4207">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 4207</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX09.5</span>
+        </div>
+        <h1>Guidance and Control for Entry Vehicles with Deployable Hypersonic Decelerators</h1>
+        <div class="meta-id">NASA TechPort Project ID: 4207</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/4207" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Entry, descent, and landing (EDL) missions to date have mostly relied on technology developed in the 1960s and 70s. Future EDL missions of interest at Earth, Mars, Venus, Titan, and the outer planets will require a significant increase in the performance capabilities of EDL systems. This increase in capability can only be achieved through the development of new EDL technologies, such as deployable hypersonic decelerators. As stated in NASA's draft Space Technology Roadmap, deployable hypersonic decelerators (DHDs) have the potential to revolutionize EDL systems, enabling NASA's next generation of exploration missions. However, significant feasibility questions remain about guidance and control systems for DHD vehicles. While NASA has embarked on a substantial inflatable DHD technology maturation effort over the past several years, very little development work has been completed for rigid deployable systems, and only limited work has been completed to date in the area of guidance and control for DHDs. Open guidance and control questions center around whether DHD vehicles possess adequate trajectory control authority to achieve mission objectives, such as precision landing, when high-altitude atmospheric variability, realistic flight control actuation systems, and FSI effects are included. At the EDL system level, realistic DHD vehicle performance capability has not yet been clearly determined. The proposed research revolves around two coupled areas of design and analysis: system-level mission design and performance analysis and subsystem-level guidance and control design and analysis. Numeric simulation, uncertainty analysis, and trade studies will be conducted in both areas in parallel to answer fundamental questions about the feasibility of DHD entry systems. Specifically, this research effort is expected to characterize the impact of DHDs on guidance and control subsystem design, develop preliminary DHD guidance and control system options and algorithms, determine realistic expectations for DHD vehicle performance, and identify additional applications for DHD vehicles beyond high-mass Mars missions.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Numeric simulation, uncertainty analysis, and trade studies will be conducted in both areas in parallel to answer fundamental questions about the feasibility of DHD entry systems. Specifically, this research effort is expected to characterize the impact of DHDs on guidance and control subsystem design, develop preliminary DHD guidance and control system options and algorithms, determine realistic expectations for DHD vehicle performance, and identify additional applications for DHD vehicles beyond high-mass Mars missions.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>4207</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.5: Flight Mechanics and GN&amp;C for Entry, Descent, and Safe Precise Landing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-08-01</td></tr>
+<tr><th>Project End Date</th><td>2015-04-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Georgia Institute of Technology-Main Campus (GA Tech) — Atlanta, Georgia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Georgia (GA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Robert D Braun (Principal Investigator) &lt;robert.d.braun@nasa.gov&gt;; Zachary R Putnam (Co-Investigator); Christopher J Cerimele (Project Manager) &lt;christopher.j.cerimele@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: During planetary entry, a vehicle uses drag generated from flight through the planetary atmosphere to decelerate from hyperbolic or orbital velocity. To date, all guided entry systems have utilized lift-modulation trajectory control. Deployable aerodynamic devices enable drag modulation trajectory control, where a vehicle controls its energy and range during entry by varying drag area. Implementation of conventional lift-modulation systems is challenging for deployable systems. In contrast, drag-modulation trajectory control may be simpler and lower cost than current state-of-the-art lift-modulation systems. In this investigation, a survey of analytical methods for computing planetary entry trajectories is presented and the approximate analytical solution to the entry equations of motion originally developed by Allen and Eggers is extended to enable flight performance evaluation of drag modulation trajectory control systems. Results indicate that significant range control authority is available for vehicles with modestly sized decelerators. The extended Allen-Eggers solution is closed-form and enables rapid evaluation of nonlifting entry trajectories. The solution is utilized to develop analytical relationships for discrete-event drag-modulation systems. These relationships have direct application to onboard guidance and targeting systems. Numerical techniques were used to evaluate drag-modulation trajectory control for precision landing and planetary aerocapture missions, including development of prototype real-time guidance and targeting algorithms. Results show that simple, discrete-event drag-modulation trajectory control systems can provide landed accuracies competitive with the current state of the art and a more benign aerothermal environment during entry for robotic-scale exploration missions. For aerocapture, drag-modulation trajectory control is shown to be feasible for missions to Mars and Titan and the required ΔV for periapsis raise is insensitive to the particular method of drag modulation. Overall, results indicate that drag-modulation trajectory control is feasible for a subset of planetary entry and aerocapture missions. To facilitate intelligent system selection, a method is proposed for comparing lift and drag modulation trajectory control schemes. This method applies nonlinear variational techniques to closed-form analytical solutions of the equations of motion, generating closed-form expressions for variations of arbitrary order. This comparative method is quantitative, performance-based, addresses robustness, and applicable early in the design process. This method is applied to steep planetary entry trajectories and shows that, in general, lift and drag-modulation systems exhibit similar responses to perturbations in environmental and initial state perturbations. However, significant differences are present for aerodynamic perturbations and results demonstrate that drag systems may be more robust to uncertainty in aerodynamic parameters. Finally, the results of these contributions are combined to build a set of guidelines for selecting lift or drag-modulation for a Mars Science Laboratory-class planetary entry mission.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>4207-1363184897644.jpg</strong> — Project Image Guidance and Control for Entry Vehicles with Deployable Hypersonic Decelerators</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/4207">https://techport.nasa.gov/projects/4207</a>
+    </div>
+  </div>
+</body>
+</html>

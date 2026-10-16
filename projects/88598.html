@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calibration and Validation for Constellations of Remote Sensing CubeSats with Microwave Radiometers | NASA TechPort Project 88598</title>
+  <meta name="description" content="Miniaturized microwave radiometers deployed on nanosatellites in Low Earth Orbit (LEO) are now demonstrating the ability to provide science-quality weather measurements, such as the 3U Micro-sized Microwave Atmospheric Satellite-2A (MicroMAS-2A). The goal of h">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/88598">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 88598</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX08.2.3</span>
+        </div>
+        <h1>Calibration and Validation for Constellations of Remote Sensing CubeSats with Microwave Radiometers</h1>
+        <div class="meta-id">NASA TechPort Project ID: 88598</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/88598" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Miniaturized microwave radiometers deployed on nanosatellites in Low Earth Orbit (LEO) are now demonstrating the ability to provide science-quality weather measurements, such as the 3U Micro-sized Microwave Atmospheric Satellite-2A (MicroMAS-2A). The goal of having cost-effective miniature instruments distributed in LEO is to field constellations and improve temporal and geospatial coverage. The Time-Resolved Observations of Precipitations structure and storm Intensity with a Constellation of Smallsats (TROPICS) is a constellation of six 3U CubeSats, based on MicroMAS-2A, scheduled to launch in 2020. Each CubeSat hosts a scanning 12-channel passive microwave radiometer. TROPICS will provide increased temporal resolution of less than 60 minutes compared to larger satellites in polar orbit such as NOAA-20 with the Advanced Technology Microwave Sounder (ATMS), which has a revisit rate of 7.6 hours. [1] The TROPICS rapid refresh rate will provide high value investigations of inner-core conditions for tropical cyclones. [2] Calibration for CubeSats presents new challenges as standard blackbody targets are too bulky to fit on CubeSats. Instead, we use internal noise diodes for calibration on CubeSats. The Global Precipitation Measurement (GPM) Microwave Imager (GMI) instrument has shown noise diodes to be very stable on orbit [3], but they have not been tested on-orbit at TROPICS frequencies. In order to provide state of the art calibration for CubeSats, methods must be developed to track and correct noise diode drift. We will quantitatively determine the radiometric accuracy of MicroMAS-2A and compare it to state of the art instruments to provide an assessment of CubeSat performance. Radiometric accuracy is determined by using the Community Radiative Transfer Model (CRTM) and the Rosenkranz Line-by-Line (LBL) Radiative Transfer Model (RTM) with inputs from GPS radio occultation (GPSRO), radiosondes, and Numerical Weather Prediction (NWP) models in order calculate simulated brightness temperatures that are used as the ground truth. We perform on-orbit calibration corrections using histogram matchups between MicroMAS-2A and the MicroWave Humidity Sounder (MWHS)-2 on the Chinese weather satellite FengYun (FY)-3C. The double difference technique is then used to compare MicroMAS-2A performance to ATMS. We also develop a novel method of calibration for CubeSat constellations such as TROPICS by incorporating solar and lunar periodic intrusions as an additional source of information to counter noise diode drift. These solar and lunar intrusions occur as well for existing satellites hosting microwave radiometers in polar orbits, but are much more infrequent than for the TROPICS constellation’s scanning payload and are typically treated as an observational and calibration limiting constraint. The higher rate of occurrence of intrusions motivates the novel idea of using the intrusions to support calibration. An algorithm is developed to compare expected effective brightness temperature from solar and lunar measurements to actual measured brightness temperatures, and the algorithm is tested using ATMS lunar intrusion data. In addition, we develop an architecture for TROPICS to track noise diode drift. The frequency of single difference matchups, double difference matchups using both intra- and inter- Simultaneous Nadir Observations (SNO), and solar and lunar intrusions is determined. The impact of orbital parameters and phasing on direct radiance validation opportunities is also studied.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This research will advance the technology of formation flying a constellation of CubeSats and will contribute to analysis of how to improve BRDF measurements from spacecraft.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>88598</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.2.3: Distributed Aperture</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2016-08-01</td></tr>
+<tr><th>Project End Date</th><td>2019-12-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Massachusetts Institute of Technology (MIT) — Cambridge, Massachusetts</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Massachusetts (MA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Kerri Cahoy (Principal Investigator); Angela Crews (Co-Investigator) &lt;angela.crews@nasa.gov&gt;; Neerav Shah (Project Manager) &lt;neerav.shah-1@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Miniaturized microwave radiometers deployed on nanosatellites in Low Earth Orbit (LEO) are now demonstrating the ability to provide science-quality weather measurements. For instance, the Micro-sized Microwave Atmospheric Satellite-2A(MicroMAS-2A) is a 3U CubeSat launched in January 2018 that provided the first CubeSat microwave atmospheric sounder data from orbit. The goal of having cost effective miniature instruments distributed in LEO is to field constellations and improve temporal and geospatial coverage. The Time-Resolved Observations of Precipitations structure and storm Intensity with a Constellation of Smallsats (TROPICS) is a constellation of six 3U CubeSats, based on MicroMAS-2A, scheduled to launch no earlier than 2020. Each CubeSat hosts a scanning 12-channel passive microwave radiometer in W-band, F-band, and G-band. TROPICS will provide a temporal resolution of less than 60 minutes and will provide high value investigations of inner-core conditions for tropical cyclones [1]. Calibration for CubeSats presents new challenges as standard blackbody targets are difficult to effectively shroud on a CubeSat platform. Instead, internal noise diodes are used for calibration on CubeSats. The Global Precipitation Measurement (GPM) Microwave Imager (GMI) instrument has shown noise diodes to be stable on orbit [2], but the noise diodes have not been tested on-orbit at TROPICS frequencies. In order to provide state of the art calibration for CubeSats, methods must be developed to track and correct noise diode drift. We quantitatively determine the radiometric accuracy of MicroMAS-2A and compare it to state of the art instruments to provide an assessment of CubeSat performance. Radiometric accuracy is determined by using the Community Radiative Transfer Model (CRTM) and the Rosenkranz Line-by-Line (LBL) Radiative Transfer Model (RTM) with inputs from GPS radio occultation (GPSRO), radiosondes, and Numerical Weather Prediction (NWP) models in order calculate simulated brightness temperatures that are used as the ground truth. We perform on-orbit calibration corrections using data matchups between MicroMAS-2A and the MicroWave Humidity Sounder (MWHS)-2, which is a microwave radiometer on the operational Chinese weather satellite FengYun (FY)-3C with similar bands. Brightness temperature histograms are analyzed to calculate an initial calibration correction; we develop a Markov Chain-Monte Carlo (MCMC) technique that calculates calibration correction results within 1.2% of the brightness temperature histograms method. The double difference technique is then used to compare the corrected MicroMAS-2A data to the state-of-the-art microwave radiometer Advanced Technology Microwave Sounder (ATMS) on Suomi-NPP. Double difference results computed using both CRTM and LBL as well as atmospheric inputs from both radiosondes and NWP models indicate MicroMAS-2A accuracies ranging from approximately 0.05 K to 2.73 K, depending on the channel. The upper atmospheric temperature sounding channels for which modeling and surface contamination errors are least significant yield intercalibration accuracies better than 1.0 K. We also develop a novel method of calibration for CubeSat constellations such as TROPICS by incorporating solar and lunar periodic intrusions as an additional source of information to counter noise diode drift. These lunar intrusions also occur for existing satellites hosting microwave radiometers in sun-synchronous polar orbits, but are much more infrequent than for the TROPICS constellation’s scanning payload. Lunar intrusions are typically treated as an observational and calibration limiting constraint. We develop a solar/lunar calibration algorithm and test it using ATMS lunar intrusion data. The mean bias and standard deviation between the algorithm and actual ATMS data falls within the expected ATMS error budget of 0.6 K to 3.9K, showing that the algorithm is working correctly and can be applied to TROPICS. We assess the daily variation in error that we can expect from instrument noise and source error, and find that lunar intrusions should be analyzed weekly while solar intrusions should be analyzed daily to track 1 K of noise diode drift. In addition, we develop an architecture for validation matchups with TROPICS. We determine frequencies of single difference matchups, double difference matchups using both intra- and inter- Simultaneous Nadir Observations (SNO), and solar and lunar intrusions. Matchup sensitivity to orbital parameters is studied and we find that changes in true anomaly and Right Ascension of Ascending Node (RAAN) do not decrease the number of SNO matchups that are within our filter criteria of 60 minutes.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><a href="https://ntrs.nasa.gov/api/citations/20190001205/downloads/20190001205.pdf" target="_blank" rel="noopener noreferrer">Overview of the NASA TROPICS CubeSat Constellation Mission</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/88598">https://techport.nasa.gov/projects/88598</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calibration instrumentation for future intensity mapping experiments | NASA TechPort Project 95507</title>
+  <meta name="description" content="To fully address questions of &quot;Cosmic Origins,&quot; we will need large statistical data sets encompassing all of cosmic time. Presently, we have a grasp on redshifts z ~ 1100 from extensive work on the CMB, and 0 &lt; z &lt;~0.5 from galaxy surveys. There is a large swa">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/95507">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 95507</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX08.1.1</span>
+        </div>
+        <h1>Calibration instrumentation for future intensity mapping experiments</h1>
+        <div class="meta-id">NASA TechPort Project ID: 95507</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/95507" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          To fully address questions of "Cosmic Origins," we will need large statistical data sets encompassing all of cosmic time. Presently, we have a grasp on redshifts z ~ 1100 from extensive work on the CMB, and 0 < z <~0.5 from galaxy surveys. There is a large swath of time in between, however, which has been studied only sparsely by a handful of experiments that are limited by large uncertainties. Intensity mapping will begin to fill in this gap. NASA-proposed intensity mapping missions such as CDIM and SPHEREx will allow us to probe how the first stars turned on, initial populations of objects, and star formation through cosmic time. Other intensity mapping experiments such as HIRAX, the collaboration with which I am doing my PhD, are also targeting measurements of Dark Energy by studying the large scale galaxy distribution. While intensity mapping experiments hold great promise for science, they all share a common hurdle: the measurements they make are contaminated by bright sources that emit in the band of interest, and removing this foreground requires precise characterization of the instrument. For my PhD, I will focus on two aspects of the HIRAX instrument characterization: 1) optimizing the signal/noise of feeds by developing a test chamber in which to take noise temperature measurements, and  2) designing a broadband drone beam calibration system in order to generate beam maps that will factor into all of the HIRAX cosmological analysis. These space technologies can be easily and broadly applied to other RF and intensity mapping experiments as well. The technology I will develop aligns with NASA goals as outlined in 8.1.1 Detectors and Focal Planes, 8.1.4 Microwave, Millimeter-, and Submillimeter-Waves, and TA 8.2.2 Structures and Antennas. Furthermore, HIRAX, through its quest to better understand Dark Energy, addresses many of the same questions detailed in NASA's "Cosmic Origins" initiative. Both projects will greatly benefit from the resources and expertise provided by the NSTRF visiting technologist experience, and the realization of the projects will advance space technology on multiple fronts. The technology I develop will be cheap, repeatable and widely relevant. The test box could be repurposed to characterize noise for a broad range of RF equipment, and will enable development of lighter weight antennas without sacrificing understanding of noise, something highly beneficial if attaching to a payload. Drone calibration technology will allow for more precise characterization of satellites and ground based dishes in communication with space missions, thereby pushing the boundaries of exploration.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The technology I develop will be cheap, repeatable and widely relevant. The test box could be repurposed to characterize noise for a broad range of RF equipment, and will enable development of lighter weight antennas without sacrificing understanding of noise, something highly beneficial if attaching to a payload. Drone calibration technology will allow for more precise characterization of satellites and ground based dishes in communication with space missions, thereby pushing the boundaries of exploration.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>95507</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.1: Detectors and Focal Planes</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2018-08-01</td></tr>
+<tr><th>Project End Date</th><td>2022-05-23</td></tr>
+<tr><th>Lead Organization / Center</th><td>Yale University — New Haven, Connecticut</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Connecticut (CT)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Outside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Laura Newburgh (Principal Investigator); Emily Kuhn (Co-Investigator); Tzu-Ching Chang (Project Manager) &lt;tzu-ching.chang@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The development of intensity mapping techniques promises larger data sets and maps of the Universe, at times ranging from the Epoch of Reionization to present day. The Hydrogen Intensity and Real-time Analysis eXperiment (HIRAX) will utilize 21cm intensity mapping to improve constraints on the Dark Energy equation of state. It has strong synergies with the on-going WFIRST and Euclid missions and pioneers the observational techniques of SPHEREx and the proposed CDIM and FARSIDE probe studies. My graduate work centered on two key aspects of the HIRAX instrument characterization¬— antenna noise assessment and drone calibration—and included fieldwork, data analysis, and general service to the HIRAX collaboration.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/95507">https://techport.nasa.gov/projects/95507</a>
+    </div>
+  </div>
+</body>
+</html>

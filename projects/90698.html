@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Threshold raw retrieved contrast in coronagraphs is limited by internal polarization | NASA TechPort Project 90698</title>
+  <meta name="description" content="The objective of this work is to provide the exoplanet program with an accurate model of the coronagraph complex point spread function, methods to correct chromatic aberration in the presence of polarization aberrations, device requirements to minimize and com">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/90698">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 90698</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">SAT</span>
+          <span class="badge">TX08.2.1</span>
+        </div>
+        <h1>Threshold raw retrieved contrast in coronagraphs is limited by internal polarization</h1>
+        <div class="meta-id">NASA TechPort Project ID: 90698</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/90698" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The objective of this work is to provide the exoplanet program with an accurate model of the coronagraph complex point spread function, methods to correct chromatic aberration in the presence of polarization aberrations, device requirements to minimize and compensate for these aberrations at levels needed for exoplanet coronagraphy, and exoplanet retrieval algorithms in the presence of polarizaiton aberrations.     Currently, space based coronagraphs are designed and performance analyzed using scalar wave aberration theory. Breckinridge, Lam & Chipman (2015) PASP 127: 445-468 and Breckinridge & Oppenheimer (2004) ApJ 600: 1091-1098 showed that astronomical telescopes designed for exoplanet and precision astrometric science require polarization or vector-wave analysis. Internal instrument polarization limits both threshold raw contrast and measurements of the vector wave properties of the electromagnetic radiation from stars, exoplanets, gas and dust.  	The threshold raw contrast obtained using only scalar wave theory is much more optimistic than that obtained using the more hardware-realistic vector wave theory. Internal polarization reduces system contrast, increases scattered light, alters radiometric measurements, distorts diffraction-limited star images and reduces signal-to-noise ratio. For example, a vector-wave analysis shows that the WFIRST-CGI instrument will have a threshold raw contrast of 10-7 not the 10-8 forecasted using the scalar wave analysis given in the WFIRST-CGI 2015 report. The physical nature of the complex point spread function determines the exoplanet scientific yield of coronagraphs.  	We propose to use the Polaris-M polarization aberration ray-tracing software developed at the College of Optical Science of the University of Arizona to ray trace both a “typical” exoplanet coronagraph system as well as the WFIRST-CGI system. Threshold raw contrast and the field across the complex PSF will be calculated as a function of optical device vector E&M requirements on: 1. Lyot coronagraph mask and stop size, configuration, location and composition, 2. Uniformity of the complex reflectance of the highly reflecting metal mirrors with their dielectric overcoats, and 3. Opto-mechanical layout. Once these requirements are developed polarization aberration mitigation studies can begin to identify a practical solution to compensate polarization errors, not unlike the more developed technology of A/O compensates for pointing and manufacturing errors.  	Several methods to compensate for chromatic aberration in coronagraphs further compounds the complex PSF errors that require compensation to maximize the best retrieved raw contrast in the presence of exoplanets in the vicinity of stars.   	Internal instrument polarization introduces partial coherence into the wavefront to distort the speckle-pattern complex-field in the dark hole. An additional factor that determines retrieved raw contrast is our ability to effectively process the polarization-distorted field within the dark hole.  	This study is essential to the correct calculation of exoplanet coronagraph science yield, development of requirements on subsystem devices (mirrors, stops, masks, spectrometers, wavefront error mitigation optics and opto-mechanical layout) and the development of exoplanet retrieval algorithms.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The Strategic Astrophysics Technology program (SAT) supports focused development efforts for key technologies to the point at which they are ready to feed into major missions in the three science themes of the Astrophysics Division: Exoplanet Exploration, Cosmic Origins, and the Physics of the Cosmos. This program is specifically designed to address middle technology readiness level (TRL) "gaps" between levels 3 and 6: the maturation of technologies that have been established as feasible, but which are not yet sufficiently mature to incorporate into flight missions without introducing an unacceptable level of risk. NASA does not require a data management plan for proposals to SAT.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>90698</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Strategic Astrophysics Technology (SAT)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.2.1: Mirror Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2017-01-01</td></tr>
+<tr><th>Project End Date</th><td>2019-12-31</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Arizona — Tucson, Arizona</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Arizona (AZ), California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Outside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>James B Breckinridge (Principal Investigator) &lt;james.b.breckinridge@nasa.gov&gt;; Mary Gerrow (Co-Investigator); Russell Chipman (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Dominic J Benford (Program Director) &lt;dominic.j.benford@nasa.gov&gt;; Dominic J Benford (Program Manager) &lt;dominic.j.benford@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2023-10-06</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/90698">https://techport.nasa.gov/projects/90698</a>
+    </div>
+  </div>
+</body>
+</html>

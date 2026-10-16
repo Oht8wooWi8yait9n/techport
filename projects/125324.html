@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Highly Parallel, Fast Memory, Peripheral Access for RISC-V Many-Core Processors | NASA TechPort Project 125324</title>
+  <meta name="description" content="LeWiz research from NASA Phase 1 I-Corps program showed verystrong interest in LeWiz solutions from NASA telescope team, DoD lab and commercial storage customers with potential for immediate revenue. Previously, LeWiz developed fault-tolerant (FT) 1) high perf">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/125324">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 125324</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX02</span>
+        </div>
+        <h1>Highly Parallel, Fast Memory, Peripheral Access for RISC-V Many-Core Processors</h1>
+        <div class="meta-id">NASA TechPort Project ID: 125324</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/125324" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          LeWiz research from NASA Phase 1 I-Corps program showed verystrong interest in LeWiz solutions from NASA telescope team, DoD lab and commercial storage customers with potential for immediate revenue. Previously, LeWiz developed fault-tolerant (FT) 1) high performance network-on-chip bus (NOC) for multi-channel access supporting High Bandwidth Memory controller and/or high speed peripherals, and 2) 64-bit, 6-stage RISC-V CPU core with NOC interface capable up to 500K cores in a system. This Phase 2 proposed to further develop the Phase 1solutions to meet the immediate customer requirements and productize the solutions for infusion intoNASA and commercial customer products. 2 subsystems would be developed i) spectrometer memory/peripheral subsystem with highly parallelized access channels supportingDDR4 memory, 100Gbps Ethernet, multiple digital-to-analog converters, ii) RISC-V processor with enhanced NOC router integrated to the highly parallel NOC/HBM controller. The solution would also meet NASA SBIR Z2.02 Topic requirements for A fault-tolerant RISC-V processor IP core ...that is augmented to provide data parallelism, which is needed to accelerate image processing and science data processing. andenablingfuture development of accelerators and co-processors for many-core high-performance processingarchitecture advancing state of the art FT processors for space flights and autonomous applications. No other known solution is as advanced as the proposed for space applications. The project will be carried outover 2 years in the US.  I-Corps research&nbsp;showed very&nbsp;strong interest in LeWiz solutions -&nbsp;NASA telescope team, DoD lab and storage customers -&nbsp;potential for immediate revenue. LeWiz developed fault-tolerant (FT) 1) high performance network-on-chip bus (NOC) for multi-channel access HBM&nbsp;and/or high speed peripherals, and 2) 64-bit, 6-stage RISC-V CPU core with NOC&nbsp;capable &gt;500K cores. Phase 2 develops&nbsp;solutions to meet the immediate customer requirements and productize the solutions for infusion into&nbsp;NASA and commercial. 2 subsystems&nbsp;i) spectrometer memory/peripheral subsystem with highly parallelized access for&nbsp;DDR4, 100Gbps Ethernet, DACs, ii) RISC-V CPU&nbsp;+&nbsp;enhanced NOC router integrated to&nbsp;NOC/HBM controller. The solution would also meet NASA SBIR Z2.02 Topic for &quot;A fault-tolerant RISC-V ... core ...&nbsp;that is augmented to provide data parallelism, ...&nbsp;needed to accelerate image ...&nbsp;and science data processing.&quot; and&nbsp;enabling&nbsp;accelerators&nbsp;for many-core&nbsp;systems,&nbsp;advancing state of the art FT processors for space flights and autonomous applications. No other known solution is as advanced&nbsp;for space applications.  1.1&nbsp;&nbsp; &nbsp;Develop spec&nbsp;of the spectrometer memory/peripheral subsystem (SMPS)&nbsp;and the integrated FT RISC-V + NOC/HBM controller (R5FT-Mem Subsystem). 1.2&nbsp;&nbsp; &nbsp;Develop SMPS design. Modify the NOC/HBM controller to support NASA spectrometer DSP applications with integrated 100Gbps Ethernet, DACs and DDR4. 1.3&nbsp;&nbsp; &nbsp;Provide support to MKID Team for RFSoC FPGA integration, development and testing. 1.4&nbsp;&nbsp; &nbsp;Integrate the NOC/HBM controller with the FT RISC-V CPU core to formR5FT-Mem Subsystem  2.1 Implement fault tolerant support in the SMPS and R5FT-Mem subsystems&nbsp; 2.2 Thorough verification of the designs. Develop verification plan for each design, create test benches, test vectors and verify the designs. 2.5 Develop plan for Phase 3 &nbsp;  Deliverables: reports, specs, test plans, code, test benches, test cases, test results
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          NASA applications include flight control, landing control, instrumentations, payloads, sensors, navigation systems, networking, scientific processing, image processing, communication sub-systems for satellites, space stations, vehicles, space habitats. Very strong interest from NASA Microwave Kinetic Inductance Detector Team for space telescope applications in&nbsp;spectrometer (Origin Space Telescope) and RF-submillimeter (SELFI) programs  Non-NASA applications include flight/landing control, instrumentations, payloads, sensors, navigation, networking, image processing, communication subsystems for satellites, space stations, air/space/ground/sea vehicles, weapon systems.&nbsp;  Strong interest from Tier-1 network storage vendor. Contract negotiation&nbsp;in progress for&nbsp;custom development  Strong interest from DoD research lab for space systems
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>125324</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX02: Flight Computing and Avionics</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2022-04-26</td></tr>
+<tr><th>Project End Date</th><td>2025-10-25</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Lewiz Communications, Inc. — San Jose, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Chinh H Le (Principal Investigator); Marcellus A Proctor (Project Manager) &lt;marcellus.proctor@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li><li><strong>Final Summary Chart Image</strong> — Final Summary Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/125324">https://techport.nasa.gov/projects/125324</a>
+    </div>
+  </div>
+</body>
+</html>

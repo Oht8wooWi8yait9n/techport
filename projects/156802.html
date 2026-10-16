@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hack the land out of them: Obtaining land cover classifications from GLOBE Observer photographs (for Appendix F). | NASA TechPort Project 156802</title>
+  <meta name="description" content="A picture can be worth a thousand words and this describes the data necessary to identify and track global land cover change. Citizen science apps and social media are generating enormous amounts of data in the form of photographs uploaded to the cloud. Photog">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/156802">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 156802</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">OSTEM</span>
+          <span class="badge">EPSCoR</span>
+          <span class="badge">TX11.4.2</span>
+        </div>
+        <h1>Hack the land out of them: Obtaining land cover classifications from GLOBE Observer photographs (for Appendix F).</h1>
+        <div class="meta-id">NASA TechPort Project ID: 156802</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/156802" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          A picture can be worth a thousand words and this describes the data necessary to identify and track global land cover change. Citizen science apps and social media are generating enormous amounts of data in the form of photographs uploaded to the cloud. Photographs submitted via the Globe Observer app provide the link between space and Earth, fostering an understanding of Earth’s physical processes and natural phenomenon. The volume of photographs is outpacing human ability to organize, characterize, evaluate and classify data for search, comparison, change detection, and prediction.      This is where the hack comes in. We propose a year of activities to explore and create machine learning (ML) tools to segment, characterize, classify, and label components of land cover photographs from the GLOBE Observer (GO) land cover app. We propose to recruit a broad diversity of participants of New Mexican, American and international students, satellite images are already capable of being processed to classification standards by ML tools, providing the opportunity to prove the concept that similar approaches can be developed for photographs.  In contrast to imagery analysts processing data on a computer, our approach includes outdoor observation and sampling of landscapes in situ, making the connection between the land, the human observers and machine learning palpable.</p><p>Designing a series of simultaneous virtual learning workshops will collate participants into teams, and facilitate engagement by introducing the shared languages of photos, land interpretation and code (-), to outline approaches and targets of the hackathon (1). Recruitment will focus on participants from across the Southwest. Targeted recruiting of female and Hispanic participants from New Mexico State University and the tribal colleges in New Mexico, in addition to programs associated with AmericaView will result in teams from locations across America. The online platform (Website) will allow participation from any location without time restraints. Packaging the invitation to those who embrace a sense of Earth stewardship will foster the creation and establishment of local service projects to perpetuate the networking and collaboration established in the hack environment.      Data preparation chooses image replicates from the Globe Observer data set (e.g., download images, identify locations in close proximity over a range of ecosystems).  Preparation of workshops includes designing outreach and application materials, and completing the IRB training. Designing workshops starts with preparing data and other resources for collaboration, practicing GO activities, recording video and creating homework assignments. Organizing data and sample locations will involve collaboration through Jupyter notebooks. Design of social components for daily schedules includes meet-and-greet, physical exercise, breaks, games, and meals.
+        </div>
+
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>156802</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Office of STEM Engagement (OSTEM)</td></tr>
+<tr><th>NASA Program</th><td>Established Program to Stimulate Competitive Research (EPSCoR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.4.2: Intelligent Data Understanding</td></tr>
+<tr><th>Project Start Date</th><td>2021-08-02</td></tr>
+<tr><th>Project End Date</th><td>2022-08-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>New Mexico State University-Main Campus (NMSU) — Las Cruces, New Mexico</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>New Mexico (NM)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Paulo A Oemig (Principal Investigator); Alisha Giron (Co-Investigator); Parth P Nagarkar (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Kathleen B Loftin (Program Director) &lt;kathleen.b.loftin@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-10-23</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/156802">https://techport.nasa.gov/projects/156802</a>
+    </div>
+  </div>
+</body>
+</html>

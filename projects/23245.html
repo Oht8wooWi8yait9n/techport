@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Astronaut: Bone Remodeling Model | NASA TechPort Project 23245</title>
+  <meta name="description" content="Background Under the conditions of microgravity, astronauts lose bone mass at a rate of 1% to 2% a month, particularly in the lower extremities such as the proximal femur. The most commonly used countermeasure against bone loss in microgravity has been prescri">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23245">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23245</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.6</span>
+        </div>
+        <h1>Digital Astronaut: Bone Remodeling Model</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23245</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23245" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Background    <p></p> Under the conditions of microgravity, astronauts lose bone mass at a rate of 1% to 2% a month, particularly in the lower extremities such as the proximal femur. The most commonly used countermeasure against bone loss in microgravity has been prescribed exercise. However, data has shown that existing exercise countermeasures are not as effective as desired for preventing bone loss in long duration spaceflight. This spaceflight related bone loss may cause early onset of osteoporosis to place the astronauts at greater risk of fracture later in their lives. Consequently, NASA seeks to have improved understanding of the mechanisms of bone demineralization in microgravity in order to appropriately quantify this risk, and to establish appropriate countermeasures.    <p></p> In this light, NASA’s Digital Astronaut Project (DAP) is working with the NASA Bone Discipline Lead to implement well-validated computational models to help predict and assess bone loss during spaceflight, and enhance exercise countermeasure development.  More specifically, computational modeling is proposed as a way to augment bone research and exercise countermeasure development to target weight-bearing skeletal sites that are most susceptible to bone loss in microgravity, and thus at higher risk for fracture.    <p></p> Methods    <p></p> The model consists of three major research areas: (1) the orthopedic science or mechanics of the removal and replacement of bone packets via remodeling units, (2) the biology and physiology of cellular dynamics of remodeling units, and (3) mechanotransduction which describes the function of skeletal loading and its role in maintaining bone health. The basic biological assumption used in the cellular physiology can be stated as such: Cell proliferation or anti-proliferation is respectively either directly proportional or inversely proportional to receptor occupancy ratio.    <p></p> In implementation, the bone remodeling model is based on a first principles physiological and mathematical description of the components of bone physiology, including responses by the endocrine, biochemical, autocrine, and paracrine systems.  The model mathematically formulates the key elements based on well-accepted knowledge and experimental studies of bone. In particular, the model uses the RANK-RANKL-OPG signaling pathway to describe the cellular dynamics.  For skeletal loading, the model includes the effects of nitric oxide (NO) and prostaglandin E2 (PGE2). In the computational model, reduced skeletal loading triggers a decrease in NO and PGE2, which in turn triggers an imbalance in the pathway in favor of resorption. This leads to a decrease in mineralized volume M and osteoid volume O, and hence a decrease in bone volume fraction (BVF). The loading portion of the model is based on the concept of a minimum effective strain stimulus, which takes into consideration strain rate as opposed to strain magnitude only.     <p></p> Specific Aims    <p></p> 1.	For individuals in the age range of the astronaut corps, predict changes in trabecular and cortical volumetric bone mineral fraction and density as a function of time since measurement, gravity level, and applied loads    <p></p> 2.	Support the bone fracture standard by accepting and providing data in the same form as that of a Quantitative Computed Tomography (QCT) scan. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The discoveries made through this work can have spin-off benefits to terrestrial healthcare by providing fundamental methods that can be further built upon to:    <p></p> (1)  Gain further insight on the mechanisms and influence on the bone remodeling process and its implications in bone health and other health risks to patients who are bed-ridden or immobilized due to:    <p></p>        * Long term illnesses;   * Post-op surgery;   * Limb fractures;  and/or * Spinal injury, to name a few    <p></p> (2)  Design exercise prescriptions for patients who have experienced bone demineralization from bed-ridden or immobilized disuse indicated in 1, in order to help them recover bone and minimize bone fracture.    <p></p> (3)  Investigate the level of regular activity or exercise people should be engaged in to ensure healthy bones throughout their lives, particularly in minimizing or preventing age related osteoporosis. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23245</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.6: Long-Duration Health</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2011-04-01</td></tr>
+<tr><th>Project End Date</th><td>2017-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Ohio (OH)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>James A Pennline (Principal Investigator); Peter Norsk (Project Manager) &lt;peter.norsk@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The previous report detailed bone response in the femoral neck due to mechanical loading and included deconditioning in the absence of skeletal loading, which was the initial work that formed the foundational model. The work involved modeling exercise induced loading analogous to an equivalent amount of walking and running and was coupled with a NASTRAN finite element model of the proximal femur which averaged the stress/strain values in the femoral neck. This allowed us to track changes in a single volumetric bone mineral density value associated with the femoral neck. The report also mentioned that the work turned to extending/developing the computational model for the full proximal femur. Modeling the full proximal femur presented a number of challenges basically because it is a much larger region but for other reasons as well. Three major areas comprise the proximal femur, the head, trochanter, and femoral neck and structural unit (remodeling units) dimensions can vary. There will be a much wider range of stress values from skeletal loading that would make averaging the entire proximal femur less valid than the averaging done for just the femoral neck. This prompted us to consider modifying the finite element model to track element by element changes in the modulus values and volumetric changes in the bone mineral density based on stress/strain values in each element. We were unable to complete this due to mathematical difficulties. However, we were able to obtain a reference that suggests grouping elements of the finite element model into 7 main areas and treating each of these as was done for the femoral neck. We could then average the 7 results to obtain a single value for the proximal femur. It is a future idea. The newest progress in the finite element modeling is moving the development of the model from a Femap V11.1 scan to development from an actual Quantitative Computed Tomography scan of a bed rest subject’ hip. This makes the model more realistic since it matches scans where our data comes from. Another challenge was finding structural unit (remodeling unit) dimensions for the whole proximal femur. While several references gave dimensions for the femoral neck, there does not seem to be one set of dimensions covering the whole proximal femur, or even the trochanter alone. The rib and the iliac crest are the most common skeletal sites reported in the literature because they are less invasive experimentally. We were able to find a 2009 reference that discusses the relation of femoral osteon geometry to age, sex, height, and weight. It points toward a suitable value for osteon width in the age group we are interested in. Although the adaptation to the full proximal femur is a major effort, some testing of the code’s ability to produce results close to proximal femur data was carried out. This was done by taking the femoral neck code and making some minor changes. The changes included an alternate activation density, a slightly smaller cortical origination frequency (ages 30-50), and a slightly smaller cortical osteon width consistent with the data from a reference on the femoral neck. For a 90 day bed rest study, comparison of model prediction to experimental results showed trabecular results to be just outside of the standard error and cortical results to be within standard error. For a validation of the model’s general trend, the code for the femoral neck model was run for a year or more to see if bone density is maintained under sufficient loading and if bone mass is lost under insufficient loading. For maintenance, the simulation was carried out that used skeletal loading equivalent to the number of walking steps that is reported in the literature to be sufficient. The result was that there was no change in bone mineral density over the duration of a year. Using the number of walking steps below the lower limit reported to be sufficient for maintenance produced results that showed a decrease in bone mineral density with a tendency toward a plateau. The simulation cannot continue indefinitely however, as the model will break down. Finally, a computational tool was created that uses probabilistic machine learning techniques to build subject specific finite specific finite element models of the femur. The femur models were coupled with the computational bone remodeling model to predict cortical and trabecular vBMD of the exercisers at the end of a 70 day bed rest study. Stochastic optimization was used to predict the required femoral forces required to match the bone state at the end of 70 days. Applying the tool to pre and post flight data to obtain output forces might aid in the development of customized exercise regimens. A NASA Techncial Memorandum (TM) on the tool is being developed. Funding for this project has ended and work completed will be archived for future funding.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Papers from Meeting Proceedings</strong> — Pennline J, Mulugeta L. &quot;A Computational Model for Simulating Spaceflight Induced Bone Remodeling.&quot; 44th International Conference on Environmental Systems, Tucson, Arizona, July 13-17, 2014. 44th International Conference on Environmental Systems, Tucson, Arizona, July 13-17, 2014. ICES Paper ICES2014-513-83. , Jul-2014</li><li><strong>Abstracts for Journals and Proceedings</strong> — Pennline JA, Werner CR, Lewandowski BE, Sibonga JD. &quot;Bone Model Development for Spaceflight Bone Physiology Analysis (Proximal Femur).&quot; Presented at 2016 NASA Human Research Program Investigators’ Workshop, Galveston, Texas, February 8-11, 2016. 2016 NASA Human Research Program Investigators’ Workshop, Galveston, Texas, February 8-11, 2016., Feb-2016</li><li><strong>NASA Technical Documents</strong> — Chang KL, Pennline JA. &quot;Predicting bone mechanical state during recovery after long-duration skeletal unloading using QCT and finite element modeling.&quot; Cleveland, Ohio : NASA Glenn Research Center, 2013. NASA Technical Publication NASA/TM - 2013-217842. http://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20130011517.pdf , Feb-2013</li><li><strong>NASA Technical Documents</strong> — Pennline JA, Mulugeta L. &quot;Mapping Bone Mineral Density Obtained by Quantitative Computed Tomography to Bone Volume Fraction.&quot; Cleveland, Ohio: NASA Glenn Research Center, 2017. NASA/TM-2017-219490. https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20170005888.pdf , Jun-2017</li><li><strong>NASA Technical Documents</strong> — Pennline J, Mulugeta L. &quot;Evaluating Daily Load Stimulus Formulae in Relating Bone Response to Exercise.&quot; Cleveland, Ohio : NASA Glenn Research Center, 2014. NASA Technical Memorandum NASA/TM-2014-218306. http://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20140012744.pdf , Jun-2014</li><li><strong>NASA Technical Documents</strong> — Schepelmann A, Werner CR, Pennline JA, Lewandowski BE, Mulugeta L. &quot;Overview and Evaluation of a Computational Bone Physiology Modeling Toolchain and Its Application to Testing of Exercise Countermeasures.&quot; Cleveland, Ohio : NASA Glenn Research Center, 2018. NASA/TM-2018-219938. https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20180004789.pdf , Aug-2018</li><li><strong>Articles in Peer-reviewed Journals</strong> — Raykin J, Forte TE, Wang R, Feola A, Samuels BC, Myers JG, Mulugeta L, Nelson ES, Gleason RL, Ethier CR. &quot;Characterization of the mechanical behavior of the optic nerve sheath and its role in spaceflight-induced ophthalmic changes.&quot; Biomech Model Mechanobiol. 2017 Feb;16(1):33-43. Epub 2016 May 28. https://doi.org/10.1007/s10237-016-0800-7 ; PubMed PMID: 27236645, Feb-2017</li><li><strong>Abstracts for Journals and Proceedings</strong> — Pennline J, Werner C, Lewandowski B, Licata L. &quot;Computational Model Development of Spaceflight Bone Physiology.&quot; Presented at the Annual Meeting of the ASBMR 2016 (American Society for Bone and Mineral Research), Atlanta, Georgia, September 16-19, 2016. Journal of Bone and Mineral Research. 2016;31 (Suppl 1). , Sep-2016</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23245">https://techport.nasa.gov/projects/23245</a>
+    </div>
+  </div>
+</body>
+</html>

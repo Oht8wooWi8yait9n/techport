@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EDS Technology (Helmet Visor and Stereo Camera) FY20 IRTD NextSTEP | NASA TechPort Project 105643</title>
+  <meta name="description" content="Implementation of the EDS on a transparent curved surface to demonstrate feasibility of the EDS for an astronaut helmet visor. Implementation of the EDS on one of the two RASSOR camera lenses to remove dust from the lens during operations in Swamp Works Regoli">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/105643">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 105643</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">KSC IRAD</span>
+          <span class="badge">TX06.2.1</span>
+        </div>
+        <h1>EDS Technology (Helmet Visor and Stereo Camera) FY20 IRTD NextSTEP</h1>
+        <div class="meta-id">NASA TechPort Project ID: 105643</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/105643" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Implementation of the EDS on a transparent curved surface to demonstrate feasibility of the EDS for an astronaut helmet visor.<br /> Implementation of the EDS on one of the two RASSOR camera lenses to remove dust from the lens during operations in Swamp Works Regolith Bin.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>In the 3-D version of an Electrodynamic Dust Shield, the spatially dependent field is provided by the application of a ground layer beneath the substrate. Electrodes are all connected to the same power supply in a single phase (1-phase) configuration. The electric field gradient needed to remove particles from the surface is provided by the parallel ground layer separated by a dielectric. There are several benefits to this choice of electrode configuration such as: (1) The breakdown (as seen with two phase EDS) no longer appears across the surface, but <em>through </em>the dielectric. Not only would the base dielectric have a higher strength than an adhesive or glue, it would be much thicker and more robust. Surface breakdown is far more common than volume breakdown in materials; (2) The electrodes on the surface are all of a single polarity and can be connected electrically. Thus if an individual trace is cut, the EDS would function normally and the performance would remain unchanged; and (3) The ground plane provides a “safe zone” in which the large electric fields cannot penetrate which would be used for helmets, suits, etc.. to protect the astronauts.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>105643</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: KSC IRAD (KSC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.2.1: Pressure Garment</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX04.5.1: Relative Navigation Sensors</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2020-01-01</td></tr>
+<tr><th>Project End Date</th><td>2021-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Kennedy Space Center (KSC) — Kennedy Space Center, Florida</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Florida (FL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Carlos I Calle (Principal Investigator) &lt;carlos.i.calle@nasa.gov&gt;; Charles R Buhler (Co-Investigator) &lt;charles.r.buhler@nasa.gov&gt;; Krystal L Acosta (Co-Investigator) &lt;krystal.acosta@nasa.gov&gt;; Joseph R Toth (Co-Investigator) &lt;joseph.r.toth@nasa.gov&gt;; Michael A Dupuis (Co-Investigator) &lt;michael.a.dupuis@nasa.gov&gt;; Jerry J Wang (Co-Investigator) &lt;jerry.j.wang@nasa.gov&gt;; Aaron D Olson (Co-Investigator) &lt;aaron.d.olson@nasa.gov&gt;; Jennifer G Wilson (Project Manager) &lt;jennifer.g.wilson@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Kelvin R Ruiz (Program Manager) &lt;kelvin.r.ruiz@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2021-09-16</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Helmet: Two sample visors were used for testing. First visor was fitted with a set of two Indium Tin Oxide (ITO) patterns of the two-phase EDS and the second visor with a few parallel ITO lines. There were problems with both sets of visors upon initial inspection. Too much ITO deposited onto the first visor so the pattern was no longer transparent. The second visor with the pattern of parallel ITO lines was more transparent but it too did not possess an SiO2 cover layer. Modifications were needed so the visor with the parallel lines was fitted with a bus bar connected the electrodes together and coated the inside of the visor with an ITO layer as well to serve as the ground for the single phase version. Both samples were also coated with an SiO2 layer to prevent electrical breakdown. Both sets of visors were then tested in vacuum. Tests consisted of applying JSC-1A simulant to the surface and applying the appropriate EDS signals to each under vacuum conditions. Tests showed the removal of dust for the single phase (3D) version and the two-phase version of the EDS. For the single phase EDS we applied a 10 Hz square wave up to 5 kV. In this configuration all of the electrodes on the external side of the visor are connected together. To obtain electric field divergence, the ground plane is parallel to the grid lines on the internal side of the visor. Thus the 2 mm thick visor requires higher voltage then their two-phase counterparts. It would be this configuration that would be most advantageous for an astronaut helmet since the electric field cannot penetrate the ground layer. For the conventional two-phase interdigitated EDS, we only required about 2 kV to remove dust from the surface. However, the large electric fields extend beyond the plane of the electrodes thus it may not be safe for astronaut use. It is important to note that both visors sparked at these voltages and further dust removal was prohibited. The belief is that the thin layer of SiO2 was not sufficient enough to support the large electric fields at the grid layer. These fields can exceed 108 Volts/meter which few materials are able to sustain. The next phase is to apply additional SiO2 layering to the visors. Camera: The EDS for RASSOR uses optically transparent EDS panels with ITO electrodes that were designed, fabricated, and tested in the laboratory for this project. The EDS panels are activated by a small High Voltage Power Supply (HVPS) that were designed and fabricated for this project, leveraging the development of the electronics for our current EDS flight demonstration project under the Commercial Payload Lunar Services (CLPS) program. Single and two-phase EDS tests were conducted using multiple patterns for validation and comparison. During the single-phase operation, dust repulsion was observed when dust was cascaded in front of the EDS. A small amount of dust adhered to the EDS and passive lens covers. Dust on the passive lens cover was easily removed with compressed gas. Dust on the EDS could not be removed with compressed gas and required blotting with an isopropanol-soaked low lint cloth. When dust was deposited directly onto both lens covers, the EDS was able to partially clear the dust. When remaining dust was cleared with compressed gas, only the large patches of remaining dust were removed. Neither EDS nor compressed gas could remove the dusty grid pattern. When the EDS was energized, it was also noted that the image from the adjacent camera changed color and became distorted, a clear sign of electromagnetic interference which was directly correlated with EDS operational cycles. The HVPS used in the two-phase test is a modified version of the HVPS used in the one-phase EDS test. The second generation HVPS has its high voltage circuit completely isolated from the low voltage circuit. This greatly reduces the conduction portion of the electromagnetic interference observed in the first integration test. Additionally, there were two high voltage modules inside the second generation HVPS that provided 2 kV in both positive and negative polarities. On the other hand, the first generation HVPS only had one high voltage module that produced 4 kV in the positive polarity. In previous bench tests, EDS operates more efficiently with dual high voltage polarities instead of single polarity The two-phase EDS was attached onto the RASSOR camera mount and was shown to remove 50-75 μm JSC-1A simulant, without interfering with the RASSOR camera operation. The combined solutions of the dual polarity EDS and better optimized two-phase EDS were able to clear the deposited JSC-1A simulant off the RASSOR camera. Although all of the larger particulates were removed, some finer particulates remain on the glass substrate. This is due to particulates in the sub-micron range does not acquire enough charge due to its small surface area.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/105643">https://techport.nasa.gov/projects/105643</a>
+    </div>
+  </div>
+</body>
+</html>

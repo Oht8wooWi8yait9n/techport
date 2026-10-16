@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sensory Manipulation as a Countermeasure to Robot Teleoperation Delays | NASA TechPort Project 156519</title>
+  <meta name="description" content="Currently, most interactions with robots in space exploration are achieved through teleoperations. During future space teleoperations, communicating time delays associated with long distances may negatively affect performance if operators do not calibrate to i">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/156519">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 156519</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          
+        </div>
+        <h1>Sensory Manipulation as a Countermeasure to Robot Teleoperation Delays</h1>
+        <div class="meta-id">NASA TechPort Project ID: 156519</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/156519" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Currently, most interactions with robots in space exploration are achieved through teleoperations. During future space teleoperations, communicating time delays associated with long distances may negatively affect performance if operators do not calibrate to it. The goal of this research is to test if sensory manipulation, especially providing virtual force cues via haptic device-generated feelings of touch and resistance (paired with delayed visual cues), can help mitigate the negative influence of teleoperation delays measured by perceived presence, neural efficiency, and task performance.     <p></p>   This research aims to test the following hypothesis: Modifying haptic sensation alleviates the subjective perception of time delays and expedites operator’s adaptation to stochastic delays in robot teleoperations. Human sensorimotor controls rely on multimodal sensory feedback, such as the visual, auditory, and tactile cues, to make sense of the consequence of the initiated action. Any latency between the action and the consequence creates a mismatch in motor perception and thus leads to perceptual-motor dysfunction. Literature has already found that sensory manipulation, i.e., providing additional sensory modalities as reinforcement cues, can modulate the effectiveness of motor learning and rehabilitation. The rationale of the proposed approach is that by simulating virtual force of physical interactions on the operator end, the delayed visual cues of teleoperation are reinforced by multimodal sensory feedback, mitigating the perception of time delays and improving performance.     <p></p>   This research originally proposed three aims. The fourth aim was added for exploring longer delays:    <p></p> Aim 1: Develop a haptics-based sensory augmentation system for robot teleoperation with varying delays.  It develops a Virtual Reality (VR) and haptics-based simulator to support robot teleoperation with varying levels of delays (i.e., teleoperation latency). The system is expected as a potential human-robot interface in the future missions, as well as a testbed for supported the proposed human-subject experiments.     <p></p> Aim 2: Perform Experiment I to explore the impact of the sensory manipulation system up to 1s delay. It collects experimental data how modified haptic stimulation expedites operator’s adaptation to varying delays in teleoperation up to 1s. The haptic simulation refers to reproducing the contact dynamics of the remote robotic system (e.g., resistance, torque, and nominal weight etc.) for operator via haptic devices.     <p></p> Aim 3: Data analysis to quantify the impacts of the proposed sensory manipulation method on teleoperation performance and human function. This aim proposes to analyze the experiment data to better understand if the proposed system can improve teleoperation performance while reducing the perceived delays.    <p></p> Aim 4 (added to the original proposal): Perform Experiment II to explore the impact of the proposed sensory augmentation system up to 5s delay. This aim proposes to collect experimental data how modified haptic stimulation expedites operator’s adaptation to varying delays in teleoperation up to 5s.     <p></p> The deliverables of this research include: (1) proof of concept evidence about the use of sensory manipulation in reducing the sense of time delays and expediting human adaptation to time-delayed robot teleoperations; (2) multimodal sensory feedback system design suggestions for human-robot interaction (HRI) in time-delayed teleoperations; and (3) quantitative models of functional and performance improvements in a variety of delay scenarios.     <p></p> This research proposes an innovative sensory manipulation approach to help reduce risks related to teleoperation delays. The neural, perception, and performance evidence contributes to the formulation of effective space teleoperation designs. The quantitative human models of perceptual and performance provide predictive models for NASA to perform risk and opportunity assessment for yet-to start missions that involve robot teleoperations. Lessons learned in this research will also inform a new training paradigm for both crewmembers and ground supports as for adapting to the changing environments in future deep space exploration with adaptive and assistive sensory augmentation. The data can also be transferred to other domains such as aviation and manufacturing industry with automation controls. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This research project directly contributes to the HRR Human Factors and Behavioral Performance (HFBP) element, by narrowing the gap due to the inadequate design of human and robotic integration, via a new method and corresponding evidence pertaining to the design guidelines that take into account human capabilities and limitations with regards to management of automation or robotic asset(s) under time-varying communication latencies. Specifically, it proposes and tests an innovative, aggressive, while still technically feasible method of induced human adaptation to varying robot teleoperation latencies by sensory manipulation, i.e., modifying sensory stimulation paired with the motor actions in a way that (1) alleviates the subjective feeling of time delays and (2) expedites cognitive and behavioral adaptation to the delayed teleoperation. If warranted, the proposed method provides NASA with a new dimension of human-automation-robot-interaction (HARI) for time-varying communication latencies that differs from previous mitigation methods based on automation system design and training. The expected benefits include improved teleoperation performance, perceived higher comfort level and quality, with reduced training needs and simplified automation/robotic designs.  <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>156519</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Project Start Date</th><td>2021-04-02</td></tr>
+<tr><th>Project End Date</th><td>2022-12-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Florida — Gainesville, Florida</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Florida (FL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jing Du (Principal Investigator); Karim Oweiss (Co-Investigator); Alexandra M Whitmire (Project Manager) &lt;alexandra.m.whitmire@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Articles in Peer-reviewed Journals</strong> — Vann W, Zhou T, Zhu Q, Du J. &quot;Enabling automated facility maintenance from articulated robot collision-free designs.&quot; Adv. Eng. Inform. 2023 Jan;55:101820. https://doi.org/10.1016/j.aei.2022.101820 , Jan-2023</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/156519">https://techport.nasa.gov/projects/156519</a>
+    </div>
+  </div>
+</body>
+</html>

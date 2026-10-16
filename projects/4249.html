@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Implementation and Assessment of a Time-Accurate Aeroelastic Model for Analysis of Inflatable Aerodynamic Decelerators | NASA TechPort Project 4249</title>
+  <meta name="description" content="In light of NASA&#x27;s goal for planetary exploration, the development of new technology is imperative. The aerodynamic deceleration technique used during Entry, Descent, and Landing (EDL) plays a vital role in mission success. The concept of interest in the curre">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/4249">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 4249</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX09.2.1</span>
+        </div>
+        <h1>Implementation and Assessment of a Time-Accurate Aeroelastic Model for Analysis of Inflatable Aerodynamic Decelerators</h1>
+        <div class="meta-id">NASA TechPort Project ID: 4249</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/4249" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          In light of NASA's goal for planetary exploration, the development of new technology is imperative. The aerodynamic deceleration technique used during Entry, Descent, and Landing (EDL) plays a vital role in mission success. The concept of interest in the current research is the inflatable aerodynamic decelerator (IAD). An inflatable aerodynamic decelerator is a gas-pressurized device that is inflated at the time of deployment. This technology was born in the 1960's, followed by minimal research until the mid 1990's. Over the past 15 years there have been many studies that have continued to show feasibility and the necessity of this type of technology. Necessity stems from the fact that the current entry technology is quickly reaching its limits in terms of landing high payload masses on Mars. It is well known that the complex flowfields during atmospheric entry will strongly interact with the structural dynamics of an IAD. This, in conjunction with the inherent unsteadiness of the flow, leads to many challenges in understanding these interactions. Thus, this research proposes to develop a time-accurate aeroelastic model with application to the analysis of inflatable aerodynamic decelerators. This will be accomplished through the coupling of a computational fluid dynamics (CFD) solver and a computational structural dynamics (CSD) solver. The CFD and CSD solvers ultimately used in this work will be selected through close consultation with research partners at NASA. One approach under consideration for the CFD analysis is the use of NASCART-GT, a solution adaptive, Cartesian, Navier-Stokes code developed at the Georgia Institute of Technology. One of the key difficulties in performing aerodynamic analysis of deforming bodies is the fact that the computational mesh must change with time. Using NASCART-GT will provide an automated grid generation process to begin the computational solution. As the IAD is deformed, new surface information must be computed, and the flow solution may proceed. The computed pressure and thermal load distribution over the geometry are input to the structures solver. There are many solvers that exist, with the most likely candidate being LS-DYNA, based on the previous coupling efforts with NASCART-GT. This previous work demonstrated successful coupling to obtain steady-state aeroelastic solutions. The results to date have not included the effects of temperature and heat flux on the IAD. Using a recently enhanced tool in NASCART-GT, which combines an Euler solution with an integral boundary layer method, will provide these thermal effects. The time-accurate, coupled analysis tool must first be validated against either wind tunnel tests or against other forms of reliable computational results. Following the development and validation of this computational tool, analysis on a series of configurations directly applicable to points along a trajectory of interest will be conducted. The specifics of this task will require collaboration with NASA in order to determine appropriate conditions. The proposed research falls under multiple Technology Areas (TA) of NASA's Space Technology Roadmap. The primary TA that categorizes the proposed work is TA 9: Entry, Descent, and Landing Systems. Within this category, there are several higher-level areas including the following: 9.1.4 Hypersonic Decelerators, 9.1.6 Entry Modeling and Simulation, 9.2.1 Attached Deployable Decelerators, and 9.2.2 Trailing Deployable Decelerators. Further development of IADs will provide NASA with a suitable means of attaining the goal of planetary space exploration. The current research furthers this endeavor by investigating the complex problems associated with the interaction between aerodynamics and structural dynamics. Results from this work will be able to provide a greater understanding of this phenomenon, as well as the ability to computationally predict these effects.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Further development of IADs will provide NASA with a suitable means of attaining the goal of planetary space exploration. The current research furthers this endeavor by investigating the complex problems associated with the interaction between aerodynamics and structural dynamics. Results from this work will be able to provide a greater understanding of this phenomenon, as well as the ability to computationally predict these effects.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>4249</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.2.1: Aerodynamic Decelerators</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-09-01</td></tr>
+<tr><th>Project End Date</th><td>2015-08-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Georgia Institute of Technology-Main Campus (GA Tech) — Atlanta, Georgia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Georgia (GA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Stephen Ruffin (Principal Investigator); Matthew S Bopp (Co-Investigator); Michael D Barnhardt (Project Manager) &lt;michael.d.barnhardt@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The landing of the Mars Science Laboratory (MSL) in August 2012, demonstrated the limits of planetary entry technology. Since the 1970s, the disk-gap-band (DGB) parachute has been used on nearly all Mars entry missions as a means to decelerate from supersonic Mach numbers. As the landed payload mass has continued to increase, so has the size of the parachute. However, at the current, and future mission requirements for landed mass, there is no qualification data on the effectiveness of the DGB. This becomes especially critical in low density atmospheres such as the one surrounding Mars, where the atmosphere is less than 2% the density of Earth’s. As payloads continue to increase in mass, further investigations are required for continued use of traditional parachutes. Currently, novel concepts are being investigated by researchers, where the drag area of the entry vehicle is increased through the use of inflatable or mechanically deployable devices. As these devices continue to grow in size, wind tunnel tests become increasingly difficult due to scaling concerns. Additionally, flight testing all candidate designs and configurations is very costly and time consuming. Thus, an efficient computational methodology can fill this gap. The physical problem under investigation is that of fluid-structure interactions (FSI) applied to flexible materials under high dynamic pressure loads. The proposed work aims develop a time-accurate aeroelastic tool to model the FSI of inflatable decelerators. A partitioned-coupling methodology is applied, where an unstructured, Cartesian fluid solver, and a stand-alone structural solver are connected through a data mapping process. Much of the current research in FSI focuses on high fidelity analysis, which is often very computationally expensive and requires significant user intervention. The proposed work attempts to fill a niche where the analysis time and human interaction is reduced. Such an approach is highly desirable during the design process of new configurations. In order to achieve these goals, significant upgrades have been made to the current in-house CFD tool, NASCART-GT. The software has been completely re-written using a modern object oriented approach in C++, with emphasis on performance, scalability, maintainability, and efficient use of external libraries where appropriate. CFD verifications and validations are included, with emphasis on moving-body simulations. Static FSI coupling is investigated for simulations where the time history is not critical, and their exists a steady-state solution. The culmination of the work will include time accurate simulations of one and two dimensional flow configurations, as well as a 3-D simulation of a relevant deployable decelerator. The goal of the fellowship was to investigate aeroelastic coupling for various inflatable aerodynamic decelerator (IAD) configurations via computational methods. The developed tool aims to provide a framework for coupling a computational fluid dynamics solver with an appropriate finite element tool to perform unsteady, time-accurate analyses. The intent is to apply this FSI capability to configurations that have or will be tested in ground-based facilities or flight tests. The research described in this document was performed with one primary goal. The objective was to develop a computational tool capable of analyzing unsteady FSI problems pertinent to planetary entry configurations. Significant progress has been made towards achieving this goal. The partitioned coupling approach has provided a flexible framework for interfacing the CFD and FEA software. The use of the Cartesian grid framework has provided an efficient methodology that can be used as a mid-fidelity analysis tool when exploring the design space of an entry configuration. The first step in this direction was to validate a newly written fluid dynamics solver for the current applications. Second, the development of prescribed rigid body motion within the current framework aimed at validating the physics associated with moving surfaces through a stationary unstructured Cartesian mesh. Two cases have been presented in this document, including the motion of a supersonic piston and the oscillatory motion of a transonic NACA 0012 airfoil. The piston analysis provided a framework for investigating the accuracy of moving body simulations when compared to an analogous, stationary simulation only differing in reference frame. The oscillating airfoil simulation provided a validation for the normal force characteristics associated with unsteady flow. Next, a 2-D version of the MSL capsule was used to validate static simulations against an industry validated CFD tool. A simulation was presented, demonstrating the coupling with rigid body dynamics, referred to as free flight simulations. The 2-D analysis has laid the groundwork for the continued development and validation of the 3-D version to be compared against ballistic range data. The FSI capabilities were first analyzed by investigating the steady state deflection of a semi-rigid tension cone. This case provided a means for validating the coupling between fluid dynamics and structural dynamics where time accuracy is irrelevant. The final three unsteady FSI cases described the remaining future work to be completed. These cases were broken down into 1-D, 2-D, and 3-D problems. This provides an efficient methodology for the validation of the tool. Upon completion of these remaining items, the developed tool will provide a means for studying time accurate unsteady FSI flows for planetary entry configurations.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>4249-1363186176896.jpg</strong> — Project Image Implementation and Assessment of a Time-Accurate Aeroelastic Model for Analysis of Inflatable Aerodynamic Decelerators</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/4249">https://techport.nasa.gov/projects/4249</a>
+    </div>
+  </div>
+</body>
+</html>

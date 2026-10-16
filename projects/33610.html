@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time Integrated Navigation System for Planetary Exploration (RT-INSPEX) | NASA TechPort Project 33610</title>
+  <meta name="description" content="For this topic, American GNC Corporation (AGNC) is proposing the &quot;Real-Time Integrated Navigation System for Planetary Exploration&quot; (RT-INSPEX) to off load work from robot operators and astronauts by providing semi to fully-autonomous navigation with infrastru">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/33610">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 33610</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX04.2.4</span>
+        </div>
+        <h1>Real-Time Integrated Navigation System for Planetary Exploration (RT-INSPEX)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 33610</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/33610" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          For this topic, American GNC Corporation (AGNC) is proposing the "Real-Time Integrated Navigation System for Planetary Exploration" (RT-INSPEX) to off load work from robot operators and astronauts by providing semi to fully-autonomous navigation with infrastructure-free localization, terrain awareness and traversability estimation, and map generation of unknown environments. NASA is currently requiring improved mobile robotics navigation solutions for operation in both man-made and unstructured environments based on emerging state-of-the-art sensors and software. A common theme in planetary exploration missions is lacking access to the Global Navigation Satellite System (GNSS), making autonomous navigation of vehicles such as rovers significantly difficult. For addressing NASA's needs, the proposed technology will provide terrain-aware and infrastructure-free navigation with: (1) advanced vision processing; (2) robot localization without GNSS based on fusion of various odometry sources; (3) terrain traversability estimation, where measured terrain parameters are matched to terramechanics models for assessing trafficability; and (4) local map generation. Phase II work takes these technologies as a foundation for adaptive collision avoidance of semi/fully-autonomous robotics based on consistent global maps generation and optimal route planning navigation.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The RT-INSPEX will directly support NASA's future missions ranging from the exploration of remote planetary surfaces (assuming very limited and time-delayed Earth-based communication) to assistive operations in man-made structures. The pervasive use of intelligent robotics with accurate navigation capabilities will enhance exploration and facilitate mapping of uncharted regions. NASA's Mars Exploration Rovers and Mars Science Laboratory rover are examples of robotic systems that can be deployed with the developed technologies. An immediate application would be the "K10" series from the NASA Ames Intelligent Robotics Group, but also other systems such as the Spirit, Opportunity, and Curiosity Mars Rovers, ATHLETE, and Robonaut 2. Parts of the technology would find use in unmanned aerial vehicles such as when VTOL flight on Mars is possible. NASA exploration missions involving Mars, small planetary bodies such as asteroids, and the moons of the Earth, Mars, Jupiter, and Saturn would benefit from this system.<br /> <br />One of the main objectives of this SBIR is the commercialization of the research results. The RT-INSPEX is a highly useful GNSS-free robotic navigation system and therefore presents significant application potential for a wide range of non-NASA systems within both the civilian and military sectors. Examples of areas the technology would find application in include: (1) robotic supply chain logistics support; (2) GPS-free navigation for both manned and unmanned ground, air, and sea vehicles; (3) military missions involving unmanned platforms such as the XM1216 Small UGV and XM156 Class I UAV; (4) accurate floor plan mapping of GPS-denied indoor environments that pose risk for human intervention; (5) Robotic surveillance applications (ranging anywhere from large commercial facilities to dangerous battlefields); and (6) search and rescue missions (for example, in mining accidents with the leakage of poisonous gases).
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>33610</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX04.2.4: Surface Mobility</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2015-06-17</td></tr>
+<tr><th>Project End Date</th><td>2015-12-17</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>American GNC Corporation — Simi Valley, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Tasso Politopoulos (Principal Investigator); Tom Smith (Project Manager) &lt;thomas.b.smith@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced To</strong></li><li><strong>Closed Out</strong>: Real-Time Integrated Navigation System for Planetary Exploration (RT-INSPEX), Phase I Project Image</li><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart Image</li><li><strong>Briefing Chart</strong> — Real-Time Integrated Navigation System for Planetary Exploration (RT-INSPEX) Briefing Chart</li><li><strong>Briefing Chart Image</strong> — Real-Time Integrated Navigation System for Planetary Exploration (RT-INSPEX), Phase I</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/33610">https://techport.nasa.gov/projects/33610</a>
+    </div>
+  </div>
+</body>
+</html>

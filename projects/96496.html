@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adapting the Compact Integrated Raman Spectrometer (CIRS) for Lunar Exploration | NASA TechPort Project 96496</title>
+  <meta name="description" content="During DALI we will adapt and mature the Compact Integrated Raman Spectrometer (CIRS) from Lunar TRL 4 to TRL 6. This effort will enable CIRS to perform in situ characterization of lunar minerals and screening of ISRU raw materials vital for future mining and ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/96496">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 96496</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">DALI</span>
+          <span class="badge">TX08.3</span>
+        </div>
+        <h1>Adapting the Compact Integrated Raman Spectrometer (CIRS) for Lunar Exploration</h1>
+        <div class="meta-id">NASA TechPort Project ID: 96496</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/96496" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>During DALI we will adapt and mature the Compact Integrated Raman Spectrometer (CIRS) from Lunar TRL 4 to TRL 6. This effort will enable CIRS to perform in situ characterization of lunar minerals and screening of ISRU raw materials vital for future mining and processing efforts. In-situ Raman analysis of the Moon can provide definitive mineralogy, especially mineral chemistry of major lunar minerals, such as Mg/(Mg&#43;Fe) ratio of olivine, Mg/(Mg&#43;Fe&#43;Ca) ratio of pyroxene, end members (Or-Ab-An) and intermediate solid solutions of plagioclase, Fe-Ti-Cr ratio information in lunar opaque minerals, as well as ID the minor and trace minerals of the lunar surface. Raman analysis is also capable to characterize adsorbed H2O, structural H2O in minerals, and H2O ice.</p>  <p> </p>  <p>A fully functional prototype of the CIRS instrument has been developed under the MatISSE program. The laser, optical, optical-mechanical, and detector electronics of the instrument were the major focus of the MatISSE effort, maturing these subsystems to TRL 5 for landed missions to Mars, Venus, and Europa. During the next two years CIRS will be re-designed into smaller, rad-hard instrument (273mmx136mmx72mm) including an internal sample containment system allowing drill cuttings of icy samples to be analyzed in their solid, melted, and desiccated states.</p>  <p>Under MatISSE, the electronic control of the instrument relies exclusively on commercial off-the-shelf (COTS) parts. This approach allows us to rapidly test and validate the performance of CIRS as well to develop the autonomy and image processing functionality necessary for it to operate without Earth-in-the Loop (e.g. Venus, Europa). Development of flight electronics and firmware with equivalent functionality must necessarily occur after this, a phase for which CIRS is currently ready to undertake under DALI. Accordingly, under DALI, we will leverage on the efforts above, and focus our efforts on: (1) designing the CIRS instrument such that it can tolerate the extreme thermal environment presented on the Moon while the instrument is immersed in sunlight and shadow regions and (2) developing CIRS flight electronics and flight firmware using a Vertex-5 processor to execute the suite of functions previously validated using COTS electronics/software), (3) combining these efforts with lunar specific architectural modifications necessary to reach Lunar TRL 6 for the entire instrument, and (4) finally verifying and validating that CIRS is truly Lunar 6 by exposing CIRS to simulated launch and lunar operating conditions using JPL Flight Instrument Testing labs and testing protocols (HALT, TVAC, etc). This effort, if funded, will provide a mature Raman instrument that can be interfaced with a lunar rover or spacecraft in the timely and cost-efficient manner necessary to support early robotic mission opportunities for NASA’s new thrust in establishing a permanent presence on the Moon.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Improved scientific instrument designed for future Lunar science missions.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>96496</td></tr>
+<tr><th>Acronym</th><td>CIRS</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Development and Advancement of Lunar Instrumentation (DALI)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.3: In Situ Instruments and Sensors</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2019-10-01</td></tr>
+<tr><th>Project End Date</th><td>2025-03-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>California Institute of Technology (CalTech) — Pasadena, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California; Washington University in St Louis — Saint Louis, Missouri</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Missouri (MO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>James L Lambert (Principal Investigator) &lt;james.l.lambert@jpl.nasa.gov&gt;; Bradley L Jolliff (Co-Investigator); Steve P Monacos (Co-Investigator) &lt;steve.p.monacos@jpl.nasa.gov&gt;; Karen R Piggee (Co-Investigator) &lt;karen.r.piggee@jpl.nasa.gov&gt;; Nicholas Tallarida (Co-Investigator) &lt;nicholas.r.tallarida@jpl.nasa.gov&gt;; Alian Wang (Co-Investigator); Michael T Pauken (Co-Investigator) &lt;michael.t.pauken@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Erica N Montbach (Program Director) &lt;erica.n.montbach@nasa.gov&gt;; Anna Maria T Pal (Program Manager) &lt;a.pal@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Technology Specifications and Quad Chart</strong></li><li><strong>Adapting the Compact Integrated Raman Spectrometer for Lunar Missions</strong></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/96496">https://techport.nasa.gov/projects/96496</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trash Compaction and Processing System (TCPS) | NASA TechPort Project 93127</title>
+  <meta name="description" content="The Mars Campaign Office, Logistics Reduction project called the Trash Compaction and Processing System (TCPS) is a waste management technology. Currently, there are no trash management practices that are being implemented in the space environment other than m">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/93127">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 93127</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">ESDMD</span>
+          <span class="badge">MCO</span>
+          <span class="badge">TX06.1.3</span>
+        </div>
+        <h1>Trash Compaction and Processing System (TCPS)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 93127</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/93127" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The Mars Campaign Office, Logistics Reduction project called the Trash Compaction and Processing System (TCPS) is a waste management technology. Currently, there are no trash management practices that are being implemented in the space environment other than manual compaction of waste into a plastic bag. The current practice does not recover critical resources such as water, does not prevent the growth of potentially harmful microbiological pathogens, and provides only limited volume reduction.</p><p>The objective of the TCPS task is to develop a reliable trash processing system to support long endurance human space missions (target TRL 8/9). The TCPS project plans for an International Space Station (ISS) technology demonstration in 2027.</p><p>The TCPS objectives are to: <i>reduce</i> volume of trash, <i>safen</i> processed trash to reduce biological activity risks, <i>stabilize</i> processed trash for efficient storage and disposal, and to <i>recover water and manage gaseous effluents</i>. Processed TCPS trash appear as tiles and can be used for radiation shielding augmentation. For a one-year, four-person crew mission, it is estimated that TCPS could recover ~8 cubic meters of habitable volume, produce over 900 kg of radiation shielding tiles, and recover 230 kg of water from ~1,300 kg of trash. Additionally, the tiles could be jettisoned during a transit mission to reduce propellant needs.</p><p><strong>FY2012-FY2018</strong></p><p>This period saw the development of the Heat Melt Compactor (HMC). The HMC is a full-scale TCPS precursor that was developed to refine previous versions’ trash processing capabilities, finalize operational parameters, and identify hardware issues. During the period between FY2012 and FY2016 various trash compactor prototypes were developed. This included an SBIR Phase 2 Plastic Melt Compactor System developed by Orbital Sciences Corporation (aka Sierra Nevada Corp), and the Generation 1 HMC developed at Ames. In FY2016, a Generation 2 (Gen2) HMC (now called TCPS) with an ISS “flight-like” design was designed and built at Ames. Limited Gen2 HMC ground testing began in 2017 but was not completed due to inability to reach the desired compaction pressure and vacuum. In FY2018, the hardware was repaired to partially restore its desired capability. Several SBIR awards related to the HMC have occurred in the following areas: microgravity-compatible condensing heat exchanger designs, trash bag liners to allow hygienic tiles after HMC processing, and general HMC system design.</p><p><strong>FY2019 – FY2021</strong></p><p>In FY2019, two contractors were selected for Phase A contracts under the NASA Next Space Technologies for Exploration Partnerships (NextSTEP) Appendix F: Logistics Reduction in Space by Trash Compaction and Processing System (TCPS), Broad Agency Announcement (BAA). The two contractors were the Sierra Nevada Corporation (SNC) and UTC Aerospace Systems (UTAS), also known as Collins Aerospace. Some background information is given here: <a href="https://www.nasa.gov/general/nasa-seeks-new-ways-to-handle-trash-for-deep-space-missions/">https://www.nasa.gov/general/nasa-seeks-new-ways-to-handle-trash-for-deep-space-missions/</a></p><p>Phase A was implemented in FY19-20 and completed in FY20. Phase A developed and validated TCPS flight concepts to inform SNC and Collins in flight hardware development. Risk reduction activities at NASA’s Ames Research Center (ARC) HMC facility in support of the Phase A contractors’ work included: gas and water effluent analysis, system operations, product quality, and design analysis including 15 trash processing runs of various trash models. Collins completed their compactor development work in June 2020 and SNC completed their work of a compactor, water recovery, and effluent gas management in October 2020.</p><p>In FY2020 and FY2021, the NASA Ames Research Center (ARC) team continued risk reduction activities that included tests of the HMC Gen2 under different operational scenarios. The information gained was used to inform Phase A TCPS contractors as they developed their PDR-lite designs and prototypes. A HMC Generation 3 (Gen3) by SNC was delivered to ARC as part of a SBIR Phase II awarded to Materials Modification Incorporated (MMI). MMI also developed high-temperature, low outgassing, and semi-permeable bags for use with the HMC.</p><p>Phase A work was completed in FY2021, but the contract was extended into FY2022.</p><p>From here onward the HMC was renamed the TCPS.</p><p><strong>FY2022</strong></p><p>When processing trash, the TCPS Gen3 outlet gases were fed into the Source Contaminant Control System (SCCS). The SCCS is designed to remove toxic gases such as CO, CH4, and volatile organic compounds. This system consists of an activated charcoal adsorbent bed and a catalytic oxidizer. Precision Combustion Inc. (SBIR Phase II) sized the SCCS catalytic oxidizer for use with the HMC/TCPS.</p><p>Testing consisted of identifying species in TCPS outlet gases using a GasMet FTIR analyzer before and after the SCCS. The TCPS ran using unbagged trash. A particulate matter measurement system determined particulates given off during use of the TCPS system. Finally, TCPS processing ran at shorter run times to determine how well a tailored Trash-to-Gas feedstock could be created.</p><p>The ARC team worked with Glenn Research Center’s aerosol team to design a particulate matter system to measure and monitor particulates released during TCPS operations: trash loading, tile removal, and handling of the product tiles. The particulate matter system consisted of a SBIR Phase II analyzer which is like current ISS flight hardware. Additionally, semi-permeable trash containment bags from MMI and ISS-approved wet trash bags were tested for their ability to prevent the release of particulates during tile TCPS operations while reducing gas and water contaminants and still allowing water recovery.</p><p><strong>FY2023</strong></p><p>On Aug. 26, 2022, the NextSTEP Broad Agency Agreement (BAA) Phase B contract modification was awarded to Sierra Nevada Corporation (now Sierra Space) of Madison, Wisconsin. The period of performance is from Sept. 1, 2022, through Aug. 31, 2027, and includes four option periods, ending in an ISS flight demonstration with the possibility for continued use to support ISS operations. The System Readiness Review, Preliminary Design Review, Phase 0 Safety Review, and Phase 1 Safety Reviews have been completed.</p><p>Risk-reduction test activities at ARC included characterizing SCCS efficiency for toxin removal from TCPS outlet gases. Tests using Sea-2-Summit nylon bags to contain the trash have been completed. These are the same bags used aboard the ISS. Tests using vapor-permeable bags to see if a greater liquid amount can be removed from the trash were also completed in 2023. The different trash batches (models) are: nominal, high-liquid, high-cloth, and benign. The benign batch is thought to be safe for TCPS outlet gases to vent directly to the ISS cabin without need of SCCS gas processing.</p><p><strong>FY2024</strong></p><p>The Sierra Space BAA Phase B program completed its Phase II Safety Review and Critical Design Review.</p><p>Sierra Space is currently building an Engineering Development Unit (EDU) with completion expected in late 2024. The EDU will be transitioned into a Ground Unit (GU) and will be ready for testing in early 2025. NASA ARC will supply 21 trash batches (5 nominal, 5 high liquid, 5 high cloth, 5 benign, 1 foam) beginning in January 2025 for ground testing. The Flight Unit (FU) was awarded in FY24. The FU will benefit from the GU testing and will be flown to ISS for a technology demonstration in FY27. Ground testing will be compared to the On-Orbit testing to validate the technology.</p><p>Work is currently underway to develop a way to send trash batches to the ISS without needing cold storage or freezing of any trash items. The astronauts will only need to add water to a pre-made bag of items to be hydrated. This new technique will be used as part of the January 2025 ground testing.</p><p>This year, testing has been completed to determine the amount of water contained in the different types of trash batches. Now when tests are performed either at ARC or by Sierra Space using their Ground Unit, the mass difference before and after testing provide a more accurate assessment of how much water (and other volatiles) were removed. Previous work used an estimated amount of water in the trash batch.</p><p>TCPS testing has also been completed using Crew Health and Performance Exploration Analog (CHAPEA) trash. A report is forthcoming. CHAPEA is a series of analog missions that will simulate year-long stays on the surface of Mars.</p><p>To expand the list of acceptable items for TCPS compaction, non-typical trash items are being tested in the TCPS. When compacted, these items will not give off toxins after SCCS processing nor will they harm the TCPS system. Tested items include: a running shoe, electric shaver, calculator, flashlight, leather belt, leather gloves, oxygen sensor, open-end wrench, pH strips, and rubber bands. More tests are planned.</p><p>Testing is underway with silicone gloves to determine outgassing compounds when heated. Preliminary work has shown that certain gloves will give off CS<sub>2</sub>. Although concentrations are elevated, they are believed to be below Spacecraft Maximum Allowable Concentrations (SMAC) levels. CS<sub>2</sub> can potentially poison the SCCS CatOx catalyst. The source of these contaminants is being investigated.</p><p>Upcoming testing includes using more non-typical trash items like inkjet cartridges, adhesives, markers, etc. Batteries, sharps, hazardous materials, and metabolic waste will not be included in these tests.</p><p>Another series of tests will determine the outgassing compounds from processed tiles. Current ISS safety requirements have the processed tiles to be bagged. This work will determine if this extra bagging step is necessary.</p><p><strong>FY2025 - FY2026</strong></p><p>Sierra Space completed its TCPS Engineering Development Unit and converted it into a Ground Unit. The Ground Unit build was completed in March, 2025. The Ground Unit was used for extensive system check-out testing. Twenty-one trash control samples, supplied by Ames Research Center, were used as part of the check-out testing. Testing included: measurements of particulate concentrations emitted during different phases of operation, processed tile odor characterization, determining outlet gas composition, processed tile water activity, cycle times, power usage, final tile density, and many others.</p><p>Sierra Space began building the Flight Unit in June 2025 and completed the build in February 2026. Extensive ground tests similar to those on the Ground Unit will be used to qualify the Flight Unit for ISS operations. Additionally at least 60 runs while the Flight Unit is on ground are required for reliability testing. Twenty three trash control samples supplied by ARC will be used as part of the reliability testing.</p><p>ARC completed development of a new method to make trash “control samples.”  The new control samples require no refrigeration, have an indefinite shelf life, and only need to be mixed with water. Because there is limited refrigeration space aboard the ISS, the ability to store the control samples without refrigeration is a great advantage to the program. Using identical trash samples is necessary to remove trash composition variability when comparing test results. The new control samples were tested in the Sierra Space TCPS Ground Unit and in the Flight Unit - while it is on ground and then when it is aboard the ISS. </p><p>The Phase 3 safety review should occur in late FY26, and the Flight Unit will be ready to fly to the ISS in early 2027.</p><p>Ames risk reduction work included testing the new control samples with our in-house TCPS and comparing results to the previous method of making trash samples. Extensive testing of Zotek® F30 foam in the TCPS took place to determine how well it works in the system, including documentation of exhaust gas composition. </p><p>Due to safety concerns from gas effluents, only trash items similar to those tested on ground will initially be allowed in the TCPS aboard the ISS. Risk-reduction activities at ARC include testing non-typical trash items to expand the list of allowable ISS TCPS trash items. Upcoming testing includes using items like plant waste and Cargo Transfer Bags (CTBs). Many additional items are considered for upcoming testing.</p><p>Research at ARC is also planned for measuring the off-gassing composition from TCPS processed tiles. It is planned that TCPS processed tiles aboard the ISS will be stored in CTBs. Knowing the gas composition in the CTBs after the tiles have been stored for a few months will be an important safety consideration.</p><p>Trade names, trademarks, and company names are used in this report for identification only. Their usage does not constitute an official endorsement, either expressed or implied, by the National Aeronautics and Space Administration</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>TCPS will develop a highly reliable technology primarily for reducing trash volume. TCPS will also recover water from waste materials and produce microbiologically stable, low volume tiles for radiation protection, storage or disposal. For a one-year mission of four crew, it is estimated that TCPS could recover ~8 cubic meters of habitable volume, produce over 900 kg of radiation shielding tiles, and recover 230-720 kg of water.</p>  <p>The TCPS technology would benefit any long-duration operation with limited habitable volume. The goal is to reduce trash volume and microbiologically inactivate it. This will provide less odor generation and improve habitat hygiene. As an alternative to radiation shielding, increased habitable volume, and recovered water, TCPS processed trash could be processed further using trash-to-gas technology to produce methane, or the tiles could be a compact form for trash disposal/ejection from the vehicle.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>93127</td></tr>
+<tr><th>Acronym</th><td>TCPS</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Exploration Systems Development Mission Directorate (ESDMD)</td></tr>
+<tr><th>NASA Program</th><td>Mars Campaign Office (MCO)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.1.3: Waste Management</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 5 | Target End TRL: 7</td></tr>
+<tr><th>Project Start Date</th><td>2014-10-01</td></tr>
+<tr><th>Project End Date</th><td>2030-12-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas; NASA Headquarters (HQ) — Washington, District of Columbia; Kennedy Space Center (KSC) — Kennedy Space Center, Florida; White Sands Test Facility (WSTF) — Las Cruces, New Mexico; Marshall Space Flight Center (MSFC) — Huntsville, Alabama; Glenn Research Center (GRC) — Cleveland, Ohio; United Technologies Aerospace Systems; Sierra Nevada Corporation (SNC) — Sparks, Nevada; Materials Modification, Inc. — Fairfax, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL), California (CA), Connecticut (CT), District of Columbia (DC), Florida (FL), New Mexico (NM), Ohio (OH), Texas (TX), Virginia (VA), Wisconsin (WI)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Moon and Cislunar, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Melissa K Mckinley (Project Manager) &lt;melissa.k.mckinley@nasa.gov&gt;; Steven A Sepka (Project Manager) &lt;steven.a.sepka@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Thomas W Inman (Program Director) &lt;thomas.w.inman@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-07-16</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.fbo.gov/index?s&amp;#61;opportunity&amp;amp;mode&amp;#61;form&amp;amp;tab&amp;#61;core&amp;amp;id&amp;#61;02c782d135f3d5414905697e89ef4473" target="_blank" rel="noopener noreferrer">NASA NextSTEP-2 Appendix F, &amp;#39;Trash Compaction and Processing System (TCPS)&amp;#39;</a></li><li><strong>Generation 2 Heat Melt Compactor</strong> — The Gen 2 HMC (right) with the Water Recovery System (WRS) in the background.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/93127">https://techport.nasa.gov/projects/93127</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cognitive Assessment and Prediction to Promote Individualized Capability Augmentation and Reduce Decrement (CAPT PICARD) | NASA TechPort Project 33598</title>
+  <meta name="description" content="Manned NASA missions include long periods of low workload, followed by sudden, high tempo operations. This can be detrimental to situational awareness and operational readiness. During these missions, disrupted sleep, long-term motion exposure, lack of normal ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/33598">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 33598</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX06.6.1</span>
+        </div>
+        <h1>Cognitive Assessment and Prediction to Promote Individualized Capability Augmentation and Reduce Decrement (CAPT PICARD)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 33598</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/33598" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Manned NASA missions include long periods of low workload, followed by sudden, high tempo operations. This can be detrimental to situational awareness and operational readiness. During these missions, disrupted sleep, long-term motion exposure, lack of normal gravity, and other operational characteristics result in fatigue, stress, decreased mood, and impaired cognitive and psychomotor functioning. An unobtrusive system to measure, assess, and predict astronaut workload could warn astronauts or mission control when steps should be taken to augment cognitive readiness. This system would also be useful during testing and engineering when tools and systems are being evaluated. Engineers could accurately evaluate the cognitive and physical demands of these tools, and the effects they will have on task performance and accuracy. Charles River Analytics proposes to design and demonstrate a system for Cognitive Assessment and Prediction to Promote Individualized Capability Augmentation and Reduce Decrement (CAPT PICARD). CAPT PICARD will: (1) use a suite of sensors to perform real-time synchronous data collection in a robust and unobtrusive fashion, and provide a holistic assessment of the astronaut; (2) extract, fuse, and interpret the best combination of indicators of astronaut state; (3) comprehensively predict performance deficits, optimizing the likelihood of mission success; and (4) display the data to support the information requirements of any user. Phase I goals defined in the solicitation are a literature review and design of an algorithm to assess workload. These will be a major focus; however, there is substantial overlap between CAPT PICARD and related efforts at Charles River. Therefore, we will go beyond that expectation and demonstrate a functional prototype. Meeting these requirements will dramatically improve astronaut mission readiness and the design and development of the tools used to assist them in carrying out mission objectives.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          We expect the full-scope system for Cognitive Assessment and Prediction to Promote Individualized Capability Augmentation and Reduce Decrement (CAPT PICARD) to have immediate and tangible benefit for NASA. In particular, CAPT PICARD will help monitor the workload of astronauts over short- and long-duration missions. We seek to enhance the effectiveness of widely-used tools, such as assessments that interrupt task performance, including the Psychomotor Vigilance Self-Test used by astronauts on ISS missions (NASA, 2014) by incorporating the innovations developed under CAPT PICARD. Augmenting these tools will enable crew monitoring astronauts to cue astronauts of impending deficits to aid in augmenting mission performance. In addition, CAPT PICARD will enable more effective testing and engineering by measuring workload added by new tools and systems while they are being designed and developed rather than once they are deployed. This capability will ultimately result in increased performance in astronauts and decreased costs in deploying technology to astronauts, furthering NASA's goals of expanding the frontiers of knowledge, capability, and opportunity in space, and developing technologies to improve the quality of life on our home planet.<br /> <br />We see two approaches to commercializing the technologies developed under this program. First, they can be licensed to other commercial entities that will use them directly or incorporate them as added functionality to their commercial products. In particular, we will look at companies in the long- and short-duration shipping market, including UPS and FedEx, as potential licensees of this technology. Second, we will incorporate this new technology into our AgentWorks™ software, which will both increase its appeal as a commercial product and enable us to use the tool to provide consulting services based on AgentWorks to customers within the DoD, other Federal agencies, and commercial markets.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>33598</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.6.1: Human Factors Engineering</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2015-06-17</td></tr>
+<tr><th>Project End Date</th><td>2015-12-17</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Charles River Analytics, Inc. — Cambridge, Massachusetts</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Massachusetts (MA), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Bethany K Bracken (Principal Investigator); Bethany Bracken (Principal Investigator); Mai L Chang (Project Manager) &lt;mai.l.chang@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced To</strong></li><li><strong>Closed Out</strong>: Cognitive Assessment and Prediction to Promote Individualized Capability Augmentation and Reduce Decrement (CAPT PICARD), Phase I Project Image</li><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart Image</li><li><strong>Briefing Chart</strong> — Cognitive Assessment and Prediction to Promote Individualized Capability Augmentation and Reduce Decrement (CAPT PICARD) Briefing Chart</li><li><strong>Briefing Chart Image</strong> — Cognitive Assessment and Prediction to Promote Individualized Capability Augmentation and Reduce Decrement (CAPT PICARD), Phase I</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/33598">https://techport.nasa.gov/projects/33598</a>
+    </div>
+  </div>
+</body>
+</html>

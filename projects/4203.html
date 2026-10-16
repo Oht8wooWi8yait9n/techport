@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computational Modeling of Hall Thruster Erosion | NASA TechPort Project 4203</title>
+  <meta name="description" content="Hall thrusters are being developed by NASA, DOD, and industry to meet a variety of on-board space propulsion needs. Hall thrusters have been operated successfully for many years on Russian/Soviet spacecraft at a power of about 1-2 kW; present day thrusters are">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/4203">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 4203</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX01.2.2</span>
+        </div>
+        <h1>Computational Modeling of Hall Thruster Erosion</h1>
+        <div class="meta-id">NASA TechPort Project ID: 4203</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/4203" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Hall thrusters are being developed by NASA, DOD, and industry to meet a variety of on-board space propulsion needs. Hall thrusters have been operated successfully for many years on Russian/Soviet spacecraft at a power of about 1-2 kW; present day thrusters are designed for operation at 3.5-4.5 kW, and there is growing interest in extending the power range up to 50 kW and higher. A very important life-limiting failure mechanism for all of these Hall thrusters is erosion of the discharge channel walls due to ion impact. Ions created in the discharge process impact onto the walls and cause sputtering of the wall materials, typically made of ceramics such as boron nitride. In the design of Hall thrusters for many missions, lifetime is as important as propulsion performance. Recent NASA investigations aimed at advancing the state of the art have been tightly focused on extending mission lifetime by modifying standard Hall thrusters, providing propulsion solutions for cost constrained missions [1]. Hence, there is a great need to understand, quantify, and predict the erosion processes in detail. In comparison to basic research on thruster performance, however, relatively little progress has been made in modeling and accurately predicting the channel erosion of Hall thrusters. The overall goal of the proposed research effort is to construct and validate a computer model to predict Hall thruster discharge channel erosion profiles. Validation will be performed through the work done on NASAís HiVHAc project and the University of Michigan.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          There is a great need to understand, quantify, and predict Hall thruster erosion processes in detail. In comparison to basic research on thruster performance, however, relatively little progress has been made in modeling and accurately predicting the channel erosion of Hall thrusters.##Hall thrusters are being developed by NASA, DOD, and industry to meet a variety of on-board space propulsion needs. Hall thrusters have been operated successfully for many years on Russian/Soviet spacecraft at a power of about 1-2 kW; present day thrusters are designed for operation at 3.5-4.5 kW, and there is growing interest in extending the power range up to 50 kW and higher. A very important life-limiting failure mechanism for all of these Hall thrusters is erosion of the discharge channel walls due to ion impact.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>4203</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.2.2: Electrostatic Propulsion</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-09-01</td></tr>
+<tr><th>Project End Date</th><td>2015-08-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Michigan-Ann Arbor — Ann Arbor, Michigan</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Michigan (MI)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Iain D Boyd (Principal Investigator); Brandon S Smith (Co-Investigator); Hani Kamhawi (Project Manager) &lt;hani.kamhawi-1@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Infused To</strong>: New model being used at NASA for Hall thrusters lifetime testing.</li><li><strong>Closed Out</strong>: The research performed under this Space Technology Research Fellowship concerned the development and application of numerical models to calculate the sputter yield of hexagonal boron nitride (h-BN) as a function of xenon ion energy and incidence angle, characterize the behavior of condensable sputtering products, and track the sputtering products through the discharge channel and near-field plume of a Hall thruster. The work was split between two numerical models. The first model is a high-fidelity molecular dynamics (MD) model of the sputtering of h-BN by xenon ions, used to calculate the sputter yields of h-BN and also characterize the sputtering products. The second model is a well-established hybrid fluid–particle-in-cell (hybrid-PIC) model of Hall thruster discharges called HPHall. The sputter yields and sputtered particle properties were implemented within HPHall to allow dynamic production of h-BN erosion products as simulations progress and to monitor the behavior of those products through the discharge channel and nearfield plume. The MD model of h-BN sputtering built upon an existing model developed at the University of Michigan by implementing it within an open-source framework called HOOMD-blue. HOOMD blue utilizes Nvidia’s CUDA technology to perform MD computations on graphics processing units (GPUs), decreasing the wall time of simulations by up to two orders of magnitude. The model was applied to investigate the sputtering of h-BN for ion energies between 20 eV and 300 eV and incidence angles between 0° and 75°. The calculated sputter yields were found to agree reasonably well with existing experimental measurements, although the trends at energies greater than 100– 150 eV differ between the simulations and measurements. The lowest energy at which sputtering occurred was 40 eV, indicating that the threshold energy for sputtering of h-BN lies between 30 eV and 40 eV. The species composition of the sputtering products was analyzed, and it was determined the h-BN primarily sputters as atomic boron and diatomic nitrogen, with some atomic nitrogen and heavy compounds of BxNy appearing at higher incident ion energies. Because boron was found to be the most abundant condensable product of h-BN sputtering, the characteristics of sputtered boron atoms were investigated further. It was found that the sputtered boron atoms obey the Sigmund-Thompson velocity distribution function (VDF) predicted by sputtering theory in the direction normal to the BN surface. The surface binding energy of boron as calculated from Sigmund-Thompson curve fits was determined to vary between 4 eV and 6 eV for ion energies 100 eV and greater with an average of 4.5 eV. Independent experimental measurements using laser-induced fluorescence (LIF) also determined that boron sputtered from a BN target follows a Sigmund-Thompson VDF, and the average binding energy was found to be 4.8 eV. The close agreement (~6%) between the numerically- and experimentally-determined binding energies serves as partial validation of the MD model. Curve fits to the calculated sputter yields were performed to characterize the energy and angular dependence of the sputter yields, and the fitted curves were then implemented within HPHall to allow dynamic calculation of the wall erosion rate during simulations. The calculated erosion rates are used to produce boron macroparticles that stream in straight lines until encountering a surface or exiting the simulation domain. Electron impact ionization and excitation to a single metastable state were included in order to assess the effects of bulk ionization and excitation on the density of ground-state boron. The updated version of HPHall was applied to simulate NASA’s High-Voltage Hall Accelerator (HiVHAc) engineering model Hall thruster at a discharge voltage of 500 V and discharge currents of 2 A, 4 A, and 6 A. It was determined that bulk ionization and excitation of sputtered boron have a negligible effect on the density of ground-state boron in the thruster discharge channel and near field plume, thus providing evidence that inspection of ground-state boron alone is a means of accurately characterizing wall erosion in Hall thrusters. The boron density 6 mm downstream of the channel exit was compared to independent measurements taken using cavity ring-down spectroscopy (CRDS), a technique used to determine the density of a species integrated along a laser path by targeting a single electronic state. The path-integrated boron density calculated from the HPHall simulations was found to agree reasonably well with the CRDS measurements given the numerous assumptions and sources of uncertainty involved, indicating that the numerical model was introducing a physically realistic amount of boron into the simulation domain. Overall, the simulation results and experimental comparison were determined to partially validate CRDS as a diagnostic for in situ measurement of Hall thruster wall erosion, and to further validate the MD model of h-BN sputtering. Several conclusions were drawn from this work: 1. The threshold energy for sputtering of hexagonal boron nitride lies between 30 eV and 40 eV. This observation is corroborated by available experimental evidence. 2. Establishing domain independence for sputtering simulations at high ion energies (≳100 eV) is critical, as there are various experimental data available for validation in that range. 3. The most abundant condensable product of h-BN sputtering in the energy range of interest to Hall thrusters is atomic boron. 4. Boron sputtered from an h-BN target follows a Sigmund-Thompson distribution in the direction normal to the BN surface with a surface binding energy of around 5 eV. 5. Bulk excitation and ionization of sputtered boron in a Hall thruster are negligible. This provides partial validation of CRDS as an erosion diagnostic for Hall thruster applications. 6. The hybrid-PIC method is capable of adequate for calculating wall erosion rates and tracking erosion products in a Hall thruster.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>4203-1363119016117.jpg</strong> — Project Image Computational Modeling of Hall Thruster Erosion</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/4203">https://techport.nasa.gov/projects/4203</a>
+    </div>
+  </div>
+</body>
+</html>

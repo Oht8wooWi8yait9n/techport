@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Correlator Array-Fed Microwave Radiometer Component Technologies | NASA TechPort Project 94339</title>
+  <meta name="description" content="Multiband passive microwave imagery in X to W Bands (e.g., 10, 18 or 19, 22 or 24, 37, 86 or 89 GHz) has a nearly 40-year history of utilization for measurement of multiple geophysical parameters. For example, quantities retrieved include precipitation rate, i">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/94339">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 94339</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">ACT</span>
+          <span class="badge">TX08.1.4</span>
+        </div>
+        <h1>Correlator Array-Fed Microwave Radiometer Component Technologies</h1>
+        <div class="meta-id">NASA TechPort Project ID: 94339</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/94339" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Multiband passive microwave imagery in X to W Bands (e.g., 10, 18 or 19, 22 or 24, 37, 86 or 89 GHz) has a nearly 40-year history of utilization for measurement of multiple geophysical parameters. For example, quantities retrieved include precipitation rate, integrated water vapor, integrated cloud liquid water and ice, ocean surface wind speed, snow water equivalent, sea ice concentration, and land surface temperature (for evapotranspiration). Spatial resolution is limited by aperture size, and although aperture sizes have grown to 1-2 meters, current capability will not meet future science spatial resolution needs. As geophysical models have improved, the need has emerged to improve spatial resolution further to < 5 km. Improved spatial resolution in turn leads to a need to populate the antenna with additional radiometer elements to preserve noise performance (NEDT) and to provide adequate spatial sampling of Earth's surface. We propose to develop key building blocks of a multi-band correlator array that would feed a large reflector antenna to generate multiple radiometer beams on Earth. The envisioned system (relevancy scenario) would image Earth at 36.5 and 89.0 GHz with 2 to 3 km spatial resolution and at 10.65, 18.7 and 23.8 GHz with 5 to 10 km resolution from 700 km altitude with approximately 0.5 to 1 K NEDT. At 36.5 GHz, the proposed spatial resolution is a 10X improvement over the legacy polar-orbiting capability SSM/I and SSMIS and a 3X improvement over the modern AMSR2 radiometer. The correlator array feed will also enable a conical scanning radiometer to image with 50% overlap between footprints (complete Nyquist sampling). Today's state-of-the-art radiometers do not provide spatial Nyquist sampling in all of these microwave bands. The key proposed development is a broadband line array covering 10-90 GHz appropriate for illuminating a large deployable reflector and will be developed by industry partner Nuvotronics Inc. A trade-study and design will be performed for integrating calibration noise coupling, frequency multiplexing, and low noise amplification into the beam forming structures. A brassboard sub-scale correlator array-fed radiometer will be developed at 36.5 GHz and elevation scanning of the main beam will be demonstrated. We will enter at TRL 2, mature the technology during a two-year period of performance (Jan. 2018 to Dec. 2019), and exit at TRL 3.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Accelerate mission development and reduce risk by developing critical components and subsystems for advanced instruments and observing systems
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>94339</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Advanced Component Technology Program (ACT)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.4: Microwave, Millimeter Waves, and Submillimeter Waves</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2018-02-15</td></tr>
+<tr><th>Project End Date</th><td>2020-02-14</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Nuvotronics, Inc — Radford, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD), North Carolina (NC), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jeffrey R Piepmeier (Principal Investigator) &lt;jeffrey.r.piepmeier@nasa.gov&gt;; Paul E Racette (Co-Investigator) &lt;paul.e.racette@nasa.gov&gt;; David T Leisawitz (Co-Investigator) &lt;david.t.leisawitz@nasa.gov&gt;; Kenneth J Vanhille (Co-Investigator); Jared W Jordan (Co-Investigator); Victor J Marrero Fontanez (Co-Investigator) &lt;victor.j.marrero@nasa.gov&gt;; Rafael Rincon (Co-Investigator) &lt;Rafael.Rincon@nasa.gov&gt;; Thomas R Holmes (Co-Investigator) &lt;thomas.r.holmes@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Michael S Seablom (Program Director) &lt;michael.s.seablom@nasa.gov&gt;; Parminder S Ghuman (Program Manager) &lt;p.ghuman@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-07-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Link]</strong> Closeout Link</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/94339">https://techport.nasa.gov/projects/94339</a>
+    </div>
+  </div>
+</body>
+</html>

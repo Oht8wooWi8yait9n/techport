@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reduced Order Electrostatic Force Field Modeling of 3D Spacecraft Shapes | NASA TechPort Project 4295</title>
+  <meta name="description" content="The Autonomous Vehicles Systems (AVS) Lab at CU Boulder has been pursuing research in Coulomb charge control of spacecraft for several years. The electrostatic potential of a craft can be controlled very accurately and near instantaneously by the continuous em">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/4295">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 4295</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX01.2.2</span>
+        </div>
+        <h1>Reduced Order Electrostatic Force Field Modeling of 3D Spacecraft Shapes</h1>
+        <div class="meta-id">NASA TechPort Project ID: 4295</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/4295" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The Autonomous Vehicles Systems (AVS) Lab at CU Boulder has been pursuing research in Coulomb charge control of spacecraft for several years. The electrostatic potential of a craft can be controlled very accurately and near instantaneously by the continuous emission of positively or negatively charged particles. For spacecraft in a geosynchronous orbit or beyond, where the resulting electric fields are large enough to overcome the Debye shielding from the relatively low plasma environment, the interaction forces between multiple charged bodies can be used to significantly alter their relative motion. We are currently verifying these theories with a custom test bed that allows for positional control of a charged conductor suspended on a frictionless track. As of yet, all the models and experiments treat the spacecraft as perfectly conducting spheres, an assumption that will break down when non-spherical charged bodies interact with separation distances on the order of spacecraft dimensions, as is the case for many of the practical applications of this technology. Full analytical solutions for the 3D electrostatic fields and forces from interacting non-uniform charged bodies are not available. Near exact solutions can be determined using finite element methods, but these numerical methods are too computationally expensive to employ within a control loop for constantly moving physical bodies. There are two suggested approaches that have the potential to provide useable reduced order models for the electrostatic force fields from 3D spacecraft shapes. The first relies on a theory that the total force on a conductor can be established from the surface charge distribution or adjacent electric fields alone. Measuring one or the other will allow for full force determination. The proposed research will require characterization of the necessary sensor specifications and feasibility of utilizing any suggested hardware. The second approach involves approximating a full 3D charged object with a collection of spherical conductors, whose parameters are chosen to match the full numerical solution. Since the parameters of the reduced order model have a non-linear relation to the electrostatic forces, a differential correction method will need to be implemented for proper curve fitting. The current AVS test bed is to be expanded to conduct experiments that verify the dynamics and control theory derived from these models. Certain spaceflight applications lend themselves very logically to the close proximity charge control problem. As large space missions progress beyond Earth orbit and require more and more propellant to reach their destination, rendezvous with permanent refueling stations may become necessary for mission success, and Coulomb charging is one option to achieve accurate docking. Moreover, to ensure external integrity, spacecraft may wish to deploy small cameras or other robotic devices that can optimally be controlled with Coulomb charging, but are too close to ignore 3D charge effects. Lastly, spacecraft can use electrostatic forces to deorbit space debris in an ever cluttered space environment and achieve improved Space Situational Awareness. Current and future formation flight missions that could benefit from Coulomb force control include PRISMA, NASA's proposed terrestrial planet finder and stellar imager concepts, and ESA's Darwin mission.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Certain spaceflight applications lend themselves very logically to the close proximity charge control problem. As large space missions progress beyond Earth orbit and require more and more propellant to reach their destination, rendezvous with permanent refueling stations may become necessary for mission success, and Coulomb charging is one option to achieve accurate docking. Moreover, to ensure external integrity, spacecraft may wish to deploy small cameras or other robotic devices that can optimally be controlled with Coulomb charging, but are too close to ignore 3D charge effects. Lastly, spacecraft can use electrostatic forces to deorbit space debris in an ever cluttered space environment and achieve improved Space Situational Awareness. Current and future formation flight missions that could benefit from Coulomb force control include PRISMA, NASA's proposed terrestrial planet finder and stellar imager concepts, and ESA's Darwin mission.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>4295</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.2.2: Electrostatic Propulsion</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-08-01</td></tr>
+<tr><th>Project End Date</th><td>2015-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Colorado Boulder — Boulder, Colorado</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Hanspeter Schaub (Principal Investigator); Daan Stevenson (Co-Investigator) &lt;daan.stevenson@nasa.gov&gt;; Daniel J Hoppe (Project Manager) &lt;daniel.j.hoppe@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The possibility of inter-spacecraft collisions is a serious concern at geosynchronous altitudes, where many high-value assets operate in proximity to countless debris objects whose orbits experience no natural means of decay. The ability to rendezvous with these derelict satellites would enable active debris removal by servicing or repositioning missions, but docking procedures are generally inhibited by the large rotational momenta of uncontrolled satellites. Therefore, a contactless means of reducing the rotation rate of objects in the space environment is desired. This dissertation investigates the viability of Coulomb charging to achieve such remote spacecraft attitude control. If a servicing craft imposes absolute electric potentials on a nearby nonspherical debris object, it will impart electrostatic torques that can be used to gradually arrest the object&#x27;s rotation. In order to simulate the relative motion of charged spacecraft with complex geometries, accurate but rapid knowledge of the Coulomb interactions is required. To this end, a new electrostatic force model called the Multi-Sphere Method (MSM) is developed. This approach uses conducting spheres positioned throughout a fixed geometry to determine what electrostatic forces and torques are acting on it. Computation times are orders of magnitude quicker than similar Finite Element Analysis (FEA) software, while accuracy to within 1% of the higher order truth models is maintained for the system parameters considered. All aspects of the Coulomb de-spin concept are extensively analyzed and simulated using a simplified but representative system in which a spherical servicing craft attempts to remove the one dimensional (1-D) rotation from a cylindrical debris object. First, appropriate control algorithms are developed to ensure that the nonlinear Coulomb torques arrest the rotation with guaranteed stability. Baseline simulations suggest that 12 deg/s of rotation can be removed from a 3 m length by 1 m diameter cylinder in just 3 days, using voltage levels up to +/-30 kV. The sensitivity of this performance to various system parameters and control strategies is analyzed in order to optimize an eventual Coulomb de-spin mission. Moreover, the complex interaction of the spacecraft with the plasma environment and charge control beams is modeled to determine what hardware requirements are necessary to achieve the desired electric potential levels. It is found that charge up and polarity switching procedures occur well within the time scales necessary to match the rotation of the debris object. Lastly, the 1-D remote de-spin concept is validated experimentally using a scaled down terrestrial testbed. High voltage power supplies control the potential on two nearby conductors, a stationary sphere and a freely rotating cylinder. The nonlinear feedback control algorithms developed above are implemented to achieve rotation rate and absolute attitude control. This testbed is able to remove a 100 deg/s rotation rate from the cylinder in just 10 seconds by application of Coulomb torques alone, and control the absolute attitude to within 1.5 degrees of a reference angle. Collectively, these studies decisively validate the feasibility of Coulomb charging for remote spacecraft attitude control.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>4295-1363263836193.jpg</strong> — Project Image Reduced Order Electrostatic Force Field Modeling of 3D Spacecraft Shapes</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/4295">https://techport.nasa.gov/projects/4295</a>
+    </div>
+  </div>
+</body>
+</html>

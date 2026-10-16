@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evidence-based Metrics Toolkit for Measuring Safety and Efficiency in Human-Automation Systems--NNX15AR28G | NASA TechPort Project 92118</title>
+  <meta name="description" content="NOTE: Continuation of &quot;Evidence-based Metrics Toolkit for Measuring Safety and Efficiency in Human-Automation Systems,&quot; grant #NNX13AO51G with Principal Investigator (PI) Eduardo Salas, Ph.D., due to PI move in mid-2015 to Rice University from University of Ce">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/92118">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 92118</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.6.5</span>
+        </div>
+        <h1>Evidence-based Metrics Toolkit for Measuring Safety and Efficiency in Human-Automation Systems--NNX15AR28G</h1>
+        <div class="meta-id">NASA TechPort Project ID: 92118</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/92118" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          NOTE: Continuation of "Evidence-based Metrics Toolkit for Measuring Safety and Efficiency in Human-Automation Systems," grant #NNX13AO51G with Principal Investigator (PI) Eduardo Salas, Ph.D., due to PI move in mid-2015 to Rice University from University of Central Florida.    <p></p> Specific aims of this proposal are threefold: (1) develop a framework for human-systems integration requirements, (2) identify and develop a metrics criteria in which safety and efficiency can be characterized in human-automation teams, and (3) design, develop, and validate a theoretically-driven, empirically-based metrics toolkit that characterizes the safety and efficiency of human automation interactions. This proposal meets NASA goals and objectives by mitigating the risk of inadequate design of human and automation/robotic integration through the development of safety and efficiency metrics for human-automation systems. The proposal is divided into three primary phases. Phase 1 will consist of synthesizing and translating findings from the extant literature relevant to human automation/robotic integration. The result of this effort will be the development of objective metrics generalizable to individual and team levels that characterize the safety and efficiency of a human automation interaction. The final outcome of Phase 1 will be the development of a human automation interaction metrics (HAIM) toolkit. Phase 2 will involve in-depth preparation for scientifically sound experiments. Phase 2 ensures adequate time and methodology for meaningful outcomes for Phase 3. The central outcome of Phase 2 will be the final development of the experimental testbed and experimental protocol. Phase 3 will involve preparation for, and execution of, experiments. This will include the design and execution of a set of multi-level empirical studies aimed at validating the metrics toolkit. The validation studies will focus on testing different aspects of human automation interaction (e.g., levels of automation, task complexity, and the number and configuration of system operators). The outcome of the proposed effort will provide NASA a set of evidence-based, empirically-validated guidelines and a measurement toolkit for mitigating the risk of inadequate design of human and automation/robotic integration as it pertains to the development of safety and efficiency metrics for human automation systems. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This technology is currently in development. When additional publically releasable information becomes available, it will be posted on TechPort.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>92118</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.6.5: Integrated Systems Safety</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2015-08-01</td></tr>
+<tr><th>Project End Date</th><td>2018-06-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Rice University — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Eduardo Salas (Principal Investigator); Brian F Gore (Project Manager) &lt;brian.f.gore@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Phase 1: The purpose of this phase was to synthesize and translate findings from the extant literature relevant to human automation/robotic integration in order to determine specific metrics that characterize the safety and efficiency of a human-automation interaction. The final outcome of Phase 1 was the development of the content for human automation interaction metrics (HAIM) toolkit. This content was then packaged inside an automated online tool that went a step beyond our original aim for this project by providing designers with a tool that not only contained content, but also provided information, tips, and advice for how to apply this content to their own measurement situations. Phase 2: The original goal for this second phase was to complete in-depth preparation for scientifically sound experiments. This detailed preparation time in phase 2 was meant to ensure adequate time and methodology for meaningful outcomes for Phase 3. The intended outcome of Phase 2 was be the final development of the experimental testbed and experimental protocol. However, as more was learned throughout phase 1 about Human-Automation measurement and as the toolkit development was progressing, it was determined that Phase 2 should be adjusted to better meet the goals of the overall project. Therefore, Phase 2 was adjusted to be preparation for Subject Matter Expert (SME) interviews and iterative usability evaluations of the HAIM Toolkit instead of validation experiments to test the theoretical framework. This proved to be a very fruitful decision as the SME interviews provided valuable feedback and data that was able to be incorporated into the final design of the toolkit. Phase 3: Preparation for and execution of, experiments. This final phase of the project was originally planned to include the design and execution of a set of multi-level empirical studies aimed at validating the theoretical framework and metrics toolkit. The focus of the validation studies was to be on testing different aspects of human automation interaction (e.g., levels of automation, task complexity, and the number and configuration of system operators). The intended outcome of the proposed effort was to provide NASA a set of evidence-based, empirically-validated guidelines and a measurement toolkit for mitigating the risk of inadequate design of human and automation/robotic integration as it pertains to the development of safety and efficiency metrics for human automation systems. Phase 3 was adjusted to focus on validation of the automated HAIM Toolkit through execution of usability evaluations by potential end users as this was deemed more valuable than the originally planned validation studies. The usability studies that were conducted were designed to evaluate both usability of the automated HAIM Toolkit as well as the value of the information that the toolkit provided. Multiple rounds of testing took place along with subsequent periods or toolkit redesign to incorporate feedback gleaned during the usability testing. The final outcome of this effort along with the research conducted in Phase 1 is a set of principles, guidelines, and tips for measurement that have been submitted to NASA in white papers and are in the process of being transformed into multiple manuscripts currently under preparation. Additionally, the final outcome of this phase is the development of the HAIM Toolkit, which is complete and will be delivered to NASA with the final report. Manuscripts in various stages: Hughes, A.M., Marlow, S.L., Hancock, G.M., Oglesby, J.M., Stowers, K. &amp; Salas, E. (Under Revision). Physiological assessment of workload: A meta-analysis. Human Factors Stowers, K., Iwig, C., Salas, E. (In preparation). Measurement in the Second Machine Age: Considerations for Future Human-Machine Systems. To be submitted to Human Factors. Stowers, K., Sonesh, S., Iwig, C., Salas, E. (In preparation). Technology and Teams: The Impact of Technological Evolution on Team Performance. To be submitted to Group and Organization Management. Stowers, K., Sonesh, S.C., Iwig, C., Salas, E. (In preparation.) Capturing Human Machine System Safety in Spaceflight. To be submitted to Aerospace Medicine and Human Performance.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Articles in Peer-reviewed Journals</strong> — Woods A, Iwig C, Dinh J, Salas E. &quot;Informing the development of a safety and performance metric selection toolkit: Subject matter experts weight in.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2016 Sep;60(1):1354-8. (2016 Annual Meeting of the Human Factors and Ergonomics Society, Washington, D.C., September 19-23, 2016.) https://doi.org/10.1177/1541931213601312 , Sep-2016</li><li><strong>Articles in Peer-reviewed Journals</strong> — Iwig C, Oglesby J, Shimono M, Stowers K, Leyva K, Salas E. &quot;Space flight task contexts for long distance and duration exploration missions: applications to measurement of human-automation interaction.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2015 Sep;59(1):941-5. (59th Annual Meeting of the Human Factors and Ergonomics Society, Los Angeles, CA, October 26–30, 2015.) http://dx.doi.org/10.1177/1541931215591273 , Sep-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Stowers K, Oglesby J, Sonesh S, Leyva K, Iwig C, Salas E. &quot;A framework to guide the assessment of human-machine systems.&quot; Hum Factors. 2017 Mar;59(2):172-88. https://doi.org/10.1177/0018720817695077 ; PubMed PMID: 28324673, Mar-2017</li><li><strong>Abstracts for Journals and Proceedings</strong> — Iwig C, Oglesby J, Woods A, Dinh J, Salas E. &quot;Development of an Evidence-Based Measurement Toolkit for Assessing Human-Automation System Safety and Performance.&quot; Presented at the 2016 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 8-11, 2016. 2016 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 8-11, 2016. , Feb-2016</li><li><strong>Articles in Peer-reviewed Journals</strong> — Hughes AM, Hancock GM, Marlow SL, Stowers K, Salas E. &quot;Cardiac measures of cognitive workload: A meta-analysis.&quot; Human Factors. 2019 May;61(3):393-414. Epub 2019 Mar 1. https://doi.org/10.1177/0018720819830553 ; PubMed PMID: 30822151, May-2019</li><li><strong>Abstracts for Journals and Proceedings</strong> — Woods A, Iwig C, Salas E. &quot;Informing the Development of a Safety and Performance Metric Selection Toolkit: Subject Matter Experts Weigh In.&quot; Poster to be Presented at the 2016 International Meeting of the Human Factors and Ergonomics Society, Washington, D.C., September 19-23, 2016. To be published in the 2016 Human Factors and Ergonomics Society Conference Proceedings. In press as of June 2016. , Jun-2016</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/92118">https://techport.nasa.gov/projects/92118</a>
+    </div>
+  </div>
+</body>
+</html>

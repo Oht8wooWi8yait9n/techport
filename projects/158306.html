@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surface Anomaly and Intent Forecast System | NASA TechPort Project 158306</title>
+  <meta name="description" content="Surface operations at an airport require careful coordination between pilots and air traffic controllers. Currently, when any deviation from planned routes occurs, the air traffic controller must actively observe and intervene actively to avoid any potential c">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158306">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158306</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX16</span>
+        </div>
+        <h1>Surface Anomaly and Intent Forecast System</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158306</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158306" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Surface operations at an airport require careful coordination between pilots and air traffic controllers. Currently, when any deviation from planned routes occurs, the air traffic controller must actively observe and intervene actively to avoid any potential conflicts. The in-time safety assurance goals of NASA’s In-time Aviation Safety Management System (IASMS) necessitate a proactive monitoring and alert tool instead of the reactive alerts provided after an encroachment or incursion occurs. Our innovation offers a robust, extensible surface track monitoring alerting tool that integrates the effective operational configuration, and ATC clearances to identify deviations as soon as they occur. The Surface Anomalies and Intent Forecast (SAIF) tool provides an additional layer of safety assurance over the operations by monitoring surface traffic patterns and ATC-pilot communications to infer deviations by pilots or air traffic controllers. The existing layers of safety provided by ASDE-X and controller interference are reactive in nature and an alert is generated after an incursion or when significant deviation occurs. The proposed SAIF tool leverages the live surface data, ATC-pilot comms, and historic operational patterns to generate a proactive identification of any controller/pilot deviations. Context awareness of SAIF helps alert the controllers to any potential non-compliance immediately after it occurs. We will leverage our expertise in speech-to-text models, real-time data processing, and integrated monitoring to build the Phase I POC for ATL and JFK. The two airports are characterized by complex but varying operational patterns and will be a good proving ground for the technology. The POC will focus on devising a general, extensible, and validated architecture applicable to any airport operations. We will demonstrate and validate the functionality on live data for the two airports by the end of Phase I.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The SAIF tool’s functionality aligns seamlessly with the in-time safety assurance goals of NASA and helps the agency support the FAA and aviation community as it responds to the recent increase in runway incursion incidents. The technology design will be modular and compatible with integration into the In-time Aviation Safety Management System (IASMS). SAIF offers an excellent example of a NASA-sponsored safety capability that addresses an important aviation community problem. The in-time safety assurance goals of NASA’s IASMS necessitate a proactive monitoring and alert tool instead of the reactive alerts provided after an encroachment or incursion occurs. Operating in tandem with the SWANS hazard and risk event detection system, SAIF offers the NASA System Wide Safety Project an in-time runway incursion alert capability that accelerates IASMS milestones and offers a deployment success. SAIF will deliver near term benefits by adding a new and valuable safety monitoring and analysis tool to support air transportation as it responds to the recent increase in runway incursions and other safety events. The ability to process multiple data feeds in real-time and translate them into safety insights provides a robust infrastructure that can be leveraged for safety research by NASA.  The SAIF architecture makes it simple to publish the alerts and other outputs to the NASA Digital Information Platform (DIP). As a secure, cloud-based digital services distributor, DIP is an ideal method for publishing SAIF information to FAA and airline users. Robust Analytics is a participating service provider to the DIP and plans to register many other services in the coming months. SAIF is a logical candidate for early distribution once the prototype is mature.  The proactive alerting capability of SAIF will be invaluable to air traffic controllers, airport safety managers, and airlines. The technology can be deployed to augment the safety systems at an airport with existing data services, thus encouraging easy adoption. SAIF adds to the FAA’s safety monitoring and analysis portfolio and will assist the airlines to understand and improve the safety and operational efficiency of their airport surface operations. With the recent significant increase in runway incursions (operational events and pilot deviations increased 32 percent from December 2022 to December 2023), the FAA is looking for better solutions for prevent runway incursions. The ASDE-X alarm that prevented a severe crash at JFK on January 13, 2023 provides little advance warning to controllers, only generating an alarm when an aircraft encroaches an active runway. By monitoring the entire taxi path, the SAIF algorithm can add many more seconds to the warning, increasing the probability of an in-time intervention.  Airlines will similarly benefit from SAIF capabilities. Aircraft sometimes take wrong turns on the surface, incurring lost time and money in addition to the negative safety impacts. In addition, a pilot application of SAIF could allow for earlier alerting than for the controller (assuming a lower controller tolerance for false alerts as they are managing multiple aircraft at a time), providing an additional margin of safety. This offers operational benefits to the airline as operational anomalies can be analyzed with SAIF and used to identify anomalous movements, pilot proficiency, and persistent airport procedure inefficiencies. SAIF can help “buy its way into the airline operations center” by offering the potential for operational improvements that complement the safety benefits. The airlines might also find value in the operational pattern modeling and surface layout model components of SAIF to assist with operational planning.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158306</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX16: Air Traffic Management and Range Tracking Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 1 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2024-08-07</td></tr>
+<tr><th>Project End Date</th><td>2025-02-06</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Robust Analytics — Crofton, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Maryland (MD)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Varun Sudarsanan (Principal Investigator); Robert W Mah (Project Manager) &lt;robert.w.mah@nasa.gov&gt;; Peter F Kostiuk (Primary Point of Contact)</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158306">https://techport.nasa.gov/projects/158306</a>
+    </div>
+  </div>
+</body>
+</html>

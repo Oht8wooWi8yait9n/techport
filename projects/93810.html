@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>uG-LilyPond - Floating Plant Pond for Microgravity | NASA TechPort Project 93810</title>
+  <meta name="description" content="The proposed μG-LilyPond is an autonomous environmentally controlled floating plant cultivation system for use in microgravity. The μG-LilyPond concept expands the types of crops that can be grown on a spacecraft in a flexible, efficient, low maintenance packa">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/93810">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 93810</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX07.2.1</span>
+        </div>
+        <h1>uG-LilyPond - Floating Plant Pond for Microgravity</h1>
+        <div class="meta-id">NASA TechPort Project ID: 93810</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/93810" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The proposed μG-LilyPond is an autonomous environmentally controlled floating plant cultivation system for use in microgravity. The μG-LilyPond concept expands the types of crops that can be grown on a spacecraft in a flexible, efficient, low maintenance package. The μG-LilyPond features several innovations relative to state of the art, including passive water and nutrient delivery to floating plants, volume efficiency, minimal time for maintenance, full life-cycle (seed to seed) support, and crop flexibility. Small floating macrophytes like Duckweed and Azolla are 100% edible (with no inedible biomass), nutritious (high in protein), exceptionally fast growing, and able to thrive in nutrient rich wastewater. The μG-LilyPond concept aims to maximize production of these tiny plants in a very small volume, for use as a crew dietary supplement, atmospheric revitalization component (CO2 reduction to O2), and potentially a metabolic wastewater treatment facility. The goal of this Phase I project is to develop a conceptual design for a reliable, flexible, and efficient floating plant production system for use in microgravity. Phase 1 Objectives are to 1. Determine feasibility of passive water delivery to floating aquatic plants in microgravity; 2. Determine feasibility for continuous autonomous biomass harvest and water (effluent) extraction; 3. Determine feasibility of autonomous floating plant propagation; 4. Define autonomous environmental monitoring and control methods to support candidate crops; 5. Estimate cultivation system efficiency, in terms of production capacity versus equivalent system mass; and 6. Plan for future development of a fully functional flight unit. This collaborative effort between Space Lab Technologies, LLC and the Bioastronautics research group from the University of Colorado (CU) Boulder Aerospace Engineering Sciences Department will combine modeling, analysis, and engineering to demonstrate technology feasibility.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The complete μG-LilyPond� system will provide supplemental fresh food, atmosphere revitalization, and potentially wastewater treatment for microgravity spacecraft habitats, at reduced cost for infrastructure, power, consumables, and crew time. The design can be easily adapted to a low gravity environment for planetary surface habitats.<br /> <br />1) A commercial Earth-based μG-LilyPond� system could be made available to populations in water and nutrient scarce regions or otherwise harsh environments that would benefit from potable water and nutrient recovery from waste streams, and the integration with indoor aquaponics systems (fish production). A simplified, less costly design would be appropriate for commercial production targeted to in-home use, where operating conditions are less severe than in space. 2) μG-LilyPond� sensor suite and control software would be commercially beneficial to aquaponics facilities by improving yield while reducing economic cost of production. Service to aquaponics companies would include customized design and installation relevant to their specific facility needs and existing infrastructure. Space Lab will initially seek local Colorado aquaponics companies for initial demonstration and then expand to national or even international markets. 3) By recovering nutrients from wastewater and rapidly growing biomass, μG-LilyPond� may be commercially attractive for biofuel production from municipal waste. SpaceLab will approach both private and public Colorado based entities that may be interested in commercial wastewater treatment and biofuel production applications, using an environmentally controlled volume efficient system.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>93810</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX07.2.1: Logistics Management</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2017-06-09</td></tr>
+<tr><th>Project End Date</th><td>2018-06-08</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Space Lab Technologies, LLC — Pinecliffe, Colorado</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Colorado Boulder — Boulder, Colorado; Kennedy Space Center (KSC) — Kennedy Space Center, Florida</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO), Florida (FL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Christine Chamberlain (Principal Investigator); Raymond Wheeler (Project Manager) &lt;Raymond.M.Wheeler@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong> — uG-LilyPond - Floating Plant Pond for Microgravity, Phase I Briefing Chart</li><li><strong>Briefing Chart Image</strong> — uG-LilyPond - Floating Plant Pond for Microgravity, Phase I Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/93810">https://techport.nasa.gov/projects/93810</a>
+    </div>
+  </div>
+</body>
+</html>

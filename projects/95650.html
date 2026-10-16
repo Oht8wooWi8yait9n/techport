@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propellant Slosh in Small Satellite Conformal Tanks | NASA TechPort Project 95650</title>
+  <meta name="description" content="Small satellites (SmallSats) have been used with increasing frequency in recent years as a low-cost method of performing science in space without the need to design a multimillion-dollar full-scale satellite. The propulsion system for SmallSats requires signif">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/95650">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 95650</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX01.1.1</span>
+        </div>
+        <h1>Propellant Slosh in Small Satellite Conformal Tanks</h1>
+        <div class="meta-id">NASA TechPort Project ID: 95650</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/95650" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Small satellites (SmallSats) have been used with increasing frequency in recent years as a low-cost method of performing science in space without the need to design a multimillion-dollar full-scale satellite. The propulsion system for SmallSats requires significant development to reach maturity as these systems currently have relatively low technology readiness levels. This needed development is primarily due to the limited space available on these satellites. One possible solution to the problem is the development of irregularly shaped, conformal propellant tanks capable of filling in the leftover available space within the satellite bus. Slosh in all propellant tanks must be considered to ensure the craft can handle the forces and moments exerted by the movement of the fluid. Traditional methods used to model propellant slosh in cylindrical and capsule-shaped tanks cannot be directly applied to conformal tanks because the irregular geometry will produce less periodic motion. This study will investigate the behavior of fluid in these conformal tanks using a combination of computational fluid dynamics (CFD) and Surface Evolver. Physical testing of conformal propellant tanks may be used to verify the results of the computer models. In addition, fluid slosh as it interacts with a propellant management device (PMD) will be modeled. Research will focus on the low range of SmallSat tank sizes, such as for CubeSats, but the ability of these models to scale up to larger SmallSat sizes will be investigated.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Small satellites (SmallSats) have been used with increasing frequency in recent years as a low-cost method of performing science in space without the need to design a multimillion-dollar full-scale satellite. The propulsion system for SmallSats requires significant development to reach maturity as these systems currently have relatively low technology readiness levels. This project hopes to address this issue.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>95650</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.1.1: Integrated Systems and Ancillary Technologies</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2018-08-01</td></tr>
+<tr><th>Project End Date</th><td>2020-12-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Purdue University-Main Campus — West Lafayette, Indiana</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Indiana (IN)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Steven H Collicott (Principal Investigator); Emily A Beckman (Co-Investigator) &lt;emily.beckman@nasa.gov&gt;; David J Benson (Project Manager) &lt;david.j.benson@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: As small satellites become more common in the space industry, creative solutions for the use of their limited volume will be required. Conformal tanks, non-traditionally shaped and non-axisymmetric tanks designed to fit around other spacecraft components, are one possible way to better make use of this limited volume. For example, it would be significantly easier to fit electronics and instruments around a cube-shaped tank than a more traditionally shaped spherical tank. Slosh is an important phenomenon to understand in spacecraft because it can cause forces and moments on the spacecraft, affect the stability, and jeopardize or delay a mission. However, slosh in these more complicated geometries has not been thoroughly investigated in the past. The objective of this research was to investigate the behavior of slosh in small satellite conformal tanks. In particular, this research examined the effect of changing the slosh angle on the resulting forces, moments, and center of mass offset. Six tank geometries were evaluated in this research as shown in Figure 1. The cylinder is a standard tank geometry and allowed comparison to past work. The cube and rectangle tank were basic conformal tank geometries and therefore good stepping-stones to understanding non-axisymmetric slosh. Three more complicated conformal tank geometries included a stair step, a trapezoid, and a quarter annular cylinder. Each tank geometry was evaluated both experimentally and with computational fluid dynamics (CFD). Experimental work looked at the free decay of the liquid surface after the container was given a single impulse to begin slosh motion. A code was written to identify the free surface of the liquid from video taken of the slosh event, as illustrated in Figure 2. The behavior of the free surface was used to calculate the natural frequency and damping ratio of slosh in the container at the given fill level. An example of this behavior is given in Figure 3, in this case showing experimental data for the rectangular tank. CFD cases were run for every tank geometry and fill level that was tested experimentally. Simulations were created in OpenFOAM, an open-source CFD software. Center of mass displacement in each coordinate direction was used to determine slosh parameters from CFD solutions. These CFD solutions were compared to the experimental data. In general, it was found that it was easier to match the natural frequency to the experimental data than it was to match the damping ratio. This is consistent with previous slosh work. Natural frequency found in the experiment tended to be shifted slightly higher than expected from analytical correlations for similar tank geometries, however the overall percent error was small. In basic conformal geometries such as the cube and rectangle, the behavior could be broken down into a single damped sinusoid behavior in each symmetric direction. For more complicated geometries, the behavior could be broken down into one single damped sinusoid along the axis of symmetry, and one perpendicular to the axis of symmetry. This is illustrated in Figure 4 which shows how slosh behavior can be decomposed into two modes in the stair step tank. It appears that the natural frequencies in each tank roughly correspond to the natural frequency expected from a rectangular tank with a dimension similar to the tank in question. For example, behavior in the stair step tank was composed of sine waves with frequencies similar to a rectangular tank with dimensions equal to the longest and shortest dimensions, as defined by Figure 5. The relatively good agreement between the CFD simulations, experimental data, and analytical solutions supports the idea that this open source software, OpenFOAM, can be a valuable tool for engineers without the need for expensive software.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/95650">https://techport.nasa.gov/projects/95650</a>
+    </div>
+  </div>
+</body>
+</html>

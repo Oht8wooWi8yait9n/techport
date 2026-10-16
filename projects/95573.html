@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Understanding Deep Neural Networks Through Attribution and Interactive Experimentation | NASA TechPort Project 95573</title>
+  <meta name="description" content="My proposed research focuses on designing and developing interactive tools that enable people to make sense of deep neural networks (DNN), turning these powerful, complex models into ones that are more interpretable. I will combine two novel ideas synergistica">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/95573">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 95573</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX11.4.3</span>
+        </div>
+        <h1>Understanding Deep Neural Networks Through Attribution and Interactive Experimentation</h1>
+        <div class="meta-id">NASA TechPort Project ID: 95573</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/95573" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>My proposed research focuses on designing and developing interactive tools that enable people to make sense of deep neural networks (DNN), turning these powerful, complex models into ones that are more interpretable. I will combine two novel ideas synergistically, to guide users to visualize and discover model substructures that impact performance: (1) reveal neuron activation relationships and attribute model performance and vulnerability to model substructures; and (2) fortify user understanding of models via interactive experimentation. This proposed work leverages my hybrid expertise in scalable graph mining and human-computer interaction, combining them to create tools that are scalable, interactive, and usable. These techniques align with nearly all facets of NASAs TA11: Modeling, Simulation, Information Technology, and Processing, and can help researchers and scientists conduct large-scale, data-driven research to produce state-of-the-art results with confidence. Expected Results and Innovations: (1) Novel Ideas. My proposed research produces and synergistically combines (1) a novel, principled framework that guides users to visualize and discover model substructures that impact performance; and (2) a new interactive model interpretation approach that fortifies user understanding. These tools and techniques can be used in large-scale data-driven scientific research. (2) New Open-source Practical Tools. My interactive tools will work with real data and DNN models, to help researchers and practitioners answer important research questions. To amplify my impacts, I will broadly disseminate my research results by open-sourcing all code, tools, and datasets developed. (3) Improved Trust in AI for Scientific Applications. Broadly, my findings could lead to new breeds of techniques that are more interpretable and are able to incorporate human knowledge. This would also improve trust in AI by users who interact with NASA deployed AI-powered systems and research. This research could further improve AI safety, helping people better understand AI systems, to gain trust in them, to understand why and when they may not work well, and to protect them from harm in combating adversarial attacks. Finally, through this strengthened trust, these new AI techniques could be applied to multiple NASA spacecraft missions, leading to spaceflight technology breakthroughs.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Broadly, my findings could lead to new breeds of techniques that are more interpretable and are able to incorporate human knowledge. This would also improve trust in AI by users who interact with NASA deployed AI-powered systems and research. This research could further improve AI safety, helping people better understand AI systems, to gain trust in them, to understand why and when they may not work well, and to protect them from harm in combating adversarial attacks. Finally, through this strengthened trust, these new AI techniques could be applied to multiple NASA spacecraft missions, leading to spaceflight technology breakthroughs</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>95573</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.4.3: Semantic Technologies</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2018-08-01</td></tr>
+<tr><th>Project End Date</th><td>2020-12-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Georgia Institute of Technology-Main Campus (GA Tech) — Atlanta, Georgia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Georgia (GA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Duen Horng Chau (Principal Investigator); Frederick M Hohman (Co-Investigator) &lt;frederick.m.hohman@jpl.nasa.gov&gt;; Scott Davidoff (Project Manager) &lt;scott.davidoff@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Infused To</strong> (Microsoft Corporation): Student states that his visualization systems have been deployed at Microsoft (he also did a demo for some Microsoft execs).</li><li><strong>Closed Out</strong>: Data-driven machine learning paradigms now solve the world&#x27;s hardest problems by automatically learning from data. Unfortunately, what is learned is often unknown to both the people who train models and the people they impact. This has led to a rallying cry for interpretability. But what is interpretability? How do we scale up explanations for modern, complex models? And how can we best communicate them to people? Through my experience working closely with researchers, designers, and practitioners at Apple Machine Intelligence, Microsoft Research, NASA JPL Human Interfaces, and Pacific Northwest National Lab, it is clear applying machine learning is a people problem. From data collection to model deployment, people make decisions using models that impact people. Therefore, I take a human-centered approach to machine learning interpretability by designing and developing interactive interfaces to enable interpretability at scale and for everyone. My proposed research focused on designing and developing interactive tools that enable people to make sense of deep neural networks (DNN), turning these powerful, complex models into ones that are more interpretable. I combine two novel ideas synergistically, to guide users to visualize and discover model substructures that impact performance: (1) reveal neuron activation relationships and attribute model performance and vulnerability to model substructures; and (2) fortify user understanding of models via interactive experimentation. This fellowship work leverages my hybrid expertise in scalable graph mining and human-computer interaction, combining them to create tools that are scalable, interactive, and usable. These techniques align with nearly all facets of NASA&#x27;s TA11: Modeling, Simulation, Information Technology, and Processing, and can help researchers and scientists conduct large-scale, data-driven research to produce state-of-the-art results with confidence. My thesis operationalizes interpretability in practice, scales explanations to complex models, and communicates explanations to people. My interdisciplinary research contributes to human-computer interaction, machine learning, and more importantly their intersection, including open-source interactive interfaces, scalable algorithms, and new, accessible communication artifacts. My work thus far has resulted in 23 peer-reviewed publications (11 conference; 12 workshop, poster, and demo papers) at the premiere venues within human-computer interaction (CHI) and visualization (VIS, TVCG). I have won a Best Paper award at CHI 2019, this NASA PhD Fellowship, the Georgia Tech President’s Fellowship, and a Microsoft AI for Earth Award. My work has made significant impact to industry and society: my visualization systems have been deployed at Microsoft, demoed to executive leadership at their internal TechFest, and inspired the visualization design of the widely-used InterpretML interpretability toolkit (2.4K+ Github stars); my visualization explanations scale to large models and datasets (e.g., InceptionNet + ImageNet with 1.2M images); and my interactive articles have been read by 250,000+ people.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/95573">https://techport.nasa.gov/projects/95573</a>
+    </div>
+  </div>
+</body>
+</html>

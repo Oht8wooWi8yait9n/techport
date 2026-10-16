@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>High Resolution PBL Profiling with LEO-LEO Occultation (HiPPO) | NASA TechPort Project 117257</title>
+  <meta name="description" content="The planetary boundary layer (PBL) has been recognized in the 2017-2027 Decadal Survey for Earth Science and Applications from Space [ESAS 2017] as a key Earth science targeted observable essential across multiple discipline areas. ESAS 2017 specifically calle">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/117257">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 117257</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">DSI</span>
+          <span class="badge">TX08.1</span>
+        </div>
+        <h1>High Resolution PBL Profiling with LEO-LEO Occultation (HiPPO)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 117257</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/117257" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The planetary boundary layer (PBL) has been recognized in the 2017-2027 Decadal Survey for Earth Science and Applications from Space [ESAS 2017] as a key Earth science targeted observable essential across multiple discipline areas. ESAS 2017 specifically called out high-resolution vertical profiles of temperature and water vapor as well as PBL height as the most important physical parameters to measure from space. While existing remote sensing technology such as GNSS radio occultation (RO) can provide high vertical resolution refractivity (which is a combination of temperature and water vapor), it cannot disentangle temperature and water vapor within the PBL without a priori information. Emerging technologies such as DIAL (Differential Absorption Lidar) and DAR (Differential Absorption Radar) can potentially yield high resolution water vapor profiles, but they are still at low TRLs and are limited to clear and cloudy sky conditions, respectively. The technological challenges and the motivation for placing PBL observations in the incubation program are recognized by ESAS 2017 and detailed in the NASA Incubation Study Team Report for the PBL. We propose to study a new instrument concept that offers the potential to simultaneously profile water vapor, temperature, and possibly liquid water content with high vertical resolution within the PBL. The concept is based on an emerging remote sensing technique known as LEO-LEO occultation where amplitude changes in microwave signals in multiple bands (e.g., Ka/Ku/X) are transmitted and received between two low Earth orbiters (LEO) to yield absorption due to water vapor and other atmospheric constituents. The objective of this study is to mature this concept by quantitatively assessing the expected accuracy, sampling and resolution of temperature and water vapor profiles retrievable from LEO-LEO occultation for various PBL regimes covering subtropical ocean, mid-latitude land, and the Arctic. As a result of this study, we will determine the optimal frequencies, component hardware maturity, feasibility of smallsat/cubesat implementation, and orbital configurations to achieve the desired spatial and temporal coverages. The study will consist of three key parts. First, we will perform a theoretical study to quantify the retrieval accuracy, resolution, and depth penetration for different instrument (e.g., choice of frequencies, SNR) and PBL scenarios. Second, we will characterize the spatial and temporal sampling of these measurements with different orbital configurations, including constellations of smallsats comprised of a few to tens of satellites in varying altitudes and inclinations. It is expected that different orbital configurations will be optimal for the study of different PBL regimes and associated science objectives. Third, we will document instrument performance requirements and assess the current hardware sub-component maturity level, with a goal to enable a smallsat/cubesat class instrument concept. Successful completion of the proposed research will bring this instrument concept, which we refer to as High Resolution PBL Profiling with LEO-LEO Occultation (HiPPO), from an entry TRL of 2 to an exit TRL of 3. Furthermore, we will identify the paths required to mature the technology beyond TRL 3. The HiPPO instrument concept is a compelling extension of RO signals of opportunity. While similar concepts have been previously proposed to both NASA and ESA, the significant and unique application of such a technique to PBL profiling has never been rigorously explored. The proposal team consists of instrument and retrieval experts in RO and microwave technologies that will ensure that the study objectives are met and to support the technology developments in the PBL Incubation Program.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Maturation of observing systems, instrument technology, and measurement concepts for Planetary Boundary Layer and Surface Topography and Vegetation
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>117257</td></tr>
+<tr><th>Acronym</th><td>HiPPO</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Decadal Survey Incubation (DSI)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1: Remote Sensing Instruments and Sensors</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2022-08-01</td></tr>
+<tr><th>Project End Date</th><td>2025-03-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Chi O Ao (Principal Investigator) &lt;chi.o.ao@jpl.nasa.gov&gt;; George A Hajj (Co-Investigator) &lt;george.a.hajj@jpl.nasa.gov&gt;; Karen R Piggee (Co-Investigator) &lt;karen.r.piggee@jpl.nasa.gov&gt;; Kuo-Nung Wang (Co-Investigator) &lt;kuo-nung.wang@jpl.nasa.gov&gt;; Thomas K Meehan (Co-Investigator) &lt;thomas.k.meehan@jpl.nasa.gov&gt;; Jeffrey Y Tien (Co-Investigator) &lt;jeffrey.y.tien@jpl.nasa.gov&gt;; Alexander B Akins (Co-Investigator) &lt;alexander.akins@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Michael S Seablom (Program Director) &lt;michael.s.seablom@nasa.gov&gt;; Amber E Emory (Program Manager) &lt;amber.emory@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-06-26</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Link]</strong> Closeout Link</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/117257">https://techport.nasa.gov/projects/117257</a>
+    </div>
+  </div>
+</body>
+</html>

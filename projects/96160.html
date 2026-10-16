@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numerical Simulation of Interfacial Fluid-Particle Flow in Binder Jet Additive Manufacturing for Aerospace Components | NASA TechPort Project 96160</title>
+  <meta name="description" content="Additive manufacturing (AM), commonly referred to as 3D printing, is a broad category of techniques that use the addition of material in a layer-wise fashion to fabricate solid objects from computer-aided design (CAD) models using metals, ceramics, sands, and ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/96160">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 96160</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX12.4.1</span>
+        </div>
+        <h1>Numerical Simulation of Interfacial Fluid-Particle Flow in Binder Jet Additive Manufacturing for Aerospace Components</h1>
+        <div class="meta-id">NASA TechPort Project ID: 96160</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/96160" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Additive manufacturing (AM), commonly referred to as 3D printing, is a broad category of techniques that use the addition of material in a layer-wise fashion to fabricate solid objects from computer-aided design (CAD) models using metals, ceramics, sands, and polymers. The aerospace industry has been particularly drawn to the advantages that AM provides over traditional methods, such as increased build flexibility and significant mass reduction. While wide scale adoption of AM for the fabrication of a variety aerospace components is likely in the coming years, AM is also being explored as a means for self-sustainability away from Earth in future planetary exploration missions by using in-situ resources as feedstock materials to produce tools, supplies, structures, and other assets. The proposed work seeks to study a particular method called binder jet additive manufacturing (BJAM) to address two goals pertaining to aerospace applications: (1) to improve the BJAM process so that high-fidelity, complex, and often one-off aerospace components can be manufactured at minimal cost and lead times, and (2) to assess the viability of BJAM as a method to produce functional parts from Martian, lunar, and asteroidal regolith material. These goals will be achieved through the development of a computational framework to simulate the BJAM process to efficiently investigate the parameters that lead to optimal part properties, which will reduce the costs and time inherent with trial-and-error, experimental approaches. BJAM is a particular type of powder-bed AM process that employs a raster scanning inkjet printhead to administer a fluid binder into a powder layer of a desired material to selectively join particles. The bound particle clusters form solid lines and surfaces that make up a part cross-section in accordance with the governing CAD model. This process is repeated many times with each cross-section successively added on top of the previous one until the full geometry is formed. BJAM has many unique advantages compared to other AM methods, such as its wide range of suitable materials, relatively fast build times, and cost effectiveness. The characteristics of a component produced by BJAM are a result of interfacial fluid mechanics and particle dynamics that occur when a liquid droplet impacts a powder layer. The resulting particle agglomeration bound from a single binder droplet is the fundamental building element of the part and is the predominant factor governing its strength, dimensional accuracy, surface properties, and overall quality. Analogous to a pixel in a digital image, the primitive size and shape has an important effect on the resolution and dimensional accuracy of the final part. In order to improve the performance of BJAM components to meet the stringent demands of aerospace applications, better understanding of how this fluid-particle interaction affects the quality of the final part is required. This work seeks to elucidate the role of interfacial physics and fluid-particle interaction through direct numerical simulation of the BJAM process. Computational fluid dynamics (CFD) is employed to simulate the fluid phase and a discrete element method (DEM) approach is taken to resolve the particle dynamics. The two phases are coupled and the motion of each must be solved simultaneously. The CFD algorithm utilizes the volume of fluid (VOF) technique for capturing multifluid flows separated by a dynamic interface.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Additive manufacturing (AM), commonly referred to as 3D printing, is a broad category of techniques that use the addition of material in a layer-wise fashion to fabricate solid objects from computer-aided design (CAD) models using metals, ceramics, sands, and polymers. The aerospace industry has been particularly drawn to the advantages that AM provides over traditional methods, such as increased build flexibility and significant mass reduction. While wide-scale adoption of AM for the fabrication of a variety aerospace components is likely in the coming years, AM is also being explored as a means for self-sustainability away from Earth in future planetary exploration missions by using in-situ resources as feedstock materials to produce tools, supplies, structures, and other assets.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>96160</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX12.4.1: Manufacturing Processes</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2019-08-01</td></tr>
+<tr><th>Project End Date</th><td>2022-12-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Rice University — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Others Inside the Solar System, Moon and Cislunar, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Fred Higgs (Principal Investigator); Joshua J Wagner (Co-Investigator); Craig E Smith (Project Manager) &lt;craig.e.smith@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Binder jet 3D printing (BJ3DP) is a powder bed additive manufacturing (AM) technology capable of fabricating geometrically complex components from a wide range of engineering materials, such as metallic superalloys and advanced ceramics. Compared to similar AM processes, namely powder bed fusion (PBF), BJ3DP allows for faster build rates, reduced costs, and a more extensive selection of suitable materials. Despite these advantages, the resulting parts generally exhibit inferior mechanical properties, dimensional accuracy, and repeatability. Consequently, widescale adoption of BJ3DP for high-performance applications, such as those expected in the aerospace and defense sectors, is contingent on novel process improvements and innovations. The fundamental phenomenon defining this process is the impact of liquid binder microdroplets onto the surface of a smooth powder bed. These droplets are selectively jetted to form networks of bound powder particles that make up a cross-section of a desired part shape. The additive binding of many cross-sectional powder layers produces the 3D geometry from the bottom up, allowing for the formation of complex geometrical features that would otherwise be difficult or even impossible for traditional manufacturing techniques. When a binder droplet impacts the powder bed, a complex fluid-particle interaction occurs that ultimately governs the quality of the final component. In the beginning stages of the impact event, inertial forces (1) drive the liquid down into the interstitial pore space between particles and (2) spread the droplet radially outward from the impact point on the surface of the powder bed. The impacting droplet momentum is transferred into the powder bed, resulting in deformation, cratering, and particle ejection. These ballistic disturbances can have deleterious effects on the surface texture of the part and promote the formation of void spaces and other defects. After a short time, inertia-driven binder penetration.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/96160">https://techport.nasa.gov/projects/96160</a>
+    </div>
+  </div>
+</body>
+</html>

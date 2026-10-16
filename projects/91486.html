@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trajectory Tracking in Nonlinear, High-Order, Underactuated Robotic Systems | NASA TechPort Project 91486</title>
+  <meta name="description" content="Control of robotic systems, as a field, spans both traditional closed-loop feedback techniques and modern machine learning strategies, which are primarily open-loop. For certain applications, these domains do not intersect: traditional controls manage low-orde">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91486">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91486</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX10.2.3</span>
+        </div>
+        <h1>Trajectory Tracking in Nonlinear, High-Order, Underactuated Robotic Systems</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91486</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91486" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Control of robotic systems, as a field, spans both traditional closed-loop feedback techniques and modern machine learning strategies, which are primarily open-loop. For certain applications, these domains do not intersect: traditional controls manage low-order, linear, and controllable/accessible systems with low-level feedback. For others that are complex, nonlinear, under-actuated, tightly coupled, and high order, machine learning can be used to find feasible open-loop trajectories. However, when adapting a machine-learned trajectory to a physical system, these domains collide, and occasionally leave embedded systems engineers with little recourse to make physical systems robust to disturbances in closed-loop. Such a situation occurs with systems for which traditional state space nonlinear controllers either cannot be developed or are computationally intractable, and for which a feasible trajectory is provided a-priori using another technique (e.g., machine learning.) The research described here may start to bridge this gap. This work seeks to develop techniques to perform analytic, closed-loop control around a given trajectory for a complex robotic system for which the analytically-derived dynamics are not formally controllable.  Work at the NASA Ames Intelligent Robotics Group (IRG) and Robust Software Engineering Group has been investigating tensegrity (``tensile-integrity'') structures for a variety of low-cost, robust mission concepts. Tensegrity systems are nonlinear, tightly coupled, and often high order, naturally lending themselves as a case study for these control techniques. This work is targeted to the NASA Space Technology Roadmap TA04, Robotics, and the TAB of 4.5, Autonomy. Though tensegrity systems motivate this work, the techniques proposed in this research are expected to be applicable to a wide variety of autonomous or robotic systems that NASA develops. For example, motion of body of Robonaut in free space may be difficult to decouple from its manipulator dynamics. The tasks described in prior work for Robonaut 2 could be made more robust while also becoming more efficient and complex if this proposed method is combined with offline machine learning techniques.  Based on these observations, I will perform the following investigation. I will develop, analyze, and test one or more methods for creating simplified/reduced-order, potentially hybrid, nonlinear models for approximate system descriptions with respect to both regions of a system's state space and also potentially for specific expected disturbances. This system identification work will dovetail with additional investigations into reachability-analysis-based control synthesis, and sum-of-squares control techniques. I will develop a general controller to wrap around these models, specifically for tracking a known trajectory. I will develop metrics for evaluation of these model-controller pairs, specifically with respect to disturbance rejection when tracking a trajectory, as well as for comparison to other techniques. I will perform such comparisons in both simulation as well as on physical hardware prototypes.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This work seeks to develop techniques to perform analytic, closed-loop control around a given trajectory for a complex robotic system for which the analytically-derived dynamics are not formally controllable.  The research described here may start to bridge the gap between closed-loop feedback techniques and modern machine learning strategies.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91486</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX10.2.3: Path Planning</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2015-08-01</td></tr>
+<tr><th>Project End Date</th><td>2019-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of California-Berkeley — Berkeley, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Sun, Outside the Solar System, Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Alice M Agogino (Principal Investigator); Andrew P Sabelhaus (Co-Investigator) &lt;andrew.p.sabelhaus@nasa.gov&gt;; Adrian K Agogino (Project Manager) &lt;adrian.k.agogino@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Robots that are designed for NASA&#x27;s missions to foreign planets face tough challenges with harsh environments and locomotion over extreme terrain. New types of robots, such as soft robots, could address these challenges by conforming and adapting to their environments. However, soft robots are challenging to design and control, due to their high-dimensional nonlinear models as well as limitations with actuation. This research presents a set of trajectory tracking techniques for difficult-to-control robotic systems, paired with a soft walking robot concept for use in NASA’s missions. The robot is designed with a soft robotic spine to assist in its locomotion, which is controlled with the proposed trajectory tracking techniques. The spine is a tensegrity system, consisting of rigid bodies held together in a network of flexible cables, used as a practical method of producing soft behavior. First, a mathematical model of the robot’s cable network is developed, and a mechanical design is created. The model allows for an inverse statics optimization program to be formulated, where cable tensions can be calculated that position the soft spine in a desired pose. A hardware test validates the use of this optimization problem for open-loop control of an example two-dimensional spine. The inverse statics optimization algorithm is also used to calculate the dimensions of elastic strips that support the larger three-dimensional robot prototype. The prototype is then tested in comparison to numerical simulations, showing that movements of the robot’s spine can reliably lift each of its four legs as a precursor to walking locomotion. This is the first robot with a tensegrity spine, and the new inverse statics optimization problem contributes the first method to calculate cable tensions for tensegrity structures of this type. Then, three approaches to control of high-dimensional, nonlinear, underactuated robotic systems are proposed and applied to these tensegrity spines and related systems. The first two use model-predictive control (MPC) in combination with the inverse statics optimization algorithm. Both controllers are simulated against dynamics models of the spine, and show low-error tracking in simulation. The third controller proposes a new framework for energy-based control of a class of soft systems, termed `statically conservative,&#x27; which include networks of cables in tension similar to tensegrity spines. Stability conditions and a control system are derived for an example cable-driven robot with slack cables. Simulations of this system and its controller validate the stability proof. These three techniques contribute the first closed-loop controllers for tensegrity spines, the first combination of an inverse statics approach with model-predictive control for high-dimensional nonlinear systems, and the first energy-based controllers for statically-conservative mechanical systems. These design and control approaches show promise for trajectory-tracking control, and walking locomotion, in quadruped robots with soft spines for NASA missions to foreign planets.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91486">https://techport.nasa.gov/projects/91486</a>
+    </div>
+  </div>
+</body>
+</html>

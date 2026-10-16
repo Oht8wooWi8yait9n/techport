@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualization in Real-Time Experiment (VIRTEx) | NASA TechPort Project 14532</title>
+  <meta name="description" content="With the increase in quantity and complexity of launches at the Wallops Flight Facility (WFF) there is an ever-growing need for a more capable real-time visualization system for the WFF Range Control Center (RCC).&amp;nbsp; This system should have the ability to d">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/14532">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 14532</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX13.4.3</span>
+        </div>
+        <h1>Visualization in Real-Time Experiment (VIRTEx)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 14532</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/14532" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>With the increase in quantity and complexity of launches at the Wallops Flight Facility (WFF) there is an ever-growing need for a more capable real-time visualization system for the WFF Range Control Center (RCC).&nbsp; This system should have the ability to depict the vehicle using actual CAD vehicle models, display vehicle attitude and stage separation events, and utilize robust network protocol suitable for real-time safety applications.&nbsp; This project will use existing WFF hardware systems and leverage past experiences and lessons learned to produce a Visualization in Real-Time Experiment (VIRTEx) application that will use a cutting edge message protocol for lab demonstration and use during real-time operations.</p> <p>The objective of this project will be to migrate some of the outputs from the WFF Mission Planning Lab (MPL) into a real-time visualization system.&nbsp; The MPL is responsible for generating pre-flight RF margin link analysis, mission simulation &amp; visualization, and other products for WFF missions.&nbsp; This real-time visualization system would depict in 3D graphics the position and orientation of the launch vehicle(s) or suborbital carrier (UAV, sounding rocket), VIRTEx would be expanded to use a more flexible publish/subscribe architecture, and the system will leverage recently developed advanced telemetry and data handling systems within the Range network.</p><p>Another main objective will be updating VIRTEx to support a sounding rocket mission which is scheduled to launch from NASA Wallops Flight Facility (WFF) in the summer of 2014.</p><p>This project will also be used to demonstrate the successful attitude data conversion from a WFF telemetry system.&nbsp; Updates are being finished on this telemetry system that convert various NASA Sounding Rocket attitude control systems (ACS) data formats.&nbsp; Multiple ACS systems output different data formats, so libraries and algorithms were added to the telemetry system to convert this data into a standard yaw, pitch, and roll dataset for Range Safety.&nbsp; VIRTEx will be able to easily show this data and will be able to compare it to the pre-flight attitude predictions.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This project benefits NASA missions because it can be used as a situational awareness display during launch operations at NASA Wallops Flight Facility (WFF). &nbsp;The result of this effort could eventually be incorporated into a larger mission graphics effort for WFF with additional funding and resources.</p>  <p>This project has the potential to benefit the commercial space industry during launch operations of a commercial launch vehicle. &nbsp;This system could be expanded and further tested to provide real-time support for all launch missions at NASA Wallops Flight Facility (WFF). &nbsp;Furthermore, this system could be leveraged at other launch ranges after minor modifications have been made to VIRTEx to account for different data formats. &nbsp;Subsequently, this project would further benefit commercial space by supporting more launch support.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>14532</td></tr>
+<tr><th>Acronym</th><td>VIRTEx</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX13.4.3: High-Fidelity Simulation and Visualization</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2013-10-01</td></tr>
+<tr><th>Project End Date</th><td>2014-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Benjamin W Cervantes (Principal Investigator) &lt;benjamin.w.cervantes@nasa.gov&gt;; Jacqueline J Le Moigne (Project Manager) &lt;Jacqueline.J.LeMoigne-Stewart@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2018-10-10</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="http://aetd.gsfc.nasa.gov/" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/14532">https://techport.nasa.gov/projects/14532</a>
+    </div>
+  </div>
+</body>
+</html>

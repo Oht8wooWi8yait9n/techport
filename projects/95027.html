@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enabling the Digital Twin for Additively-Manufactured Metallic Parts via Defect-Sensitive Mechanical Models | NASA TechPort Project 95027</title>
+  <meta name="description" content="A Cooperative Research Program (CRP) between Auburn University (AU; the Offeror) and NASA&amp;rsquo;s Marshall Space Flight Center (MSFC) is proposed. The ultimate Goal of the proposed CRP is to enhance the trustworthiness (i.e. &amp;lsquo;performance&amp;rsquo;) of metal">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/95027">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 95027</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">MSFC IRAD</span>
+          <span class="badge">TX12.1.2</span>
+        </div>
+        <h1>Enabling the Digital Twin for Additively-Manufactured Metallic Parts via Defect-Sensitive Mechanical Models</h1>
+        <div class="meta-id">NASA TechPort Project ID: 95027</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/95027" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>A Cooperative Research Program (CRP) between Auburn University (AU; the Offeror) and NASA&rsquo;s Marshall Space Flight Center (MSFC) is proposed. The ultimate Goal of the proposed CRP is to enhance the trustworthiness (i.e. &lsquo;performance&rsquo;) of metallic, additively manufactured flight hardware of interest to NASA MSFC. This is to be accomplished by developing a defect- sensitive fatigue model for supporting a digital twin representative of additively manufactured parts during and after application life. For the 1-year CRP, AU and NASA will investigate additively manufactured Inconel 718 material due to its priority use at NASA. The laser-powder bed fusion (L-PBF) additive manufacturing (AM) process will be used to fabricate test specimens. The AU Team will work with NASA MSFC to relate the fatigue behavior (i.e., &lsquo;property&rsquo;) of specifically-designed additively manufactured parts to their defects (i.e. &lsquo;structure&rsquo;) &ndash; all while remaining cognizant of standards/qualification constraints relevant to NASA. Learned &lsquo;structure- property&rsquo; relationships will be used to generate and refine a predictive defect-sensitive fatigue (DSF) model that takes defect features - garnered via non-destructive evaluation (NDE) &ndash; as input for the more accurate estimation of end-part fatigue life during application. The developed fatigue model will be used for building a digital twin framework for additively manufactured component life estimation during load-bearing service. At conclusion of the proposed CRP a new means for assessing and enhancing the durability of AM aerospace components will be realized.</p><p>AU is undergoing a time of significant growth in AM capabilities &ndash; being home to key faculty with a significant track record of success in AM, as well as a new $20 Mil, state-of-the-art facility dedicated to AM research with 3 laser-powder bed fusion systems. Recently, both NASA MSFC and AU joined to form the National Center for Additive Manufacturing Excellence (NCAME) &ndash; which now provides an existing funding mechanism for the proposed CRP. NCAME was co- funded through FY18 Cooperative Agreement #NASA-80MSFC17M0023. The Center, which is housed within AU&#39;s Samuel Ginn College of Engineering, conducts research on improving the performance of parts that are created using AM, shares research results with industry and government collaborators, and responds to workforce development needs in the AM industry. The Center is also home to ASTM International&rsquo;s Additive Manufacturing Center of Excellence, a collaborative effort between ASTM International, AU, NASA, the MTC and EWI (the last two are engineering and technology nonprofit organizations). This partnership directs its efforts to the development of new standards for the AM industry, as well as research to advance AM technology and workforce development. To date, NCAME and the ASTM AM CoE have more than 40 industry and government collaborators, including: Aerojet Rocketdyne, Boeing, GE Additive, GE Aviation, Lockheed Martin, Medtronic, Smith &amp; Nephew, Fiat Chrysler Automobiles and more. The PIs will leverage NCAME and ASTM AM CoE assets to accomplish the goals of the CRP.</p><p>The overarching goal of this CRP is to further temper the working relationship between AU and NASA MSFC for advancing technology pertaining to AM variability, standardization and qualification. The CRP described herein is directly in-line with the mission of NASA MSFC and provides an opportunity to further stimulate economic growth in the state of Alabama and Southeastern United States by closing known technology gaps in AM. Faculty at AU will collaborate with NASA MSFC personnel to ensure delivered results can be implemented to design parts and structures used for future spacecraft with enhanced durability. <em>This proposal is valid indefinitely and a project start date beyond the target periods is acceptable.</em></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The proposed CRP specifically aims to expose the effects of an additively-manufactured part&rsquo;s porosity on its subsequent fatigue strength based on carefully-executed manufacturing, microstructural and mechanical experiments. All experiments will comply with, and build upon, NASA MSFC Additive Manufacturing Control Plan and Quality Management System protocols. Results from this study will leverage consolidated design and qualification efforts for providing a means to assess severity of AM product defects prior to and during product service. The project should aid NASA&rsquo;s ongoing effort to standardize and qualify various AM processes/parts for their more reliable use in fabricating state-of-the-art, durable spaceflight hardware. A unique &lsquo;fracture mechanics approach&rsquo; will be taken by exploiting the classical Murakami &radic;area fatigue model for more accurate fatigue life estimation. This fatigue model will be calibrated and tested through use of in-hand and to-be-obtained fatigue data, as well as with X- Ray computed tomography (CT) data descriptive of porosity inside AM specimens. Efforts from this CRP will contribute to the digital twin representation of AM parts during their load-bearing service by providing a more effective means to predict defect contributions to AM part failure.</p><p>&nbsp;</p><p>The CRP aspires to characterize and enhance the trustworthiness (i.e. &lsquo;performance&rsquo;) of metallic, additive manufactured (AM) flight hardware by relating their predicted fatigue response (i.e., &lsquo;property&rsquo;) to their microstructural features (i.e. &lsquo;structure&rsquo;, and in particular defects). This important relationship enables engineers to design and manufacture parts for specific performance requirements and constraints. For the CRP proposed herein, defect sensitive fatigue (DSF) models for laser-powder bed fusion (L-PBF) Inconel 718 will be generated for better ensuring safe AM space propulsion system hardware. Principal Investigators (PIs) at AU will conduct a series of build-and-inspect experiments by fabricating various Inconel 718 parts via the L-PBF process available at AU/NASA&rsquo;s National Center for Additive Manufacturing Excellence (NCAME)&nbsp;&nbsp;&nbsp; &nbsp;Laboratories.&nbsp; Deliverables will include all raw and processed mechanical/microstructural data, actual AM parts and build plans, as well as technical reports containing CRP findings and results (e.g. model correlation results, digital twin recommendations).</p><p>The summary of Tasks to be performed are summarized below:</p><ol><li>Evaluate and improve existing fracture mechanics models for use in predicting defect-laden L-PBF part fatigue life. The Principal Investigators (PIs) will take advantage of in-hand (L-PBF stainless steel and Ti-6Al-4V) and newly-generated (L-PBF Inconel 718) fatigue life and fractography data combined with the &lsquo;Murakami&rsquo;&nbsp;model.</li><li>The PIs will produce Inconel 718 specimens via NASA-standardized L-PBF processes for target porosity traits (i.e. flaw &lsquo;seeding&rsquo;) and use nondestructive evaluation (NDE) methods, such as X-Ray CT (facilities at NASA), to determine the effectiveness of calibrated fracture mechanics fatigue models. Defect shape, location, orientation, etc., will be recorded and used as metrics for derived fatigue models.</li><li>In parallel, the portability of the generated fatigue modeling schemes for the digital twin environment will be evaluated.</li></ol><p><strong>Technology Gap &amp; Preliminary Results: </strong>Additive manufacturing (AM) has revolutionized how products are designed, fabricated, distributed and employed for industries across the globe. Through AM processes such as L-PBF, metal parts can be fabricated layer-by-layer, using metal powders and a laser. Additively-manufactured components have achieved designs once thought infeasible by traditional manufacturing methods (e.g. machining, casting, etc.) and can possess novel features, e.g.: reduced mass, increased conformability, complex geometries, and more.</p><p>Although there are clear benefits to using AM, many AM-produced components have different mechanical properties than legacy/traditionally-manufactured components and lack proper certification. As such, significant research is needed to ensure that AM components are (i) fabricated following standardized methods and (ii) meet federal regulatory codes - in order to reduce chance-of-failure and increase their reliability for use in load-bearing applications. Market reports indicate that 2018 is a &lsquo;pivotal year&rsquo; during which the performance of AM metal parts in final designs will determine the market&#39;s trajectory for manufacturing. Hence, fatigue quantification, qualification and certification of AM parts are key aspects requiring attention to move the AM market forward. As stated by the Federal Aviation Administration (FAA) chief scientific and technical adviser for fatigue and damage tolerance Michael Gorelik, &ldquo;This is a huge technical problem scope. It would be impractical for any single entity to try to address it single handedly. In my mind, collaboration is the key to ensure the safe introduction of this exciting new technology.&rdquo; This is where a collaborative effort between AU and NASA can thrive; by aggressively looking into and resolving issues pertaining to the durability/reliability of AM parts.</p><p>One of the major obstacles to implementation and certification of AM is the unique structural features stemming from additive processes, such as porosity, lack of fusion (LOF), surface roughness, and atypical microstructure. Defects such as porosity and LOF are detrimental to mechanical properties, as they introduce uncertainty due to their stochastic nature. In fact, the pores, LOF, and surface roughness inherent to AM parts can act as stress risers, greatly reducing part fatigue strength. Production of defect-free AM parts is hardly possible. Therefore, identifying and incorporating the individual and synergic effects of defects, surface topography, and microstructure on the fatigue strength of AM parts is essential to facilitate its broader industrial use. This may be achieved by calibrating, modifying, or integrating available microstructure- and DSF life methodologies.</p><p>Considering the fact that fatigue failure is a localized structural damage phenomenon, unlike failure due to static load, the presence of a small irregular shaped defect/void close to surface is often enough to cause fatigue failure.&nbsp;</p><p>While no single fatigue model can consider all of the above-mentioned structural features, different fatigue models have been successfully applied to account for one or more of these structural features. One method that has been successful in modeling porosity and surface roughness effects is the <strong>&radic;area model by Murakami </strong>et al., which uses the square root of the defect area projected onto the loading plane to calculate the stress intensity factor at defects of irregular size, then calculates the fatigue limit by expressing &Delta;K<sub>th</sub> (stress intensity factor) as dependent on the hardness of the material. Such considerations are crucial for evaluating the fatigue performance of AM&nbsp; parts,as&nbsp;slight alterations to process parameters and/or geometry can affect the thermal history and, thereby, the microstructure, defects, and fatigue properties; for instance, different build orientations or interlayer&nbsp; time intervals during fabrication, while keeping the&nbsp;other design&nbsp; and&nbsp;&nbsp; process parameters constant, can change the fatigue behavior of otherwise identical specimens.&nbsp;</p><p>The randomness of process-induced defects introduces significant scatter into the fatigue data of AM specimens, introducing an important challenge to the usefulness of empirical fatigue models. While empirical fatigue models, like McDowell&rsquo;s multistage fatigue model, allow for fatigue life predictions of parts fabricated with a particular process setting, they may not necessarily be applicable to parts fabricated utilizing different process and design parameters and require numerous constants to be experimentally determined. Therefore, the effects of the aforementioned structural features on fatigue behavior need to be truly understood in order to allow for service life predictions of AM products by means of nondestructive defect analysis and appropriate microstructure/defect-sensitive fatigue life assessment, i.e. through the Murakami model as proposed herein.</p><p>Beretta and Romano&nbsp;used the Murakami model in conjunction with the Kitagawa&ndash; Takahashi diagram to accurately predict the crack growth threshold of AM materials. Where the Murakami model was used to determine the fatigue strength and crack propagation factors of AM AlSi10Mg and Ti- 6Al-4V. Note that as the equivalent defect size increases, the fatigue limit decreases. Conversely, the crack growth threshold increases and approaches the long crack growth threshold as the equivalent defect size increases. While these studies highlight the applicability of the Murakami model to AM, this approach in its current state may not account for some influencing factors. The Murakami model predicts the fatigue limit, not the fatigue life at specific loadings. The fatigue life can be found by application of crack propagation models, such as the theory of critical distance (TCD) or the Forman&ndash; Mettu equation provided that the crack is assumed to be semicircular with the same &radic;area as the largest observed defect. Scatter bands can also be generated using different defect sizes (2.5%, 50%, and 97.5% percentiles of the defect size).</p><p><strong>Digital Twins: </strong>A digital twin is a virtual representation that fully describes a product, process, physical asset, or service. The digital twin acts as a bridge between the physical and digital world and provides a new level of visibility and insight. The Industrial Internet of Things (IIoT) has made the digital twin (and digital thread) a reality. There are three types of digital twins typical encountered: (i) predictive - a virtual representation that can be tested and evaluated prior, during and after the creation of the physical part, product or system - this instance can result in a prototype of a part, product or system; (ii) sustaining - a digital surrogate of the physical part, product or system which contains the specific variations from the design model as a result of the realization process - this application can also be used for training purposes; and (iii) process - a virtual representation of the part, product or system realization (typically called manufacturing) process. The digital twins, both predictive and sustaining, work with product lifecycle management (PLM) systems to enable the digital thread across the product lifecycle. The PLM represents the product definition across the lifecycle and product variants to provide version control and traceability. The product definition changes at different lifecycle stages. The digital twin can reduce the product development and realization timeline and costs. The digital twin allows product developers to create, test, build, monitor, maintain, and service products in a virtual environment. The benefits of utilizing the digital twin are starting to become apparent as the adoption of this product development and system management approach grows. General Electric (GE) uses the approach to inform the configuration of each wind turbine for their digital wind farm prior to construction with a goal of generating efficiency improvement of 20% by analyzing the data from each turbine with the Sustaining Digital Twin model.</p><p>Through the use of a Sustaining Digital Twin, which is connected to the physical system through sensors and other data capture devices, information available from the actual part, product or system is captured providing information on how a product is performing compared to its design intent, and closes the loop from the operations back to design. When the part, product or system is realized and operational, the information collection from the physical system can be used to predict failures, reduce maintenance costs, and improve operational availability. This provides data on how a product is performing compared to its design intent, and closes the loop from operations to design. Information from the sustaining digital twin coupled with physical measurements of the product or system can be used as a mechanism for product family and unique part validation through its entire life cycle. This set of information can be used at other stages of the supply chain (similar to acceptance sampling) to confirm the part is original and has not been altered. Additionally, depending on the type of data captured for this validation, the information could live with the part through its operation. The overall principle is using data features to create a set of information which is carried with the part through its life cycle and measured against the digital twin to determine consistency and security.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>95027</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: MSFC IRAD (MSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX12.1.2: Computational Materials</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 1 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2018-10-01</td></tr>
+<tr><th>Project End Date</th><td>2019-04-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Auburn University — Auburn, Alabama</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama; Office of the Chief Technologist (OCT)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Others Inside the Solar System, Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Nima Shamsaei (Principal Investigator); Douglas N Wells (Co-Investigator) &lt;douglas.n.wells@nasa.gov&gt;; Nima Shamsaei (Project Manager)</td></tr>
+<tr><th>Program Management Contacts</th><td>John W Dankanich (Program Manager) &lt;john.dankanich@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2019-03-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: TBD</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/95027">https://techport.nasa.gov/projects/95027</a>
+    </div>
+  </div>
+</body>
+</html>

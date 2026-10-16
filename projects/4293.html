@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundamentals of Gravity and Tube Size Effects on Flow Boiling Heat Transfer | NASA TechPort Project 4293</title>
+  <meta name="description" content="Increased power requirements and weight restrictions are significant challenges that must be addressed by members of the space community in order for future space flight and exploration to become a reality. The efficiency of heat transport from a spacecraft to">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/4293">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 4293</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX14.2.2</span>
+        </div>
+        <h1>Fundamentals of Gravity and Tube Size Effects on Flow Boiling Heat Transfer</h1>
+        <div class="meta-id">NASA TechPort Project ID: 4293</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/4293" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Increased power requirements and weight restrictions are significant challenges that must be addressed by members of the space community in order for future space flight and exploration to become a reality. The efficiency of heat transport from a spacecraft to an external radiator and then to the cold of space transport is key to many of NASA's Space Technology goals. If heat can be transferred more efficiently, the size and weight of the thermal management system can be decreased, resulting in both an increase in mission capability and a reduction in mission cost. To date, these thermal exchange systems have been mechanically pumped, single-phased loops with their capability linked to the sensible heat of the fluid in use, or its ability to absorb energy due to a change in temperature. Use of a fluid's latent heat (the energy required to change a fluid from liquid to vapor) can be a much more effective way to manage heat. Boiling is a widely used technique to transfer heat and is utilized in many earth gravity situations. Advancements in our understanding of boiling is important if it is desired to decrease heat exchanger mass, fluid flow rates, and pumping power required for future space missions. It is my goal as a graduate student at the University of Maryland to determine the effects of gravity on flow boiling heat transfer. In doing so, I will help NASA's Space Technology effort create the innovative new space technologies for our nation's science, exploration, and economic future. In order to pursue the detailed line of research, I plan to use an apparatus that consists of an electrically heated silicon tube through which the fluid can pass. Because silicon is transparent to infrared radiation, infrared cameras can be used to measure the temperature distributions on the inner and outer surfaces of the tube from which local measurements of flow boiling heat transfer can be obtained. Inverse heat conduction techniques can be used to calculate transient heat transfer coefficients as the bubbles pass. Pressure drop will also be measured. The system allows for analysis of flow boiling in special aircraft that fly in parabolic arcs, simulating microgravity. The flow velocity threshold for which microgravity affects flow boiling heat transfer will be determined. Also, I plan to study how varying gravity and fluid velocity affect the fluid film thickness so that overheating of the system can be prevented. Experimentation with various tube sizes will help validate their data as well as provide insight into the role tube diameter on flow boiling heat transfer. Fluid film thickness measurements are important in the study of flow boiling for several reasons. First, film thickness is important to the prediction of heat transfer in annular and slug flows. In these types of flow, a film of fluid is left along the surface and is the means of heat transfer. Through study of the film thickness, the amount of heat conducted or convected from the surface can be determined. Previous tests have employed capacitance methods using electrodes and probes that measure the admittance of the circuit. Electromagnetic field theory, along with the test geometry, provides a relation for film thickness versus measure capacitance. The main issue associated with capacitance measurements is the necessity of changing electrode configurations for various film thicknesses. They also provide measurements only at a single point. The capacitance of a fluid can be affected by its temperature which must be accounted for in the measurements. To avoid these issues, it is proposed in this research to measure the film thickness for fluids that are partially transparent to infrared radiation by measuring how much energy is absorbed by the films themselves using an infrared camera. Unlike previous techniques, this provides a non-invasive method for measuring this important quantity.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Advancements in our understanding of boiling is important if it is desired to decrease heat exchanger mass, fluid flow rates, and pumping power required for future space missions. Fluid film thickness measurements are important in the study of flow boiling for several reasons. First, film thickness is important to the prediction of heat transfer in annular and slug flows. In these types of flow, a film of fluid is left along the surface and is the means of heat transfer. Through study of the film thickness, the amount of heat conducted or convected from the surface can be determined. Previous tests have employed capacitance methods using electrodes and probes that measure the admittance of the circuit. Electromagnetic field theory, along with the test geometry, provides a relation for film thickness versus measure capacitance. The main issue associated with capacitance measurements is the necessity of changing electrode configurations for various film thicknesses. They also provide measurements only at a single point. The capacitance of a fluid can be affected by its temperature which must be accounted for in the measurements. To avoid these issues, it is proposed in this research to measure the film thickness for fluids that are partially transparent to infrared radiation by measuring how much energy is absorbed by the films themselves using an infrared camera. Unlike previous techniques, this provides a non-invasive method for measuring this important quantity.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>4293</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX14.2.2: Heat Transport</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-08-01</td></tr>
+<tr><th>Project End Date</th><td>2015-10-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Maryland-College Park (UMCP) — College Park, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jungho Kim (Principal Investigator); Alex Scammell (Co-Investigator); John B Mcquillen (Project Manager) &lt;john.b.mcquillen@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Infused To</strong>: Result of fellow&#x27;s simulation were successfully applied to tests conducted at NASA GRC&#x27;s Small Multipurpose Research Facility during testing in 2012 and had significant impact in terms of reducing the amount of test preparation time and the amount of cryogenic liquid consumed for the entire test.</li><li><strong>Closed Out</strong>: The research completed as a part of this fellowship maintained a general goal of advancing our understanding of flow boiling heat transfer at various gravity levels. This was done in an effort to provide more accurate heat transfer coefficient correlations to thermal management engineers so that they can design more efficient space-based heat exchangers, thereby reducing the cost of materials and launches. The experiment utilized for these studies is summarized in papers by the fellow [1–3]. Measurement methods include an infrared thermography technique in which simultaneous heat transfer measurements and flow visualization can be obtained, high-speed flow visualization, capacitance void fraction sensors, and a film thickness sensor. Early work included parabolic flights in Bordeaux, France, where heat transfer and void fraction measurements were made of boiling HFE 7100 at various gravity, mass flux, vapor quality, and mass flux conditions. The results indicated the heat transfer coefficient measured in the tubular test section was dependent on the flow regime. When transitions in the flow regime occur due to variation in the gravity level, in many cases the measured heat transfer coefficient correspondingly changed. This highlighted two main needs in the design tools for space thermal management systems: 1) comprehensive flow regime maps for flow boiling in microgravity, and 2) a mechanistic understanding of the heat transfer for each flow regime. The UMD experiment is best equipped to investigate the second of these needs. A new round of experiments was completed in the laboratory in which annular flow and slug flow were of particular focus. Annular flow is characterized by a thin liquid film flowing along the inner tube wall, while a vapor core flows at much higher speed in the center of the channel. The difference in liquid film and vapor core velocities causes instabilities to occur in the liquid film, which appear as waves. Simultaneous heat transfer measurements and flow visualization showed that while moderate heat transfer values occur due evaporation of the liquid film, higher values are seen when the disturbance waves pass. It is believed that recirculation patterns within each wave provide an increase in convective cooling of the tube surface as each wave passes. Slug flow is generally characterized by bubbles with diameter very close to that of the inner wall of the tube separated by liquid slugs. This flow regime is most commonly seen in microchannel flow boiling where both ends of the bubble are spherical. In the case of this research, however, the bubbles, known as Taylor bubbles, are bullet shaped and occur over a small range of vapor qualities at low flow rates. Several models have been developed to predict the heat transfer coefficient for slug flow [4,5], but local experimental heat transfer measurements have been lacking. Laboratory experiments were completed in which a single Taylor bubble was grown and released. As the bubble rose in co-current flow, infrared heat transfer measurements, high-speed flow visualization, and liquid film thickness measurements were obtained. It was observed that unlike microchannel slug flow, the greatest heat transfer enhancement over single-phase flow was caused by turbulent vortices in the bubble wake. The level of enhancement was found to decrease with increasing liquid mass flux due to a reduced residence time of the bubble over a particular location in the tube, decreasing the mixing potential of each vortex. Furthermore, liquid film thickness measurements were found to agree well with classical correlations when the measured bubbles were long enough such that their films were fully developed. Very recently, isolated rising Taylor bubble experiments were conducted on parabolic flights in Houston, TX. Early results show that with increasing gravity level the drift velocity of the bubble with respect to the liquid also increases, as was expected. At very low drift velocities, the bubbles possess spherical ends similar to microchannel slug flows. These cases had no vortices in the bubble wake and the heat transfer enhancement as the bubble passes occurred only in the thin liquid film. Above a critical drift velocity, vortices began to appear and the bubble shape resembled a typical Taylor bubble. The frequency at which vortices were generated was found to increase with increasing drift velocity. Further analysis is ongoing to extract more mechanistic understanding of slug flow heat transfer from these results. In conclusion, the research completed over the length of this fellowship has taken significant steps to improve the knowledge base from which fellow researchers can develop more accurate mechanistic heat transfer models for the flow regimes experienced in vertical upward flow boiling, particularly in reduced gravity environments.</li><li><strong>Transitioned To</strong> (National Science Foundation): Coronagraphic light suppression. Camera known as DARKNESS. NSF ATI grant to construct DARKNESS in 2013. Near IR Spectrometer development and testing at Palomar in Spring 2016.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><a href="http://dx.doi.org/10.1016/j.ijheatmasstransfer.2016.04.034" target="_blank" rel="noopener noreferrer">A study of gravitational effects on single elongated vapor bubbles</a></li><li><strong>4293-1363184609462.jpg</strong> — Project Image Fundamentals of Gravity and Tube Size Effects on Flow Boiling Heat Transfer</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/4293">https://techport.nasa.gov/projects/4293</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CubeSat Constellation Design for Air Traffic Monitoring | NASA TechPort Project 23341</title>
+  <meta name="description" content="Global and local air traffic can be tracked and used for control from ground-based stations by receiving the Automatic Dependent Surveillance-Broadcast (ADS-B) signal. The ADS-B signal, emitted from the aircraft&#x27;s Mode-S transponder, is currently tracked by te">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23341">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23341</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">ARC CIF</span>
+          
+        </div>
+        <h1>CubeSat Constellation Design for Air Traffic Monitoring</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23341</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23341" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Global and local air traffic can be tracked and used for control from ground-based stations by receiving the Automatic Dependent Surveillance-Broadcast (ADS-B) signal. The ADS-B signal, emitted from the aircraft's Mode-S transponder, is currently tracked by terrestrial based receivers but not over remote oceans or sparsely populated regions such as Alaska or the Pacific Ocean. Lack of real-time aircraft time/location information in remote areas significantly hinder optimal planning and control because bigger "safety bubbles" (lateral and vertical separation) are required around them until they reach radar-controlled airspace. Moreover, it presents a search-and-rescue bottleneck. Aircrafts in distress, e.g. Air France AF449 that crashed in 2009, take days to be located or cannot be located at all, e.g. Malaysia Airlines MH370 in 2014. We propose to a) build a tool for designing a constellation of small satellites based on real-world air traffic data in order to b) demonstrate through high-fidelity simulation and modeling the value of space-based ADS-B monitoring, which will lead to c) recommendations for cost-efficient deployment of a constellation of small satellites to increase safety and situational awareness in currently poorly-served surveillance areas. Aircraft locations in remote areas can be retrieved with minimum delay by using an optimized constellation of cubesats in low Earth orbit that will receive ADS-B signals from aircraft and relay it to ground stations. The 140 kg Proba-V spacecraft hosted an ADS-B payload, developed by DLR, as technology demonstration proving that space-based ADSB is possible. The 2 kg GOMX-1 2U cubesat with an ADS-B receiver, that operated from 2013-14 and collected >3.5 million frames of aircraft states, showed that cubesats are capable of similar success. However, one receiver, with a half power beam width (HPBW) of 20deg and gain 10dB, cannot provide continuous coverage of any remote location. Nonetheless, GOMX-1, developed and operated by GomSpace ApS (Denmark), serves as an ideal theoretical first unit for a cubesat constellation. Constellation design for ADS-B reception is a complex problem dependent on the following parameters: area of interest (e.g. Alaska), expectations of air traffic and ADS-B receiver characteristics (e.g. HPBW, signal attenuation, signal interference probability while congestion, SNR). The design variables are: Constellation type (e.g. optimal Walker, streets of coverage, F8/BB, Flowers), number of satellites, orbital parameters (e.g. altitude and inclination constrained by type), and available ground stations. A unique combination of design variables represents an architecture. We propose to develop a tool that will automatically generate hundreds of architectures and evaluate them based on the following objectives: Percentage of airplanes covered within the area of interest (A%), certainty of aircraft states (S%), delay in relaying the information to ground (D), cost per packet ($C). We will simulate air traffic in the area of interest using a high-fidelity airspace simulator (Future ATM Concepts Evaluation Tool) developed in Code AF to obtain aircraft states that will serve as the "truth" input data. ADS-B receiver characteristics, signal integrity/interference, single satellite cost and cost to build multiple copies will be obtained from our partner, GomSpace, and included within the performance simulation. Architecture generation and evaluation will be performed by a MATLAB-driven STK engine. Existing and imminent ground station information will be used, e.g. SpaceFlight Networks' new facility in Tonsina, AK to be operational in QY2014. Costs for typically available launches as a function of orbit parameters will be used. Preliminary constellation design using such an approach has been demonstrated successfully for Earth Radiation Budget estimation. Our tool will provide trades between performance (A% covered at S% with D) and cost ($C) for Pareto potential architectures. Decision makers can evaluate these trade-offs for any location - Alaska and Pacific Ocean will be use cases – and select a few options that theoretically demonstrate critical functions within programmatic constraints. Finally, the performance-cost efficiency will be compared to that expected from the Iridium Constellation, which will host ADS-B receivers on its 66 satellites and scheduled to start operations in 2018.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Demonstrates potential application of CubeSat technology in a practical setting. Potential benefits to FAA, and any organizations that use the National Airspace System, especially in areas without ADS-B ground infrastructure.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23341</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: ARC CIF (ARC CIF)</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2014-11-01</td></tr>
+<tr><th>Project End Date</th><td>2015-10-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>GomSpace — Aalborg, Outside the United States, Denmark; Bay Area Environmental Research Institute (BAER) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Joseph L Rios (Principal Investigator) &lt;joseph.l.rios@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23341">https://techport.nasa.gov/projects/23341</a>
+    </div>
+  </div>
+</body>
+</html>

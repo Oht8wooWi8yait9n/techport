@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HCAAM VNSCOR: Virtual Assistant for Spacecraft Anomaly Treatment During Long Duration Exploration Missions | NASA TechPort Project 96053</title>
+  <meta name="description" content="This task is part of the Human Capabilities Assessments for Autonomous Missions (HCAAM) Virtual NASA Specialized Center of Research (VNSCOR). The research objective of this proposal is to investigate the impact of using Virtual Assistants (VA) to support crew ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/96053">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 96053</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.6.1</span>
+        </div>
+        <h1>HCAAM VNSCOR: Virtual Assistant for Spacecraft Anomaly Treatment During Long Duration Exploration Missions</h1>
+        <div class="meta-id">NASA TechPort Project ID: 96053</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/96053" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>This task is part of the Human Capabilities Assessments for Autonomous Missions (HCAAM) Virtual NASA Specialized Center of Research (VNSCOR).</p>  <p> </p>  <p>The research objective of this proposal is to investigate the impact of using Virtual Assistants (VA) to support crew members in the context of anomaly treatment during Long Duration Exploration Missions (LDEM), when ground support will be limited. A VA will be developed building upon the software architecture from existing VAs developed by the Principal Investigator (PI) for similar purposes. The VA will provide support for various aspects of anomaly treatment, including detecting and diagnosing the anomaly, as well as recommending a course of action. It will also have the ability to take initiative in the dialog with the user (mixed-initiative mode), and the ability to provide explanations for its actions. The impact of the VA on performance, cognitive workload, situational awareness, and trust, will be assessed through a set of three experiments with human subjects in a laboratory environment. The first experiment will establish the baseline impact (master-slave, no explanations), and subsequent experiments will study the effect of switching to the mixed-initiative mode and adding explanations. The system will also be deployed and tested in the Human Exploration Research Analog (HERA) analog environment.</p>  <p> </p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This project will provide standards and guidelines that will help NASA design similar virtual assistants to support astronauts during future long duration exploration missions. Such standards and guidelines will concern both the functionality and the user interface of the virtual assistant.</p>  <p> </p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>96053</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.6.1: Human Factors Engineering</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 4 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2019-03-01</td></tr>
+<tr><th>Project End Date</th><td>2025-02-28</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Texas A&amp;M Engineering Experiment Station (TEES) — College Station, Texas; Texas A &amp; M University-College Station (Texas A&amp;M) — College Station, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Daniel S Valero (Principal Investigator); Raymond G Wong (Co-Investigator) &lt;raymond.g.wong@jpl.nasa.gov&gt;; Bonnie J Dunbar (Co-Investigator); Ana Diaz Artiles (Co-Investigator); Alexandra M Whitmire (Project Manager) &lt;alexandra.m.whitmire@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-02</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: In Year 2 of this project, we have completed the first round of testing of the Daphne-AT prototype and conducted a pilot study. We worked closely with HERA throughout the integration and testing of our study as part of the C6 campaign. We are now getting ready for a final training documentation delivery to NASA this month, and a first system-level test of our study with the entire team at Johnson Space Center (JSC), assuming the COVID situation permits it. To be able to do experiments at Texas A&amp;amp;M, we developed an immersive 3d user interface to simulate the Human Exploration Research Analog (HERA) habitat during our experiments at TAMU. The goal was for the simulator to have reasonable fidelity in terms of the general dimensions and shape as well as the main components present in the habitat related to the ECLSS system. The simulator is basically a first-person game developed in Unreal Engine 4 (UE4). All of the major components of the HERA Environmental Control and Life Support Subsystem (ECLSS) system are present and the user can interact with them (e.g., press buttons, open/close panels) as required by the anomaly resolution procedures. More details about this simulator are provided in Woodruff R, Beebe N, Josan PK, Wong RKW, Dunbar BJ, Selva D, Diaz-Artiles A. (2021). 3D Interactive Model of HERA to support ECLSS anomaly resolution using a Virtual Assistant. 2021 IEEE Aerospace Conference Proceedings. After validation of the UE4 simulator, we designed and conducted a pilot study of the first “Baseline” prototype of the assistant. It included five male subjects within the age range of 22-40 years old, and with a Standard Deviation (SD) of ±7.2. Prior to the experimental sessions, subjects were provided a 2-hour virtual training session about all the experiment elements (Daphne-AT, ECLSS subsystems, 3D virtual HERA environment, and experimental protocols) and they were guided through an example anomaly scenario. After the training, subjects participated in two in-person experiment sessions: one with Daphne-AT and the other one without Daphne-AT (counterbalanced among subjects). These sessions were conducted in two consecutive days at approximately the same time of the day. In each one of the sessions, the subjects solved four anomalies. Once the experiment sessions were over, the subjects completed a set of surveys. Dependent variables included performance, cognitive workload, situational awareness, and trust in the context of ECLSS anomaly treatment, with and without the use of a VA. Performance is described as an individual’s ability to successfully treat the anomaly. On average, subjects solved 3.2 ± 0.37 anomalies using Daphne-AT and 2.0 ± 0.without Daphne-AT. Based on these limited data, our preliminary results support the hypothesis that the use of Daphne-AT will increase performance in the context of ECLSS anomaly resolution operations. The NASA Task Load Index (TLX) survey was used to measure the effect of using Daphne-AT on cognitive workload. NASA TLX is an evaluation technique developed by NASA to assess relative importance of six pre-determined factors in determining how much workload a subject experience during a particular task, in this case, the task of anomaly treatment. These six factors include mental demand, physical demand, temporal demand, perceived performance, perceived effort, and frustration level. On average, subjects indicated higher cognitive workload during the sessions without Daphne-AT (57.2 ± 5.78 with Daphne-AT and 66 ± 7.31 without Daphne). These preliminary results support the hypothesis that the use of Daphne-AT will decrease cognitive workload. More details about this pilot study can be found in: Josan PK, Dutta P, Woodruff R, Beebe N, York K, Balcells-Quintana O, Kluis L, Viros-i-Martin A, Dunbar BJ, Wong RKW, Selva D, Diaz-Artiles A. (2021). Experimental Design &amp;amp; Pilot Testing for ECLSS Anomaly Resolution using Daphne-AT Virtual Assistant. 2021 IEEE Aerospace Conference Proceedings. As a result of the pilot testing and HERA integration activities, we have substantially refined the VA interface and added functionality to the back end. Specifically: 1) We adapted the telemetry feed to the new version of the HERA Environmental Control and Life Support System (ECLSS) simulator (now called Habitat System Simulator or HSS). 2) We updated the anomaly database to include more information for each anomaly (e.g., a time signature). 3) We expanded the knowledge base with more information about ECLSS anomalies, their associated risks, and how to resolve them. 4) We expanded the anomaly detection functions beyond basic thresholding to be able to detect outliers in the telemetry feed. 5) We made slight changes to the knowledge graph and procedures to adapt to HERA C6 schedule constraints. In terms of publications, we had two papers accepted at the 2021 IEEE Aerospace Conference which will be presented in March. We also gave a presentation at the 2020 American Institute of Aeronautics and Astronautics (AIAA) ASCEND conference (Ed. note 1/7/2021: see FY2020 Bibliography in Task Book report) and will have one talk presentation and one poster presentation at the 2021 Human Research Program workshop in February.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Papers from Meeting Proceedings</strong> — Dutta P, Balcells Quintana O, Viros A, Whittle RS, Poonampreet KJ, Beebe N, Dunbar BJ, Wong RK, Diaz-Artiles A, Diaz-Artiles SD, Ana Selva D. &amp;#34;Virtual Assistant for Anomaly Treatment in Long Duration Exploration Missions.&amp;#34; Presented at the 2020 AIAA SciTech Forum, Orlando, FL, January 6-10, 2020. Paper AIAA 2020-2255. 2020 AIAA SciTech Forum, Orlando, FL, January 6-10, 2020. https://doi.org/10.2514/6.2020-2255 , Jan-2020</li><li><strong>Papers from Meeting Proceedings</strong> — Josan PK, Dutta P, Woodruff R, Beebe N, York K, Balcells-Quintana O, Kluis L, Viros-i-Martin A, Dunbar BJ, Wong RKW, Selva D, Diaz-Artiles A. &amp;#34;Experimental Design &amp;amp; Pilot Testing for ECLSS Anomaly Resolution Using Daphne-AT Virtual Assistant.&amp;#34; 2021 IEEE Aerospace Conference, Big Sky, MT, Virtual, March 6-13, 2021. 2021 IEEE Aerospace Conference, Big Sky, MT, Virtual, March 6-13, 2021. Meeting paper. https://doi.org/10.1109/AERO50100.2021.9438497 , Mar-2021</li><li><strong>Abstracts for Journals and Proceedings</strong> — Dutta P, Kaur PK, Viros A, York K, Abbott R, Dunbar B, Wong R, Diaz-Artiles A, Selva D. &amp;#34;Virtual assistants for anomaly treatment – lessons learned and path forward.&amp;#34; 2022 NASA Human Research Program Investigators&amp;#39; Workshop, Virtual. February 7-10, 2022. Abstracts. 2022 NASA Human Research Program Investigators&amp;#39; Workshop, Virtual. February 7-10, 2022 (Abstract #1133-000410). , Feb-2022</li><li><strong>Abstracts for Journals and Proceedings</strong> — Selva D, Dutta P, Josan PK, Dunbar, BJ, Wong RKW, Diaz-Artiles A. &amp;#34;Virtual Assistant for anomaly resolution in long duration exploration missions: Preliminary results and next steps.&amp;#34; 2023 NASA Human Research Program Investigators&amp;#39; Workshop, Galveston, Texas, February 7-9, 2023. Abstracts, 2023 NASA Human Research Program Investigators&amp;#39; Workshop, Galveston, Texas, February 7-9, 2023., Feb-2023</li><li><strong>Abstracts for Journals and Proceedings</strong> — Dutta P, Josan PK, Dunbar, BJ, Wong RKW, Diaz-Artiles A, Selva D. &amp;#34;Effects of explanations by virtual assistant for anomaly resolution tasks in long duration exploration missions.&amp;#34; 2023 NASA Human Research Program Investigators&amp;#39; Workshop, Galveston, Texas, February 7-9, 2023. Abstracts, 2023 NASA Human Research Program Investigators&amp;#39; Workshop, Galveston, Texas, February 7-9, 2023. , Feb-2023</li><li><strong>Papers from Meeting Proceedings</strong> — Dutta P, Josan PL, Wong RKK, Dunbar BJ, Diaz Artiles A, Selva D. &amp;#34;Effect of Explanations in AI-Assisted Anomaly Treatment for Human Spaceflight Missions.&amp;#34; 2022 Human Factors and Ergonomics Society Annual Meeting, Atlanta, GA, Oct 10 - 14, 2022. 2022 Human Factors and Ergonomics Society Annual Meeting, Atlanta, GA, Oct 10 - 14, 2022.. Vol 66(1), pp. 697-701., Oct-2022</li><li><strong>Abstracts for Journals and Proceedings</strong> — Selva D, Josan P, Dutta P, Abbott R, Viros i Martin A, York K, Dunbar B, Wong RKW, Diaz Artiles A. &amp;#34;Virtual assistant for anomaly resolution In long duration exploration missions: Baseline effects on performance, cognitive workload, and situational awareness.&amp;#34; 2022 NASA Human Research Program Investigators&amp;#39; Workshop, Virtual. February 7-10, 2022. Abstracts. 2022 NASA Human Research Program Investigators&amp;#39; Workshop, Virtual. February 7-10, 2022 (Abstract #1133-000353)., Feb-2022</li><li><strong>Papers from Meeting Proceedings</strong> — Woodruff R, Beebe N, Josan PK, Wong RKW, Dunbar BJ, Selva D, Diaz-Artiles A. &amp;#34;A 3D Interactive Model of HERA to Support ECLSS Anomaly Resolution Using a Virtual Assistant.&amp;#34; 2021 IEEE Aerospace Conference, Big Sky, MT, Virtual, March 6-13, 2021. 2021 IEEE Aerospace Conference, Big Sky, MT, Virtual, March 6-13, 2021. Meeting paper. https://doi.org/10.1109/AERO50100.2021.9438341 , Mar-2021</li><li><strong>Abstracts for Journals and Proceedings</strong> — Josan P, Dutta P, Abbott R, Viros A, York K, Dunbar B, Wong R, Selva D, Diaz-Artiles A. &amp;#34;Results from first laboratory testing of virtual assistant Daphne-AT. &amp;#34; 2022 NASA Human Research Program Investigators&amp;#39; Workshop, Virtual. February 7-10, 2022. Abstracts. 2022 NASA Human Research Program Investigators&amp;#39; Workshop, Virtual. February 7-10, 2022 (Abstract #1133-000351)., Feb-2022</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/96053">https://techport.nasa.gov/projects/96053</a>
+    </div>
+  </div>
+</body>
+</html>

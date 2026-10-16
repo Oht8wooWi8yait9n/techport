@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLEXible Damage Detection and Verification System | NASA TechPort Project 16850</title>
+  <meta name="description" content="This&amp;nbsp;project expands on the previously demonstrated Flat Surface Damage Detection System (FSDDS) capabilities.&amp;nbsp;&amp;nbsp;The Flexible Damage Detection and Verification&amp;nbsp;System (FLEX-DDVS)&amp;nbsp; is&amp;nbsp;currently being formulated for consideration as ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/16850">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 16850</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">KSC IRAD</span>
+          <span class="badge">TX07.2.1</span>
+        </div>
+        <h1>FLEXible Damage Detection and Verification System</h1>
+        <div class="meta-id">NASA TechPort Project ID: 16850</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/16850" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>This&nbsp;project expands on the previously demonstrated Flat Surface Damage Detection System (FSDDS) capabilities.&nbsp;&nbsp;The Flexible Damage Detection and Verification&nbsp;System (FLEX-DDVS)&nbsp; is&nbsp;currently being formulated for consideration as an inspection/damage detection system for Orbital Debris (OD) and Micrometeoroid (MM) impacts and particle characterization capabilities for a potential International Space Station (ISS) ExPRESS Payload Adapter (ExPA) payload technology demonstration flight experiment. The system design is comprised of three main subsystems:&nbsp; multiple OD sensing panel assemblies, an avionics subsystem, and an advanced inspection and verification (AIV) subsystem. Objectives of this task are to establish the concept of operations with high level design of architecture, formulate the system engineering&nbsp;requirements, and develop a preliminary design of an autonomous inspection capability system that will be 1st generation demonstrated as a proof-of-concept ground-based damage detection and inspection system.&nbsp;</p><p>&nbsp;</p> <p>FSDDS was previously demonstrated with the Advanced Exploration System (AES) Habitat Demonstration Unit (HDU) program.&nbsp; Three prototype, rigid panel damage detection systems capabilities were evaluated: 1) the efficiency/accuracy of patterned conductive traces for damage detection on materials used in habitat wall structures, 2) the feasibility of detecting damage three-dimensionally using multi-layered systems in conjunction with intelligent software algorithms to identify the location, depth, and extent of damage, and 3) autonomous/remote operation.</p><p>The primary goal of this&nbsp;formulation project&nbsp;is to develop concepts of operations and system requirements that would allow&nbsp; the technology to be on a path for consideration as a flight experiment demonstration.&nbsp;&nbsp;The technical approach is to develop and design&nbsp;hardware&nbsp;architecture concepts&nbsp;needed and investigate improvements to the&nbsp; embedded microprocessor systems for sensory panel assemblies system and include a&nbsp; imaging system for autonomous inspection and verification of damage. &nbsp; Analyses of best interface strategies for the ExPrESS Payload Adaptor will also be addressed as part of the experiment design requirements.&nbsp; &nbsp;The feasibility of using flexible printed circuitry design in the sensory panels designs can also be considered.&nbsp; The success of this project and proof-of-concepts demonstration&nbsp;data will be used&nbsp;to&nbsp;adovate further consideration of flight demonstration&nbsp;and has applications in damage detection and verification for smart, lightweight, multifunctional materials and systems, storage and transfer ground processing systems, composite structures, space vehicles, inflatables and habitats for exploration.&nbsp;</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The project is being formulated, targeted for an ISS technology demonstration&nbsp;flight experiment. It is expected, if chosen for&nbsp;an EXPRESS Payload Adapter (ExPA) experiment, that significant benefit will be realized in the area of autonomous inspection capabilities and verification of orbital debris and vehicle structural health&nbsp; monitoring.</p><p>The technology demonstration&nbsp;meets objectives of ISS Spacecraft and Orbital Environments, meets objectives for ISS Spacecraft Materials Technology Development, could help address&nbsp;the potential reduction in cost of OD and MM damage detection monitoring,&nbsp; enabling to emerging materials performance in MMOD barrier systems and in-situ structural health monitoring&nbsp;technology development.</p><p>Building on KSC&#39;s&nbsp; expertise in developing technologies for ground systems, damage detection,&nbsp; habitation and surface systems is of significant value. KSC has also been recognized as path finding in the earlier demonstration and remote integration of the FSDDS&nbsp;damage detection area with the HDU program.</p> <p>The monitoring of orbial debris is&nbsp;considered as one of the technologies that cross multiple technology areas in NASA crosscuting technololgies. As of 2011, the total mass of debris has exceeded 6,000 tons in orbit and is a major concern to NASA&#39;s mission; impact and orbital debris detection are of value to NASA unfunded and planned missions.&nbsp; The technology&nbsp;aligns with roadmaps TA4.1.4 Object/Event Recognition, TA4.5.1 System Health Management; TA6.2.4. Environmental monitoring, Safety; TA7.4.1 Integrated Habitat Systems, 7.4.3 SMART Habitats; TA12.1.1.3 Smart Materials, 12.2.1.4 Environment, 12.2.2.1 Lightweight Concepts, 12.2.2.5 Innovative, Multifunctional Concepts; and TA13.2.1 Technologies to Optimize the Operational Life Cycle and 13.3.3 On-Site Inspection, Anomaly Detection, &amp; Identification.&nbsp;</p><p>&nbsp;</p> <p>There are potential benefits in applications with inflatables ISS experiments such as the Bigelow Expandable Activity Module (BEAM).&nbsp; Understanding more about debris impact and having a capability to inspect, detect, locate and verfiy &nbsp;areas of impact damage is of significant benefit to the commercial space industry.</p><p>&nbsp;</p> <p>The monitoring of impact or debris damage to critical systems such as habitation tents in the military could be&nbsp;a noted benefit.&nbsp; Structural health monitoring of military aircraft is also an expected benefit.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>16850</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: KSC IRAD (KSC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX07.2.1: Logistics Management</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2014-02-01</td></tr>
+<tr><th>Project End Date</th><td>2016-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Kennedy Space Center (KSC) — Kennedy Space Center, Florida</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Florida (FL), Texas (TX)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Martha K Williams (Principal Investigator); Mark E Lewis (Co-Investigator) &lt;mark.e.lewis@nasa.gov&gt;; Nancy P Zeitlin (Project Manager)</td></tr>
+<tr><th>Program Management Contacts</th><td>Kelvin R Ruiz (Program Manager) &lt;kelvin.r.ruiz@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-01-27</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>KSC Success Story - Flexible Damage Detection and Verification System</strong> — KSC Success Story Flexible Damage Detection and Verification System</li><li><strong>Sensory Panel Control Schematic </strong> — Sensory Panel Control Schematic</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/16850">https://techport.nasa.gov/projects/16850</a>
+    </div>
+  </div>
+</body>
+</html>

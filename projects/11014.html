@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optimizing Low Light Level Imaging Techniques and Sensor Design Parameters using CCD Digital Cameras for Potential NASA Earth Science Research aboard a Small Satellite or ISS Project | NASA TechPort Project 11014</title>
+  <meta name="description" content="For this project, the potential of using state-of-the-art aerial digital framing cameras that have time delayed integration (TDI) to acquire useful low light level imagery was enhanced. Computational photography is an emerging field of study pertaining to capt">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/11014">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 11014</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SSC CIF</span>
+          <span class="badge">TX08.1.1</span>
+        </div>
+        <h1>Optimizing Low Light Level Imaging Techniques and Sensor Design Parameters using CCD Digital Cameras for Potential NASA Earth Science Research aboard a Small Satellite or ISS Project</h1>
+        <div class="meta-id">NASA TechPort Project ID: 11014</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/11014" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          For this project, the potential of using state-of-the-art aerial digital framing cameras that have time delayed integration (TDI) to acquire useful low light level imagery was enhanced. Computational photography is an emerging field of study pertaining to capturing, processing and manipulating digital imagery with the purpose of enhancing and improving the imagery beyond what is typically accomplished using traditional image processing techniques. While computational photography techniques have been extensively applied to computer vision and computer graphics problems and are becoming more common in consumer cameras and mobile devices, they have only limitedly been applied within the remote sensing community. With increased computer processing power and awareness of the utility of computational photography, these techniques are now beginning to be applied to the remote sensing image processing chain. This project made use of two computational photography techniques, high dynamic range (HDR) imagery formulation and bilateral filters to enable novel imaging applications. By carefully combining multiple data sets, the effective dynamic range within the image can be increased without over or underexposing portions of the scene. Using this technique, HDR image products were produced from imagery acquired under extreme low light level conditions. This project made use of two computational photography techniques, high dynamic range (HDR) imagery formulation and bilateral filters to enable novel imaging applications in support of developing a low light level imaging capability to improve imagery. HDR imaging is a technique that generates an image with a greater dynamic range than ordinarily achievable given an imaging system's hardware architecture. HDR images are generated by acquiring multiple images of the same scene at different exposure settings. Each individual image contains a collection of properly exposed pixels and pixels that are both dark (underexposed) and saturated (overexposed). HDR image products are generated by combining multiple frames of data at different exposure times such that the darkest areas within a frame are imaged with the longest exposure time and the brightest areas within a frame are imaged with the shortest exposure time. This technique can be very powerful when processing imagery acquired under low light level conditions. Standard imagery acquired under low light often contains a significant number of pixels that are extremely dark whereby information content is lost in the shadows. Bilateral filters reduce the noise in relatively uniform areas within an image while minimizing blurring of edges and other spatial features. Edge preserving noise reduction filters are important for improving the imagery of poorly lit scenes. These filters can be used to improve the quality of imagery acquired under low light level conditions. This type of filter preserves edges by only allowing pixels with similar radiometric values to be included in the spatial filter. By looping through each pixel within an image and assigning weights to adjacent pixels, the entire image is processed. However, implementation of the bilateral filter can be computationally intensive, so alternative algorithms that rely on approximations were developed. The bilateral filter described above was implemented in Matlab® and a simple simulated edge target image was constructed to functionally test the algorithms. For both sets of images noise levels (2% and 4%), and the bilateral filter results were more pronounced as light level and image quality decreased. By using these two computational photography techniques, representative HDR image products with imagery acquired under extreme low light conditions were successfully produced.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          A unique complementary remote sensing datasets could be provided to NASA Earth Science researchers to enable scientists to improve potential applications to include novel land cover studies and greater ability to image disasters. Such an instrument could provide day/night operation of the first four Landsat bands continuing and expanding research that supports the National Land Imaging (NLIP), North American Carbon, & Land Use Land Cover (LULC) Programs. Additionally, the International Space Station (ISS) orbit provides sunrise and sunset illuminated observations over populated regions of interest nearly every orbit. The Window Observation Research Facility (WORF) on-board the ISS could enable an existing advanced aerial imaging system to be integrated as a test bed/technology demonstrator. The ISS WORF could support advanced aerial digital cameras for enhanced observations. Using the WORF, Hexagon's Z/I Imaging DMC II could provide ~20 meter GSD panchromatic and ~ 60 meter GSD multispectral imaging products. Based on those pixel sizes, each image would cover approximately 300 km x 250 km. By combining low light level imaging capability to a small satellite or ISS platform, unique complementary remote sensing datasets could be provided to Earth science researchers. Properly implemented, moderate to high spatial resolution low light level imaging, could significantly expand the body of knowledge associated with artificial light usage, light pollution, cloud, dust, fog and tropical cyclone detection at night, enable low light level planetary and space operation imaging, and begin to explore techniques to facilitate extreme low light level imaging associated with lunar reflection. Benefits to NASA unfunded missions and planned missions would be that unique complementary remote sensing datasets could be provided to NASA Earth Science researchers that enables scientists to study topics as: artificial light usage, light pollution, cloud, dust, fog and tropical cyclone detection at night, and lunar reflection methods, which previously is timely and labor intensive. Other potential applications include enabling novel land cover studies and greater ability to image disasters, as well as applicability to planetary research in environments with low light. Novel features of improved low light level imaging capabilities also include •Low light level imaging capability on a small satellite or ISS platform could bring unique complementary remote sensing datasets to NASA Earth Science researchers. •Low light level imaging could enable scientists to study such topics as: artificial light usage, light pollution, cloud, dust, fog and tropical cyclone detection at night, nocturnal species studies and lunar reflection methods •Novel land cover studies could be conducted, and the ability to image disasters could be increased The International Space Station (ISS) could be used to demonstrate large dynamic range multispectral moderate spatial resolution imaging in the visible to NIR spectrum to enable dawn, dusk and moonlit night imaging along with traditional daylight imaging. The benefits to the commercial space industry would be the same as those that would benefit NASA. Improvements to low light level imaging would have tremendous potential for supporting commercial industry's imaging capabilities in space. Benefits to other government agencies like Department of Homeland Security, Army, Navy, FEMA and Department of Defense would be similar to those that would benefit NASA. Low light level imaging has great potential for supporting disaster response, understanding human activity and making unique environmental observations, and homeland security application. Additionally, today, National Ocean and Atmospheric Administration's (NOAA's) Defense Meteorological Satellite Program (DMSP) is one of the few sources that can provide a view of Earth's artificial outdoor illumination. The GSD of this system is however 2.7 km and therefore individual lights or light clusters are indistinguishable and low light applications using this data are restricted. This enhanced low light level imagining capability could help improve DMSP data production. Also, this capability could be applied to diurnal cloud statistics prediction using National Centers for Environmental Prediction (NCEP) data to help understand the potential of improved cloud-free line of sight imaging at sunrise.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>11014</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: SSC CIF (SSC CIF)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.1: Detectors and Focal Planes</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2011-09-01</td></tr>
+<tr><th>Project End Date</th><td>2012-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Stennis Space Center (SSC) — Stennis Space Center, Mississippi</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Mississippi (MS)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Robert E Ryan (Principal Investigator) &lt;robert.ryan@ssc.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Low Light Level Imaging Techniques</strong> — Low Light Level Imaging Techniques</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/11014">https://techport.nasa.gov/projects/11014</a>
+    </div>
+  </div>
+</body>
+</html>

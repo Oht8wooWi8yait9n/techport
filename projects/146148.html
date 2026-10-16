@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediction of Safety Incidents, Year 2 | NASA TechPort Project 146148</title>
+  <meta name="description" content="This project seeks to define, develop and test an algorithm that will use hazard identification data as input to predict when and where there is a high probability of a safety incident occurring. In comparison to safety incidents, collection of inspection data">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/146148">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 146148</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SSC CIF</span>
+          
+        </div>
+        <h1>Prediction of Safety Incidents, Year 2</h1>
+        <div class="meta-id">NASA TechPort Project ID: 146148</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/146148" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>This project seeks to define, develop and test an algorithm that will use hazard identification data as input to predict when and where there is a high probability of a safety incident occurring. In comparison to safety incidents, collection of inspection data or other similar data is cheap. However, the comprehensive value of this data at NASA is still untapped as a reliable leading indicator for safety incidents. Even when data is combined, it is viewed as a current status with no predictive information as shown in the graph below which trends numbers of different types of safety reports over time. This project was separated into two phases: Data Integration and Predictive Capability. During year one of this project most of the effort was directed to Data Integration. We have been able to implement a new tool using an existing platform that integrates several data sources with a search and export capability. Seven databases owned by SSC, MSFC and the NASA Safety Center were identified for integration and six have been successfully incorporated. The tool will be ready for testing by mid-August with the majority of features incorporated. At the end of FY19, this tool will be in use by SMA Directorate personnel. During the end of year one, the effort toward the predictive capability phase of the project has progressed. Three data sets that house mishaps, close calls and safety and quality inspections have been combined into one numerical dataset. Machine learning experiments have been run on the data to answer some basic questions about machine learning and our data set. Firstly, the question is: Can Machine Learning be used to gain an accurate enough solution for this problem? If the answer is yes then, we need to know the limitations of machine learning in relation to this problem and what additional data may be useful. Ultimately we expect to be able to write requirements for further algorithm development. These requirements will be used to solicit solutions from one or more of the following sources: Louisiana Research Consortium, Mississippi Research Consortium, NASA Crowdsourcing. Safety at NASA is ripe for this innovation as we continue to drive safety incidents to low levels using traditional root cause techniques after an incident occurs. It is also increasingly difficult to predict future incidents through experience and instincts of safety personnel, as personnel retirement and attrition erodes the agency expertise. We seek to take advantage of advances in the areas of machine learning, data analytics and big data to save time, money and lives.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Safety incidents, including injuries, property damage and mission failures, cost NASA and contractors thousands of dollars in direct and indirect costs. Our data systems are able to collect and store information on both hazards, through inspections and employee identification programs, and incidents. Additional safety information is collected through audits, surveys, hazard analysis, and risk management. Other relevant data is collected around the center in areas like procurement, Human Resources and the clinic. The leading indicators in this group are plentiful. However, NASA has not connected these sets of data to be able to predict safety incidents and ultimately direct limited resources to the most high risk areas. SSC Safety and Mission Assurance is committed to following through with this project to add benefit to our center. We also believe that benchmarking and documenting this work can benefit other NASA centers and the agency by providing a faster path to the same or similar results by other parties. The benefits extend to all programs and projects as we learn to more effectively analyze the data we already collect to better understand risk and direct resources appropriately.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>146148</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: SSC CIF (SSC CIF)</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 7 | Current TRL: 8 | Target End TRL: 8</td></tr>
+<tr><th>Project Start Date</th><td>2018-10-01</td></tr>
+<tr><th>Project End Date</th><td>2019-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Stennis Space Center (SSC) — Stennis Space Center, Mississippi</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas; Office of Safety and Mission Assurance (OSMA); Office of the Chief Information Officer (OCIO)</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Mississippi (MS)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Kamili M Shaw (Principal Investigator) &lt;kamili.j.shaw@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong>: In Phase I (FY2018) we successfully integrated seven datasets into a web-based application that we named Crystal Ball which was made accessible to all SSC SMA civil servants at the end of CY2018. In Phase II we have concentrated on the larger vision of Prediction of Safety Incidents using Crystal Ball as the source of our data. Computer Science resources were leveraged through use of the NASA intern program and the Louisiana Research Consortium (LRC). Through two interns, a better understanding of the data relationships was gained. Many suspected relationships were explored and it was found that very few show direct correlations comparing two sets of data. One key finding was that while location is a key, it was better explored by grouping buildings into categories based on the severity of hazards. After grouping buildings into five major categories (offices, test stands, special areas, tenants, grounds), the location was found to be a much more easily identified factor. A fairly strong relationship was found in numbers of mishaps during each month and the location categories developed. The LRC project, executed by the University of New Orleans (UNO), found that some data sets are more closely related than others. UNO was able to successfully model each data base individually with good accuracy. They are continuing work on an integrated model to forecast the safety incident probability in a given period of time. This work is expected to complete at the end of CY2019. (Phase I: Start TRL 3 / End TRL 8, Phase II: Start TRL 2 / End TRL 3)</li><li><strong>Closed Out</strong>: In Phase I (FY2018) we successfully integrated seven datasets into a web-based application that we named Crystal Ball which was made accessible to all SSC SMA civil servants at the end of CY2018. In Phase II we have concentrated on the larger vision of Prediction of Safety Incidents using Crystal Ball as the source of our data. Computer Science resources were leveraged through use of the NASA intern program and the Louisiana Research Consortium (LRC). Through two interns, a better understanding of the data relationships was gained. Many suspected relationships were explored and it was found that very few show direct correlations comparing two sets of data. One key finding was that while location is a key, it was better explored by grouping buildings into categories based on the severity of hazards. After grouping buildings into five major categories (offices, test stands, special areas, tenants, grounds), the location was found to be a much more easily identified factor. A fairly strong relationship was found in numbers of mishaps during each month and the location categories developed. The LRC project, executed by the University of New Orleans (UNO), found that some data sets are more closely related than others. UNO was able to successfully model each data base individually with good accuracy. They are continuing work on an integrated model to forecast the safety incident probability in a given period of time. This work is expected to complete at the end of CY2019. (Phase I: Start TRL 3 / End TRL 8, Phase II: Start TRL 2 / End TRL 3)</li><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/146148">https://techport.nasa.gov/projects/146148</a>
+    </div>
+  </div>
+</body>
+</html>

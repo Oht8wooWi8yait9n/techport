@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Conceptual Design and Concept of Operations for Intermittent Short-Radius Centrifugation for Artificial Gravity | NASA TechPort Project 93985</title>
+  <meta name="description" content="The objective of this investigation is to fill a significant void in current countermeasures for spaceflight-induced human physiological deconditioning by creating and assessing the feasibility of a conceptual design and architecture for intermittent artificia">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/93985">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 93985</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX06.3.7</span>
+        </div>
+        <h1>A Conceptual Design and Concept of Operations for Intermittent Short-Radius Centrifugation for Artificial Gravity</h1>
+        <div class="meta-id">NASA TechPort Project ID: 93985</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/93985" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The objective of this investigation is to fill a significant void in current countermeasures for spaceflight-induced human physiological deconditioning by creating and assessing the feasibility of a conceptual design and architecture for intermittent artificial gravity (AG). Future plans for long-duration spaceflight missions to the moon, asteroids, and Mars have created excitement across many disciplines regarding the possibility of humans once again traveling beyond low Earth orbit. Vehicle designs are underway for Mars exploration; however, previous research suggests that the duration of reduced gravity exposure for a Mars mission will lead to substantial physiological deconditioning in astronauts. This will not only impact the health of the crew, but an impaired crew could catastrophically impact mission success and safety. There are numerous countermeasures currently in use or proposed, but each one provides the means of combating deleterious effects of spaceflight of individual systems; thus a suite of countermeasures are required to keep the crew alive, healthy, and functional. Even then, for future 1000+ day missions and associated exposure to reduced gravity, these countermeasures may not be enough to correct the impeded ability of the astronauts to function effectively upon gravity transitions. AG is an integrated, comprehensive countermeasure that has the potential to mitigate deconditioning in multiple systems concurrently, and thus could be a game-changing technology for extended duration flight. However, today there exists a lack of baseline mission architecture for AG (i.e., low technology readiness level or TRL), and this uncertainty and absence of design has prevented its use as a countermeasure in flight. The goal of the current proposed research is to increase the TRL for AG and fill this gap by providing both a conceptual design and concept of operations for AG technology. Using a sequential approach, this research will include a systematic series of investigations and design iterations to recommend optimized parameters (i.e., angular velocity, gravitational loading, radius) for a short-radius intermittent centrifuge with an accompanying exposure prescription (i.e., for how per day long astronauts should be exposed to centrifugation). This investigation will conclude with a systems engineering analysis to estimate mass, power, volume, and cost of the optimized system to prove feasibility and provide a long-term solution for physiological deconditioning during extended-duration spaceflight.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This investigation hopes to provide a long-term solution for physiological deconditioning during extended-duration spaceflight.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>93985</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.7: Transformative Health and Performance Concepts</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2017-08-15</td></tr>
+<tr><th>Project End Date</th><td>2021-08-14</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Colorado Boulder — Boulder, Colorado</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Mars, Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Torin K Clark (Principal Investigator); Kathrine N Bretl (Co-Investigator) &lt;kathrine.n.bretl@nasa.gov&gt;; Frances M Donovan (Project Manager) &lt;frances.m.donovan@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Existing methods to mitigate spaceflight-induced deconditioning employ a suite of countermeasures that are only partially effective and largely inefficient; several countermeasures are required to maintain physiological function during flight and ensure astronaut health upon return. To fill the void in this piecemeal approach, we propose optimized conceptual design parameters for short-radius, intermittent artificial gravity (AG). An integrated, comprehensive countermeasure, AG has the potential to mitigate deconditioning in multiple physiological systems concurrently. However, there has historically existed a lack of effective and feasible baseline architecture for AG implementation. This pre-existing gap was narrowed with the completion of three Specific Aims. In the first two aims, we investigated human acclimation to the “Coriolis” cross-coupled (CC) illusion, a tilting or tumbling sensation experienced after executing head movements during centrifugation. The human tolerability concerns associated with the CC illusion have historically limited AG spin rates to approximately 4-6 rotations per minute (RPM), thus preventing the implementation of a more technologically and financially feasible short-radius approach. We performed a series of 7 experiments to update these previously accepted tolerable spin rate limits. In these investigations, we found that subjects can rapidly and completely acclimate to the CC illusion, exhibiting near-linear acclimation with rates averaging 1.5 RPM/session (SD: 1.0 RPM/session) across all studies (n = 60). Further, individual studies found acclimation to be similar across different rotation and head tilt axes, that this acclimation was retained to some degree but did not transfer well to new head tilt axes, and finally, that a standardized acclimation protocol was slightly less effective and less tolerable than a personalized, incremental approach. While there were large differences in individual acclimation in all of these investigations, we found that acclimation rate could be predicted by each individual’s vestibular perceptual roll rotation threshold. Additional analysis was performed to develop a human tolerability metric to inform expected acclimation of a general population. The acclimation investigations suggest that the majority of humans (50-75%) can acclimate to spin rates as high as 20-30 RPM. Specific Aim 3 sought to narrow the now wider design envelope for short-radius, intermittent centrifugation by utilizing existing bedrest investigation data to inform which centrifuge parameters would result in maximal mitigation of bedrest-induced deconditioning. It was found that higher loading levels, longer sessions, and the addition of exercise during centrifugation resulted in superior levels of mitigation. It is recommended that future operational AG conceptual designs administer at least 1g loading at the subjects’ heart for at least 60 minutes each day. Additionally, the findings on how this loading should be administered (i.e., all at once in one continuous session or divided into several shorter sessions throughout the day) was mixed, though the latter approach may have some slight benefit in terms of protocol tolerability. Finally, additional research should be conducted to identify optimized exercise protocols that can be combined with AG to maximize efficacy of the countermeasure. The human tolerability metric and recommended centrifuge parameters provide a data-driven approach towards development of a tolerable and feasible short-radius, intermittent AG conceptual design. This solution can provide astronauts with a comprehensive countermeasure to mitigate spaceflight-induced deconditioning, enabling future long-duration human space exploration.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/93985">https://techport.nasa.gov/projects/93985</a>
+    </div>
+  </div>
+</body>
+</html>

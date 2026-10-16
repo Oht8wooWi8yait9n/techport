@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Comprehensive Fatigue Management Program and an Evaluation of a Photic Countermeasure for Mission Controllers | NASA TechPort Project 23207</title>
+  <meta name="description" content="The success of a human spaceflight critically depends on the interaction between the crewmembers and the mission controllers. The ability of both the crew and the controllers to be alert and to maintain high levels of cognitive function while operating and/or ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23207">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23207</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.3</span>
+        </div>
+        <h1>A Comprehensive Fatigue Management Program and an Evaluation of a Photic Countermeasure for Mission Controllers</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23207</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23207" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The success of a human spaceflight critically depends on the interaction between the crewmembers and the mission controllers. The ability of both the crew and the controllers to be alert and to maintain high levels of cognitive function while operating and/or monitoring complex, technical equipment is essential. Optimal human health, performance, and safety during spaceflight operations requires sufficient sleep and synchrony between the circadian pacemaker—which regulates the timing of sleep, endocrine function, alertness, and performance—and the timing of the imposed sleep-wake schedule.    <p></p> Flight mission controllers often work extended duration shifts, rotating shifts, including nights shifts. Such schedules instigate significant acute and chronic sleep deprivation and consequently fatigue. Although the effects are often unrecognized, both the acute and chronic lack of sleep substantially degrades a federal air marshal’s ability to react and think quickly, to make good decisions, and to recognize when fatigue is impairing his or her own performance and safety. Further, both acute and chronic sleep deprivation adversely affects personal health, increasing the risk of gastrointestinal and heart disease, impairing glucose metabolism and immune function, and substantially increasing the risk of injury due to motor vehicle crashes. In addition, it is likely that a significant proportion of mission controllers suffer from undiagnosed sleep disorders which will further impair their sleep and exacerbate fatigue. The deleterious effects of fatigue are readily observed in a wide range of safety-sensitive professions, including law enforcement officers, and include increased risk of self-injury, higher rates of fatigue-related motor vehicle accidents, and greater incidence of serious errors.    <p></p> We propose to implement a Comprehensive Police Fatigue Management Program for the flight  mission controllers program. The goals of this program are to reduce the adverse consequences of  fatigue on the mission controllers’ alertness, performance, health, and safety. The overall goals of our team include developing an online education training program and an efficient sleep disorders screening, evaluating the acceptability, feasibility, and efficacy of a shorter wavelength photic countermeasure during operational night shifts and suggesting work-hour policies and guidelines, which can be implemented to improve the alertness, performance, health, and safety of mission controllers. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This outcome of this research could benefit those who work the night shift, rotating shifts, or other schedules outside the typical 7 AM-6 PM work hours. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23207</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.3: Behavioral Health and Performance</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2010-03-01</td></tr>
+<tr><th>Project End Date</th><td>2015-06-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Brigham And Women&#x27;s Hospital, Inc. — Boston, Massachusetts; Harvard Medical School — Boston, Massachusetts</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Massachusetts (MA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Charles A Czeisler (Principal Investigator); Laura K Barger (Co-Investigator); Steven W Lockley (Co-Investigator); Lauren B Leveton (Project Manager) &lt;lauren.b.leveton@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: FINAL REPORT SUMMARY (Submitted September 2015): The success of a human spaceflight critically depends on the interaction between the crewmembers and the flight controllers. The ability of the crew and the controllers to remain alert and maintain high levels of cognitive function while operating and/or monitoring complex, technical equipment, is essential. Optimal human health, performance, and safety during space flight operations requires sufficient sleep and synchrony between the circadian pacemaker—which regulates the timing of sleep, endocrine function, alertness, and performance—and the timing of the imposed sleep-wake schedule. Flight controllers work rotating shifts, including nightshifts. Such schedules instigate significant circadian misalignment and acute and chronic sleep deprivation and consequently fatigue. Although the effects are often unrecognized, both the acute and chronic lack of sleep substantially degrades an individual’s ability to react and think quickly, to make good decisions, and to recognize when fatigue is impairing his or her own performance and safety. Further, these elements of fatigue adversely affect personal health, increasing the risk of gastrointestinal and heart disease, impairing glucose metabolism and immune function, and substantially increasing the risk of injury due to motor vehicle crashes. In addition, it is likely that a substantial proportion of flight controllers suffer from undiagnosed sleep disorders which will further impair their sleep and exacerbate fatigue. The deleterious effects of fatigue are readily observed in a wide range of safety-sensitive professions and include increased risk of self-injury, higher rates of fatigue-related motor vehicle accidents, and greater incidence of serious errors. We implemented a Fatigue Risk Management Program (FRMP) for the flight controllers. The goals of this program were to reduce the adverse consequences of fatigue on the flight controllers’ alertness, performance, health, and safety. The objectives of the program were to: Evaluate the current flight controller schedules (Phase 1); Develop an online education training program (Phase 2); Offer an efficient online screening for common sleep disorders (Phase 3); and Evaluate the acceptability, feasibility and efficacy of a combined fatigue countermeasure including shorter-wavelength light exposure during operational night shifts (Phase 4). Historical flight controller schedules were reviewed with regards to factors that affect physiological measures of alertness and scheduling recommendations were made to Mission Operations Directorate (MOD) management. We established collaboration with NASA Spaceflight Resources Management (SFRM) to develop a 9-module Fatigue Education Program tailored to flight controllers working Orbit 1 overnight shifts. The modules were released one-per-week to the entire MOD. In the ninth week, information was provided on common sleep disorders and flight controllers had the option of completing a short screening questionnaire to identify those at high risk for those disorders. Flight controllers (N=19) showed a small but non-significant (p=0.06) increase on the knowledge assessment scores after viewing the 9-part series, as compared to pre-viewing scores. We enrolled 17 flight controllers and 3 flight directors (9F, 33.3 ± 8.0 years [mean ± SD],) selected from the seven International Space Station mission control consoles regularly staffed for Orbit 1 operations (Flight, OPS Planning, ADCO, SPARTAN, ETHOS, CRONUS, Ground Control). Data were collected during one off-console week and each controller was scheduled to work two blocks (4-7 days each) of Orbit 1 shifts during the study. We randomized each block to either the control or experimental condition. During the experimental condition, controllers were encouraged to visit the Experimental Break Room (EBR) once before the shift, twice during the shift, as operations allowed, and following the Orbit 1 shift. The EBR provided subjects with passive exposure to blue-enriched fluorescent lamps (Sylvania Octron Skywhite XP ECO, 8000K) installed in existing ceiling fixtures. In addition, subjects were encouraged to exercise on treadmills or stationary bikes located in the room (10 minute bouts, not to exceed more than 65% maximum heart rate). The controllers were instructed to continue their normal routines during the control block. The fatigue countermeasure proved feasible and acceptable as controllers reported taking 2.9 breaks/experimental shift and 90% of prescribed exercise sessions were completed. Flight controllers reported being significantly more alert (p The data gathered from this study informed MOD about feasible, acceptable and effective countermeasures to improve the alertness, performance and safety of flight controllers scheduled to work overnight Orbit 1 shifts. ANNUAL REPORT SUMMARY (Submitted January 2015): This program has 4 phases: (1) analysis of schedules; (2) education; (3) screening for common sleep disorders; and (4) evaluation of a fatigue countermeasure to improve alertness and performance of flight controllers. We presented this program to the Flight Operations Integration Group (FOIG) in January, 2011. They approved Phase 1 and Phase 2, but had some concerns about Phase 3 and Phase 4. We returned to the FOIG on January 11, 2012 to give an update on our progress on the first two phases of the project and to provide addition information about Phase 3, the voluntary, confidential online sleep disorders screening. Phase 3 and Phase 4 were “enthusiastically” approved at that meeting. Phase 1, scheduling analysis is complete. In August, 2011 we presented scheduling recommendations to a group of Mission Operations Directorate (MOD) Division Chiefs. A Phase 1 report is in progress. For Phase 2, we established collaboration with NASA Spaceflight Resources Management (SFRM) to develop a Fatigue Education Program. SFRM advised that the program would be more feasible and attractive to controllers if it could be delivered in short segments. Therefore, we divided our traditional educational material into nine web-based modules that could be viewed in five to ten minutes each. In order to better target the material to the young (early 20s) individuals who most often work Orbit 1, we enlisted the assistance of NASA interns to assist with the visual appeal of the modules. Each web-based module consisted of basic science, interesting factoids, recommendations, video clips, and links to obtain more information or ask a question of the BWH/HMS (Brigham and Women&#x27;s Hospital/Harvard Medical School) team. Module topics include: Risks Associated with Night Shifts, I Need Sleep, What Not to Do, Caffeine, Light, Drowsy Driving and Sleep Disorders. After the program was piloted with ETHOS operators, SFRM representatives, and other select NASA colleagues, it was revised and released to the entire Mission Operations Directorate in September 2012. Controllers at Marshall Space Flight Center requested and were added to the educational program as well. A new module was available for viewing each week. In the ninth week, information was provided on common sleep disorders and flight controllers had the option of completing a short screening questionnaire to identify those at high risk for those disorders (Phase 3). Controllers completed an anonymous 11-item knowledge assessment survey before the first module and following the final module. Preliminary data indicates that the flight controllers enjoyed and benefited from the web-based education. In Phase 4, we evaluated the feasibility, acceptability, and efficacy of fatigue countermeasures for flight controllers. Specifically, we tested (1) the feasibility of developing an experimental break room (EBR) containing fatigue countermeasures (shorter-wavelength enriched light and exercise equipment) to be used by flight controllers during Orbit1 shifts, and the feasibility to schedule breaks during the Orbit1 shift such that flight controllers have the opportunity to use the EBR; (2) the acceptability of the use of the EBR by evaluating when and how the room is used, as measured on an End-of-Shift Questionnaire; (3) and the efficacy of the EBR by comparing alertness and performance of flight controllers with access to the EBR during their Orbit1 night shifts and when those same controllers working Orbit1 night shifts were not allowed access to shorter-wavelength light exposure and exercise. We enrolled 17 flight controllers and 3 flight directors (9F, 33.3 ± 8.0 years [mean ± SD], range 25-50 years) selected from the seven International Space Station Mission Control consoles regularly staffed for Orbit1 operations (Flight, OPS Planning, ADCO, SPARTAN, ETHOS, CRONUS, Ground Control). Each controller was scheduled to work two blocks (4-7 days each) of Orbit1 shifts during the study. We randomized each block to either the control or experimental condition. During the experimental condition, controllers were encouraged to visit the EBR once before the shift, twice during scheduled breaks during the shift, and following the Orbit1 shift. The EBR provided subjects with passive exposure to blue-enriched fluorescent lamps (Sylvania Octron Skywhite XP ECO, 8000 K) installed in existing ceiling fixtures. In addition, subjects were encouraged to exercise on treadmills or stationary bikes located in the room (10 minute bouts, not to exceed more than 65% maximum heart rate). The controllers were instructed to continue their normal routines during the control block. The controllers completed Visual Analog Scales and a 5-minute Psychomotor Vigilance Task before, twice during, and following each Orbit1 shift. They also wore actigraphs to monitor sleep and completed daily work/sleep logs. All subjects completed drive diaries following each commute and a subset of the subjects (n=11) wore Optalert drowsiness monitoring glasses on commutes to and from work to objectively monitor fatigue. A mixed model with repeated measures was used to compare data between the control and experimental Orbit 1 shifts. A paired t-test was used to compare drowsiness between commutes to and from work. Preliminary analysis shows that controllers performed better and reported being more alert when incorporating exercise under the blue-enriched light during their overnight Orbit 1 shifts. We are currently finalizing our analyses and writing the final report. At the suggestion of the NASA Behavioral Health and Performance Team, we applied for a no-cost extension in order to continue work on this project. We spent much of the last year transitioning the research data findings into operational countermeasure recommendations. Multiple briefings were given including presentations at the Flight Operations Integration Group (FOIG) and Joint Operations Group.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Articles in Peer-reviewed Journals</strong> — Gottlieb DJ, Ellenbogen JM, Bianchi MT, Czeisler CA. &quot;Sleep deficiency and motor vehicle crash risk in the general population: A prospective cohort study.&quot; BMC Med. 2018 Mar 20;16(1):44. https://doi.org/10.1186/s12916-018-1025-7 ; PubMed PMID: 29554902; PubMed Central PMCID: PMC5859531 , Mar-2018</li><li><strong>Abstracts for Journals and Proceedings</strong> — Barger LK, Sullivan JP, Bollweg LJ, Lockley SW, Czeisler CA. &quot;Experimental Trial of Fatigue Countermeasure Program in Operational Flight Controllers.&quot; 2013 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-14, 2013. 2013 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-14, 2013., Feb-2013</li><li><strong>Abstracts for Journals and Proceedings</strong> — Bollweg LJ, Barger LK, Sullivan JP, Lockley SW, Czeisler CA. &quot;Development Of An Educational Program For Flight Controllers Working Nightshifts (Orbit 1).&quot; 2013 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-14, 2013. 2013 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-14, 2013., Feb-2013</li><li><strong>Articles in Peer-reviewed Journals</strong> — Barger LK, Sullivan JP, Lockley SW, Czeisler CA. &quot;Exposure to short wavelength-enriched white light and exercise improves alertness and performance in operational NASA flight controllers working overnight shifts.&quot; J Occup Environ Med. 2021 Feb 1;63(2):111-8. https://doi.org/10.1097/JOM.0000000000002054 ; PMID: 33065729, Feb-2021</li><li><strong>Articles in Peer-reviewed Journals</strong> — Chang AM, Czeisler CA. &quot;Reply to Zeitzer: Good science, in or out of the laboratory, should prevail.&quot; Proc Natl Acad Sci U S A. 2015 Mar 31;112(13):E1514. http://dx.doi.org/10.1073/pnas.1501544112 ; PubMed PMID: 25762077; PubMed Central PMCID: PMC4386345, Mar-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Chang A, Aeschbach D, Duffy JF, Czeisler CA. &quot;Evening use of light-emitting eReaders negatively affects sleep, circadian timing, and next-morning alertness.&quot; Proc Natl Acad Sci U S A. 2015 Jan 27;112(4):1232-7. Epub 2014 Dec 22. http://dx.doi.org/10.1073/pnas.1418490112 ; PubMed PMID: 25535358; PubMed Central PMCID: PMC4313820, Jan-2015</li><li><strong>Abstracts for Journals and Proceedings</strong> — Barger LK, Sullivan JP, Lockley SW, Czeisler CA. &quot;Development of an Educational Program for Flight Controllers Working Nightshifts (Orbit 1).&quot; 2012 NASA Human Research Program Investigators’ Workshop, Houston, TX, February 14-16, 2012. 2012 NASA Human Research Program Investigators’ Workshop, Houston, TX, February 14-16, 2012., Feb-2012</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23207">https://techport.nasa.gov/projects/23207</a>
+    </div>
+  </div>
+</body>
+</html>

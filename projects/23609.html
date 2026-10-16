@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lunar EVA Dosimetry: Design of a Radiation Dosimeter for Astronauts During Lunar Extravehicular Activities | NASA TechPort Project 23609</title>
+  <meta name="description" content="Task 1: Design, Fabrication, and Testing Tissue Equivalent Proportional Counters (TEPC) Detectors The purpose of this task was to design, build, and assemble a prototype Tissue Equivalent Proportional Counters (TEPC) that would satisfy the basic specifications">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23609">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23609</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.5.5</span>
+        </div>
+        <h1>Lunar EVA Dosimetry: Design of a Radiation Dosimeter for Astronauts During Lunar Extravehicular Activities</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23609</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23609" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Task 1: Design, Fabrication, and Testing Tissue Equivalent Proportional Counters (TEPC) Detectors The purpose of this task was to design, build, and assemble a prototype Tissue Equivalent Proportional Counters (TEPC) that would satisfy the basic specifications outlined by NASA for a dosimeter for astronauts during lunar EVAs (extravehicular activities) and as area monitors in space craft and habitats. The spherical TEPC is based on a single-wire anode with recessed guard ring insulators to shape the electric field near the poles. The diameter of the gas cavity is 18 mm and the wall thickness is 3 mm for a total diameter of 24 mm (~1 inch). Aluminum vacuum chambers with a shell thickness of 0.5 mm were designed and gold plated to maintain electrical conductivity. A system using a high sensitivity mass spectrometer was assembled to measure vacuum leaks for the assembled detectors with high special specificity. We have been using a version of the software package LORENTZ 3D to model the electric field inside a spherical detector with a linear collector. This uses special modeling techniques based on the Boundary Element Method to make the solution of these very challenging problems a simple matter. The geometry of the problem can be created with the geometric modeler built into the electric field solvers or can be imported from any of the major CAD (computer-aided design) vendors. More importantly, the geometry can be changed parametrically to optimize a design for robustness, weight, size and, of course, cost. We have fabricated seven versions of the TEPC and Vacuum Chamber. Three versions with spherical detector and single wire anode operated with the wall at high voltage and the anode at ground were delivered for electronics development and testing. Two versions with a spherical detector and single wire anode operated with the wall at ground and the anode at high voltage have been used for TEPC development and comparative analysis. Two versions of a detector using a new hybrid design with a parallel wire grid surrounding the anode we designed and built. The objective of this design was to form a virtual cylindrical geometry around the anode with that would improve the spatial resolution of the TEPC without distorting the signals required for microdosimetry applications. The single and multi wire detectors with grounded anodes were exposed to Neutrons from a PuBe source at Colorado State University and high energy charged particle beams at the Heavy Ion Medical Accelerator in Chiba (HIMAC) synchrotron in Chiba Japan and the NASA Space Radiation Laboratory (NSRL) at Brookhaven National Laboratory. This included the following ions and energies: 56Fe (380 MeV/amu), 18Ar (300 MeV/amu), 12C (200 MeV/amu), and 1H (230 MeV/amu). Measurements were taken at several angles of incidence to determine the angular response of the detector. These results were compared with similar measurements using a commercial TEPC with a Rossi design that has a helical grid surrounding the anode to provide a uniform angular response. Analysis of detector response using digital signal processing was initiated. This system replaced a preamplifier and shaping amplifier with a programmable logic device (PLD) that captures the output signal from the TEPC and digitizes the amplitude in 10 nsec intervals. Task 2: Modeling Detector Response The objective of this task is to determine the response of the TEPC under ambient conditions and during solar particle events (SPE) on the lunar surface. Computations using the Monte Carlo Code PHITS have been made to determine the energy deposition in the TEPC using protons with an energy spectrum from a SPE in October 2003. These data were compared with the dose that would be delivered to the skin beneath a space suit with an areal density of 0.4 g/cm2. It is clear that a stainless steel vacuum chamber in Mod 1 needs to be replaced with lighter and thinner materials. These results will be important in determining what additional modifications will be necessary to achieve the design goal for real time measurements to the skin and blood forming organs (BFO). Task 3: Modeling the Variance-Covariance Method The original proposal for the EVA dosimeter was based on the concept of having two independent proportional counters that would be used to obtain estimates of dose, D, and a quality factor, Q, based on estimating using the variance-covariance method. It was recognized that because of size limitations, the proportional counters would have to be located too close to one another to satisfy the condition that a single particle could not intercept both detectors. The additional constraint that one of the detectors must measure the dose at the skin surface and the other at a depth corresponding to the blood forming organs, makes the original variance-covariance method with paired detectors impractical. We have developed a method using a single detector in a variance-covariance scheme. The concepts are based on collecting the charge, q(i), in a single TEPC for n successive time intervals, i. The method proposed by Borak at Colorado State University (CSU) separates the data set into two groups of n/2 entries of values for q(i) based on odd and even indices. The n/2 pairs of data (odd and even) are used to obtain the covariance and each of the two sets of n/2 values (odd or even) to estimate a variance. Monte Carlo codes have been written to test the algorithmic using microdosimetric spectra obtained from measurements in Task 1. The tests indicated that if the change in dose rate between successive intervals was less than 1%, the single detector scheme provided reliable estimated dose rate and dose averaged lineal energy for estimating quality factors. The analysis also indicated that the estimate of dose mean lineal energy for high energy heavy ions (HZE) and recoil protons from PuBe neutrons converged to the correct value when the number of intervals exceeded 100 and the width of each interval was selected such that the mean number of events in each time interval (i) was less than 30.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This type of dosimeter has additional applications for first responders to nuclear accidents or terrorist events. It can also provide real time dosimetry during high altitude aviation and commercial space flight, diagnostic, and therapeutic medical procedures such as proton and carbon ion radiation therapy, and surveillance activities associated with homeland security and nuclear non proliferation. It can also serve an a area monitor with live-time capabilities that provide dose rate as well as estimates of quality factors for radiation workers as well as the general public.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23609</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.5.5: Monitoring Technology</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2007-11-01</td></tr>
+<tr><th>Project End Date</th><td>2011-10-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Texas A&amp;M Engineering Experiment Station (TEES) — College Station, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Thomas B Borak (Principal Investigator); Leslie Braby (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2020-10-27</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Task 1: Design and Fabrication of Tissue Equivalent Proportional Counters Three Detector systems have been delivered to Texas A&amp;M University (TAMU) for installation of the preamplifier and on to NASA Ames Research Center for data acquisition and analysis hardware. The spherical TEPC is based on a single-wire anode with recessed guard ring insulators to shape the electric field near the poles. The diameter of the gas cavity is 18 mm and the wall thickness is 3 mm for a total diameter of 24 mm (~1 inch). A gold plated aluminum vacuum chamber designed to accommodate the TEPC and pre amplifier has been fabricated and leak tested. The hemispherical dome and vacuum chamber wall surrounding the TEPC has a thickness of 0.5 mm. The units were assembled and leak tested using a He vacuum leak test system. Task 2: Determine the response of the TEPC to low energy protons expected during a SPE The objective of this task is to determine the response of the TEPC under ambient conditions and during SPE events on the lunar surface. Computations using the Monte Carlo Code PHITS have been made to determine energy deposition in the TEPC using protons with an energy spectrum from a SPE in October 2003. These data were compared with the dose that would be delivered to the skin beneath a space suit with an areal density of 0.4 g/cm2. These results will be important in determining what modifications will be necessary to achieve the design goal that the EVA dosimeter provides real time measurements to the skin and BFO. Task 3: Development and testing of the Variance/Covariance algorithm The original variance/covariance method requires two independent detectors to measure dose and dose averaged lineal energy that is used to obtain a radiation quality factor for the incident particles. We have been developing a method using a single detector in a variance-covariance scheme The concepts are based on collecting the charge, q(i), in a single TEPC for n successive intervals of (i) with the condition that the change in dose rate is very small between (i) and (i+1). The method simulates two detectors by separating the data set into two groups of n/2 entries of values for q(i) based on odd and even indices. The n/2 pairs of data (odd and even) are used to obtain the covariance between odd and even measurements and each of the two sets of n/2 values (odd or even) to estimate a variance. Monte Carlo codes have been developed to test the algorithms in terms of the width of each interval of (i) and the number of intervals, n, that need to be collected. The estimate of dose mean lineal energy converged to the correct value when n was greater than 100. The width of the interval, specified by the mean number of events in each interval (i), yielded consistent results from a mean number of events from 1 to 40 for all three distributions. Tests have been made to determine the effectiveness of dose rate changes between charge collection intervals.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Dissertations and Theses</strong> — Manglass L, Borak TB. &quot;Omni-directional sensitivity of a tissue equivalent proportional counter for personal dosimetry during EVA on the Moon.&quot; Thesis, Colorado State University, August 2009., Aug-2009</li><li><strong>Articles in Peer-reviewed Journals</strong> — Taddei PJ, Zhao Z, Borak TB. &quot;A comparison of the measured responses of a tissue-equivalent proportional counter to high energy heavy (HZE) particles and those simulated using the Geant4 Monte Carlo code.&quot; Radiation Measurements, 2008 Oct-Nov;43(9-10):1498-505. http://dx.doi.org/10.1016/j.radmeas.2008.09.003 ; PMID: 20862212, Oct-2008</li><li><strong>Articles in Peer-reviewed Journals</strong> — Straume T, Braby LA, Borak TB, Lusby T, Warner DW, Perez-Nunez D. &quot;Compact tissue-equivalent proportional counter for deep space human missions.&quot; Health Phys. 2015 Oct;109(4):277-83. http://dx.doi.org/10.1097/HP.0000000000000334 ; PubMed PMID: 26313585; PubMed Central PMCID: PMC4554228, Oct-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Borak TB, Chapman PL. &quot;Description and verification of an algorithm for obtaining microdosimetric quantities for high-LET radiation using a single TEPC without pulse height analysis.&quot; Radiat Res. 2014 Oct;182(4):396-407. http://dx.doi.org/10.1667/RR13266.1 ; PubMed PMID: 25211132, Oct-2014</li><li><strong>Significant Media Coverage</strong> — Gorwyn A. &quot;Thomas Borak designs radiation alarm for astronauts and everyone. Interview and podcast of Thomas Borak by EarthSky.&quot; EarthSky, February 22, 2010. Check this site for download options: http://eq.uen.org/emedia/items/fe482333-180a-c85b-7554-0b97e92ec432/1/ , Feb-2010</li><li><strong>Articles in Peer-reviewed Journals</strong> — Allen C, Borak TB, Tsujii H, Nickoloff JA. &quot;Heavy charged particle radiobiology: using enhanced biological effectiveness and improved beam focusing to advance cancer therapy.&quot; Mutat Res. 2011 Jun 3;711(1-2):150-7. Epub 2011 Mar 3. Review. PubMed PMID: 21376738 ; http://dx.doi.org/10.1016/j.mrfmmm.2011.02.012, Jun-2011</li><li><strong>Articles in Peer-reviewed Journals</strong> — Allen C, Borak TB, Tsujii H, Nickoloff JA. &quot;Heavy charged particle radiobiology: using enhanced biological effectiveness and improved beam focusing to advance cancer therapy.&quot; Mutat Res. 2011 Jun 3;711(1-2):150-7. Epub 2011 Mar 3. Review. PubMed PMID: 21376738, Jun-2011</li><li><strong>Articles in Peer-reviewed Journals</strong> — Allen C, Borak TB, Tsujii H, Nickoloff JA. &quot;Heavy charged particle radiobiology: using enhanced biological effectiveness and improved beam focusing to advance cancer therapy.&quot; Mutat Res. 2011 Jun 3;711(1-2):150-7. Epub 2011 Mar 3. Review. PubMed PMID: 21376738 ; http://dx.doi.org/10.1016/j.mrfmmm.2011.02.012, Jun-2011</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23609">https://techport.nasa.gov/projects/23609</a>
+    </div>
+  </div>
+</body>
+</html>

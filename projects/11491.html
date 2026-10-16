@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solarelastic Stability of Solar Sail Structures | NASA TechPort Project 11491</title>
+  <meta name="description" content="In order to avoid an unintended failure in proposed Solar Sail spacecraft due to solarelastic interactions it is important to develop an analytical framework for predicting the interaction between the solar pressure and the solar membrane. I will develop a ful">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/11491">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 11491</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX01.4.1</span>
+        </div>
+        <h1>Solarelastic Stability of Solar Sail Structures</h1>
+        <div class="meta-id">NASA TechPort Project ID: 11491</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/11491" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          In order to avoid an unintended failure in proposed Solar Sail spacecraft due to solarelastic interactions it is important to develop an analytical framework for predicting the interaction between the solar pressure and the solar membrane. I will develop a fully coupled membrane, solar pressure model that can be used to predict dynamic instabilities for Solar Sails. Many of the techniques will be directly borrowed from supersonic aeroelastic analysis but the analysis will specifically focus on proposed Solar Sails. Specifically I will couple a solar pressure model proposed by MacNeal [1] with finite element structural model of the Solar Sail to determine the critical dimensions for different solar pressure strengths. Furthermore, I will conduct non-linear structural analysis for the sails to determine the post critical behavior and ensure that the stress induced by flutter will not cause catastrophic sail failure. In addition I will validate my theoretical model with experimentation. Because the solar pressure will not be measurable on the ground where aerodynamic forces will dominate, alternate methods of simulating the solarelastic response will be developed. For my research I will use piezoelectric patches to simulate the generalized forces in the most important structural modes. The most important structural modes will be determined by the unstable eigenvalues in the solarelastic analysis and the critical mode shape from the corresponding eigenfuctions. As with the theoretical analysis, initial simulations will be done on the simply supported rectangle case. [1] MacNeal, R. H., Structural Dynamcis of the Heliogyro, NASA CR-1745, 1971
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          In order to avoid an unintended failure in proposed Solar Sail spacecraft due to solarelastic interactions it is important to develop an analytical framework for predicting the interaction between the solar pressure and the solar membrane.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>11491</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.4.1: Solar Sails</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2012-08-01</td></tr>
+<tr><th>Project End Date</th><td>2014-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Duke University — Durham, North Carolina</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>North Carolina (NC)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Others Inside the Solar System, Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Earl Dowell (Principal Investigator); Samuel C Gibbs (Co-Investigator) &lt;samuel.c.gibbs@nasa.gov&gt;; Karen H Lyle (Project Manager) &lt;karen.h.lyle@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Developing solar sail capabilities requires effective means of designing, analyzing and testing solar sail technologies. Because of the cost prohibitive nature of testing solar sail systems and subsystems in space, accurate analysis and response predictions are vital to the future development of solar sail technology. My research provides support to the ground validation of relevant structural models and the development of the first coupled solar radiation and elastic structure analysis tools. Understanding the solarelastic instability potential in the design phase of a proposed solar sail could mean the difference between success and failure during early solar sail missions. My research specifically supports the effort at NASA Langley Research Center (LaRC) to design, build and fly a heliogyro-class solar sail. Heliogyros are a solar sail architecture whose reflective sail is stiffened by rotating membrane-blades around a central hub in a helicopter-like manner. My research focused on exploring the dynamics and stabilities of the reflective membrane structures that are essential to all solar sail designs. We explored membranes similar to the ones that will appear in both the traditional ``square-rig&#x27;&#x27; solar sails as well as the spinning heliogyro class solar sails. First we conducted a multiple length scale analysis technique for analyzing the stability of a membrane similar to the membranes that will appear on the proposed ``square-rig&#x27;&#x27; Sunjammer solar sail. The key findings from this research are listed below. •Solarelastic Analysis can Leverage Aeroelastic Techniques: Due to the mathematical similarity between solar radiation and supersonic piston theory aerodynamics we can leverage the techniques previously developed for aeroelastic analysis to predict the stability boundary for solar sails. This is a key finding that has implications on how we analyze the stability of all solar sails and confirms that we can use classic aeroelastic techniques and results. •Restrained Membrane will Flutter: Using the multiple length scale technique from the aeroelastic literature we show that a Sunjammer-like membrane will encounter a flutter instability. A scaling analysis suggests that the LCO will be small, on the order of the thickness of the membrane, so therefore the instability is unlikely to cause a catastrophic spacecraft failure. Next we explored the dynamics and stability of a hanging membrane in a gravitational field. When designing a spacecraft that relies heavily on thin, lightly tensioned membranes to succeed, it is vital to build and validate theoretical models before launching the spacecraft. This research effort is a vital step in building confidence in the theoretical models that are required to design solar sails. The key findings of this research effort are: •Simple Linear Models can Capture the Structural Dynamics: For the cantilevered thin structure in gravity a simple classic beam / string model is capable of predicting the natural frequencies and mode shapes that are observed in experiments. Furthermore, for structural analysis a reasonable number of modes in the modal expansion is able to produce converged solutions, a trend that is not true for the solarelastic analysis. •Structural Damping Mechanisms are Not Well Understood: In our experimental observations of the hanging membrane we were unable to clearly identify the key drivers of the measured damping. Potential sources of damping in our experiment include the interface between the actuator and the structure, aerodynamic damping and structural damping. Different experiments identified that all three of these factors contributed to the measured damping, but it is not clear the magnitude of each and therefore we are unable to predict the damping levels that will be present in solar sails that leverage similar membranes. •Flutter Instability Possible in Gravity: Our analysis shows that a solarelastic instability is possible for a hanging membrane. While it may be difficult to create an experiment to validate this observation, it should be possible to create a situation on earth where a solarelastic instability is observed. •Hanging Membranes are a Valuable Model Validation Tool: The stress levels and distribution in a hanging membrane are similar to the stress levels for heliogyro solar sails. Hanging membranes remain a viable and important method of validating theoretical models being used to design heliogyro spacecraft. Due to the lightweigh nature of the membranes, care must be take for the environment, in particular the amount of air present, when conducting the experiments. Finally we explored the stability of a spinning membrane similar to one that would be found on a heliogryo solar sail. In particular we looked at the stability of a proposed heliogyro spacecraft, HELIOS. Using linear and nonlinear modeling we determined that the HELIOS would be stable at 1AU and identified the critical regions during the deployment. The key findings due to our theoretical analysis on spinning solar sails are listed below. •Solarelastic Instabilities Possible for Spinning Solar Sails: Both linear and nonlinear models of the spinning membrane show that divergence and flutter instabilities are possible. Furthermore, these instabilities for the HELIOS design occur at radiation pressure levels near the levels the ones that the space craft will encounter. As with the hanging models, Rayleigh-Ritz solutions to the solarelastic equations are susceptible to poor modal convergence. •Nonlinear Structural Model Needed for Conservative Prediction of Stability Boundary: For analysis cases when the sun is directly overhead of the spinning membrane the critical instability predicted by the nonlinear model arises due to a coalescence between in plane bending and torsion modes. For the linear analysis the in-plane bending and torsion degrees of freedom are not coupled and therefore no instability is predicted. Therefore an accurate prediction of the instability boundary requires one to include the nonlinear terms which couple the degrees of freedom. •Low Radiation Pressure Instability when Transitioning from Divergence To Flutter Instability: In our analysis of the deployment of the HELIOS we identified divergence and flutter regions during the deployment. The analysis shows that the most critical point occurs at the transition between divergence and flutter. In general the transition is caused by the increasing dominance of the centripetal tension stiffness over the beam-like bending stiffness. When designing heliogyro spacecraft identifying and navigating this transition will be important and require detailed finite element analysis. •“Membrane Paradox” Encountered for Solarelastic Analysis of Spinning Membranes: Our analysis shows that for cases where the spin rate of the membrane is large or the thickness is small the solarelastic model has poor modal convergence. The behavior is similar to the membrane paradox identified when conducting aeroelastic analysis of membranes in supersonic flows. Convergence analysis is required to ensure a stability prediction is accurate Although significant progress was made in determining the stability of spinning membranes, there remain many avenues for future research. The first, and most pressing area relates to the modal convergence issues faced when modeling the heliogyro membranes. As more advanced and high performance solar sails are demanded, the analysis methods developed during my grant will no longer produce converged solutions with a reasonable number of modes. As with the analysis of the hanging solar sail, one could conduct a multiple length scale analysis to get an asymptotic solution that predicts the instability type and radiation pressure. As with the hanging membrane, the contribution of multiple degrees of freedom and the increased complexity of the spatially varying tension term will make implementing the asymptotic approach more difficult. A second area of future research includes using the nonlinear structural model to identify the stability of heliogyro membranes in additional operating conditions. During my fellowship I focused on developing the model and conducting analysis with the sun overhead, allowing me to use a perturbation analysis of the nonlinear equations. My hypothesis based on preliminary explorations is that the sun overhead case is the most critical, however future work could include proving that the most critical stability case is when the sun is overhead and there is no blade pitch. Furthermore future work could integrate the control scheme for a heliogyro mission and ensure that the system is stable throughout the entire mission. This would require analyzing the solarelastic stability for cases when the sun is not overhead and a root blade pitch is defined. Finally, improvements to the solar radiation pressure model can be made. In our analysis, even with the nonlinear structural model, we assume a linear solar radiation model. Future work could include improving this model to be consistent with the nonlinear nature of the structure model. Furthermore, future research can account for the non perfect nature of a real solar sail by accounting for the absorbed solar radiation. The improvements to the solar radiation model can also be incorporated into the other solarelastic models.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>11491-1363265716676.jpg</strong> — Project Image Solarelastic Stability of Solar Sail Structures</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/11491">https://techport.nasa.gov/projects/11491</a>
+    </div>
+  </div>
+</body>
+</html>

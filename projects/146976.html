@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Development and verification of a design tool for highly-tailored composite structures | NASA TechPort Project 146976</title>
+  <meta name="description" content="Project Objective The objective of the awarded Center Innovation Fund (CIF) is to utilize the manufacturing data from the automated fiber placement (AFP) robot to create a finite element model (FEM) of a composite tow-steered cylinder. Project Description Comp">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/146976">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 146976</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">MSFC CIF</span>
+          <span class="badge">TX12</span>
+        </div>
+        <h1>Development and verification of a design tool for highly-tailored composite structures</h1>
+        <div class="meta-id">NASA TechPort Project ID: 146976</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/146976" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p><strong>Project Objective</strong> </p><p>The objective of the awarded Center Innovation Fund (CIF) is to utilize the manufacturing data from the automated fiber placement (AFP) robot to create a finite element model (FEM) of a composite tow-steered cylinder. </p><p><strong>Project Description</strong> </p><p>Composite materials can provide an attractive, mass-saving alternative to metallic structures. Traditionally, composite structures maintain a constant fiber angle per ply. Automated fiber placement (AFP) robots can build more complex composite structures by changing the fiber angle continuously in a single ply. This process enables engineers to consider more nontraditional layups to create a more mass efficient design by manipulating the primary load path. The load path can be diverted around cutouts and stiffness discontinuities and may minimize the need for reinforcement plies, thereby saving mass. Consequently, analyzing variable stiffness/tow-steered structures and providing confidence in the finite element model is challenging. A lot of unique section properties may be required to define the constantly changing tow angles in-plane and through the thickness. </p><p>The objective of the awarded Center Innovation Fund (CIF) is to utilize the manufacturing data from the AFP robot to create a finite element model (FEM) of a composite tow-steered cylinder. The tow-steered cylinder will be designed, built, and tested to 1) build in-house capabilities for designing, analyzing tow-steered structures at Marshall Space Flight Center (MSFC) and to 2) verify if the AFP manufacturing data is accurate so this approach can be used for other tow-steered structures.  </p><p><strong>Project Results and Conclusions</strong> </p><p>A 31.5-in. diameter test article was built at MSFC Composite Technology Lab in the AFP robot. The composite cylinder had an 8ply laminate [90,Φ,0,-Φ]<sub>S, </sub>where Φ varies from 53.5 degrees at the ends and transitions to a 10-degree angle at midheight of the cylinder. Due to schedule issues and an incident in which the test article needed to be repaired, the test has not been completed at the time this report was written, but the manufacturing data was used to build a finite element model (FEM) which addresses the main objective. </p><p>The two most important pieces of information required to build a FEM that accurately represents the shell is the fiber angle and thickness of the shell at a given point. For fiber angle, the NASA team was successful at calculating the composite fiber angle from the AFP data for a given element and incorporating that information into a finite element model. A Python program was developed to read in the AFP output file, calculate the fiber angle, and create a new section property in an automated process. To verify the calculated fiber angle was accurate, the fiber angle was calculated manually by knowing the curvature of the fiber path along the axis of the cylinder. An independent FEM was created by manually entering the section properties into the FEM, which was very time consuming. The fiber angle of the AFP FEM at a given element correlated well with the independent FEM. </p><p>One challenge the team was unable to overcome was related to the ply overlapped areas. As the carbon fiber unidirectional tape is laid on a surface at various curvatures, there will be areas in which the fibers will overlap. The overlapped area translates to regions that have a greater thickness. For example, in the 31.5-in. diameter test article that was built, the thickness of the test articles at the ends of the shell were twice as thick as the middle of the shell. The NASA team had multiple conversations with CGTech regarding how the AFP overlapped value was calculated, but the NASA team nor the CGTech team could independently determine how these values were calculated. Incorporating this data could not be automated as with the fiber angle. The AFP program does, however, create geometry files (.stp) files of the estimated overlapped areas. This was used to modify the FEM input. </p><p>In summary, a lot was learned on the current limitations of the current version of the AFP software. The software owner, CGTech, took our inputs and findings and said they would be incorporated into a new version of the AFP software. </p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Tow steering using an automated fiber placement (AFP) robot has ability to create highly tailored composite structures. The load path in a structure can be manipulated by changing the angle of a composite tow within a single ply to build more efficient structures. Unfortunately, creating high-fidelity finite element models with the appropriate level of detail for these complex designs is extremely time intensive. Using MSFC's AFP robot to build these structures increases MSFC's manufacturing capability. In addition, the design and analysis will be completed with an in-house tool that will take the AFP robot output and transform it into a useable input for the finite element model (FEM). This will create a more accurate representation of the composite cylinder in a FEM which can be used to predict the behavior under loading.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>146976</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: MSFC CIF (MSFC CIF)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX12: Materials, Structures, Mechanical Systems, and Manufacturing</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX09: Entry, Descent, and Landing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 1 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2023-10-01</td></tr>
+<tr><th>Project End Date</th><td>2024-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Michelle T Rudd (Principal Investigator) &lt;michelle.t.rudd@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-15</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Fiber path of the tow steered barrel being manufactured in 4707</strong> — Fiber path of the tow steered barrel being manufactured in 4707</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/146976">https://techport.nasa.gov/projects/146976</a>
+    </div>
+  </div>
+</body>
+</html>

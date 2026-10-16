@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lightweight Instrument Manipulator Boom (LIMB) | NASA TechPort Project 185689</title>
+  <meta name="description" content="The Lightweight Instrument Manipulator Boom (LIMB) is a low-power, highly SWaP-optimized robotic arm designed for small cube rovers and aerial platforms supporting NASA’s lunar, Martian, and deep-space missions. Unlike traditional robotic manipulators, LIMB fe">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/185689">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 185689</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX04</span>
+        </div>
+        <h1>Lightweight Instrument Manipulator Boom (LIMB)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 185689</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/185689" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The Lightweight Instrument Manipulator Boom (LIMB) is a low-power, highly SWaP-optimized robotic arm designed for small cube rovers and aerial platforms supporting NASA’s lunar, Martian, and deep-space missions. Unlike traditional robotic manipulators, LIMB features a bistable boom structure that deploys and retracts using small brushless motors while maintaining position with a self-locking mechanism, eliminating the need for continuous power draw. LIMB provides multi-orientation deployment, allowing it to support scientific instrumentation, sample collection, and communication relay tasks in extreme environments such as lunar regolith, Martian dust storms, and Venusian high-pressure atmospheres.  The Phase I effort will focus on designing, modeling, and prototyping the LIMB system to validate its structural feasibility, power efficiency, and operational adaptability across multiple planetary environments. Key objectives include Finite Element Analysis (FEA) for structural validation, development of a functional prototype, and performance testing for dust resistance, thermal tolerance (-180°C to 500°C), and deployment reliability. Deliverables include system architecture, simulation results, a working prototype, and a commercialization roadmap for Phase II development.  LIMB directly supports NASA’s Artemis program, CADRE, and Commercial Lunar Payload Services (CLPS) by enabling autonomous, energy-efficient robotic operations. Beyond NASA, LIMB has commercial applications in DoD reconnaissance systems, autonomous industrial robotics, and hazardous environment operations. The SBIR funding will advance LIMB toward mission-ready deployment, providing a scalable, lightweight, and multi-mission-capable robotic solution for planetary exploration and beyond.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The LIMB directly supports NASA’s strategic goals by enhancing robotic exploration, instrument deployment, and sample collection for lunar, Martian, and deep-space missions. LIMB’s low-power, bistable boom design enables precision placement of scientific payloads while minimizing power consumption and mass, making it ideal for integration with shoebox-sized cube rovers, landers, and aerial platforms.  LIMB aligns with NASA’s Artemis program, CADRE robotic swarms, and the Commercial Lunar Payload Services (CLPS) initiative by enabling cost-effective, autonomous robotic operations in extreme environments. For lunar exploration, LIMB can be used for deploying sensors, cameras, and sample collection tools on small rovers and landers. In Martian exploration, LIMB provides precision scientific instrument positioning and adaptive communication relay deployment. LIMB’s dust-resistant and thermally resilient materials ensure long-term reliability in regolith-heavy and radiation-exposed environments.  For Venus and Titan atmospheric missions, LIMB can be adapted for aerial sensor deployment from balloon-based platforms, providing critical support for climate, atmospheric, and geological studies. Additionally, LIMB’s multi-orientation deployment capabilities make it well-suited for orbital assembly and servicing of spacecraft, including Gateway and future in-space robotic systems.  By providing a lightweight, compact, and power-efficient manipulator, LIMB extends NASA’s ability to conduct autonomous science, resource utilization, and infrastructure deployment across diverse planetary bodies while maintaining compatibility with future robotic exploration architectures.  Beyond NASA missions, the LIMB has significant commercialization potential across commercial space and hazardous environment applications. LIMB’s low-power, lightweight, and modular design makes it ideal for autonomous systems requiring precision instrument deployment, sample handling, and sensor positioning in extreme and remote environments.  For industrial and hazardous environment operations, LIMB offers potential applications in nuclear energy and deep-sea exploration. LIMB can support automated inspection, sample retrieval, and maintenance tasks in environments unsafe for human workers, such as radioactive sites, chemical processing plants, and deep-sea mining operations. Its dust-resistant and thermally resilient materials ensure functionality in high-radiation, high-temperature, and high-pressure conditions.  The commercial space industry presents another key market, where LIMB could support satellite servicing, in-space manufacturing, and robotic assembly for private space firms such as Astrobotic, Intuitive Machines, and Lunar Outpost. LIMB’s precision actuation and modular payload system make it an attractive solution for autonomous spacecraft servicing and in-orbit assembly.  By leveraging SBIR Phase II and III funding, LIMB will be developed for government and commercial contracts, establishing a pathway for widespread adoption in energy, space, and automation industries.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>185689</td></tr>
+<tr><th>Acronym</th><td>LIMB</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX04: Robotic Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2024-09-29</td></tr>
+<tr><th>Project End Date</th><td>2026-03-27</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Low Earth Orbit, Moon and Cislunar, Mars, Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jameson D Schultz (Principal Investigator); Eric B Ting (Project Manager) &lt;eric.b.ting@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-19</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/185689">https://techport.nasa.gov/projects/185689</a>
+    </div>
+  </div>
+</body>
+</html>

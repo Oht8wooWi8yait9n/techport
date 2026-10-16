@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UV Contrast Performance and Yield Improvement of the NGMSA for Use on HWO | NASA TechPort Project 146744</title>
+  <meta name="description" content="We will be following a plan of work that follows on from FY23 IRAD work to measure the contrast performance of next generation micro shutter arrays (NGMSAs), as well as an investigation of electrostatic repeatability issues associated with shutter open/close a">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/146744">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 146744</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX08.1.3</span>
+        </div>
+        <h1>UV Contrast Performance and Yield Improvement of the NGMSA for Use on HWO</h1>
+        <div class="meta-id">NASA TechPort Project ID: 146744</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/146744" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>We will be following a plan of work that follows on from FY23 IRAD work to measure the contrast performance of next generation micro shutter arrays (NGMSAs), as well as an investigation of electrostatic repeatability issues associated with shutter open/close and manufacture shorts in the silicon structure. Our work will demonstrate not only the performance of the device but the control and manufacturability of the shutters and their blades as well as control of the light shield structure to prevent light spilling through a closed shutter. We will demonstrate the performance meets the requirement for the UV spectrograph instrument baselined by both the LUVOIR and HabEx studies for the future Habitable Worlds Observatory (HWO) Flagship.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The objective of our project is to advance a key technology required to deliver the necessary instrumental observing performance required for the HWO mission. The expected time horizon for the development is defined by the expected ramp-up in technology development funds for HWO through the GOMAP program which we expect to start some time in the next 1-2 years. These efforts will position the MSA technology as a shovel-ready solution when that program begins, and, in combination with other efforts such as coatings and detectors, position Goddard as the go-to partner to lead the UV instrument.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>146744</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.3: Optical Components</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX12.3.2: Electromechanical, Mechanical, and Micromechanical Devices</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2023-10-01</td></tr>
+<tr><th>Project End Date</th><td>2025-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Others Inside the Solar System, Outside the Solar System, Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Paul A Scowen (Principal Investigator) &lt;paul.a.scowen@nasa.gov&gt;; Meng-Ping Chang (Co-Investigator) &lt;meng-ping.chang@nasa.gov&gt;; Alexander S Kutyrev (Co-Investigator) &lt;alexander.kutyrev@nasa.gov&gt;; Keith M Jahoda (Project Manager) &lt;keith.m.jahoda@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-06-11</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Our preliminary process optimization efforts with 64 × 128 arrays fabricated on 100-mm wafers have demonstrated promising results, achieving near 100% yield in electrical performance without adjacent or electrode-to-ground shorts. We sourced replacement fanout boards and completed six array hybrids, with three modules fully assembled. With UV contrast measurement system developed by the support of this IRAD program, we demonstrated contrast on the external optical bench at optical wavelengths. The study of blade flattening and light- shield designs, a critical aspect for improving NGMSA contrast performance, has yielded preliminary results showing successful reduction of blade bowing to sub-micron levels at room temperature. The completion of a project does not necessarily indicate that the development work has stopped. The work could potentially continue in the future as a follow-on IRAD; or be used in collaboration or partnership with Academia, Industry, and other Government Agencies. Goddard Space Flight Center’s IRAD program is managed under its Office of Chief Technologist. Activities develop concepts, reduce technology risk, and advance human capital and technological capabilities. Goddard’s IRAD program is highly competitive, opportunity-driven, and 100% strategically aligned with NASA&#x27;s and Goddard&#x27;s strategic priorities. A significant portion of the program is focused on Early Stage Innovations for high-risk, strategically aligned, potential high-payoff technologies that are longer-term or lower TRL.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://asd.gsfc.nasa.gov/ngmsa/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>MSA Structure Detail</strong> — This graphic lays out the structure being used in the next generation microshutter arrays.</li><li><strong>Large format next generation micro shutter array</strong> — Large format MSA in it&amp;#39;s &amp;#34;theta&amp;#34; housing for use on a suborbital rocket flight. We will be measuring the UV contrast performance of these MSA assemblies in support of such instrumental applications for future use.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/146744">https://techport.nasa.gov/projects/146744</a>
+    </div>
+  </div>
+</body>
+</html>

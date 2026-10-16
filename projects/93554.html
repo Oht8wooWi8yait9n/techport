@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>In-Flight Measurements of Unsteady Pressure using Fast PSP | NASA TechPort Project 93554</title>
+  <meta name="description" content="Flight research is a critical element for the validation of ground test measurements and the maturation of new technology. Experimental measurement systems that offer fast response, high accuracy and reliability, and require minimal modification of the flight ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/93554">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 93554</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX08.3.4</span>
+        </div>
+        <h1>In-Flight Measurements of Unsteady Pressure using Fast PSP</h1>
+        <div class="meta-id">NASA TechPort Project ID: 93554</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/93554" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Flight research is a critical element for the validation of ground test measurements and the maturation of new technology. Experimental measurement systems that offer fast response, high accuracy and reliability, and require minimal modification of the flight vehicle are needed to conduct flight research more effectively. There have recently been significant advances in the use of one such technology, fast responding Pressure-Sensitive Paint. Fast PSP offers a means of acquiring unsteady pressure data at millions of locations on a model surface, a capability that has recently been demonstrated in large transonic wind tunnels such as AEDC 16T, the Ames 11-foot, and Langley 14X22. Demonstration of this measurement technique in flight testing is the goal of this proposal. Use of the fast PSP system in flight involves, applying a polymer paint to the region of interest, illuminating the paint with 400-nm lighting, and then imaging the paint with a fast framing camera. Each pixel on the camera acts as a pressure tap, and therefore, continuous distributions of the unsteady pressure on the painted surface are acquired. While optical access to the region of interest is required, there are key fluid structures on the top surface of a wing, such as shock boundary layer interactions and wing buffet, that are easily viewed from the passenger compartment of a plane. ISSI, in collaboration with Calspan, propose a demonstrating unsteady pressure measurements on a shock wave boundary layer interaction on the top surface of the Calspan Gulfstream G-III wing in-flight using fast PSP. By combining ISSI experience with fast PSP and Calspans existing flight test capability, a successful program is anticipated. During Phase II, we anticipate packaging the fast PSP system for deployment to the NASA flight test bed aircraft, specifically the SCRAT program, and repackaging the system for use in regions with limited optical access, such as the landing bay, to study cavity acoustics.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          There is considerable interest in measurements of unsteady pressure for the study of shock wave boundary layer interactions, flow control, landing bay acoustics, and wing buffet. The proposed fast PSP system would give NASA and their test bed aircraft programs the ability to acquire continues distributions of unsteady pressure in flight using a sensor that can be sprayed onto a model and interrogated optically. This measurement capability is of interest to NASA programs such as the Subsonic Fixed Wing and Environmentally Responsible Aviation programs. SBLI impacts aircraft performance at transonic Mach numbers as the shock induced flow separation can cause buffeting and large-scale lift oscillations that can limit an aircraft's flight envelope. Landing bay acoustics are a significant source of aviation noise and flow control concepts are needed for noise reduction and drag reduction. Each of these applications would benefit from the proposed sensor. The Phase I system would establish the technical capability of the fast PSP system and provide data on the top surface of wings and flaps. The Phase II system would be packaged so that it could be integrated into a region such as the landing bay, and allow regions without optical access to be interrogated. The proposed fast PSP system would improve flight test utilization by allowing the flight test vehicle to be instrumented with unprecedented spatial resolution, and do so without physical modifications to the vehicle.<br /> <br />There is considerable interest in measurements of unsteady pressure for the study of fluid flows such as shock wave boundary layer interactions, flow control, landing bay acoustics, wing buffet, and supersonic inlets. Interest in unsteady pressure measurements in flight spans academic, commercial, and military research. Companies that offer flight testing services, such as Calspan, as well as several commercial aircraft companies such as Cessna, Hawker, and Embraer, have expressed interest in the proposed in-flight fast PSP measurement technology. The proposed fast PSP system would improve flight test utilization by allowing the flight test vehicle to be instrumented with unprecedented spatial resolution, and do so without physical modifications to the vehicle. Evolution of the system into a smaller package that could be mounted on inaccessible regions of the flight test vehicle such as the weapons bay will occur naturally as fast camera imaging technology evolves. This will further extend the commercialization of the technology. This system would enable the investigation of fluid flows at flight conditions, data that will advance the accuracy of numerical models and yield insight into evolving flow control concepts. Furthermore, the demonstration of a productive and validated fast PSP system for flight testing would provide a marketing tool for commercialization of the measurement technology.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>93554</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.3.4: Environment Sensors</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 5 | Current TRL: 7 | Target End TRL: 7</td></tr>
+<tr><th>Project Start Date</th><td>2017-06-09</td></tr>
+<tr><th>Project End Date</th><td>2017-12-08</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Innovative Scientific Solutions, Inc. — Dayton, Ohio</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Armstrong Flight Research Center (AFRC) — Edwards, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Ohio (OH)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jim Crafton (Principal Investigator); Aliyah N Ali (Project Manager) &lt;aliyah.n.ali@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong> — In-Flight Measurements of Unsteady Pressure using Fast PSP, Phase I Briefing Chart</li><li><strong>Briefing Chart Image</strong> — In-Flight Measurements of Unsteady Pressure using Fast PSP, Phase I Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/93554">https://techport.nasa.gov/projects/93554</a>
+    </div>
+  </div>
+</body>
+</html>

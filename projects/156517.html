@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Epigenetic State Modulation of Radiation-Induced DNA Damage: Nanoscale Modeling and Validation | NASA TechPort Project 156517</title>
+  <meta name="description" content="BACKGROUND The risks of cellular dysfunction associated with exposure to space radiation, including transcriptional and epigenetic perturbations and genomic instability due to DNA breaks, have been studied in cell lines, with DNA repair foci and products as th">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/156517">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 156517</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          
+        </div>
+        <h1>Epigenetic State Modulation of Radiation-Induced DNA Damage: Nanoscale Modeling and Validation</h1>
+        <div class="meta-id">NASA TechPort Project ID: 156517</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/156517" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          BACKGROUND    <p></p>   The risks of cellular dysfunction associated with exposure to space radiation, including transcriptional and epigenetic perturbations and genomic instability due to DNA breaks, have been studied in cell lines, with DNA repair foci and products as the main readouts. Such genetic and cell biological readouts show that high linear energy transfer (LET) charged nuclei, such as those found in galactic cosmic rays (GCR), cause persistent cellular changes in stress response and genomic integrity. These effects are different from the effects of low-linear energy transfer (LET) radiation such as X-rays and occur in the context of the genome-wide epigenetic landscape of each cell, which includes nucleosome positions, nucleosome modifications, and variant histone substitutions in those nucleosomes. Epigenetic states differ in chromatin fiber conformations, with transcriptionally active chromatin adopting more open, extended structures. These differences can affect DNA break patterns in response to ionizing radiation, potentially creating distinct DNA repair and signaling outcomes. The epigenetic state landscape of a cell depends on its differentiation state, cell type, and responses to external stimuli. Because it is not practical to experimentally investigate every cell type, a more generalizable approach is needed to predict how the cell’s distinctive epigenetic landscape will interact with radiation to give rise to a certain pattern of DNA breaks and associated cellular response. A generalizable approach that takes local epigenetic map information into account can leverage the large and diverse epigenomic data sets available for a large number of human cell types. Previous investigations of chromatin structure’s role in regulating DNA damage by radiation assumed that chromatin adopts stable, regular structures such as 30-nm fibers. Recently emerging consensus in the field suggests this single-structure view is inaccurate and the ensemble of conformational fluctuations of the fiber must be taken into account.    <p></p>   HYPOTHESIS    <p></p>   We hypothesize that the pattern and lethality of DNA breaks generated at a given genomic locus depend on the combination of (1) the incoming ionizing radiation, with differences between low LET photons and high LET GCRs, and (2) the epigenetic state of that locus, which is associated with a characteristic ensemble of chromatin fiber conformations.    <p></p>   DELIVERABLES    <p></p>   We propose to develop a generalizable mechanistic approach to determining how DNA breaks are generated by ionizing radiation including GCRs and photons. We will integrate realistic chromatin fiber ensembles with Monte Carlo simulations of photons or GCR nuclei interacting with those fibers, and Green’s function based calculation of radiochemistry kinetics after the particle delivers its energy. The chromatin fiber ensembles will be generated through a coarse-grained simulation based on a stretchable shearable worm-like chain model of linker DNA between nucleosomes that is constrained by pairwise DNA-DNA contact data. We will measure chromatin fiber contact distances, simulate sub-kilobase chromatin conformation ensembles consistent with those contact distances, and predict how these ensembles give rise to ensembles of DNA break patterns. These  measurements and simulations will be carried out for multiple chromatin states across several cell types as well as for in vitro reconstituted chromatin fibers in order to build a general, cell type independent model of the relationship between epigenetic state and vulnerability to radiation induced DNA damage. The resulting software package will enable the simulation of user-programmable chromatin states, to produce chromatin state specific predictions of expected DNA fragmentation patterns for each type of heavy ion or photon of incoming radiation. These fragmentation patterns can then form the basis for future mechanistic studies of the cell’s differential repair and signaling responses to varied break cluster types. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Our research develops technology for mapping DNA breaks caused by radiation onto the human genome and studies how the sensitivity to radiation varies across the human genome. Our data and methods will have direct applicability to determining cell type specific sensitivity to radiation therapy used to treat many cancers. We anticipate that our results will also aid cancer prevention here on Earth in addition to helping to advance our understanding of the health risks associated with space travel.  <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>156517</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Project Start Date</th><td>2021-04-01</td></tr>
+<tr><th>Project End Date</th><td>2024-04-15</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>The Rockefeller University — New York, New York</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>New York (NY)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Viviana Risca (Principal Investigator); Antony S Jeevarajan (Co-Investigator) &lt;antony.s.jeevarajan@nasa.gov&gt;; Ianik Plante (Co-Investigator) &lt;ianik.plante-1@nasa.gov&gt;; Karen D Pickering (Co-Investigator) &lt;karen.d.pickering@nasa.gov&gt;; Shona R Elgart (Project Manager) &lt;shona.elgart@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Abstracts for Journals and Proceedings</strong> — Plante I, West D, Risca VI. &quot;Simulation of radiation-induced DNA damage show histone protection.&quot; NASA Human Research Program Investigators&#x27; Workshop, Galveston, Texas, February 7, 2023. Abstracts. NASA Human Research Program Investigators&#x27; Workshop, Galveston, Texas, February 7, 2023., Feb-2023</li><li><strong>Abstracts for Journals and Proceedings</strong> — Canaj H, Scortea A, West D, Plante I, Risca VI. &quot;Heavy ion damage on chromatin: break mapping across genomic compartments.&quot; NASA Human Research Program Investigators&#x27; Workshop, Galveston, Texas, February 7, 2023. Abstracts. NASA Human Research Program Investigators&#x27; Workshop, Galveston, Texas, February 7, 2023., Feb-2023</li><li><strong>Articles in Peer-reviewed Journals</strong> — Mansisidor AR, Risca VI. &quot;Chromatin accessibility: methods, mechanisms, and biological insights.&quot; Nucleus. 2022 Dec;13(1):238-78. https://doi.org/10.1080/19491034.2022.2143106 ; PubMed PMID: 36404679; PubMed Central PMCID: PMC9683059 , Dec-2022</li><li><strong>Abstracts for Journals and Proceedings</strong> — Plante I, West D, Risca VI. &quot;Simulation of radiation-induced DNA damage using the code RITRACKS: initial results show histone protection.&quot; Radiation Research Society 68th Annual Meeting, Waikoloa Village, Hawaii, October 16-19, 2022. Abstracts. Radiation Research Society 68th Annual Meeting, Waikoloa Village, Hawaii, October 16-19, 2022., Oct-2022</li><li><strong>Articles in Peer-reviewed Journals</strong> — Canaj H, Scortea A, West DW, Plante I, Risca VI. &quot;Heavy ion damage on chromatin; break mapping across genomic compartments.&quot; Mol Biol Cell. 2023 Feb 1;34(2):ab1. https://doi.org/10.1091/mbc.E22-12-0555 ; PubMed PMID: 36637911; PubMed Central PMCID: PMC9930526 , Feb-2023</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/156517">https://techport.nasa.gov/projects/156517</a>
+    </div>
+  </div>
+</body>
+</html>

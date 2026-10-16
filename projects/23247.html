@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integrated Medical Model – Chest Injury Model | NASA TechPort Project 23247</title>
+  <meta name="description" content="It is important to know the likelihood of medical events that can happen during a spaceflight mission so that the resources needed to treat the event are available. Since there is limited volume, mass, and power on a spacecraft, the medical resources must be o">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23247">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23247</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.1</span>
+        </div>
+        <h1>Integrated Medical Model – Chest Injury Model</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23247</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23247" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          It is important to know the likelihood of medical events that can happen during a spaceflight mission so that the resources needed to treat the event are available. Since there is limited volume, mass, and power on a spacecraft, the medical resources must be optimally chosen so that the resources are there when needed and so that space is not wasted on excess supplies. The NASA Integrated Medical Model (IMM) project is systematically working towards developing an optimal medical kit, using probabilistic risk assessment. The IMM project has identified all of the credible medical conditions that could occur during a spaceflight, and they are working to assign a likelihood of occurrence and a severity of impact for each condition. Decisions on the proper resources to include in the medical kit are made by comparing the risk of each medical event against all of the others.      The purpose of this study was to estimate the probability of traumatic chest injury during an International Space Station (ISS) mission. This is a medical event that has a low probability of occurrence but could have a significant impact if it were to happen. Since there has not been an occurrence of traumatic chest injury to date in space, deterministic modeling combined with Monte Carlo simulations were used to estimate the probability of it occurring. The key components of the model were a profile of masses and velocities of equipment that could impact an astronaut. A biomechanical model of the thorax was used to calculate an impact response to the input profile. Normalized compression of the chest was the output response of the biomechanical model and it was correlated to severity of injury. The correlation was used in a logistic regression to determine the probability of injury. The probability of injury was combined with the probability of occurrence of an impact to the chest during one year on the ISS, to determine the overall probability of traumatic chest injury during one year on the ISS.      The model parameters were modeled as distributions, so that the variability and uncertainty of each parameter was captured within the probability estimate. Monte Carlo simulations were performed and the probability of traumatic chest injury during one year on ISS was determined to be: 5.32 x 10-4 ± 5.95 x 10-4 (4.16 x 10-5 – 1.39 x 10-3), presented as the most likely probability ± the standard deviation (90th percentile confidence interval). In addition to the probability estimate, results of a sensitivity analysis and a verification and validation analysis of the biomechanical model of the thorax are given. The most sensitive parameters of the model are, in order of sensitivity: 1) velocity of the impactor; 2) rate of occurrence of an impact; 3) The intercept coefficient in the probability of injury equation; 4) mass of the impactor. The output of our biomechanical thorax model matches the output obtained by the original authors of the biomechanical thorax model, which verifies that the biomechanical thorax model was implemented correctly. Additionally, the output response of the biomechanical thorax model falls within the response corridor derived from the results of another cadaver impact study.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The methodology used to predict injury probability is a novel approach that has also been used to predict other injury modalities within the Integrated Medical Model. This approach uses a deterministic model to calculate the impact response of an impact to the chest and to compare the impact response to injury likelihood. It uses probabilistic methodology to capture the uncertainty in the input and model parameters, so that the result can be reported as a most likely probability with a confidence interval. This methodology could be applied clinically to predict rates of injury or disease within particular populations, which could be used to benefit life on Earth.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23247</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.1: Medical Diagnosis and Prognosis</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2011-02-16</td></tr>
+<tr><th>Project End Date</th><td>2012-02-15</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Ohio (OH)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Beth E Lewandowski (Principal Investigator) &lt;beth.e.lewandowski@nasa.gov&gt;; Jerry G Myers (Co-Investigator) &lt;jerry.g.myers@nasa.gov&gt;; Sharmila D Watkins (Project Manager) &lt;sharmila.watkins@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2020-10-27</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The Exploration Medical Capability (ExMC) Element of NASA&#x27;s Human Research Program (HRP) developed the Integrated Medical Model (IMM) to forecast the resources necessary to adequately treat an ill or injured crew member during ISS and exploration missions. The IMM project addresses the HRP Risk of the “Inability to Adequately Recognize or Treat an Ill or Injured Crewmember.” The HRP Gap associated with this risk is the “Lack of knowledge about incidence rates, probabilities and consequences relative to Loss of Crew and/or Loss of Mission (LOC/LOM) for the medical conditions on the Exploration Medical Condition List.” The medical condition being examined in this project is traumatic injury to the chest. The probability of occurrence was unknown and it needed to be quantified. This study is significant because should a traumatic chest injury occur during a spaceflight, the impact of occurrence is severe, including the potential for LOC/LOM. This study is important because it quantified the probability of a traumatic chest injury occurring during a space mission and the quantification will help to close the risk of being unable to treat an injured crewmember because of inadequate preparation. The chest injury probability calculation was broken down into four steps: 1) Definition of initiating events, impactor masses, and astronaut characteristics; 2) Calculation of an impact response using a biomechanical model of the thorax; 3) Definition of a relationship between the impact response and severity of injury and transformation of the relationship to a probability; 4) Definition of the rate of impact and transformation of the rate to a probability. A probabilistic modeling approach was taken to calculate the injury probability, so that the uncertainty in the prediction could be captured. Distributions of parameter values were used instead of single deterministic values to capture population and other types of variability. Monte Carlo simulations were performed rather than a single calculation, in order to predict the probability in terms of the most likely probability, the standard deviation, and a confidence interval. Additionally, a sensitivity analysis was performed in order to determine the parameters that contributed the most to the uncertainty of the prediction. The quantification of the probability of traumatic chest injury begins by defining the initiating event. For this medical event, the initiating event is an impact to the chest, which could occur accidentally as the astronauts move about and work on the ISS. Astronauts move about the ISS by pushing-off of the walls or fixed equipment and translating through the station. Their work often requires them to move equipment from one part of the station to another. Impact to the chest could occur accidentally while the attention of the astronaut is focused on something other than where they are translating and the equipment in their surroundings. An example scenario of how the initiating event (the impact) could occur is one astronaut translating with equipment too large to see around and another astronaut accidentally being impacted in the chest with the equipment, while translating with his attention focused elsewhere. The mass and velocity of the astronauts and ISS equipment are important parameters that were quantified in order to calculate whether or not the impact described in the above scenario results in an injury. Values for astronaut mass and translational velocity and of ISS equipment masses were obtained from NASA Standards and other NASA documents. During an impact to the chest there is a transfer of energy from the impactor to the chest of the astronaut. The energy associated with the impact is dependent on the mass and velocity of the impactor. The energy absorbed by the chest, and any damage that occurs, is dependent on the amount of energy needed to bring the impactor to rest. A massive impactor with a high velocity will contain a high amount of energy that will need to be absorbed by the chest to bring it to rest. If the structural tissues of the chest cannot withstand the absorbed energy, they will be damaged, resulting in injury. A small mass with a low velocity will have a low amount of energy associated with it and the chest may be able to withstand that amount of energy without damage. The purpose of the biomechanical model was to calculate this energy transfer and the resulting change in the structure of the chest, manifested as a change in chest depth, as the chest is compressed during the impact. The impact responses were calculated with a lumped-mass-spring-damper, biomechanical model of the human thorax with an impacting mass and elastic interface. Impact force and the normalized chest compression were the impact responses calculated. A relationship between the impact response and the severity of a resulting injury was developed. Normalized compression (NC), calculated from the biomechanical model was the impact response value used, and it was linearly related to the thorax Abbreviated Injury Score. The thorax Abbreviated Injury Scale (AIS) is a scale of injury type and severity for thoracic skeletal and soft tissue injuries that has been developed for clinical use as a method of categorizing injury severity. Traumatic chest injury for this module was defined as an injury that results in an AIS score of 3 or higher. A transformation function was used to transform the NC vs. AIS relationship to a probability that the initiating event (impact to the chest) results in a NC that causes an injury with an AIS score of 3 or higher. The final step in the calculation of the probability of traumatic chest injury during an ISS mission was a quantification of the probability of opportunity for a forceful impact to occur to the chest within an astronaut’s normal daily activities. The rate of occurrence of the accident described in the above scenario is needed to calculate the probability of occurrence. The rate represents the number of times during a mission that an astronaut accidentally impacts a piece of equipment. The estimated rate is transformed into a probability of opportunity to sustain an impact to the chest. The rate of impact used in this module was based on historical spaceflight data and a Poisson’s equation was used to find the probability of the occurrence of an impact. The above components were integrated together so that the probability of chest injury during an ISS mission could be determined. A profile of impactor masses and velocities was used as input to the biomechanical model. The normalized compression of the chest due to the impact was the output of the biomechanical model. The probability of injury due to the chest compression was determined from the relationship between normalized compression and AIS score data from cadaver experiments. A historical impact rate was used to determine the probability of occurrence of impact with equipment. The product of the probability of occurrence and the probability of injury was used to determine the overall probability of a traumatic chest injury during one year on ISS. A Monte Carlo approach was used in which 100,000 simulations of the impact scenario were performed, each using a different combination of model parameters. The probability of traumatic chest injury during one year on ISS was determined to be: 5.32 x 10-4 ± 5.95 x 10-4 (4.16 x 10-5 – 1.39 x 10-3), presented as the most likely probability ± the standard deviation (90th percentile confidence interval). In addition to the probability estimate, a sensitivity analysis and a verification and validation analysis of the biomechanical model of the thorax were performed. The most sensitive parameters of the model are, in order of sensitivity: 1) velocity of the impactor; 2) rate of occurrence of an impact; 3) The intercept coefficient in the probability of injury equation; 4) mass of the impactor. The output of our biomechanical thorax model matches the output obtained by the original authors of the biomechanical thorax model, which verifies that the biomechanical thorax model was implemented correctly. Additionally, the output response of the biomechanical thorax model falls within the response corridor derived from the results of another cadaver impact study.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Abstracts for Journals and Proceedings</strong> — Lewandowski BE, Milo EA, Brooker JE, Weaver AS, Myers JG. &quot;Estimated probability of traumatic chest injury during an International Space Station mission.&quot; Presented at the 2012 NASA Human Research Program Investigators’ Workshop, Houston, TX, February 14 - 16, 2012. 2012 NASA Human Research Program Investigators’ Workshop, Houston, TX, February 14 - 16, 2012. http://www.dsls.usra.edu/meetings/hrp2012/pdf/4164.pdf , Feb-2012</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23247">https://techport.nasa.gov/projects/23247</a>
+    </div>
+  </div>
+</body>
+</html>

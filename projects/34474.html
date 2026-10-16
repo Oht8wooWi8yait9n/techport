@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Using Real-Time Lexical Indicators to Detect Performance Decrements in Spaceflight Teams: A Methodology to Dynamically Monitor Cognitive, Emotional, and Social Mechanisms That Influence Performance | NASA TechPort Project 34474</title>
+  <meta name="description" content="Future exploratory long-duration missions will incorporate a crew of six on a mission length of approximately 2.5 years. Challenges include the requirement for the crew to function autonomously, under significant communication delays, and with the potential fo">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/34474">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 34474</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.3</span>
+        </div>
+        <h1>Using Real-Time Lexical Indicators to Detect Performance Decrements in Spaceflight Teams: A Methodology to Dynamically Monitor Cognitive, Emotional, and Social Mechanisms That Influence Performance</h1>
+        <div class="meta-id">NASA TechPort Project ID: 34474</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/34474" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Future exploratory long-duration missions will incorporate a crew of six on a mission length of approximately 2.5 years. Challenges include the requirement for the crew to function autonomously, under significant communication delays, and with the potential for increased crew and interpersonal friction or tension. The specific aims of this research are to (1) develop a methodology to assess cognitive and emotional state at a distance though analysis of spontaneous verbal output in real-time communications and (2) test the feasibility of a real-time assessment tool, STRESSnet, to detect cognitive performance deficits, stress, fatigue, anxiety, and depression in the spaceflight operational setting.     <p></p> Because the health and well-being of crew members directly affects mission success, it is important to track cognitive/emotional changes that may indicate a deficit. One problem with many existing assessment methods is that most require direct observation of behavior or performance or self-assessment by a pen and paper-type instrument. The requirement to assess individual and team functioning at a distance suggests the potential efficacy of a methodology to assess cognitive and emotional state in real-time from ongoing or spontaneous verbal output. The basic premise of this work is that spontaneous verbal output provides a natural and valid indicator of basic cognitive processes. Natural word use is not prone to the typical limitations of self-report measurements. That is, natural language use is less subject to social desirability bias, and can be derived in real-time without interfering with the cognitive processes being measured, and without interrupting crew performance. Moreover, natural word use is reliable and consistent across time and context, and can be meaningfully measured in individuals and teams.     <p></p> STRESSnet is a lexical analysis tool designed to provide a non-obstrusive means of detecting stress and related deficits in long-duration spaceflight through the assessment of spontaneous verbal output in real-time crew communications. The research builds on existing work on text and sentiment analysis; however, STRESSnet is unique in that (1) it is specifically designed to assess stress and related cognitive/emotional states, (2) we draw on existing astronaut communications and mission logs to develop a lexicon that includes terms unique to this environment, and (3) we developed STRESSnet with the specific goal of application as a tool to assess user state and provide automatic schedule recommendations for crew work/leisure activities to counter identified deficits.     <p></p> This report summarizes data derived from testing STRESSnet in the Human Exploration Research Analog (HERA) 3 campaign. In summary, the HERA 3 data results are consistent with and support the results observed in the HERA 1 and HERA 2 campaigns. Our overall research goals are to: (1) Demonstrate that the lexical indicator measure (STRESSnet) correlates with existing cognate pen-and-paper measures of stress. (2) Demonstrate that the lexical indicator measure (STRESSnet) is sensitive to differences in operational variability, such as levels of workload or stress. (3) Demonstrate that the lexical indicator measure (STRESSnet) is sensitive to other variables of interest, such as within-group or between-group differences.     <p></p> The HERA 3 data described in the following sections indicate that the primary STRESSnet lexical measures of Social Impairment, Anxiety, Cognitive Load, and Attentional Focus were consistent with pen-and-paper measures of these same constructs. Negative affect as measured by Positive and Negative Affect Schedule (PANAS) was very low across Campaign 3 missions and this lack of variability resulted in inconsistent relationships with lexical measures of negative emotion. Second, STRESSnet measures for each primary facet consistently differentiate between high and low workload days in HERA. Third, STRESSnet measures were sensitive to differences in the type of communications (e.g., task-oriented vs. non-task oriented communications). Fourth, using STRESSnet measures of anger and cognitive anxiety, we were able to identify a reported elevated episode of anger in one mission, demonstrating the utility of this approach for diagnosing crew stress and well-being during long duration spaceflight. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Because the health and well-being of crew members directly affects mission success, it is important to track cognitive and emotional changes that may indicate a deficit. The requirement to assess individual and team functioning at a distance suggests the potential efficacy of a methodology to assess cognitive and emotional state in real-time from ongoing or spontaneous verbal output. The basic premise of this work is that spontaneous verbal output provides a natural and valid indicator of basic cognitive processes. Natural word use is not prone to the typical limitations of self-report measurements, which include social desirability bias, and it can be derived in real-time without interfering with the cognitive processes being measured, and without interrupting crew performance. Moreover, natural word use is reliable and consistent across time and context, and can be meaningfully measured in individuals and teams.     <p></p> The major accomplishments of this research project include (1) the development of a theoretical model of cognitive performance deficits, stress, fatigue, and anxiety in spaceflight based on existing research on lexical analysis and language usage in astronauts, (2) the development of a lexical analysis tool, STRESSnet, to unobtrusively track and assess stress in individuals and teams, and (3) the implementation and empirical testing of this approach in HERA1, HERA2, HERA3. The STRESSnet tool will permit dynamic, unobtrusive detection of stress and related cognitive deficits during spaceflight, and many Earth-based applications. It is expected that a real-time assessment and graphical display of stress effects, as well as measures of fatigue, mood, and team functioning drawn from ongoing verbal or textual communications, could be used in healthcare, military, education, law enforcement, and many other workplace applications. It also has the potential to contribute to the growing market for sentiment analysis tools in social media and online communications. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>34474</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.3: Behavioral Health and Performance</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2013-08-01</td></tr>
+<tr><th>Project End Date</th><td>2017-05-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>National Space Biomedical Research Institute (NSBRI) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Rice University — Houston, Texas; Florida Maxima Corporation — Winter Park, Florida</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Eduardo Salas (Principal Investigator); James Driskell (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The Year 1 tasking was to conduct a proof-of-concept study to demonstrate the feasibility of this approach in the HERA 1 analog. This was accomplished, demonstrating that (a) lexical measures can distinguish between high stress and nominal stress in HERA, (b) these measures are consistent with traditional pen and paper measures of stress, and (c) they show sensitivity to variations in stress levels (documented in the Year 1 technical report). Year 2 research efforts focused on extensive development of the lexical analysis tool, STRESSnet, that is specifically tailored to assess stress effects in the LDSF (long duration space flight) environment. This included the methodological development of the STRESSnet program and corresponding lexical dictionaries (documented in the Year 2 Annual Report). Year 2 tasks also included data collection and analysis testing this approach in the HERA 2 campaign. Year 3 tasks included the HERA 3 campaign data collection and analysis. The project deliverables include: (1) STRESSnet program code, (2) validation data from three HERA campaigns: HERA1, HERA2, HERA3, (3) dictionaries of searchable terms that could be used by NASA for nonintrusive detection of performance-relevant changes in cognitive, emotional, and social interaction, and (4) Scientific reports describing the use of lexical measures to assess stress-related deficits in spaceflight.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Books/Book Chapters</strong> — Dietz A, Driskell JE, Sierra MJ, Weaver SJ, Driskell T, Salas E. &quot;Teamwork under stress.&quot; in &quot;The Wiley Blackwell Handbook of the Psychology of Team Working and Collaborative Processes.&quot; Ed. E. Salas, R. Rico, J. Passmore. Malden, MA: Wiley-Blackwell, 2017. p. 297-316. https://doi.org/10.1002/9781118909997.ch13 , Mar-2017</li><li><strong>Articles in Other Journals or Periodicals</strong> — Driskell T, Burke S, Driskell JE, Salas E, Neuberger L. &quot;Steeling the team: Assessing individual and team functioning &#x27;at a distance.&#x27; &quot; The Military Psychologist. 2014 Apr;29(1):12-8., Apr-2014</li><li><strong>Books/Book Chapters</strong> — Driskell T, Driskell JE, Salas E. &quot;Mitigating stress effects on team cohesion.&quot; in &quot;Team cohesion: Advances in psychological theory, methods, and practice.&quot; Ed. E. Salas, W.B. Vessey, A.X. Estrada. Bingley, UK : Emerald Group Publishing Limited, 2015. p. 247-270. http://dx.doi.org/10.1108/S1534-085620150000017010 , Nov-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Marlow SL, Lacerenza CN, Salas E. &quot;Communication in virtual teams: A conceptual framework and research agenda.&quot; Human Resource Management Review. 2017 Dec;27(4):575-89. https://doi.org/10.1016/j.hrmr.2016.12.005 , Dec-2017</li><li><strong>Books/Book Chapters</strong> — Dietz A, Driskell JE, Sierra MJ, Weaver SJ, Driskell T, Salas E. &quot;Teamwork under stress.&quot; in &quot;The Wiley Blackwell Handbook of the Psychology of Team Working and Collaborative Organization Processes.&quot; Ed. E. Salas, R. Rico, J. Passmore. Malden, MA : Wiley-Blackwell, in press as of April 2016., Apr-2016</li><li><strong>Books/Book Chapters</strong> — Dinh JV, Salas E. &quot;Factors that influence teamwork.&quot; in &quot;The Wiley Blackwell Handbook of the Psychology of Team Working and Collaborative Processes.&quot; Ed. E. Salas, R. Rico, J. Passmore. Malden, MA: Wiley-Blackwell, 2017. p. 15-42. https://doi.org/10.1002/9781118909997.ch2 , Mar-2017</li><li><strong>Books/Book Chapters</strong> — Driskell T, Driskell JE, Salas E. &quot;Lexicon as a predictor of team dynamics.&quot; in &quot;Team Dynamics over Time. (Research on Managing Groups and Teams, Volume 18).&quot; Ed. E. Salas, B. Vessey, L. Landon. Bingley, UK: Emerald Group Publishing, 2017. p. 231-257. http://www.emeraldinsight.com/doi/full/10.1108/S1534-085620160000018010 , Aug-2017</li><li><strong>Books/Book Chapters</strong> — Salas E, Vessey WB, Landon LB, editors. &quot;Team dynamics over time.&quot; Ed. E. Salas, W.B. Vessey, L.B. Landon. Bingley, UK: Emerald Publishing, 2017. 352 p. https://doi.org/10.1108/S1534-0856201618 , Aug-2017</li><li><strong>Articles in Peer-reviewed Journals</strong> — Driskell T, Salas E, Driskell JE. &quot;Teams in extreme environments: Alterations in team development and teamwork.&quot; Human Resource Management Review. 2018 Dec;28(4):434-49. https://doi.org/10.1016/j.hrmr.2017.01.002 [originally reported in late 2017 as &quot;2017 Feb 13 Available online. In press, corrected proof&quot;], Dec-2018</li><li><strong>Books/Book Chapters</strong> — Driskell JE, Salas E. &quot;Sustaining individual motivation in high-demand team environments.&quot; in &quot;Individual Motivation within Groups : Social Loafing and Motivation Gains in Work, Academic, and Sports Teams.&quot; Ed. S. Karau. Cambridge, MA: Academic Press, 2019. p. 191-222. https://www.elsevier.com/books/individual-motivation-within-groups/karau/978-0-12-849867-5 [Note: reported originally in Jan 2018 as &quot;in press&quot; December 2017], Oct-2019</li><li><strong>Books/Book Chapters</strong> — Salas E, Reyes DL, Woods AL. &quot;The assessment of team performance: Observations and needs.&quot; in &quot;Innovative assessment of collaboration.&quot; Ed. A.A. Von Davier, M. Zhu, P.C. Kyllonen. New York: Springer Verlag, p. 21-36, 2017. https://doi.org/10.1007/978-3-319-33261-1_2 , Apr-2017</li><li><strong>Articles in Peer-reviewed Journals</strong> — Driskell JE, Salas E, Driskell T. &quot;Foundations of teamwork and collaboration.&quot; American Psychologist. 2018 May-Jun;73(4):334-48. https://doi.org/10.1037/amp0000241 ; PubMed PMID: 29792452, May-2018</li><li><strong>Articles in Peer-reviewed Journals</strong> — Driskell T, Driskell JE, Burke CS, Salas E. &quot;Team roles: A review and integration.&quot; Small Group Research. 2017 Aug 1;48(4):482-511. https://doi.org/10.1177/1046496417711529 , Aug-2017</li><li><strong>Books/Book Chapters</strong> — Salas E, Rico R, Passmore J, editors. &quot;The Wiley-Blackwell Handbook of the Psychology of Team Working and Collaborative Processes.&quot; Ed. E. Salas, R. Rico, J. Passmore. Malden, MA: Wiley-Blackwell, 2017. 640 p. https://doi.org/10.1002/9781118909997 , Apr-2017</li><li><strong>Articles in Peer-reviewed Journals</strong> — O&#x27;Neill TA, Salas E. &quot;Creating high performance teamwork in organizations.&quot; Hum Resour Manage Rev. 2018 Dec;28(4):325-31. Epub 2017 Oct 12. https://doi.org/10.1016/j.hrmr.2017.09.001 , Dec-2018</li><li><strong>Books/Book Chapters</strong> — Driskell JE, King J, Driskell T. &quot;Conducting applied experimental research.&quot; in &quot;Laboratory experiments in the social sciences, 2nd ed.&quot; Ed. M. Webster, J. Sell. San Diego : Elsevier, 2014. p. 451-472. http://dx.doi.org/10.1016/B978-0-12-404681-8.00020-0 , Jul-2014</li><li><strong>Books/Book Chapters</strong> — Driskell T, Driskell JE, Salas E. &quot;Stress, performance, and decision making in organizations.&quot; in &quot;Judgment and Decision Making at Work.&quot; Ed. S. Highhouse, R.S. Dalal, E. Salas. New York : Routledge, 2014. p. 251-276. https://www.routledge.com/Judgment-and-Decision-Making-at-Work/Highhouse-Dalal-Salas/p/book/9780415886864 , Jan-2014</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/34474">https://techport.nasa.gov/projects/34474</a>
+    </div>
+  </div>
+</body>
+</html>

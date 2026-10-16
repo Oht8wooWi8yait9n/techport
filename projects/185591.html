@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoonCast: Space-Rated Codec for Ultra-Low Delay, True Color Capture Lunar Broadcasting T8.08 Lunar Imagery | NASA TechPort Project 185591</title>
+  <meta name="description" content="This Phase I effort proposes the development of MoonCast™, a modular, low SWaP-C, lunar-rated codec that can do true color capture and ultra-low delay broadcasting (&lt; 250 ms added to distance latency between earth and moon) in space environments. Its flexible ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/185591">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 185591</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX08</span>
+        </div>
+        <h1>MoonCast: Space-Rated Codec for Ultra-Low Delay, True Color Capture Lunar Broadcasting T8.08 Lunar Imagery</h1>
+        <div class="meta-id">NASA TechPort Project ID: 185591</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/185591" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          This Phase I effort proposes the development of MoonCast™, a modular, low SWaP-C, lunar-rated codec that can do true color capture and ultra-low delay broadcasting (< 250 ms added to distance latency between earth and moon) in space environments. Its flexible form factor enables both Intravehicular (IVA) and Extravehicular (EVA) applications. MoonCast™ is a significant improvement from the current state-of-the-art, which struggles to capture true color fidelity and is unable to transmit real-time video under tight bandwidth constraints.  The effort will be accomplished through a strategic partnership between Texas A&M University (TAMU), a university with a strong record in supporting NASA missions, 6P Color, a company building a system called Full Color Range (FCR) to maintain color integrity captured from a camera,  and TRL11, a privately-funded, revenue-generating early stage company with expertise in building low-latency full motion video solutions for space environments through its novel video edge processing software VIPOnly. Key personnel for this effort include experts in customized video compression/codec, real time visualizations, space imagery, resilient information systems and content distribution, and commercialization of video systems/codecs.  The funding for this effort will be spent on assessing the feasibility of integration between the multiple subsystems (mainly FCR and  TRL11’s VIPOnly software with the Nikon Z9) and building its design to advance it from TRL 4 to TRL 6. This will strongly position the team to develop a working flight-like ground prototype unit in the follow-on Phase II.  The technology developed in this Phase I has applications for the lunar, spacecraft, and drone markets, where low delay video streaming plays a role in system health monitoring, situational awareness, scientific documentation, and facilitating safe operations. These markets are worth billions of dollars today and are growing rapidly.   As NASA returns to the Moon with Artemis, the demand for compelling, high-quality, near real-time video coverage is higher than ever. Capturing and broadcasting lunar motion imagery is critical for scientific research, operational monitoring, automation, and public engagement. Existing solutions face key challenges: • Bandwidth Limits – Lunar transmissions operate at just 1–20 Mbps. • Lack of Scalability – Dedicated encoders are not adaptable across camera systems. • Environmental Constraints – True color capture is difficult due to extreme thermal, radiation, and lighting conditions, often requiring impractical high-SWaP-C solutions. MoonCast™ is a modular, lunar-rated codec for IVA & EVA applications, adding <250 ms latency to distance latency between earth and moon, for near real-time streaming. It ensures true color fidelity and adapts dynamically to bandwidth constraints with adaptive bitrates & resolutions (2160P 60 UHD to 720P 30 HD). Its low-SWaP-C, flexible design makes it ideal for Artemis and future deep-space missions, enabling high-efficiency, scalable video streaming.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          MoonCast™ advances ultra-low delay motion imagery for cislunar and lunar NASA missions, addressing NASA’s critical need to improve video quality within extreme bandwidth constraints. NASA has cited the challenge of capturing unpredictable lunar scenes without on-site broadcast management. TRL11’s VIPOnly™ solves this by leveraging digital twin-based video compression, enabling high-fidelity live video in limited bandwidth environments. MoonCast™ is particularly valuable to NASA’s Exploration Systems Development Mission Directorate (ESDMD), which requires efficient motion imagery solutions for cislunar and lunar space environments (IVA and EVA). Its Full Color Range™ (FCR) and VIPOnly™ compression allow higher-quality video (capture and maintain true colors of a scene)  at lower bitrates, supporting real-time science and space operations. By optimizing data streams for standard H.265 decoders, MoonCast™ offers NASA the flexibility to increase video streams or enhance resolution without additional bandwidth. Beyond ESDMD, MoonCast™ benefits NASA’s Space Operations Mission Directorate (SOMD) by enabling live video from ISS and commercial stations like Haven-01, whom TRL11 is already building video systems for. It could also reduce data transmission costs for NASA’s LunaNet program. For the Science Mission Directorate, MoonCast™ enhances space telescope video feeds, enabling rapid dissemination of astronomical observations. The technology aligns with the Space Technology Mission Directorate’s Game Changing Development Program, supporting innovative spacecraft capabilities. Additionally, MoonCast™ can support NASA’s Aeronautics Research Mission Directorate (ARMD) by providing ruggedized, low SWaP-C encoders for live streaming from experimental aircraft and drones. By addressing multiple directorates’ imaging needs, MoonCast™ positions itself as a critical tool for advancing NASA’s lunar and deep-space exploration efforts. MoonCast™ is a compact, ruggedized encoder designed for ultra-low delay FMV streaming in extreme, bandwidth-constrained environments. It has significant commercial applications across space & terrestrial markets: • Lunar Economy – With the lunar market projected to reach $170B by 2040, MoonCast™ enables high-quality, low-latency video for landers, rovers, and lunar infrastructure, supporting situational awareness, remote monitoring, and scientific research in bandwidth-limited environments. • Spacecraft Market – Expected to grow from $7.22B in 2025 to $9.10B by 2030, this market requires efficient video transmission for many spacecraft operations. This includes spacecraft health monitoring/own-ship awareness, earth observation, and on-orbit servicing. MoonCast™ provides high-efficiency encoding to optimize data transmission and reduce bandwidth costs – feeding into spacecraft autonomous systems for enhanced decision-making or providing spacecraft operators with real-time visual feedback to ensure safe space operations • Drones Market – With the drone market set to reach $73.06B in 2024, MoonCast™ offers real-time video streaming for defense, ISR, search & rescue agriculture, and more.  With broad commercial and government applications, MoonCast™ is positioned to become the leading video transmission solution for space and extreme terrestrial environments.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>185591</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08: Sensors and Instruments</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2025-09-29</td></tr>
+<tr><th>Project End Date</th><td>2026-10-28</td></tr>
+<tr><th>Lead Organization / Center</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL), California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>RYAN BARBER (Principal Investigator); Jeremy D Myers (Project Manager) &lt;jeremy.myers@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-19</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/185591">https://techport.nasa.gov/projects/185591</a>
+    </div>
+  </div>
+</body>
+</html>

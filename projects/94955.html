@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extending MAG4 Code to New Operational Users | NASA TechPort Project 94955</title>
+  <meta name="description" content="Large solar flares emit energetic particles, X-rays, radio noise, and coronal mass ejections (CMEs) that have wide-ranging impacts to Earth and its infrastructure. There are a number of models and observations that have been developed by government, university">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/94955">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 94955</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">MSFC IRAD</span>
+          <span class="badge">TX06.5.4</span>
+        </div>
+        <h1>Extending MAG4 Code to New Operational Users</h1>
+        <div class="meta-id">NASA TechPort Project ID: 94955</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/94955" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Large solar flares emit energetic particles, X-rays, radio noise, and coronal mass ejections (CMEs) that have wide-ranging impacts to Earth and its infrastructure. There are a number of models and observations that have been developed by government, university, and private sector researchers to try to understand and forecast solar flares. However, successfully bridging the gap between these research missions/activities and operational forecasters continues to be a challenge. In an FY18 TIP proposal, the Short-term Prediction Research and Transition (SPoRT) Center in the Earth Science Branch (ST11) partnered with scientists in the Heliophysics and Planetary Science Branch (ST13) to perform the first iteration of a transition of the MSFC- developed MAG4 product to operational forecasters. Lessons learned in the migration of this software to an operational code infrastructure and feedback from users identified advancements required before the product would be ready for operational implementation. The primary objective of this proposal is to advance the data management, graphics, and select scientific sections of the MAG4 code corresponding with specific feedback from multiple operational users in order to create a more stable deployment for operational forecasters that will advance the code to TRL6. It is expected that this work (coupled with the results from the FY18 TIP) will position MSFC to receive funding as part of NASA&rsquo;s response to Congressional legislation to increase the effectiveness of transition of research into operations for space weather users.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Large solar flares emit powerful electromagnetic particles with wide-ranging impacts. Damage can occur to launching spacecrafts and on-orbit assets (e.g., GPS, telecommunication, and science observing satellites). Major solar flares (e.g. CMEs) even have the capability to disrupt power grids, resulting in widespread power outages that could last months (National Science and Technology Council, 2015). As a result, improving forecasts of solar active region (AR) threat has emerged as a critical national imperative. MSFC has developed the MAG4 (MAGnetic forecasting) model, which measures a free-energy proxy and uses recent flare activity to produce an initial forecast. MAG4 generates a magnetogram, which is a pictorial representation of the spatial variations in strength of the solar magnetic field and is used by space weather forecasters to identify ARs. MAG4 was developed using heavy investment from NASA and was named the 2016 MSFC Software of the Year and an Agency-wide runner up. MAG4 provides a quantitative probability of AR potential to produce a dangerous solar flare, which was communicated as an&nbsp;advantage over other approaches used by forecasters at the NOAA Space Weather Prediction Center (SWPC) during a shadowing and science sharing session in July 2018. In fact, MAG4 has been shown to more accurately forecast AR threat level within 30 degree&nbsp;of disk center, outperforming the subjective McIntosh AR classification that NOAA has used for decades.</p><p>An FY18 TIP proposal successfully integrated MAG4 into the real-time data processing and dissemination framework at the Short-term Prediction Research and Transition (SPoRT) project. SPoRT has more than 15 years of experience transitioning experimental Earth science research products into national terrestrial weather forecasting operations through directed funding from NASA HQ Earth Science Division and investment by the National Oceanic and Atmospheric Administration (NOAA) satellite proving ground programs. Forecaster enthusiasm in providing feedback to the proposal team during the FY18 TIP activities demonstrated that both interest in MAG4 and SPoRT&rsquo;s research-to-operations/operations-to-research (R2O/O2R) paradigm of working collaboratively with users to develop solutions to forecasting challenges can be applied to space weather forecasting. In addition to the access, assessment, and science sharing outlined above, the development of <a href="https://rise.articulate.com/share/eYcOvSE4Ly3-AlqHCRHNJ7XleTr3QyYT">user-focused training</a>, and <a href="https://weather.msfc.nasa.gov/cgi-bin/sportPublishMAG4.pl?dataset=mag4realtime">decision support website</a>&nbsp;&mdash; designed collaboratively with SWPC forecasters&mdash;were outcomes of this first TIP. MSFC/SWPC collaborations are key for MSFC inclusion in the national strategy for space weather applications.</p><p>&nbsp;</p><p>However, the FY18 TIP activities revealed a number of software limitations (specifically during the current solar minimum) when directly integrating the MAG4 executable into the SPoRT processing stream. These limitations produce less-than-optimal operational implementation and need to be improved. For example, if data from downstream hosts are not available, the executing code will pause for multiple hours and continue querying the input data&rsquo;s servers. While this is acceptable for a researcher who generally is only interested in an active Sun, this resulted in failures of a system that is expecting constant solar input. While stopgap measures have been implemented to mitigate the impacts of missing data on both the runtime performance of MAG4 and what is communicated to users via the website, more work on the front-end logic is needed to stabilize the code for real-time execution. In addition, MAG4 code is being run by other NASA space weather stakeholders (e.g., Space Radiation Analysis Group (SRAG) at JSC and Community Coordinated Modeling Center (CCMC) at GSFC), but these partners have not updated the version of the code that they are using for many years due to the difficulties using the Interactive Data Language (IDL) executables that have been previously delivered. For example, recent developments such as the production of vector magnetograms, which allow users to more effectively analyze the magnetic fields on the solar surface, have not been incorporated into the real-time code distribution. Feedback from SWPC forecasters and users at the SRAG indicate a desire to see these latest updates incorporated in the output. Additionally, some of the MAG4 functionality for forecasting ARs is reduced because it uses <em>a priori </em>data from SWPC to define the solar regions it analyzes, so modifying the internal logic of the code is necessary to enhance the model as a true forecasting tool. Both SRAG and CCMC represent additional stakeholders who have a large roster of users that access models for space weather applications and can extend MSFC research expertise to&nbsp;the external community. SRAG and CCMC have communicated a need for the improvements noted above (see Appendix A for emails from SRAG and CCMC).</p><p><strong><em>As a result, the primary objective of this proposal is to add new research results into the operational code, advance the data download/management and the graphical output for MAG4 towards a more flexible, robust, pseudo-operational software system in the Python scripting language, and transition the code to SWPC, CCMC, and SRAG. </em></strong>Specifically, we will incorporate code to ingest, process, and output vector magnetograms. We will modify the front-end logic related with upstream data availability, management, and use and improve the logic for how and when MAG4 runs if data are not available to enable greater real-time stability. Finally, we will modify the back end of the code to enable improved graphical output using Python plotting routines, which produce more user-friendly products compared to the current IDL outputs. SPoRT will then engage CCMC and SRAG to transition the updated code to these users. Based on an analysis by the technical Co-Is, a full transition of the entire MAG4 code (a total of approximately 60,000 lines of code) is not feasible given the scope of this proposal. However, the advancements described above will enable easier maintenance by all of NASA&rsquo;s space weather R2O groups and ensure continued use by the space weather community.</p><p>Through the proposal process, we expect to increase the TRL for MAG4 from TRL5 to TRL6. The previous TIP proposal as well as previous MSFC and NASA investments have matured MAG4 to a level where it has been run and demonstrated in a relevant environment but needs the aforementioned updates to more optimally address real-time processing needs by the user groups for consideration as a fully operational product.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>94955</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: MSFC IRAD (MSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.5.4: Space Weather Prediction</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 5 | Current TRL: 5 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2018-10-01</td></tr>
+<tr><th>Project End Date</th><td>2019-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Office of the Chief Technologist (OCT)</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Sun, Others Inside the Solar System, Outside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Bradley T Zavodsky (Principal Investigator) &lt;brad.zavodsky@nasa.gov&gt;; David A Falconer (Co-Investigator) &lt;david.a.falconer@nasa.gov&gt;; Roger E Allen (Co-Investigator) &lt;roger.e.allen@nasa.gov&gt;; Craig D Fry (Co-Investigator) &lt;ghee.fry@nasa.gov&gt;; Anita Leroy (Co-Investigator) &lt;anita.leroy@nasa.gov&gt;; Bradley T Zavodsky (Project Manager) &lt;brad.zavodsky@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>John W Dankanich (Program Manager) &lt;john.dankanich@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2019-03-19</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: TBD</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/94955">https://techport.nasa.gov/projects/94955</a>
+    </div>
+  </div>
+</body>
+</html>

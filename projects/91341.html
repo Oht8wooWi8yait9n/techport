@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testing ON-OFF Gecko Adhesive Grippers in Microgravity | NASA TechPort Project 91341</title>
+  <meta name="description" content="JPL has developed a tool for grappling non-cooperative objects in microgravity using switchable adhesives that are inspired by the gecko lizard. Using these gecko-like adhesives, which can be turned ON and OFF and reused many times, the tool grapples objects b">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91341">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91341</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">FO</span>
+          <span class="badge">TX04.3.2</span>
+        </div>
+        <h1>Testing ON-OFF Gecko Adhesive Grippers in Microgravity</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91341</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91341" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          JPL has developed a tool for grappling non-cooperative objects in microgravity using switchable adhesives that are inspired by the gecko lizard. Using these gecko-like adhesives, which can be turned ON and OFF and reused many times, the tool grapples objects by virtually any surface, significantly reducing the requirements on other systems like perception, GN&C, and control during the grapple sequence. <br><a href="https://www.nasa.gov/mission_pages/station/research/experiments/explorer/Investigation.html?#id=2057">Gecko Gripper on ISS</a><br> News Articles:<br> - <a href="http://news.stanford.edu/2017/06/28/engineers-design-robotic-gripper-cleaning-space-debris/">Stanford engineers design a robotic gripper for cleaning up space debris</a> <br> - <a href="https://www-robotics.jpl.nasa.gov/tasks/showTask.cfm?TaskID=235&tdaID=700042">Initial DARPA funded research</a> <br><br> Papers:<br> June 2017: <a href="http://robotics.sciencemag.org/content/2/7/eaan4545">A robotic device using gecko-inspired adhesives can grasp and manipulate large objects in microgravity</a><br>2017: <a href="https://arc.aiaa.org/doi/10.2514/6.2017-5181">Testing Gecko-Like Adhesives Aboard the International Space Station</a> (<a href="http://www.nasa.gov/mission_pages/station/research/experiments/2324.html">NASA reference</a>)<br> - <a href="http://bdml.stanford.edu/uploads/Main/AdhesionPublications/SpaceGripper.pdf">Scaling Controllable Adhesives to Grapple Floating Objects in Space</a> (<a href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=7139584&tag=1">IEEE ref</a>)<br> - <a href="http://iafastro.directory/iac/paper/id/30578/summary/">Zero Gravity Robotic Mobility Experiments with Electrostatic and Gecko-Like Adhesives Aboar
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This technology is a tool for grappling non-cooperative objects and may have such applications as satellite servicing, exterior inspection of on-orbit vehicles and orbital debris mitigation.  The use of directional adhesion to effectively handle objects that are difficult or impossible to manipulate with gripping tools will benefit the commercial space industry, future NASA missions, and other government agencies such as the Department of Defense.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91341</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Flight Opportunities (FO)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX04.3.2: Grappling Technologies</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 5 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2014-05-20</td></tr>
+<tr><th>Project End Date</th><td>2016-02-28</td></tr>
+<tr><th>Lead Organization / Center</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Aaron J Parness (Principal Investigator) &lt;aaron.parness@jpl.nasa.gov&gt;; Matt Heverly (Co-Investigator) &lt;matthew.c.heverly@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Danielle D Mcculloch (Program Director) &lt;danielle.mcculloch@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/missions/station/gecko-grippers-moving-on-up/" target="_blank" rel="noopener noreferrer">ISS Demonstration</a></li><li><a href="https://www.nasa.gov/mission_pages/station/research/experiments/explorer/Investigation.html?#id=2057" target="_blank" rel="noopener noreferrer">Space Station Research Explorer: Gecko Gripper</a></li><li><a href="https://marvin-robotics.com/product/gecko-gripper/" target="_blank" rel="noopener noreferrer">GECKO Gripper</a></li><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><a href="https://news.stanford.edu/2021/05/20/gecko-gripper-tested-aboard-iss/" target="_blank" rel="noopener noreferrer">Stanford ‘gecko gripper’ tested on the International Space Station</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91341">https://techport.nasa.gov/projects/91341</a>
+    </div>
+  </div>
+</body>
+</html>

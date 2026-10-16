@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intelligent Network Slicing and Policy-based Routing Engine (INSPiRE) | NASA TechPort Project 125596</title>
+  <meta name="description" content="AiRANACULUS, and its partners, propose an innovativeIntelligentNetworkSplicing andPolicy-basedRoutingEngine (INSPiRE) Solution to increase mission science data return, improve resource efficiencies for NASA missions and communication networks and ensure resili">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/125596">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 125596</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX05</span>
+        </div>
+        <h1>Intelligent Network Slicing and Policy-based Routing Engine (INSPiRE)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 125596</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/125596" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          AiRANACULUS, and its partners, propose an innovativeIntelligentNetworkSplicing andPolicy-basedRoutingEngine (INSPiRE) Solution to increase mission science data return, improve resource efficiencies for NASA missions and communication networks and ensure resilience in unpredictable space environments. The proposed INSPiRE System is an add-on to the CLAIREProject, that is developing wide-band spectrum sensing, spectrum-aware routing and cognitive control plane riding on the NASA s CCSDS Bundle Protocol as an APP. CLAIRE provides spectrum and network situational awareness to enable link-layer selection and optimization to maximize the data flow. The INSPiRE System utilizes theCLAIRE APP to enable Network Slicing (NS) and Policy-based Routing (PBR). From a logical perspective INSPiRE architecture utilizes the three-state model of network topology, RF performance and PBR  two of these inputs are provided by CLAIRE while the third one defining policy is a flow down from NASA. While the actual path optimizations are complex calculations, INSPiRE abstracts the paths as virtual NSs. INSPiRE brings interesting aspects of 5G networks in the form of Network Function Virtualization, Security, Service Level Agreement (SCI/NET/DET/PNT)and PBR, which allows NASA to leap ahead from link-optimization to secure network optimization. Each NSis end-to-end secure and logically separate tunnel, hence providing security and robustness. Unlike 5G NSwhich are bound to a specific path and support many applications, INSPiRE NSsare application specific and run across all paths over the node/ satellite constellation. The INSPiRE architecture utilizes the CLAIRE APPs which areembedded on satellite and ground system to determine the topology and measure the RF performance. Collected data is uploaded to the INSPiRE management system where route optimizations are determined based on PBR. These optimizations are transmitted to all CLAIRE APPs which enforcethe policy decisions.  INSPiRE &ndash; Intelligent Network Slicing and Policy-based Routing Engine is a new approach to optimizing complex space-terrestrial networks. INSPiRE extends the 5G network slicing concept that provides NASA the ability to manage different services (SCI, NET, DET, PNT) with greater throughput and efficiency. INSPiRE utilizes Network Slices to create secure and logically separate tunnels to route application traffic over a satellite constellation. To determine which path a slice traffic takes, the INSPiRE architecture utilizes the CLAIRE APP which is embedded on satellite and ground systems to determine the topology and measure the RF, PHY, MAC and NET features. Collected data is uploaded to the INSPiRE management system where route optimizations are determined. These optimizations are transmitted to all CLAIRE APPs that enforce the policy decisions and implement packet forwarding instructions. INSPiRE reduces mission and network operations burden through virtualization, creates compartmentalization of services, allows alteration of the policies on the fly, and makes the networks secure.  The main objective of the work to be done involves architectural design, modeling, simulations.&nbsp;performance evaluation and prototyping of the Intelligent Network Slicing and Policy-based Routing Engine. The three innovations that we propose to implement include:&nbsp;1. INSPiRE Policy-based Routing and Intelligent Packet Forwarding Engine.&nbsp;2. Deep Learning Driven Network Optimization and Network Slicing Orchestration:&nbsp;3. Dynamic Generation and Configuration of Policies.&nbsp;  During the course of the INSPiRE Phase II Project, we will design,&nbsp;develop, and demonstrate various modules of&nbsp;the INSPiRE system. These include, Slice Inventory Module, Slice Service&nbsp;Module, Orbital Tracker, Policy Advisor, deep learning driven Network Slicing Engine and the intelligent Packet Forwarding Engine. Network Slicing Engine is at the heart of making all network optimization and routing decisions.&nbsp;To provide fine grained Quality of Experience (QoE), we have categorized the Network Slices by Organization, Mission / Application, Performance and Service. During this project, we will develop APIs that will allow the Network Slicing Engine to probe each Node in the network directly to obtain various statistics. This will be in addition to the periodic updates that it receives from CLAIRE. The Network Slicing decisions are&nbsp;orchestrated by the INSPiRE Packet Forwarding Engine that resides on each Node.&nbsp;  &nbsp;
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          INSPiRE&nbsp;provides following Capabilities and Applications:&nbsp;  1. Network Slicing&nbsp;provides&nbsp;configuration flexibility to ALL current and future, terrestrial and space-based&nbsp;NASA networks,&nbsp;enabling&nbsp;Service Oriented Architecture&nbsp;and Network Function Virtualization.  2. Policy-based Routing&nbsp;allows NASA networks to control their behavior and over-ride any automated decisions that are made locally hence making them&nbsp;deterministic.&nbsp;  3. Provides Secure Encrypted Network Slices - Allows each of the SCI/ NET/ DET / PNT Services to have separate Virtual Network&nbsp;  INSPiRE provides the following Non-NASA Applications&nbsp;  1. Architecture and capabilities are applicable to ALL commercial Terrestrial (3G/ 4G/ 5G / Wi-Fi), Space (LEO/ MEO / GEO/ Relays / Gateways), Backhaul&nbsp;(Optical Fiber / Coax)&nbsp;Networks.&nbsp;  2. Security and Privacy are built in. Hence it is applicable for other Federal Agencies including DoD, DHS, NSA, FAA among others.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>125596</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX05: Communications, Navigation, and Orbital Debris Tracking and Characterization Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 2 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2022-05-18</td></tr>
+<tr><th>Project End Date</th><td>2025-10-15</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>AiRANACULUS — Chelmsford, Massachusetts</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Massachusetts (MA), Ohio (OH)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Apurva N Mody (Principal Investigator); Aaron D Smith (Project Manager) &lt;aaron.d.smith@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li><li><strong>Final Summary Chart Image</strong> — Final Summary Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/125596">https://techport.nasa.gov/projects/125596</a>
+    </div>
+  </div>
+</body>
+</html>

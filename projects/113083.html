@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>An Autonomous Severe Weather Trend Monitor for Improved System-Wide TFM Execution | NASA TechPort Project 113083</title>
+  <meta name="description" content="Severe weather remains the main disruptor to airspace operations and traffic managers actions. An autonomous airspace system will need to automatically ingest the latest weather forecast, reason about its impact, and provide actionable guidance to human operat">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/113083">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 113083</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX16</span>
+        </div>
+        <h1>An Autonomous Severe Weather Trend Monitor for Improved System-Wide TFM Execution</h1>
+        <div class="meta-id">NASA TechPort Project ID: 113083</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/113083" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Severe weather remains the main disruptor to airspace operations and traffic managers actions. An autonomous airspace system will need to automatically ingest the latest weather forecast, reason about its impact, and provide actionable guidance to human operators and/or other service-based airspace automation systems. Our Phase I prototype has laid the foundation for such automated weather reasoning, focusing on a specific aspect of autonomous operation with clearly stated practical needsTMI impact reductionto demonstrate its capabilities.  Todays manually executed TMIs are often overly restrictive and are not routinely reviewed for possible reduction in scope or duration, resulting in excess delays  costs. To address this, we are developing an autonomous system which will continuously ingest latest weather forecasts, air traffic  TMI information, perform automated Forecast Trend Analysis to compare this latest information with previous forecast(s), identify when forecast trends toward less-severe, and if warranted, launch a search for TMI reduction opportunities. A what-if series of parallel fast-time NAS simulations, projecting current situation up to 8 hours ahead, combines meteorologically sound range of potential weather outcomes (given the forecast uncertainty) and parameterized TMI reductions in scope and end times. The application will evaluate results (including those from prior cycles) to establish, with a required degree of confidence, if a non-trivial TMI reduction opportunity exists. If so, it will alert relevant traffic managers and then continue autonomous monitoring, looking for additional TMI reduction opportunities during the operational day.  In Phase II, we will transition from emulated to live real-time operation, with input from the FAA ATC System Command Center, using ensemble forecasts, expanded TMI reduction search, and data mining techniques. We will also leverage this technology into other domains, e.g., UAM and UTM.  Severe weather remains the main disruptor to airspace operations and traffic managers&rsquo; actions. An autonomous airspace system will need to automatically ingest the latest weather forecast(s), reason about it, and provide actionable guidance to human operators (in the transition) and/or other service-based airspace automation. Our proposed innovation lays the foundation for such automated weather reasoning and focuses on a specific aspect of autonomous operation with a clearly stated practical need&mdash;TMI impact reduction&mdash;to demonstrate its capabilities.  &nbsp;  Today&rsquo;s manually executed TMIs are often over-restrictive, and once activated not routinely evaluated for possible reduction in scope/duration when weather &amp; traffic diverge from the forecast at TMI issuance, potentially resulting in thousands of excess delay minutes. Other efforts have focused on improved planning and dynamic rerouting of one or more individual aircraft. Our novel system will automatically monitor the latest system-wide weather &amp; traffic forecast to generate alerts when high-confidence TMI reduction opportunities arise.  TO1: Enhance Weather Forecast Trend Assessment Technology. Apply historical weather data mining for forecast trend and bias assessment. Use probabilistic &amp; ensemble forecasts as recommended by FAA.   &nbsp;  TO2: Enhanced TMI Reduction Evaluation, Additional TMIs, Interdependencies. Reproduce more closely the GDP &amp; AFP rate setup patterns at the ATCSCC. Reflect interdependency between Playbook Reroutes and AFPs.  &nbsp;  TO3: Attain Real-Time DST Capability for Key Modules. Account for weather forecast lag, which can reach 80+ minutes due to NOAA server limitations. Engage parallelized cloud computing.  &nbsp;  TO4: Build an Integrated Autonomous Toolchain for NAS TFM Applications. Integrate the prototype modules developed in Phase I into a complete, autonomous end-to-end toolchain using web services; test real-time alerts at the FAA ATCSCC. Work with potential users to develop GUI.  &nbsp;  TO5: Explore Technology Extensions into Other Domains. Explore standalone use of Forecast Trend Monitor module in UAM, UTM; also applicability of rule-driven TMI action assessment expert system in existing and emerging new air traffic domains.  &nbsp;  Deliverables: IT Security Mgmt Plan, Interim Demo Reports, Prototype SW, Final Report &amp; Briefing, NTR(s), NTSR
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This autonomous severe weather trend reasoning application supports and could be part of NASA&rsquo;s goal to enable successful transition to an autonomously operating airspace system. Additionally, this initial application could plug into various NASA simulations needing automated weather and/or TMI monitoring. The underlying technology can provide the framework for other autonomous weather impact reasoning systems that support future airspace uses by new entrants including UAM and UTM.  A direct application of the system to be built is for the FAA ATCSCC who plans and executes NAS-level TMIs. By using this technology, thousands of delay minutes could be saved. A modified version of the technology is applicable to airline operations to help them more readily adapt to changes in weather and TMIs. Other potential applications include UAS, UAM, and international ANSP operators.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>113083</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX16: Air Traffic Management and Range Tracking Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2021-07-29</td></tr>
+<tr><th>Project End Date</th><td>2024-12-15</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>AvMet Applications — Reston, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Alexander Klein (Principal Investigator); George N Szatkowski (Project Manager) &lt;george.n.szatkowski@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong></li><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li><li><strong>[Closeout Document]</strong> Final Summary Chart</li><li><strong>Briefing Chart</strong></li><li><strong>Final Summary Chart Image</strong> — Final Summary Chart Image</li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/113083">https://techport.nasa.gov/projects/113083</a>
+    </div>
+  </div>
+</body>
+</html>

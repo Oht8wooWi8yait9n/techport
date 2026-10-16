@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Portable Situational Awareness Toolset for Wildfire Suppression and Team Management | NASA TechPort Project 185361</title>
+  <meta name="description" content="A National Oceanic and Atmospheric Administration summary documented 20 wildfire events between 1980 and 2021 that caused $1 billion or more in damages and noted that 16 of those have occurred since 2000. With the increase in damage and physical scope of these">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/185361">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 185361</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX16</span>
+        </div>
+        <h1>A Portable Situational Awareness Toolset for Wildfire Suppression and Team Management</h1>
+        <div class="meta-id">NASA TechPort Project ID: 185361</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/185361" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          A National Oceanic and Atmospheric Administration summary documented 20 wildfire events between 1980 and 2021 that caused $1 billion or more in damages and noted that 16 of those have occurred since 2000. With the increase in damage and physical scope of these fires, larger and more diverse teams are required to address them. Each responding team may have different communication equipment, preventing one team from communicating with another except through a command center that must relay activities and events to each group individually. This limits the operational picture of the fire incident to a select person / few people who must coordinate all elements directly.  A team led by Systems Technology, Inc., in collaboration with Bolder Flight Systems Inc., proposes to develop the Firefighter Integrated Reporting System and Transponder (FIRST) system to provide an enhanced wildfire situational awareness (SA) toolset and airspace management capability suitable for both piloted and autonomous air assets.  At its core, FIRST will provide the fire incident managers with the ability to track and direct both piloted and autonomous aircraft. Tracking will be facilitated via existing air traffic protocols including ADS-B, the unmanned aircraft system traffic management system, and the newer FAA UAS Remote ID standard. These methods will be augmented via FIRST’s hardware element, a low cost, size, weight, and power solution that will provide GPS / INS measurements from each vehicle, direct control of the associated UAS, and will enable the radio mesh network that forms the backbone of the communication architecture for FIRST. The information will be hosted on a smart device display to enable the widest applicability and provide information akin to what a traditional air traffic controller might usually see: aircraft identifying information, speed, altitude, direction, and specific to the firefighting mission, the kind/amount of retardant and or payload available by aircraft.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The proposed FIRST system directly supports the NASA Advanced Capabilities for Emergency Response Operations (ACERO) project, providing wildland firefighters with a significant increase in situational awareness and supporting the management of autonomous assets in cooperation with piloted vehicles. This is provided via direct tracking of all personnel and hardware assets inclusive of both piloted and autonomous aerial vehicles. This capability, and the robust mesh network and intuitive user interface that provides this information, directly supports the wildfire suppression and management missions, and aids the response team in conducting 24/7 operations. This directly responds to the solicitation technologies sought including “Provide strategic planning capabilities to collect, process, and disseminate information…, Provide strategic planning and tracking capabilities to enable the most effective use of ground crews…, considers the unique needs and characteristics of wildfire disaster situations (non-connected environments)…, provide airspace coordination, and resource tracking for a common operating picture for situational awareness that supports various stakeholders…”  FIRST also supports the NASA Aeronautics Research Mission Directorate (ARMD) Strategic Thrust 6 (Assured Autonomy for Aviation Transformation) strategic outcome in the 2020-2035 timeline of “Initial safe and efficient integration of highly automated vehicles into the NAS by introduction of aviation system with bounded autonomy, capable of carrying out function-level goals. Starting from wildfire management…”  According to the National Oceanic and Atmospheric Administration (NOAA), “Research shows that changes in climate create warmer weather, drier conditions, leading to longer and more active fire seasons.” New technologies are needed to address the increasingly expansive impacts of these enhanced wildfires and support the diverse organizations tasked with responding to them. Each responding team may have different communication equipment, preventing one from communicating with another except through a command center that must relay activities and events to each group individually. This limits the operational picture of the wildfire to a select few people who must coordinate all elements directly. The FIRST system will provide an enhanced situational awareness and command/control capability via a robust radio mesh network and smartphone / tablet-based application. This will provide each unit a complete situational map of a wildfire, significantly increasing their situational awareness and enabling a more cohesive fire response. In discussions with both aerial firefighters and hand crew personnel, such a capability was identified as very desirable and useful in completing their respective missions and enhancing the safety of their activities. Customers include the US Forest Service, CalFire, other wildland fire authorities, and local fire departments that regularly contend with wildfires.  
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>185361</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX16: Air Traffic Management and Range Tracking Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2025-09-29</td></tr>
+<tr><th>Project End Date</th><td>2026-03-27</td></tr>
+<tr><th>Lead Organization / Center</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>P. Chase Schulze (Principal Investigator); Saeideh E Samani (Project Manager) &lt;saeideh.samani@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-19</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/185361">https://techport.nasa.gov/projects/185361</a>
+    </div>
+  </div>
+</body>
+</html>

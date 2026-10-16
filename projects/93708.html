@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Predictor of Airport Runway Capacity (PARC) | NASA TechPort Project 93708</title>
+  <meta name="description" content="Estimates of arrival and departure capacities of individual airport runways are used to predict occurrences of demand-capacity imbalance, and to meter arrivals and departures to balance runway demand with capacity. Inaccurate estimates incorrectly identify dem">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/93708">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 93708</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX16.3</span>
+        </div>
+        <h1>Predictor of Airport Runway Capacity (PARC)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 93708</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/93708" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Estimates of arrival and departure capacities of individual airport runways are used to predict occurrences of demand-capacity imbalance, and to meter arrivals and departures to balance runway demand with capacity. Inaccurate estimates incorrectly identify demand-capacity, imbalance time periods and metering solutions; resulting in underutilized runways or excessive traffic congestion. Accurate predictions enable maximizing airport and flight efficiency. The Predictor of Airport Runway Capacity (PARC) forecasts the future capacities of individual airport runways under specified operating conditions and a time horizon. PARC uses historical operations data to create and update statistical Bayesian network (BN) models of inter-aircraft spacing, accounting for influencing factors. The BN models are used in Monte-Carlo simulations of airport runway traffic to predict their arrival and departure capacities for the specified operating conditions and scheduled traffic. Traffic managers use PARC's capacity estimates to implement metering programs to efficiently balance runway demand with capacity. For example, forecast weather proximate to Charlotte-Douglas International Airport (CLT) will change the prevailing wind direction, ceiling, and Runway Visual Range (RVR), requiring changing the airport runway configuration from South Flow to North Flow and the operational flight rules from visual to marginal. Traffic planners want to know if these changes will cause excessive traffic congestion warranting implementation of a departure metering program. PARC determines that the number of scheduled departures will exceed capacity on runway 36C under the forecasted runway configuration, visibility, and traffic conditions. The traffic planners implement metering of runway 36C departures using PARC's runway capacity estimate. Because the estimated runway capacity is accurate, metering neither starves the runways of flights nor creates excessive runway departure queues.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          PARC supports NASA Airspace Technology Demonstration-2 (ATD-2) and FAA Surface Collaborative Decision Making (CDM) concepts of operations for maximizing the efficiency of airport departure and arrival traffic. PARC could be applied to the NASA ATD-2 integrated arrival-departure-surface traffic management tools for planning and management of airport departures and arrivals. Specifically, PARC could be used to provide accurate estimates of the individual arrival and departure capacities of the airport's runways. The estimates could be used to schedule airport takeoffs and landings to comply with the capacities, and to plan departure gate pushbacks accordingly; to guide airport ground controllers in clearing aircraft to enter the movement area, or to plan the use of holding areas on the airport surface. PARC could be applied to the FAA Surface CDM Concept of Operations. Specifically, PARC could support the airport traffic control tower, aircraft operators, the airport operator and other stakeholders in predicting demand-capacity imbalances under future operating conditions and plan traffic management strategies to mitigate the imbalance. The PARC-estimated capacity values could be used to plan departure metering programs, and to schedule movement area entry times for departures to balance demand with runway capacity.<br /> <br />The first application is to use these technologies to create standard products. PARC would become available to anyone wanting to predict runway capacity, including air Navigation Service Providers (ANSPs) and airport authorities around the world. For example, ANSPs could use PARC to support their traffic planning and management, and airport authorities could use PARC to estimate peak capacity for facility and operations planning. The second application is to license the technology. PARC would be made available to large system integrators/prime contractors providing ATM automation solutions. For instance, PARC could be licensed to Lockheed Martin for use with the Time Based Flow Management (TBFM) traffic metering automation or to the Tower Flight Data Management (TBFM) airport traffic planning and management system; or to Harris Orthogon for use with the OSYRIS Departure Manager (DMAN) departure metering automation. The third application is to retain the PARC technology and components, and to use them to provide analytical services to customers. The customer defines the problem or issue for which analysis is required, and ATCorp applies PARC or its components, and our professional services expertise, to analyze the problem and produce a report of the results. PARC would fit into this business model as an advanced tool augmenting existing analysis tools. For instance, PARC could be used to predict peak capacity of an airport for master planning.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>93708</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX16.3: Traffic Management Concepts</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2017-06-09</td></tr>
+<tr><th>Project End Date</th><td>2017-12-08</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Architecture Technology Corporation — Eden Prairie, Minnesota</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Minnesota (MN), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Sebastian D Timar (Principal Investigator); Gary Lohr (Project Manager) &lt;Gary.W.Lohr@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong> — Predictor of Airport Runway Capacity (PARC), Phase I Briefing Chart</li><li><strong>Briefing Chart Image</strong> — Predictor of Airport Runway Capacity (PARC), Phase I Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/93708">https://techport.nasa.gov/projects/93708</a>
+    </div>
+  </div>
+</body>
+</html>

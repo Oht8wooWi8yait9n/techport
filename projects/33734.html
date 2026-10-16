@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application of SystemVerilog to Science Mission Simulation | NASA TechPort Project 33734</title>
+  <meta name="description" content="SynaptiCAD proposes to adapt a commercial digital design simulator for use by complex NASA space systems and missions. The simulator is based on SystemVerilog, an IEEE-standard language with a long pedigree in the electronics world. Digital simulators offer th">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/33734">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 33734</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX11.3.3</span>
+        </div>
+        <h1>Application of SystemVerilog to Science Mission Simulation</h1>
+        <div class="meta-id">NASA TechPort Project ID: 33734</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/33734" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          SynaptiCAD proposes to adapt a commercial digital design simulator for use by complex NASA space systems and missions. The simulator is based on SystemVerilog, an IEEE-standard language with a long pedigree in the electronics world. Digital simulators offer the potential to scale to very large systems since they are already being used to model circuits with millions of events. SystemVerilog, additionally, can easily connect with continuous simulation and engineering analysis tools. Conventional commercial simulators lack this scalability. SynaptiCAD will demonstrate how its own implementation of SystemVerilog, encapsulated in a product known as Verilogger Extreme, can be generalized by creating appropriate APIs and model libraries for satellite, robotics, and science mission simulation. SynaptiCAD will further demonstrate that the simulator can connect readily to other engineering environments such as Python and Phoenix Integration's ModelCenter. A synthesis step will also be illustrated at a basic level, where a hardware design is derived from the resulting simulation. Synthesis is common in the electronics industry and carried out at a highly sophisticated level. A path toward evolving this initially rudimentary synthesis capability will be laid out. The new proposed simulator will demonstrate a realistic NASA problem and show how it can be applied to the full design lifecycle, involving multi-fidelity and multi-disciplinary models. The new simulator will eventually allow for a "digital twin" of a flying spacecraft that can be used for realistic validation both during the design and after launch.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          A major benefit of the proposed simulator is that it can be applied throughout the design process for complex projects across NASA Science, Human Exploration and Operation, and Aeronautics Research Mission Directorates. The proposed technology will provide for realistic simulation, integration with common engineering tools, management decision support, verification and validation, and the use of standardized engineering model libraries. Initial applications will be in the science mission area dealing with advanced telescope systems, satellites, or robotic exploration. Additional applications will be pursued within NASA directorates as case studies and models are developed. In particular, since this work will require a partnership with Phoenix Integration, NASA locations that use ModelCenter would be natural candidates for further commercialization. JPL, for instance, has heavily invested in both ModelCenter and MBSE technology and is thus a strong candidate for the proposed simulation technology. NASA's Fundamental Aeronautics program has been a strong user of ModelCenter and would also benefit from the development work advocated here. In general, satellite programs, space transportation, and air vehicle technologies can benefit from this technology.<br /> <br />Beyond NASA, SynaptiCAD's commercialization efforts will be focused primarily on the aerospace and defense sector where companies such as Lockheed Martin are already using both SynaptiCAD's digital design simulator and Phoenix Integration's ModelCenter product. SynaptiCAD is well positioned to introduce this technology to leading organizations in this business sector such as BAE, Boeing, Lockheed Martin, Northrop Grumman, Pratt and Whitney, and Raytheon since they already utilize both company's products. By leveraging this existing installed base, it will be possible to quickly achieve initial sales and establish a core user base for the new technology. After establishing penetration in aerospace and defense, SynaptiCAD will build upon these successes to pursue secondary markets such as automotive, heavy equipment, green energy, shipbuilding, transportation, and process industries. Some of these industries are also already users of SynaptiCAD's products. Interest in more realistic simulation technology has been robust and bodes well for future development.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>33734</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.3.3: Model-Based Systems Engineering</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2015-06-17</td></tr>
+<tr><th>Project End Date</th><td>2015-12-17</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>SynaptiCAD Sales, Inc. — Blacksburg, Virginia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Peter Menegay (Principal Investigator); Robert Jones (Project Manager) &lt;Robert.A.Jones@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Application of SystemVerilog to Science Mission Simulation, Phase I Project Image</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart Image</li><li><strong>Briefing Chart</strong> — Application of SystemVerilog to Science Mission Simulation Briefing Chart</li><li><strong>Briefing Chart Image</strong> — Application of SystemVerilog to Science Mission Simulation, Phase I</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/33734">https://techport.nasa.gov/projects/33734</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quasi-1 Dimensional Modeling of Rotational Detonation Engines | NASA TechPort Project 94149</title>
+  <meta name="description" content="This project looks to investigate the modeling of rotational detonation engines (RDE). RDEs are an alternative engine cycle to conventional liquid rocket engines, constant pressure combustion cycle. These engines operate by inducing a detonation wave within a ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/94149">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 94149</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX01.3.4</span>
+        </div>
+        <h1>Quasi-1 Dimensional Modeling of Rotational Detonation Engines</h1>
+        <div class="meta-id">NASA TechPort Project ID: 94149</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/94149" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>This project looks to investigate the modeling of rotational detonation engines (RDE). RDEs are an alternative engine cycle to conventional liquid rocket engines, constant pressure combustion cycle. These engines operate by inducing a detonation wave within a combustion annulus. The wave circles the annulus creating constant, but non-uniform thrust. Because combustion occurs via detonation as opposed to constant pressure deflagration, the RDE cycle has the potential to extract more work from the combustion process and operate at higher combustion efficiencies than current engines. While detonation behavior is relatively well known, the understanding of RDEs in the area of engine geometry effects and transient effects on detonation wave propagation and engine performance is relatively low. Previous modeling conducted in this area consists of three dimensional, high fidelity, high computationally intensive models which, due to the long run times and high computational cost, limit their use for characterizing the engine cycle across wide ranges of geometry and operating conditions. This project proposes to create a quasi-one dimensional model for rotational detonation engines that can produce results in under one hour in a modern computational environment typically found in industrial and university sites. This model would allow engine designers to explore the effects on performance of changing engine geometry and to investigate the engine transient response for a given engine geometry. This project will be conducted in two phases: steady state modeling and transient modeling. In each phase, engine operational phenomena such as injector backflow and manifold acoustics will be systematically implement in a central model to determine the minimum physics fidelity required to accurately predict the performance of the modeled engine configuration. Accuracy of the model will be determined by comparing model outputs to experimental test results from ongoing testing at Purdue's Zucrow Labratories. NASA expertise will assist in the identification of critical operation phenomena and in determining the implementation method for said phenomena.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This project proposes to create a quasi-one dimensional model for rotational detonation engines that can produce results in under one hour in a modern computational environment typically found in industrial and university sites. This model would allow engine designers to explore the effects on performance of changing engine geometry and to investigate the engine transient response for a given engine geometry.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>94149</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.3.4: Airbreathing Pressure Gain Combustion</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2017-08-01</td></tr>
+<tr><th>Project End Date</th><td>2021-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Purdue University-Main Campus — West Lafayette, Indiana</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Indiana (IN)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Stephen D Heister (Principal Investigator); Jenna A Humble (Co-Investigator) &lt;jenna.a.humble@nasa.gov&gt;; Hugh D Perkins (Project Manager) &lt;hugh.d.perkins@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Transitioned To</strong> (Air Force Research Laboratory)</li><li><strong>Closed Out</strong>: Experimental research was conducted on rotating detonation rocket engines (RDREs) employing gas/liquid propellant combinations. Gaseous oxygen and kerosene as well as liquid oxygen/gaseous methane propellant combinations were considered in high pressure rocket combustors of 4” and 6” diameter respectively. Rotating detonations were observed using high-speed imagery and associated high-speed manifold pressures. Thrust and capillary tube average pressure (CTAP) measurements were also collected during the studies. Numerous cases showed thrust levels meeting or exceeding those of today’s constant pressure combustion engines. A literature review was conducted to assess the current state of knowledge in gas/liquid, i.e. heterogeneous, detonation. Additional physical insights were shared relative to two-phase and fluid property effects that may be significant in the RDRE application. A single transverse jet injector was employed for the GOX/kerosene study, but multiple injector concepts were studied using the LOX/gCH4 propellant combination. Details regarding injector designs and thrust measurements are subject to ITAR constraints.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/94149">https://techport.nasa.gov/projects/94149</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cubesat Reliability Experiment Design and Prototype | NASA TechPort Project 23345</title>
+  <meta name="description" content="A large number of commercially available electronic components and systems are not considered in the design of space systems because there are no data available on their functionality in the space environment. Components that have been approved for space appli">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23345">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23345</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">ARC CIF</span>
+          
+        </div>
+        <h1>Cubesat Reliability Experiment Design and Prototype</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23345</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23345" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          A large number of commercially available electronic components and systems are not considered in the design of space systems because there are no data available on their functionality in the space environment. Components that have been approved for space applications are often cost-prohibitive for small satellites. This CIF project will provide a generic, Cubesat-based platform for evaluating the reliability of Commercial Off-The-Shelf (COTS) electronic components in the space environment. This platform will help move parts from level 3 into levels 1 and 2 in the NASA Parts Selection List (NPSL) and will also bring more commercial parts into level 3. The data generated using this platform will not only open avenues for the use of new technologies on future space missions, but will also help optimize spacecraft budgets by offering a larger number of component options with known reliabilities. It will also help determine the level of redundancy needed and estimate the risk associated with using various COTS components in space. This project will develop a generic 1U Cubesat Reliability Experiment (CRX) platform to host a mainboard and one or more plug-in boards containing candidate electronics components to undergo testing in space. The mainboard will be radiation-tolerant in order to reliably monitor Device-Under-Test (DUT) performance metrics such as current draw, impedance, bias voltages, and upset rate. Depending on the size of the DUT, two copies of the same device can be flown, with the first being an experiment "control" shielded inside the satellite, and the second exposed to the space environment. A radiation monitor will be provided on-board to measure dose-rate and equivalent accumulated dose (TID). A standard and open protocol will be developed that will allow users to tailor the monitoring software for specific components under test using an inexpensive, non-flight copy of the mainboard. For instance, the rate of bit flips and upsets in new candidate flash memory devices can be measured by writing a known data pattern into the memory and reading the memory at regular intervals. Users will be able to program such functionality tests into the software on the mainboard. In addition, this CRX platform will also verify the thermal and structural survivability of the DUT, thereby raising its TRL upon successful completion of the reliability experiment. Due to the steady increase in Cubesat launches each year, more and more opportunities are opening up for hosting payloads on Cubesats. Yet the harsh space environment can induce a variety of unwanted effects, including single-event-upsets and functional interrupts, latchup, and parametric and functional degradation and failure. Meanwhile, space-qualified electronics remain prohibitively expensive, as does the effort and cost required to test candidate parts in an accelerator facility. This project leverages fortuitous Cubesat flight opportunities to immerse candidate components in the true omnidirectional "bath" of the energetic space environment, in contrast to the limited ground-based "spot" tests possible with accelerator beams or lasers. Measured performance is thus actual rather than extrapolated, and allows components to achieve TRL9. Traditional radiation testing involves placing candidate electronics in an accelerator beam to simulate flight conditions. The inherently one-sided, finite beam size of traditional electron, proton, and laser sources necessitates scanning the component die area during testing. This can be a long and expensive process, especially given the small budgets for Cubesats and smallsats. Furthermore, when using radioisotope sources, limited selection and safety considerations increase test complexity. We also note that, while opportunities are available for space qualification of materials on the ISS using the MISSE-X platform, these slots are limited and expensive, and do not provide easy means for live functionality testing. The CRX test platform fulfils this critical need. In these ways, this project offers a significant improvement over the current state-of-the-art for testing the reliability of components in the space environment.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Reduced time and cost to space-qualify electronic components; increased access to affordable parts. There are numerous startup companies designing, launching and operating nanosatellites. Mission lifetime of such satellites is highly dependent on the ability of their component electronics to withstand the space environment. Space-qualified parts are generally more costly than such nanosat missions (which may consist of many satellites) can afford; commercial- or consumer-spec parts are thus often used at the expense of reliability. CRX allows reduced-cost access to testing of candidate components directly in the space environment. Numerous US Government agencies (USAF, USA, USN, other DoD, DHS) are currently using, or are investigating the use of, small low-cost satellites to meet their mission requirements. Mission lifetime of such satellites is highly dependent on the ability of their component electronics to withstand the space environment. Space-qualified parts are generally more costly than such nanosat missions (which may consist of many satellites) can afford; commercial- or consumer-spec parts are thus often used at the expense of reliability. CRX allows reduced-cost access to testing of candidate components directly in the space environment.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23345</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: ARC CIF (ARC CIF)</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2014-11-01</td></tr>
+<tr><th>Project End Date</th><td>2015-10-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Stanford University — Stanford, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Chad R Frost (Principal Investigator) &lt;chad@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23345">https://techport.nasa.gov/projects/23345</a>
+    </div>
+  </div>
+</body>
+</html>

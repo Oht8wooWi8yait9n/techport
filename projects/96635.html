@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FY17 IRTD: Mars ISRU Pathfinder Atmospheric Processing and Regolith Operations Modeling, Testing, and Optimization | NASA TechPort Project 96635</title>
+  <meta name="description" content="The Mars Pathfinder project sought to increase the technology readiness level of Mars ISRU technologies being developed at KSC. The ultimate goal of these technologies is to produce propellant on Mars from the carbon dioxide found in the atmosphere and water f">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/96635">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 96635</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">KSC IRAD</span>
+          <span class="badge">TX01</span>
+        </div>
+        <h1>FY17 IRTD: Mars ISRU Pathfinder Atmospheric Processing and Regolith Operations Modeling, Testing, and Optimization</h1>
+        <div class="meta-id">NASA TechPort Project ID: 96635</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/96635" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The Mars Pathfinder project sought to increase the technology readiness level of Mars ISRU technologies being developed at KSC. The ultimate goal of these technologies is to produce propellant on Mars from the carbon dioxide found in the atmosphere and water found in the regolith. This overall system requires many components to collect the resources, prepare them for processing and ultimately to produce methane and oxygen. This project culminated in an integrated demonstration that combined:</p>  <ol><li>KSC RASSOR 2.0 – a subsystem that collects and delivers regolith</li><li>KSC Hopper – a subsystem that sorts regolith</li><li>KSC Water Cleanup Module (WCM) – a subsystem that receives and cleans water that came from the regolith and the APM</li><li>KSC Atmospheric Processing Module (APM) – a subsystem that collects carbon dioxide and reacts it with hydrogen to produce methane and water</li><li>KSC Lander Mock-up – the operations base</li></ol>  <p>This showed how regolith operations, water generation from regolith and its cleanup, and carbon dioxide collection and conversion into methane operate as a system. This report is divided into sections describing the integrated demonstration, advances made to individual subsystems, and a model of the system and highlights are given here.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Propellant made with ISRU technologies developed by NASA can be made on the Moon and asteroids, leading to a commercial product which will kick start the space economy. Other ISRU technologies will then allow manufacturing in space which will also advance economic activity and human prosperity. Commercially, the ability to convert CO2 into methane has a wide ranging applicability as a green technology by converting CO2 from chemical or power plants, or metabolic CO2 from closed loop environmental life support systems into methane to be used as fuel or for power. On the Moon, ISRU systems could use in situ CO and water to provide methane/oxygen propellant in LEO for commercial satellites and spacecraft.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>96635</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: KSC IRAD (KSC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01: Propulsion Systems</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX07: Exploration Destination Systems; TX10: Autonomous Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2017-03-01</td></tr>
+<tr><th>Project End Date</th><td>2018-03-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Kennedy Space Center (KSC) — Kennedy Space Center, Florida</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Colorado School of Mines — Golden, Colorado</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Florida (FL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Anthony C Muscatello (Principal Investigator) &lt;anthony.c.muscatello@nasa.gov&gt;; Paul E Hintze (Co-Investigator) &lt;paul.e.hintze@nasa.gov&gt;; Andrew J Nick (Co-Investigator) &lt;andrew.j.nick@nasa.gov&gt;; Laurent Sibille (Co-Investigator) &lt;laurent.sibille-1@nasa.gov&gt;; Gabor J Tamasy (Co-Investigator) &lt;gabor.j.tamasy@nasa.gov&gt;; Robert P Mueller (Co-Investigator) &lt;rob.mueller@nasa.gov&gt;; Ivan I Townsend (Co-Investigator); Rene Formoso (Co-Investigator) &lt;rene.formoso@nasa.gov&gt;; Jon A Bayliss (Co-Investigator) &lt;jon.a.bayliss@nasa.gov&gt;; James D Kania (Co-Investigator) &lt;james.d.kania@nasa.gov&gt;; Kurt W Leucht (Co-Investigator) &lt;kurt.leucht@nasa.gov&gt;; Jill L Giles (Co-Investigator) &lt;jill.l.giles@nasa.gov&gt;; Rolando J Nieves (Co-Investigator) &lt;rolando.j.nieves@nasa.gov&gt;; Anne J Meier (Co-Investigator) &lt;anne.meier@nasa.gov&gt;; Jason M Schuler (Co-Investigator) &lt;jason.m.schuler@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Kelvin R Ruiz (Program Manager) &lt;kelvin.r.ruiz@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-02</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Integrated Demonstration On October 24-26, 2017, the Mars Pathfinder modules at the Kennedy Space Center (KSC) participated in a real-time “partially integrated test” in which the RASSOR 2.0 (Regolith Advanced Surface Systems Operations Robot) rover/excavator in the Granular Materials and Regolith Operations (GMRO) Laboratory delivered a total of 65.21 kg of mixed sand and gravel in six batches to the Pathfinder Hopper Feed System. The input hopper screened out gravel larger than ~1 cm diameter and delivered the fine materials to the mock Oven (Soil Processing Module, SPM), where dust tolerant valves located at the top and bottom of the Dryer were closed and the heating/drying cycle was simulated. The Hopper Lift Feed System and the Regolith Dryer and valves were all mounted on the deck of a mock Mars lander which had the dimensions of the Mars Phoenix Lander. After a planned time of two hours, to simulate the time required to drive off adsorbed water, the lower dust-tolerant valve was opened and the regolith was dumped into a bin and weighed. Six separate batches were delivered and “heated” to emulate processing three batches per 7-hour day. While the regolith operations occurred the Water Cleanup Module (WCM) purified a tank of water to simulate preparing water for electrolysis to hydrogen (H2) and oxygen (O2). At the end of the second and third days, water was transferred from the WCM through the Dust Tolerant Automated Umbilical (DTAU) positioned by the UR10 Robot Arm to three tanks on the Red Rover to simulate transfer of the day’s production of water, liquid O2 (LOX), and liquid methane (LCH4). All the above subsystems were located on the main floor of the GMRO Laboratory. At the same time, the Atmospheric Processing Module (APM) in the Applied Chemistry Laboratory (ACL) was operated by first freezing at least 88 g CO2/hour (h) from a simulated Martian atmosphere at Mars atmospheric pressures, followed by sublimation of the CO2 (88 g/h) and feeding it to a Sabatier reactor subsystem along with hydrogen (H2) (16 g/h) to make methane (CH4) (32 g/h) and water (72 g/h). The water was condensed and weighed. The WCM simulated purification of the water from the SPM and the APM at a planned average rate of 144 g/h while demonstrating flight-forward software for potential remote operations. The H2 would have come from electrolysis of water provided by the WCM to the Johnson Space Center (JSC) Water Processing Module (WPM), which would also produce oxygen to complete the propellant production cycle. Water Cleanup Module (WCM) The WCM demonstrated that it was able to process water at rates appropriate for this demonstration. The main advancement in the WCM was the implementation of flight forward software. The system software architecture for WCM consists of various applications, tools, and user interfaces that are necessary for flight missions such as Mars ISRU Pathfinder. The Mars ISRU Pathfinder software architecture has been designed to work in synergy with instrument development while delivering flight ready software at the same time. In essence, the software used during development of the WCM instrument in the lab, over several years, will be the same software used to operate the payload on Mars. This incremental software development approach allows for continuous improvement and testing of the flight software. The software architecture used for WCM was designed to be scalable and can very easily be applied to other systems on Mars ISRU Pathfinder. In fact, this architecture has been thoroughly tested and used for several years on the RESOLVE payload. The mechanism to switch from RESOLVE to Mars ISRU Pathfinder was performed seamlessly. The same applies to all the software development tools required to test, maintain, and distribute the flight forward software. Dust Tolerant Automated Umbilical (DTAU) The Dust Tolerant Automated Umbilical (DTAU) was used to successfully transfer water from the lander to Red Rover. The DTAU is an umbilical interface designed to semi-autonomously transfer fluids from an umbilical to an off-lander tank in dusty (e.g. Mars-like) environments. The main advancement in DTAU is being able to complete this fluid transfer task safely, automatically, and robustly for fluids at high pressures and without dust potentially fouling the hookups. DTAU has been developed iteratively in the GMRO lab over the last several years, and is a cross-cutting hardware technology that could potentially see use in Moon-based, Mars-based, and Earth-based surface systems alike. Simulation Model A simulation model of the entire ISRU system was created using a.) A locally-created physics-based simulation model of RASSOR, b.) An empirically-based model of the WCM, APM, and regolith feed auger subsystems, and c.) Legacy, physics-based simulation models of the Soil Processing Module (SPM), WPM, and LOX and LCH4 Liquefaction systems, the latter of which comprise the subsystems that were not physically used at KSC. These subsystem models were linked together into an overall system-level model, which was able to successfully simulate the production of “commodities” LCH4 and LOX, the former in the quantities that were produced during the integrated test on each test day, and the latter in the quantities that would have been produced from the water that was cycled through the WCM if there had been a physical WPM on Center at KSC. This simulation model will be useful in the future for overall system design, whether for parameter variation or for optimization.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/96635">https://techport.nasa.gov/projects/96635</a>
+    </div>
+  </div>
+</body>
+</html>

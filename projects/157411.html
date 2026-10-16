@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Characterization and modeling of biofilm development by a model multi-species ISS bacterial community | NASA TechPort Project 157411</title>
+  <meta name="description" content="All human habitation in space will take place in a non-sterile environment for two reasons: humans are colonized on every surface and mucosal membrane with upwards of 10,000 different bacterial inhabitants, and there are few surfaces and components that can wi">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/157411">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 157411</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">OSTEM</span>
+          <span class="badge">EPSCoR</span>
+          <span class="badge">TX11.4.4</span>
+        </div>
+        <h1>Characterization and modeling of biofilm development by a model multi-species ISS bacterial community</h1>
+        <div class="meta-id">NASA TechPort Project ID: 157411</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/157411" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          All human habitation in space will take place in a non-sterile environment for two reasons:  humans are colonized on every surface and mucosal membrane with upwards of 10,000 different bacterial inhabitants, and there are few surfaces and components that can withstand complete sterilization. In additional to being potential pathogens, bacteria provide important ecosystem functions in air, water, and soil that would be beneficial to exploit during long-term space travel and eventual off-world colonization. Therefore, it is imperative that we improve our understanding of these co-habitants on our space-going vessels.  Colonization of spacecraft by bacteria is of particular interest for the systems involved in the water cycle including condensers, potable water dispensers, and storage containers. In these systems, the bacterial communities can form biofilms that persist and replicate despite substantial effort and cost involved in removal and monitoring. These water system biofilms are important for two different reasons: crew health and system engineering. From the standpoint of crew health, many bacteria that are common members of potable water communities are also opportunistic pathogens – capable of causing infection if the immune system is compromised. From an engineering standpoint, growing biofilms can change water flow, surface roughness, and surface tension, interfering with proper operation of valves and regulators.  These two aspects of the potable water biofilms will be magnified during long-duration space travel, where equipment must function properly for long durations and where the immune system of the crew will not be fully functional.   Prior work by a subset of our team focused on a low-mass bacterial biofilm eradication strategy using targeted ultrasound-assisted delivery of liposomes loaded with antibiotics to the biofilm. We have demonstrated killing of the majority of bacteria (>80%) on the surface and shown the primary mechanism is ultrasound-driven acoustic streaming and enhanced liposome penetration into the biofilm. During these investigations we made three key observations that lead to this proposed study: (i) the International Space Station (ISS) bacterial isolates can interact to form a reproducible community in vitro, (ii) the bacteria interact with each other to drive community biofilm formation, and (iii) the interactions between these bacteria and the complex and viscous biofilm matrix are amenable to examination using mathematical models.  Given the issues related to bacterial biofilms during space flight, we must understand how complex microbial communities will develop and impact systems and astronauts. The mixed species community isolated from the ISS water reclamation system, including members of the Sphingomonas, Burkholderia, Methylobacterium, and Ralstonia genera provides our model of a bacterial community proven to survive and thrive during space flight. The specific project goals are to:  (1) Characterize bacterial interactions between species in this community including community development in the absence of specific members.  (2) Quantify bacterial species interactions using single-cell analyses to inform the computational models. (3) Develop three agent-based computational models that simulate (i) initial interaction and surface attachment, (ii) biofilm growth after initial attachment, and (iii) particle and diffusive movement through the biofilm.  (4) Test aspects of the numerical models, including particle movement through the matrix and in situ removal of bacteria, using ultrasound-mediated particle delivery.  These studies will allow us to gain insights into both fundamental questions regarding bacterial biofilm communities and practical questions regarding the stability and resilience of biofilms, aiding in the development of improved mediation strategies for long-duration space travel.
+        </div>
+
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>157411</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Office of STEM Engagement (OSTEM)</td></tr>
+<tr><th>NASA Program</th><td>Established Program to Stimulate Competitive Research (EPSCoR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.4.4: Collaborative Science and Engineering</td></tr>
+<tr><th>Project Start Date</th><td>2016-08-01</td></tr>
+<tr><th>Project End Date</th><td>2019-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Vermont — Burlington, Vermont</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Middlebury College — Middlebury, Vermont</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Vermont (VT)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Darren L Hitt (Principal Investigator); Mary J Dunlop (Co-Investigator); Nicholas Brightman (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Kathleen B Loftin (Program Director) &lt;kathleen.b.loftin@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-10-23</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/157411">https://techport.nasa.gov/projects/157411</a>
+    </div>
+  </div>
+</body>
+</html>

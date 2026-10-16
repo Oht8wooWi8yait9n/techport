@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adaptive Digital Pre-distorter for Higher-Order Modulation Nonlinearities and Data Jitter | NASA TechPort Project 17368</title>
+  <meta name="description" content="Recently, there has been a lot of interest in the adoption of variable coding &amp; modulation (VCM); and adaptive coding &amp; modulation (ACM) for the communication systems of near-Earth satellites. These spectral efficient techniques increase data rates by utilizin">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/17368">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 17368</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX05.2.1</span>
+        </div>
+        <h1>Adaptive Digital Pre-distorter for Higher-Order Modulation Nonlinearities and Data Jitter</h1>
+        <div class="meta-id">NASA TechPort Project ID: 17368</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/17368" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Recently, there has been a lot of interest in the adoption of variable coding & modulation (VCM); and adaptive coding & modulation (ACM) for the communication systems of near-Earth satellites. These spectral efficient techniques increase data rates by utilizing the available link margins and pairing various channel coding schemes with higher-order modulations, but have a number of implementation and performance challenges. We propose to develop an adaptive digital pre-distorter modulator that would overcome these challenges. Recently, there has been a lot of interest in the adoption of variable coding & modulation (VCM); and adaptive coding & modulation (ACM) for the communication systems of near-Earth satellites. These spectral efficient techniques increase data rates by utilizing the available link margins and pairing various channel coding schemes with higher-order modulations, but have a number of implementation and performance challenges. We propose to develop an adaptive digital pre-distorter that would overcome these challenges.</p>  <p>The Consultative Committee on Space Data Systems (CCSDS) has adopted two VCM/ACM systems, Digital Video Broadcasting (DVB-S2) and Serially Concatenated Convolutional Coding (SCCC), but the fundamental concept of VCM/ACM can be applied to existing sets of CCSDS protocols, such as Low Density Parity Check (LDPC) codes with higher order modulations. These systems try to operate with all available link margins while maintaining a constrained bandwidth, by increasing data rates through the use of various channel coding and modulation combinations.</p>  <p>Fundamentally, higher-order modulations are heavily sensitive to channel distortions, producing large losses in link performance and power efficiency. The distortions are typically handled by pre-distortion of the waveforms prior to the amplifier, with one of the most practical approaches being the application of a static inversion of the measured amplifier characteristics. However, these pre-distortion approaches have limited capability due in part to improper characterization of the amplifier response or the limitation in the pre-distortion algorithm. Typically, manufacturers’ input amplitude modulation to output amplitude modulation (AM/AM) and input amplitude modulation to output phase modulation (AM/PM) curves are measured with a single tone radio frequency carrier that is varied in power. However, the data modulated transmitted signal is dynamic, with a spectrum of side tones across the bandwidth. The non-linearity will produce intermodulation products that are not considered in these measurements, thus designing a pre-distorter with these measurements is inaccurate and will produce a large penalty in the error performance of the link.</p>  <p>Alternatively, the input drive level of the amplifier can be backed off to minimize nonlinearities. However, as the order of the modulation increases, so does the amount of backed off power. Having a transmitter operating with a large amount of required input back off translates into a tremendous amount of direct current (DC) power required on the spacecraft to support these modulations.</p>  <p>The objective of this proposal is to develop an adaptive digital pre-distorter that can overcome the challenge of requiring excessively high DC power for higher-order modulations that are required for high-data rates links, e.g. VCM/ACM links. In addition, the fundamental approach can also be applied to mitigate phase noise by reducing symbol-to-symbol jitter. The advantages of digital pre-distortion are that the dynamic and memory behavior of the AM/AM can be measured in real-time while the adaptive algorithm can mitigate these effects to a designed precision based on a learning algorithm. Therefore we can effectively eliminate any distortions created by the amplifier.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This effort will enable a fully successful adoption of higher-order modulations and VCM/ACM for near-Earth satellite communications. Using the proposed pre-distortion system for a X-band system with 375 MHz of available bandwidth, we can expect an increase data rate from 375 Mbps (QPSK) up to 562.5 Mbps (8-PSK), 750 Mbps (16APSK), and 937.5 Mbps (32APSK). respectively. For a Ka-band system with a typical 1.5 GHz of available bandwidth, the increase in data rate would be significant. It will increase the communication system from 1.5 Gbps (QPSK) up to 2.25 Gbps (8-PSK), 3.0 Gbps (16APSK), and 3.75 Gbps (32APSK) respectively.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>17368</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX05.2.1: Spectrum Efficiency</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2014-10-01</td></tr>
+<tr><th>Project End Date</th><td>2018-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Sun, Earth, Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Wei-Chung Huang (Principal Investigator) &lt;weichung.huang@nasa.gov&gt;; Wesley A Powell (Project Manager) &lt;wesley.a.powell@nasa.gov&gt;; Lavida D Cooper (Project Manager) &lt;lavida.d.cooper@nasa.gov&gt;; Timothy D Beach (Project Manager) &lt;timothy.d.beach@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-02</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: As an FY18 IRAD effort with reduced/descoped funding, objectives were initiated by identifying a published algorithm that was geared for wideband Orthogonal Frequency Division Multiplexing (OFDM). We modified the published algorithm to work for the various CCSDS VCM modulations. However, the Least Squares algorithm using the Normal Equations failed to produce good results. We had to modify the approach. Without this modification, the algorithm did not work. We also optimized the target error threshold by setting a maximum number of iterations. We are currently trying to understand why the conventional Normal Equations approach fails, but our initial theory is that modulations produced an ill-conditioned matrix. We have created three power amplifier models that have different mathematical representations and slightly different distortion characteristics. We then implemented, in MATLAB simulation, an indirect learning control loop to predistort and correct the distortions introduced by our mathematical representation of the power amplifiers. Three pre-distortion algorithms with varying complexity were included in the Indirect Learning control loop and their performances were compared. We successfully verified complete reduction of spurs and non-linearities in the output of the transmitter. We also implemented a more complex algorithm. But there was very little gain in performance and it increased processing time significantly. In FY18, we also began to look closer at the system architecture for actual hardware implementation and began the purchase of some electronic components. After hardware demonstration with the breadboard design and FPGA evaluation board, we would like to extend the demonstration to other existing transmit systems. The results and a technical report could also be shared with the Space Communications and Navigation Office (SCaN) which funds CCSDS-related developments and this development is in-line with their technology portfolio for spectrum efficient technologies. In addition, the algorithms developed could be extended to laser communications as well. We will also gauge outside agency interest and consider potential commercialization and licensing of the developed algorithm. The purpose of the Goddard Space Flight Center’s Internal Research and Development (IRAD) program is to support new technology development and to address scientific challenges. Each year, Principal Investigators (PIs) submit IRAD proposals and compete for funding for their development projects. Goddard’s IRAD program supports eight Lines of Business: Astrophysics; Communications and Navigation; Cross-Cutting Technology and Capabilities; Earth Science; Heliophysics; Planetary Science; Science Small Satellites Technology; and Suborbital Platforms and Range Services. Task progress is evaluated twice a year at the Mid-term IRAD review and the end of the year. When the funding period has ended, the PIs compete again for IRAD funding or seek new sources of development and research funding or agree to external partnerships and collaborations. In some cases, when the development work has reached the appropriate Technology Readiness Level (TRL) level, the product is integrated into an actual NASA mission or used to support other government agencies. The technology may also be licensed out to the industry. The completion of a project does not necessarily indicate that the development work has stopped. The work could potentially continue in the future as a follow-on IRAD; or used in collaboration or partnership with Academia, Industry and other Government Agencies. If you are interested in partnering with NASA, see the TechPort Partnerships documentation available on the TechPort Help tab. http://techport.nasa.gov/help</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="http://aetd.gsfc.nasa.gov/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>Adaptive Digital Predistorter</strong> — Adaptive Digital Predistorter</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/17368">https://techport.nasa.gov/projects/17368</a>
+    </div>
+  </div>
+</body>
+</html>

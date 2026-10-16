@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dust Mitigation for Flexible Solar Arrays (DMFlex-ACO) | NASA TechPort Project 116295</title>
+  <meta name="description" content="Tall, vertical solar arrays are under development for the lunar south pole due to their potential to generate power even when the surface is shadowed. Lunar dust is largely dominated by electrostatic forces on the Moon&#x27;s surface. It can be both positively or n">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/116295">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 116295</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">GCD</span>
+          <span class="badge">TX03.3.2</span>
+        </div>
+        <h1>Dust Mitigation for Flexible Solar Arrays (DMFlex-ACO)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 116295</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/116295" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p><br /></p><p>Tall, vertical solar arrays are under development for the lunar south pole due to their potential to generate power even when the surface is shadowed. Lunar dust is largely dominated by electrostatic forces on the Moon's surface. It can be both positively or negatively charged due to UV radiation or electrons electron and readily sticks to exposed surfaces. Solar arrays operating in charging environments will also become charged, making it even harder to remove dust from their surfaces. As dust coats the surface of arrays, they will experience power generation degradation due to a decrease in light reaching the cells. These large vertical solar arrays, even though they are elevated 10 meters off the ground, will require effective and reliable dust mitigation if they are to maintain power output over long mission lifetimes. </p><p>The DMFlex Project is a collaboration between NASA Glenn Research Center (GRC) and Maxar Technologies to investigate the efficacy of vibromechanical dust mitigation technology for flexible solar arrays in a simulated lunar environment. Maxar is responsible for designing and fabricated the solar array test coupons with piezoelectric dust removal technologies imbedded. Three separate test articles with varying solar cell technologies and substrates are tested. GRC is responsible for designing and building the hardware to test the dust mitigation strategies in vacuum, developing a novel characterization technique, performing charging investigations in the Plasma Interaction Facility, and performing dust mitigation testing in Vacuum Facility (VF)-13.<br /></p><p>A Roll Out Solar Array (ROSA), similar to the solar arrays used on an International Space Station (ISS) flight demonstration in 2017, will be tested <span style="font-size:1.1em">in a simulated lunar regolith dust environment. A mechanism similar to that employed on the ISS flight demo, will be used to mechanically pulse the wing to various modes in an attempt to “shake loose" the dust. Test levels and durations will be adjusted for 1G based on correlation between the ISS on-orbit testing and similar testing performed at 1G by DSS.</span></p><p><br /></p><p><br /><br /><br /></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p><br /></p><p>Future NASA & commercial missions to the Moon, such as Human Landing System (HLS), and Mars will rely on solar arrays for power generation. The landing, as well as other surface activities, may cause dust to impinge and then occlude solar arrays. The amount of dust-related power loss on solar arrays is not well understood, and risk mitigation must be engaged to remove dust to avoid mission-critical losses and optimize specific power. This project's concept enables a simple mechanical, vibrating solution to a flexible solar array dust mitigation, this is cost effective, simple to enact, and can reduce replacement costs. </p><p>This project produced the development of a novel characterization technique for analyzing how well the dust mitigation technique worked, called electroluminescence (EL) imaging. Electroluminescence imaging is typically a qualitative technique used to observe cracks and defects in solar cells during batch processing, but when paired with image processing, it becomes a useful quantitative analysis method. </p><p>This project produced custom test hardware for depositing dust on solar array test coupons in vacuum in GRC's VF-13 chamber. This hardware can be used again in the future for testing additional coupons and dust mitigation technologies. These products, along with the report of lessons learned, are valuable for future work in this field of technology development.<br /><br /></p><p><br /><br /></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>116295</td></tr>
+<tr><th>Acronym</th><td>DMFlex-ACO</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Game Changing Development (GCD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX03.3.2: Distribution and Transmission</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX06: Human Health, Life Support, and Habitation Systems; TX07.2.5: Particulate Contamination Prevention and Mitigation</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2021-01-15</td></tr>
+<tr><th>Project End Date</th><td>2023-12-08</td></tr>
+<tr><th>Lead Organization / Center</th><td>Maxar Technologies — Westminster, Colorado</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Glenn Research Center (GRC) — Cleveland, Ohio; Microlink</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Ohio (OH)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Michael D Anderson (Project Manager); Jenna B Fothergill (Project Manager) &lt;jenna.fothergill@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Mark N Thornblom (Program Manager) &lt;mark.n.thornblom@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: DMFlex, or Dust Mitigation of Flexible Solar Arrays, is a project that set out to investigate the efficacy of vibromechanical dust mitigation technology for flexible solar arrays in collaboration with Maxar under an Announcement of Collaboration Opportunity (ACO) agreement. Tall, vertical solar arrays are under development for the lunar south pole due to their potential to generate power even when the surface is shadowed, as this elevation will only experience a maximum of 96 hours of darkness and keeping them dust-free is paramount for efficiency and lifespan of these solar arrays. Lunar dust, the smallest subset of lunar regolith, is largely dominated by electrostatic forces on the Moon’s surface. It can be both positively or negatively charged due to UV radiation or electrons and readily sticks to exposed surfaces. Solar arrays operating in charging environments will also become charged, making it even harder to remove dust from their surfaces. As dust coats the surface of arrays, they will experience power generation degradation due to a decrease in light reaching the cells. These large vertical solar arrays, even though they are elevated 10 meters off the ground, will require effective and reliable dust mitigation if they are to maintain power output over long mission lifetimes. This project is a collaboration between NASA Glenn Research Center and Maxar Technologies. Maxar designed and fabricated the solar array test coupons with mitigation technologies imbedded, while GRC was responsible for the characterization technique and test setup/operation. Throughout the course of this project, the GRC team designed and built hardware to test the dust mitigation strategies in vacuum, developed a characterization technique, performed charging investigations in the Plasma Interaction Facility, and performed dust mitigation testing in Vacuum Facility (VF)-13. Post-testing analysis showed some recovery of pre-dusting performance, but samples were still visibly dusty after performing mitigation testing in vacuum. The electrostatic adhesion of dust to the solar array coupon, in this case, appears to be stronger than the vibration force applied by the piezoelectrics imbedded into the arrays.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/116295">https://techport.nasa.gov/projects/116295</a>
+    </div>
+  </div>
+</body>
+</html>

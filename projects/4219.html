@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Novel Highly Efficient Scheme for the Boltzmann Equation | NASA TechPort Project 4219</title>
+  <meta name="description" content="In fluid dynamics, the limits of continuum mechanics are surpassed when the mean free path of molecules becomes equivalent to the characteristic length scale. This can occur in hypersonic transition when molecular scales are equivalent to roughness height, dur">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/4219">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 4219</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX09.4.5</span>
+        </div>
+        <h1>A Novel Highly Efficient Scheme for the Boltzmann Equation</h1>
+        <div class="meta-id">NASA TechPort Project ID: 4219</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/4219" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          In fluid dynamics, the limits of continuum mechanics are surpassed when the mean free path of molecules becomes equivalent to the characteristic length scale. This can occur in hypersonic transition when molecular scales are equivalent to roughness height, during atmospheric entry, in spacecraft attitude control plumes, and in the small dimensions of micro- and nano-scale devices. Within these regimes, the Boltzmann equation must be solved to accurately model the physics. Methods such as DSMC have been developed to provide solutions to the equation. However, DSMC has difficulty simulating complex gas models with unsteadiness, intricate geometry, or chemistry. It also tends to produce noisy solutions that are difficult to couple with continuum solvers. New discrete velocity methods which require less computational cost and produce less statistical noise are being developed as an alternative to DSMC. The problems with DSMC can be addressed by a discrete velocity method if the Boltzmann equation is solved using several key innovations recently developed at the University of Texas. The results provide the exciting prospect of efficient, cost effective, quiet, and accurate solutions to the Boltzmann equation. The current innovations utilize a statistical method called variance reduction where properties of equilibrium distributions are used to greatly reduce statistical noise and reduce computational time. A second key innovation is a method for allowing arbitrary post-collision velocities to be mapped back onto a discrete grid in velocity space. Both innovations opened the door to my development of a solver utilizing non-uniform velocity grids and schemes for moving a distribution function between different velocity grids.  I propose to advance the current discrete velocity model to a version that handles adaptivity in the velocity grid and includes rotational and vibrational internal energy. Velocity grid adaptation will greatly enhance the ability of a discrete velocity code to produce more accurate results for any quantity of interest. The inclusion of internal energy better represents physical reality, and with internal energy included, multiple species can be used in simulations. Accurate representation of the distribution function allows for more accurate and efficient simulations. The discrete velocity method I develop will be a large step towards a fully capable flow solver that can be coupled with continuum solvers to correctly model flow with rarefied gas effects. The increased accuracy without exorbitant cost addresses NASA's strategic goals by allowing easy access to computational solutions.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The discrete velocity method I develop will be a large step towards a fully capable flow solver that can be coupled with continuum solvers to correctly model flow with rarefied gas effects. The increased accuracy without exorbitant cost addresses NASA's strategic goals by allowing easy access to computational solutions.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>4219</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.4.5: Integrated Modeling and Simulation for EDL</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-08-01</td></tr>
+<tr><th>Project End Date</th><td>2015-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>The University of Texas at Austin — Austin, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Phillip Varghese (Principal Investigator); Peter B Clarke (Co-Investigator) &lt;peter.b.clarke@nasa.gov&gt;; Yen Liu (Project Manager) &lt;yen.liu@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The work completed during the course of the NSTRF grant period was focused on the development of an accurate, low cost flow solver through a discrete velocity analysis of the Boltzmann equation. According to kinetic theory, at the microscopic level the state of a system is defined by the motion of molecules and their interactions through collisions. The nature of these interactions is determined by the intermolecular potentials, and collisions result in exchanges of momentum and sometimes internal energy between molecules. The Boltzmann equation accounts for these molecular interactions and is necessary for the description of flows where the continuum (NavierStokes) equations fail. More specifically, the continuum equations break down when the ratio between the mean free path and the length scale describing flow gradients, known as the Knudsen number, approaches and passes 0.01. Rarefied flows can occur in micro- and nano-scale devices, shocks, satellite attitude control thruster plumes, around satellites in low-earth orbit, and during hypersonic re-entry. These flows can be very complex and might include changes to internal energy states, unsteadiness, and intricate geometries. The basic premise behind the discrete velocity method (DVM) is characterized by defining the velocity distribution function only at discrete internals in velocity space. This is advantageous by decreasing the number of possible collision events and the number of quasi-particles stored in memory. The discretized velocity distribution function is used as the framework for solving the full Boltzmann equation. The equation is split into convection (left hand side) and collision (right hand side) parts, each is solved in sequence, and time is advanced. Solving the collision integral is done through selecting a simulated collisions weighted by the number density at each velocity location, depleting the appropriate number density adjusted by the total collision cross-section and relative velocity, determining a post-collision replenishing location, returning the number density in a manner which conserves mass, momentum, and energy, and finally repeating the process until a total number of simulated collisions has been reached. The number of simulated collisions is chosen to obtain a desired level of computational efficiency and stochastic noise, and the density depleted per collision is determined from the total depletion indicated by the collision term in the Boltzmann equation divided by the number of simulated collisions. Convection is performed using a finite difference method appropriate to the flow parameters and desired accuracy. The discrete velocity method developed in the PhD work is an extension of a previous method completed by Aaron Morris for a single, monatomic species solved on a uniform (evenly space) velocity grid with either a hard sphere or pseudo-Maxwell collision cross-section model. The additions to the method included: • Variable hard sphere and variable soft sphere collision models were implemented to model the collision cross-section of molecules. • A variety of new boundary conditions were added including diffuse and accommodated wall reflection. • Adjustments were made to account for a range of Knudsen numbers. • Using simple realignment of grid lines, non-uniform velocity grids were implemented with the intention of focusing computational effort in a more efficient manner. • The method was extended to include gas mixtures. A major focus of this work was on mixtures with large number density or mass ratios. • The final improvement to the discrete velocity method was the implementation of a quantized internal energy model where full rotational and vibrational distributions are stored and updated during elastic and inelastic collisions. • Variance reduced formulations for each of the preceding bullet points. Variance reduction methods reduce stochastic noise and the number of simulated collisions, especially in nearequilibrium flows. The research completed during the fellowship period extended a basic Boltzmann solver to include new physics to allow for a variety of flow conditions, and made use of computational methods to improve the efficiency of flow simulations. The completed work is only some of the possible improvements to the discrete velocity code that could have been made, and continuing work by future graduate students will introduce new physics and further improve computational efficiency.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>4219-1363113423783.jpg</strong> — Project Image A Novel Highly Efficient Scheme for the Boltzmann Equation</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/4219">https://techport.nasa.gov/projects/4219</a>
+    </div>
+  </div>
+</body>
+</html>

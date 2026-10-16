@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hyperspectral and SWIR camera integration for UAS deployments (SAGE UAS) | NASA TechPort Project 105699</title>
+  <meta name="description" content="We will acquire hyperspectral, high-resolution pan imagery and scanning lidar over CO 2 tower flux sites can accurately measure forest productivity and stress. Hyperspectral reflectance and higher resolution panchromatic images will be acquired from GSFC’s Fir">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/105699">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 105699</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX08</span>
+        </div>
+        <h1>Hyperspectral and SWIR camera integration for UAS deployments (SAGE UAS)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 105699</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/105699" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>We will acquire hyperspectral, high-resolution pan imagery and scanning lidar over CO<sub>2</sub> tower flux sites can accurately measure forest productivity and stress. Hyperspectral reflectance and higher resolution panchromatic images will be acquired from GSFC’s FireflEYE camera. This work will utilize Virginia Tech’s UAS to acquire a full suite of seasonal and diurnal data to needed demonstrate and support algorithm development for GSFC’s MiniSpec instrument and SAFE (Structure and Function of Ecosystems) and Concurrent Artificially-intelligent Spectrometry and Adaptive Lidar System (CASALS) mission concepts. VT will also provide UAS based scanning lidar data for detailed 3D forest structure for this project. Initial flights will be in western Virginia over forests representative of Appalachian conifer and deciduous forests.</p>  <p> </p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Ghost forests along the Chesapeake Bay stand as a local example of dieback in plain sight and a contributor to sediment in Bay waters. Why do forest die? What is the extent and rate of forest dieback globally? What are the consequences to human life of disappearing forests? How can we know a forest is unhealthy before it’s too late? For decades, scientists have successfully used vegetation optical properties as indicators of physiological activity (e.g., photosynthesis and respiration), the fundamental driver of land-atmosphere CO<sub>2</sub> exchange. Improved measurements of these indicators are necessary to document, model and manage carbon sequestration and loss. Numerous studies have shown that vegetation optical properties are impacted by vegetation structure, and by changing patterns of shadows and physiological changes during a day. This IRAD seeks to mature concepts that account for these vegetation structure and diurnal effects. Multiple measurements will be made at different sun angle positions on at least 6 separate days during the growing season at tower flux sites that serve as calibration sources. These measurements simulate the observations and on-board scene analysis being considered for two mission concepts under development at Goddard, the Structure and Function of Ecosystems (SAFE) and the Concurrent Artificially-intelligent Spectrometry and Adaptive Lidar System (CASALS). These measurements are called for in the 2017 Earth Science Decadal survey and are the basis for SAFE, CASALS and future mission concepts.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>105699</td></tr>
+<tr><th>Acronym</th><td>SAGE UAS</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08: Sensors and Instruments</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX02: Flight Computing and Avionics; TX11: Software, Modeling, Simulation, and Information Processing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2021-10-01</td></tr>
+<tr><th>Project End Date</th><td>2022-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Virginia Polytechnic Institute and State University (VA Tech) — Blacksburg, Virginia; Virginia Polytechnic Institute and State University (VA Tech) — Blacksburg, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Kenneth J Ranson (Principal Investigator) &lt;kenneth.j.ranson@nasa.gov&gt;; Philip Dabney (Co-Investigator) &lt;philip.dabney@nasa.gov&gt;; James P Mackinnon (Co-Investigator) &lt;james.mackinnon@nasa.gov&gt;; Alexey N Shiklomanov (Co-Investigator) &lt;alexey.shiklomanov@nasa.gov&gt;; David J Harding (Co-Investigator) &lt;david.j.harding@nasa.gov&gt;; Julia W Breed (Project Manager) &lt;julia.w.breed@nasa.gov&gt;; Ian S Adams (Project Manager) &lt;ian.s.adams@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-02</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: We successfully acquired UAS and rooftop measurements of tree canopies and demonstrated that AI/ML techniques can used to estimate canopy shadows (an important error source) and approximate results from a physical model for estimating amount of absorbed photosynthetically active radiation. The purpose of the Goddard Space Flight Center’s Internal Research and Development (IRAD) program is to support new technology development and to address scientific challenges. Each year, Principal Investigators (PIs) submit IRAD proposals and compete for funding for their development projects. Goddard’s IRAD program supports eight Lines of Business: Astrophysics; Communications and Navigation; Cross-Cutting Technology and Capabilities; Earth Science; Heliophysics; Planetary Science; Science Small Satellites Technology; and Suborbital Platforms and Range Services. Task progress is evaluated twice a year at the Mid-term IRAD review and the end of the year. When the funding period has ended, the PIs compete again for IRAD funding or seek new sources of development and research funding, or agree to external partnerships and collaborations. In some cases, when the development work has reached the appropriate Technology Readiness Level (TRL) level, the product is integrated into an actual NASA mission or used to support other government agencies. The technology may also be licensed out to the industry. The completion of a project does not necessarily indicate that the development work has stopped. The work could potentially continue in the future as a follow-on IRAD; or be used in collaboration or partnership with Academia, Industry, and other Government Agencies. If you are interested in partnering with NASA, see the TechPort Partnerships documentation available on the TechPort Help tab. http://techport.nasa.gov/help</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://twitter.com/intent/follow?screen_name=NASAGoddard" target="_blank" rel="noopener noreferrer">NASA Goddard Twitter</a></li><li><a href="http://www.nasa.gov/centers/goddard/home/index.html" target="_blank" rel="noopener noreferrer">NASA Goddard Website</a></li><li><a href="https://www.facebook.com/NASA.GSFC" target="_blank" rel="noopener noreferrer">NASA Goddard Facebook</a></li><li><a href="https://sciences.gsfc.nasa.gov/sci/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>SAFE UAS </strong> — The FireflEYE is small hyperspectral frame camerais the white object at the from f the Virginia Tech UAS, Skyfish M6.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/105699">https://techport.nasa.gov/projects/105699</a>
+    </div>
+  </div>
+</body>
+</html>

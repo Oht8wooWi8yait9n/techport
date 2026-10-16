@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Real-Time Fault Management Software System for Distributed Environments | NASA TechPort Project 18067</title>
+  <meta name="description" content="Fault Management (FM) is critical to mission operations and particularly so for complex instruments – such as those used for aircraft and spacecraft. FM software and methodologies, however, too often have nagging limitations that restrict utility, and research">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/18067">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 18067</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX10.2.3</span>
+        </div>
+        <h1>A Real-Time Fault Management Software System for Distributed Environments</h1>
+        <div class="meta-id">NASA TechPort Project ID: 18067</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/18067" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Fault Management (FM) is critical to mission operations and particularly so for complex instruments – such as those used for aircraft and spacecraft. FM software and methodologies, however, too often have nagging limitations that restrict utility, and research and development continues to grapple relative to advancements in the complex systems they monitor. Modern spacecraft, for example, may have thousands of sensors and hundreds of systems/subsystems (and extensive cabling) but relatively few FM co-solutions. Theoretically, the overall FM challenge is in monitoring, modeling, and managing the huge numbers of signals and then determining how to detect them and set appropriate handling actions. For complex systems FM is not trivial, and automated FM is tasked with catching potential failure conditions within interconnected networks before consequences elevate. Ensuring fault coverage while maintaining system reliability under these circumstances is a daunting challenge for even the most capable team, and from anecdotal evidence, it is apparent that FM remains partly elusive. Our SBIR project herein involves the research and development of an innovative FM software solution called "DyMA-FM" (Dynamic Multivariate Assessment for Fault Management). As software, it uses model-based reasoning in a distributed processing environment for real-time detection and response to fault conditions. Building on the Phase I successes, in the course of this Phase II we will further develop the DyMA-FM concept as an innovative full prototype FM software application, having a tiered hierarchical architecture design leveraging advances in mathematical modeling. Thus, as per the intent of the Phase II, we believe we have a well-defined and innovative FM system capable of meeting the NASA requirements and representative thematic goals of: (1) verifiability, (2) transparency, and (3) fault coverage. Phase II, then, will allow us to advance the development further and fully.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          During Phase I we demonstrated the DyMA-FM analytical foundation using BCDU data from the ISS. Our Phase I conclusions, and the basis for our Phase II argument, are as follows: DyMA-FM is easily scalable and configurable and can adapt to widely variant NASA FM needs. Notably, this is one of the main advantages of having a software solution serve as the initial SBIR-derived product. We envision the following NASA options for DyMA-FM transition: - Create a standalone passive software FM monitoring system, usable on a laptop, and suitable for NASA laboratory testing/design support. - Migrate the software to an integrated, yet still passive, ground-based mission control role. - Integrate the software for in-flight support, helping to monitor and diagnose FM in situ (i.e., aboard the ISS) or other larger program missions. - Under separate funding, build hardware modules of the solution for full integration with system hardware. (We should note that while our partner, Boeing, desires this option fully.) Thus, we believe the DyMA-FM software solution has directly relevant roles for both: (1) NASA development engineering and design in the laboratory as well as (2) continuous, real-time (passive) support for missions and mission control. Additionally, the output for DyMA-FM could migrate from being a passive system to an active one. Success in this regard would conform fully to the theme and scope of an SBIR.<br /> <br />DyMA-FM is a software solution fully capable of running on multiple hardware/operating system configurations. The target market is the electrical industry, particularly those focused on closed grids (i.e., micro-grids, automobiles, aircraft, subsystems, etc.). Since the system performs modeling as per signal inputs, nearly any network capable of digital monitoring could make a suitable target for the solution. Thus, we see commercial opportunities in the following product formats: - Software – We plan to offer commercial versions of DyMA-FM as a standalone software application. This will entail an "exclusive" reseller agreement with IAVO being paid a licensing fee for each copy sold. We also envision multiple versions of the software to emerge once we develop initial revenues. - Embedded software – We expect DyMA-FM software to work as a component within larger offerings. This would be built under an original equipment manufacturer agreement whereby DyMA-FM would become embedded/integrated with another vendor's system. This would require a formal end-user license agreement. - Hardware – Our SBIR partner (e.g., the Boeing Corporation) finds great appeal in a hardware version. The logic being that this would allow them to configure devices as per needs – and install the integrated module as an FM plug-in on existing and future aircraft. Boeing holds that this resulting device would have great utility for their aircraft design, test, and operations.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>18067</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX10.2.3: Path Planning</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2014-04-24</td></tr>
+<tr><th>Project End Date</th><td>2016-04-23</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>INTERNATIONAL ASSOCIATION OF VIRTUAL ORG — Durham, North Carolina</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL), North Carolina (NC)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Brad Grinstead (Principal Investigator); Craig Moore (Project Manager) &lt;Craig.E.Moore@NASA.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong>: A Real-Time Fault Management Software System for Distributed Environments, Phase II Project Image</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart Image</li><li><strong>Briefing Chart</strong> — A Real-Time Fault Management Software System for Distributed Environments, Phase II</li><li><strong>Briefing Chart Image</strong> — A Real-Time Fault Management Software System for Distributed Environments, Phase II</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/18067">https://techport.nasa.gov/projects/18067</a>
+    </div>
+  </div>
+</body>
+</html>

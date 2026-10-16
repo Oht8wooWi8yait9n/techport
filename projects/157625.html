@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crew Health and Performance EVA Simulation Development (EVA Sim Dev) | NASA TechPort Project 157625</title>
+  <meta name="description" content="Development of Crew Health and Performance Spacesuit Physiology &amp;amp; Performance capabilities that are enabling for surface Extravehicular Activities (EVA)s on the moon and Mars requires ground-based test environments that physically and cognitively simulate ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/157625">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 157625</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">ESDMD</span>
+          <span class="badge">MCO</span>
+          <span class="badge">TX06</span>
+        </div>
+        <h1>Crew Health and Performance EVA Simulation Development (EVA Sim Dev)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 157625</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/157625" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Development of Crew Health and Performance Spacesuit Physiology &amp; Performance capabilities that are enabling for surface Extravehicular Activities (EVA)s on the moon and Mars requires ground-based test environments that physically and cognitively simulate the relevant aspects of EVA scenarios with sufficient fidelity to provide meaningful assessment of prototype technologies and conops. For example, development and testing of decision support algorithms that will aid a crewmember in modulating their physical workload to prevent overexertion and hypercapnia – both of which affect cognitive performance – requires an environment that approximates both the physical and cognitive demands of EVA as well as operationally relevant methods by which to quantify performance. Current planetary EVA simulation capabilities are costly and often preclude frequent testing. </p>  <p>The EVA Simulation Development project includes development of an affordable and repeatable crew health and performance EVA simulation environment that can physically and cognitively simulate the relevant aspects of EVA scenarios to provide meaningful assessments of prototype technologies and capabilities and iterative development testing. The Assessments of Physiology and Cognition in Hybrid-reality (APACHE) facility will utilize a lunar regolith simulant in combination with physical, virtual, or hybrid reality simulations to provide an affordable, repeatable, and readily available environment for crew health and performance EVA testing and technology development. In addition, a low cost, modular, unpressurized spacesuit workload simulator, the Hybrid Spacesuit Simulator (HS3), will be developed for use in integrated testing environments where higher fidelity spacesuits are unavailable or unnecessary for testing objectives. </p>  <p>The EVA Simulation Development facility and capabilities will incorporate the full Physical and Cognitive Exploration Simulations (PACES) methodology and complement of surface EVA scenarios, tasks, procedures, sensors, information systems, displays, interfaces, and metrics to enable testing necessary to close Crew Health and Performance Capability gaps related to surface EVA. </p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This work will provide a testing environment as well as standardized testing procedures and methods to support development of ground-based and in-flight Extravehicular Activity (EVA) biomedical decision support technologies to enable EVA crew health and performance monitoring and decision making during increasingly Earth-independent operations. </p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>157625</td></tr>
+<tr><th>Acronym</th><td>EVA Sim Dev</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Exploration Systems Development Mission Directorate (ESDMD)</td></tr>
+<tr><th>NASA Program</th><td>Mars Campaign Office (MCO)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06: Human Health, Life Support, and Habitation Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 4 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2019-10-01</td></tr>
+<tr><th>Project End Date</th><td>2025-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars, Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Kent L Kalogera (Project Manager) &lt;kent.l.kalogera@nasa.gov&gt;; Patrick N Estep (Project Manager) &lt;patrick.n.estep@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Thomas W Inman (Program Director) &lt;thomas.w.inman@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-06-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The NASA EVA and Environmental Physiology Laboratory (EEPL) developed the Hybrid Space Suit Simulator (HS3), a modular, low-cost, unpressurized space suit simulator designed to support a wide range of EVA research objectives. HS3 enables consistent, quantifiable simulation fidelity while significantly reducing logistical and financial overhead for EVA analog research and testing. This report provides a comprehensive overview of the design, development, and construction of the HS3 to enable research use of the HS3. In addition, this report highlights characterization studies of the HS3, demonstrating its ability to be a customizable, modular research tool equipped with integrated physiological sensors. HS3 is a critical tool for advancing EVA-related research by enabling targeted studies that address knowledge gaps including objectives related to physical and cognitive performance during simulated EVA tasks.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Hybrid Space Suit Simulator (HS3): Development, Characterization, Construction, and Usage </li><li><strong>[Closeout Link]</strong> Closeout Link</li><li><strong>Hybrid Space Suit Simulator (HS3): Development, Characterization, Construction, and Usage</strong></li><li><strong>APACHE - Overview</strong></li><li><strong>EVA Sim Dev</strong> — (Top) Subject conducting VR rover operations on CKAS motion platform. (Middle) Subject in Full HS3 configuration conducting geology operations in APACHE sandbox. (Bottom) Subject conducting VR geology operations on the omnidirectional treadmill.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/157625">https://techport.nasa.gov/projects/157625</a>
+    </div>
+  </div>
+</body>
+</html>

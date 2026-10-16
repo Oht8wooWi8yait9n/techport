@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automated Medical Inventory System (AMIS) | NASA TechPort Project 145029</title>
+  <meta name="description" content="The current medical inventory paradigm on the International Space Station (ISS) requires crew to report use of medications and supplies to be manually decremented by ground teams. This method is not only tedious and time consuming for both the crew and ground ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/145029">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 145029</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">ESDMD</span>
+          <span class="badge">MCO</span>
+          <span class="badge">TX06.3</span>
+        </div>
+        <h1>Automated Medical Inventory System (AMIS)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 145029</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/145029" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The current medical inventory paradigm on the International Space Station (ISS) requires crew to report use of medications and supplies to be manually decremented by ground teams. This method is not only tedious and time consuming for both the crew and ground teams but also results in inaccuracies in location and availability of medical supplies over time. Fortunately, the ISS is frequently resupplied by cargo launches and crew expeditions, and an accurate inventory count is less critical. However, for exploration missions, resupply will be greatly limited or unavailable entirely, and increasing communication latency will impair crew-ground communications. On longer missions, with large medical systems and time constrained crew, NASA needs a method of accurately managing medical inventory without reliance on ground teams and with as little crew time and effort as possible.</p><p>The Exploration Medical Integrated Product Team (XMIPT) project called Medical Exploration Development and Implementation Scoping (MEDIScope) prepared a concept of operations and preliminary requirements for an Automated Medical Inventory System (AMIS) and completed a market survey and trade study of potential inventory management technologies in partnership with the market research firm, yet2. The products from the MEDIScope effort, including the market survey results, preliminary functional requirements and a concept of operations, were handed off to a development team at Glenn Research Center (GRC) and ZIN Technologies for technology maturation. The AMIS team completed a system-level requirements review in February 2024 and delivered a set of engineering level requirements leveraging lessons learned from a previous Medical Consumables Tracking (MCT) project developed under the Human Research Program which focused specifically on pharmaceutical dose tracking. </p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>An AMIS would reduce the manual effort associated with ground and in-flight medical inventory, increase accuracy of inventory reporting, and help ensure crew can locate items efficiently for quick use in medical situations. Planned integration with the Crew Health and Performance Integrated Data Architecture (CHP-IDA) can inform tools such as clinical decision support to direct medication and medical supply usage efficiently thus conserving limited resources. </p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>145029</td></tr>
+<tr><th>Acronym</th><td>AMIS</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Exploration Systems Development Mission Directorate (ESDMD)</td></tr>
+<tr><th>NASA Program</th><td>Mars Campaign Office (MCO)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3: Human Health and Performance</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX07.2.1: Logistics Management</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 5 | Current TRL: 5 | Target End TRL: 8</td></tr>
+<tr><th>Project Start Date</th><td>2022-10-01</td></tr>
+<tr><th>Project End Date</th><td>2024-03-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>ZIN Technologies Inc. — Middleburg Hts, Ohio; Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Ohio (OH), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Moriah S Thompson (Principal Investigator) &lt;moriah.s.thompson@nasa.gov&gt;; Rahul Suresh (Principal Investigator) &lt;rahul.suresh@nasa.gov&gt;; Justin D Yang (Co-Investigator) &lt;justin.d.yang@nasa.gov&gt;; Courtney M Schkurko (Project Manager) &lt;courtney.m.schkurko@nasa.gov&gt;; Kimesha M Calaway (Project Manager) &lt;kimesha.m.calaway@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Thomas W Inman (Program Director) &lt;thomas.w.inman@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Currently, performing a full inventory of the medical system on the International Space Station (ISS) is time intensive, and ground teams spend large amounts of time manually updating and keeping inventory systems as up to date as possible. Medical consumables usage is reported by crew to ground teams such as their flight surgeon team. The flight surgeon then must relay this information to the Health Maintenance System (HMS) point-of-contact or the appropriate persons to manually decrement the inventory and resupply items if needed in the HMS Inventory Tracking Tool (HITT). Often, crew forget to inform the ground when items are used. Over time, the inventory of medical items becomes inaccurate, and items get moved from their initial or default location, which can jeopardize finding and using items in a timely manner. For Low Earth Orbit (LEO) missions which have long durations and large medical systems but frequent resupply and immediate evacuation capabilities, accurate inventory management is not crucial. Additionally, lunar missions, which will have limited resupply and evacuation capabilities, counteract their risk of misplacement or mismanagement of medical system components by the nature of their short mission duration and small medical kits. However, as exploration progresses to long duration missions with little to no resupply or evacuation capabilities, maintaining an accurate account of inventory and location for medical systems across the mission will become increasingly critical. A new system must be developed to meet the need for a crew-facing, real time method of managing medical inventory for future exploration missions. The overall objective of this project is to develop an Automated Medical Inventory System (AMIS) to significantly reduce the manual effort associated with ground and in-flight medical inventory tracking and increase the accuracy of reporting available inventory quantities. This is achieved by applying hardware and software tools that support automated scanning and by minimizing user inputs to accurately log movements / decrements of medical consumable and durable items to ensure users can quickly find and utilize items, as well as determine or set the remaining quantity of available medical item resources. The system must be able to operate in various gravity environments, such as microgravity, lunar gravity, and Martian gravity, while also functioning in Earth normal gravity for testing and verification. An eventual goal of a technical demonstration of the system was planned for a TBD flight vehicle in the 2027-2028 timeframe in order to increase the system’s technology readiness level (TRL) leading to demonstrating its suitability for long-duration exploration missions. AMIS will leverage lessons learned from a Medical Consumables Tracking project previously demonstrated aboard the ISS in 2016 and 2017. Key components of AMIS include a database, supporting hardware and software, and interfaces to power, communications, or other vehicle or medical systems. Some medical inventory capability may be provided by the vehicle inventory management system which relies upon RFID-based technology and can track larger items such as medical kits or medical hardware. AMIS will augment these capabilities to enable tracking of individual medical kit contents. Efforts are underway to characterize the optimal solution trade space by comparing system specifications (e.g. mass and volume, etc.) across maintenance and operational use cases (e.g. crew time saved, total inventory automated, etc). Other important considerations include minimizing crew time required, avoiding access restrictions to medical inventory in the event of an emergency, and ensuring that data is accessible to other medical system elements to enable crew autonomy in provision of medical care. The AMIS team is also collaborating with REALM, RFID Enabled Autonomous Logistics Management, another NASA project addressing logistics challenges to better understand integration opportunities and which unique capabilities an AMIS would provide. In FY22, the MEDIScope project under Exploration Medical Integrated Product Team (XMIPT) with the help of Yet2, an open innovation and technology scouting company, conducted a market survey and trade study of potential commercial off-the-shelf (COTS) solutions that could be leveraged in the development of an AMIS. Results of this market survey will inform the formulation and conception of the AMIS architecture and provide input to a Technology Down-select decision. In FY23, the AMIS project was formally kicked-off in November 2022 with a prime contract awarded to Zin Technologies under the Spaceflight Development and Operations Contract (SpaceDOC-II) at Glenn Research Center. The project team assessed advantages and disadvantages of various inventory management technologies such as RFID, Barcode, Bluetooth low-energy, vision systems, and mechanical dispensers. Additionally, the project team identified critical software functionality needs and example data analytics like notifications for expiring medications or trending pharmaceutical burn-rates for long duration missions. In FY24, due to budget challenges, the project was asked to complete an orderly closeout after a Systems Requirements Review (SRR) in February 2024. As part of the SRR, a set of functional requirements, a concept of operations, and a technology down-select summary with forward recommendations was delivered for future considerations.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> AMIS Closeout Report</li><li><strong>AMIS Closeout Report</strong></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/145029">https://techport.nasa.gov/projects/145029</a>
+    </div>
+  </div>
+</body>
+</html>

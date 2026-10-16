@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Properties of kinetic magnetic reconnection. | NASA TechPort Project 94383</title>
+  <meta name="description" content="Step 1 proposal to ROSES 2017 Heliophysics Research Program B.3; 1.4 (LNAPP) PI: Jan Egedal (U. Wisconsin)( Co-Investigators: Cary Forest (U.Wisconsin) Collaborators: William Daughton (LANL), Tai Phan (SSL) Magnetic reconnection plays a fundamental role in nea">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/94383">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 94383</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">H-TIDeS</span>
+          <span class="badge">TX08.1.1</span>
+        </div>
+        <h1>Properties of kinetic magnetic reconnection.</h1>
+        <div class="meta-id">NASA TechPort Project ID: 94383</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/94383" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Step 1 proposal to ROSES 2017 Heliophysics Research Program B.3; 1.4 (LNAPP) PI: Jan Egedal (U. Wisconsin)( Co-Investigators: Cary Forest (U.Wisconsin) Collaborators: William Daughton (LANL), Tai Phan (SSL)  Magnetic reconnection plays a fundamental role in nearly all magnetized plasmas as it enables magnetic energy to be converted into high-speed flows and thermal energy. It allows the magnetic field lines to change topology in collisionless plasmas, thereby controlling the spatial and temporal evolution of explosive phenomena such as solar flares and coronal mass ejections. Of special interest for the Sun-Earth connection and plasma conditions in the near Earth environment, reconnection in the dayside magnetopause and in the Earth's magnetotail is the dominant process that couples the solar wind to the Earth's magnetosphere.   In this proposal, using the Terrestrial Reconnection EXperiment (TREX), we will experimentally address the questions of: 1) How does the reconnection rate scale with the asymmetric inflow condition? 2) Is the onset of reconnection suppressed in the limit of a strong guide magnetic field (low magnetic shear angle)? and 3) What is the role of electron pressure anisotropy in shaping structure and dynamics of the electron diffusion region? The scientific interest for these questions is rooted in reconnection observed in the solar wind. Furthermore, in the dayside magnetopause, the relatively dense plasmas from the solar wind reconnect with magnetospheric plasmas that have densities about two orders of magnitude less. The scientific focus on kinetic aspects of asymmetric reconnection has intensified with the remarkable new data now available from the completed Phase I of NASA's MMS mission on asymmetric reconnection in the dayside magnetopause.   Complementary to spacecraft observations, laboratory experiments have the advantage that the reconnection physics can be isolated and studied under controlled and repeatable plasma conditions. However, so far the high collision frequency between electrons and ions has prevented laboratory experiments to reach a regime where pressure anisotropy and non-Maxwellian distribution functions can develop. The present proposal is similar to a well-reviewed proposal we submitted to the similar solicitation in 2016. As a major new development, with our recent experimental upgrades, TREX is the first reconnection experiment to realize plasma conditions where electron pressure anisotropy can develop unimpeded by collisions. Contrary to data obtained in the more collisional MRX experiments, preliminary data from our collisionless regime confirm key aspect of kinetic simulation results, such as the narrow electron layers that develop within the reconnection diffusion region. Thus, the TREX configuration provides an unparalleled opportunity to study reconnection in the laboratory under collisionless conditions directly relevant to the Earth's magnetosphere.   In addition to the experimental expertise provided by PI Prof J. Egedal and CO-I Prof C. Forest, our team is augmented by Collaborator W. Daughton, who will provide kinetic simulation data matching the experimental setup and by Collaborator T. Phan, who will provide guidance in selecting experimental plasma conditions relevant to observations in the magnetopshere. The requested funds will mainly support TREX engineer J. Wallace, technician M. Clark, and graduate student S. Greess.   The proposed work addresses the actions under Goal 1 and 4 for Solar and Heliospheric Physics in the last Decadal Survey:  Goal 1: Determine the origins of the Sun's activity and predict the variations of the space environment. Goal 4: Discover and characterize fundamental processes that occur both within the heliosphere and throughout the universe.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Support NASA's Heliophysics strategic science objectives to understand the Sun and its interactions with Earth and the solar system, including space weather. This will be achieved by developing/demonstrating instrumentation technology necessary to address the following science goals: Explore the physical processes in the space environment from the Sun to the Earth and throughout the solar system; Advance our understanding of the connections that link the Sun, the Earth, planetary space environments, and the outer reaches of our solar system; Develop the knowledge and capability to detect and predict extreme conditions in space to protect life and society and to safeguard human and robotic explorers beyond Earth.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>94383</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Heliophysics Technology and Instrument Development for Science (H-TIDeS)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.1: Detectors and Focal Planes</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 1 | Target End TRL: 2</td></tr>
+<tr><th>Project Start Date</th><td>2018-03-01</td></tr>
+<tr><th>Project End Date</th><td>2021-02-28</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Wisconsin-Madison — Madison, Wisconsin</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Los Alamos National Laboratory (LANL) — Los Alamos, New Mexico; University of California-Berkeley — Berkeley, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), New Mexico (NM), Wisconsin (WI)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Sun</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jan Egedal (Principal Investigator); Cary Forest (Co-Investigator); Tai D Phan (Co-Investigator); Brenda Egan (Co-Investigator); William S Daughton (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Roshanak Hakimzadeh (Program Director) &lt;hakimzadeh@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-08-22</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/94383">https://techport.nasa.gov/projects/94383</a>
+    </div>
+  </div>
+</body>
+</html>

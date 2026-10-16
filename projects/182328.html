@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autonomous Measurement Readout of Multiple, Non-instrumented, Analog Gauges Using Artificial Intelligence | NASA TechPort Project 182328</title>
+  <meta name="description" content="This project developed a system that can read analog gauges using a video source. The low TRL work implemented a combination of algorithms that included artificial intelligence (AI), computer vision, and statistics. This work developed a framework for the proc">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/182328">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 182328</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">KSC IRAD</span>
+          <span class="badge">TX10.1.1</span>
+        </div>
+        <h1>Autonomous Measurement Readout of Multiple, Non-instrumented, Analog Gauges Using Artificial Intelligence</h1>
+        <div class="meta-id">NASA TechPort Project ID: 182328</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/182328" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>This project developed a system that can read analog gauges using a video source. The low TRL work implemented a combination of algorithms that included artificial intelligence (AI), computer vision, and statistics. This work developed a framework for the processes of collecting and pre-processing gauge image data, selecting the structure and parameters of a convolutional neural network, and optimizing them for deep learning. The work also included the development of algorithms and processes to recognize a particular gauge, from others, on a ground support equipment (GSE) panel visible from a single camera field of view. In addition to the implementation of the gauge system in MATLAB, this work implemented the machine learning and AI algorithms in C-language for deployment in small form, low-cost embedded systems such as a raspberry pi single board computer.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The main application of this research in machine learning is to assist humans with the task of reading, recording, and transmitting analog gauge value data from locations where current systems are not capable or unavailable. For example, the autonomous system framework and the implemented algorithms developed for this research can be customized to alert personnel if gauge values are outside nominal range. Whether that is on the Moon or at KSC, having this capability can enhance efficiency and productivity by offloading these tasks to a portable smart machine.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>182328</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: KSC IRAD (KSC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX10.1.1: Sensing and Perception for Autonomous Systems</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX04.1.4: Object, Event, and Activity Recognition</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 3 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2023-01-01</td></tr>
+<tr><th>Project End Date</th><td>2024-01-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Kennedy Space Center (KSC) — Kennedy Space Center, Florida</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Florida (FL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Moon and Cislunar, Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Edwin A Cortes (Principal Investigator) &lt;edwin.a.cortes@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Kelvin R Ruiz (Program Manager) &lt;kelvin.r.ruiz@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-04-03</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Manual reading of analog gauges at KSC is widespread and routinely done in support of work across the center including the cryogenics test laboratory and Space Launch System/Artemis operations during GSE tests, vehicle checkouts, and launch countdown processes. To help automate manual reading of analog gauges, this research developed a system that can read analog gauges using AI and computer vision technologies. This work was fully implemented in MATALB language with a subversion of the algorithms written in C-language for deployment in small form and low-cost embedded systems and robots. The efforts implemented algorithms to detect and recognize a particular gauge, from others, on a GSE panel visible from a single camera field of view. The detection of a region of interest (ROI), such a particular gauge or area on the gauge, was done by using statistical methods that detect speed-up robust features and “blobs” in an image ROI where each pixel is tested to see if it is significantly different from its neighbors. Once the ROI is detected in the image data taken from the camera, a polygon encompassing the ROI is computed and the enclosed pixel data information is extracted and passed to a trained neural network that can analyze it, read it, and report the value of the analog gauge. Several processes were used to design, test, and train a deep neural network that can learn on analog gauge positions to be able to understand and read gauge values effectively. The neural network that performed the best on learning and reading values was a custom regression convolutional deep neural network with 24 layers. In addition to the input and output layers, the designed neural network implemented five convolutional layers, three 2D max pooling layers, two normalization layers, three fully connected layers, and seven neuron activation functions. The neural net was trained using hundreds of images depicting the gauge needle at different positions on the gauge dial. Two different performance parameters were analyzed: the performance on the AI to learn on training gauge data, and the performance on correctly reading a particular gauge from a “realtime” data camera feed. Results show this neural network design can learn on gauge images with a high degree of performance as measured by relative percent error between predicted and actual value. Depending on the settings, some of the net training sessions produced prediction errors less than a fraction of one percent. “Realtime” end-to-end tests, consisting of “realtime” image acquisition, ROI detection and segmentation, neural net data processing, and value prediction show a distribution of relative errors ranging from five percent to less than one percent. This range of values suggests the AI system could be prone to inaccuracies similar to the causes of intrinsic human eye limitations, such as parallax errors - whenever the camera view is not directly in line with the measurement marking and the gauge pointer. The results from this research look promising and suggest that additional work is needed to further study the feasibility and limitations of designing a low cost system to read analog gauges based on technologies that implement AI algorithms. These machine learning algorithms, processes, and methods developed by this research evolved from a TRL of 3 to an approximate TRL of 4.5.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/182328">https://techport.nasa.gov/projects/182328</a>
+    </div>
+  </div>
+</body>
+</html>

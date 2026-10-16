@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space Debris Elimination (SpaDE) | NASA TechPort Project 4347</title>
+  <meta name="description" content="The amount of debris in low Earth orbit (LEO) has increased rapidly over the last twenty years. This prevalence of debris increases the likelihood of cascading collisions that cause the debris generation rate to outstrip the rate at which debris deorbits, fall">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/4347">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 4347</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">NIAC</span>
+          <span class="badge">TX05.6.3</span>
+        </div>
+        <h1>Space Debris Elimination (SpaDE)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 4347</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/4347" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The amount of debris in low Earth orbit (LEO) has increased rapidly over the last twenty years. This prevalence of debris increases the likelihood of cascading collisions that cause the debris generation rate to outstrip the rate at which debris deorbits, falling into the atmosphere and burning up. This accumulation creates debris belts that render many orbits unusable. Current strategies emphasize debris mitigation, as there is no practical method for debris removal. Raytheon BBN Technologies (BBN) and the University of Michigan will study the Space Debris Elimination (SpaDE) system to remove debris from orbit by firing focused pulses of atmospheric gases into the path of targeted debris. These pulses will increase drag sufficiently to cause the deorbit rate to exceed the debris generation rate. The pulses themselves will fall back into the atmosphere, leaving no residual trace in orbit to interfere with LEO satellites. In contrast to other proposed methods, SpaDE is failsafe, in that it places no solid material in orbit where a malfunction could create new debris. This project will conduct technology risk reduction analyses and modeling. The research will produce an academic paper and presentation describing the technical results and providing the foundation for future work, to include prototyping, field experiments and ultimately deployment of a SpaDE system.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>SpaDE represents an unusual concept of operations in that it would be capable of addressing the problem of debris too small to be tracked by ground-based radar and yet large enough to damage or destroy space craft. SpaDE also would have the capability to address debris fields, acting to clear a volume of space without the possibility of the fratricidal generation of debris belts.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>4347</td></tr>
+<tr><th>Acronym</th><td>SpaDE</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>NASA Innovative Advanced Concepts (NIAC)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX05.6.3: Orbital Debris Mitigation</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 2 | Target End TRL: 2</td></tr>
+<tr><th>Project Start Date</th><td>2011-09-01</td></tr>
+<tr><th>Project End Date</th><td>2015-02-08</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Raytheon Company — Arlington, Virginia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Michigan-Ann Arbor — Ann Arbor, Michigan</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Daniel Gregory (Principal Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Vianni Ricano Cadenas (Program Manager) &lt;vianni.ricanocadenas@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: In summary, SpaDE phase I has shown: 1. Perturbations at altitudes of approximately 80km can reach orbital debris at 600km 2. Expansion of the gas cloud propagates in the horizontal directions while keeping a compact vertical profile creating a disk 3. There is a leading shock wave the proceeds the pressure wave 4. Vertical velocity is required to move the mass to altitude 5. The sheer winds at 150km did not significantly affect the perturbation SpaDE phase I showed that a compressed mass of atmosphere would stay coherent for altitudes up to 600km. The model shows that the gas dynamics allow for the perturbation to reach altitude with sufficient density to affect debris. Higher altitudes should be possible but were not tested in this study. Being able to heat and accelerate a large mass of atmosphere at 80km would take a large amount of energy. The targeting aspect of space debris is reduced because of the large surface area that SpaDE is capable of producing. This surface area allows for lax timing in firing the perturbation and for compensating for the error of uncertainty in the debris position. These advantages are ideal for smaller debris (&lt;10cm) targeting as well as fields of debris (i.e. multiple debris in close orbital proximity). SpaDE could be used for clearing a debris field after a satellite collision. There is a leading shock wave that precedes the main propagation of mass. This shock wave could be used to steer debris around hazards or potentially changing the apogee and perigee of the debris. Changing the apogee and perigee of the debris could be used for hazard avoidance or it could be used to deorbit the debris sooner. Studies need to be done to determine the vertical component required to affect debris. The initial vertical velocity of the perturbation follows ballistic trajectory. The GITM model is highly dependent on gravity and the effects of particles in the upper atmosphere that are affected by the gravitation force of the earth. SpaDE demonstrates that there is a relationship between the initial velocity and height of the perturbation. The SpaDE concept appears to be a viable concept that could help eliminating debris in the lower parts of LEO. Although the energy requirements are high, they are not impractical. More work should be done to make the system more efficient and effective. To advance SpaDE to TRL 3, we need to determine if the energy requirements can be reduced. Other modalities may help lower the energy requirements of the system and may provide additional performance benefits. Vortex rings, laminar flow, and simultaneous gravity waves appear to be promising modalities. Another area for future study would be to estimate the effects of the shock wave that propagates ahead of the main pressure wave. This shock wave could be used to change the trajectory of the debris without changing the debris velocity. For objects in near circular orbits, this would have the effect of increasing their perigees and lowering their apogees. Lowering apogee will increase drag because the object is moving faster through denser air for that part of its orbit. However, such action could have side effects, the most important being that the new ephemeris could interfere with operational satellites. Another possible side effect of the SpaDE concept is that debris could skip off the perturbation. This could deorbit the debris faster, but it might create risks to operational satellites. And finally, we would like to determine the extent to which we could control the effects of the perturbation; for example, whether it would be possible to consistently place debris over the Pacific Ocean during their final descent into atmosphere.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>15138.jpg</strong> — Project Image Space Debris Elimination (SpaDE)</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/4347">https://techport.nasa.gov/projects/4347</a>
+    </div>
+  </div>
+</body>
+</html>

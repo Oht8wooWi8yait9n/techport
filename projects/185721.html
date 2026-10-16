@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XOSS Aware: Human-Autonomy Integration for Real-Time Anomaly Response in Digital Twin Smart Habitats | NASA TechPort Project 185721</title>
+  <meta name="description" content="Buendea, in partnership with Harvard University, proposes XOSS Aware, an AI-powered anomaly response and decision support system integrated into Buendea’s existing XR Operations Support System (XOSS). Designed for future lunar and Mars habitats, XOSS Aware mod">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/185721">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 185721</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX10</span>
+        </div>
+        <h1>XOSS Aware: Human-Autonomy Integration for Real-Time Anomaly Response in Digital Twin Smart Habitats</h1>
+        <div class="meta-id">NASA TechPort Project ID: 185721</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/185721" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Buendea, in partnership with Harvard University, proposes XOSS Aware, an AI-powered anomaly response and decision support system integrated into Buendea’s existing XR Operations Support System (XOSS). Designed for future lunar and Mars habitats, XOSS Aware models key habitat systems and subsystems such as power, thermal, and ECLSS and combines them with real-time fault detection, diagnosis, and resolution by combining digital twin modeling, explainable AI, and real-time human cognitive workload and performance assessment in immersive XR. The system supports crew autonomy in deep space missions where real-time ground support is limited or unavailable.  Funding will support the development of a modular anomaly engine simulating faults across interdependent habitat subsystems (e.g., power, thermal, ECLSS), an AI assistant that recommends corrective actions with transparent reasoning, and biometric-driven cognitive modeling to adapt AI behavior based on user stress and workload. The solution adheres to NASA’s STMD 3001 standards and builds on previous XOSS deployments in analog missions like CHAPEA and HERA as well as studies forming part of Earth Independent Human Operations (EIHO).  Target markets include NASA and commercial space operators including SpaceX, Axiom, Blue Origin for astronaut training, mission assurance, and autonomous system verification. By advancing human-autonomy teaming in smart habitats, this technology aims to enhance resilience, safety, and operational efficiency for long-duration spaceflight and beyond. Future lunar and Mars habitats must operate autonomously without real-time ground support, demanding onboard tools for fault detection and crew-guided resolution. XOSS Aware introduces a novel integration of real-time anomaly response, system fault AI guidance, and human cognitive performance evaluation into a high-fidelity XR simulation environment. We plan to demonstrate modeling of power, thermal, and ECLSS subsystems each capable of fault injection and telemetry output enabling dynamic fault propagation across interdependent systems. Unlike current training systems, which focus on static procedures, XOSS Aware simulates complex off-nominal events and the propensity to address these issues in a real-time digital twin environment. It reduces training time, enhances decision-making accuracy, and supports autonomous system validation offering a breakthrough for crew safety in future missions to the Moon and Mars.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          XOSS Aware supports NASA’s mission directives for long-duration exploration by enabling autonomous anomaly detection, diagnosis, and human guided resolution within smart planetary habitats. As missions under Artemis and future Mars expeditions operate beyond real-time communication, crew members must independently manage critical off-nominal events. XOSS Aware addresses this by combining real-time system modeling, explainable AI, and cognitive workload assessment within a high-fidelity XR environment.  Built on Buendea’s existing NASA-validated XR Operations Support System (XOSS), XOSS Aware introduces a modular, anomaly engine that simulates key habitat subsystems—such as power, thermal control, and ECLSS along with fault propagation across interdependent systems. These models are designed to reflect real hardware behavior using MQTT telemetry and Unreal Engine-based logic, providing a dynamic training and testbed environment for evaluating crew response and system resilience.  Aligned with the Earth Independent Human Operations (EIHO) roadmap, the platform incorporates Harvard’s real-time cognitive modeling to adjust AI behavior based on user workload and stress as well as evaluation of performance during these scenarios. This integration of system-level simulation and adaptive AI supports NASA’s goals for autonomy, safety, and performance assurance in deep space operations. Beyond NASA, XOSS Aware offers strong commercialization potential in sectors that require autonomous fault detection, high-fidelity system modeling, and human-in-the-loop decision support for remote or high-risk operations. The technology can serve as a critical training and validation platform for commercial space station operators, defense agencies, and industries operating in isolated or hazardous environments.  In the commercial space sector, companies like Axiom Space, Blue Origin, and Sierra Space are developing orbital and lunar habitats that will benefit from intelligent digital twins capable of simulating subsystem failures and validating crew autonomy protocols. XOSS Aware can be customized to model their specific habitat architectures and support both crew training and system design verification.  For aerospace engineering and insurance, XOSS Aware provides a simulation-based environment for mission assurance and risk analysis. Engineers can use the platform to run “what-if” fault scenarios, validate subsystem interdependencies, and refine automated control systems, reducing deployment risk.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>185721</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX10: Autonomous Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2025-09-29</td></tr>
+<tr><th>Project End Date</th><td>2026-10-28</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Florida (FL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Low Earth Orbit, Moon and Cislunar, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Julian R Reyes (Principal Investigator); Michael J Whitzer (Project Manager) &lt;michael.j.whitzer@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-19</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/185721">https://techport.nasa.gov/projects/185721</a>
+    </div>
+  </div>
+</body>
+</html>

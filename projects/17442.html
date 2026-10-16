@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Study for Optimum Space-to-Ground Communication Concept for CubeSat and SmallSat Platforms | NASA TechPort Project 17442</title>
+  <meta name="description" content="This study is to explore the communication architecture for future space-to-ground CubeSat/SmallSat communication, through simulations, analyses, and identifying technologies, to develop the optimum communication concepts for CubeSat/SmallSat communications. T">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/17442">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 17442</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX09.4.1</span>
+        </div>
+        <h1>A Study for Optimum Space-to-Ground Communication Concept for CubeSat and SmallSat Platforms</h1>
+        <div class="meta-id">NASA TechPort Project ID: 17442</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/17442" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>This study is to explore the communication architecture for future space-to-ground CubeSat/SmallSat communication, through simulations, analyses, and identifying technologies, to develop the optimum communication concepts for CubeSat/SmallSat communications. This study will explore various communication configurations and interoperability with NASA&#39;s Near Earth Network (NEN) and Space Network (SN) to increase science data return.</p> <p>The proposed communication configurations are depicted in the library:&nbsp; CubeSat direct-to-ground communication, CubeSat to TDRSS MA array communication, CubeSat constellation with Mothership direct-to-ground communication, and CubeSat Constellation with Mothership communication through TDRSS MA array or K-Band Single Access (KSA)/S-Band Single Access (SSA).</p><p><strong>The objectives of this study are to:</strong></p><ul><li>Perform detailed analyses and simulations of the proposed communication configurations.&nbsp; This includes CubeSat swarm, daughter ship/mother ship constellation, NEN S- and X-band direct-to-ground link, TDRSS MA array vs Single Access mode, notional transceiver/antenna configurations, ground asset configurations, signal trades, space science X-band 10 MHz maximum achievable data rates.</li><li>Explore Technology Readiness Level (TRL) of current technologies capabilities. Phase I will provide a plan for collaboration to mature the TRL and the infusion of the technology in near term to our CubeSat architecture/needs.</li><li>Develop concept of operations for the CubeSat/SmallSat communication configurations including simulation to predict the performance.</li><li>Develop communication requirements/functional design for NASA&rsquo;s future CubeSat/SmallSat end-2-end communication.</li></ul><p>Deliverables will include:</p><ol><li>Detailed analysis and simulation results.</li><li>Current technologies TRL capabilities, a plan for collaboration, maturity and infusion to CubeSat/SmallSat communication needs.</li><li>Detailed functional and performance requirements, interface requirements, CubeSat/SmallSat functional design, physical characteristics, mass, power, etc. for end-to-end communication.</li><li>Recommend the best design alternatives to meet the requirements for enhanced communication capabilities and interoperability selected.</li></ol><p>&nbsp;</p><p><strong>Research and Development Plan</strong></p><p>With the proposed communication architecture depicted in Figure 1, a set of link budget analysis and coverage analysis will be performed for various communication configurations: CubeSat direct-to-ground communication, CubeSat to TDRSS MA array communication, CubeSat constellation with Mothership direct-to-ground communication, and CubeSat Constellation with Mothership communication through TDRSS MA array or K-Band Single Access (KSA)/S-Band Single Access (SSA).&nbsp; Signal trades will be conducted to determine the optimum signal structure considering data rate, modulation and coding types, frequency allocation and other factors.&nbsp; For CubeSat Space Science mission, as the X-band spectrum allocation is only 10 MHz, an analysis will be conducted to determine the maximum achievable data rate in this X-band 10 MHz channel using high order modulation and advanced coding technique. The critical technologies to enable implementation of the communication configurations will be identified.&nbsp; The current TRL of these technologies will be assessed and a plan for collaboration to mature the TRL and the infusion of the technology in near term for CubeSat will be provided.&nbsp; Based on the analysis, signal trade studies and technology assessment, the functional design and performance requirements as well as operation concepts for future CubeSat end-to-end communications will be derived.</p><p><strong>Link Budget Analysis</strong></p><ol style="list-style-type: lower-alpha;"><li>NEN link budget analysis: S-band and X-Band link analysis will be performed.&nbsp; The S-band patch antenna and X-band earth coverage antenna with various PA are assumed for use in CubeSat S/C.&nbsp; Various ground stations including polar ground stations as well as Wallops ground station will be used.&nbsp; The Ka-band link analysis also will be conducted.&nbsp; It will investigate the CubeSat Ka-band end-to-end communication requirements including flight system (transmitter, antenna and PA, EIRP, etc) and ground system (antenna size, G/T, etc).</li><li>SN link budget analysis; TDRSS Multiple Access (MA) array and K-Band Single Access (KSA)/S-Band Single Access (SSA) link analysis will be performed.&nbsp; Due to the limited power constraint of CubeSat, the legacy TDRSS MA service is not expected to provide high enough data rate to CubeSat.&nbsp; The proposed TDRSS MA array is a &ldquo;to-be-developed&rdquo; capability in SN, and a demonstration is planned within 12 months.&nbsp; With TDRSS MA array combining signal gain and the use of advanced coding techniques, such as CCSDS rate &frac12; LDPC and DVB S2 rate 1/4 LDPC, codes will enable much higher data rate for CubeSat in the MA mode.&nbsp; This capability is expected to be available for CubeSat in the mid to long term.&nbsp; With the Ka-band phased array antenna currently developed by industry, TDRSS Ka SA service is expected to be viable for CubeSat in the mid to long term.</li></ol><p>The link budget analysis will determine CubeSat S/C communication system design requirements such as data rate, modulation and coding type, antenna gain, PA power and EIRP.&nbsp; A reasonable link margin about 2 to 3 dB will be used as the link performance measure.</p><p><strong>Coverage Analysis</strong></p><p>A coverage analysis will be performed to predict the available SN/NEN support to CubeSat, based on geometric support and predicted signal margins analysis.&nbsp; The proposed TDRSS MA array return service will provide global coverage for virtually any Cubesat orbital location with multiple in-view TDRS.&nbsp; Data arrives at customer MOCC nearly immediately after Cubesat transmission, i.e., low latency.&nbsp; All Cubesats can transmit 24/7 with no return service scheduling required.&nbsp; Forward service must be scheduled.&nbsp; &nbsp;SN cannot allocate a TDRSS MAF exclusively to Cubesat.&nbsp; Normally, a 15 to 20 minutes per orbit will be scheduled for CubeSat with SSA/KaSA return service.&nbsp; For the NEN, a set of designed ground stations will be used for the coverage analysis.&nbsp; Based on results of the analysis, the maximum achievable daily throughput per Cubesat will be estimated.</p><p>&nbsp;</p><p><strong>Signal Trade Studies</strong></p><p>The objective of the trade study is to determine the optimum signal structure for CubeSat end-to-end communications.&nbsp; Consideration in the study will include the date rate requirement for command, housekeeping and science data, modulation and coding (for instance, CDMA vs non CDMA ), power and antenna size, frequency, RF interference, inter-satellite link, TDRSS and NEN links as well as&nbsp; hardware cost and complexity. &nbsp;As the CubeSat/SmallSat mission requirements vary widely, results of the trade studies could be the recommendation of a range of best signal options for CubeSat/SmallSat communications.</p><p><strong>Space Science X-band 10 MHz Maximum Achievable Data Rate</strong></p><p>As the space science mission X-band spectrum allocation is constrained to 10 MHz:, a study will be performed to determine the maximum achievable data rate in the 10 MHz bandwidth.&nbsp; High order modulation such as 8 PSK, 16 QAM, 32 QAM or higher and bandwidth efficient coding schemes such as Rate 7/8 LDPC code, will be engaged for the analysis/simulation. A semi-analytical approach will be employed to estimate the maximum achievable data rate.</p><p>&nbsp;</p><p><strong>Technologies Assessment and Infusion Plan</strong></p><p>We will perform assessment of the TRL of the current S-, X-, and Ka-band CubeSat/SmallSat transceiver designs and antennas.&nbsp;&nbsp; Transceiver design parameters of interest in the assessment include:&nbsp; modulation, coding, filtering, data framing, routing, power requirements, form factor compatibility; as well as reconfigurable functions such as adaptive communications (ACM/VCM), DVB-S2, and SDR capabilities to increase compatibility with ground stations.&nbsp; Also, we will explore the TRL, design parameters, and performance (support high gain/high data rates) characteristics of current S-, X-, and Ka-band antennas for CubeSats/SmallSats.&nbsp; These include inflatable antennas, phased arrays, omni Antennas, gimbled dishes, etc. Power amplifier technology for CubeSat/SmallSat will be assessed.&nbsp; CubeSat/SmallSat antenna pointing capability with respect to altitude control system commanding will be assessed as well.&nbsp; The current capabilities and planned upgrades of NEN/SN such as TDRSS MA array will be included in this TRL assessment.&nbsp; The cost estimate of NENS CubeSat/SmallSat Ka-band end-to-end system will be provided.&nbsp; We plan to work with vendors to fully understand and assess their CubeSat/SmallSat transceiver and antenna designs.&nbsp;&nbsp; Also, we will engage Goddard scientists to understand their near-term mission and science data requirements. &nbsp;These interchanges will focus on TRL, standardized design, interface requirements, performance requirements, and compatibility with NEN and SN.&nbsp; Then, we will develop a plan for collaboration to mature the TRL of these technologies and infusion in near term for CubeSat/SmallSat Communication needs.</p><p>&nbsp;</p><p><strong>CubeSat Communications System Functional Design and Performance Requirements Specification</strong></p><p>Based on the analysis, signal trade studies and technology assessment, the functional design, interface and performance requirements as well as operation concepts for future CubeSat end-to-end communications will be derived.&nbsp; A &nbsp;notional communication system functional design block diagram for the CubeSat daughter ship and mother ship spacecraft will be provided.</p><p>The CubeSat notional NEN S, X and Ka-bands and SN S and Ka-band transmit and receive frequencies and service signal characteristics and parameters will be specified.&nbsp;&nbsp; CubeSat communications system physical characteristics such as the mass and DC power requirements will also be specified.&nbsp; It will be summarized in a set of tables.</p><p>The CubeSat end-to-end operation concepts, based on results of the analysis, will be recommended for both near term and mid/long term.</p><p>&nbsp;</p><p><strong>Future Development and Funding Plan</strong></p><p>The recommendations of this study will guide the development of future CubeSat/SmallSat SN and NEN compatible end-to-end communication systems.&nbsp; Providing more capabilities and achieving higher data rates for CubeSats/SmallSats will set the stage for more funding sources and opportunities to conduct scientific research (Earth Science, Heliophysics, Astrophysics and possibly Planetary) with cost effective and high efficient communications.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>CubeSats and SmallSats provide a cost-effective, high return on investment method for conducting science missions by using miniaturized scientific instruments.&nbsp;&nbsp; Higher data rate CubeSats are transitioning away from Amateur Radio bands, now requiring CubeSat communication hardware standardization and compatibility with NEN and SN.&nbsp; The study will develop communication concepts guiding the standardization and provide a plan of collaboration to mature the communication hardware to support Space-to-Ground communication needs with the ultimate goals of increasing interoperability with NEN and SN, increasing science data return.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>17442</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.4.1: Architecture Design and Analysis</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 2 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2014-10-01</td></tr>
+<tr><th>Project End Date</th><td>2015-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Yen Fun Wong (Principal Investigator) &lt;yen.f.wong@nasa.gov&gt;; George Bussey (Co-Investigator); Obadiah Kegege (Co-Investigator); Wesley A Powell (Project Manager) &lt;wesley.a.powell@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-01-27</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="http://aetd.gsfc.nasa.gov/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>Optimum Space-to-Ground Communication Concept for CubeSat and SmallSat Platforms </strong> — Optimum Space-to-Ground Communication Concept for CubeSat and SmallSat Platforms</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/17442">https://techport.nasa.gov/projects/17442</a>
+    </div>
+  </div>
+</body>
+</html>

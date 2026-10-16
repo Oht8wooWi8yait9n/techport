@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VerdeGo Aero VH-3 Hybrid ElectricPowerplant | NASA TechPort Project 158749</title>
+  <meta name="description" content="The VerdeGo Aero VH-3-185 (VH-3) is a hybrid-electric powerplant that is purpose-built for powering electric aircraft as a substitute for battery-only systems. The VH-3 is built upon a custom version of the SMA SR305-260E, an EASA-certified aviation diesel eng">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158749">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158749</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX01.3.9</span>
+        </div>
+        <h1>VerdeGo Aero VH-3 Hybrid ElectricPowerplant</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158749</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158749" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The VerdeGo Aero VH-3-185 (VH-3) is a hybrid-electric powerplant that is purpose-built for powering electric aircraft as a substitute for battery-only systems. The VH-3 is built upon a custom version of the SMA SR305-260E, an EASA-certified aviation diesel engine, and incorporates a custom generator, inverter, cooling system and control system. The VH-3 features industry-leading fuel economy of 0.37 lb/hp-hr (227 g/kWh), which at 185 kW max output equals 10.2 gal/hr, approximately 40% less than competing turbine-hybrid systems and utilizes commonly available jet fuel such as Jet A or JP8, or sustainable aviation fuels (SAF). The VH-3 is a mature design, a third-generation product that is the result of over $6M of investment, US government research, and early product sales. The secondgeneration VH-2-150 has already been delivered to commercial customers and has been endurance tested for greater than 300 hours, resulting in a TRL of 6. The VH-3 is currently the subject of a USAF Phase II SBIR effort that is reducing risk in key areas. Further details of this effort are discussed in Part 5 of the White Paper. FAA Part 33 type certification is already underway with the FAA. The VH-3 is primarily applicable to new aircraft designs that must be electric as a result of the aircraft’s design and mission requirements, but require more range and endurance than batteries alone can provide. Advanced Air Mobility is the target market for the VH-3, which includes manned aircraft for Urban Air Mobility, cargo delivery and other markets, and unmanned aircraft primarily in military and commercial cargo operations. This Phase 1 R&D will demonstrate the applicability of the VH-3 in four representative configurations of aircraft in the 1500 to 5000 lb. size class, including a ¼-scale SUSAN demonstrator. As an option, VerdeGo could focus 100% of the Phase 1 effort on a more detailed SUSAN demonstrator integration study.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>NASA: As NASA seeks industry engagement to purse state-of-the-art technologies, efficientoperations, and sustainable fuels, VerdeGo is in position to support NASA’s commitment todecarbonization and advanced mission capability. VerdeGo’s VH-3-185 is a high-TRL solution to support several potential NASA applications. One VH-3 application central toNASA’s objectives would be a subscale sustainable flight demonstrator in NASA’sIntegrated Aviation Systems Program. Specific use cases related to NASA’s synergisticcommercial transport vehicle technologies include integration with NASA’s hybrid-electricSUSAN concept. While the full-scale SUSAN features turbine hybrid technology, the VH-3piston hybrid is suited to a sub-scale demonstrator platform to prove the aerodynamics andbase-level emission reductions of the SUSAN concepts. A leverage of the X-57 conceptcould also provide a case study on the benefits of hybridization. The original battery-electric design would have had short flight times due to energy density limitations. The VH-3 is ideally sized for this application and initial estimates suggest a 4-6X improvement inflight duration and acceleration of flight testing by enabling more test points per flight. Aflight demonstration program of this type would provide a roadmap for Advanced AirMobility solutions for leading-edge efficiency and emissions reduction using availablehybrid technologies. Other NASA initiatives aligned with the VH-3 include theTransformative Aeronautics Concepts Program and Revolutionary Vertical Lift TechnologyProgram. These programs emphasize solutions to next generation short-range andregional air mobility aircraft requiring the kinds of breakthrough propulsive technologiesthat VerdeGo Aero is developing. Experimental NASA aircraft in this design spaceinvestigating the in-flight robustness of lightweight composites, low-noise aerodynamics,and autonomous controls are all examples where the VH-3 can be used to transformaviation. Non-NASA: The Advanced Air Mobility market the VH-3 was designed to address incorporates multiplemarket segments, including Urban Air Mobility, unmanned logistics aircraft, emergencyservices, and regional air mobility. The aircraft serving these markets are primarily electricpowered, emboldened by the promise of clean, quiet, inexpensive electric propulsionsystems. Unfortunately, the specific energy of batteries prohibits most of these aircraft fromattaining operationally useful range and endurance while meeting FAA-required energyreserves. For this reason, VerdeGo has seen a significant increase in interest in hybrid-electric powerplants in 2023. VerdeGo has also seen that aircraft design teams, whenshifting focus from battery-electric to hybrid-electric powerplants, are drawn toward thehigh power density of turbine-hybrid systems. For some applications such as military usecases where performance is the driving requirement, turbine systems can be the rightchoice and VerdeGo is already developing turbine-based systems for these applications.But, turbine-hybrid systems by nature negate the values of sustainability, quiet operation,and low cost that are the core of the electric aircraft revolution. The VH-3 enables aircraftto retain these core characteristics while providing 4X-6X the range and endurance ofbatteries and consuming 40% less fuel than turbines, leading to 40% lower directoperating costs. VerdeGo is actively pursuing commercial and military opportunities acrossthe Advanced Air Mobility landscape for both single- and twin-powerplant installations.Early customers include Jaunt Air Mobility, having selected the VH-3 to power their HybridJourney, a hybrid-electric version of the Jaunt Journey. LTA Research and Engineering isusing the predecessor VH-2-150 in the Pathfinder 1 airship, where the low SFC of 227<br />g/kWh enables hours of endurance. VerdeGo is also working with other unnamedcustomers at various stages of development and interest.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158749</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.3.9: Hybrid Electric Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 6 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2024-02-08</td></tr>
+<tr><th>Project End Date</th><td>2024-08-21</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Verdego Aero, Inc</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Florida (FL)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jacob S Gold (Project Manager) &lt;jacob.s.gold@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158749">https://techport.nasa.gov/projects/158749</a>
+    </div>
+  </div>
+</body>
+</html>

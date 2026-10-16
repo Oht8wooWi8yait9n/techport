@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-time Stitched Video for Contextual Path Planning | NASA TechPort Project 12118</title>
+  <meta name="description" content="The crew and flight controllers who control the Space Station Remote Manipulator System (SSRMS) currently rely on multiple camera views to confirm or infer clearance between the SSRMS and the surrounding structural environment. The same is true for other remot">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/12118">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 12118</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">JSC CIF</span>
+          
+        </div>
+        <h1>Real-time Stitched Video for Contextual Path Planning</h1>
+        <div class="meta-id">NASA TechPort Project ID: 12118</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/12118" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The crew and flight controllers who control the Space Station Remote Manipulator System (SSRMS) currently rely on multiple camera views to confirm or infer clearance between the SSRMS and the surrounding structural environment. The same is true for other remotely operated equipment - surgical instruments, submersible vehicles, and telerobotics. This project explores operational efficiencies gained through the use of an array of cameras surrounding an object (such as the SSRMS boom or Mars Rover) and pointed along the object's long axis or direction of travel. This project will design and build a state-of-the art situational awareness tool for the operators of exploration vehicles. An array of cameras placed around the boundary of the vehicle will feed video to a vehicle-embedded processor which will synthesize the scene data into a single composite view presented to the operator. The composite view will encompass a 360° view around the vehicle from a bird's eye perspective. Robotics platforms used to benchmark this technology include the Dextrous Manipulator Trainer (DMT), model SSRMS, and Multi-Mission Space Exploration Vehicle (MMSEV). Initial (ICA) Investigation: Preventing collisions is the first priority for safe operations of the Space Station Remote Manipulator System (SSRMS). This depends on the ability of the crew and flight controllers to verify enough clearance exists between the SSRMS, its payload, and surrounding structure. In the plan, train, and fly stages of each mission significant time is spent developing, documenting, and executing a camera plan that allows each portion of the SSRMS trajectory to be monitored. This time could be decreased and operational situational awareness increased by using an array of cameras mounted around a boom on the SSRMS that point along a boom. The output of the these cameras could be stitched together to provide a one composite view that provides clearance monitoring 360° around the boom. Further, this technology could be used in any application where it is desirable to see proximity on two or more sides of an object - surgery, tele-robotics, deep sea exploration. This investigation will ask operators (crew and flight controllers) to compare clearance monitoring of a sample trajectory using conventional external camera sources versus a stitched video presentation from a camera array. A test plan, script, and scoring for comparison will be used to determine if stitched camera arrays lend themselves to clearance monitoring. The project investigator researched the required technology, including hardware and software, to perform video stitching to identify an approach that can be used for operator evaluation in the ICA project. Initial (Innovation Charge Account Project (ICA)) results: A cadre of robotics professionals from JSC Robotics Operations and Astronaut Office participated in a benchmarking effort to quantify efficiency and safety metrics both with and without the use of a stitched camera array. A modified Cooper-Harper scale was used to determine operator workload. Other metrics included time required to perform task, motion stopped due to lack of clearance views, whether contact was made with external structures. Results showed a reduced operator workload, faster completion of the task, and reduced contact with external structure. Additionally, the technology was presented to the JSC community at Innovation Day 2012 where it won the People's Choice Award. Second Phase: Rearranging image pixels from multiple cameras to accomplish a perspective shift is computationally expensive. In the last decade, advances in CPU performance and direct to memory image capturing methods have improved the frame rate and latency associated with video stitching. In the previous phase (FY '12 ICA, People's Choice Winner), the collaborator was able to achieve 10 frames per second with less than a second latency using off the shelf CPU and camera hardware. The purpose of Phase 2 is to demonstrate the technology on a larger vehicle (Multi-Mission Space Exploration vehicle) using high-bandwidth (GigE) network, increased CPU/GPU resources, and high-performance cameras. Second Phase Results: Ten video cameras (the minimum required to obtain coverage around the vehicle while providing enough image overlap) were placed around the upper surface of the MMSEV. The video streams were piped to an on-board high-end PC where software written in MATLAB performed the perspective shifts and homographic alignment. The resulting single view was displayed in Graphical User Interface (GUI) that allowed the operator to see the composite 'birds-eye' view or zoom in on a view from a particular camera when clearance was a concern. The MMSEV was maneuvered around the simulated Martian landscape at JSC known as the Rock Pile. To date the maximum achieved frame rate is 2 frames per second. To increase frame rate current efforts are focused on transferring the homographic algorithms to a Xylinx field-programmable gate array (FPGA) processor.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Knowledge, experience, and lessons learned from this project could become instrumental in several NASA projects where providing high-quality proximity/environmental data to the operator is required for safety, efficiency, and reduced bandwidth. Rovers on Mars, the Moon, or an asteroid (such as the MMSEV) are still in the developmental stages and could easily incorporate this technology in the near term. The equipment and expertise assimilated during the project could provide a test-bed at JSC for the development of other uses of stitched video. #As current operators of remotely deployed vehicles (SSRMS, Robonaut, Special Purpose Dextrous Manipulator) and future operators of MMSEV, Lunar Rovers, Asteroid Rovers, Mars Rovers, the crew and flight controllers at JSC need to understand the immediate environment of the vehicle they are controlling. The safety of the crew and vehicle depends on not inadvertently contacting structure/obstacles. The current state-of-the-art for clearance monitoring and collision avoidance at JSC relies on the operator's ability to cognitively combine video streams from multiple cameras with vastly differing eye-points. This is an impediment to safe, efficient operations because the operator must constantly re-assimilate the clearance information from each camera to form a mental picture of the entire environment. Virtual environments can be used to aid the operator but are only as accurate as the models they are based on. Views from real cameras are given a priority over virtual data. Technology spinoffs to commercial space providers, such as Spacex Dragon, could make payload extraction and insertion easier with stitched cameras providing clearance around the payload. Other commercial applications include clearance monitoring for submersible remotely operated vehicles (ROVs), surgical instruments, or tele-robotics.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>12118</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: JSC CIF (JSC CIF)</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2012-10-01</td></tr>
+<tr><th>Project End Date</th><td>2013-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Scott C Wenger (Principal Investigator) &lt;scott.wenger-1@nasa.gov&gt;; Zachary B Drewry (Co-Investigator) &lt;zachary.b.drewry@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>12118-1376519473688.jpg</strong> — Project Image Real-time Stitched Video for Contextual Path Planning</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/12118">https://techport.nasa.gov/projects/12118</a>
+    </div>
+  </div>
+</body>
+</html>

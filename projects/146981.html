@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application of Probabilistic Damage Tolerance Analysis | NASA TechPort Project 146981</title>
+  <meta name="description" content="Project Objective This project aims to introduce Probabilistic Damage Tolerance Analysis (PDTA) into NASA’s damage tolerance workflows by conducting a case study using DARWIN software from Southwest Research Institute (SwRI) to evaluate its feasibility, compar">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/146981">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 146981</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">MSFC CIF</span>
+          <span class="badge">TX12</span>
+        </div>
+        <h1>Application of Probabilistic Damage Tolerance Analysis</h1>
+        <div class="meta-id">NASA TechPort Project ID: 146981</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/146981" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p><strong>Project Objective</strong> </p><p>This project aims to introduce Probabilistic Damage Tolerance Analysis (PDTA) into NASA’s damage tolerance workflows by conducting a case study using DARWIN software from Southwest Research Institute (SwRI) to evaluate its feasibility, compare it to traditional methods, and identify gaps for certifying un-inspectable components in human-rated spaceflight applications.  </p><p><strong>Project Description</strong> </p><p>In human-rated spaceflight applications, hardware with catastrophic failure modes is classified as fracture critical and is subject to a set of requirements intended to reduce the risk of component failure due to an undetected crack. Analysis is used to predict the propagation of an undetected crack and demonstrate that a component is “damage tolerant.” Standard deterministic damage tolerance analysis relies on non-destructive inspection to ensure no critical defects exist in a component, and damage tolerance approaches assume the presence of an undetected crack. New manufacturing technologies [additive manufacturing (AM)], and new manufacturing environments (in-space, lunar, etc.) result in parts that are un-inspectable, and that thus do not meet fracture control requirements. PDTA has the potential to provide a pathway to certification of these un-inspectable components. NASA fracture control standards allow for the use of PDTA, but the approach must be reviewed by a team of fracture control experts, and no standardized approaches have been developed or assessed for use in NASA applications. PDTA has the potential to allow for more efficient component designs, reduce costs associated with non-destructive evaluation, and reduce risks for components that cannot be reliably inspected. This project intends to assess the introduction of PDTA into NASA damage tolerance workflows. The project will use an existing PDTA software, DARWIN, that was originally developed by Southwest Research Institute (SwRI) for analysis of aviation engine components. The project will take the form of a case study; a PDTA will be performed on an example component, and the results will be assessed for feasibility, comparison to traditional analysis techniques, and identification of gaps and challenges. The project will leverage the existing expertise in PDTA available at SwRI to develop MSFC capabilities in PDTA analysis and to increase understanding needed to appropriately implement PDTA approaches for fracture control. </p><p><strong>Project Results and Conclusions</strong> </p><p>NASA and SwRI collaborated to develop a Probabilistic Damage Tolerance Assessment (PDTA) workflow for evaluating uninspectable Additive Manufactured (AM) parts. The project began by creating a unique workflow with specialized inputs for DARWIN. A comprehensive review of this workflow identified the most critical variables for a PDTA, with the anomaly distribution being the most significant. Since AM materials tend to have more defects than traditional alloys, the challenge arose in constructing accurate defect distributions and understanding how sensitive the analysis is to these distributions. To address this, several methods were explored to generate anomaly distributions from AM datasets for PDTA input. These methodologies produced a variety of anomaly distributions for further analysis. NASA and SwRI also developed a relevant AM example to test these distributions. A sensitivity study was then conducted to assess how different anomaly distributions influenced the fracture risk of components in a PDTA. Finally, the study identified key areas for future research to support the eventual adoption of PDTA for fracture control in AM parts. </p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Assess the potential for integrating probabilistic damage tolerance analysis techniques into NASA requirements frameworks and applications. Agency Gaps: - 614 (AM Certification – In-space & Terrestrial) - 653 (Space-based V&V) - 1096 (Next-gen D&DT) Aligns with Agency taxonomy TX12.2.2 Design and Certification Methods. Supports STMD Advanced Manufacturing Capability Area. </p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>146981</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: MSFC CIF (MSFC CIF)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX12: Materials, Structures, Mechanical Systems, and Manufacturing</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX07: Exploration Destination Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 4 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2023-10-01</td></tr>
+<tr><th>Project End Date</th><td>2024-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Southwest Research Institute - San Antonio (SWRI) — San Antonio, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>William G Tilson (Principal Investigator) &lt;william.g.tilson@nasa.gov&gt;; James P Mavo (Co-Investigator) &lt;james.p.mavo@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-15</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Probabilistic Fracture Mechanics Methodology</strong> — Probabilistic Fracture Mechanics Methodology</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/146981">https://techport.nasa.gov/projects/146981</a>
+    </div>
+  </div>
+</body>
+</html>

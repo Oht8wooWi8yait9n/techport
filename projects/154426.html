@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SiC Mosfet with Radiation-Resistant Gate Oxide Performance to 600V | NASA TechPort Project 154426</title>
+  <meta name="description" content="Single-event burnout (SEB) and gate ruptureoccur when high-energy ions strike SiC MOSFET devices in the OFF state. Heavy ion radiation caused irreversible damage (possibly owing to SEGR) at biases below 10% and catastrophic failure at biases below 40% of their">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/154426">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 154426</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX03</span>
+        </div>
+        <h1>SiC Mosfet with Radiation-Resistant Gate Oxide Performance to 600V</h1>
+        <div class="meta-id">NASA TechPort Project ID: 154426</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/154426" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Single-event burnout (SEB) and gate ruptureoccur when high-energy ions strike SiC MOSFET devices in the OFF state. Heavy ion radiation caused irreversible damage (possibly owing to SEGR) at biases below 10% and catastrophic failure at biases below 40% of their nominal blocking voltage in commercial SiC power devices. Commercial SiC MOSFETs degrade forlatent gate leakage even at 50V drain-to-source voltage (VDS). Heavy ion collisions produce high-concentration electron-hole pairs that cause gate damage. In an n-channel MOSFET, electric field produced by the positive drain bias causes the generated holes and electrons to flow in opposite directions. The gate oxide interface accumulates and leaks holes toward the source contact. When the oxides electric field surpasses a threshold, it breaks down.  SCDevice has designed a SiC MOSFET device with a P+ shield layer that prevents SEB by maintaining temperatures well below the sublimation point of SiC (2973K) and by diverting the holes away from the gate oxide. Remarkably, our simulations show that 600V SEB performance can be achieved with only a P+ shield layer. Simulations reveal that when subjected to an ion strike with a LET of 40 MeV-cm2/mg, our devices biased at VDS=600V show temperature rise under 750K and electric field of less than 4.0MV/cm in the gate oxide. Our findings demonstrate more than sixfold increase in the device bias before gate degradation may occur, potentially enabling the use of SiC MOSFET in space applications. We intend to manufacture and market SiC MOSFET for space applications. Our innovation can be applied to Si MOSFET devices to enhance the radiation performance. During phase-II, SCDevice will design and fabricate the MOSFET, radiation test, use the data to calibrate simulation models, re-design and fabricate lot-2 and complete radiation testing to verify performance. During technology development and validation, SCDevice will identify and address customer needs and pain points.  Using the TCAD simulation tool, SCDevice has created a SiC MOSFET device with (a) Single event burnout performance up to drain-to-source voltage, Vds=1200V and (b) low gate oxide electric field (&lt; 6MV/cm) for heavy ion radiation with linear transfer energy up to 40 MeV-cm2/mg. Our devices employ a P+ shield layer in the path of the heavy ion, which effectively acts as a low resistive path to bleed off holes in the electron-hole plasma formed by the ion strike and thereby reduces electric field buildup at the gate oxide. For identical simulation conditions, our modeling of a commercial device reveals that the device failed for SEB even at Vds=600V and electric field in the gate oxide is over 18MV/cm. This study marks an improvement of more than fourfold in the device bias before gate damage might occur, which could enable the use of SiC MOSFETs in space applications. SCDevice&#39;s device innovation can be applied to Si MOSFET devices to further enhance their radiation performance in comparison to commercially available devices.&nbsp;&nbsp;  Fabricate SiC MOSFET devices and demonstrate the following radiation performance:  Breakdown Voltage, BVDSS @ 25 &deg;C: 1000V - 3000 V  Threshold Voltage, Vth @25 &deg;C: 2V to 6V  Specific ON Resistance &nbsp;&lt; 10.0 m&Omega;-cm2  Maximum bias yielding no degradation: No change in PIGS or BVDSS pre-vs. post-irradiation: &ge; 600V  Onset bias for current degradation: lowest bias yielding measurable change in gate (IG) or drain (ID) current during run: &ge; 600V  Threshold bias for sudden SEE: catastrophic failure (&Delta;ID&gt; 20 mA and BVDSS&lt; 1 V (shorted), or &Delta;IG&gt; 1 mA) immediately upon beam exposure: &ge; 600V  Maximum E-field in Gate Oxide @ VDS=600V (Using TCAD): &lt; 2MV/cm  Temperature rating (TMAX): -50&deg;C to 150&deg;C  Gate Oxide BV distribution-Before and after radiation exposure: &lt; 25% difference  &nbsp;  Deliverables to NASA at the end of Phase-II:   	 Deliver 10 units of MOSFET that meet the target performance  	Detailed radiation performance report 	Full electrical characterization report 	Customer interaction and feedback report 	Phase-III plan
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          &nbsp;Use of SiC devices allows increasing the power supply voltage on satellites, hence increase power for higher throughput, broader coverage and faster orbital positioning.&nbsp; SiC devices would reduce the satellite&rsquo;s volume and weight, a real asset given the high price per kilo launch. The result is either: smaller and lighter satellites for a given mission, or a higher performance payload for a given satellite. SiC devices&rsquo; vulnerability to radiation damage hinders its usage in space. NASA space mission could directly benefit from our SiC MOSFET.&nbsp;   Power management represents 40% of the rad-hard electronics market. Radiation-resistant high-voltage SiC components will benefit the cost-competitive satellite sector. Lighter satellites should lower rocket launch greenhouse gas emissions like carbon dioxide and nitrous oxide.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>154426</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX03: Aerospace Power and Energy Storage</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 1 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2023-06-06</td></tr>
+<tr><th>Project End Date</th><td>2025-12-25</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Scdevice, LLC — Portland, Oregon</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Ohio (OH), Oregon (OR)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Sudarsan Uppili (Principal Investigator); Philip G Neudeck (Project Manager) &lt;neudeck@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/154426">https://techport.nasa.gov/projects/154426</a>
+    </div>
+  </div>
+</body>
+</html>

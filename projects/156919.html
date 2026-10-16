@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Development of an Improved Visualization Tool for the Assessment of Climate Change Impacts on Mississippi Sound Coastal Waters using Integrated NASA Satellite and Novel Autonomous Surface Vessel Collected Field Datasets | NASA TechPort Project 156919</title>
+  <meta name="description" content="BACKGROUND: NASA’s Ocean Color satellites provide time-series of chlorophyll a (Chl-a) data of the global ocean using which net primary productivity (NPP) can be computed. NPP is important because it is the process that forms the foundation of food webs. The s">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/156919">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 156919</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">OSTEM</span>
+          <span class="badge">EPSCoR</span>
+          <span class="badge">TX08.3.4</span>
+        </div>
+        <h1>Development of an Improved Visualization Tool for the Assessment of Climate Change Impacts on Mississippi Sound Coastal Waters using Integrated NASA Satellite and Novel Autonomous Surface Vessel Collected Field Datasets</h1>
+        <div class="meta-id">NASA TechPort Project ID: 156919</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/156919" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          BACKGROUND: NASA’s Ocean Color satellites provide time-series of chlorophyll a (Chl-a) data of the global ocean using which net primary productivity (NPP) can be computed. NPP is important because it is the process that forms the foundation of food webs. The satellite-derived Chl-a, however, have higher levels of uncertainty in the coastal waters due to confounding effects of multiple components present in optically complex coastal waters. Hence, the estimations of NPP and how they affect the carbon cycle at the land-sea interface are erroneous or not available. Further, water quality in the region east of the Mississippi River Delta have been poorly measured relative to the adjacent system west of the Mississippi River Delta. In fact, several studies have highlighted the frequency and spatial extent of hypoxia east of the Mississippi River Delta as an open question. OBJECTIVES: The objective of the proposed work is to improve and develop remote sensing algorithms for Chl-a for the operational monitoring of coastal waters of the Mississippi Sound and implement the algorithms to advance an in-house visualization tool, which can be used to assess the climate change impacts on NPP of coastal waters.  METHODS: The proposed research will leverage the interactive map-based water quality visualization tool developed by the Sc-I (https://water.geosci.msstate.edu/), and a recently acquired solar powered autonomous surface vessel (ASV) at MSU, which is greatly enhancing in-situ data sampling capabilities and producing data from thousands of sites per deployment. The proposed research will measure water quality parameters from the Mississippi Sound using the ASV to directly address the limitations of satellite products in coastal waters. The use of the spatially rich dataset from the ASV together with NASA’s satellite data will help develop robust remote sensing algorithms, using which more accurate Chl-a time-series maps will be generated. The updated Chl-a maps will help accurate calculation of NPP in the Mississippi Sound. A time-series of NPP maps will be used to determine the impacts of climate change and land use and land cover (LULC) change on productivity of the Mississippi Sound. The objectives will be met by an interdisciplinary team of researchers from three universities within the Mississippi NASA EPSCoR jurisdiction (including an HBCU) with complimentary expertise in remote sensing of water quality (Dash-MSU), machine-learning (Bhushan-MSU), agricultural and biological engineering (Chesser-MSU), geo-informatics (Easson-UM), and remote sensing of vegetation productivity (Kulawardhana-JSU). The team will carry out outreach activities with local K-12 schools to raise awareness about the impact of climate change on local and global ecosystems, and the Mississippi Dept. of Marine Resources and the Mississippi Dept. of Environmental Quality.  RELEVANCE TO NASA PRIORITIES: The proposed research is aligned with the NASA Earth Science Division’s mission to “…develop a scientific understanding of Earth as a system ... to enable better assessment and management of water quality and quantity [and] accurately predict how the global water cycle evolves in response to climate change.” NASA’s Ocean Color satellites play a vital role in predicting global change to assist policy makers in making sound decisions concerning the protection of our environment. The proposed research will enhance the NASA satellite data based NPP estimates using in-situ measurements. It will primarily focus on the Mississippi Sound, which is backbone of Mississippi’s economy. The research will help in assessment of the effect of climate and LULC changes on the coastal waters and may provide guideline for the policymakers for better resource management. Further, the Visualization tool developed in this study will be open-source, and can be easily extended to other coastal ecosystems, and thus has the potential to impact climate change studies beyond this project.
+        </div>
+
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>156919</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Office of STEM Engagement (OSTEM)</td></tr>
+<tr><th>NASA Program</th><td>Established Program to Stimulate Competitive Research (EPSCoR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.3.4: Environment Sensors</td></tr>
+<tr><th>Project Start Date</th><td>2022-07-01</td></tr>
+<tr><th>Project End Date</th><td>2025-06-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Mississippi — University, Mississippi</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Mississippi State University — Mississippi State, Mississippi</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Mississippi (MS)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Nathan Murray (Principal Investigator); Padmanava Dash (Co-Investigator); Melissa Hodge-Penn (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Kathleen B Loftin (Program Director) &lt;kathleen.b.loftin@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-10-23</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/156919">https://techport.nasa.gov/projects/156919</a>
+    </div>
+  </div>
+</body>
+</html>

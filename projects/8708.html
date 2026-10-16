@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>An Efficient Parallel SAT Solver Exploiting Multi-Core Environments | NASA TechPort Project 8708</title>
+  <meta name="description" content="The hundreds of stream cores in the latest graphics processors (GPUs), and the possibility to execute non-graphics computations on them, open unprecedented levels of parallelism at a very low cost. In the last 6 years, GPUs had an increasing performance advant">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/8708">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 8708</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX11.1.7</span>
+        </div>
+        <h1>An Efficient Parallel SAT Solver Exploiting Multi-Core Environments</h1>
+        <div class="meta-id">NASA TechPort Project ID: 8708</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/8708" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The hundreds of stream cores in the latest graphics processors (GPUs), and the possibility to execute non-graphics computations on them, open unprecedented levels of parallelism at a very low cost. In the last 6 years, GPUs had an increasing performance advantage of an order of magnitude relative to x86 CPUs. Furthermore, this performance advantage will continue to increase in the next 20 years because of the scalability of the chip manufacturing processes. The goal of this project is to efficiently exploit the GPU parallelism in order to accelerate the execution of a Boolean Satisfiability (SAT) solver. SAT has a wide range of applications, including formal verification and testing of software and hardware, scheduling and planning, cryptanalysis, and detection of security vulnerabilities and malicious intent in software. We bring a tremendous expertise in SAT solving, formal verification, and solving of Constraint Satisfaction Problems (CSPs) by efficient translation to SAT. In our previous work (done on the expenses of our company) we achieved 2 orders of magnitude speedup in solving Boolean formulas from formal verification of complex pipelined microprocessors, 4 orders of magnitude speedup in SAT-based solving of CSPs, and 8 orders of magnitude speedup in SAT-based routing of optical networks. During Phase 1 we implemented a prototype of a parallel GPU-based SAT solver that is 1 2 orders of magnitude faster than the best sequential SAT solvers. In Phase 2, we will continue to exploit the GPU parallelism to accelerate SAT solving, and expect to achieve speedup of 3 4 orders of magnitude.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The potential non-NASA commercial applications include: 1) Formal verification and testing of software and hardware, where the potential customers will be all major semiconductor and software companies. 2) Scheduling, planning, and solving of Constraint Satisfaction Problems (CSPs), where the potential customers will be all companies that use scheduling and planning tools. 3) Electronic Design Automation (EDA) problems, such as FPGA technology mapping and routing, power consumption analysis for circuits, and formal methods to check the robustness of radiation-hardened circuits, where the potential customers will be all EDA and semiconductor companies. 4) Formal methods for cryptanalysis, where the potential customers will be the Department of Defense, the NSA, and all companies that use cryptanalysis. 5) Formal methods for cyber security, such as for detection of security vulnerabilities and malicious intent in software, where the potential customers will be all companies that develop robust virus scanners based on formal methods, and companies that develop formal methods for detecting security vulnerabilities in software. Because of the potential for a very wide range of software obfuscations that can be used to hide malicious intent, future virus scanners will have to employ efficient formal methods to detect malware, and thus the importance of speed and scalability that will be possible with an efficient SAT solver.<br /> <br />Efficiently solving of challenging Boolean formulas is critical to NASA, as this will increase both the speed and scalability of the following applications: 1) formal verification and testing methods for complex mission software and hardware, including those of the Crew Exploration Vehicle (CEV), the next generations of Mars Rovers, and other spacecraft; 2) formal methods to check the robustness of radiation-hardened circuits; 3) SAT-based methods for scheduling, planning, and solving of other Constraint Satisfaction Problems (CSPs); 4) formal methods for network coding that will increase both the bandwidth and reliability of space communications by using the existing communications equipment that is already deployed in space after updating the firmware; 5) SAT methods for reliability-based optimization of hardware, software, and mechanical systems; 6) power consumption analysis for circuits; 7) design of experiments; 8) design of error-correction codes; and 9) FPGA technology mapping and routing.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>8708</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.1.7: Frameworks, Languages, Tools, and Standards</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 8 | Current TRL: 0 | Target End TRL: 0</td></tr>
+<tr><th>Project Start Date</th><td>2010-03-29</td></tr>
+<tr><th>Project End Date</th><td>2014-08-31</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Aries Design Automation, LLC — Chicago, Illinois</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Illinois (IL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Miroslav N Velev (Principal Investigator); Michael R Lowry (Project Manager) &lt;michael.r.lowry@nasa.gov&gt;; Michael Lowry (Project Manager) &lt;Michael.R.Lowry@nasa.gov&gt;; Ryszard L Pisarski (Project Manager) &lt;ryszard.l.pisarski@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/8708">https://techport.nasa.gov/projects/8708</a>
+    </div>
+  </div>
+</body>
+</html>

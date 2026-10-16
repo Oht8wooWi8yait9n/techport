@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empowering Data Management, Diagnosis, and Visualization of Cloud-Resolving Models by Cloud Library upon Spark and Hadoop | NASA TechPort Project 18742</title>
+  <meta name="description" content="A cloud-resolving model (CRM) is an atmospheric numerical model that can resolve clouds and cloud systems at very high spatial resolution. The main advantage of the CRM is that it can allow explicit interactive processes between microphysics, radia-tion, turbu">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/18742">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 18742</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">AIST</span>
+          <span class="badge">TX11.4.3</span>
+        </div>
+        <h1>Empowering Data Management, Diagnosis, and Visualization of Cloud-Resolving Models by Cloud Library upon Spark and Hadoop</h1>
+        <div class="meta-id">NASA TechPort Project ID: 18742</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/18742" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>A cloud-resolving model (CRM) is an atmospheric numerical model that can resolve clouds and cloud systems at very high spatial resolution. The main advantage of the CRM is that it can allow explicit interactive processes between microphysics, radia-tion, turbulence, surface, and aerosols. CRMs have played critical roles in many NASA satellite missions (TRMM, GPM, CloudSat) and science projects (MAP). Be-cause of their fine resolution and complex physical processes, it is challenging for the CRM community to i) visualize/inter-compare CRM simulations, ii) diagnose key processes for cloud-precipitation formation and intensity, and iii) evaluate against NASA&#39;s field campaign data and L1/L2 satellite data products due to large data vol-ume (~10TB) and complexity of CRM&#39;s physical processes. Rapid progress in com-puting technology (massive parallel computing, GPU) has exacerbated these chal-lenges by allowing larger-domain and higher-resolution CRM simulations without adequate support in data management. Objectives: The effects of aerosols on weather and climate are the largest uncertainty in predict-ing anthropogenic impact on the current weather and climate models. In this project, technology on Hadoop and Spark is used to empower database management, diagno-sis, and visualization of CRMs, and thus significantly improve the understanding of simulated processes associated with cloud-precipitation and their interaction with aerosols on weather prediction and climate change studies. Technical Status/Approach To this end, we propose to develop the Super Cloud Library (SCL), capable of CRM database management (IO control and compression), distribution, visualization, subsetting, and evaluation. SCL architecture is built upon a Hadoop framework. The Hadoop distributed file system (HDFS) is a stable, distributed, scalable and port-able file-system. The Hadoop framework supports Python, which enables 2D and 3D visualization through wrapping IDL codes. Further, Hadoop R enables various stan-dard/non-standard statistics and their visualization. Within the Hadoop framework, CRM&#39;s diagnostic capability will be further enhanced with Spark, built on top of HDSF, which accelerates Hadoop MapReduce process by ~100 times. SCL will be built on the NCCS Discover system, which directly stores various CRM simulations, including the NASA-Unified Weather Research and Forecasting (NU-Forecast (WRF) and Goddard Cumulus Ensemble (GCE) models. Thus, SCL users can conduct large-scale on-demand tasks automatically, without downloading volu-minous CRM datasets and various observations from NASA Field Campaigns and Satellite data to a local computer. This task will have a performance period of two years. During this time, we plan to take the Technology Readiness Level from an entry level of 2 (concept) to an exit level of 5 (system prototype in an operational setting).</p>
+        </div>
+
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>18742</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Advanced Information Systems Technology (AIST)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.4.3: Semantic Technologies</td></tr>
+<tr><th>Project Start Date</th><td>2015-04-01</td></tr>
+<tr><th>Project End Date</th><td>2017-03-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Illinois (IL), Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Wei-Kuo Tao (Principal Investigator) &lt;tao@agnes.gsfc.nasa.gov&gt;; Daniel Q Duffy (Co-Investigator) &lt;daniel.q.duffy@nasa.gov&gt;; David T Leisawitz (Co-Investigator) &lt;david.t.leisawitz@nasa.gov&gt;; Xian-He Sun (Co-Investigator); Shujia Zhou (Co-Investigator) &lt;shujia.zhou@nasa.gov&gt;; Xiaowen Li (Co-Investigator) &lt;xiaowen.li@nasa.gov&gt;; Toshihisa Matsui (Co-Investigator) &lt;toshihisa.matsui-1@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Michael S Seablom (Program Director) &lt;michael.s.seablom@nasa.gov&gt;; Laura J Rogers (Program Manager) &lt;laura.j.rogers@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-02-14</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/18742">https://techport.nasa.gov/projects/18742</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tank Health Monitoring | NASA TechPort Project 97058</title>
+  <meta name="description" content="Sustained human presence in cislunar space relies on propellant management technologies that either do not exist or exist only at low-TRL. One such low-TRL technology is propellant mass gauging in microgravity. NASA technology roadmaps and Artemis architecture">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/97058">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 97058</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">ESDMD</span>
+          <span class="badge">MCO</span>
+          <span class="badge">TX12</span>
+        </div>
+        <h1>Tank Health Monitoring</h1>
+        <div class="meta-id">NASA TechPort Project ID: 97058</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/97058" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Sustained human presence in cislunar space relies on propellant management technologies that either do not exist or exist only at low-TRL. One such low-TRL technology is propellant mass gauging in microgravity. NASA technology roadmaps and Artemis architectures call for the ability to measure propellant in both settled and unsettled states during propellant transfer operations and during quiescent periods of microgravity. Target gauging resolutions are typically one percent of full tank volume. As a variety of propellant systems may be at play in an Artemis mission involving lunar landers, Orion, and the Gateway Power and Propulsion Element, the ability to gauge both cryogenic and earth-storable propellant with the same technology is also necessary. </p>  <p>Tank Health Monitoring (THM) is an active vibration based technology which provides structural integrity information and fluid amount (mass) in tanks in gravity and zero g environments. The fluid mass application is referred to as Modal Propellant Gauge. The method is completely non-invasive, is fluid independent and is highly accurate, providing near real time data. </p>  <p>The Modal Propellant Gauging (MPG) experiment seeks to raise TRL for the gauging of settled and unsettled propellants from 6-7 by demonstrating an end-to-end propellant mass gauging system that translates the modal response of liquid-filled tanks in microgravity to liquid mass measurements using a combination of sensor technology, data acquisition hardware, and software algorithms.</p>  <p>The PZT Health monitoring system like the modal Propellant gauging application uses a PZT actuator to supply a consistent random input while recording PZT sensor responses on the tanks. The Graphs show the relative frequencies transferred between two sensors with differences due to the tanks stiffness changes which affect the frequencies and magnitudes of the responses. (See Image: Equation).</p>  <p>Where K is the material stiffness which is affected by the type, geometry, temperature of the material and external stress such as pressure, M is the modal mass of the system.</p>  <p>See Figure 1: </p>  <ul><li>High accuracy demonstrated on Orion Tank of ~0.25% average in settled state</li><li>Demostrated with Morpheus static engne frings under partial vacumn at GRC Plumbrook test facility that Engine noise did not interfere with MPG mass measurment anks of the same part number behave similarly 	<ul><li>Can use one tank to develop FRF/mass reference table for all other tanks of the same part number and support system </li></ul> 	</li><li>Zero-G accuracy is on the order of 1% as demonstrated in Flight</li><li>MPG Point Sensor readings provide another accurate method to establish fluid level in the tank during loading or during a burn</li><li>FPGA based avionics and algorithm design provide 1 HZ update on mass measurement  	<ul><li>Design provides Industrial and Rad Tolerant option for avionics for Deep Space Use</li></ul> 	</li></ul>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <ul><li>NASA requires accurate propellant mass gauging technology which can operate in deep space and microgravity and for differential draining tanks</li><li>MPG technology is aimed: 	<ul><li>increasing human safety with accurate gauging</li><li>Monitoring propellant used for missions and ultimately limiting amount of propellant reserves/mass required</li></ul> 	</li><li>Mitigates typical estimation errors which can grow towards end of life ~ 10% or more<em>    </em></li></ul>  <p><em> See Image: In-Space Propellant Gauging</em></p>  <ul><li>Technology can be infused into future CLPS landers, Orion (EM-3+), NASA HLS, Gateway MMH tanks, etc.</li><li>The technology has been highly successfully demonstrated to provide Tank health monitoring and mass propellant gauging including software algorithms</li><li>Very low risk for forward plan for MPG CLIPS experiments which is the path to show deep space tank Zero-G validation</li><li>The capability is required for deep space missions manned and unmanned including CLIPS, Orion, Gateway, and HLS</li><li>To explore deep Space, the future is to develop very reliable much lighter spacecraft, composite tank testing with THM show a necessary sensitivity to structural flaws allowing ultralight tanks with the real time Go/No-go technology</li><li>Modal Propellant Gauge (MPG) allows a highly accurate, non-invasive, near real-time measurement of propellant mass in both gravity and Zero-G</li></ul>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>97058</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Exploration Systems Development Mission Directorate (ESDMD)</td></tr>
+<tr><th>NASA Program</th><td>Mars Campaign Office (MCO)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX12: Materials, Structures, Mechanical Systems, and Manufacturing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 7</td></tr>
+<tr><th>Project Start Date</th><td>2015-09-01</td></tr>
+<tr><th>Project End Date</th><td>2020-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Carthage College — Kenosha, Wisconsin</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama; Johnson Space Center (JSC) — Houston, Texas; Ames Research Center (ARC) — Moffett Field, California; Exploration Systems Development Mission Directorate (ESDMD)</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL), California (CA), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Outside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Rudy Werlink (Project Manager) &lt;Rudy.Werlink-1@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Thomas W Inman (Program Director) &lt;thomas.w.inman@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-02</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Figure 1: essential signal chain of the MPG technology</strong> — The essential signal chain of the MPG technology</li><li><strong>Tank Health Monitoring: Existing propellant gauging methods comparison</strong> — Existing propellant gauging methods comparison</li><li><strong>The Basic Formula</strong> — Tank Health Monitoring Basic Formula</li><li><strong>Tank Health Monitoring - In-Space Propellant Gauging</strong> — Accurate measurement of cryogenic liquid propellant quantity in space without propulsive settling maneuvers</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/97058">https://techport.nasa.gov/projects/97058</a>
+    </div>
+  </div>
+</body>
+</html>

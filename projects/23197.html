@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protocols for Asynchronous Communication in Space Operations: Communication Analysis | NASA TechPort Project 23197</title>
+  <meta name="description" content="Effective and efficient communication between Mission Control and space crews is essential for successful task performance and mission safety. The importance of team communication is heightened when unforeseen problems arise, such as system failures that are t">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23197">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23197</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX07.3.2</span>
+        </div>
+        <h1>Protocols for Asynchronous Communication in Space Operations: Communication Analysis</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23197</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23197" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Effective and efficient communication between Mission Control and space crews is essential for successful task performance and mission safety. The importance of team communication is heightened when unforeseen problems arise, such as system failures that are time-critical and require extensive coordination and collaboration between space and ground crews. During long duration missions and missions beyond Low Earth Orbit, space-ground communications will involve delays up to 20 minutes one-way, a reality that poses a formidable challenge to team communication and task performance. The overall aim of this research project was to develop and validate medium-specific communication protocols that enable flight controllers and space crews to establish and maintain common ground (i.e., mutual task and situation awareness) and coordinate problem solutions in response to different operational tasks during periods of communication delays.  Specific project goals were: (1) Determine the impact of communication delays on communication, teamwork, and task performance in relation to varying task demands, i.e., procedural tasks vs. tasks requiring analysis and decision making, and different communication media (voice vs. text). (2) Develop and validate communication protocols to support joint problem solving and decision making by mission controllers and space crews during periods of asynchronous communication. To achieve these objectives several ground-based studies (space analog and laboratory) were conducted.      <p></p> The first set of studies had the goal to determine how transmission delays of various lengths impact team communication and performance under different media conditions.  Findings then informed the design of medium-specific communication protocols.  Their feasibility for space missions was assessed in two analog environments s [Human Exploration Research Analog (HERA) and NASA Extreme Environment Mission Operations NEEMO)].  A complimentary laboratory study was conducted to examine further whether the availability of protocols enhanced remote team members’ communication and task performance during periods of communication delay. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Our research resulted in the design of communication protocols and a training module that support collaborative problem solving and decision making by teams that are distributed across Earth and space and communicate asynchronously.  Communication protocols could also be used to support collaborative work within on-ground distributed synchronous teams, for instance, during military operations or in telemedicine. Moreover, the communication protocols also point to technological solutions.  One example is the text tool that was adopted in one space simulation and assisted the crew with the temporal aspects of communication.  Further improvements might be a less chat- and more email-like text tool that includes a subject header and links between related messages to make it easier for conversational partners to follow a conversational thread. A text tool could also provide a template that gives structure to a message and highlights its components.  Likewise, voice communication could be facilitated if recordings of messages were available to both sender and receiver.  Moreover, the recording could indicate when a message was transmitted, and it is conceivable that the recording tool would include prompts for specific message components. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23197</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX07.3.2: Integrated Flight Operations Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2012-09-06</td></tr>
+<tr><th>Project End Date</th><td>2016-08-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Georgia Institute of Technology-Main Campus (GA Tech) — Atlanta, Georgia; University of California-San Francisco — San Francisco, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Georgia (GA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Ute Fischer (Principal Investigator); Kathleen Mosier (Co-Investigator); Lauren B Leveton (Project Manager) &lt;lauren.b.leveton@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Our first study consisted of an analysis of the communications between astronauts and Mission Control personnel recorded as part of the Autonomous Mission Operation (AMO) study conducted by Frank, Spirkovska, McCann, et al. (2013). In a second, laboratory, study we examined the impact of communication delay in relation to different communication media. Findings from these studies informed the design of medium-specific communication protocols as they highlighted which aspects of the communication process need support to ensure successful communication between remote partners under asynchronous conditions. The effectiveness and feasibility of communication protocols for space operations was subsequently assessed in two studies, resulting in refinements of the protocols and the design of a communication training module. Analysis of the AMO data provided first insights into the effects of transmission delays on team communication. Specifically, we observed that transmission delays disrupted the timing and structure of turns (i.e., communications by different team members). Communications by different speakers co-occurred (i.e., step-ons in which team members talked over each other) or were out of sequence (i.e., related turns by partners did not follow each other as one partner inserted a turn before the addressee could respond to the initial contribution). Both types of disruptions likely increased team members’ cognitive workload and jeopardized common ground (i.e., mutual task and team awareness). Step-ons compromised mutual understanding insofar as parts of a message were inaudible and required additional turns to repair which, given the transmission delay, were likely associated with considerable costs both in terms of time and workload (as partners had to wait for critical information and keep track of concurrent tasks). Contributions that were out of sequence could undermine mutual understanding in at least two important respects. When related contributions by members of the flight control team and the space crew did not immediately follow each other, partners had to keep track which conversation was still open requiring a response. This increased cognitive demand on team members may account for the finding that they frequently failed to respond to a partner’s communication. Contributions that were out of sequence could also come too late; that is, a communication was overtaken by events and thus reached the addressee after the fact. In a companion laboratory study we explored the impact of transmission delay on team communication and task performance in relation to varying task demands (procedural vs. ill-defined), and different communication media (voice vs. text). Spatially distributed teams of three collaborated in a computer-based task environment and communicated either by voice-over-internet or via a texting tool. The micro-world for the study was AutoCAMS 2.0 (Manzey et al., 2008) which simulates the life support system of a spacecraft and requires team members to monitor and control different subsystems, and to diagnose and repair failures. Each team was required to perform procedural and problem solving tasks during one synchronous and one asynchronous flight segment (5-min one-way delay in communications transmission). Each flight segment lasted for 90 minutes. In order to guarantee the requirement of communication and collaboration on the experimental tasks, task-related expertise concerning diagnostic and repair procedures was differentially distributed among team members. The Flight System Engineer (FSE) received extensive training on AutoCAMS systems, diagnoses, and repairs, and had access to a comprehensive reference manual. The two Pioneer crewmembers were given basic training on AutoCAMS and were instructed to contact the FSE for guidance on diagnosis and repair whenever a failure occurred on their system. Analyses of team performance revealed that transmission delay impacted time required to initiate a successful repair and more importantly, that its effect varied by communication medium. When communication was delayed, teams used a comparable amount of time to repair system failures, irrespective of the communication medium used. However, when communication was synchronous, voice teams outperformed text groups. Likewise, teams’ accuracy in performing system repairs was influenced by communication medium. Overall, teams communicating by text undertook more incorrect repairs than teams communicating by voice. Analysis of FSE/Pioneer communications revealed that communication delay influenced both the rate of turns by team members and the length of their contributions. Team members made fewer but longer contributions when they communicated under time delay than when no time delay was present. Moreover, these effects were more pronounced for teams communicating by voice than those communicating via text. This finding suggests that team members using text may have been more concise than team members in the voice condition. However, subsequent content analyses of Pioneer Crew/FSE interactions during transmission delay revealed that text communication was also associated with an increased potential for misunderstanding. Text teams were more likely than voice teams to split up related information and present it in separate turns. Related communications (adjacency pairs such as question and answer) by distributed team members were also further apart (i.e., more unrelated messages intervened) in text- than in voice-based communications. Text communication also included more threats to common ground, in particular missing responses and anaphora (i.e., terms whose meaning could not be established within a turn but depended on information provided in preceding turns). These differences are consistent with medium-specific affordances and constraints. Text provides team members with a written record of their on-going conversation, and thus may enable them to keep track of related contributions and the identity of referents across turns. However, as the presence of communication problems in the text group indicates, team members may have overestimated the benefits of text-based communication. Voice communication is cognitively more taxing than text-based communication insofar as participants need to remember their ongoing discourse to interpret new information. Voice teams apparently adapted to this constraint by packing more information into one turn than text teams, behavior that kept related communications more closely aligned and may have aided comprehension. Both text and voice teams showed instances of miscommunication in which team members misapplied assumptions and conventions of synchronous discourse to asynchronous conditions. Team members displayed proximity bias; that is, they mistook a remote partner’s communication that immediately followed their own transmission as a response to it, or they showed insensitivity to the delay by repeating a message before they could have received a response from their partner. These instances required additional communication in which team members clarified their situation understanding, or they spiraled into misunderstanding from which team members never recovered and thus were unable to repair a system failure. Both the AMO and the lab study also underscored the importance of several strategies that could support team communication under time-delayed conditions. Turn taking seemed to be facilitated when speakers announced specific times at which their addressees could expect a transmission. Mutual understanding may also be enhanced when speakers specify the topic of a message, present complex messages in meaningful chunks and repeat crucial information. Listeners, in turn, need to provide evidence of their understanding so that problems of hearing and comprehension are detected and repaired as quickly as possible. Medium-specific communication protocols created as part of this project incorporated these strategies, as well as recommendations by Love and Reagan (2013). A protocol’s structural characteristics were based on schema-based approaches to instruction design (Morrow &amp; Rogers, 2008; Morrow et al., 1996; 1998; 2005). A communication protocol is a structured communication template consisting of four segments (Call Sign, Topic, Message, Closing) with specifications regarding their content and organization, and several communication conventions that address the major challenges of asynchronous communication—Time, Conversational Thread, and Transmission Efficiency. Media-specific instructions concern aspects of the call sign and conventions that are consistent with the affordances and constraints associated with voice or text communication. Medium-independent instructions concern the topic section of a message, the message body and the final—closing—section as well as several conventions designed to support conversational coherence, message comprehension and shared task understanding, as well as communication efficiency. The feasibility of the communication protocols to space missions was assessed in two analog environments (NASA’s Extreme Environment Operations facility, NEEMO, and the Human Exploration Research Analog, HERA). A complimentary laboratory study was conducted to examine further whether the availability of protocols enhanced remote team members’ communication and task performance during periods of communication delay. The same task environment (AutoCAMS) as in the previous laboratory study on medium effects was used to assess whether the availability of protocols enhanced team communication and task performance of remote teams during communication delay. AutoCAMS (Manzey et al., 2008) simulates the life support system of a spacecraft, and in our task design, requires teams of three, spatially-distributed participants to diagnose and repair system failures. Teams were randomly assigned to either the Protocol (i.e., experimental) or No-Protocol (i.e., control) condition. Participants in the experimental group received the communication protocols and 30 minutes of communication instruction as part of their position-specific (Flight Systems Engineer, FSE, or Pioneer crewmember) task training. Participants in the control group received only task specific training. After training, participants completed two 90-min sessions, one in which the communication between the Pioneer crew and the FSE was voice-based, and one that provided only text communication. Communication between remote team members in both sessions was delayed by 5 minutes one-way. Analysis of task performance showed that the availability of communication protocols did not have a significant effect on the Pioneer crews’ task performance in terms of time to resolve failures, incorrect repair attempts, or number of correct repairs. However, the availability of protocols was found to mitigate some communication issues associated with transmission delay. Specifically, protocols seemed to have helped team members with the structure and content of their contributions. On the other hand, training on the protocols apparently did not make it easier for team members to keep track of the time lag between their own and their remote partners’ contributions; rather, aided team members were just as likely as unaided participants to misalign their partners’ contribution or to repeat messages without allowing sufficient time for their partner to respond. These failures suggest that the expectation of immediacy is an ingrained habit of synchronous communication and to overcome it, may require more training than study participants received. We therefore increased the allotted time for the communication training in subsequent analog studies from 30 to 60 minutes to give participants more experience with the challenges of transmission delay as well as practice using the protocols. Another factor that may explain why trained participants persisted in relying on habits of synchronous communication, is the complexity of AutoCAMS, the micro-world used in our study. To cope with the workload associated with the task, some Protocol teams may have fallen back onto well-rehearsed and thus easy communication habits of synchronous discourse which, in turn, resulted in miscommunication and likely increased their workload even more. This explanation is also consistent with the finding that the availability of communication protocols did not lead to improved task performance. A final explanatory comment is that our study participants did not always conform to their assigned condition, and thus blurred the lines between control and experimental groups. The communication protocols were also included in several space-analog simulations at NASA’s Extreme Environment Operations (NEEMO) facility and the Human Exploration Research Analog (HERA). Participants in NEEMO-18 and NEEMO-19 and two HERA crews (Campaign-1 missions 3 and 4) received 30 minutes of communication training prior to their missions. Training for participants in the four missions of HERA Campaign-2 was increased to 60 minutes in response to feedback by crewmembers in the earlier missions and as a consequence of our lab study. Communication training identified the challenges of asynchronous communication and explained the elements of the communication protocols and conventions. Crewmembers of missions 1 and 2 of HERA Campaign 1 served as control and thus did not participate in any communication training. In all NEEMO and HERA missions, communication delay occurred on consecutive mission days. Communication between crew and Mission Control was delayed by 5 minutes or 10 minutes one-way. In some simulations (NEEMO-18; HERA Campaign-1) communication medium was limited to voice or text on a given day with transmission delay, or the crewmembers could choose their communication medium (NEEMO-19, HERA Campaign-2). Copies of the communication protocols were given to trained participants at the start of a mission to serve as a reference aid on days with a communication delay. Surveys were administered throughout a mission asking participants to rate the effectiveness of the protocols and their interactions with mission control, and in a final survey to provide feedback on individual elements of the communication protocols. Trained crewmembers generally rated protocol elements and conventions as fairly critical to ensuring effective communication during asynchronous conditions. Very high ratings across crews for several items—providing a topic, using a log to track related messages, and announcing complex or critical messages—reflect the value of protocols for keeping track of message threads. Compliance with the protocols was also high as crewmembers generally followed the protocols in their communications on mission days with a transmission delay. Concurrent with these research efforts we conducted interviews with domain experts (Flight Surgeons, CapCom, and PayCom). The goal of these interviews was to characterize challenges of space-ground communication in current operations, to discuss the impact of communication delay and to learn about communication strategies experts have adopted. Experts mentioned several strategies to ensure effective communication and emphasized the importance of joint training of ground support and crewmembers to establish mutual trust. These strategies are consistent with the communication protocols we developed as well as our training approach that involved a joint session with HERA crewmembers and HabComs. Overall these research findings suggest that asynchronous communication may be facilitated by protocols that aid conversational partners in keeping track of conversational threads and the temporal sequence of messages. Our findings let to the development of a communication training module that can be used to prepare crewmembers and members of Mission Control for the challenges of communication delay. Moreover, the communication protocols not only target how to speak or write during asynchronous conditions but also point to specific technological solutions. Frank, J., Spirkovska, L., McCann, R., et al. (2013). Autonomous mission operations. IEEE Aerospace Conference Proceedings, March 2-9. Big Sky, Montana. Manzey, D., Bleil, M., Bahner-Heyne, J. E., Klostermann, A., Onnasch, L., Reichenbach, J., &amp; Röttger, S. (2008). AutoCAMS 2.0 Manual. Berlin: Technical University of Berlin. Love, S. G. &amp; Reagan, M. L. (2013). Delayed voice communication. Acta Astronautica, 91, 89-95. Morrow, D. G. &amp; Rogers, W. A. (2008). Environmental support: An integrative framework. Human Factors, 50(4),589-613. Morrow, D. G., Leirer, Von O., Andrassy, J. M., Decker Tanke, E., &amp; Stine-Morrow, E. (1996). Medication instruction design: Younger and older adult schemas for taking medication. Human Factors, 38(4),556-573. Morrow, D. G., Leirer, Von O., Andrassy, J. M., Hier, C. M., &amp; Menard, W. E., (1998). The influence of list format and category headers on age differences in understanding medication instructions. Experimental Aging Research, 24, 231-256. Morrow, D. G., Weiner, M., Young, J., Steinley, D., Deer, M., &amp; Murray, M. D. ( 2005). Improving medication knowledge among older adults with heart failure: A patient-centered approach to instruction design. The Gerontologist, 45(4), 545-552.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Significant Media Coverage</strong> — Meyers M. &quot;Description of research on asynchronous communication under the title &#x27;Improving communication on a cosmic scale.&#x27; &quot; InterSci (A publication of the San Francisco State University College of Science and Engineering). 2014 Nov;p. 51-55., Nov-2014</li><li><strong>Papers from Meeting Proceedings</strong> — Fischer U, Mosier K. &quot;Communication protocols to support collaboration in distributed teams under asynchronous conditions.&quot; 59th Annual Meeting of the Human Factors and Ergonomics Society, Los Angeles, CA, October 26–30, 2015. Proceedings of the Human Factors and Ergonomics Society, Los Angeles, CA, October 26–30, 2015. In press as of July 2015., Jul-2015</li><li><strong>Books/Book Chapters</strong> — Fischer U, Mosier K, Orasanu J. &quot;Issues of grounding and team coordination in asynchronous mission control-space crew interactions.&quot; in &quot;Proceedings of the 11th International Conference on Naturalistic Decision Making.&quot; Ed. H. Chaudet, L. Pellegrin, N. Bonnardel. Paris, France : Arpege Science Publishing, 2013. p. 193-196., May-2013</li><li><strong>Abstracts for Journals and Proceedings</strong> — Fischer U, Mosier K, Orasanu J. &quot;Issues of Grounding and Team Coordination in Asynchronous Communication.&quot; Presented at the 11th International Conference on Naturalistic Decision Making, Marseille, France, May 22-24, 2013. 11th International Conference on Naturalistic Decision Making, Marseille, France, May 22-24, 2013., May-2013</li><li><strong>Papers from Meeting Proceedings</strong> — Fischer U, Mosier K. &quot;The impact of transmission delay and medium on team communication and task performance by distributed teams.&quot; 58th Annual Meeting of the Human Factors and Ergonomics Society, Chicago, IL, October 27-31, 2014. Proceedings of the 58th Annual Meeting of the Human Factors and Ergonomics Society, Chicago, IL, October 27-31, 2014. In press as of July 2014., Jul-2014</li><li><strong>Articles in Peer-reviewed Journals</strong> — Fischer U, Miller C, Morrow D, Mosier K, Orasanu J, Veinott B. &quot;Exploring communication in remote teams: Issues and methods.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2013 Sep;57(1):309-13. (57th Annual Meeting of the Human Factors and Ergonomics Society, San Diego, CA, September 30-October 4, 2013.) http://dx.doi.org/10.1177/1541931213571068 , Sep-2013</li><li><strong>Articles in Peer-reviewed Journals</strong> — Fischer U, Mosier K, Orasanu J. &quot;The impact of transmission delays on Mission Control-Space Crew communication.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2013 Sep;57(1):1372-6. (57th Annual Meeting of the Human Factors and Ergonomics Society, San Diego, CA, September 30-October 4, 2013.) http://dx.doi.org/10.1177/1541931213571303 , Sep-2013</li><li><strong>Abstracts for Journals and Proceedings</strong> — Mosier K, Fischer U, Munc A, Reich K, Fox D, Swarts J, Maurath D, Carucci L, Orasanu J. &quot;Asynchronous Communication in Space Operations.&quot; Presented at the 2013 San Francisco State University Graduate Studies Showcase, San Francisco, CA, May 2, 2013. 2013 San Francisco State University Graduate Studies Showcase, San Francisco, CA, May 2, 2013., May-2013</li><li><strong>Papers from Meeting Proceedings</strong> — Fischer U, Mosier K, Morrow D, Miller C, Veinott B, Orasanu J. &quot;Exploring Communication in Remote Teams: Issues and Methods.&quot; 57th Annual Meeting of the Human Factors and Ergonomics Society, San Diego, CA, September 30-October 4, 2013. Panel organized for the meeting. Proceedings of the 57th Annual Meeting of the Human Factors and Ergonomics Society. In press, as of July 2013., Jul-2013</li><li><strong>Articles in Peer-reviewed Journals</strong> — Fischer U, Mosier K. &quot;Communication protocols to support collaboration in distributed teams under asynchronous conditions.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2015 Sep;59(1):1-5. (59th Annual Meeting of the Human Factors and Ergonomics Society, San Diego, CA, Oct. 26-30, 2015.) http://dx.doi.org/10.1177/1541931215591001 , Sep-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Fischer U, Mosier K. &quot;The impact of communication delay and medium on team performance and communication in distributed teams.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2014 Sep;58(1):115-9. (58th Annual Meeting of the Human Factors and Ergonomics Society, Chicago, IL, October 27-31, 2014.) http://dx.doi.org/10.1177/1541931214581025 , Sep-2014</li><li><strong>Articles in Peer-reviewed Journals</strong> — Gonzalez K, Mosier K, Lam J, Fischer, U. &quot;Characteristics impacting teamwork and performance for space operations.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2015 Sep;59(1):936-40. (59th Annual Meeting of the Human Factors and Ergonomics Society, San Diego, CA, Oct. 26-30, 2015.) http://dx.doi.org/10.1177/1541931215591272 , Sep-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Mosier KL, Fischer UM. &quot;Meeting the challenge of transmission delay: Communication protocols for space operations.&quot; Human Factors. 2021 Oct 19;187208211047085. Online first. https://doi.org/10.1177/00187208211047085 ; PMID: 34663105, Oct-2021</li><li><strong>Papers from Meeting Proceedings</strong> — Fischer U, Mosier K, Orasanu J. &quot;The impact of transmission delays on Mission Control-Space Crew Communication.&quot; 57th Annual Meeting of the Human Factors and Ergonomics Society, San Diego, CA, September 30-October 4, 2013. Proceedings of the 57th Annual Meeting of the Human Factors and Ergonomics Society. In press, as of July 2013., Jul-2013</li><li><strong>Dissertations and Theses</strong> — Gonzalez K. &quot;Characteristics fostering effective teamwork in space flights.&quot; BS Honors Thesis, San Francisco State University, May 2015., May-2015</li><li><strong>Books/Book Chapters</strong> — Fischer U, Mosier K. &quot;Mitigating the impact of communication delay.&quot; in &quot;Psychology and Human Performance in Space Programs: Extreme Application.&quot; Ed. L.B. Landon, K.J. Slack, E. Salas. Boca Raton, FL: CRC Press, 2020. p. 101-114. Book doi: https://doi.org/10.1201/9780429440854 , Oct-2020</li><li><strong>Papers from Meeting Proceedings</strong> — Gonzalez K, Mosier KL, Lam J, Fischer U. &quot;Characteristics impacting teamwork and performance for space operations.&quot; 59th Annual Meeting of the Human Factors and Ergonomics Society, Los Angeles, CA, October 26–30, 2015. Proceedings of the Human Factors and Ergonomics Society, Los Angeles, CA, October 26–30, 2015. In press as of July 2015., Jul-2015</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23197">https://techport.nasa.gov/projects/23197</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Efficient Distributed State Estimation for Swarm Robotics | NASA TechPort Project 158512</title>
+  <meta name="description" content="DALEC is a robust distributed localization system for real-time state estimation and mapping of networked members including spacecraft, rovers, and even astronauts in GPS-denied environments such as the lunar surface. DALEC is an innovative state estimation fr">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158512">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158512</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX10</span>
+        </div>
+        <h1>Efficient Distributed State Estimation for Swarm Robotics</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158512</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158512" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          DALEC is a robust distributed localization system for real-time state estimation and mapping of networked members including spacecraft, rovers, and even astronauts in GPS-denied environments such as the lunar surface. DALEC is an innovative state estimation framework based on state-of-the-art factor graph methods combined with a wireless communication system leveraging efficient mesh networking protocols that together can be used to localize agents with various sensing modalities (e.g., visual odometry, LiDAR). A distributed system like DALEC offers spacecraft and rover networks an inherently more robust and reliable means of localization compared to centralized methods utilizing a central processing node, reducing mission and program risk by eliminating a potential single point of failure.  In this Phase II effort Astrobotic with CMU, will mature and extend the Phase I DALEC software, APIs, and core distributed localization algorithms, develop models of UWB ranging and wireless comms protocols, enhance simulation tools and deploy DALEC software to relevant embedded compute to iteratively test and improve performance in support of demonstrating system performance through hardware-in-the-loop, robotic motion capture, and field testing.  DALEC is an innovative state estimation framework based on state-of-the-art factor graph methods combined with a wireless communication system leveraging efficient mesh networking protocols that together can be used to localize agents with various sensing modalities (e.g., visual odometry, LiDAR).  The proposed DALEC system will feature multiple characteristics that would offer significant benefits to high-priority NASA programs and the commercial space industry at large. A distributed mapping system like DALEC offers spacecraft and rover networks an inherently more robust and reliable means of localization compared to centralized methods utilizing a central processing node, reducing mission and program risk by eliminating a potential single point of failure.  &nbsp;  Astrobotic with its research institution partner, CMU, will:  1) Mature and extend DALEC software, APIs, and core distributed localization algorithms to be self-correcting, resilient to sensor failures, and support real-time processing over low-bandwidth mesh networks via smart incremental updates.  2) Develop models of UWB ranging and wireless comms protocols that capture non-Gaussian effects (e.g., multipath, dropout) with adjustable bandwidth, measurement rates, and latency.  3) Enhance simulation tools to incorporate higher fidelity measurement and comms models and realistic camera scene generation of lunar terrain.  4) Deploy DALEC software to relevant embedded compute with UWB ranging, VIO sensing, and mesh networking hardware to iteratively test and improve performance.  5) Demonstrate system performance through hardware-in-the-loop, robotic motion capture, and field testing to evaluate real-world performance and report results.  6) Deliver a Docker image of finalized DALEC software (and any interfacing software needed) with a user manual for performing tests and visualizing results for independent NASA testing.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          A key near-term mission need and use case for DALEC is robust localization and tracking for heterogenous teams of crew, rovers, and assets/instruments on the lunar surface. Extravehicular Activity and Human Surface Mobility Program (EHP) is evaluating candidate technologies that augment astronaut navigation knowledge during extravehicular activities (EVA). DALEC&rsquo;s robust distributed localization is ideally suited to support multiple astronauts while also tracking location of multiple rovers and science instruments.  DALEC has potential applications beyond NASA, including commercial space companies. Astrobotic will be able to utilize this technology in its&#39; CubeRover product line. Providing these rovers with higher accuracy location estimates would allow for a larger suite of swarm-based missions.&nbsp;
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158512</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX10: Autonomous Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 3 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2024-01-17</td></tr>
+<tr><th>Project End Date</th><td>2026-01-16</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Carnegie Mellon University — Pittsburgh, Pennsylvania; Astrobotic Technology, Inc. — Pittsburgh, Pennsylvania</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Pennsylvania (PA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Nicholas J Morales (Principal Investigator); Lynn M Torres (Project Manager) &lt;lynn.m.torres@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158512">https://techport.nasa.gov/projects/158512</a>
+    </div>
+  </div>
+</body>
+</html>

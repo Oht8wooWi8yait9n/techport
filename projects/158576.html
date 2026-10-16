@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autonomous Agent Cognitive Architecture for Spacecraft Operations | NASA TechPort Project 158576</title>
+  <meta name="description" content="VISIMOs NASA Phase II Proposal, Graceful Architecture for Mitigation of System failures (GRAMS), will continue development of a Cognitive Architecture (CA) for decision support for astronauts, primarily focused on human spaceflight missions. GRAMS is engineere">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158576">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158576</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX10</span>
+        </div>
+        <h1>Autonomous Agent Cognitive Architecture for Spacecraft Operations</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158576</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158576" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          VISIMOs NASA Phase II Proposal, Graceful Architecture for Mitigation of System failures (GRAMS), will continue development of a Cognitive Architecture (CA) for decision support for astronauts, primarily focused on human spaceflight missions. GRAMS is engineered for managing spacecraft operations, primarily addressing autonomous systems management for long-duration space missions. GRAMS employs a modular CA designed to detect, adapt to, and recover from both known and unknown spacecraft failures, thereby reducing cognitive load on crew and enhancing mission resilience. Key features include a Risk Identification Algorithm, Alert Generator, Failure Simulator, and Action Recommender. GRAMS operates in two configurations: Simultaneous Monitor/Training mode for monitoring and alerting, and Incident Recovery mode for failure mitigation assistance. GRAMS is not only pivotal for deep space missions but will have terrestrial applications. VISIMOs proposed RD addresses the need for advanced AI solutions to support mission success and safety in autonomous, deep space, and long-duration missions, aligning with NASAs strategic goals. This is critical for NASAs deep space explorations where rapid and accurate response to unforeseen incidents is crucial. Through GRAMS, VISIMO will produce a software prototype of the CA that (1) includes an intuitive, function user interface; (2) includes modular components, configuration scripts, and documentation to assist in the transition to new missions; (3) performance reports of the architectures ability to ingest and process live sensor data; and (4) performance reports demonstrating the reliability and accuracy of the cognitive architecture over long duration missions in a space environment. GRAMS modular design will allow easy adoption of the platform into new, crewed, deep space missions, as well as operating in additional spaceborne and terrestrial used cases, both human-directed and autonomous.  NASA seeks solutions to the challenges of deep space missions that require autonomous management of spacecraft systems wherein direct human intervention and ground support are limited. Autonomous solutions must detect and mitigate unknown system failures to enhance the safety and success of these missions, ensuring the resilience of spacecraft operations in deep space environments. VISIMO&#39;s solution for NASA Phase II development, Graceful Architecture for Mitigation of System failures (GRAMS), is Cognitive Architecture for autonomous craft management in long-duration missions. GRAMS will be an operational support for astronauts to manage unknown problems in deep space missions without relying on Earth-based support. GRAMS will identify and mitigate system failures, reducing cognitive load on crew, increasing mission resilience. It operates in two modes: Simultaneous Monitor/Training for ongoing operations, and Incident Recovery for fault management. GRAMS adapts to &ldquo;unknown unknowns&rdquo; through Machine Learning in a significant advancement in space mission safety and efficiency.  Technical Objectives:   	Complete the initial prototype agent build, ensuring the prototype meets technical and operational mission requirements for testing. 	Build prototype user interface and determine GRAMS&rsquo; ability to minimize crew cognitive burden and maximize advanced user interaction. 	Conduct flight demonstrations on the ISS and commercial spacecraft to determine: 	 		GRAMS&rsquo; ability to identify and respond to unanticipated systems failures in an operational environment, and 		The reliability of emergent models on long-duration missions. 	 	   Proposed Deliverables:   	IT Security Management Plan 	Technical Reports (quarterly) 	Functional Software Prototype 	Cognitive Architecture Documentation 	Final Report 	New Technology Summary Report 	New Technology Report 	TABA Reporting
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          GRAMS is capable of supporting NASA&rsquo;s Exploration Systems Development Mission Directorate (ESDMD)&rsquo;s Moon to Mars program, Space Operations Mission Directorate (SOMD)&rsquo;s goal for long-term human exploration missions, Aeronautics Mission Directorate (ARMD)&rsquo;s terrestrial mission programs, Science Mission Directorate (SMD)&rsquo; Gateway Program, as well as various missions headed by Human Exploration and Operation Mission Directorate (HEOD), Johnson Space Center (JSC), and Ames Research Center (ARC).  GRAMS is capable of supporting US Space Force&rsquo;s goal of human presence in space; The Space Development Agency&rsquo;s need for monitoring satellite constellations; Federal Aviation Administration&rsquo;s goal to advance autonomous monitoring of airspace; LEO market Primes (e.g., HPW, IBM Research, SpaceX, Axiom Space, Northrop Grumman); Organizations seeking to establish LEO/space manufacturing operations.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158576</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX10: Autonomous Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 4 | Target End TRL: 8</td></tr>
+<tr><th>Project Start Date</th><td>2024-06-25</td></tr>
+<tr><th>Project End Date</th><td>2026-06-24</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>VISIMO, LLC — Carnegie, Pennsylvania</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Pennsylvania (PA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Alexander Moskowitz (Principal Investigator); Adam J Sweet (Project Manager) &lt;adam.sweet@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158576">https://techport.nasa.gov/projects/158576</a>
+    </div>
+  </div>
+</body>
+</html>

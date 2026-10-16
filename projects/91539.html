@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Large Payload HIAD Systems: Structural Investigation and Optimization | NASA TechPort Project 91539</title>
+  <meta name="description" content="This proposal seeks to advance the understanding of full-scale Hypersonic Inflatable Aerodynamic Decelerators (HIADs) in support of NASA&#x27;s Space Technology Roadmap, TABS element 9.1.4, Deployable Hypersonic Aeroshells. The HIAD system is a low technology readi">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91539">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91539</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX09.1.2</span>
+        </div>
+        <h1>Large Payload HIAD Systems: Structural Investigation and Optimization</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91539</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91539" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>This proposal seeks to advance the understanding of full-scale Hypersonic Inflatable Aerodynamic Decelerators (HIADs) in support of NASA's Space Technology Roadmap, TABS element 9.1.4, Deployable Hypersonic Aeroshells. The HIAD system is a low technology readiness level (TRL) space technology that has the potential to deliver the size of payloads that will be required for human missions to Mars. The current state of the art Mars payload delivery is estimated at 1.5 metric tons. However, payloads on the order of 20 to 60 metric tons will be required for a successful human mission to Mars. Upwards of a 40 fold increase in payload mass represents a significant jump from the currently available decelerator technology. The HIAD system consists of multiple, inflatable tori that are strapped together other around a rigid center-body in a cone configuration and are covered with a thermal protection shield. The individual tori consist of a flexible fabric shell with integral axial cords that are rigidified by the inflation pressure. The HIAD system offers considerable benefits from traditional rigid aeroshells including a small storage volume and a mass to area ratio that is not constrained by the size of the launch vehicle. The HIAD system can be effective in thin atmospheres. Work to date has focused on quantifying the structural behavior of HIAD materials, structural components and test-scale HIAD structures, (3 m major diameter). Although engineers have had success modeling the HIAD system at the test-scale, there is still much unknown about how the structure will behave at a full or human-scale, (~20 m major diameter). Scalability remains one of the major technical challenges associated with deployable aeroshells. Design exploration and optimization of human-scale HIAD structures are important next steps in the development of the HIAD technology. A critical component is the development of computationally efficient structural analysis methods. Modeling efforts to date have focused on high-fidelity yet computationally expensive shell-based finite element (FE) modeling. This work proposes to develop computationally inexpensive three-dimensional beam-based FE models to analyze the HIAD system. Since the HIAD consists of multiple, slender, inflatable members, it is a good candidate for beam based FE modeling. The analysis tool will necessarily incorporate both large deformations and nonlinear material constitutive relationships to accurately capture the structural response of the inflatable members. The HIAD system will be modeled with torus and strap elements as well as elements between tori to capture tori interaction. The material and component level models will be validated with an extensive set of existing test data. Developing a beam-element-based simulation technology will allow for exploration of optimal HIAD configuration and will greatly enhancing our understanding of the HIAD structure. The use of optimization methods to explore the feasible design space can often lead to non-intuitive designs and configurations. For example, exploring non-axisymmetric designs or designs incorporating a radial spoke configuration from the center body to the outer torus are configurations that have not been considered, but are possible feasible alternatives that can be readily explored with the methods envisioned. Development of a comprehensive beam based FE tool will facilitate the efficient exploration of the human-scale HIAD design space and will increase our understanding of the behavior of the low-TRL HIAD space technology. Major technological challenges associated with deployable aeroshells remain. In order to further the technology and ensure that the HIAD system will one day be capable of accommodating the requirements of a crewed mission to Mars, further investigations into the behavior of the system at the full-scale are required.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Development of a comprehensive beam based FE tool will facilitate the efficient exploration of the human-scale HIAD design space and will increase our understanding of the behavior of the low-TRL HIAD space technology.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91539</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.1.2: Hypersonic Decelerators</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2015-08-01</td></tr>
+<tr><th>Project End Date</th><td>2017-08-18</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Maine — Orono, Maine</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maine (ME)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>William Davids (Principal Investigator); Andrew D Young (Co-Investigator); Anthony M Calomino (Project Manager) &lt;anthony.m.calomino@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Infused To</strong> (Langley Research Center): Structural analysis tool incorporated into NASA modeling tool</li><li><strong>Closed Out</strong>: The HIAD structure, under development by NASA researchers, has the potential to provide a decelerator with a significantly decreased mass when compared to traditional, rigid decelerators, and provide the required frontal area to effectively decelerate the sized payloads that will be required for future, human-scale missions. The HIAD system consists of a series of stacked, concentric, inflatable tori that form a cone shape, as shown in Figure 1. The tori consist of a flexible, braided fabric shell and axial cords braided into the shell. The shell and cords are pre-stressed by the internal inflation pressure. The individual tori are strapped together and strapped to the rigid center-body of the structure that accommodates the payload while the outside of the cone is covered by a thermal protection system (TPS). The HIAD system can be deflated and packed within the launch vehicle shroud for deployment on the way to the destination planet. Upon deployment the major diameter of the structure would be significantly greater than the diameter of the launch vehicle, an advantage over a comparable rigid decelerator that is constrained by the launch vehicle size. An important consideration with these inflatable, relatively compliant systems is the structural response during atmospheric reentry. A HIAD configuration that is too compliant may experience a global buckling failure as the structure is loaded, while a system that is overdesigned may have more mass than is necessary. While ground development and testing of structural components and small-scale HIAD systems are important for understanding the structural response, human-scale HIAD systems may be larger than can be physically tested in an economic manner. Numerical modeling techniques for the HIAD system are therefore important for understanding the structural response of full-scale HIAD systems. Others have developed continuum-based FE modeling methodologies for analyzing the HIAD system. These modeling tools, although able to capture the response of the HIAD system, are time consuming to develop, difficult to parameterize and computationally demanding to run because of the relatively compliant nature of the HIAD system, and the added complexities that arise when working with an inflatable system. In the current research a simplified, beam-based FE model approach for the analysis of inflatable members and the HIAD system was developed. The beam-based FE analysis tools that were developed for the inflatable system are three dimensional, accommodate large deformations with a corotational element formulation, accommodate material nonlinearities with the use of a flexibility- or force-based element formulation and account for the effects of pressure volume change work that occurs during certain deformation modes. The beam-based modeling approach incorporates the challenges that are encountered in analyzing an inflatable, textile system, such as the influence of internal inflation pressure, nonlinear material response, the loss of pretension due to inflation pressure, coupling between deformation modes, and the large deformations that occur as a result of having relatively compliant system. The beam-based FE modeling tools were validated by comparing predicted results to results of experimental work conducted by the University of Maine and NASA researchers at the material, component and structural levels. With confidence that the beam-based modeling methodology could be used to make reasonable predictions on the response of the HIAD, it was applied to the analysis of human-scale HIAD structures, including non-axisymmetric configurations and loading regimes. The analysis tools were then further extended to be coupled with structural optimization tools. The beam-based HIAD structural analysis methodologies that have been developed were shown to be capable to capturing the structural response of the HIAD system with significantly decreased analysis time when compared to continuum or shell-based FE modeling schemes. The modeling tools will complement the high fidelity, shell-based FE modeling tools under development by others. While the beam-based modeling tool can be used to efficiently explore the HIAD design space, explore various configurations and parameters, and perform trade, sensitivity and optimization studies, the shell-based modeling tools can be utilized for refined analyses once a final configuration has been down-selected.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91539">https://techport.nasa.gov/projects/91539</a>
+    </div>
+  </div>
+</body>
+</html>

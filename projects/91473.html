@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Close Proximity Robotic Maneuvering through Flux Pinning Manipulation | NASA TechPort Project 91473</title>
+  <meta name="description" content="Non-contacting actuation technology like flux pinning has never been demonstrated in space. The development of a nonphysical joint is critical for maneuvers such as docking, rendezvous, and in-orbit assembly (NASA Technology Area 4: robotics, tele-robotics and">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91473">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91473</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX04.5.7</span>
+        </div>
+        <h1>Close Proximity Robotic Maneuvering through Flux Pinning Manipulation</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91473</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91473" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Non-contacting actuation technology like flux pinning has never been demonstrated in space. The development of a nonphysical joint is critical for maneuvers such as docking, rendezvous, and in-orbit assembly (NASA Technology Area 4: robotics, tele-robotics and autonomous systems). Flux pinning is not well characterized for interactions that involve all six rigid-body degree of freedoms. My research will focus on developing a better mathematical model and constructing a spaceflight system to demonstrate prolonged flux pinning interactions. I will develop this model to show that flux pinning is robust enough to overcome environmental torques and magnetic field disturbances, given well simulated, tested, and robust control algorithms and system architectures (TRL, Technology Readiness Level 4). I will then construct a test environment to iteratively validate the theoretical model and demonstrate dynamic manipulation (TRL 5-6). To prove that this will be feasible in space missions, I will develop fully integrated CubeSats to perform maneuvers on these testbeds (TRL 7). A successful space flight demonstration of flux pinned system will give way to a completely new kind of space proven joint. Spacecraft would no longer need to be assembled on the ground in bulky, awkward shapes. Systems of flux pinned components could be easily replaced with another or autonomously repaired in orbit with minimal effect on the entire system. The Hubble telescope was launched out of focus, requiring millions of dollars to train astronauts and launch a crew to refocus the mirrors. This is a distinct example of the advantages to in-orbit assembly/adjustment. Instead of risky spacewalks with skilled astronauts, the skewed mirrors of the telescope could have been adjusted and finely tuned by commanding the modular pieces from the ground. Telescopes require cold environments (80 K) which pairs well with flux pinning requirements. Flux pinned satellites could also function like the research racks on the ISS, but mounting to the outside environment. Small contained experiments could easily be swapped out, without the involved installation and take-down period requiring risky spacewalks and valuable astronaut time.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>A successful space flight demonstration of flux pinned system will give way to a completely new kind of space proven joint. Spacecraft would no longer need to be assembled on the ground in bulky, awkward shapes. Systems of flux pinned components could be easily replaced with another or autonomously repaired in orbit with minimal effect on the entire system. The Hubble telescope was launched out of focus, requiring millions of dollars to train astronauts and launch a crew to refocus the mirrors. This is a distinct example of the advantages to in-orbit assembly/adjustment. Instead of risky spacewalks with skilled astronauts, the skewed mirrors of the telescope could have been adjusted and finely tuned by commanding the modular pieces from the ground. Telescopes require cold environments (80 K) which pairs well with flux pinning requirements. Flux pinned satellites could also function like the research racks on the ISS, but mounting to the outside environment. Small contained experiments could easily be swapped out, without the involved installation and take-down period requiring risky spacewalks and valuable astronaut time.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91473</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX04.5.7: Modeling, Simulation, Analysis, and Testing of Rendezvous, Proximity Operations, and Capture</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2015-08-01</td></tr>
+<tr><th>Project End Date</th><td>2019-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Cornell University — Mableton, Georgia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>New York (NY)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Mason A Peck (Principal Investigator) &lt;mason.a.peck@nasa.gov&gt;; Frances Zhu (Co-Investigator); Alvin G Yew (Project Manager) &lt;alvin.yew@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Transitioned To</strong> (Flight Opportunities): NASA Flight Opportunities Task # NNN13D407T</li><li><strong>Closed Out</strong>: Close-proximity operations for spacecraft is a particularly critical portion of any robotic mission that enables many types of maneuvers, such as docking and capture, formation flying, and on-orbit assembly. Commonly, spacecraft dynamic control uses thrusters for position and attitude control, which rely on active sensing and consumable propellant. The development of other dynamic control techniques opens new capabilities and system advantages, and further offers a more diverse technological trade space for system optimization. This research comprehensively investigates the utilization of flux-pinning physics to manipulate spacecraft dynamics. Flux-pinned interfaces differ from conventional dynamic control through its passive and compliant behavior. These unique characteristics are extremely attractive for certain applications, but flux-pinned technology must mature considerably before adoption for spaceflight missions. A dynamic capture and docking maneuver in an upcoming mission concept, Mars Sample Return, motivates the technology design. This body of work as much as possible follows a progression from cradle to grave. The accumulation of effort has resulted in progress in several different fronts, in dynamics theory, system design, hardware maturity, and system identification for flux-pinned interfaces. A flux-pinning theoretical dynamics model and a system architecture specify general capabilities of such a spacecraft system. Different analyses on stability, state sensitivity, backwards reachability result from a physics-based dynamics model. An extensive literature review and basic science experiments inform a theoretical dynamics model about the incorporation of physical parameters when simulating realistic dynamics. The parameters are linked to mathematical expressions that modify the physics-based dynamic model. These parameters then need to be estimated to fit the observed data generated from a suite of experiments. Two major contributions result from the extensive testbed effort: data collection for dynamic model development and technological maturity of a flux-pinned hardware system. Each testbed lifted the maturity of the hardware system from TRL 3 to TRL 5. The testbeds ranged from the simplest expression of dynamics, in a single degree of freedom, to a flight traceable expression, in all six degrees of freedom. Experiments from these testbeds define and characterize system level capabilities specific to flux-pinned capture. All nonlinearities and coupled dynamics appear in this flight-traceable, representative environment. Data collected from these experiments then supports development of a predictive dynamics model of the hardware system. The combination of the dynamic model development and experiment data contribute to a more predictive dynamics model of the flux-pinned spacecraft. Various system identification methods aid in creating a dynamics model that accurately predicts the dynamics observed during experiments. Several objective metrics are considered to evaluate the model fidelity. The types of system identification methods are separated into analytical methods and numerical methods. The analytical method involves parameter estimation in a physics-based model. Numerical methods involve Taylor expansion, bag of functions, symbolic regression, and neural networks. Theoretical extensions towards verification further develops neural network approximation methods, driving at safe, real-time system identification. Close-proximity operations for spacecraft is a particularly critical portion of any robotic mission that enables many types of maneuvers, such as docking and capture, formation flying, and on-orbit assembly. Commonly, spacecraft dynamic control uses thrusters for position and attitude control, which rely on active sensing and consumable propellant. The development of other dynamic control techniques opens new capabilities and system advantages, and further offers a more diverse technological trade space for system optimization. This research comprehensively investigates the utilization of flux-pinning physics to manipulate spacecraft dynamics. Flux-pinned interfaces differ from conventional dynamic control through its passive and compliant behavior. These unique characteristics are extremely attractive for certain applications, but flux-pinned technology must mature considerably before adoption for spaceflight missions. A dynamic capture and docking maneuver in an upcoming mission concept, Mars Sample Return, motivates the technology design. This body of work as much as possible follows a progression from cradle to grave. The accumulation of effort has resulted in progress in several different fronts, in dynamics theory, system design, hardware maturity, and system identification for flux-pinned interfaces. A flux-pinning theoretical dynamics model and a system architecture specify general capabilities of such a spacecraft system. Different analyses on stability, state sensitivity, backwards reachability result from a physics-based dynamics model. An extensive literature review and basic science experiments inform a theoretical dynamics model about the incorporation of physical parameters when simulating realistic dynamics. The parameters are linked to mathematical expressions that modify the physics-based dynamic model. These parameters then need to be estimated to fit the observed data generated from a suite of experiments. Two major contributions result from the extensive testbed effort: data collection for dynamic model development and technological maturity of a flux-pinned hardware system. Each testbed lifted the maturity of the hardware system from TRL 3 to TRL 5. The testbeds ranged from the simplest expression of dynamics, in a single degree of freedom, to a flight traceable expression, in all six degrees of freedom. Experiments from these testbeds define and characterize system level capabilities specific to flux-pinned capture. All nonlinearities and coupled dynamics appear in this flight-traceable, representative environment. Data collected from these experiments then supports development of a predictive dynamics model of the hardware system. The combination of the dynamic model development and experiment data contribute to a more predictive dynamics model of the flux-pinned spacecraft. Various system identification methods aid in creating a dynamics model that accurately predicts the dynamics observed during experiments. Several objective metrics are considered to evaluate the model fidelity. The types of system identification methods are separated into analytical methods and numerical methods. The analytical method involves parameter estimation in a physics-based model. Numerical methods involve Taylor expansion, bag of functions, symbolic regression, and neural networks. Theoretical extensions towards verification further develops neural network approximation methods, driving at safe, real-time system identification.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91473">https://techport.nasa.gov/projects/91473</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robust and Efficient GNC Algorithms for Autonomous Formation Flying using Electric Propulsion | NASA TechPort Project 95516</title>
+  <meta name="description" content="This work will develop the guidance and control algorithms necessary for real-time maneuver planning and execution for spacecraft formations using low-thrust control, in line with the goals of TA 5.4.2 Onboard Auto Navigation and Maneuver and TA 5.4.5 Autonomo">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/95516">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 95516</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX17.3.1</span>
+        </div>
+        <h1>Robust and Efficient GNC Algorithms for Autonomous Formation Flying using Electric Propulsion</h1>
+        <div class="meta-id">NASA TechPort Project ID: 95516</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/95516" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          This work will develop the guidance and control algorithms necessary for real-time maneuver planning and execution for spacecraft formations using low-thrust control, in line with the goals of TA 5.4.2 Onboard Auto Navigation and Maneuver and TA 5.4.5 Autonomous Precision Formation Flying. It lies at the intersection of three technologies crucial for future missions. Formation flying is needed to enable missions which require large spatial distributions and thus preclude the use of monolithic platforms. Electric propulsion will increase the lifespan and capability of missions beyond low earth orbit by reducing propellant mass. Autonomy is essential for missions to other planets in which communication to earth is slow and costly, and is made particularly challenging by the limited processing speed of flight hardware. To fuse these technologies while ensuring robustness and efficiency, the proposed research will take advantage of relative orbital elements (ROE), an emerging paradigm for relative state representation which replaces rapidly varying and geometrically opaque state vectors with slowly varying, physically significant parameters. Research objectives lie along three closely-related but independent paths.  First is the direct application of existing ROE theory to the problem of low-thrust formation flying. Important focuses are the generalization of the shortest-path impulsive control scheme to continuous, low-thrust control and determination of delta-v lower bounds in that context. The ultimate product will be efficient numerical algorithms for optimal low-thrust formation control around a central body with perturbations from oblateness, drag, solar radiation pressure, third bodies, etc.  Second is extension of the generic ROE framework to strongly perturbed environments such as small bodies and libration points. This will draw on the fact that the ROE are integration constants of the equations of relative motion. The advantages of ROE may be obtained in related problems by considering the integration constants of a minimally-reduced dynamics model. Applications of interest include the New Worlds Observer telescope formation concept around Sun-Earth L2, proximity operations and servicing in cis-lunar space in support of manned lunar missions, and gravity recovery of asteroids and natural satellites.  Last is the development of a low-thrust testbed in Stanfords  Space Rendezvous Laboratory (SLAB) for validation of GNC algorithms through hardware-in-the-loop testing. The construction of a thermal vacuum chamber facility for operating CubeSat electric propulsion systems will support SLABs  high-fidelity validation environment. The combined elements of SLABs  testing environment will enable rapid testing of GNC subsystems on space-capable components, including sensors, processors, actuators, and associated algorithms. Visiting technologist experiences will facilitate exchange of testing practices and sharing of software and hardware resources to support a broader range of missions.  This project constitutes an important contribution to the state of the art in precision formation flying and onboard guidance and control by providing a direct path from theoretical advances, through algorithm development, and finally to implementation and validation in satellite hardware. By systematically increasing the TRL of GNC algorithms for low-thrust formation flying, the proposed research will enable a host of future missions across a wide range of orbital regimes. These include earth observation and earth science missions, on-orbit satellite servicing, space telescopes for direct observation of exoplanets, gravitational wave detection, gravity recovery and surveying of small bodies, and many more.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This work will develop the guidance and control algorithms necessary for real-time maneuver planning and execution for spacecraft formations using low-thrust control, in line with the goals of TA 5.4.2 Onboard Auto Navigation and Maneuver and TA 5.4.5 Autonomous Precision Formation Flying. It lies at the intersection of three technologies crucial for future missions. Formation flying is needed to enable missions which require large spatial distributions and thus preclude the use of monolithic platforms. Electric propulsion will increase the lifespan and capability of missions beyond low earth orbit by reducing propellant mass. Autonomy is essential for missions to other planets in which communication to earth is slow and costly, and is made particularly challenging by the limited processing speed of flight hardware.       This project constitutes an important contribution to the state of the art in precision formation flying and onboard guidance and control by providing a direct path from theoretical advances, through algorithm development, and finally to implementation and validation in satellite hardware. By systematically increasing the TRL of GNC algorithms for low-thrust formation flying, the proposed research will enable a host of future missions across a wide range of orbital regimes. These include earth observation and earth science missions, on-orbit satellite servicing, space telescopes for direct observation of exoplanets, gravitational wave detection, gravity recovery and surveying of small bodies, and many more.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>95516</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX17.3.1: Onboard Maneuvering, Pointing, Stabilization, and Flight Control Algorithms</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2018-08-01</td></tr>
+<tr><th>Project End Date</th><td>2022-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Stanford University — Stanford, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Mars, Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Simone D&#x27;Amico (Principal Investigator); Matthew B Willis (Co-Investigator); Fred Y Hadaegh (Project Manager) &lt;fred.y.hadaegh@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: In order to meet increasingly ambitious science and exploration objectives, future NASA missions must leverage formation flying architectures, more autonomous guidance, navigation, and control (GNC) algorithms, and fuel-efficient electric propulsion systems. Many of these technologies have been demonstrated individually in past missions, but improved GNC techniques are needed to enable their application to on-orbit satellite servicing and debris removal, direct imaging of exoplanets by distributed occulter/telescopes, and gravity recovery around asteroids and moons. A major obstacle for autonomous GNC is the limited processing power of flight computers, due largely to the need for hardening against the harsh radiation environment beyond low earth orbit. This research project sought to lower this barrier through the development of accurate analytical models for satellite relative motion, adaptable to a variety of perturbation and continuous-thrust control forces, and the introduction of efficient algorithms for angles-only relative navigation. The satellite relative dynamics literature may be subdivided into categories by the choice of state representation used for modeling: translational states that uses position and velocity coordinates in a reference frame rotating with the chief spacecraft’s orbit, and relative orbital element (ROE) states that use geometric parameters to characterize the relative orbit. This research contributed to the state of the art in both categories, with advances in the order, orbit regime, and perturbation environment addressed by models in the GNC engineer’s toolbox. In the translational state domain, novel contributions include closed-form, second-order models for unperturbed relative motion on eccentric orbits in both Cartesian and spherical coordinates. Additionally, a general framework was developed for modeling the effect of arbitrary non-Keplerian forces on the relative motion in Cartesian coordinates, suitable for orbits of general eccentricity. This framework would apply equally well to perturbations caused by Earth oblateness, solar radiation pressure, atmospheric drag, and third-body effects from the Sun and Moon, or to the continuous, low-thrust acceleration driven by an electric propulsion system. The modeling framework was used to develop a closed-form solution for the special case of earth oblateness perturbation in equatorial orbits, which is particularly relevant for satellite servicing in geostationary orbit. In the domain of ROE state representations, the major contribution was a second-order mapping from the set of quasi-nonsingular ROE to Cartesian relative position coordinates. This mapping can be readily combined with existing linear models for the effects of perturbations on the ROE. The second-order models developed in the course of this research offer a significant improvement in accuracy over the first-order models that dominate the multi-satellite GNC literature, while adding little computational cost. By enabling accurate trajectory propagation with limited processing power, they represent a key step toward autonomous proximity operations and formation flying. In addition to their advantages in accuracy and efficiency, second-order relative dynamics models are motivated by the problem of angles-only relative navigation. This entails the estimation of a target space object’s state relative to a spaceborne observer using only bearing angle measurements obtained from a monocular camera. Angles-only relative navigation is an attractive paradigm because it can be readily automated and utilizes camera sensors that are inexpensive, passive, and already ubiquitous in spacecraft design. However, it is challenged by an ambiguity in the inter-spacecraft range, which arises from the use of linear dynamics models that predict the same bearing-angle behavior independent of the separation between observer and target. The ambiguity can be resolved by capturing the nonlinear effects in a second-order model such as those developed in this research. Beyond the underlying dynamics model, this research led to a novel algorithm for efficiently solving the system of second-order equations that govern the angles-only initial relative orbit determination problem. The Infinitesimal Solution of Polynomial Equations by Quadratic Truncation and Elimination Recursion (InSPEQTER) algorithm leverages the domain-specific insights that the relative state parameters—either the ROE or integration constants of a translational state model—are small and that the dynamics model is an approximation to obtain a direct, algebraic solution to the problem. This reduces or eliminates the need for traditional root finding methods that require initialization, iteration, or numerical integration. This algorithm is being refined for demonstration aboard an upcoming public-private partnership mission as part of the Angles-only Absolute and Relative Trajectory Measurement System (ARTMS).</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/95516">https://techport.nasa.gov/projects/95516</a>
+    </div>
+  </div>
+</body>
+</html>

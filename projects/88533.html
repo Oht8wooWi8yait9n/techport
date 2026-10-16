@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design and Optimization of Space System Architectures: Applying and Extracting Lessons Learned | NASA TechPort Project 88533</title>
+  <meta name="description" content="TABS 11.2.6, TABS 11.3.3, and TABS 11.4.2 call for improvements in tradespace exploration and analysis technology that takes advantage of model based system engineering approaches. These technologies would support mission design and other decision-making by 1)">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/88533">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 88533</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX11.5.1</span>
+        </div>
+        <h1>Design and Optimization of Space System Architectures: Applying and Extracting Lessons Learned</h1>
+        <div class="meta-id">NASA TechPort Project ID: 88533</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/88533" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>TABS 11.2.6, TABS 11.3.3, and TABS 11.4.2 call for improvements in tradespace exploration and analysis technology that takes advantage of model based system engineering approaches. These technologies would support mission design and other decision-making by 1) searching the space of decision variables and identifying Pareto optimal solutions and 2) identifying the key tradeoffs in the objectives and the driving decisions. Maturing these technologies is critical for system architecture design because the architecture has the largest impact on downstream decisions and on the system's performance, cost, risk flexibility, and other figures of merit. Specifically, NASA is interested in applying tradespace exploration and analysis technologies to distributed spacecraft missions (DSM). Designing DSMs are a challenge because of the large number of design variables and their complex interactions, many nonlinear constraints including power requirements and link budgets, multiple conflicting objectives of maximizing performance while minimizing cost and risk, and local optima present in the tradespace. System models are being developed to evaluate a system, but optimizing the architecture and understanding the tradespace remains difficult. Multi-objective evolutionary algorithms (MOEA) show promise as a decision-support tool, because they can solve problems that are non-linear, non-convex, and continuous or discrete. MOEAs have been used in tradeoff and sensitivity analyses by NASA, the Aerospace Corporation, and JAXA. MOEAs, however, are computationally inefficient because they rely on stochastic sampling of the decision space and do not leverage the knowledge of the problem structure or the domain. A more efficient optimization method is needed to handle the challenges associated with designing DSMs. The proposed research will develop a knowledge-intensive optimization method that exploits expert-knowledge to explore the tradespace, much like how concurrent engineering design teams rely on expert experience. The knowledge-intensive optimization implements a multi-objective hyper-heuristic that adapts its search strategy to use an effective mix of codified expert knowledge and stochastic sampling. To make sense of the possibly millions of solutions returned by the optimization, researchers are just beginning to develop tradespace analysis technologies that visualize the relationship between design variables and objectives. The proposed research will develop a knowledge-extraction module to produce a more compact summary of the driving decisions that lead to optimal solutions using association rule mining and classification trees. Association rule mining will identify the design decisions that have large impact, and the classification trees will use these design decisions and create a partially ordered list indicating their relative importance. The proposed technologies will be demonstrated on DSM design case-studies to validate their efficacy.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>These technologies would support mission design and other decision-making by 1) searching the space of decision variables and identifying Pareto optimal solutions and 2) identifying the key tradeoffs in the objectives and the driving decisions.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>88533</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.5.1: Tools and Methodologies for Defining Mission Architectures and Mission Design</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2016-08-01</td></tr>
+<tr><th>Project End Date</th><td>2018-04-13</td></tr>
+<tr><th>Lead Organization / Center</th><td>Cornell University — Mableton, Georgia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>New York (NY)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Daniel Selva (Principal Investigator); Nozomi Hitomi (Co-Investigator) &lt;nozomi.hitomi@nasa.gov&gt;; Jacqueline J Le Moigne (Project Manager) &lt;Jacqueline.J.LeMoigne-Stewart@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Transitioned To</strong> (Science Mission Directorate): SMD Earth Science Technology Office (ESTO) Advanced Information Systems Technology (AIST) Program for continuing the development of the Tradespace Analysis Tool for Constellations (TAT-C). TAT-C is a tool that allows to explore multiple constellation mission designs for Pre-Phase A Earth Science missions and that optimizes these designs based on user requirements, e.g., Program Manager optimizing a portfolio or Scientist providing Science requirements. In the new proposed TAT-C ML (Machine Learning) tool, the search will be able to be performed either in the previous exhaustive manner or being improved by using Nozomi&#x27;s MOEA approach. The proposal was selected for funding, and Nozomi worked with the TAT-C team to integrate his approach in the newly redesigned TAT-C ML</li><li><strong>Closed Out</strong>: The research conducted during the fellowship culminated in a knowledge-intensive, multiobjective tradespace exploration tool and a knowledge-extraction tradespace analysis tool to support decision making activities associated with planning distributed satellite missions. The tradespace exploration tool incorporates domain-knowledge and lessons-learned into multi-objective evolutionary algorithms (MOEAs) to help guide the optimization and improve the efficiency and efficacy of conventional MOEAs. Specifically, evolutionary operators encoding domain-knowledge were applied alongside conventional evolutionary operators using an adaptive operator selection strategy to push convergence toward promising solutions while still sufficiently exploring the tradespace. The knowledge extraction tool analyzes the results obtained from the optimization and extract the key decisions leading to architectures of interest (e.g. high performance, low cost, and low risk architectures). The extracted knowledge can be stored in a knowledge base and can be reused by the tradespace exploration tool when solving future problems. I benchmarked my methods with other algorithms that also leverage knowledge but apply through constraints to the problem as opposed to evolutionary operators. Applying expert knowledge through constraints is a rigid strategy and either assumes that all the available knowledge is equally useful to the optimization or that all the knowledge is an absolute truth. Past studies have shown that some knowledge is more useful than others, and the design heuristics that are encoded into the constraints are general rules-of-thumb that don’t work in every situation. The proposed algorithm that utilizes the adaptive operator selection strategy can adapt the search strategy to utilize the knowledge that is most useful and only when it helps to guide the optimization. The search algorithms were benchmarked using a test problem where the goal was to architect a climate monitoring satellite system consisting of a set of heterogeneous satellites carrying different payloads in different orbits. Optimal solutions were solutions with good trades in cost and scientific value. I showed that my algorithm achieved superior search performance to other algorithms seen in the literature and knowledge-independent MOEAs. The algorithmic framework developed during this fellowship is being adopted into an AIST project called TAT-C (Tradespace Analysis Tool for Constellations) lead by my mentor Jacqueline LeMoigne at NASA Goddard Space Flight Center. The extension of the tool is called TAT-C ML for machine learning and will incorporate the MOEA with the adaptive operator selection strategy and a data mining algorithm. The ultimate goal is to store useful knowledge into a knowledge-base and then leverage the available knowledge with the MOEA to explore the tradespace of architectures for distributed spacecraft missions. In addition, the knowledge-base will be updated with new knowledge that is learned during the optimization to assist future tradespace exploration on other missions.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/88533">https://techport.nasa.gov/projects/88533</a>
+    </div>
+  </div>
+</body>
+</html>

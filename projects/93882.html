@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamics Analysis of Origami-Folded Deployable Space Structures with Elastic Hinges | NASA TechPort Project 93882</title>
+  <meta name="description" content="The future of space exploration needs highly sophisticated deployable space structure technology in order to achieve the ambitious goals being set today. Several contemporary missions and mission concepts require structures on the order of 10, 100, and even 10">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/93882">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 93882</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX12.3.1</span>
+        </div>
+        <h1>Dynamics Analysis of Origami-Folded Deployable Space Structures with Elastic Hinges</h1>
+        <div class="meta-id">NASA TechPort Project ID: 93882</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/93882" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The future of space exploration needs highly sophisticated deployable space structure technology in order to achieve the ambitious goals being set today. Several contemporary missions and mission concepts require structures on the order of 10, 100, and even 1000 meters in size, far exceeding the 5 meter diameter constraint of launch vehicle fairings. For these cases where the deployed structure is several factors greater in size than the spacecraft bus, the dynamics of the deployment and the effect on the host bus is of significant concern. The current approach in the field relies on experimental testing and Finite Element Analysis software to verify deployment for developing structure designs, a slow and resource expensive process. However, modeling the dynamics of deployable structure and spacecraft systems using a more efficient approach have not been investigated due to the complexity and lack of approach precedence in the literature. The deployment dynamics of complex deployable systems must be understood to verify deployment and to ensure mission success, and should be available early in the design process to enable more efficient and reliable designs. This project investigates modeling dynamics of deployable space structures and host spacecraft systems to address this technology need. This project focuses on materials and stowing techniques on the cutting edge of deployable space structures technology research. A promising new field of space structures research draws inspiration from origami folding techniques to design efficient packaging schemes. Additionally, high strain composite materials have been demonstrated to provide highly lightweight and elegant solutions for deployable structure design. Incorporating these highly flexible elastic materials into folding deployable systems presents novel challenges, where the physical engineering reality of building such structures makes certain simplifying assumptions of origami approaches invalid. This project will investigate how to address these engineering realities through dynamics modeling and analysis of origami folded structures. Analyzing deployment behavior through dynamic models will make demonstrating concept feasibility possible, and will push the capabilities of deployable structures technology forward. This project will achieve the proposed goal by investigating three key gaps in modeling method knowledge and integrating these methods into one powerful software tool. These include models and representations of flexible elastic hinges, system parameterization and fold pattern design, and spacecraft and system dynamics, energy, and momentum analysis. Together, these areas will enable the structural and deployment dynamics analysis needed to understand and design efficient deployable space structures. This analysis will enrich the field of deployable structures technology by considering these structures from a systems-level point of view that has not yet been taken but is key to successful development. Rapid modeling of these dynamic behaviors will enable the design process to address the primary concerns that high level mission developers raise when considering the use of complex deployable structures on their spacecraft. By developing the means to capture the full system dynamics, this project will push large scale, folding deployable structures technology toward implementation, enhancing spacecraft and mission capabilities to the sophistication needed to meet mission objectives of the future.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>By developing the means to capture the full system dynamics, this project will push large scale, folding deployable structures technology toward implementation, enhancing spacecraft and mission capabilities to the sophistication needed to meet mission objectives of the future.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>93882</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX12.3.1: Deployables, Docking, and Interfaces</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2017-08-01</td></tr>
+<tr><th>Project End Date</th><td>2020-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Colorado Boulder — Boulder, Colorado</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge, Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Hanspeter Schaub (Principal Investigator); Joanna Fulton (Co-Investigator) &lt;joanna.l.fulton@jpl.nasa.gov&gt;; Olive R Stohlman (Project Manager) &lt;olive.r.stohlman@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Spacecraft design is inherently limited and dictated by available launch vehicle capabilities, motivating the development of a wide variety of deployable spacecraft structures. These structures are developed to meet the communication, operation, and scientific objectives of the spacecraft mission, and therefore the successful deployment of the structure is required for overall mission success. Typical analysis of deployable spacecraft structures spans questions of structural stiffness and stability, vibration modes, thermal stability, and deployment dynamics. In this thesis, only the deployment dynamics are of interest. Validation and verification of deployment for deployable structures is primarily achieved through rigorous testing, and this is sometimes presented in tandem with complex finite element simulation or a simplified model approximation. The key questions of this validation typically regard what the deployment motion looks like and are answered through analysis of the deployment dynamics states. Therefore, deployment dynamics analysis plays a key role while also providing a central challenge for deployable structures development. An emerging area in the deployable structures field is referred to as origami structures and takes primary inspiration from origami folding techniques. These are developed to stow flat structures with large area to size ratio relative to the spacecraft bus, such as solar and phase arrays, star occulters, and reflector antennas. A central challenge for origami structures is the deployment dynamics and deployment actuation of the folded structure and spacecraft system. A novel lightweight solution for deployment actuation is to integrate strain energy hinges that can also facilitate folding. Deployment dynamics of such a system would typically be studied through finite element analysis (FEA). However, for a structure with multiple high strain hinges, FEA modeling would require significant computational time and skill, as these hinges exhibit large deformations of shell structures with non-linear behavior. This limits the ability to explore parameter design spaces and iterate towards more optimal solutions. An alternative method for studying the system dynamics that uses multi-body dynamics and a simplified hinge representation is the focus of this thesis. In this approach, fold panels are treated as rigid bodies and the flexible joints are represented by internal forcing functions. In this thesis, a model to represent the hinge mechanics is designed as a function of the hinge&#x27;s multiple degrees of freedom, as defined by the relative position and orientation states. This model is designed to be implemented in a multibody dynamics algorithm customized for origami-folded deployable spacecraft structures. The methodology aims to provide an approximation that enables sufficient deployment dynamics simulation accuracy without a full FEA simulation of the system. The multibody dynamics modeling approach for this thesis implements the Articulated Body Forward Dynamics algorithm and Spatial Operator Algebra for free-flying spacecraft systems with closed-chain constraint enforcements and the applications of this approach for deployable structures is demonstrated. Constraint stabilization is discovered to be the primary challenge for scaling this approach to systems of many folding panels. An approach for modeling high strain tape spring hinges for simulation of free deployment dynamics is presented and applied to a high strain composite hinge sample. This study includes both an FEA database and experimental measurements, and concludes that the high strain composite materials contain a level of variability that makes repeatability and behavior prediction challenging. An additional study of a folding hinge with two spring steel tape springs is developed and implemented in prototype structure validation efforts. A novel folded deployable structure is designed and constructed with a segmented, multi-DOF hinge, and a rigorous suite of deployment tests are conducted using videogrammetry for deployment data measurement. A full simulation of the prototype is constructed from the multibody dynamics model and the multi-DOF hinge model, and the predicted deployment behavior is evaluated against the testing. Additionally, the prototype deployment is replicated using an explicit dynamic FEA analysis for a performance comparison. The models demonstrate strong correlation for deployment time predictions across the states.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="http://dx.doi.org/10.1016/j.actaastro.2021.03.022" target="_blank" rel="noopener noreferrer">Forward dynamics analysis of origami-folded deployable spacecraft structures</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/93882">https://techport.nasa.gov/projects/93882</a>
+    </div>
+  </div>
+</body>
+</html>

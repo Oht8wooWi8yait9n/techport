@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turbulence, Transition, and Numerical Method Technologies | NASA TechPort Project 94238</title>
+  <meta name="description" content="The Turbulence, Transition, and Numerical Method Technologies effort identifies and down-selects critical turbulence, transition, and numerical method capability improvements that enable at least a 40% reduction in predictive error against standard test cases.">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/94238">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 94238</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">ARMD</span>
+          <span class="badge">TACP</span>
+          <span class="badge">TX15.1.7</span>
+        </div>
+        <h1>Turbulence, Transition, and Numerical Method Technologies</h1>
+        <div class="meta-id">NASA TechPort Project ID: 94238</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/94238" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The Turbulence, Transition, and Numerical Method Technologies effort identifies and down-selects critical turbulence, transition, and numerical method capability improvements that enable at least a 40% reduction in predictive error against standard test cases. The project will examine turbulent separated flows, evolution of free shear flows, and shock-boundary layer interactions utilizing state-of-the-art high performance computing hardware.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The development of physics-based computational tools envisioned in Revolutionary Computational Aerosciences will yield a number of benefits: deliver a capability to the aeronautics community to improve designs and reduce design cycle times; accelerate introduction of advanced air vehicles and propulsion systems into the airspace system; enable simulation and certification by analysis, thereby reducing flight testing and resulting in savings of up to $1B from an aircraft development program.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>94238</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Aeronautics Research Mission Directorate (ARMD)</td></tr>
+<tr><th>NASA Program</th><td>Transformative Aeronautics Concepts Program (TACP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX15.1.7: Computational Fluid Dynamics Technologies</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2013-10-01</td></tr>
+<tr><th>Project End Date</th><td>2018-05-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Illinois at Urbana-Champaign — Urbana, Illinois; Massachusetts Institute of Technology (MIT) — Cambridge, Massachusetts; Old Dominion University — Norfolk, Virginia; The University of Texas at Austin — Austin, Texas; University of Notre Dame — Notre Dame, Indiana; University of Wyoming — Laramie, Wyoming; Stanford University — Stanford, California; Air Force Research Laboratory (AFRL) — Notre Dame, Indiana</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Mujeeb R Malik (Principal Investigator) &lt;m.r.malik@nasa.gov&gt;; Michael M Rogers (Project Manager) &lt;michael.m.rogers@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>John A Cavolowsky (Program Director) &lt;john.a.cavolowsky@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2021-05-07</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The close collaboration in the validation experimentation effort was excellent, the complementary research efforts related to fundamental numerical model development, and the activities related to effective HPC utilization on near term architectures that are coming down the pipeline were exactly what NASA should be doing. Even though the TQR panel cannot say that the success criteria were fully met, we do feel that the research funded by TTT/RCA was successful and useful in determining the next suite of CFD validation tests and the problematic flow conditions that continue to be difficult to predict using our current suite of computational tools. Given the TQR Panel’s review criteria: 1. The deliverables meet the technical requirements; 2. The appropriate technical approaches were followed in producing the deliverables; and 3. All technical caveats and concerns have been identified and the deliverables: a. Development of more accurate physics-based methods (e.g., higher moment closure); b. Large eddy simulation (LES); c. Advanced numerical methods; d. Transition prediction and modeling; e. Validation experiments; f. Multidisciplinary analysis and design (high fidelity). TQR panel feels that the technical processes were all completed and that the review criteria and all the deliverables were met. Thus, the Milestone TACP-2016-001 has been completed.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/aeroresearch/programs/tacp/ttt" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/94238">https://techport.nasa.gov/projects/94238</a>
+    </div>
+  </div>
+</body>
+</html>

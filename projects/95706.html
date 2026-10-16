@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Coupled Uncertainty Quantification and Propagation Framework for Expensive Models: Revisiting a NASA Frangible Joint Analysis | NASA TechPort Project 95706</title>
+  <meta name="description" content="In the proposed approach, state-of-the-art tools for UQ/UP that leverage machine learning and high-performance computing will be used to provide a more rigorous handling of uncertainty while maintaining tractable computation times. For UQ, a sequential Monte C">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/95706">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 95706</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">LaRC CIF</span>
+          <span class="badge">TX09.4.5</span>
+        </div>
+        <h1>A Coupled Uncertainty Quantification and Propagation Framework for Expensive Models: Revisiting a NASA Frangible Joint Analysis</h1>
+        <div class="meta-id">NASA TechPort Project ID: 95706</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/95706" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          In the proposed approach, state-of-the-art tools for UQ/UP that leverage machine learning and high-performance computing will be used to provide a more rigorous handling of uncertainty while maintaining tractable computation times. For UQ, a sequential Monte Carlo (SMC) sampler [1] will be used to generate discrete random variables representing the uncertainty in a set of model parameters-of-interest. With respect to alternative UQ approaches, the SMC sampler has the advantage of allowing the required model evaluations to be performed in parallel, which will be conducted across a set of CPUs on one of NASA's supercomputing platforms [2]. For UP, a stochastic reduced order model (SROM) [3], a smart Monte Carlo approach, will be used to propagate the quantified uncertainty through the model via simulation to estimate the distribution of a quantity of interest (in the present study this is the response ratio of the FJ design, a metric that is indicative of successful FJ separation). The SROM method typically uses just a fraction of the model evaluations relative to traditional Monte Carlo for UP while retaining its strengths (scalability, non-intrusiveness). These methods have never been coupled before, but they have the potential to enable probabilistic risk analysis and reliability assessments for complex systems that were previously infeasible. \n \nImmediately, the NESC will be interested in the results of the frangible joint analysis. The reliability of the FJ is vital to mission success. FJ failures are thought to be the cause in the loss of the Orbiting Carbon Observatory (OCO-1) at a cost of $280M and the Glory mission at an estimated cost of $424M. Both of these missions failed when the payload fairing failed to separate, leaving the spacecraft unable to achieve orbit. Although no public information is available, it is also likely that a FJ failure led to the recent loss of the classified Zuma mission (estimated to be valued in the billions of dollars) as reports indicate a failure in the payload separation system. In the case of a crewed mission, such a failure would be catastrophic, most likely resulting in Loss of Crew (LOC). Both the Space Launch System (SLS) and some commercial crew partners will be using FJ on manned missions in the future. Therefore, it is vital that reliability calculations are accurate and the models that underpin them are robust. \n \nMore broadly, the coupling of these tools and their demonstration could have an impact across the NASA modeling and simulation portfolio where UQ/UP is a requirement to accurately capture the behavior of complex aerospace systems. Success will be measured by comparing current practice with the proposed approach in the contextof the frangible joint assessment. The goal is to reproduce estimatesof a FJ response ratio distribution with a reduction in assumptions in how UQ/UP are considered. The time required to complete the new UQ/UP procedure should be approximately equal or less than the time taken to perform the initial assessment.\n \nThe primary risk associated with this proposal is the possibility that the proposed methods do not compete in total time of analysis with original methods. However, it will be important to quantify the added benefits that the more rigorous UQ/UP approach provides to the project. A detailed evaluation of the trade-offs would be included. The payoff is a demonstration of feasibility for a new UQ/UP approach that could be implemented in other areas of interest to NASA, including structural analysis and computational fluid dynamics. \n \n Since the majority of the work will involve the development of computational tools, the costs associated with the project will be relatively low, as detailed in the cost analysis section of this submission. The project goals can be segmented such that meaningful success will be achieved in three months. However, the project impact will be minimized in this time frame, resulting in only a preliminary feasibility demonstration. In this case, FTE will be the driving cost. Expanding the project to a year will allow for full demonstration of capabilities as well as the development of usable software. An added goal of a year-long project will be to package the UQ/UP tools into a code that will be made available for future NASA use.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          As NASA continues its march toward the future's innovative concepts, interest has increased in the ability to design and certify by analysis as a means of reducing expensive and exhaustive testing. Advanced simulation alone cannot solve this problem; uncertainty quantification (UQ) and propagation (UP) are essential to provide meaningful and reliable predictions of real-world system performance. One major obstacle for the implementation of statistical methods for UQ/UP is the use of expensive computational models. UQ/UP methods generally require thousands to millions of model evaluations, and, when coupled with an expensive model, results in excessive solve times that can render the analysis intractable. The objective of this research will be to couple two state-of-the-art tools for uncertainty quantification and propagation that have the potential to enable UQ/UP for a wide class of complex simulation tools. To demonstrate the methods, an NESC assessment on frangible joints (FJ) will be revisited with the aim of reproducing or improving reliability calculation results, all while focusing on improved computation times. \nFrangible joint testing is a complex and expensive process, precluding empirical testing as a viable method for calculating reliability of a particular FJ design. Limited FJ testing was completed to aid in the development of a high-fidelity computational model that accurately reflects the physics of a FJ separation event. Reliability was subsequently calculated by using the high-fidelity model to train a reduced-order surrogate model that could then be used in a Monte Carlo analysis. There are two main limitations to the current approach, both of which result from the complexity of the FJ model. First, calibration of the model is difficult, as any optimization process to determine model parameters requires too many model evaluations to be feasible. Second, the surrogate model used for the reliability calculation was trained with 200-300 model evaluations. This is an order of magnitude lower than what is typically used to build a robust surrogate model.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>95706</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: LaRC CIF (LaRC CIF)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.4.5: Integrated Modeling and Simulation for EDL</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2018-10-01</td></tr>
+<tr><th>Project End Date</th><td>2019-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Virginia (VA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>William P Leser (Principal Investigator) &lt;william.leser@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The objective of this work is to enable uncertainty quantification (UQ) and propagation (UP) for computational science and engineering applications that rely on high-fidelity, complex simulations. The major obstacle for the implementation of UQ/UP for these simulations is the number of model evaluations typically required by these methods (104-106) in conjunction with the high cost of a single simulation. Current approaches to this problem usually rely on reduced order modelling. However, these models lose precision as compared the high-fidelity simulation and they still may require thousands of high-fidelity runs to train. The proposed approach is to couple two state-of-the-art tools for uncertainty quantification and propagation that have the potential to enable UQ/UP for a wide class of complex simulation tools.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/innovation_fund/index.html#.VQb6gUjJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/95706">https://techport.nasa.gov/projects/95706</a>
+    </div>
+  </div>
+</body>
+</html>

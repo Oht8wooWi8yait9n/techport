@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autonomous, Safe Take-Off and Landing Operations for Unmanned Aerial Vehicles in the National Airspace | NASA TechPort Project 33594</title>
+  <meta name="description" content="Unmanned aerial systems (UAS&#x27;s) and in particular intelligent, autonomous rotorcraft and fixed-wing aircraft have the potential to significantly impact modern society. A few examples of their utility include aerial surveying in difficult-to-access terrain, pre">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/33594">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 33594</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX15.1.4</span>
+        </div>
+        <h1>Autonomous, Safe Take-Off and Landing Operations for Unmanned Aerial Vehicles in the National Airspace</h1>
+        <div class="meta-id">NASA TechPort Project ID: 33594</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/33594" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Unmanned aerial systems (UAS's) and in particular intelligent, autonomous rotorcraft and fixed-wing aircraft have the potential to significantly impact modern society. A few examples of their utility include aerial surveying in difficult-to-access terrain, precision agriculture, package delivery, moviemaking, infrastructure inspection, fire fighting, search and rescue, etc. Recently there has been a lot of interest in autonomous air vehicles for cargo delivery to improve cost and time associated with shipping goods. Finally, much of the technology for autonomy could be used as a pilot's aid to help in difficult tasks such as landing a helicopter on an oil rig in the high seas or in the personal air vehicles of the future which are envisioned to be operated by people without significant pilot training. While the technology for unmanned air vehicles operating day in and day out without constant human supervision is maturing steadily, much remains to be done to make these vehicles commonplace. We have identified a number of challenges that must be addressed for these vehicles to safely and efficiently conduct their tasks in the National Airspace System (NAS). Civilian applications of UASs must ensure that they can: 1. sense and avoid other vehicles and follow air traffic commands, 2. avoid the terrain and land without operator intervention, 3. react to contingencies such as engine out and lost link scenarios, and 4. be reliable and cost-effective. We propose to a combination of software algorithms and low-cost, low SWAP sensors that simultaneously solves the navigation and obstacle detection problem, especially as relates to operation in cluttered environments. That is, in this program we will show that it is possible for small autonomous air vehicles to reliably and safely fly in the first and last 50 feet of operation.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The development of technology that enables autonomous and safe UAS operations during the critical (near earth) phases of take-off and landing will directly contribute to NASA's testing and validation of technologies and concepts for UAS operations in the NAS. Additionally, Near Earth's technology will provide an enhanced capability, enabling more comprehensive UAS flight-testing for NASA's collaborative efforts with the FAA to accommodate UAS operations in NextGen. As the capabilities mature and are integrated into more air vehicles, they will also be of direct use to NASA in their flight testing of ground-based air navigational aids and guidance systems located in remote areas. The proposed autonomous technology will enable greater utilization of UAS in other NASA areas, particularly for experimentation and testing in the various research centers, for example expanding the utilization of UAS in the Ames FINESSE volcano research. The mature technology will ultimately enable greater use of UAS in space. A UAS that knows its position and is able to set down, avoiding obstacles in a cluttered environment can be used to accomplish repairs both inside and outside a spacecraft, as well as performing exploration of planetary surfaces. In essence, the successful development of the technology specified in this solicitation will enable NASA and any of its contractors involved with autonomous systems to accomplish testing with increased safety and decreased cost.<br /> <br />Other Government agencies, both military and civilian, will comprise a much larger market for the technology. The UAS market is forecast to explode into hundreds-of-thousands of units within just a few years of the FAA establishing the appropriate regulatory procedures for the operation of UAS in the NAS. An enhance capability for safe, autonomous take-off and landing will fuel the market's forecast growth. Technology ensuring the safe operation of UAS, particularly during the first and last 50 ft. of flight, will contribute to testing that verifies the safety of UAS operations as well as providing regulators, legislators, and the general public with increased confidence in UAS operations. UAS are already in high demand, and they are being used in an increasing number of applications. Military UAS requirements are well documented and tens-of-thousands of UAS are already in use worldwide. The ability to take-off and land in tactical cluttered environments will allow UAS to be used more extensively in support of forward units. Additionally, the commercial market is forecast to grow to as many as 160,000 UAS. As soon as UAS operation in the national airspace is fully implemented, the cargo transportation market, in particular, is forecast to be the largest market segment. Autonomous precision take-off and landing will be a key enabling technology in realizing this market.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>33594</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX15.1.4: Aeroacoustics</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2015-06-17</td></tr>
+<tr><th>Project End Date</th><td>2015-12-17</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Near Earth Autonomy, Inc. — Pittsburgh, Pennsylvania</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Pennsylvania (PA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Sanjiv Singh (Principal Investigator); Parimal Kopardekar (Project Manager) &lt;Parimal.H.Kopardekar@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced To</strong></li><li><strong>Closed Out</strong>: Autonomous, Safe Take-Off and Landing Operations for Unmanned Aerial Vehicles in the National Airspace, Phase I Project Image</li><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart Image</li><li><strong>Briefing Chart</strong> — Autonomous, Safe Take-Off and Landing Operations for Unmanned Aerial Vehicles in the National Airspace Briefing Chart</li><li><strong>Briefing Chart Image</strong> — Autonomous, Safe Take-Off and Landing Operations for Unmanned Aerial Vehicles in the National Airspace, Phase I</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/33594">https://techport.nasa.gov/projects/33594</a>
+    </div>
+  </div>
+</body>
+</html>

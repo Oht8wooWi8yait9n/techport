@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Development of High Performance Hybrid Fuels | NASA TechPort Project 4309</title>
+  <meta name="description" content="NASAís strategic goals call for innovation in space technology for our nationís explorative future. Early phase paraffin fuel technology could enable practical hybrid motor use by producing high regression rates. Further, the creation of a robust and novel fue">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/4309">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 4309</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX01.1.5</span>
+        </div>
+        <h1>Development of High Performance Hybrid Fuels</h1>
+        <div class="meta-id">NASA TechPort Project ID: 4309</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/4309" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>NASAís strategic goals call for innovation in space technology for our nationís explorative future. Early phase paraffin fuel technology could enable practical hybrid motor use by producing high regression rates. Further, the creation of a robust and novel fuel, that overcomes paraffin mechanical property drawbacks, would produce high payoffs. The proposed research specifically will investigate polymer addition to paraffin grains, study the particle entrainment theory, evaluate hydride and metal additives, and demonstrate hypergolic ignition. We hope to find that polymers strengthen the low mechanical properties of paraffin. We will design, build, and demonstrate an experiment in which particle entrainment can be seen and understood. We will evaluate additives to increase performance and facilitate reliable and hypergolic ignition. Outreach to student run clubs and undergraduate engineers will also play an integral role demonstrating the promise of paraffin propellants through sounding rockets. A high performance paraffin based grain is a game-changing technology that could lead to the economical use of hybrid rockets.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>A high performance paraffin based grain is a game-changing technology that could lead to the economical use of hybrid rockets.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>4309</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.1.5: Hybrids</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-08-01</td></tr>
+<tr><th>Project End Date</th><td>2015-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Purdue University-Main Campus — West Lafayette, Indiana</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Indiana (IN)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Steven Son (Principal Investigator); Chris Zaseck (Co-Investigator); George T Story (Project Manager)</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: In this document I discuss paraffin fuel combustion and investigate the effects of additives on paraffin entrainment and regression. In general, hybrid rockets offer an economical and safe alternative to standard liquid and solid rockets. However, slow polymeric fuel regression and low combustion efficiency have limited the commercial use of hybrid rockets. Paraffin is a fast burning fuel that has received significant attention in the 2000’s and 2010’s as a replacement for standard fuels. Paraffin regresses three to four times faster than polymeric fuels due to the entrainment of a surface melt layer. However, further regression rate enhancement over the base paraffin fuel is necessary for widespread hybrid rocket adoption. I use a small scale opposed flow burner to investigate the effect of additives on the combustion of paraffin. Standard additives such as aluminum combust above the flame zone where sufficient oxidizer levels are present. As a result no heat is generated below the flame itself. In small scale opposed burner experiments the effect of limited heat feedback is apparent. Aluminum in particular does not improve the regression of paraffin in the opposed burner. The lack of heat feedback from additive combustion limits the applicability of the opposed burner. In turn, the results obtained in the opposed burner with metal additive loaded hybrid fuels do not match results from hybrid rocket experiments. In addition, nano-scale aluminum increases melt layer viscosity and greatly slows the regression of paraffin in the opposed flow burner. However, the reactive additives improve the regression rate of paraffin in the opposed burner where standard metals do not. At 5 wt.% mechanically activated titanium and carbon (Ti-C) improves the regression rate of paraffin by 47% in the opposed burner. The mechanically activated Ti C likely reacts in or near the melt layer and provides heat feedback below the flame region that results in faster opposed burner regression. In order to examine paraffin/additive combustion in a motor environment, I conducted experiments on well characterized aluminum based additives. In particular, I investigate the influence of aluminum, unpassivated aluminum, milled aluminum/polytetrafluoroethylene (PTFE), and aluminum hydride on the performance of paraffin fuels for hybrid rocket propulsion. I use an optically accessible combustor to examine the performance of the fuel mixtures in terms of characteristic velocity efficiency and regression rate. Each combustor test consumes a 12.7 cm long, 1.9 cm diameter fuel strand under 160 kg/m2s of oxygen at up to 1.4 MPa. The experimental results indicate that the addition of 5 wt.% 30 µm or 80 nm aluminum to paraffin increases the regression rate by approximately 15% compared to neat paraffin grains. At higher aluminum concentrations and nano-scale particles sizes, the increased melt layer viscosity causes slower regression. Alane and Al/PTFE at 12.5 wt.% increase the regression of paraffin by 21% and 32% respectively. Finally, an aging study indicates that paraffin can protect air and moisture sensitive particles from oxidation. The opposed burner and aluminum/paraffin hybrid rocket experiments show that additives can alter bulk fuel properties, such as viscosity, that regulate entrainment. The general effect of melt layer properties on the entrainment and regression rate of paraffin is not well understood. Improved understanding of how solid additives affect the properties and regression of paraffin is essential to maximize performance. In this document I investigate the effect of melt layer properties on paraffin regression using inert additives. Tests are performed in the optical cylindrical combustor at ~1 MPa under a gaseous oxygen mass flux of ~160 kg/m2s. The experiments indicate that the regression rate is proportional to µ 0.08ρ0.38κ0.82. In addition, I explore how to predict fuel viscosity, thermal conductivity, and density prior to testing. Mechanically activated Ti-C and Al/PTFE are examined in the optical combustor. I examine the effect of the reactivity by altering the mill time for the Ti-C and Al/PTFE particles. Mechanical activation of both Ti-C and Al/PTFE improve the regression rate of paraffin more than the unmilled additives. At 12.5 wt.% Al/PTFE milled for 40 minutes regresses 12% faster than the unmilled fuel. Similarly, at 12.5 wt.% 7.5 minute milled Ti C regresses 7% faster than unmilled Ti-C. The reactive particles increase heat transfer to the fuel surface and improve regression. The composition of the combustion products are examined using a particle catcher system in conjunction with visible light and electron microscopy. The exhaust products indicate that the mechanical activation of the Al/PTFE particles cause microexplosions that reduce exhaust particle size. However, the composition of the mechanically activated Al/PTFE products do not indicate more complete combustion. In addition, the mechanically activated and unmilled Ti-C showed no difference in exhaust products.</li><li><strong>Transitioned To</strong> (Jet Propulsion Laboratory): Fellow&#x27;s work being adapted for further use through contract with JPL. - &quot;Since Chris has graduated, the optical cylindrical combustor has been used for testing and evaluating the combustion of a paraffin based fuel with a MON oxidizer for a Mars Ascent Vehicle (MAV) hybrid propulsion concept. MAV is a JPL based program with some MSFC support.&quot; AND &quot;Some of the tools developed by Chris at Purdue are being used for additional hybrid research on the Mars Ascent Vehicle hybrid propulsion system. The tools had to be modified slightly to be used with a different (toxic) oxidizer, but that is to be expected. This is funded via a direct contract with JPL. The NASA AMES Peregrine hybrid motor is still progressing. One of the additives that Chris tested at Purdue was selected for testing in the Peregrine to help with the combustion stability of the motor. Unclear if that additive remains in the current Peregrine design.&quot;</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>4309-1363178639353.jpg</strong> — Project Image Development of High Performance Hybrid Fuels</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/4309">https://techport.nasa.gov/projects/4309</a>
+    </div>
+  </div>
+</body>
+</html>

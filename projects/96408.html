@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atmospheric Boundary-Layer Lidar PathfindEr (ABLE) | NASA TechPort Project 96408</title>
+  <meta name="description" content="The 2017 Decadal Survey for Earth Science Applications from Space (ESAS) identifies water vapor (WV) observations as synergetic and cross-cutting over five of six ESAS science and applications priorities. High vertical resolution profiles of WV within the Plan">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/96408">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 96408</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">IIP</span>
+          <span class="badge">TX08.1</span>
+        </div>
+        <h1>Atmospheric Boundary-Layer Lidar PathfindEr (ABLE)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 96408</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/96408" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The 2017 Decadal Survey for Earth Science Applications from Space (ESAS) identifies water vapor (WV) observations as synergetic and cross-cutting over five of six ESAS science and applications priorities. High vertical resolution profiles of WV within the Planetary Boundary Layer (PBL), as well as in the free troposphere, were identified more frequently than any other geophysical observables within ESAS, and given distinction as a "Most Important Observable" across most of the science panels. WV profiling lidar, optimized for the PBL, was explicitly identified as a candidate measurement approach and recommended for continued technology advancements to be a candidate for implementation the next decadal survey. This project, through focused technology advances and a space instrument design concept, will retire the risk for a future space based WV lidar that will enable cross-cutting science across disparate NASA focus areas. This single multi-function lidar will be capable of rideshare launch on an Evolved Expendable Launch Vehicle Secondary Payload Adapter (ESPA), which drastically reduces mission costs over a dedicated launch vehicle. Technology advancement without context of the final implementation can be misguided, resulting in costly iterations to adapt to designs to a future instrument or mission. Our proposed approach integrates technology advancement with mission design to avoid costly adaptation for final implementation. We propose to advance technologies and develop a space instrument/mission concept to enable the world's first space-based WV DIAL optimized for PBL profiling with multi-function capability and cross-cutting application that is affordable within future EVI and EVM cost caps. A future satellite lidar based on these innovate technologies would revolutionize weather and climate research by providing three-dimensional distributions of water vapor profiles capable of delineating PBL from free tropospheric variations, estimates of total precipitable water vapor, distributions of PBL heights, profiles of aerosols and clouds, and high spatial resolution maps of methane columns. We propose to advance the TRL of pulsed Er:YAG solid state lasers, pump laser diodes, and photonic integrated circuit (PIC) seed lasers to TRL-5. We look to execute this project by partnering with our industry collaborators, in which we have ongoing SBIR development efforts, to cost-share and maximize the TRL advancements of new innovative technologies that will further enable new and more affordable DIAL missions. Under this IIP we will leverage the work performed over multiple NASA SBIR's (summing to >$1.3M) as well as through ongoing Department of Defense programs for the development of a space-qualifiable TRL-5 Er:YAG single-frequency laser compatible with operation on a SmallSat. The second key objective of this IIP is to substantially improve the electrical efficiency of 1532 nm pump laser diodes from the current <25% to >40% electrical efficiency. The proposed advance in pump diode efficiency is the single largest improvement to the overall lidar efficiency and enables operation on a SmallSat platform. The final objective of our IIP is to leverage an additional >$2M in SBIR and Game-Changing Technology funding to adapt existing high TRL seed laser technologies into a PIC to substantially reduce size, weight, complexity and power and enable operation on a SmallSat. The technology development is bracketed with a series of engineering design sessions between NASA Langley and ESPA SmallSat vendors to develop a high fidelity instrument design integrated on a SmallSat bus. We will conclude the program by leveraging our science collaborators respective areas of expertise to develop intelligent mission designs that integrate with existing missions and help inform the development of future observing systems. The period of performance is 36 months and the entry and exit TRL for the airborne laser subsystem is 3 and 5, respectively.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Increase scientific understanding of natural phenomena using remote sensing
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>96408</td></tr>
+<tr><th>Acronym</th><td>ABLE</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Instrument Incubator (IIP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1: Remote Sensing Instruments and Sensors</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2020-05-01</td></tr>
+<tr><th>Project End Date</th><td>2025-01-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Washington-Seattle Campus (UW) — Seattle, Washington; Freedom Photonics, LLC — Santa Barbara, California; NOAA Earth System Research Laboratories (ERSL) — Hampton, Virginia; University of Oklahoma-Norman Campus — Norman, Oklahoma; Metis Technology Solutions, Inc. — Albuquerque, New Mexico; Harvard University — Cambridge, Massachusetts; nLight Photonics Corporation — Vancouver, Washington</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Colorado (CO), Massachusetts (MA), Oklahoma (OK), Virginia (VA), Washington (WA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Amin R Nehrir (Principal Investigator) &lt;amin.r.nehrir@nasa.gov&gt;; Daniel J Jacob (Co-Investigator); Rory A Barton-Grimley (Co-Investigator) &lt;rory.a.barton-grimley@nasa.gov&gt;; Leif Johansson (Co-Investigator); Rebecca W Bales (Co-Investigator) &lt;rebecca.w.bales@nasa.gov&gt;; David D Turner (Co-Investigator); Sean Crowell (Co-Investigator); Patrick M Burns (Co-Investigator); Richard A Ferrare (Co-Investigator) &lt;richard.a.ferrare@nasa.gov&gt;; Manoj Kanskar (Co-Investigator); Robert Wood (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Michael S Seablom (Program Director) &lt;michael.s.seablom@nasa.gov&gt;; Parminder S Ghuman (Program Manager) &lt;p.ghuman@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-06-26</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Link]</strong> Closeout Link</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/96408">https://techport.nasa.gov/projects/96408</a>
+    </div>
+  </div>
+</body>
+</html>

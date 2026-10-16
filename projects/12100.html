@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Use of the Operational Air Quality Monitor (AQM) for In-Flight Water Testing | NASA TechPort Project 12100</title>
+  <meta name="description" content="A primary requirement for manned spaceflight is Environmental Health which ensures air and water contaminants, acoustic profiles, microbial flora, and radiation exposures within the cabin are maintained to levels needed for crew health and for vehicle system f">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/12100">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 12100</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">JSC CIF</span>
+          <span class="badge">TX06.4.1</span>
+        </div>
+        <h1>Use of the Operational Air Quality Monitor (AQM) for In-Flight Water Testing</h1>
+        <div class="meta-id">NASA TechPort Project ID: 12100</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/12100" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          A primary requirement for manned spaceflight is Environmental Health which ensures air and water contaminants, acoustic profiles, microbial flora, and radiation exposures within the cabin are maintained to levels needed for crew health and for vehicle system functionality. The reliance on ground analyses of returned samples is a limitation in the current environmental monitoring strategy that will prevent future Exploration missions beyond low-Earth orbit. This project attempts to address this shortcoming by advancing in-flight analyses of water and air. Ground analysis of in-flight air and water samples typically employ vapor-phase analysis by gas chromatography-mass spectrometry (GC-MS) to identify and quantify organic compounds present in the samples. We envision the use of newly-developed direct ionization approaches as the most viable avenue leading towards an integrated analytical platform for the monitoring of water, air, and potentially bio-samples in the cabin environment. Development of an in-flight instrument capable of analyzing air and water samples would be the logical next step to meeting the environmental monitoring needs of Exploration missions. Currently, the Air Quality Monitor (AQM) on-board ISS provides this specific information for a number of target compounds in the air. However, there is a significant subset of common target compounds between air and water. Naturally, the question arises, "Can the AQM be used for both air and water quality monitoring?" Previous directorate-level IR&D funding led to the development of a water sample introduction method for mass spectrometry using electro-thermal vaporization (ETV). This project will focus on the integration of the ETV with a ground-based AQM. The capabilities of this integrated platform will be evaluated using a subset of toxicologically important compounds. Currently, the Air Quality Monitor (AQM) on-board ISS provides specific information for a number of target compounds in the air. However, there is a significant subset of common target compounds between air and water. Naturally, the following question arises, "Can the AQM be used for both air and water quality monitoring?" Previous directorate-level IR&D funding led to the development of a water sample introduction method for mass spectrometry using electro-thermal vaporization (ETV). This vaporization source allows analytes in water samples to enter the gas phase, where they can be analyzed using a variety of techniques. This project will focus on the integration of the ETV with a ground-based AQM. The capabilities of this integrated platform will be evaluated using a subset of toxicologically important compounds. The ETV unit was constructed using two glass tubes and a nichrome ribbon powered by a programmable DC power supply (G W Instec, PSM-3004). The nichrome ribbon was threaded through two 3-mm wide, 1-cm-long slot cuts on the inner tube placed 1.5 cm past the inlet. The ribbon was held securely by compressing it between the inner tube and two halves of an outer glass tube. These halves were held together using a flexible metal clamp. Inside the inner tube the ribbon was slightly curved, and an indent (1 mm diameter) was made on its surface for depositing a measured liquid sample drop. The ribbon was positioned in the upper half of the inner tube in such a way that the edge of the ribbon faced the front (inlet) side of the ETV unit. Holes (1 mm diameter) were made on the outer and inner glass tubes for sample introduction and were aligned with the ribbon indent. The viability of the ETV approach for the analysis of water analytes was demonstrated using a ground-based, laboratory scale analyzer (reference: Dwivedi, P. et al. "Electro-Thermal Vaporization Direct Analysis in Real Time-Mass Spectrometry for Water Contaminant Analysis During Space Missions," Analytical Chemistry, 85, 9898-9906 (2013)). The work in this proposal will extend that effort and interface the ETV to a ground version of the current in-flight AQM. Liquid sample will be introduce via a pipet through the sample injection port and placed onto the nichrome ribbon heated to a set temperature by an external, programmable power supply. Upon vaporization of the water sample, the target analytes will be swept into the AQM Sample-In port using nitrogen carrier gas. A vapor-phase analysis can then be performed by the AQM to identify and quantify the target analytes in the water samples. Parameters to be optimized include water sample size, carrier gas sweep rate, and ribbon temperature. The operating parameters of the vapor-phase analysis performed by the AQM will also need to be modified for this type of sampling methodology. A simple two-position valve attached to the ETV and a diverter tube will allow for manual selection of either a water sample through the ETV or an air sample through the diverter tube. The primary objective of this effort is to evaluate the viability of the ETV with ground-based, flight hardware. A proof-of-concept unit capable of water and air analysis utilizing the ETV will be developed. The target water analytes to be used in this work will come from a list provided by the water SMEs in the Toxicology and Environmental Chemistry Laboratories at JSC. These analytes are commonly observed in the ground analysis of water samples from ISS. A preliminary engineering evaluation of this set-up could potentially be performed with the goal of formulating a viable plan of integrating the ETV to the control software and power supply of the AQM. This plan could serve as a starting point for further development. This work will advance this project from a TRL of 3 to a TRL of 5.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This reliance on ground analysis of returned samples and the limited information obtained from current in-flight hardware are major weaknesses in the management of environmental health on manned spacecraft and also make this approach incompatible with long duration missions beyond low-Earth orbit. This proposal attempts to address this shortcoming by developing a combined air/water analyzer for the in-flight monitoring of volatile organic compounds. Extending this to include an already developed, miniaturized plasma ion-source coupled to the electrothermal vaporizer and a detection system is a very powerful tool that will enable unfunded/planned missions. It is a capability that provides environmental monitoring capability with a means to perform advanced analyses of solids, liquids, and gases, sampled at destinations. An electrothermal vaporizer (ETV) coupled to a detection system such as the Air Quality Monitor (AQM) results in a very powerful, cost-effective, enabling tool for environmental monitoring. However, this system has advanced capabilities designed for the non-expert that requires low power, minimal-to-no consumables, is portable and battery-ops capable, and has low mass and volume. Such systems provide the layman and the researchers alike the analytical tools necessary to obtain real-time data as needed to deepen their understanding of complex problems.#An in-flight analytical system capable of gas and liquid analyses will provide a means to ensure the air and water meet the requirements for proper environmental health for crew. Current, analytical technology for managing the environmental health of manned spacecraft is limited and highly specialized, providing a limited amount of information on the state of environmental health. The Total Organic Carbon Analyzer (TOCA) and the Colorimetric Water Quality Monitoring Kit (CWQMK) are used to examine only two aspects of water quality, total organic carbon and biocide concentration, respectively, on-board ISS. A comprehensive analysis of ISS potable water constituents requires sample return and subsequent ground analysis. This technology will provide crew the means to monitor water quality in real-time during flight.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>12100</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: JSC CIF (JSC CIF)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.4.1: Air, Water, Microbial, and Acoustic Sensors</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2013-12-01</td></tr>
+<tr><th>Project End Date</th><td>2014-12-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Georgia Institute of Technology-Main Campus (GA Tech) — Atlanta, Georgia; KBRwyle, Inc. — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Georgia (GA), Texas (TX)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Ariel V Macatangay (Principal Investigator) &lt;ariel.v.macatangay@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>ETV-AQM</strong> — Electrothermal Vaporizor attached to sample inlet of flight AQM.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/12100">https://techport.nasa.gov/projects/12100</a>
+    </div>
+  </div>
+</body>
+</html>

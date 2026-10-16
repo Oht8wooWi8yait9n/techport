@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission Classes and Technological Advances in Orbit Determination and Clock Precision to Enable Space-Based Imaging of Supermassive Black Holes | NASA TechPort Project 117200</title>
+  <meta name="description" content="This Supporting Technology proposal targets algorithm and technology development to enable new missions designed to image event horizons of nearby supermassive black holes (SMBHs). SMBHs reside at the heart of most galaxies, and the evolution and growth of gal">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/117200">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 117200</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">APRA</span>
+          <span class="badge">TX05.4.1</span>
+        </div>
+        <h1>Mission Classes and Technological Advances in Orbit Determination and Clock Precision to Enable Space-Based Imaging of Supermassive Black Holes</h1>
+        <div class="meta-id">NASA TechPort Project ID: 117200</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/117200" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          This Supporting Technology proposal targets algorithm and technology development to enable new missions designed to image event horizons of nearby supermassive black holes (SMBHs). SMBHs reside at the heart of most galaxies, and the evolution and growth of galaxies and SMBHs are thought to be closely linked. Further, SMBH event horizons and inner regions of their accretion disks offer unparalleled opportunities to probe fundamental physics and astrophysics. Over the past decade, the international Event Horizon Telescope (EHT) project has demonstrated the potential return from imaging M87*, the SMBH in the center of M87.  The Earth’s diameter constitutes a fundamental limit to the current EHT. At the frequencies used (~230 GHz), a network of telescopes employing very long baseline interferometry (VLBI) can only obtain an angular resolution sufficient to image M87* and SgrA*, the SMBH in the center of the Galaxy. Extending the EHT to include space-based antennas would expand the sample of SMBHs and enable testing (i) the extent to which the spins of SMBHs encode the history of their growth and interactions with their host galaxies (relevant to the Cosmic Origins Program); (ii) the extent to which General Relativity provides an adequate description of SMBHs; and (iii) the magnetohydrodynamics by which relativistic jets can be launched from the immediate environs of SMBHs (relevant to the Physics of the Cosmos Program).  The RadioAstron mission has demonstrated the feasibility of space-based VLBI. However, a space-based EHT requires frequencies an order of magnitude higher. Technological developments enabling spaced-based VLBI are ongoing (e.g., deploying large dishes in space), however, there is a gap in technology needed to achieve precise orbit determination and timing. The four main investigation areas of this study are   1. Mission Classes: Development of mission design algorithms to determine optimal orbit configuration to obtain images of potential SMBHs. The types of orbits can vary from Earth-centered, to Moon-centered, to orbits in the stable Lagrange regions in the Earth-Moon and Sun-Earth systems. Number of spacecraft can range from a single antenna to a constellation of multiple spacecraft. We will create mission design tools using JPL’s Mission-analysis Operations & Navigation Toolkit Environment (MONTE) software to develop broad types of orbits that can quickly assess uv-coverage distribution based on specific input parameters, such as number of spacecraft and type of orbit. 2. Orbit Determination: In low-Earth orbit, the state-of-the-art for orbit determination (OD) is at centimeter-level precision. However, OD accuracy in deep space is no better than several meters. Realizing an effective space VLBI mission requires characterizing the possible OD uncertainties in the context of the algorithms used. A recent meeting at the Keck Institute for Space Studies identified orbits at geosynchronous and above as most promising for substantial improvements in event horizon imaging; there is a compelling need to develop a thorough parametric understanding of the OD requirements necessary to support future spaced-based EHT science. Leveraging MONTE, we will develop the algorithms to assess OD requirements for different mission classes. 3. Clock Precision: Each spacecraft requires a clock for precise time-keeping in order to align wavefronts in phase. Hydrogen masers, used on the ground and for RadioAstron, are too massive and may not have sufficient performance for space-based VLBI. We will develop the requirements on clock phase coherence time and compare this to the performance obtained by existing space clocks, as well as new or emerging clock technologies that might be used in a space EHT mission.  4. Simulated Images: Using orbit simulations and incorporating uncertainties, we will produce simulated EHT images to demonstrate the imaging capabilities and science goals that can be achieved with each mission class.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The Astrophysics Research and Analysis program (APRA) supports suborbital and suborbital-class investigations, development of detectors and supporting technology, laboratory astrophysics, and limited ground based observing. Basic research proposals in these areas are solicited for investigations that are relevant to NASA's programs in astronomy and astrophysics, including the entire range of photons, gravitational waves, and particle astrophysics. The emphasis of this solicitation is on technologies and investigations that advance NASA astrophysics missions and goals.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>117200</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Astrophysics Research and Analysis (APRA)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX05.4.1: Timekeeping and Time Distribution</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX11.1: Software Development, Engineering, and Integrity; TX11.3: Simulation; TX17.X: Other GN&amp;C Technologies</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Target End TRL: 2</td></tr>
+<tr><th>Project Start Date</th><td>2022-09-01</td></tr>
+<tr><th>Project End Date</th><td>2025-08-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Continuum Space Systems, Inc. — Pasadena, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Hawaii (HI)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Sonia Hernandez (Principal Investigator); Todd A Ely (Co-Investigator) &lt;todd.a.ely@jpl.nasa.gov&gt;; Loic P Chappaz (Co-Investigator); Geoffrey Bower (Co-Investigator); T Joseph W Lazio (Co-Investigator) &lt;joseph.lazio@jpl.nasa.gov&gt;; Eric A Burt (Co-Investigator) &lt;eric.a.burt@jpl.nasa.gov&gt;; Marin M Anderson (Co-Investigator) &lt;marin.m.anderson@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Dominic J Benford (Program Director) &lt;dominic.j.benford@nasa.gov&gt;; David C Morris (Program Manager) &lt;david.c.morris@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-08-22</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/117200">https://techport.nasa.gov/projects/117200</a>
+    </div>
+  </div>
+</body>
+</html>

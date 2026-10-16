@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Methane Lidar Transmitter Development for Space | NASA TechPort Project 14711</title>
+  <meta name="description" content="The objective of this work is to advance the technology readiness level (TRL) of lidar system to enable global Methane (CH 4 ) and water vapor (H 2 O) measurements with sufficient coverage, sensitivity, and precision to address pressing science questions for c">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/14711">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 14711</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX08.1.5</span>
+        </div>
+        <h1>Methane Lidar Transmitter Development for Space</h1>
+        <div class="meta-id">NASA TechPort Project ID: 14711</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/14711" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"            "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> <p>The objective of this work is to advance the technology readiness  level (TRL) of lidar system to enable global Methane (CH<sub>4</sub>)  and water vapor (H<sub>2</sub>O) measurements with sufficient  coverage, sensitivity, and precision to address pressing science  questions for climate-carbon interaction. Methane (CH<sub>4</sub>) is  the second most important anthropogenic greenhouse gas with  approximately 25 times the radiative forcing of CO<sub>2</sub> per  molecule. Natural sources of CH<sub>4</sub> are dominated by wetland  emissions in the tropics and Arctic and sub-Arctic boreal regions,  with additional contributions from termites, ruminants, ocean biology,  and a geological source of unknown significance. Natural sources  account for about one-third of the emission total. The wetland source  is particularly variable, linked to temperature, precipitation, and  surface hydrological changes. Better characterization of the wetland  source clearly requires reliable CH<sub>4</sub> measurements in the  often-cloudy tropics and over partially inundated land surfaces and  open water. Another important science question is in the potential  release of large amounts of stored organic carbon as CH<sub>4</sub>  and CO<sub>2</sub> from thawing Arctic permafrost soils, which is  cause for concern as a rapid, positive greenhouse gas/climate  feedback. In addition, large but greatly uncertain amounts of  CH<sub>4</sub> are sequestered as gas hydrates in shallow oceans and  permafrost soils, which are also subject to potential rapid release.  Although these boreal, phase-change driven sources are not yet  estimated to be large, their potential magnitude and rapid growth  dictate that measurement systems need to be put in place for early  detection. Because CH<sub>4</sub> fluxes, as well as chemical loss,  are tightly coupled to hydrology, coordinated measurement of both  CH<sub>4</sub> and H<sub>2</sub>O are highly desired. Precise,  seasonal measurements with coverage at high latitudes (i.e., in low  sun to dark conditions) are required. Our proposed laser remote  sensing technology will be a key step in fostering measurements of  CH<sub>4</sub> and H<sub>2</sub>O with sufficient coverage, sampling,  and precision to address major science questions.</p> <p>Our proposed laser remote sensing technology will be a key step in  fostering measurements of CH<sub>4</sub> and H<sub>2</sub>O with  sufficient coverage, sampling, and precision to address these and  other science issues. The benefit to future Earth Science missions is  that the proposed technology enables global CH<sub>4</sub>  measurements to be made where they are really needed: in the absence  of sunlight (i.e., at night and at high latitudes in all seasons), in  the presence of scattered or optically thin clouds and aerosols, over  land and water surfaces, and with higher accuracy and precision than  currently available. These qualities are precisely those that make the  corresponding H<sub>2</sub>O measurements a valuable addition to the  current operational suite for weather and climate analysis. The  measurements will help satisfy the critical scientific need to  understand the behavior of greenhouse gases as they contribute to  climate change as well as to meet pressing national needs for  development of a national carbon monitoring system serving science,  policy-makers, and stakeholders.</p> <p>The end goal of the project would be to demonstrate the readiness of  the a CH<sub>4</sub> trace gas lidar instrument for space flight. The  target wavelengths and energies are ~1.65 µm and energy is ~500 µJ.   The specific objectives of this project are to:</p> <ol>  <li>Improve the tunability architecture of the seed laser(s) using two   different designs.<ol>    <li>The first design uses a DBR laser at 1651 nm to be delivered     under an STMD Game Changing Technology program.</li>    <li>The second design uses a novel approach: single or dual     sideband (SSB/DSB) tuning. It has the potential to significantly     simplify the seed laser design and uses existing DFB lasers.</li></ol></li>  <li>Demonstrate 500 µJ in Er:YGG/Er:YAG with narrow linewidth.</li>  <li>Reduce the size and complexity of the existing OPO</li>  <li>Use the tunable seed from objective 1 with the OPO and Er:YAG from   objectives 2 and 3 to demonstrate open path CH<sub>4</sub>   measurements and correlate them with an in-situ calibrated   instrument (Picarro in-situ CH<sub>4</sub> analyzer).</li></ol>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> <p>Orbital or sub-orbital Earth Venture missions or a future ASCENDS   mission to measure greehouse gas mixing ratios in the atmosphere.</p> <p>Space flight laser technology development</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>14711</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.5: Lasers</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 4 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2013-10-01</td></tr>
+<tr><th>Project End Date</th><td>2018-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Mars, Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Haris Riris (Principal Investigator) &lt;haris.riris-1@nasa.gov&gt;; Stewart T Wu (Co-Investigator) &lt;stewart.t.wu@nasa.gov&gt;; Kenji Numata (Co-Investigator) &lt;kenji.numata-1@nasa.gov&gt;; Matthew Mcgill (Project Manager); William E Cutlip (Project Manager) &lt;william.e.cutlip@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-02</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>CH4 Instrument onthe DC-8</strong> — The Airborne Methane Lidar on the DC-8 during our 2015 flight campaign</li><li><strong>Methane optical density measurements with an integrated path differential absorption lidar from an airborne platform</strong></li><li><a href="http://www.opticsinfobase.org/ao/fulltext.cfm?uri=ao-51-34-8296&amp;amp;id=246472" target="_blank" rel="noopener noreferrer">Airborne measurements of atmospheric methane column abundance using a pulsed integrated-path differential absorption lidar</a></li><li><a href="http://link.springer.com/article/10.1007%2Fs00340-014-5783-4#/page-1" target="_blank" rel="noopener noreferrer">Fast-switching methane lidar transmitter based on a seeded optical parametric oscillator</a></li><li><a href="https://ntts.arc.nasa.gov/app/" target="_blank" rel="noopener noreferrer">GSC-17281-1</a></li><li><a href="http://link.springer.com/article/10.1007%2Fs00340-014-5783-4" target="_blank" rel="noopener noreferrer">Fast-switching methane lidar transmitter based on a seeded optical parametric oscillator</a></li><li><a href="http://sciences.gsfc.nasa.gov/sed/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><a href="http://proceedings.spiedigitallibrary.org/proceeding.aspx?articleid=2436042" target="_blank" rel="noopener noreferrer">Optical Parametric Technology for Methane Measurements</a></li><li><strong>Airborne Lidar for Methane Measurements Project (CH4 LIDAR)</strong> — Airborne Lidar for Methane Measurements Project (CH4 LIDAR)</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/14711">https://techport.nasa.gov/projects/14711</a>
+    </div>
+  </div>
+</body>
+</html>

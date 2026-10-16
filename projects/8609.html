@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Fidelity Multi-Strategy and Multi-Disciplinary Design Optimization Environment | NASA TechPort Project 8609</title>
+  <meta name="description" content="Multidisciplinary design and optimization (MDO) tools developed to perform multi-disciplinary analysis based on low fidelity computation methods have been used in aircraft conceptual design for decades. These tools have been proven very effective for simple pr">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/8609">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 8609</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX11.5.2</span>
+        </div>
+        <h1>Multi-Fidelity Multi-Strategy and Multi-Disciplinary Design Optimization Environment</h1>
+        <div class="meta-id">NASA TechPort Project ID: 8609</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/8609" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Multidisciplinary design and optimization (MDO) tools developed to perform multi-disciplinary analysis based on low fidelity computation methods have been used in aircraft conceptual design for decades. These tools have been proven very effective for simple problems and mostly have been developed as a single codes. However, as analyses have become more complex and the need to consider more design factors crucial, such codes have grown so large as to be inconceivable and difficult to maintain. Nowadays, the design optimization process of a modern airplane must account for all failure modes and behavior constraints. In addition, it should cover manufacturing constraints and limitations on available resources, such as power, weight, and cost, simultaneously. This has to be done in an integrated way, so that the effects of any change in the design on all constraints and behavior measures are accurately modeled, and all interactions and trade-offs among design variables and disciplines are allowed to affect the design. ZONA Technology (ZONA) and its team member (Virginia Polytechnic Institute and State University), hereinafter referred to as "the ZONA team", propose in Phase I to develop a multi-fidelity, multi-strategy and multi-disciplinary design optimization environment, called the M3 Design Optimization Environment (M3 DOE) that consists of a three-layer optimization strategy, a multi-fidelity aerodynamic discipline, and a finite element analysis including outer mold line morphing and topology re-meshing capability. The M3 DOE allows the designer to select an appropriate optimization strategy and an aerodynamic method with an appropriate fidelity to obtain an optimum design with desired accuracy within the allowable time constraint.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The M3 DOE is a necessary tool to design aircraft in conceptual and/or preliminary design phases that establishes multi-fidelity unsteady aerodynamic loads and rapid aeroelastic shape design of complex flight vehicles. It can be directly employed for sizing and/or shape optimization of aircraft considering multi-disciplines like flutter, static aerodynamic loads, stress, strain, and buckling in conceptual and/or preliminary design phases. It is expected that this tool will readily be adopted by the aerospace industry and the U.S. DoD to develop a wide class of aerospace vehicles: UAVs/UCAVs, supersonic business jets and transports, advanced transonic transports, and fighter aircraft, hypervelocity missiles, and winged projectiles (with optimized fin/canard/wing). The M3 DOE has great potential to be adopted by the flutter and loads, conceptual design and configuration development departments of airplane manufacturers' both nationally and world-wide.<br /> <br />NASA has recognized the benefit of MDO framework applicable to design completely new aircraft and/or improve existing aircraft. The proposed M3 DOE can be directly applicable for sizing and/or shape optimization of aircraft while considering multi-disciplines like flutter, trim, stress, strain, and buckling in conceptual and/or preliminary design phases. The M3 DOE consists of a three-layer optimization strategy, a multi-fidelity aerodynamic discipline, and a finite element analysis including outer mold line morphing and topology re-meshing capability. The multi-fidelity aerodynamic disciplines include three types of aerodynamic methods, i.e., ZONA6/7 for linear subsonic and supersonic panel methods, ZTRAN method in ZAERO for transonic unsteady aerodynamics, and ZEUS (ZONA's Euler Unsteady Solver). The multi-strategy optimization approach provides designers with flexibility to select level of optimization as needed between structural sizing, topology optimization of the internal structure, and outer mold line shape optimization. The M3 DOE will allow NASA to more rapidly modify existing and/or design new aircraft by obtaining a higher level of fidelity in the optimized solutions.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>8609</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.5.2: Tools and Methodologies for Performing Systems Analysis</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 6 | Current TRL: 7 | Target End TRL: 7</td></tr>
+<tr><th>Project Start Date</th><td>2010-01-29</td></tr>
+<tr><th>Project End Date</th><td>2010-07-29</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>ZONA Technology, Inc. — Scottsdale, Arizona</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Armstrong Flight Research Center (AFRC) — Edwards, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Arizona (AZ), California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Dong-Hwan Lee (Principal Investigator); Chan-Gi Pak (Project Manager) &lt;chan-gi.pak-1@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/8609">https://techport.nasa.gov/projects/8609</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venus Energy Converter | NASA TechPort Project 185326</title>
+  <meta name="description" content="The primary goal is to demonstrate practical, functional power generation sources based on thermionic energy conversion (TEC) capable of operation at extreme temperature environments such as those found on the surface of Venus, propulsion systems and in Long-L">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/185326">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 185326</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX08</span>
+        </div>
+        <h1>Venus Energy Converter</h1>
+        <div class="meta-id">NASA TechPort Project ID: 185326</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/185326" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The primary goal is to demonstrate practical, functional power generation sources based on thermionic energy conversion (TEC) capable of operation at extreme temperature environments such as those found on the surface of Venus, propulsion systems and in Long-Lived In-Situ Solar System Explorer (LLISSE) missions. TEC provides an effective way of capturing the abundant source of heat energy found in environments such as Venus and LLISSE.  TEC is analogous to solar/photovoltaic (PV) cells with temperature/heat being the energy source for TEC compared to light/optical being the energy source for PV.  Unlike thermoelectrics which require and rely on a large temperature difference for operation, TEC can operate with a small or no temperature (isothermal) difference by judiciously using differences in thermionic work functions to convert temperature/heat to electrical energy.  Recent advances in material science and nanotechnology as well as the understanding of the underlying physical processes form the basis for this proposed effort to develop Isothermal TECs. This Phase I effort focuses on identifying suitable materials for the creation of the extreme environment TECs and applying the use of integrated circuit, additive manufacturing, and Micro-Electro-Mechanical System (MEMS) technology InnoSys has developed and is developing for, for example, extreme temperature transmitters for Venus to fabricate extreme temperature TECs.  Small emitter to collector spacing and properly chosen emissive low work function cathodes and low emission collectors allow conversion of temperature/heat to relatively large electrical current densities at relatively high TEC conversion efficiencies with simple system integration of TECs. Extreme/harsh environment protective packaging will be used. Also, when coupled with sources of heat energy such as radioisotopes and integrated into General Purpose Heat Sources (GPHSs), TEC can be used for planetary and others missions including moon missions.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The surface of Venus is an hostile extreme environment that is ripe for NASA exploration. Venus hides a wealth of information that could help NASA better understand Earth and exoplanets. It is important to explore and investigate Venus to better understand and determine how an Earth-like planet can become and became an extreme hothouse. It is not just understanding the evolution of planets and habitability in our own solar system, but extending beyond these boundaries to exoplanets which is an exciting and emerging area of research for NASA. Potential NASA applications include practical functional long life thermionic energy converters (TECs) capable of extreme temperature operation and power conversion/generation for Venus and LLISSE. Additional potential applications include space missions such as solar system, planetary missions, missions to the Moon and aeronautical applications including isothermal heat/temperature to electrical energy conversion for hypersonic and other vehicles including propulsion systems and other NASA applications where excess/waste heat could be converted to useful electrical energy including exploratory systems, space and other systems where light is limited or unavailable to power solar cell arrays. Additional potential NASA applications include practical functional thermionic energy converters (TECs) capable of hypersonic extreme temperature operation. The applications of thermionic devices in hypersonic vehicles are numerous and broaden the design space, since the TECs are capable of electrical power generation compatible with realistic hardware implementation strategies. Once developed, there will be a family of rugged thermionic energy converters suitable for self-operating and generating power sources for extreme temperature operation including in space, airborne/aeronautical and terrestrial applications. Potential Non-NASA applications and market opportunities are numerous and include and involve applications where wasted heat can be used to convert/generate electrical power from the heat source and drive various electronics and other systems. Examples of applications for the Thermionic Energy Converters include geothermal exploration, oil and gas exploration, space and satellite systems, hypersonic vehicles and industrial operations and any operation, facility, process that generates lots of excess/wasted heat this also includes commercial, industrial and residential furnaces. These proposed Thermionic Energy Converters will open up new and additional market opportunities where wasted heat can be used to generate electrical power and drive various electronics/systems, for example, space communication systems that also employ thermionic emitters for operation. There are also applications for these proposed Thermionic Energy Converters for remote applications where heat is abundant and sunlight is not. The proposed family of rugged thermionic energy converters will be suitable for self-operating and generating power sources for extreme temperature operation including in commercial space, commercial satellite and commercial airborne/aeronautical/aerospace and commercial and industrial terrestrial applications as well as national defense and security applications, propulsion systems including for commercial aircraft and commercial rockets and private missions to Venus among a host of other applications. For example, Rocket Lab's Venus mission will be the first private mission to the planet. Rocket Lab is a USA company based in Long Beach, California NASA plays a role in helping commercial space endeavors succeed by providing expertise and also having the vision and insight to anticipate current and future extreme environment commercial space endeavor needs.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>185326</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08: Sensors and Instruments</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2025-09-29</td></tr>
+<tr><th>Project End Date</th><td>2026-03-27</td></tr>
+<tr><th>Lead Organization / Center</th><td>NASA Headquarters (HQ) — Washington, District of Columbia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Utah (UT)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jennifer Hwu (Principal Investigator); Lynn M Torres (Project Manager) &lt;lynn.m.torres@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-19</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/185326">https://techport.nasa.gov/projects/185326</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Development of a Restartable, Green-Propellant Thruster for Small Spacecraft | NASA TechPort Project 91637</title>
+  <meta name="description" content="The proposed experiment will demonstrate the potential of a novel micro-hybrid gas generator to thermally dissociate aqueous solutions of hydroxylamine nitrate (HAN). This ammonium salt lies within a class of ionic liquids (ILs) that have recently been investi">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91637">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91637</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX01.1.2</span>
+        </div>
+        <h1>Development of a Restartable, Green-Propellant Thruster for Small Spacecraft</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91637</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91637" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The proposed experiment will demonstrate the potential of a novel micro-hybrid gas generator to thermally dissociate aqueous solutions of hydroxylamine nitrate (HAN). This ammonium salt lies within a class of ionic liquids (ILs) that have recently been investigated as alternative green replacements for hydrazine as a spacecraft propellant. The proposed research is directly aligned with two key elements of NASA's Space Technology Roadmap. 1) NASA TA01.1.4.2, Launch Vehicle Propulsion Technologies, Ancillary Propulsion Systems: Develop and mature ignition concepts that require low part count and/or low energy to be used as either primary or redundant ignition sources, and 2) NASA TA02.1.1.1, In-Space Propulsion Technologies, Liquid Storable Propellants: Evaluate alternate green propellants that allow thrusters to operate in pulse and continuous modes with these new propellants. Qualify propellants and components (valves, filters, regulators etc) for spaceflight. While the primary purpose of this research is to support in-space propulsion, the technology could also be adapted for use as a main booster ignition system and as a reaction control thruster. A primary research objective is to demonstrate repeatable, consistent ignition of ionic-liquid-based propellants. With the current state of the art, propellants based on IL-solutions are notoriously difficult to ignite, and a cold-startcapability does not exist. Existing catalyst beds used to dissociate the IL component of the solution must be pre-heated to greater than 350 C before firing. This shortcoming is especially disadvantageous for small satellite propulsion systems where energy conservation and volumetric efficiency are primary considerations.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          While the primary purpose of this research is to support in-space propulsion, the technology could also be adapted for use as a main booster ignition system and as a reaction control thruster. A primary research objective is to demonstrate repeatable, consistent ignition of ionic-liquid-based propellants. With the current state of the art, propellants based on IL-solutions are notoriously difficult to ignite, and a cold-startcapability does not exist.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91637</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.1.2: Earth Storable Propellants</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2013-08-01</td></tr>
+<tr><th>Project End Date</th><td>2017-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Utah State University (USU) — Logan, Utah</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Utah (UT)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Stephen Whitmore (Principal Investigator); Daniel P Merkley (Co-Investigator) &lt;daniel.p.merkley@nasa.gov&gt;; Charles W Pierce (Project Manager) &lt;charles.pierce@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Hydrazine thrusters currently dominate the spacecraft propulsion market. During recent years, health concerns over the use of hydrazine and the possibility of higher performance propellants have led to increased research in ionic liquid propellants as alternatives. Two major “oxidizer” elements have dominated the field, Ammonium DiNitramide (ADN) and Hydroxyl Ammonium Nitrate (HAN). Matching these “oxidizers” with varying fuel elements, stabilizers, and water contents allows propellant developers to tailor propellants to match requirements for a specific research program. There are two major drawbacks for ionic liquid propellants. The first is that the thrusters require a high temperature pre-heat prior to firing. This imposes a time and energy requirement on the propellant system that may not work for all missions. The second drawback is that the higher performance ionic liquid propellants push the combustion temperature to or beyond the material capabilities of existing catalyst materials. The research funded by this fellowship attempted to address these drawbacks by eliminating the catalyst bed entirely. This research does not attempt to eliminate or replace existing ionic liquid thrusters, but to provide an additional use case for ionic liquid propellants. The proposed solution was to adapt a GOX/ABS hybrid rocket to serve as an igniter and combust the ionic liquid in an open chamber. A key technology involved in this proposal was the use of a moderate voltage spark across the fuel grain surface in order to ignite the hybrid rocket. This ignition method provides low energy, reliable relight capability for hybrid rockets. Since the ignition method relies on the fuel surface, the relight capability lasts as long as the fuel. Early work during the fellowship focused on advancing this ignition technology and adapting it for use as an igniter for ionic liquids. Figure 1 shows an early test of the igniter technology. Once the igniter was working reliably, work proceeded on attempting to ignite an ionic liquid. I worked with aqueous HAN at varying concentrations as an analogue for an actual propellant blend. The major reasons for this were that HAN is readily available, the research pointed to HAN decomposition as the first step in most HAN based propellant blends, and the early reactions in HAN decomposition are highly endothermic. This meant that if HAN would reliably decompose, it should be possible to adapt it to ignite ionic liquid propellant blends. The earliest tests used water (0% HAN concentration) in order to work out procedures and test conditions. One primary objective of the water tests was to determine a flow ratio between the igniter flow and the main propellant flow that would quickly bring the test chamber temperature above the decomposition temperature of HAN. Since HAN has a lower specific heat than water, if the igniter could heat water to decomposition temperature, then the HAN should easily decompose. Even with performing the water tests prior to starting HAN testing, the initial HAN tests resulted in uncontrolled HAN decomposition. Figure 2 shows the gas cloud created when the chamber blew out. This test showed that the system could initiate thermal decomposition of HAN, but also showed that the pressure and flow ratios were not set properly. Continued testing eventually led to successful controlled decomposition of HAN. In order to properly control the flow rates in this system and keep the proper top pressure ratios, a significant flow restriction was inserted in the HAN line. This dropped the pressure drop across the injector and thus increased droplet size. Due to this and other issues with the reliability of the test chamber, a new test chamber was needed. A next generation test apparatus was designed to limit the issues with the previous system. The new system eliminated the windows and significantly limited the sealing surfaces. The system also utilized the newest designs for the igniter. This system also features replaceable injection elements to allow for increased control of droplet size and distribution. This system has been fabricated and gone through some preliminary tests; however, no HAN testing has been done on the new system yet.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91637">https://techport.nasa.gov/projects/91637</a>
+    </div>
+  </div>
+</body>
+</html>

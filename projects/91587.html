@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passive, Failure-Tolerant Docking and Undocking with Articulated Magnets | NASA TechPort Project 91587</title>
+  <meta name="description" content="Current spacecraft docking relies on active movement (e.g. thrusters) to close the gap between participants, and to separate them when undocking. I intend to develop a universal, passive docking system using articulated permanent magnets to produce variable ma">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91587">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91587</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX04.5.5</span>
+        </div>
+        <h1>Passive, Failure-Tolerant Docking and Undocking with Articulated Magnets</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91587</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91587" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Current spacecraft docking relies on active movement (e.g. thrusters) to close the gap between participants, and to separate them when undocking. I intend to develop a universal, passive docking system using articulated permanent magnets to produce variable magnetic fields. By manipulating the configuration of permanent magnets, the net field at a point far away from the array can be altered. This allows spacecraft to approach each other by far-field magnetic attraction, with a guaranteed limit on potential energy so as to minimize the risk of collision. I intend to progress to TRL 3 or higher under this fellowship through these three objectives: 1. I intend to characterize the effect magnetic field manipulation has on collisions between parent systems. My investigation will begin with the special case of two objects approaching each other on a frictionless plane. I will conduct experiments such as tracking permanent magnets approaching each other on an air table. After investigating the case of static magnetic fields, I will create test platforms to produce variable fields during their approach. These robots can be constructed with simple permanent magnets and other off-the-shelf parts. 2. Next I will select sensors so that the robots can characterize the state of their approach. These will be proven, high-TRL solutions, integrated with my low-TRL work to create a proof-of-concept suitable for testing in a laboratory environment. By closing the loop around the system, I will make it possible to design a control algorithm to adjust the configuration of the magnets to facilitate attraction or repulsion as needed to produce docking behavior. 3. Ultimately, I intend to demonstrate the two robots approaching and coupling with each other and targets. By modulating the arrays of one or more units I will make sure they approach each other correctly. The robots should be able to establish a grapple on command, coupling with similar sized targets or visiting arbitrary points on larger ones. This will require access to sizable frictionless facilities such as those available at Johnson and other NASA research centers. This project is highly relevant to TA4.6, which includes development of docking systems applicable to a wide range of missions. My work will provide a fail-safe method of facilitating autonomous interactivity at all scales. It is low TRL because no proof-of-concept yet exists although the physics of magnetism are well understood. Therefore I believe this work is well suited to the NSTRF solicitation for low TRL technology development, relevant to the Space Technology Roadmaps. It is relevant to NASA interests in general because of the alternative it offers to traditional docking mechanisms. With permanent magnets, attraction or repulsion can be maintained with power only needed for adjustments instead of continuously to generate the field. This solution provides the versatility of electromagnets with the power benefits of permanent magnets. It also simplifies the docking process by sharing a single hardware package for maneuvering during approach and securing the connection. Another major benefit is that targets do not need to be cooperative or even compliant with capture attempts. This enables a variety of future mission capability in Earth orbit and beyond.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This project is highly relevant to TA4.6, which includes development of docking systems applicable to a wide range of missions. This work will provide a fail-safe method of facilitating autonomous interactivity at all scales.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91587</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX04.5.5: Capture Mechanisms and Fixtures</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2015-08-01</td></tr>
+<tr><th>Project End Date</th><td>2019-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Cornell University — Mableton, Georgia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>New York (NY)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Mason A Peck (Principal Investigator) &lt;mason.a.peck@nasa.gov&gt;; Kyle Doyle (Co-Investigator); Thomas C Jones (Project Manager) &lt;thomas.c.jones@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Infused To</strong>: EPMs developed by this project installed on NINJAR robot at LaRC</li><li><strong>Closed Out</strong>: The goal of the research is to develop a universal, androgynous, passive, reconfigurable docking and grappling end effector. To represent an improvement over current methods, it should demonstrate an extended and stable capture envelope, acting not only as a docking mechanism but also as an approach method. Fault-tolerance, safe limits on potential energy, and low power draw are also desirable. This will be broadly relevant to TA 4: Robotics and Autonomous Systems, and explicitly falls under TA 4.6.3: Docking &amp; Capture Mechanisms/Interfaces as well as TA 4.3.7: Grappling. The expected result of this research is progression from low-TRL to mid-TRL of a reconfigurable passive interaction option that provides an extended capture envelope beyond current methods, while reducing the risk of collision and damage. This development would provide a fail-safe method of facilitating spacecraft interactivity at all scales. The research began with trade studies between different interaction options, ultimately selecting electropermanent magnets as the option with the largest potential capture envelope given reasonable limits on power, mass, and volume dedicated to the system. Electropermanent magnets are made with permanent magnets wrapped in electromagnets and capped with pole pieces. The electromagnets are used to remagnetize the permanent magnets in different configurations. The result is a solid-state device acting as a permanent magnet that can be turned on and off by application of the electromagnets. It draws no steady-state power in any configuration and scales down well to applications for nanosatellites and free-flying drones such as the Astrobee. To the authors knowledge, no electropermanent magnet end effector has flown in space; however, they have been used for certain terrestrial applications such as programmable matter and drone package delivery systems. The results of this research include the fabrication and mapping of the magnetic field of electropermanent magnet end effector prototypes as well as the implementation of electropermanent magnets in multiple spacecraft interactivity demonstrations at small and large scales. These included a nanosatellite mockup on air bearings, the large robotic arm Tendon-Actuated Lightweight In-Space MANipulator (TALISMAN) grappling satellite mockups on air bearings for simulated inspection operations, and the NASA Intelligent Jigging and Assembly Robot (NINJAR) for assembling truss structures. Successful demonstrations of satellite servicing and truss assembly were conducted using these prototypes at Langley Research Center. Additional concept implementations were developed, including for the Astrobee free-flying robot as alternative tool changing apparatus and docking station end effectors. In all cases, the electropermanent magnets were implemented or conceived as a solid-state, low-power alternative to either electromagnets requiring a constant power draw or a combination of permanent magnets and actuators incorporating moving parts.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91587">https://techport.nasa.gov/projects/91587</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HCAAM VNSCOR: Enhancing Situation Awareness of Automated Procedures Using Adaptive Multimodal Augmented Reality Displays | NASA TechPort Project 96694</title>
+  <meta name="description" content="This task is part of the Human Capabilities Assessments for Autonomous Missions (HCAAM) Virtual NASA Specialized Center of Research (VNSCOR). Future deep space missions will present new challenges for crew, and increased risks to human performance due to the s">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/96694">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 96694</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.6.1</span>
+        </div>
+        <h1>HCAAM VNSCOR: Enhancing Situation Awareness of Automated Procedures Using Adaptive Multimodal Augmented Reality Displays</h1>
+        <div class="meta-id">NASA TechPort Project ID: 96694</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/96694" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          This task is part of the Human Capabilities Assessments for Autonomous Missions (HCAAM) Virtual NASA Specialized Center of Research (VNSCOR).     <p></p> Future deep space missions will present new challenges for crew, and increased risks to human performance due to the stress, fatigue, radiation exposure, and isolation that characterizes these missions. In addition, crew will no longer be able to depend on timely support from Mission Control due to distance from the Earth, but will have to work autonomously, while maintaining high performance. Mission Controllers may not be available to answer questions, check system status, assist with procedures, monitor for errors, or troubleshoot problems. Greater crew autonomy will increase dependence on automated systems, and design of these automated systems must be driven by sound human-system integration standards and guidelines in order to ensure mission success. Historically, crew have had very limited dependence on automated systems, thus crew will be faced with a new way of working that may put situation awareness (SA) at risk. We must develop methods for promoting good situation awareness in the automated systems that will most certainly be part of future deep space vehicles and habitats.      <p></p>   Procedure automation is a promising technology for reducing crew workload. We define procedure automation as technology that automates the selection or execution of procedural tasks. Structuring the work of automation according to human procedures should improve the transparency of automation actions. This approach provides a means for establishing common ground about ongoing tasks to improve operator understanding of automation behavior.    <p></p>   New technologies such as adaptive, multimodal, augmented reality displays can offer the benefits of information presentation tailored to meet the needs of each crewmember, taking into consideration the current state of that crewmember (e.g., sleep-deprived, high workload), as well as the current state of his/her environment and ongoing activities (e.g., emergency situation, time-critical operations).      <p></p>   We propose to combine technology for procedure automation with technology for augmented reality multi-modal (ARMM) user interfaces using Microsoft Hololens head-mounted display to provide a virtual task assistant to assist crew in performing procedural work. This virtual task assistant will be capable of identifying which procedures should be performed, performing actions in crew procedures, and summarizing actions taken by the human-automation team to assist crew in preparing for tasks and taking over tasks from other team members.     <p></p>   Four studies are planned to evaluate the effects of a virtual task assistant combining procedure automation with augmented reality multi-modal (AARM) user interfaces on human task performance. These studies will achieve the following aims:     <p></p>   Aim 1. Determine best methods to improve situation awareness and improve crew autonomy when using a virtual task assistant to prepare for and perform manual maintenance.     <p></p>   Aim 2. Determine best methods to improve situation awareness and reduce workload when a virtual task assistant is used to handover maintenance tasks between users.      <p></p>   Aim 3. Determine best methods to improve situation awareness and reduce workload when using a virtual task assistant to help manage concurrent manual and automated tasks.     <p></p> Aim 4. Determine best methods for display of procedural work to improve crew autonomy and satisfaction    <p></p> The proposed work addresses a number of gaps in the Human Research Program Human Factors and Behavioral Performance risks. This project will provide guidelines for designing effective human-automation systems and evaluate human-automation performance for exemplar procedure automation systems. This project also will provide guidance for the application of multi-modal and adaptive displays and control to Human-Computer Interaction (HCI) design for long duration operations. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Technologies for virtual task assistance are increasingly available in everyday life. One of the most common is voice enabled assistance, like Siri and Alexa, that aid some activities of daily living. And augmented and virtual reality technologies are becoming mainstream, with the introduction of new devices such as Microsoft HoloLens 2, and improved standards such as the WebXR standards ( <a target="_blank" href="https://www.w3.org/TR/webxr/">https://www.w3.org/TR/webxr/</a>  ) for accessing virtual and augmented reality devices.    <p></p> The Virtual Intelligent Task Assistant (VITA) project is leveraging augmented reality platforms and new WebXR standards to develop a virtual task assistant that can be used to assist users with procedural task work on the job. Our technical approach is innovative in that new procedural tasks can be supported without custom software development. Our experimental research is distinguished by investigating effective task assistance for maintenance or assembly tasks where hands-free operation of task assistance is beneficial. For the first year we are investigating best techniques for using augmented reality task assistance when assembling small devices that are held in the hands during assembly.    <p></p> This technology and associated research findings have potential benefit to NASA for the assembly, maintenance, and repair of aircraft, spacecraft, habitats, and robotics. This technology and associated research findings also have broader potential benefit for any organization performing assembly and maintenance procedural work. This includes assembly and maintenance of drilling equipment for the oil and gas industry, equipment used in chemical processing plants, and maintenance and repair of commercial aircraft. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>96694</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.6.1: Human Factors Engineering</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 5 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2019-05-15</td></tr>
+<tr><th>Project End Date</th><td>2024-12-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>TRACLabs, Inc. — Webster, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Debra Schreckenghost (Principal Investigator); Jonathan R Dory (Co-Investigator) &lt;jonathan.r.dory@nasa.gov&gt;; Kritina Holden (Co-Investigator); Alexandra M Whitmire (Project Manager) &lt;alexandra.m.whitmire@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The Virtual Intelligent Task Assistant (VITA) project investigates the effects of a virtual task assistant on human performance of procedural work. The virtual task assistant combines procedure automation with augmented reality multi-modal user interfaces. Procedure assistance will be provided in a Microsoft HoloLens headset that can present information in augmented reality overlays of the visual field. The virtual task assistant will assist users in becoming familiar with planned procedures, in performing procedure actions, and in maintaining awareness of procedure actions taken by other crew members or automation. Human performance will be compared with and without the virtual task assistant with the goal of informing best methods for delivering and using such virtual task assistants. The aims of this research are listed below. Aim 1. Determine best methods to improve situation awareness and improve crew autonomy when using a virtual task assistant to prepare for and perform manual maintenance. Aim 2. Determine best methods to improve situation awareness and reduce workload when a virtual task assistant is used to handover maintenance tasks between users Aim 3. Determine best methods to improve situation awareness and reduce workload when using a virtual task assistant to help manage concurrent manual and automated tasks. Research during the second year of this project addresses Aim 1. To achieve Aim 1, we defined and prepared for a study in the Human Exploration Research Analog (HERA). This study investigates the usability and effectiveness of the virtual task assistant to improve crew autonomy in the HERA Campaign 6. Effectiveness in increasing crew autonomy is indicated by the number and type of interactions with MCC (Mission Control Center) or other crew members made during this experiment. Usability is measured using the System Usability Scale (SUS). The VITA project is conducting two studies to determine the best methods to improve situation awareness and improve crew autonomy when using a virtual task assistant to prepare for and perform manual maintenance and assembly (Project Aim 1). These studies attempt to answer the question posed in the proposal: “Can the virtual task assistant stand-in for MCC and help crew prepare for and perform manual tasks that are not done frequently, such as equipment maintenance and assembly?” The HERA Campaign 6 experiment and pilot study were defined in the first year of the VITA project. We made progress in these studies in the second year as described below. During the second year the VITA project met a number of milestones for HERA Campaign 6 that define our HERA experiment. The hardware and software to be used for the VITA experiment was delivered to HERA. And the functional testing of VITA in HERA facility was completed. We worked with our HERA Experiment Support Scientist (ESS) to accomplish these activities. We finalized and tested a full set of electronic procedures for the rover assembly and disassembly tasks. We integrated these procedures with the VITA software. Multi-modal interaction when using the augmented reality software in a HoloLens includes visual presentation of information, hand gestures, and gaze tracking. To improve support for hands-free operation, we are investigating the use of gaze to interact with the VITA user interface, including advancing to the next instruction, recording data, and manipulating the 3D model. Conducting research safely during the COVID-19 pandemic required modification of the Institutional Review Board (IRB) used for the VITA studies. Specifically, we modified the study procedures in July 2020 to include both participants and researchers wearing masks and gloves for the duration of the pilot session. We also renewed the VITA IRB in October 2020. This renewal included similar provision for conducting studies during the COVID-19 pandemic. The VITA experiment as originally planned ran the VITA software on a laptop resident inside HERA. Restrictions going onsite Johnson Space Center (JSC) due to COVID-19 made it difficult to validate technology running on a laptop in HERA. During the reporting period we worked with HERA to modify our experiment protocol to improve access to software and procedures by running the VITA software on a cloud server instead of a laptop resident inside HERA. This approach has been implemented and tested by HERA and by the VITA research team. Pilot sessions were originally planned to be conducted in the Human Factors Engineering Laboratory (HFEL) onsite at Johnson Space Center (JSC) using subjects from the Human Test Subject Facility (HTSF) at JSC. Restrictions going onsite Johnson Space Center (JSC) due to COVID-19 prevented us from conducting pilot sessions when originally planned. To make progress on some pilot study objectives, we conducted walkthroughs at a team member’s home with family members and work colleagues. Safety protocols from IRB were followed. Although JSC is still under Phase 3 restrictions, the VITA project recently received a waiver to conduct pilot sessions onsite at JSC. We are currently contacting candidate participants through HTSF to resume pilot sessions. Preliminary findings to date from pilot sessions and walkthroughs include 1) more accurate estimate of session timing for the HERA study, 2) improved procedures for rover assembly and disassembly, and 3) techniques for more automated computation of task metrics. The Principal Investigator met monthly with Dr. S. Robinson, Dr. B. Gore, and Principal Investigators for the Virtual NASA Specialized Center of Research (VNSCOR) for “Human Capabilities Assessments for Autonomous Missions” (HCAAM). These meetings improved communication among these projects and promoted coordination between projects. A paper describing our approach for automatically computing task performance metrics for VITA was accepted for presentation at SpaceOps 2021 [1]. This approach combines actions logged in the electronic procedure database with tasks defined in the electronic procedure to compute performance metrics upon request. The last quarter of Year 2 will focus on finishing the pilot study for HERA Campaign 6. This study evaluates experimental techniques for the HERA C6 study. The study to be conducted in HERA Campaign 6 should start in Year 3 (expected start in September 2021). REFERENCE 1. Debra Schreckenghost, Tod Milam, David Kortenkamp, and Alize Nguyen. Near Realtime Computation of Task Performance using Electronic Procedures. SpaceOps 2021. May 2021.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Articles in Peer-reviewed Journals</strong> — Schreckenghost D, Holden K, Greene M, Milam T, Hamblin C. &quot;Effect of automating procedural work on situation awareness and workload.&quot; Hum Factors. Special Issue on Human Factors and Ergonomics in Space Exploration. 2022 Jan 28:187208211060978. https://doi.org/10.1177/00187208211060978 ; PMID: 35089111, Jan-2022</li><li><strong>Papers from Meeting Proceedings</strong> — Schreckenghost D, Milam T, Kortenkamp D, Nguyen A. &quot;Near Realtime Computation of Task Performance using Electronic Procedures.&quot; SpaceOps 2021. The 16th International Conference on Space Operations, Virtual, May 3-5, 2021. SpaceOps 2021. The 16th International Conference on Space Operations, Virtual, May 3-5, 2021. Meeting paper., May-2021</li><li><strong>Abstracts for Journals and Proceedings</strong> — Schreckenghost D, Holden K, Milam T. &quot;Enhancing situation awareness of automated procedures using adaptive multimodal augmented reality displays.&quot; 2023 NASA Human Research Program Investigators&#x27; Workshop, Galveston, Texas, February 7-9, 2023. Abstracts. 2023 NASA Human Research Program Investigators&#x27; Workshop, Galveston, Texas, February 7-9, 2023., Feb-2023</li><li><strong>Abstracts for Journals and Proceedings</strong> — Schreckenghost D, Holden K, Milam T, Munson B, Nguyen A. &quot;Enhancing situation awareness of automated procedures using adaptive multimodal augmented reality displays.&quot; 2022 NASA Human Research Program Investigators’ Workshop, Virtual, February 7-10, 2022. Abstracts. 2022 NASA Human Research Program Investigators’ Workshop, Virtual, February 7-10, 2022., Feb-2022</li><li><strong>Articles in Peer-reviewed Journals</strong> — Schreckenghost D, Holden K, Greene M, Milam T, Hamblin C. &quot;Effect of automating procedural work on situation awareness and workload.&quot; Hum Factors. 2022 Jan 28;187208211060978. https://doi.org/10.1177/00187208211060978 ; PubMed PMID:35089111 , Jan-2022</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/96694">https://techport.nasa.gov/projects/96694</a>
+    </div>
+  </div>
+</body>
+</html>

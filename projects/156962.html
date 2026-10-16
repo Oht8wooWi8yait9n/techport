@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Translating hibernation for space torpor and remote emergency medicine | NASA TechPort Project 156962</title>
+  <meta name="description" content="How to protect human life in the event of a medical emergency during near-earth spaceflight, and how to protect against loss of muscle and cognitive function during deep space exploration are challenges that must be overcome to enable a human presence in space">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/156962">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 156962</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">OSTEM</span>
+          <span class="badge">EPSCoR</span>
+          <span class="badge">TX08.1.5</span>
+        </div>
+        <h1>Translating hibernation for space torpor and remote emergency medicine</h1>
+        <div class="meta-id">NASA TechPort Project ID: 156962</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/156962" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          How to protect human life in the event of a medical emergency during near-earth spaceflight, and how to protect against loss of muscle and cognitive function during deep space exploration are challenges that must be overcome to enable a human presence in space. Towards that goal, we have used mammalian hibernation as a discovery platform, and revealed processes in two model, hibernating species, the small, arctic ground squirrel and the human sized, black bear, that have potential to protect and repair muscle and brain from damaging insults. Hibernation protects vital organs from injury by hunkering down in a dormant state. Hibernation then repairs vital organs by rebuilding new or damaged cells.  We have developed a therapeutic known as BCP-191 to induce a hibernation-like state that we call “synthetic” torpor. BCP-191 is a cocktail of three small molecules. One molecule induces synthetic torpor, while the other molecules minimize side effects. For example, the molecule in BCP-191 that induces synthetic torpor also causes hypotension, a life-threading side effect which limits safety. The other molecules block hypotension, but we do not yet know the optimal proportion of these components or the effects of BCP-191 on processes known to rebuild muscle and brain during hibernation. There is therefore a critical need to define ratios of components in BCP 191 to optimize safety and to minimize side effects. Central Objective. Our primary objective is to reduce to practice, a therapeutic to induce a hibernation-like state in humans. This therapeutic (BCP-191) will protect astronauts from injury caused by an acute medical emergency, such as cardiac arrest or stroke or injury caused by exposure to high dose ionizing radiation. It will also protect astronauts from chronic loss of muscle or brain function caused by prolonged disuse or exposure to ionizing radiation. By reducing BCP-191 to practice we will answer NASA’s quest to reduce risk of medical emergencies during near-earth exploration and to reduce risk of loss of muscle and cognitive function during deep space exploration.  Objective 1. During the first 18 months, we will advance the technology readiness of BCP-191 from proof of concept to a defined formulation ready to move into investigational new drug (IND) enabling studies by administering escalating doses and measuring metabolic rate and blood pressure in rats. These experiments will establish a ratio of active components to suppress metabolism up to 60 percent of basal metabolic rate while maintaining mean arterial pressure above 60mmHg. Once completed, the ratio will be the basis for future studies to assess safety that will be used for an application to the FDA prior to testing BCP-191 in humans. Objective 2. During year 2, we will learn how to maximize the benefit of synthetic torpor on muscle hypertrophy and brain function. We will do this by quantifying the effect of BCP-191 on expression of genes in muscle and brain that stimulate regrowth and repair. Our working hypothesis is that synthetic torpor will stimulate expression of the same genes we have seen increase during hibernation and that these genes contribute to repair and regrowth.  Objective 3: During year 3, we will complete data analysis and prepare manuscripts to communicate our findings. We will also work with the FDA to supply additional safety data needed to seek approval to test BCP-191 in healthy humans.  The significance of the proposed work is that determination of drug ratios will define a safe and novel formulation that will offer a strong scientific framework whereby BCP-191 can be developed for remote emergency medicine. It will also provide novel insights into new drug or nutrient-based treatments to regrow brain and muscle after disuse, atrophy or injury. Once completed we will be prepared for a pre-IND meeting with the FDA which is our next step towards testing BCP-191 in healthy humans and eventually in remote emergency medicine.
+        </div>
+
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>156962</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Office of STEM Engagement (OSTEM)</td></tr>
+<tr><th>NASA Program</th><td>Established Program to Stimulate Competitive Research (EPSCoR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.5: Lasers</td></tr>
+<tr><th>Project Start Date</th><td>2022-09-01</td></tr>
+<tr><th>Project End Date</th><td>2025-08-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Alaska Fairbanks (UAF) — Fairbanks, Alaska</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alaska (AK)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Denise Thorsen (Principal Investigator); Bernard W Laughlin (Co-Investigator); Tapiana E Wray (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Kathleen B Loftin (Program Director) &lt;kathleen.b.loftin@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-10-23</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/156962">https://techport.nasa.gov/projects/156962</a>
+    </div>
+  </div>
+</body>
+</html>

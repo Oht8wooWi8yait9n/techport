@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Occupant Protection Data Mining and Modeling Project | NASA TechPort Project 23231</title>
+  <meta name="description" content="Current National Aeronautics and Space Administration (NASA) Occupant Protection standards and requirements are based on extrapolations of biodynamic models, which were based on human tests performed during pre-Space Shuttle human flight programs. In these tes">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23231">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23231</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.2</span>
+        </div>
+        <h1>Occupant Protection Data Mining and Modeling Project</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23231</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23231" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Current National Aeronautics and Space Administration (NASA) Occupant Protection standards and requirements are based on extrapolations of biodynamic models, which were based on human tests performed during pre-Space Shuttle human flight programs. In these tests, occupants were in different suit and seat configurations than are expected for the Multi Purpose Crew Vehicle (MPCV) and Commercial Crew programs. As a result, there is limited statistical validity to the Occupant Protection standards. Furthermore, the current standards and requirements have not been validated in relevant spaceflight suit and seat configurations or expected loading conditions.     <p></p> To address the limitations of the current NASA standards, this study will address the following two objectives: 1) Develop a Finite Element (FE) model of Test device for Human Occupant Restraint (THOR) Anthropomorphic Test Device (ATD), and 2) Conduct data mining of existing human injury and response data using the THOR FE model.    <p></p> In order to develop updated standards, adequate injury assessment tools must be chosen and developed.  In the case of dynamic loads, the THOR ATD was chosen as the appropriate human surrogate.  For the data mining portion of the task, re-creation of the conditions of each impact case is needed to determine injury risk.  Since physical re-creation of each case is not feasible, a numerical model of the THOR ATD is desired.  An existing THOR FE model will be refined and validated.  To supplement available THOR ATD validation data, additional THOR ATD testing will be conducted at two facilities and ATD response data will be collected.  The FE model responses will then be assessed against the physical ATD responses.  Once the ATD model is validated, it can be used for the data mining portion of the study.     <p></p> Because analogous spaceflight injury biomechanics data are very limited, data mining of other analogous environments will be used.  These datasets are chosen as they have similarities with the landing environment expected in future vehicles.  The existing human injury and response data from other sources include historical military volunteer testing, automotive Crash Injury Research Engineering Network (CIREN), IndyCar impacts, and NASCAR impacts. These data sources can allow better extrapolation of the ATD responses to off-nominal conditions above the nominal range that can safely be tested in humans. These elements will be used to develop injury risk functions for each of the injury metrics measured from the ATD. These risk functions would then be incorporated with the results of other Tasks to update the NASA standards.     <p></p> Task Description:    <p></p> The ultimate aim of this project is to develop Occupant Protection standards for NASA that would apply to all future crewed spacecraft.     <p></p> 1.	Conduct ATD dynamic tests to relate human and ATD responses.    <p></p> 2.	Mine existing human injury and tolerance data and simulate dynamic environments using Finite Element (FE) models.  Relate human injury and responses to ATD estimated responses from FE models.    <p></p> 3.	Develop injury risk functions based on ATD responses and develop NASA standards from these functions. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The results of this study have a significant impact on terrestrial applications in the automotive and aviation safety communities. This study has access to unique and previously unpublished human impact exposure data, which allows new insight into human tolerance to dynamic loads. This can have a direct benefit on future protection systems in automobiles and aircraft. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23231</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.2: Prevention and Countermeasures</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2012-06-20</td></tr>
+<tr><th>Project End Date</th><td>2015-04-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Wright-Patterson Air Force Base; Wyle Integrated Science and Engineering Group; Wake Forest University — Winston-Salem, North Carolina; Virginia Polytechnic Institute and State University (VA Tech) — Blacksburg, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Michael L Gernhardt (Principal Investigator) &lt;michael.l.gernhardt@nasa.gov&gt;; Costin Untaroiu (Co-Investigator); Jeffrey T Somers (Co-Investigator) &lt;jeffrey.t.somers@nasa.gov&gt;; Erin E Caldwell (Co-Investigator); Chris L Perry (Co-Investigator) &lt;chris.l.perry@nasa.gov&gt;; Nathaniel J Newby (Co-Investigator) &lt;nate.newby@nasa.gov&gt;; Mihriban Whitmore (Project Manager) &lt;mihriban.whitmore-1@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Current National Aeronautics and Space Administration (NASA) occupant protection standards and requirements are based on extrapolations of biodynamic models, which were based on human tests performed during pre-Space Shuttle human flight programs. In these tests, occupants were in different suit and seat configurations than are expected for the Multi-Purpose Crew Vehicle (MPCV) and Commercial Crew programs. As a result, there is limited statistical validity to the occupant protection standards. Furthermore, the current standards and requirements have not been validated in relevant spaceflight suit and seat configurations or expected loading conditions. The objectives of this study are to use current modeling techniques and industry standard approaches to analyze existing human databases to develop new NASA standards and requirements for occupant protection. To accomplish these objectives we began by determining which critical injuries NASA needs to mitigate. We then defined the anthropomorphic test device (ATD) and the associated injury metrics of interest. Finally, we conducted a literature review of available data for the Test Device for Human Occupant Restraint (THOR) ATD to determine injury assessment reference values (IARV) to serve as a baseline for further development. The first objective of this study was to assess the THOR for use by NASA in developing and validating occupant protection standards. THOR was impact tested in various orientations and multiple peak acceleration levels, and responses to these impacts differed from human responses under identical impact conditions and do not replicate human bracing for impact. As part of this study, a finite element model (FEM) of the THOR was developed, calibrated, and optimized. The FEM proved a good match to the ATD. The FEM simulations (at a wide range of impacts that military subjects participated in) historically revealed that the FEM correlated to lower-peak acceleration impacts better than to higher-peak accelerations. The second objective of this study was to mine existing human injury and exposure data. The U.S. Air Force maintains thousands of human-impact-test results. Data collected from 1976 to 2004 have been downloaded and converted into a user-friendly MATLAB data structure format. The team created IARVs for several metrics mined from existing injury literature. The IARVs for the spine and chest deflection subsequently were refined based upon statistical models of combined non-injurious and injurious literature data. This work culminated in the development of an acceptable risk of injury from spaceflight, which included a newly developed operationally relevant injury scale.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Papers from Meeting Proceedings</strong> — Untaroiu CD, Putnam JB, Somers JT, Pellettiere JA. &quot;Preliminary calibration and validation of a finite element model of THOR Mod Kit dummy.&quot; ASME 2014 International Design Engineering Technical Conferences and Computers and Information in Engineering Conference, Buffalo, New York, August 17–20, 2014. In: ASME 2014 International Design Engineering Technical Conferences and Computers and Information in Engineering Conference, Buffalo, New York, August 17–20, 2014. Volume 3: 16th International Conference on Advanced Vehicle Technologies; 11th International Conference on Design Education; 7th Frontiers in Biomedical Devices Buffalo, New York, USA, August 17–20, 2014. Paper No. DETC2014-34663, pp. V003T01A012; 8 pages. http://dx.doi.org/10.1115/DETC2014-34663 , Aug-2014</li><li><strong>Articles in Peer-reviewed Journals</strong> — Newby N, Somers JT, Caldwell EE, Perry C, Littell J, Gernhardt M. &quot;Assessing biofidelity of the test device for human occupant restraint (THOR) against historic human volunteer data.&quot; Stapp Car Crash J. 2013 Nov;57:469-505. PubMed PMID: 24435742, Nov-2013</li><li><strong>Articles in Peer-reviewed Journals</strong> — Somers JT, Gohmert DM, Brinkley JW. &quot;Spacecraft occupant protection requirements: A review of the recent changes.&quot; Aviat Space Environ Med. 2014 Sep;85:940–8. http://dx.doi.org/10.3357/ASEM.4004.2014 ; PubMed PMID: 25197893 , Sep-2014</li><li><strong>Articles in Peer-reviewed Journals</strong> — Putnam JB, Somers JT, Untaroiu CD. &quot;Development, calibration, and validation of a head-neck complex of THOR mod kit finite element model.&quot; Traffic Injury Prevention. 2014;15(8):844-54. Published online: 16 Jan 2014. http://dx.doi.org/10.1080/15389588.2014.880886 ; PMID: 24433158, Jan-2014</li><li><strong>Abstracts for Journals and Proceedings</strong> — Somers JT. &quot;Correlation of Hybrid III Numerical Models with Physical ATD Responses in Various Loading Directions.&quot; 2013 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-14, 2013. 2013 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-14, 2013., Feb-2013</li><li><strong>NASA Technical Documents</strong> — Somers J, Caldwell E, Newby N, Maher J, Gernhardt M, Untaroiu C, Putnam J. &quot;Test Device for Human Occupant Restraint (THOR) Multi-Directional Biodynamic Response Testing.&quot; Houston, Tex.: NASA Lyndon B. Johnson Space Center, 2014. NASA Technical Memorandum NASA/TM-2014-217387., Feb-2014</li><li><strong>Abstracts for Journals and Proceedings</strong> — Newby N, Somers J, Caldwell E, Perry C, Littell J, Gernhardt M. &quot;Assessing Biofidelity of the Test Device for Human Occupant Restraint (THOR-K) Against Historic Human Data.&quot; 57th Stapp Car Crash Conference, Orlando, FL, November 11-13, 2013. Stapp Car Crash Journal. Abstract submitted, April 2013., Apr-2013</li><li><strong>Abstracts for Journals and Proceedings</strong> — Caldwell E, Somers J, Newby N, Gernhardt M. &quot;Investigation of the THOR Anthropomorphic Test Device for Predicting Injury to Crewmembers During Landing Impact.&quot; 2013 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-14, 2013. 2013 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-14, 2013., Feb-2013</li><li><strong>Abstracts for Journals and Proceedings</strong> — Newby N, Somers J, Caldwell E, Gernhardt M. &quot;A Novel Approach for Defining a NASA Risk Posture for Occupant Injuries from Spacecraft Launch, Abort, and Landing.&quot; 2013 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-14, 2013. 2013 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-14, 2013., Feb-2013</li><li><strong>Abstracts for Journals and Proceedings</strong> — Somers J, Gernhardt M, Caldwell E, Newby N. &quot;Assessing the Risk of Crew Injury Due to Dynamic Loads During Spaceflight.&quot; 2013 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-14, 2013. 2013 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-14, 2013, Feb-2013</li><li><strong>Articles in Peer-reviewed Journals</strong> — Somers JT, Newby NJ, Lawrence C, Deweese RL, Moorcroft D, Phelps SE. &quot;Investigation of the THOR anthropomorphic test device for predicting occupant injuries during spacecraft launch aborts and landing.&quot; Frontiers in Bioengineering and Biotechnology. 2014:2(4). Published online: 17 March 2014. http://dx.doi.org/10.3389/fbioe.2014.00004 , Mar-2014</li><li><strong>Papers from Meeting Proceedings</strong> — Untaroiu CD, Putnam JB, Somers JT. &quot;A finite-element model of the THOR Mod Kit dummy for aerospace impact applications.&quot; 13th International LS-DYNA Users Conference, Dearborn, MI, June 2014. 13th International LS-DYNA Users Conference, Dearborn, MI, June 2014., Jun-2014</li><li><strong>NASA Technical Documents</strong> — Somers J, Scheuring R, Granderson B, Jones J, Newby N, Gernhardt M. &quot;Defining NASA Risk Guidelines for Capsule-based Spacecraft Occupant Injuries Resulting from Launch, Abort, and Landing.&quot; Houston, Tex.: NASA Lyndon B. Johnson Space Center, 2014. NASA/TM-2014-217383., Jan-2014</li><li><strong>Abstracts for Journals and Proceedings</strong> — Putnam J, Somers J, Untaroiu C, Pellettiere J. &quot;A Finite Element Model of the THOR-K Dummy for Aerospace and Aircraft Impact Simulations.&quot; Presentation at The Seventh Triennial International Fire &amp; Cabin Safety Research Conference, Philadelphia, PA, December 2-5, 2013. (Federal Aviation Administration). The Seventh Triennial International Fire &amp; Cabin Safety Research Conference, Philadelphia, PA, December 2-5, 2013. (Federal Aviation Administration). https://www.fire.tc.faa.gov/2013Conference/files/Injury_Criteria_II/PutnamThor/PutnamThorPres.pdf ; accessed 2/8/2015., Dec-2013</li><li><strong>Articles in Peer-reviewed Journals</strong> — Putnam JB, Somers JT, Wells JA, Perry CE, Untaroiu CD. &quot;Development and evaluation of a finite element model of the THOR for occupant protection of spaceflight crewmembers.&quot; Accid Anal Prev. 2015 Sep;82:244-56. Epub 2015 Jun 20. http://dx.doi.org/10.1016/j.aap.2015.05.002 ; PubMed PMID: 26103438, Sep-2015</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23231">https://techport.nasa.gov/projects/23231</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laser Transmitter Development for Mass Spectrometry | NASA TechPort Project 14557</title>
+  <meta name="description" content="In this project, we&amp;nbsp;will focus on the development of two technologies that will be key for a future Spaceborne Two Step Laser Tandem Mass Spectrometer instrument by: 1) implementing a laser breadboard demonstrating the timing requirements for the two step">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/14557">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 14557</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX08.1.5</span>
+        </div>
+        <h1>Laser Transmitter Development for Mass Spectrometry</h1>
+        <div class="meta-id">NASA TechPort Project ID: 14557</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/14557" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>In this project, we&nbsp;will focus on the development of two technologies that will be key for a future Spaceborne Two Step Laser Tandem Mass Spectrometer instrument by: 1) implementing a laser breadboard demonstrating the timing requirements for the two step mass spectrometer scheme and 2) leveraging photonics optoelectronics packaging technology for eliminating the use of epoxies in the nonlinear frequency conversion module.</p> <p>Laser desorption/ionization (LDI) time of flight mass spectrometry (LD-TOF-MS) instrument development toward flight configurations is a natural and relevant advancement over existing flight mass spectrometers, which typically require a somewhat greater complexity to generate a gaseous sample (or the volatile components released by heating).&nbsp; In contrast, LDI can generate ions directly from a solid sample without imparting overly destructive levels of heat into the analyte-bearing materials.</p><p>In this IRAD, we plan to further refine our laser requirement, design, build and fully characterize a time synchronized mid-infrared and ultraviolet laser transmitter for the two-step laser tandem mass spectrometer (L2MS) instrument.</p><p>It is worth noting that ultraviolet lasers are becoming increasingly important to Goddard&rsquo;s contributions to spaceflight mass spectrometry, and this proposal addresses a central challenge to UV laser implementation in an in situ planetary environment.&nbsp; The outgassing-free assembly technique that will be demonstrated as part of the proposed effort promises to benefit the L2MS as well as the family of MOMA-derived mass spectrometers that promise to play critical roles in the scientific payloads of future planetary missions.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>On the surface of Mars, follow-on investigations emphasizing astrobiology are likely to develop from a successful MSL and SAM campaign to &ldquo;follow the carbon&rdquo; in the coming weeks, months, and years. In addition to Mars, exciting planetary targets, comets, and asteroids are likely to harbor a diverse inventory of exogenous and perhaps endogenous organic molecules that will push the mass range and resolution limits of existing spaceflight MS techniques.</p> <p>The technologies we are developing in photonics packaging, without use of epoxies, are of interests to commercial space industry, especially in the area of generating UV radiation.&nbsp; Optical damages due to highly energetic UV photons interacting with outgassing contaminants have been problematic for many spacebased instruments.&nbsp; This approach may potentially minimize this problem and improve reliability for UV lasers in space.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>14557</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.5: Lasers</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 2 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2013-10-01</td></tr>
+<tr><th>Project End Date</th><td>2014-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Stephanie A Getty (Co-Investigator) &lt;stephanie.a.getty@nasa.gov&gt;; Ricardo D Arevalo (Co-Investigator); Steven X Li (Co-Investigator) &lt;steven.x.li@nasa.gov&gt;; Scott A Merritt (Co-Investigator) &lt;scott.a.merritt@nasa.gov&gt;; Terence A Doiron (Project Manager) &lt;terence.a.doiron@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-01-27</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="http://sciences.gsfc.nasa.gov/sed/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>Mass Spectrometry Project</strong> — Mass Spectrometry Project</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/14557">https://techport.nasa.gov/projects/14557</a>
+    </div>
+  </div>
+</body>
+</html>

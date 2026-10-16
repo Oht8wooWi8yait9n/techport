@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integration of Observations and Models into Machine Learning for Coastal Water Quality | NASA TechPort Project 117235</title>
+  <meta name="description" content="Coastal areas are impacted by population growth, development, aging infrastructure, and extreme weather events causing greater runoff from land. Monitoring water quality is an urgent societal need. A growing fleet of satellites at multiple resolutions provide ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/117235">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 117235</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">AIST</span>
+          <span class="badge">TX11.X</span>
+        </div>
+        <h1>Integration of Observations and Models into Machine Learning for Coastal Water Quality</h1>
+        <div class="meta-id">NASA TechPort Project ID: 117235</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/117235" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Coastal areas are impacted by population growth, development, aging infrastructure, and extreme weather events causing greater runoff from land. Monitoring water quality is an urgent societal need. A growing fleet of satellites at multiple resolutions provide the ability to monitor large coastal areas using big data analytics and machine learning. Within our AIST18 project, we started working closely with state agencies who manage water resources around the Chesapeake Bay. We propose to build upon these activities to improve the integration of assets to monitor water quality and ecosystem properties and how they change over time and space. Initially we are taking advantage of technologies and data collected in and around the Chesapeake Bay, with a plan to expand to other watersheds. As the largest estuary in North America, the Chesapeake Bay receives runoff from approximately 100,000 tributaries, carrying sediment, fertilizer, and pollutants from farms, developed communities, urban areas, and forests. These constituents degrade water quality and contribute to its optical complexity. Resource managers tasked with enforcing pollution reduction goals for these point and non-point sources are also challenged by shrinking budgets with which to monitor multiple aspects of the ecosystems while the use of the Bay for recreation, fishing, and aquaculture is increasing. Of particular concern are the increasing number of harmful algal blooms (HABs) and septic tank leaks due to aging infrastructure and rising sea level [Wolny et al., 2020; Mitchell et al., 2021]. State agencies already work closely with NOAA and EPA and are looking to NASA to apply advanced technologies to further improve their natural resource management. Our AIST18 project demonstrated promising results with multispectral optical, medium spatial resolution satellite data trained using geophysical model variables within a machine learning (ML) architecture by extracting multi-source feature maps. The nearshore environment demands finer spatial resolution than government assets alone can provide, thus we plan to build on this work by utilizing higher spatial resolution data from commercial satellites. Following our demonstration of feasibility using medium resolution satellite imagery from one sensor, we will now derive feature maps from many sensors of varying spatial, spectral, and temporal resolution. These can be effectively merged regardless of initial source resolution at progressively higher (hierarchical) contextual levels by fusing at multiple layers within the ML model. Heterogeneous feature maps can be adaptively scored and weighted, which influences their significance in the resulting predictions. We plan to analyze higher spectral information from in situ inherent optical property observations to determine the minimum set of requirements for remote sensing of water quality, e.g. water clarity, phytoplankton blooms, and the detection of pollutants. In situ observations will facilitate ML training using higher spectral and spatial resolution imagery from commercial satellites at the coast. We are also collaborating with community experts to evaluate the utility of hyperspectral remote sensing for detecting aquatic features not discernable through multispectral imaging, such as phytoplankton community structure and the likelihood of harmful blooms. In situ observations will facilitate ML training using hyperspectral and higher spatial resolution imagery from commercial satellites at the coastal margins and land-water interface. Finally, we aim to eventually integrate upstream assets of land cover classification, elevation, vertical land motion, and hydrology as inputs to the ML architecture, leveraging other projects that characterize the watershed and runoff of sediments and nutrients to coastal water bodies. Adapting our process to an open science framework will facilitate future integration of these data beyond the aquatic community.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Advance Earth system science knowledge through the Identification, develop, and demonstrate innovative information systems technologies
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>117235</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Advanced Information Systems Technology (AIST)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.X: Other Software, Modeling, Simulation, and Information Processing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2022-07-01</td></tr>
+<tr><th>Project End Date</th><td>2025-06-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>NASA Headquarters (HQ) — Washington, District of Columbia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Virginia Institute of Marine Sciences (VIMS) — Gloucester Point, Virginia; University of Maryland-College Park (UMCP) — College Park, Maryland; Universities Space Research Association (USRA) — San Francisco, California; Maryland Department of the Environment — Annapolis, Maryland; Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD), Virginia (VA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Stephanie S Uz (Principal Investigator) &lt;stephanie.uz@nasa.gov&gt;; Sujay V Kumar (Co-Investigator) &lt;sujay.v.kumar@nasa.gov&gt;; David T Leisawitz (Co-Investigator) &lt;david.t.leisawitz@nasa.gov&gt;; Troy J Ames (Co-Investigator) &lt;troy.j.ames@nasa.gov&gt;; Selena M McKibben (Co-Investigator); Marjorie A Friedrichs (Co-Investigator); John B Clark (Co-Investigator); JEREMY WERDELL (Co-Investigator) &lt;JEREMY.WERDELL@NASA.GOV&gt;; John R McKay (Co-Investigator); Christopher W Brown (Co-Investigator) &lt;christopher.w.brown-1@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Michael S Seablom (Program Director) &lt;michael.s.seablom@nasa.gov&gt;; Laura J Rogers (Program Manager) &lt;laura.j.rogers@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-06-26</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Link]</strong> Closeout Link</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/117235">https://techport.nasa.gov/projects/117235</a>
+    </div>
+  </div>
+</body>
+</html>

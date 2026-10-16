@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Development of pervaporation membranes and integration into system design for space flight wastewater management | NASA TechPort Project 96127</title>
+  <meta name="description" content="Wastewater reclamation is a vital aspect of prolonged space travel. One area that is particularly challenging is urine reclamation. Current International Space Station (ISS) systems allow for 70% recovery. NASA aims to increase wastewater recovery to 85% or gr">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/96127">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 96127</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX06.1.2</span>
+        </div>
+        <h1>Development of pervaporation membranes and integration into system design for space flight wastewater management</h1>
+        <div class="meta-id">NASA TechPort Project ID: 96127</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/96127" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Wastewater reclamation is a vital aspect of prolonged space travel. One area that is particularly challenging is urine reclamation. Current International Space Station (ISS) systems allow for 70% recovery. NASA aims to increase wastewater recovery to 85% or greater. A further challenge with water recovery from wastewater brines is minimization of mineral scaling on processing equipment. The overall goal is to introduce pervaporation, a membrane process new to NASA, for high recovery (≥85%) of water from ISS wastewater and brines while simultaneously developing new membranes for pervaporation. This will include evaluating routes to replace current wastewater processing, vapor compression distillation (VCD), with pervaporation. Pervaporation is a membrane process, where the driving force for transport is vapor pressure differences (often created via either a vacuum pump or a sweeping gas) of the permeating species across the membrane. Pervaporation is advantageous, compared to processes like distillation, in that it can easily be operated at ambient temperatures. It can break azeotropes and limit transfer of volatile organic compounds (VOCs), thus limiting the transmission of undesired species into the purified water. Pervaporation is capable of handling highly concentrated brines when compared to conventional processes, since it is not limited by the concentration of solutes in the feed. Pervaporation is a unique process that it can produce clean water in the presence of salt compounds and organic compounds, both of which are present in urine brine. To achieve this goal, there are three objectives: 1) improve anti-scaling properties of promising pervaporation membranes, 2) design a pervaporation module to integrate urine brine waste processing with the humidity condensate system on the ISS, and 3) evaluate feasibility of replacing VCD with pervaporation in existing wastewater processing.  In Objective 1, to improve anti-scaling properties of pervaporation membranes, we will add a zwitterionic thin film layer on the membrane surface. Our team has recently developed high flux pervaporation membranes for desalination. Zwitterions are species with localized positive and negative charges, but overall neutral charges. Current research on zwitterions show promise for both increase in water flux through a pervaporation membrane, as well as a decrease in scaling (buildup of salts and inorganic species) on membranes. We hypothesize that the addition of a zwitterionic layer will increase the hydrophilicity of the membrane surface, which will aid in increased water recovery. These modified membranes will then be tested using simulated urine brine to investigate the selectivity and degradation of these membranes. In Objective 2 we will design a pervaporation module to integrate urine brine waste processing with the humidity control system on the ISS. We hypothesize that addition of a pervaporation step in space exploration water reclamation systems will allow for higher water recovery rates. We will design and build a pervaporation unit for direct integration with the current ISS humidity control system. The new pervaporation unit will utilize the current air processing system as a sweeping gas, and then the stream will proceed to the condenser and be processed until it achieves potable water standards. In Objective 3, we will analyze the potential for replacing the current VCD system for initial urine processing with a pervaporation unit. VCD is an energy intensive process, and pervaporation shows promise to lower the energy requirement while limiting transfer of VOCs and increasing purity of reclaimed water. The initial pervaporation unit from phase two will be scaled up to process 9 kg/day of urine, consistent with the needs of a full ISS crew. Through development of novel pervaporation membrane technologies, and integration with current ISS systems, increased water recovery is achievable for long term space flight.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Through development of novel pervaporation membrane technologies, and integration with current ISS systems, increased water recovery is achievable for long term space flight.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>96127</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.1.2: Water Recovery and Management</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2019-08-01</td></tr>
+<tr><th>Project End Date</th><td>2023-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Arizona State University-Tempe (ASU) — Tempe, Arizona</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Arizona (AZ)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Mary Lind (Principal Investigator); Elisabeth J Thomas (Co-Investigator) &lt;elisabeth.j.thomas@nasa.gov&gt;; Jill P Williamson (Project Manager) &lt;jill.p.williamson@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Water is vital for human survival, and as we continue to expand our capacity for crewed space exploration, we must continue to find ways to increase capacity for water reclamation. Currently, the International Space Station (ISS) uses vapor compression distillation as a method of water recycling from urine sources. This method provides around 70% water recover, and the National Aeronautics and Space Administration (NASA), desires recoveries of at least 85% moving forward. Unique challenges of ISS wastewaters include high levels of inorganic species (such as calcium species from astronaut bone loss excreted through urine), low pH conditions, and the presence of chromium species (used to kill microbes within the solution). These challenges necessitate novel technologies to address the complex wastewater streams while also achieving high levels of recovery. Membrane technologies are common in water treatment systems, with reverse osmosis (RO) being the most utilized. RO operates by applying a hydraulic pressure to the feed side of the membrane system, forcing the water through a selective membrane that retains contaminants and yields a purified water on the permeate side of the system. Pervaporation is another membrane technology that is not as widely used but provides some unique advantages when dealing with complex feed streams. In contrast to the “push” used in an RO system, pervaporation utilizes a “pull” by applying a sweep gas or a vacuum pump to the permeate side of the stream, providing the ability to treat highly contaminated and complex wastewater streams. This work integrated pervaporation into spaceflight wastewater management. First, we developed a novel, zwitterionic co-polymer that we used to coat the surface of the pervaporation membrane to decrease scaling. Scaling on membrane surfaces occurs when inorganic species deposit on the surface and make separation difficult if not impossible. Zwitterions are molecules with an overall neutral charge, and localized positive and negative charges that have been shown to decrease fouling in other membrane systems. This novel co-polymer is patent pending technology that has potential for applications in many areas, in addition to water treatment. This zwitterion layer on the membrane showed a significant decrease in scaling when compared to control membranes, under low pH conditions and with a variety of scalants of interest to NASA applications. Scaling on control membranes using calcium chloride (the highest scaling species studied) revealed 1617 ± 241 wt% increases, whereas the zwitterion membranes obtained only a 317 ± 87 wt% increase. The membranes also showed resilience to the harsh chemical species (chromium) in the NASA wastewater streams, as well as the low pH environment. The final portion of this work was to develop novel membrane units that could be used in tandem with existing ISS systems to increase water recovery using our zwitterion coated membranes. This work is currently in preparation for publication and has revealed great promise for future implementation. The zwitterion membranes continue to be resistant to scaling and the harsh conditions of the NASA wastewaters in a way that suggests longer system lifetime. The systems are excellent at separating out the contaminants from the feed to the permeate streams. Additionally, a focus on ease of use and low energy consumption continued to reveal viable systems, meaning our novel technologies show potential to easily be integrated into existing systems and increase recovery without significant increases in crew work or electrical energy consumption. Overall, this work has developed pervaporation membrane technology for purification of spaceflight wastewater streams and taken it from conception to technology readiness level 4 (prototype testing in relevant laboratory).</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><a href="http://dx.doi.org/10.1021/acsomega.2c08150" target="_blank" rel="noopener noreferrer">Zwitterionic Copolymers for Anti-Scaling Applications in Simulated Spaceflight Wastewater Scenarios</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/96127">https://techport.nasa.gov/projects/96127</a>
+    </div>
+  </div>
+</body>
+</html>

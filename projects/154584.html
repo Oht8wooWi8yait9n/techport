@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multipurpose Doppler Lidar Measurements | NASA TechPort Project 154584</title>
+  <meta name="description" content="Safe Unmanned Aerial Systems (UAS) operations and airspace management depend on accurate weather data to make critical decisions, plan fleet asset tasking, schedule cargo or people movements, reduce flight uncertainty and meet client expectations. Accurate wea">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/154584">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 154584</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX08</span>
+        </div>
+        <h1>Multipurpose Doppler Lidar Measurements</h1>
+        <div class="meta-id">NASA TechPort Project ID: 154584</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/154584" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Safe Unmanned Aerial Systems (UAS) operations and airspace management depend on accurate weather data to make critical decisions, plan fleet asset tasking, schedule cargo or people movements, reduce flight uncertainty and meet client expectations. Accurate weather data requires a robust, autonomous and reliable sensing platform capable of detecting multiple weather hazards across urban, suburban and rural domains.  Weather data are a crucial building block for Advanced Air Mobility (AAM), especially over urban areas where the operations are expected to become routine in complex environments. High-resolution weather measurements are necessary to detect relevant hazards in urban environments, and ultimately improve forecasts.   This Phase II effort consists on developing algorithms to retrieve ceiling, cloud base, and visibility to enhance the utility of Doppler lidars that will already be utilized to measure wind in urban areas, making lidars multipurpose sensors. This work will improve algorithms developed in the Phase I portion and quantitatively assess the value of Doppler lidars as part of an urban sensing network for business justification. Additionally, optimal scanning strategies will be established as well as uncertainty metrics to inform risk-based decision making. These efforts will address significant gaps in urban airspace weather situational awareness critical to reach a mission safety level as required in the Urban Weather section of the NASA UAM UML-4 CONOPS.  Weather data are a crucial building block for Advanced Air Mobility (AAM), especially over urban areas where the operations are expected to become routine in complex environments. High-resolution weather measurements are necessary to detect relevant hazards in urban environments, and ultimately improve forecasts.   &nbsp;  This Phase II effort consists on developing algorithms to retrieve ceiling, cloud base, and visibility to enhance the utility of Doppler lidars that will already be utilized to measure wind in urban areas, making lidars multipurpose sensors. This work will improve algorithms developed in the Phase I portion and quantitatively assess the value of Doppler lidars as part of an urban sensing network for business justification.&nbsp; Additionally, optimal scanning strategies will be established as well as uncertainty metrics to inform risk-based decision making. These efforts will address significant gaps in urban airspace weather situational awareness critical to reach a mission safety level as required in the Urban Weather section of the NASA UAM UML-4 CONOPS.  Main Objectives:  Objective 1: Validate lidar-derived variables, i.e., ceiling, cloud base, and visibility, leveraging deployed ceilometers and visibility sensors  Objective 2:&nbsp; Assess Atmospheric impacts to LiDAR-derived ceiling, cloud base, and visibility estimate accuracy  Objective 3: Establish optimal LiDAR scanning strategy for estimating ceiling, cloud base, and visibility  Objective 4: Develop and Integrate Cloud Parameter Test Bed to provide near real-time estimates of ceiling, cloud base, and visibility  Objective 5: Quantify benefits leveraging LiDAR data vs. model derived and single-point observation data estimates for ceiling, cloud base, and visibility.  &nbsp;  Deliverables:   	3 Technical Reports - beginning of project, middle of project, end of project. 	Cloud Parameter Test Bed Document 	Common Processing Module (Python) 	Ceiling &amp; Cloud Base EDM (Python) 	Visibility EDM (Python) 	8 Quarterly Demonstration Reports 	Interim Report 	Final Report
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This initiative enables NASA applications that depend on highly reliable and persistent non-government space, atmospheric and terrestrial measurements and predictions:   	Commercial space launches and human space travel 	ATM / UAS / UTM / UAM Systems, Industries, and Projects 	Satellite and communication systems   UAS and UAM is a &ldquo;blue sky&rdquo; mission area to demonstrate how weather monitoring systems, especially in urban areas, can reduce the impact of hazardous events to mission critical operations.  Our applications for this technology extend to FAA and commercial endeavors of the same mission areas that NASA is working in, namely:   	Commercial space launches and human space travel 	ATM / UAS / UTM / UAM 	Satellite and communication systems   We are also looking at how cities can use urban micro weather data as part of Smart City initiatives by deploying weather sensing platforms.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>154584</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08: Sensors and Instruments</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 3 | Target End TRL: 7</td></tr>
+<tr><th>Project Start Date</th><td>2023-07-27</td></tr>
+<tr><th>Project End Date</th><td>2026-12-30</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>NASA Headquarters (HQ) — Washington, District of Columbia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>TruWeather Solutions — Syracuse, New York</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>New York (NY)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Chris Zarzar (Principal Investigator); Ivan O Clark (Project Manager) &lt;ivan.o.clark@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-07-29</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/154584">https://techport.nasa.gov/projects/154584</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evolving Our Evaluation of Lighting Environments | NASA TechPort Project 88673</title>
+  <meta name="description" content="Imagine you are an astronaut on their 100 th day of&amp;nbsp;your&amp;nbsp;three year exploration mission.&amp;nbsp; During your daily routine to the small hygiene compartment of the spacecraft, you realize that no matter what you do, your body blocks the light from the l">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/88673">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 88673</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">JSC IRAD</span>
+          <span class="badge">TX05.1.2</span>
+        </div>
+        <h1>Evolving Our Evaluation of Lighting Environments</h1>
+        <div class="meta-id">NASA TechPort Project ID: 88673</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/88673" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Imagine you are an astronaut on their 100<sup>th</sup> day of&nbsp;your&nbsp;three year exploration mission.&nbsp; During your daily routine to the small hygiene compartment of the spacecraft, you realize that no matter what you do, your body blocks the light from the lamp.&nbsp; You can clearly see your hands or your toes but not both!&nbsp; What were those design engineers thinking!&nbsp; It would have been nice if they could have made the walls glow instead!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>  <p>The reason the designers were not more innovative is that their interpretation of the&nbsp;system lighting requirements didn&rsquo;t allow them to be so!&nbsp; Currently, our interior spacecraft lighting standards and requirements are written around the concept of a quantity of light illuminating a spacecraft surface.&nbsp; The natural interpretation for the engineer is that a lamp that throws light to the surface is required.&nbsp; Because of certification costs, only one lamp is designed and small rooms can wind up with lamps that may be inappropriate for the room architecture.</p>  <p>The advances in solid state light emitting technologies and optics for lighting and visual communication necessitates the evaluation of how NASA envisions spacecraft lighting architectures and how NASA uses industry standards for the design and evaluation of lighting system. Current NASA lighting standards and requirements for existing architectures focus on the separate ability of a lighting system to throw light against a surface or the ability of a display system to provide the appropriate visual contrast. Realization that these systems can be integrated is not realized.&nbsp; The result is that the systems are developed independent from one another and potential efficiencies that could be realized from borrowing from the concept of one technology and applying it for the purpose of the other does not occur.</p>  <p>This project investigated the possibility of incorporating large luminous surface lamps as an alternative or supplement to overhead lighting. We identified existing industry standards for architectural luminous or brightness uniformity as part of a lighting system definition. The efficiency of the surface lighting technology was evaluated for uniformity and power consumption. Finally, the team investigated possible performance savings if the walls were made to glow via a self luminous surface system instead of creating brightness by use of direct lighting of a highly reflective diffuse surface.</p>  <p>&nbsp;</p>  <p>INNOVATION</p>  <p>To test the concept, the team built a 2x4 foot &ldquo;luminous wall&rdquo; out of thin LED edge lit panels at the Lighting Environment Test Facility at JSC. This system, which had power monitors, was designed to have a fine increment in brightness from zero to maximum intensity such that it could model brightness levels from the luminance of standard office interior walls to the brightness of earth shine. The lighting panels allowed us to evaluate a variety of concepts from the technology itself, to uniformity, perception of change, horizontal illuminance from a vertical surface, efficiency, and novelty as an architectural system component.</p>  <p>OUTCOME</p>  <p><strong>Brightness Ratios:</strong></p>  <p>The usage of luminous paneling allows for the design of a very uniform environment, free of glare and typical non-uniformities created by standard lamp systems.&nbsp; Uniformity of luminous panels with a diffusion panel created a higher resolution of uniformity while the absence of the diffuser panel created larger areas of the same average luminance.&nbsp; Innovation can be found both in the utilization of very minimal panel-to-panel differences and the usage of large differences to draw the crew&rsquo;s attention to specific spacecraft interior volumes.</p>  <p><strong>Illumination:</strong></p>  <p>Usage of a large format vertical luminous surface as a replacement to overhead lighting should address general task illuminance needs.&nbsp; The lighting system was able to produce a horizontal illuminance (light striking typical location of hands) adequate for general tasks (138 lux) at 25% &ldquo;ON&rdquo; and illumination sufficient for most reading tasks at 45% &ldquo;ON&rdquo; (428 lux). An interesting application would be the integration of luminous surfaces on multiple sides of the viewer (opposite walls), allowing the required energy level from the walls to be dropped to produce the same illuminance because both walls are contributing light.</p>  <p><strong>Power Usage:</strong></p>  <p>Power usage data showed promising results as average power required for the same self luminous brightness value was lower and produced a more uniform intensity than what could be provided by a standard lamp projecting onto a surface. Evaluation of illuminance output of the lamps from a per lamp and wall power utilization shows that luminous wall system produces very usable horizontal illuminance values, even when not set to full brightness. Surface luminance (3000 cd/m^2) and illuminance values at 1 meter (1300 lux) show that the luminous surface system may be able to be used to compensate to offset significant shadowing, glare, and non uniformity created by sunlight entering spacecraft.</p>  <p><strong>Comparison With Conventional Lamp Systems:</strong></p>  <p>The simulation looked at energy required for a conventional lamp to produce the same surface luminance due to reflected light verses a surface that was self luminous.&nbsp; We thought we may see an advantage to the usage of self luminous surfaces because the conventional lighting system would loose energy due to the inverse square law.&nbsp; The goal in the test was to make the luminous wall match the reflected luminance of the overhead lighting system, and collect power usage information.&nbsp; We also wanted to pick a luminance test location for conventional lamp where the lighting was the most uniform.&nbsp; To produce a uniform luminance of 206 cd/m^2, which is the same luminance of many display monitors, the overhead fluorescent lighting system, mounted at approximately 8ft, used 50 watts, and luminous wall used 3.2 watts.&nbsp; The surface area of uniform luminance was at least 2x the size of the area of uniform luminance for the overhead lighting system.</p>  <p>FUTURE WORK</p>  <p>Successful integrators and developers of lighting standards for self luminous architectural surfaces for spacecraft architecture should perform human-in-the loop testing to refine requirements for luminous walls, self luminous environments, and the integration of displays as part of the architectural lighting system.</p>  <p>&nbsp;</p>  <p>&nbsp;</p>  <p>&nbsp;</p>  <p>&nbsp;</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The biggest application is the integration of lighting into cramped work spaces where lamp-based light fixtures are inadequate due to shaddowing created by the user in such an environment.&nbsp; Putting luminous walls inside a hygeine compartment and the integration of thin luminous paneling into windows, and mirrors to create dual functionality is an example of innovattion with surface lamp technologies.</p>  <p>Essentially the technology is a space saver -- potentially a method to reduce weight and power usage of the vechicle to light up the environment to provide a safe an usable work zone.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>88673</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: JSC IRAD (JSC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX05.1.2: Large Apertures</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2016-05-01</td></tr>
+<tr><th>Project End Date</th><td>2016-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>MEI Technologies; Leidos Inc — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Toni A Clark (Principal Investigator) &lt;toni.clark-1@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Brian M Schwing (Program Manager) &lt;brian.m.schwing@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2018-10-10</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>ICA Experiment Data</strong> — Spreadsheet data containing luminance, illuminance, and spectrum data collected by the Lighting Environmnent Test Facility of the &amp;quot;light wall&amp;quot; built for this evaluation and a conventional lamp comparison test.&amp;nbsp; Data was collected using an imaging colorimeter, a spectral irradiance meter, and a spectral radiance meter.&amp;nbsp; Spreadsheet includes graphics extracted from imaging colorimeter data output.&amp;nbsp; Essentially the spreadsheet documents the performance of the lighting system and the range of capability of the edge lit lamp system technology used in this evaluation of the luminance metric.</li><li><strong>False Color Light Panel With Diffuser Luminance (Just Noticable Difference) Test</strong> — False Color Light Panel with Diffuser (Just Noticable Difference) Test</li><li><strong>Beam Pattern on Wall (False Color) from Conventional Lamp mounted overhead</strong> — This is a false color luminance map taken by the Lighting Environment Test Facility&#x27;s imaging colorimeter of a 50W fluorescent lamp mounted 8 feet above the floor and a few inches away from the wall. It demonstrates nonuniformity of direct lighting.</li><li><strong>Lighting Panel 21% On Using ~ 3 Watts (False Color Luminance)</strong> — This is a false color image of one of the light panels set to 21 percent on. Note that the measured luminance is the same as the luminance from reflected light on the bottom portion of the conventinal fluorescent lamp simulation.</li><li><strong>True Color Light Panel Luminance (Just Noticable Diffference) Test</strong> — True Color image of light panel system captured by imaging colorimeter.</li><li><strong>Luminous Wall Lighting System - SIDE VIEW</strong> — Luminous wall lighting system installed at JSC&#x27;s Lighting Environment Test Facility</li><li><strong>Luminous Wall Lighting System - FRONT VIEW</strong> — Luminous wall lighting system installed at JSC&#x27;s Lighting Environment Test Facility</li><li><strong>Evolving Our Evaluation of Lighting Environments</strong> — Evolving Our Evaluation of Lighting Environments Technology Showcase 2016 Poster</li><li><strong>False Color Light Panel Luminance (Just Noticable Difference) Test</strong> — This is a false color luminance map captured by Lighting Environment Test Facility&#x27;s imaging colorimeter. It showcases luminance uniformity when panels are set to different intensities to reflect human just noticable difference brightness settings.</li><li><strong>True Color Light Panel With Diffuser Luminance (Just Noticable Difference) Test</strong> — True Color image of the light panel system with a large diffuser sheet mounted in front.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/88673">https://techport.nasa.gov/projects/88673</a>
+    </div>
+  </div>
+</body>
+</html>

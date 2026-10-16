@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexible Variable Emission Material | NASA TechPort Project 158019</title>
+  <meta name="description" content="Thermal management is an enduring need for all space platforms and vehicles. Spacecraft are routinely exposed to extreme temperature fluctuations, and options for regulating temperature in the vacuum of space are limited and challenging. To address space craft">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158019">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158019</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX14</span>
+        </div>
+        <h1>Flexible Variable Emission Material</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158019</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158019" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Thermal management is an enduring need for all space platforms and vehicles. Spacecraft are routinely exposed to extreme temperature fluctuations, and options for regulating temperature in the vacuum of space are limited and challenging. To address space craft temperature fluctuations, Plasmonics Inc. proposes to develop a new class of mission-tailorable, and autoregulating, thermal radiator coatings by leveraging its extensive experience in growing vanadium dioxide (VO2) on flexible substrates. Phase change materials (PCM) have been investigated for use in variable emittance regulators in the past; however, in all cases the PCM processing requirements appear to be incompatible with space craft radiator materials. Metalized Kapton has been used extensively in satellite platforms, playing key roles in radiator and sunshield systems. A recent and highly publicized example is the James Webb Space Telescope’s five-layer sunshield: Aluminized polyimide overcoated with silicon is designed to reflect solar radiation thereby preventing instruments from overheating. Accordingly, Plasmonics Inc. proposes to design, model, fabricate, and test coupons of tungsten-doped vanadium dioxide-base (WxV1-xO2)- variable emissivity materials (VEM). Various concentrations of W will be explored to evaluate its effect on transition temperature and VEM thermal emissivity. After design optimization and testing, the team will fabricate a VEM prototype on flight-certified flexible substrate such as Kapton in subsequent efforts.   Demonstration of a successful flexible VEM this technology can be applied to a wide range of markets with the commercial satellite and smart glass as the most promising.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          NASA has an enduring requirement to reduce mass, volume, and power of a thermal control system in the next generation of robotic and human-class spacecraft and to enable long-term missions to the Moon and Mars. The current state of the art in thermal control systems is vehicle power and mass impact of greater than 25 to 30% due to old technologies still in use. Furthermore, as missions become more variable, the need for intelligent design and control within the thermal control system becomes more valuable. Additionally, science payloads will continue to decrease in size, increase in power, and require precise temperature control, all of which cannot be readily provided by traditional thermal control methods due to vehicle-level impacts of overall performance, mass/volume, and power.  The proposed VEM addresses all these issues. The flexible form factor allows for incorporation into irregular surfaces without significant increase in mass. The adaptive radiative properties allow for use in extreme environments where surfaces will need to switch from radiative to insulating. As a decal, the surface is quick to integrate and can be readily removed for repair or replacement prior to launch. The multi-layer structure allows integration of additional capabilities such as rf transparency (for integration on antenna structures) or dust mitigation components.  The proposed technology is well suited for small satellites (or cube sats) and climate-change mitigation.   The market size for small satellites is modest, but growing. Markets and Markets places the current market size at $2.8B, but increasing to $7.1B by 2025. The proposed radiator technology would be highly desirable in the market due to the resulting reduction in weight and power usage. The team is already working with three satellite manufactures to provide evaluation samples.  Climate change is a critical concern in both the United States and the world abroad. Consequently, there is a significant interest in developing smart material technologies that will reduce the consumption of fossil fuel resources. One efficient way of reducing energy consumption is the development of passive, adaptive coatings that dissipate heat at high temperatures while providing insulation under cooler conditions. VEMs are candidate materials for this type of adaptive behavior since these films can transition from an insulating state at low temperatures to a thermally conductive state at higher temperatures. This allows for a surface that traps heat in the building when it is cold outside, but allows for heat transfer and thermal emission when it is hot outside and the inside is being cooled.  The proposed thermal management coating is therefore applicable across multiple economic sectors and industries. According to Markets and Markets, the global smart glass market is expected to be worth $9.54 billion by 2029. This represents a compound annual growth rate of 9.8%. The energy-efficient buildings market is projected to grow to $208 billion by 2032, which represents a compound annual growth rate of 5.93%. And while, our smart coatings are applicable to all segments of the market, it is the commercial segment that dominated, accounting for 47%.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158019</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX14: Thermal Management Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 2 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2025-08-18</td></tr>
+<tr><th>Project End Date</th><td>2027-08-17</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Florida (FL), Texas (TX)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>James C Ginn (Principal Investigator); Sydney J Taylor (Project Manager); James C Ginn (Primary Point of Contact)</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-19</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158019">https://techport.nasa.gov/projects/158019</a>
+    </div>
+  </div>
+</body>
+</html>

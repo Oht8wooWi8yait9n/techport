@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portable Traffic Management Tool for Wildfire Operations | NASA TechPort Project 154456</title>
+  <meta name="description" content="A comprehensive UTM solution for wildfire operationsis proposed based on real-time 3-D visualizations of wildfire management operations that include a common operating picture of participating actors,the location and predicted propagation of the wildfire front">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/154456">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 154456</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX16</span>
+        </div>
+        <h1>Portable Traffic Management Tool for Wildfire Operations</h1>
+        <div class="meta-id">NASA TechPort Project ID: 154456</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/154456" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          A comprehensive UTM solution for wildfire operationsis proposed based on real-time 3-D visualizations of wildfire management operations that include a common operating picture of participating actors,the location and predicted propagation of the wildfire front, and dynamic airspace management capabilities for UAS operatorsto define flight intent polygons and deconfliction volumes dynamically.  The platform will retrieve imagery from multiple aircraft in a common tool, as well as atmospheric data.Improving Aviation has developed a wildfire spread and ember spotting model that predicts near-term spread using the wildfire perimeter and in situ wind speed and direction information. The model will be integrated into the SkyTL platform to provide a predicted wildfire propagation perimeter and risk hotspots using in-situ atmospheric parameters.The information on fire propagation and risk hotspots will be used for resource allocation, strategic deconfliction, and the definition of dynamic flight intent volumes. A 3-D real-time visualization includesa real-time common operating picture, the wildfire perimeter,and predicted progression. Deconfliction algorithms implemented in the platform check if the position of the UAS is within the boundaries of the flight intent polygon. Additional functionality will be developed that includes deconfliction algorithms to offer UAS operators an alternative flight intent polygon if two or more flight intent polygons intersect. An API will be used to share the collected in-situ data with external partners and applications in standardized open-source formats. Analysis and quality control processes will be implemented by assigning quality control parameters associated with each data field.Enhancements to the SkyTL platform will be performed to enable implementation, scalability, and interoperability with current solutions.  UAS missions are starting to emerge that provide additional capabilities to emergency management operations, such as fire tracking and detecting or logistics UAS carrying water tanks or supplies. However, the mix of crewed and uncrewed systems in emergency operations results in an increasingly complex environment. Today, airspace management of aerial operations for wildfire fighting lacks of situational awareness and solutions that provide actionable information.&nbsp;&nbsp;  The Improving Aviation SkyTL platform&nbsp;provides a UTM solution tailored to the unique needs of wildfire disaster management.&nbsp;offering a solution for wildfire operations based on real-time 3-D visualizations of wildfire management operations that include a common operating picture of participating actors,&nbsp;the location and predicted propagation of the wildfire front, and dynamic airspace management capabilities for UAS operators&nbsp;to define flight intent polygons and deconfliction volumes dynamically.  The primary goals of this research are 1) to demonstrate a standalone situational awareness map that provides 3-D real-time visualizations for enhanced situational awareness&nbsp;2) to leverage the demonstrations in prescribed fires to suggest a framework for UAS integration during emergency response operations, and 3) to provide a solution for wildfire data sharing&nbsp;that can be converted into actionable information. The research involves the following deliverables:   	A video demonstration of the situational awareness tool operating as a standalone platform, showing dynamic airspace management tools, and an integrated wildfire and ember spread model. 	A software prototype of the SkyTL platform. 	Live access to an&nbsp;API that allows real-time and post-operational sharing of quality-controlled collected data and offers secure access through an identification protocol. 	A final report, in Word, summarizing prescribed burn exercises to test the SkyTL platform, the capacity of available communications, the latency of data transfer, and lessons learned.   &nbsp;
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The proposed platform is envisioned to support NASA&rsquo;s efforts by offering a solution for airspace strategic and dynamic deconfliction, allowing resource tracking of manned and unmanned aircraft and emergency responders on the ground, and contributing to an extended UTM network suitable for wildfire management. It supports real-time information flows through increased communications throughput and a reduction data transfer latency, enhancing situational awareness and ensuring safe, efficient, and scalable complex multi-purpose operations.  The platform may be used by UAS operators to conduct emergency response-related missions and obtain strategic and dynamic deconfliction, or&nbsp;by incident managers for situational awareness. The data retrieval and wildfire spread prediction capabilities&nbsp;offer many&nbsp;potential applications, from enhancements of fire perimeter maps, to the delivery of in-situ&nbsp;data for model initialization and training.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>154456</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX16: Air Traffic Management and Range Tracking Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 6 | Current TRL: 6 | Target End TRL: 7</td></tr>
+<tr><th>Project Start Date</th><td>2023-07-17</td></tr>
+<tr><th>Project End Date</th><td>2026-03-10</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Improving Aviation, LLC — Tampa, Florida</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Florida (FL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Ian McClure (Principal Investigator); Todd C Farley (Project Manager) &lt;todd.farley@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/154456">https://techport.nasa.gov/projects/154456</a>
+    </div>
+  </div>
+</body>
+</html>

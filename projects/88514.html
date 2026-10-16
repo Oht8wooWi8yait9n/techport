@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collaborative Augmented Reality with Hands‐Free Gesture Control for Remote Astronaut Training and Mentoring | NASA TechPort Project 88514</title>
+  <meta name="description" content="Augmented Reality (AR), where 3D and 2D images are overlaid on a user&#x27;s natural field of view like a heads up display, is being developed for use in manned space applications. In the past 2 years, NASA, through AR-eProc, and the European Space Agency, through ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/88514">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 88514</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX07.3.3</span>
+        </div>
+        <h1>Collaborative Augmented Reality with Hands‐Free Gesture Control for Remote Astronaut Training and Mentoring</h1>
+        <div class="meta-id">NASA TechPort Project ID: 88514</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/88514" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Augmented Reality (AR), where 3D and 2D images are overlaid on a user's natural field of view like a heads up display, is being developed for use in manned space applications. In the past 2 years, NASA, through AR-eProc, and the European Space Agency, through MARSOP, have demonstrated the potential of AR to improve hands-on training and just-in-time training (JITT).  This research aims demonstrate the feasibility and test the performance of novel hands-free, remote or proximity, and instantaneous collaboration or mentoring between individuals in the AR environment to augment audio communication for training, task completion, and other space applications. Real-time AR collaboration can provide novel, flexible spontaneous communication capabilities not found in current systems. Collaboration would be facilitated by drawing  on, or annotating, preexisting AR graphics using tablets or gesture detection which can also be viewed by other individuals in real time. Hands-free operation would be accomplished by utilizing radar-based gesture recognition transceivers which are environment-robust and embeddable in rigid materials. They precisely measure motion in 3D, allowing for gestures adapted to limited ranges of motion. Embedded gesture sensors and AR headsets enable potential expansion of use to EVA or other space suit applications. The research proposed aims to demonstrate the feasibility of the combined use of such systems and evaluate their performance. This would fulfill research in Technical Area 04: Robotics and Autonomous Systems Section 4 items 3 and 5 (4.4.3,5). The potential for AR control in EVA applications opens future development in AR communication with autonomous systems (4.4.3). This research by its remote collaborative nature can provide tools that facilitate resource and task allocation, trading and sharing of control, and dialogue management.  Use Cases: Remote or proximity AR collaboration or mentoring on Earth, in deep sea, or in Low Earth Orbit. Proximity-only AR collaboration or mentoring in deep space or situations with low communication bandwidth to remote sources. Approach: First, the AR collaborative drawing  functionality will be implemented using touchscreens with the AR-eProc system developed at NASA Johnson Space Flight Center. Next, gestures appropriate for hands-free drawing  will be developed. These gestures will be integrated into AR-eProc. Sample instruction modules, in increasing sophistication: without AR, with static AR images, with touchscreen AR collaboration, and with radar-based AR gesture collaboration; will be tested with volunteers. The system's impact on user comfort, efficiency, and perceived utility in job environments will be assessed. Iterative, agile approaches will be used to modify software development as assessments reveal areas of needed improvement. Evaluation of AR platforms will use task completion time, the subjective workload assessment tool NASA TLX, and subjective surveys of test subjects to link AR interactivity with changing levels of productivity. Feasibility of radar gesture recognition will be evaluated as recognition accuracy as the percentage of recognized gestures from the number of properly executed gestures during testing. Needed Resources: The AR-eProc developed at NASA Johnson, especially the hardware headset, is needed. Additional Microsoft Hololens sets will be available for sale in 2016 for the price of $3000 each. For radar-based gesture detection, a development kit from Google ATAP's Project Soli would provide the sensor and application programming interface, allowing for the rapid creation of gesture recognition patterns. Otherwise, microwave Doppler sensors are available commercially off-the-shelf. Doshisha University in Japan has demonstrated gesture recognition using the commercial NJR4211J Microwave Doppler sensor.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The potential for augmented reality control in EVA applications opens future development in augmented reality communication with autonomous systems. This research by its remote collaborative nature can provide tools that facilitate resource and task allocation, trading and sharing of control, and dialogue management. Examples of applications include remote or proximity augmented reality collaboration or mentoring on Earth, in deep sea, or in Low Earth Orbit and proximity-only augmented reality collaboration or mentoring in deep space or situations with low communication bandwidth to remote sources.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>88514</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX07.3.3: Training</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2016-08-01</td></tr>
+<tr><th>Project End Date</th><td>2018-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Columbia University in the City of New York — New York, New York</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>New York (NY)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars, Earth, Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Steven Feiner (Principal Investigator); Hiroshi Furuya (Co-Investigator); Lui Wang (Project Manager) &lt;lui.wang-1@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The per-minute cost of operations for crew aboard the International Space Station (ISS) is orders of magnitude higher than that for ground crew. To illustrate, a recent letter from NASA Administrator Charles Bolden to Congress [1] disclosed that transportation of astronauts to and from the ISS would cost $490 million. Since a tour typically consists of six astronauts with a length of stay of about six months, this amounts to nearly $20,000 per hour aboard the ISS per astronaut just for transportation to and from the ISS. Thus, it should be clear that technologies and methods to increase astronaut efficiency are important. Currently, many tasks, such as scheduling, are handled by ground teams to increase the time astronauts can spend conducting research. Despite this effort, crew is still required to load and unload cargo from visiting cargo vehicles. This task, though simple, is extremely time consuming. It can take many days for crew to finish unloading from a vehicle, packing the cargo transfer bags (CTBs) to return to the vehicle, loading the vehicle, and checking the results. We created a prototype augmented reality (AR) application, called StowageApp, to aid crew and ground planners in executing this process. StowageApp aims to improve a crew member’s ability to understand instructions provided by ground planners, to collaborate with other crew members in executing cargo operations, and ultimately to complete cargo operations faster and with greater accuracy. StowageApp runs on a Microsoft HoloLens head-worn AR computer that blends a user’s view of the real world with virtual content. Figures 1 through 5 show a user following StowageApp instructions as he completes a stowage procedure in the full-scale ISS mockup at NASA Johnson Space Center (JSC). (These images were taken by a second user running StowageApp on a separate Microsoft HoloLens.) Figure 1. User wearing Microsoft HoloLens in JSC full-scale ISS mockup consults StowageApp as he retrieves items during a stowage procedure. (Image is actual screenshot from StowageApp.) Figure 2. User wearing Microsoft HoloLens consults StowageApp as he transits in full-scale ISS mockup at JSC. (Image is actual screenshot from StowageApp.) Figure 3. StowageApp navigation aid guides user wearing Microsoft HoloLens toward PMM Leonardo module in full-scale ISS mockup at JSC. (Image is actual screenshot from StowageApp.) Figure 4. User reviews StowageApp instructions as he enters PMM Leonardo module in full-scale ISS mockup at JSC. (Image is actual screenshot from StowageApp.) Figure 5. User follows StowageApp instructions as he stows CTB inside compartment in PMM Leonardo module in full-scale ISS mockup at JSC. (Image is actual screenshot from StowageApp.) StowageApp impacts processes including crew-side execution of instructions given by ground planners, authoring of these instructions by ground planners, and communication between ground planners and onboard crew regarding the results of or problems with the instructions. We developed a series of mock stowage tasks to be executed in the full-scale ISS mockup at JSC. We conducted two user studies (N=25, N=9) comparing two different iterations of StowageApp with an electronic procedure document displayed on a tablet device. We measured completion time of the stowage tasks, incidence of errors, and responses to a NASA TLX workload survey. We are still in the process of analyzing the data. This work represents one of the first attempts at developing a prototype application deployed to a head-worn display for use in tasks requiring crew to travel between multiple ISS modules. As a result of this work, we also developed a new method for expressing cargo operation procedure instructions suitable for AR environments. This new method will help inform the design of new authoring tools that will enable NASA Inventory and Stowage Officers to efficiently write procedures that could be displayed by many different types of devices, including AR headsets. Figure 6. User views instructions in virtual model of the ISS in VR version of StowageApp running on a Windows Immersive Mixed Reality head-worn display. I also developed a Virtual Reality (VR) version of StowageApp that immerses the user in a virtual model of the ISS while providing the same user interface as our AR prototype. The VR version of StowageApp runs on Windows Immersive Mixed Reality head-worn display. Figure 6 shows a screenshot of the VR version of StowageApp. I gave a live demo of the VR version of StowageApp at SIGGRAPH 2018 [2] and I delivered a technical presentation on the demonstration. An abstract describing our work was also accepted for technical paper publication and oral presentation at the 69th International Astronautical Congress. In addition, I was awarded a 2018 Future Space Leaders Foundation Fellowship in part based on the merit of my work performed during this fellowship. References [1] C. Bolden. Letter Notifying Congress about Space Station Contract Modification with Russia. Washington, DC, 2015. [2] SIGGRAPH 2018. Virtual, Augmented and Mixed Reality. https://s2018.siggraph.org/conference/conference-overview/virtual-augmented-mixed-reality/ (Follow link to: “Immersive Pavilion - Village” and search for: “Furuya”.)</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="http://dx.doi.org/10.1145/3226552.3226579" target="_blank" rel="noopener noreferrer">Augmented reality task guidance for international space station stowage operations</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/88514">https://techport.nasa.gov/projects/88514</a>
+    </div>
+  </div>
+</body>
+</html>

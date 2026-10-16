@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Diagnostic Development Facility for Space Propulsion | NASA TechPort Project 156979</title>
+  <meta name="description" content="The recent dramatic increase in space exploration and commercial space activity has resulted in an equally expansive growth in the types of in-space propulsion systems needed. For example, deep space exploration missions have very different propulsion requirem">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/156979">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 156979</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">OSTEM</span>
+          <span class="badge">EPSCoR</span>
+          <span class="badge">TX01.2.2</span>
+        </div>
+        <h1>Advanced Diagnostic Development Facility for Space Propulsion</h1>
+        <div class="meta-id">NASA TechPort Project ID: 156979</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/156979" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The recent dramatic increase in space exploration and commercial space activity has resulted in an equally expansive growth in the types of in-space propulsion systems needed. For example, deep space exploration missions have very different propulsion requirements than station keeping for a low-Earth orbit communications array. To meet this diversity of propulsion needs, researchers are developing propulsion systems that achieve high-thrust and high-specific impulse; high thrust and low-specific impulse; low thrust and high specific impulse; and even low thrust and low specific impulse. The mechanisms for creating the propellent exhaust include conventional combustion systems; electric propulsion systems including Hall thrusters, ion engines, rf thrusters, and electron cyclotron resonance thrusters; dual fuel systems in which the propellant either combusts with an oxidizer or can be ionized and accelerated electrically; solid fuel, liquid fuel, conventional pressurized gas systems; and even cold gas micro propulsion systems intended for micro and nano scale spacecraft.    A key part of the development process of in-space propulsion systems is testing and certification for flight. In a variety of facilities at NASA Centers, universities, and industry, researchers measure the thrust and specific impulse of the propulsion systems; their long-term survivability; the interactions of the exhaust plume with spacecraft materials; and their power consumption requirements. Given the wide range of fuel types and propulsion system operating conditions, there is an ongoing need to develop new diagnostic methods capable of obtaining measurements of exhaust speed, plume structure, thruster erosion, and exhaust plume composition.   We propose to build the capacity to develop new, non-perturbative diagnostics capable of measuring the exhaust velocity, interaction of the exhaust with ambient neutrals, and plume morphology for novel propellants such as solid iodine and atmospheric gasses (as would be used in air-breathing propulsion systems). Using these new diagnostic tools, we will initially address two questions regarding the performance of a specific in-space propulsion system (1) How does the thruster exhaust in a test chamber couple to the background neutral gas and how does that neutral gas subsequently interact with the thruster test system? (2) How does the exhaust velocity and plume structure of an iodine fueled resistojet vary with resistojet temperature and nozzle geometry? A key feature of the proposed measurements is that they will be accomplished with sub-mm spatial resolution and non-invasively, i.e., completely through optical measurements.   Space research in WV has been undergoing rapid expansion. Five new faculty in space research have been hired at West Virginia University (WVU) in the last four years (two in Aerospace Engineering and three in Physics and Astronomy). In 2019, a collaboration involving WVU, the local NASA Katherine Johnson facility, and regional industrial partners launched the first spacecraft designed and built in WV (STF-1, the Simulation-To-Flight mission). And in 2022, researchers at WVU received over $900K in funding from the National EDA to develop the WV Small Satellite Center of Excellence. These recent developments, plus WVU’s long-standing expertise in spectroscopic measurement of flows in plasmas, have laid the foundation for a robust research program in spacecraft propulsion at WVU. This project will develop the infrastructure necessary to be competitive for future funding opportunities (for individual research programs and center-level research programs), will create a strong environment for recruiting and training students, and will support the burgeoning space-related capabilities in the state of West Virginia.   Targeted Area of Interest: A.4: STMD, SMD. Center: MSFC. Topic: Develop advanced propulsion technologies that enable future science/exploration missions.
+        </div>
+
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>156979</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Office of STEM Engagement (OSTEM)</td></tr>
+<tr><th>NASA Program</th><td>Established Program to Stimulate Competitive Research (EPSCoR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.2.2: Electrostatic Propulsion</td></tr>
+<tr><th>Project Start Date</th><td>2023-07-01</td></tr>
+<tr><th>Project End Date</th><td>2026-06-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>West Virginia University Research Corporation — Morgantown, West Virginia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>West Virginia University — Morgantown, West Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>West Virginia (WV)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Melanie Page (Principal Investigator); Thomas E Steinberger (Co-Investigator); mary bonasso (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Kathleen B Loftin (Program Director) &lt;kathleen.b.loftin@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-10-23</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/156979">https://techport.nasa.gov/projects/156979</a>
+    </div>
+  </div>
+</body>
+</html>

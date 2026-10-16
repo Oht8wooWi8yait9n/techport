@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design of Electrostatic Directional Dry Adhesives for Robotic Attachment Mechanisms | NASA TechPort Project 4273</title>
+  <meta name="description" content="Attachment mechanisms that are effective over a wide range of material types and surface conditions can be used for a variety of applications including manipulator end-effectors, feet for legged robots, and grippers for docking and rendezvous missions. This re">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/4273">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 4273</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX12.3.8</span>
+        </div>
+        <h1>Design of Electrostatic Directional Dry Adhesives for Robotic Attachment Mechanisms</h1>
+        <div class="meta-id">NASA TechPort Project ID: 4273</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/4273" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Attachment mechanisms that are effective over a wide range of material types and surface conditions can be used for a variety of applications including manipulator end-effectors, feet for legged robots, and grippers for docking and rendezvous missions. This research will focus on the development and hybridization two techniques: electrostatic adhesion and directional dry adhesion. Electrostatic adhesion works by generating an electrostatic field which charges or polarizes the substrate material creating an adhesive force. Directional dry adhesion operates by the use of intermolecular van der Waals forces by placing many small "stalks" in contact with the substrate. These mechanisms can provide key advantages over conventional methods, especially in the unique environments encountered by NASA. This research will develop fabrication methods for electrostatic and directional dry adhesive pads using conventional CNC machining techniques and shape deposition manufacturing (SDM). Multiple electrostatic adhesion pads with a consistent pattern topology but varying number of electrodes and electrode width to spacing ratios will be constructed and tested. A test bed will be developed to automatically cycle a pad through a set of loading conditions to evaluate the generated adhesive pressure. The acquired data will allow for conclusions to be drawn on optimal electrode density and spacing. Based on these conclusions more advanced electrode configurations such as spiral, fractal, and discretized patterns will be evaluated and optimized. The proposed research will also develop manufacturing techniques for integrating conductive electrodes with directional dry adhesives. The electrodes will be imbedded into polymer stalks on the order of a few hundred micrometers in size. Additionally, the configuration of the polarity of the individual polymer stalks will be varied and evaluated through experimental testing. Conclusions drawn on the optimal polarity configuration will be used to increase the generated adhesive pressures and overall robustness. The electrostatic directional dry adhesion technology developed by this proposed work applies to multiple TABS elements and will have a direct impact on NASA operations. Pertaining to TABS element 4.3, electrostatic directional dry adhesion will provide greater versatility for robotic manipulator end effectors. The technology is applicable to any material and space environments. Furthermore, due to the generated adhesive force, grippers would not have to generate a normal force by clamping the target object. This allows it to be gripped locally with little to no applied pressure. These aspects would be useful for situations ranging from object manipulation for planetary rovers to satellite rendezvous and docking operations to collection of space debris. Relating to TABS element 4.2.9, attachment mechanisms capable of providing adhesive force on a multitude of different surface types and roughness with little engagement pressure would be very attractive for use in micro-g environments. Autonomous vehicles utilizing compliant electrostatic adhesion pads could remain attached to a non-magnetic surface such as an asteroid or other celestial body for an extended period of time. Last, this work relates to TABS element 10.1.4. Although the focus of this research is the use of micro-scale directional stalks for integration with electrostatic adhesion, it can provide a foundation for further research in nano-scale directional dry adhesives that utilize very small and stiff fibers. The electrostatic directional dry adhesive technology proposed here is a unique attachment mechanism that is functional in zero atmosphere, applicable to all surface materials and roughness, consumes little power, and possesses controllable adhesion. This unique combination of proprieties is applicable to multiple TABS elements and will have a significant impact on NASA missions.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The electrostatic directional dry adhesion technology developed by this proposed work applies to multiple TABS elements and will have a direct impact on NASA operations. Pertaining to TABS element 4.3, electrostatic directional dry adhesion will provide greater versatility for robotic manipulator end effectors. The technology is applicable to any material and space environments. Furthermore, due to the generated adhesive force, grippers would not have to generate a normal force by clamping the target object. This allows it to be gripped locally with little to no applied pressure. These aspects would be useful for situations ranging from object manipulation for planetary rovers to satellite rendezvous and docking operations to collection of space debris. Relating to TABS element 4.2.9, attachment mechanisms capable of providing adhesive force on a multitude of different surface types and roughness with little engagement pressure would be very attractive for use in micro-g environments. Autonomous vehicles utilizing compliant electrostatic adhesion pads could remain attached to a non-magnetic surface such as an asteroid or other celestial body for an extended period of time. Last, this work relates to TABS element 10.1.4. Although the focus of this research is the use of micro-scale directional stalks for integration with electrostatic adhesion, it can provide a foundation for further research in nano-scale directional dry adhesives that utilize very small and stiff fibers.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>4273</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX12.3.8: Docking and Berthing Mechanisms and Fixtures</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-08-01</td></tr>
+<tr><th>Project End Date</th><td>2015-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Illinois Institute of Technology — Chicago, Illinois</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Illinois (IL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Others Inside the Solar System, Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Matthew Spenko (Principal Investigator); Donald F Ruffatto (Co-Investigator) &lt;donald.f.ruffatto@nasa.gov&gt;; Aaron J Parness (Project Manager) &lt;aaron.parness@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Transitioned To</strong> (Small Business Innovation Research): Work led to a new spin-off project on robotic mobility that has generated both NASA and non-NASA support and was tested in NASA&#x27;s zero-gravity aircraft last summer. Commercial sponsor is collaborating with JPL and Illinois Institute of Technology through licensing and SBIR contract.</li><li><strong>Closed Out</strong>: The primary goal of this research was to develop a robust attachment mechanism that is capable of operating on a range of surface types and in Low Earth Orbit (LEO). This research primarily focused on the development and hybridization of two attachment techniques: electrostatic adhesion and micro-structured dry adhesion. These mechanisms can provide key advantages over other conventional methods (e.g. suction, pressure sensitive adhesives) especially in the unique environments encountered by NASA. In particular this research addresses the following key questions: • How can electrostatic adhesives be designed and fabricated in order to optimize their adhesive force on a wide range of surface materials and roughnesses? • For micro-structured dry adhesives, what manufacturing techniques are most effective? • How can an electrostatic adhesive be hybridized with a micro-structured dry adhesive to enhance both effectiveness and attachment robustness? • What type of backing interface structures can be utilized to provide sufficient load transfer to the new hybrid adhesive while maintaining its conformability? • How can a gripping mechanism be designed to take advantage of the new adhesive and backing mechanism? These are the prominent questions that this research addressed while working to develop an effective hybrid electrostatic dry adhesive (EDA) attachment device. A simulation model was developed using Comsol Multiphysics’s electrostatics package to evaluate the electrostatic force generated by an inter-digital electrode pattern. Finite element analysis (FEA) was selected over analytical methods due to the complexity of the problem, particularly when the number of electrodes was increased. The simulation was performed by creating a 2D model for a cross-section of the prescribed inter-digital electrode configuration. Using Comsol Multiphysics’s the electric field strength and resulting electrostatic force was calculated. This provided an effective way for determining the effects of multiple parameters without the need to perform time consuming experimental testing for every iteration. It was found the the voltage potential applied to the inter-digital electrodes should be maximized and the gap between electrodes minimized in order to increase electrostatic adhesion. These parameters were limited in practical application by the available high voltage DC-DC converter and the dielectric strength of the insulating material used. Also, it was found that the electrode width has an optimal value of around 0.15 mm to 0.45 mm depending on the adhesive’s distance from the substrate material. The final simulation results were then experimentally validated to show it is a effective approach.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>4273-1363176585565.jpg</strong> — Project Image Design of Electrostatic Directional Dry Adhesives for Robotic Attachment Mechanisms</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/4273">https://techport.nasa.gov/projects/4273</a>
+    </div>
+  </div>
+</body>
+</html>

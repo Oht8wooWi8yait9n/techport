@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Packaging Reflector Methods (APRM-ACO) | NASA TechPort Project 116326</title>
+  <meta name="description" content="The NASA Langley Research Center (LaRC), in collaboration with Maxar Technologies, will build a breadboard model of a novel architecture for solid surface radio frequency (RF) reflector antennas scalable to sizes greater than 10 meters. The design combines the">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/116326">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 116326</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">GCD</span>
+          <span class="badge">TX12.1.2</span>
+        </div>
+        <h1>Advanced Packaging Reflector Methods (APRM-ACO)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 116326</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/116326" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p><span style="line-height:115%;font-family:'barlow-light' , sans-serif;font-size:12pt">The NASA Langley Research Center (LaRC), in collaboration with Maxar Technologies, will build a breadboard model of a novel architecture for solid surface radio frequency (RF) reflector antennas scalable to sizes greater than 10 meters. The design combines the compact, lightness, and simplicity characteristics of advanced deployable structures to create individual sub-reflector units that can be subsequently assembled in space into larger units using a robotic arm and operations under development by a parallel project. The focus of this project is on the development and implementation of a deformable high strain composite substrate to which many rigid segments of an RF reflector are permanently attached. The substrate permits compact ‘folded’ storage for launch of individual sub-reflector elements of the large reflector. The permanent connection between the composite flexible substrate and rigid RF reflector <span style="line-height:18.4px;font-family:'barlow-light' , sans-serif;font-size:12pt">segments is expected to produce a very structurally and thermally stable reflector even at very large sizes. The 3-m scale seven-panel hexagonal sub-reflector breadboard model is divided into 1 m scale hexagonal panels that efficiently stack concentrically and vertically. The central hexagonal panel is connected to each side panel on the back side by a pair of shape memory composite (SMC) tubular hinges that enable the required stowage and deployment kinematics.<span style="font-family:'barlow-light' , sans-serif;font-size:16px">The tubular hinges use embedded thin-film </span><span style="font-family:'barlow-light' , sans-serif;font-size:16px">heaters and sensors for smart actuation to produce individually-</span><span style="font-family:'barlow-light' , sans-serif;font-size:16px">controlled, low dynamics and final </span><span style="font-family:'barlow-light' , sans-serif;font-size:16px">shock deployment of each panel with reduced part count for simplicity and low risk. </span>A secondary mechanism ultimately closes the interpanel gap providing additional structural stiffness to the system.</span></span><br /></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p><span style="line-height:18.4px;font-family:'barlow-light' , sans-serif;font-size:12pt"><span style="font-family:'barlow-light' , sans-serif;font-size:12pt;line-height:18.4px">This project will further the understanding of high strain composite materials that are folded and packaged and satisfy the rigorous thermal stability and surface accuracy properties needed for a spacecraft RF antenna reflector deformable substrate.</span><span style="line-height:16.8667px;font-family:'calibri' , sans-serif;font-size:11pt"> </span>The development of a new shape memory composite substrate with integrated state sensing promises to produce actuators with low part count, thermal stability, simplicity, and mass benefits over traditional mechanical actuators. The simple design architecture for the vertically-stacked deployable rigid panels enables both solid surface segmented RF reflectors of<span style="font-family:'barlow-light' , sans-serif;font-size:16px"> less than</span><span style="font-family:'barlow-light' , sans-serif;font-size:16px"> 10 m diameter scales </span>to fit into current launch vehicle fairings, while being compatible with robotic in-space assembly into larger versions of tens of meters. This project builds on the recent Dragonfly NASA Tipping Point Program where Maxar developed a commercialized robotic system that is capable of in-space antenna assembly and LaRC built a robotically compatible reflector-to-boom assembly joint. Maxar plans to demonstrate this in-space antenna assembly in 2025.</span><br /></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>116326</td></tr>
+<tr><th>Acronym</th><td>APRM-ACO</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Game Changing Development (GCD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX12.1.2: Computational Materials</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX05: Communications, Navigation, and Orbital Debris Tracking and Characterization Systems; TX08: Sensors and Instruments</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2022-05-01</td></tr>
+<tr><th>Project End Date</th><td>2024-04-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Maxar Technologies — Westminster, Colorado</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Juan M Fernandez (Project Manager)</td></tr>
+<tr><th>Program Management Contacts</th><td>Mark N Thornblom (Program Manager) &lt;mark.n.thornblom@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The ACO Advanced Packaging Reflector Methods (APRM) project was completed under the Announcement of Collaborative Opportunity (ACO) with Maxar Technologies. The technology goals of APRM were to develop advanced packaging architectures using flexible composite technology for segmented solid surface RF reflectors scalable to tens of meters, and to develop a thermally and dimensionally stable foldable composite substrate to connect many rigid segments of an RF parabolic reflector that is compatible with in-space assembly via robotic arm operation. The project main objectives were to study and advance high packaging efficiency architectures for solid surface RF reflectors that use high strain composites and are scalable to at least 10 meters, select and characterize potential composite materials for the flexible composite substrate while meeting performance and durability requirements established by Maxar, and determine the feasibility of elastically folding and unfolding composite substrate designs. Ultimately, the design and fabrication of a substrate breadboard model compliant to material characteristics, constraints, and requirements was to be tested and analyzed to demonstrate the breadboard unit being folded and unfolded. The APRM project developed three new technologies, which has led to three U.S. patent applications: 1) A new smart flexible shape memory composite (SMC) substrate that is controllable by heat. Such substrate takes various forms (tubular hinges, doubly-curved tape-spring skirts, or flat strips) serving as key elements to backside-connected segmented reflectors and helps stow and controllably deploy them using the shape memory effect of the polymer matrix within the thermally and dimensionally stable composite. 2) A new RF reflector architecture that consists of vertically stacked hex rigid panels interconnected through their non-functional side by tubular SMC hinges that stow/deploy one at a time from a main central panel, as well as a concept for robotically assembling these modular deployable subreflectors into a larger unit. 3) A new RF reflector architecture that consists of a thin-shell elastic reflective surface including multiple interconnected flexible radial gores discretely connected circumferentially on its back side by an outer and inner skirt and gore-to-gore elements, where the flexible gores are discretely supported from a backbone structure comprising of multiple rigid arms also used for deployment. In the stowed position, each of the multiple flexible gores assumes a serpentine shape having at least one or more lobes/pleats. The thin-shell reflector concept is scaled up via the split of the reflective surface into concentric rings that are individually umbrella-like-folded and linked/connected to common radial backbone arms that are simply hinged at the root end and at the outer diameter of each ring. Key performance parameter targets derived from requirements of the foldable antenna reflector concept provided by Maxar were used to drive the reflector designs and were evaluated against empirical results from the functional tests or findings from computational studies. Project priority was given to producing 3-m scale subscale breadboard articles with representative features and functions to validate the fabrication process and the conceptual design and obtain needed information for future analysis and tests to TRL 4. Therefore, the test scope was redefined to carry out a subscale prototype test and product inspection to validate the concepts towards enabling full-scale development to TRL 4 soon. It was determined that the flexible composite substrate for the hexagonal rigid panel concept is a feasible technology and that its scalability approach to the 10-m scale can either be by in-space assembly or by increasing the size of the individual rigid panels. It was also determined that the flexible composite substrate for the thin-shell umbrella-folded concept is a feasible technology if the large power levels required can be managed and long and very thin heaters are sourced. The study of the effects of long-term stowage composite material creep remains open. The results for the three technologies look promising towards enabling simple actuation methods in large deployable structures and mass and volume efficient structural architectures for large deployable solid surface RF reflectors.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/116326">https://techport.nasa.gov/projects/116326</a>
+    </div>
+  </div>
+</body>
+</html>

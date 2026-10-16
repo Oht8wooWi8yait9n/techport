@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autonomous Navigation, Dynamic Path and Work Flow Planning in Multi-Agent Robotic Swarms: Path and Motion Planning with Uncertainty | NASA TechPort Project 93099</title>
+  <meta name="description" content="As humans push further beyond the grasp of earth, robotic missions in advance of human missions will play an increasingly important role. These robotic systems will find and collect valuable resources as part of an in-situ resource utilization strategy. They w">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/93099">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 93099</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">KSC CIF</span>
+          <span class="badge">TX10.2.3</span>
+        </div>
+        <h1>Autonomous Navigation, Dynamic Path and Work Flow Planning in Multi-Agent Robotic Swarms: Path and Motion Planning with Uncertainty</h1>
+        <div class="meta-id">NASA TechPort Project ID: 93099</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/93099" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>As humans push further beyond the grasp of earth, robotic missions in advance of human missions will play an increasingly important role. These robotic systems will find and collect valuable resources as part of an in-situ resource utilization strategy. They will need to be highly autonomous while maintaining high task performance levels.</p><p>Kennedy Space Center has teamed up with the Biological Computation Lab at the University of New Mexico to create a swarm of small, low-cost, autonomous robots, called Swarmies, to be used as a ground-based research platform for in-situ resource utilization&nbsp;missions. The behavior of the robot swarm mimics the central-place foraging strategy of ants to find and collect resources in an unknown environment and return those resources to a central site. The swarm has no prior knowledge of the environment, uses trails as a simple indirect communication strategy, and evolves a set of behavioral parameters using a genetic algorithm. The evolution of the parameters allows the swarm to maximize collection rates while adapting to new environmental conditions and to various unknown resource distributions.</p><p>The goal of this research is to add new in-situ resource utilization&nbsp;related behaviors to the genetic algorithm&nbsp;and to increase the autonomy of the system. Digital trails that are based on ant pheromone trails provide simple communication of resource locations between robots but they also provide some assistance with obstacle avoidance and navigation. Two newly evolved genetic algorithm&nbsp;parameters allow the robots to recharge their batteries autonomously without loss of robots due to insufficient charge. The genetic algorithm&nbsp;is able to optimize collection rates while also dealing with relatively high system error due to inexpensive and sub-optimal sensors onboard the robots. The distributed nature of the robotic swarm prevents a single point of failure and allows the system to operate even with the loss of one or more robots.</p><p>Off-planet applications of such a system include water-ice detection and mining, terrain mapping and habitat construction in advance of human explorers. Terrestrial applications include search-and-rescue, hazardous waste cleanup, land mine removal and infrastructure inspection and repair. The approach used in the software could also be adapted to search the Internet or to search large unknown data sets.</p><p>This project has helped demonstrate that in an obstacle laden environment, trails used as a simple indirect communication strategy can allow a swarm of small, low-cost robots to collect resources in an optimal manner when coupled with a genetic algorithm to evolve behaviors. &nbsp;This project has also helped demonstrate that an autonomous robot swarm can evolve battery charging behavior using a genetic algorithm to minimize or eliminate dead robots due to insufficient charge.</p><p>The project has been successful in meeting the original goals in simulated field trials and also in real robots.&nbsp;The genetic algorithm is able to evolve optimal behaviors allowing for efficient resource collection while coping with various obstacle arrangements and resource distributions. The genetic algorithm is also able to maintain a high level of fitness while incorporating autonomous recharging of the robots. It has also been demonstrated that this system is&nbsp;error tolerant, adaptable to different robot types, and is scalable in both environment size and numbers of robots.</p><p>All of these robot behaviors are performed in real-time with a small, low-cost onboard computer and small memory footprint. The robot platform is constructed using commercial off-the-shelf parts and 3D printed parts with a total cost of less than $1,500 per robot.</p><p>A secondary goal of this project was to extend the genetic algorithm to other new and commercially available robot platforms. Another secondary goal was to use open source software frameworks to help reduce barriers and allow future researchers to more easily utilize genetic algorithms for behavior evolution in a swarm of robots. The project has been successful in meeting both of these secondary goals.</p><p>This autonomous mobile robot system is a foundation for future research into the suitability of robot swarms and evolutionary algorithms for in-situ resource utilization missions. The low-cost of this type of system removes one of the barriers typically associated with swarm operation and research. Such research should prove valuable as humans explore harsh, remote, or inaccessible locations where teleoperation is required.</p> <p>Kennedy Space Center has teamed up with the Biological Computation Lab at the University of New Mexico to create a swarm of small, low-cost, autonomous robots, called Swarmies, to be used as a ground-based research platform for in-situ resource utilization missions. The behavior of the robot swarm mimics the central-place foraging strategy of ants to find and collect resources in an unknown environment and return those resources to a central site. The swarm has no prior knowledge of the environment, uses trails as a simple indirect communication strategy, and evolves a set of behavioral parameters using a genetic algorithm. The evolution of the parameters allows the swarm to maximize collection rates while adapting to new environmental conditions and to various unknown resource distributions. &nbsp;The goal of this research is to add new in-situ resource utilization&nbsp;related behaviors to the genetic algorithm and to increase the autonomy of the system.&nbsp;</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>see details description</p> <p>see benefits section</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>93099</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: KSC CIF (KSC CIF)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX10.2.3: Path Planning</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 2 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2014-03-01</td></tr>
+<tr><th>Project End Date</th><td>2015-04-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Kennedy Space Center (KSC) — Kennedy Space Center, Florida</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California; Ames Research Center (ARC) — Moffett Field, California; Biological Computation Laboratory, University of New Mexico — New Mexico</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Florida (FL), New Mexico (NM)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Kurt W Leucht (Principal Investigator) &lt;kurt.leucht@nasa.gov&gt;; Karl Stolleis (Co-Investigator); Kurt W Leucht (Project Manager) &lt;kurt.leucht@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2023-08-15</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/93099">https://techport.nasa.gov/projects/93099</a>
+    </div>
+  </div>
+</body>
+</html>

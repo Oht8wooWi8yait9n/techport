@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A High Performance Chemical Simulation Preprocessor and Source Code Generator | NASA TechPort Project 17849</title>
+  <meta name="description" content="Numerical simulations of chemical kinetics are a critical component of aerospace research, Earth systems research, and energy research. These simulations enable a better understanding of the evolution of chemical species over time in domains as diverse as clim">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/17849">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 17849</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX11.1.1</span>
+        </div>
+        <h1>A High Performance Chemical Simulation Preprocessor and Source Code Generator</h1>
+        <div class="meta-id">NASA TechPort Project ID: 17849</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/17849" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Numerical simulations of chemical kinetics are a critical component of aerospace research, Earth systems research, and energy research. These simulations enable a better understanding of the evolution of chemical species over time in domains as diverse as climate and weather prediction, combustion simulation, and air quality prediction. The time-to-solution in these simulations can be improved by over 30X via computational accelerators like Graphical Processing Units (GPUs) or the Intel Xeon Phi coprocessor, but the state-of-the-art tools for chemical kinetics do not support accelerators. ParaTools will develop a code generation tool called "Kppa" into a production-grade product that translates a high-level description of a chemical reaction network into simulation code that supports computational accelerators to significantly reduce time-to-solution. The generated code will provide the same software interface as existing tools to ensure immediate compatibility with popular codes like GEOS-Chem, WRF-Chem, MCM, etc. Kppa will include an online user productivity environment called "Kppa Cloud" for the development, testing, and benchmarking of chemical simulation codes. Kppa Cloud will enable users to graphically formulate new chemical reaction networks, maintain a library of chemical mechanisms, develop new mechanisms collaboratively, generate simulation code, explore the computational and numerical characteristics of the generated code, and test the generated code for stability and correctness. Kppa will enable supercomputer-level performance on smaller computers with lower costs, lower barriers to entry, and enable the rapid creation of high-performance kinetics simulations. Kppa will build on open source technologies to be backward compatible with the state-of-the-art in modeling and simulation and employ a modular design enabling extensibility to the computer architectures of the future.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Kppa targets NASA programs using numerical simulations of chemical kinetics in domains ranging from climate and weather prediction (e.g. NASA Center for Climate Simulation) to energy research (e.g. NASA Greenspace). Kppa will enable larger, more descriptive simulations on smaller, cost-effective computers. By combining knowledge of sparsity in the model data with parameterizations of the target hardware, Kppa will generate code that is more computationally efficient than existing models and improve the performance of models executing on traditional architectures, an immediate benefit to existing programs and infrastructure. Kppa will also improve user productivity and lower barriers to entry by providing a domain specific language for computational chemical kinetics that is easily understood by domain experts (chemists, etc.) and by providing the Kppa Cloud environment to facilitate the rapid development of new chemical operators for use in whole-systems models. Kppa Cloud will also reduce load on NASA Software Systems Support Office (SSSO) since ParaTools will secure, develop, and maintain Kppa Cloud as a hosted service.<br /> <br />Non-NASA customers include members of the global energy market, i.e. Shell Oil and ExxonMobil. Researchers from these organizations have expressed interest in using Kppa to study compounds like pentane. This SBIR project will implement the necessary advanced reaction rate calculation to support these studies. Energy researchers at the National Renewable Energy Laboratory (NREL), Oak Ridge National Laboratory (ORNL), and King Abdullah University of Science and Technology (KAUST) are also potential customers. ParaTools will also market Kppa to Earth systems researchers at the National Ocean and Atmospheric Administration (NOAA), the National Center for Atmospheric Research (NCAR), and the National Centre for Atmospheric Science in the United Kingdom. Members of the Atmospheric Modeling Group at Harvard University and the GEOS-Chem steering committee, as well as researchers at Georgia Tech, Virginia Tech, Texas A&M, Massachusetts Institute of Technology, University of Colorado Denver, Colorado State University, Eindhoven University of Technology, Karlsruher Institute fuer Technologie, the University of Leeds, the University of Manchester, and other research organizations worldwide have also expressed a desire to use Kppa in their applications.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>17849</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.1.1: Tools and Methodologies for Software Design and Development</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2014-06-20</td></tr>
+<tr><th>Project End Date</th><td>2014-12-19</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>ParaTools, Inc. — Eugene, Oregon</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Oregon (OR)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>John C Linford (Principal Investigator); David Kao (Project Manager) &lt;David.L.Kao@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li><li><strong>Project Image</strong> — A High Performance Chemical Simulation Preprocessor and Source Code Generator Project Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/17849">https://techport.nasa.gov/projects/17849</a>
+    </div>
+  </div>
+</body>
+</html>

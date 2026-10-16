@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autonomous Task Primitives for Complex Manipulation Operations | NASA TechPort Project 91438</title>
+  <meta name="description" content="The goal of this research effort is to enable robots to autonomously perform the complex manipulation tasks that are necessary to maintain a spacecraft. Robots, like NASA&#x27;s Robonaut 2 (R2), could assist human spaceflight by freeing the crew&#x27;s time for more val">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91438">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91438</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX04.1.1</span>
+        </div>
+        <h1>Autonomous Task Primitives for Complex Manipulation Operations</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91438</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91438" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The goal of this research effort is to enable robots to autonomously perform the complex manipulation tasks that are necessary to maintain a spacecraft. Robots, like NASA's Robonaut 2 (R2), could assist  human spaceflight by freeing the crew's time for more valuable activities and helping astronauts with dangerous and time-consuming tasks. These tasks include setting up and tearing down extra-vehicular activities (EVA) sites, changing air filters, and taking environmental samples on the International Space Station (ISS). Many of these tasks require tool use, dexterous manipulation, reasoning about the physics of contact, and collaboration with astronauts; e.g. handing off tools. Manipulators are currently only capable of performing these actions through direct teleoperation. Teleoperation has been successful in explosive ordinance disposal (EOD) and surgical robots, but the expertise and bandwidth required is tremendous: only trained EOD technicians and surgeons can operate these robots effectively, and it consumes all of their attention and time. These flaws are especially problematic during spaceflight because bandwidth is limited, latency is high, and communication dropouts are common. For example, ground controllers must carefully schedule remote teleoperation of R2 around ISS's KU band dropouts and continuously monitor KU band coverage during teleoperation. Our goal is to reduce the expertise and bandwidth required for manipulation by providing an extensible vocabulary of task primitives. For example, the operator could command the robot to stow everything in this box in storage, flip that switch, or pick up that drill. As a consequence, the complexity of planning and controlling the robot is abstracted away from the user, reducing bandwidth and allowing the user to focus on higher-level mission planning. This abstraction puts the burden of planning and executing complex manipulation primitives squarely on the shoulders of the robot. A vocabulary of primitives may be easily repurposed to a broad range of missions and could be reused on similar robots. Primitives are also naturally extensible: as the capabilities of the robot increase over time, so does the richness of its vocabulary. Finally, robust task primitives are an important step towards achieving fully autonomous manipulation in the long term. Primitive actions can be combined by high level planner to achieve more complex tasks without human intervention. Our goal is to implement and evaluate the task primitives on R2, and eventually, in space. As an intermediate step we will evaluate these primitives on HERB, a mobile manipulator designed by the Personal Robotics Laboratory at Carnegie Mellon University. Testing the primitives on HERB will insure that they generalize between robots and allow us to quickly evaluate their performance without spending valuable time on R2. We will then evaluate the primitives on R2 through close collaboration with Dr. Myron Diftler and the Robonaut group at JSC. In contrast to HERB, R2 has high degree-of-freedom anthropomorphic hands and operates both on Earth and in microgravity. In the long term, these task primitives could be deployed onto the R2 stationed on ISS. We are confident that developing a library of robust task primitives would reduce the need for direct teloperation and enable R2 to complete complex manipulation operations both on Earth and in microgravity.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          In the long term, these task primitives could be deployed onto the R2 stationed on ISS. We are confident that developing a library of robust task primitives would reduce the need for direct teloperation and enable R2 to complete complex manipulation operations both on Earth and in microgravity.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91438</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX04.1.1: Sensing for Robotic Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2013-08-01</td></tr>
+<tr><th>Project End Date</th><td>2016-12-21</td></tr>
+<tr><th>Lead Organization / Center</th><td>Carnegie Mellon University — Pittsburgh, Pennsylvania</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Pennsylvania (PA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars, Earth, Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Siddhartha Srinivasa (Principal Investigator); Michael F Koval (Co-Investigator); Julia M Badger (Project Manager) &lt;julia.m.badger@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong>: During this award, my goal was to develop a framework for creating robust manipulation primitives that enable robots to autonomously and reliably perform complex tasks. To do so, I formalized the physics-based manipulation problem as a partially observable Markov decision process (POMDP) and developed state estimation and planning algorithms for it. These algorithms provide a theoretically sound, principled approach for robust manipulation. For state estimation, I introduced the manifold particle filter (MPF) as a principled Bayesian estimation technique for tracking state through contact. Prior techniques typically assume a parametric model of uncertainty (e.g. Gaussian distribution) or tend to suffer from particle deprivation. The MPF draws samples from an approximate representation of the lower dimensional contact manifold to avoid particle deprivation and, thus, achieve low error with a small number of particles. Additionally, I showed that the MPF scales to high-dimensional state spaces (e.g. robot configurations) when using an implicit representation of the contact manifold. For planning, I introduced a pre- and post-contact policy decomposition that allows a robot to combine online (for pre-contact) and offline (for post-contact) POMDP planning approaches for computational efficiency. This approach makes it possible to plan active, information-gathering actions with minimal runtime overhead over a planner that does not consider uncertainty. I later extended this technique to consider kinematic constraints during planning by relaxing the role of the post-contact policy to that of a powerful heuristic. The offline policy guides the online planner in free space, but does not constrain its behavior when obstacles confront it.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91438">https://techport.nasa.gov/projects/91438</a>
+    </div>
+  </div>
+</body>
+</html>

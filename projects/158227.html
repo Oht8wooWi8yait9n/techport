@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optimization of Lunar Materials for Launch and Landing Pads | NASA TechPort Project 158227</title>
+  <meta name="description" content="Blueshift, LLC doing business as Outward Technologies in partnership with the Colorado School of Mines propose to develop a launch and landing pad design tool for identifying optimal geometries, materials, and configurations of landing pads, landing pad aprons">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158227">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158227</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX07</span>
+        </div>
+        <h1>Optimization of Lunar Materials for Launch and Landing Pads</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158227</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158227" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Blueshift, LLC doing business as Outward Technologies in partnership with the Colorado School of Mines propose to develop a launch and landing pad design tool for identifying optimal geometries, materials, and configurations of landing pads, landing pad aprons, and berms constructed from bulk regolith while minimizing the amount of robotic hardware and materials that are required to be launched from Earth. Preliminary design criteria have been established which capture traditional civil engineering design concepts applied to the lunar environment. This approach has yielded a promising berm design which may be used to mitigate high-speed ejecta while eliminating complex collisions and deflected ejecta particles. While these concepts have been developed from a strong theoretical basis, additional numerical and experimental results are required to further validate the use of these bulk regolith structures in minimizing the risk posed to critical infrastructure and equipment by high-speed ejecta during lunar launches and landings. In support of these goals, high-fidelity plume surface interaction models previously developed by Outward Technologies through a NASA SBIR Phase I and pending Phase II project will be integrated into a streamlined Launch and Landing Pad Design Tool (LLPDT) capable of simulating various pad, pad apron, and berm geometries, materials, and configurations. These proposed Phase I efforts will lead to a comprehensive design and evaluation tool for assessing various configurations of bulk regolith structures composing launch/landing pads, pad aprons, and berms. Colorado School of Mines will be relied upon in these efforts to help guide the assessment of various berm geometries and construction methods to identify candidate LLP and berm configurations which score favorably using the LLPDT in Phase I.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          NASA 2024 STTR Subtopic T7.04 Lunar Surface Site Preparation, Scope Title “Site Preparation and Bulk Regolith Infrastructure” is requesting civil engineering designs of bulk regolith lunar infrastructure and construction concepts of operations (ConOps) for the south polar region. The proposed Phase I collaboration between Outward Technologies and Colorado School of Mines directly addresses these needs through the verification and validation of a proposed landing pad apron and berm concept incorporating bulk regolith and lunar rocks and boulders in their construction. This design concept minimizes the use of materials launched from Earth while mitigating the damaging effects of high-speed ejecta. A further outcome from this proposed work is development of a Lunar Launch and Landing Pad Design Tool (LLPDT) capable of evaluating a wide range of LLP designs and materials which will be released as a free open-source software tool for lunar civil engineers and LLP designers to use at will. The LLPDT incorporates state of the art PSI models relevant to lunar landers with scales ranging from small CLPS landers to large-scale HLS landers. The LLPDT represents a remarkable tool for design and evaluation of LLPs, and provides numerical verification and later validation as to the efficacy of incorporating bulk regolith into planned LLP designs to drive down launch costs, reduce robotic complexity, and enable more near-term construction of LLPs on the Moon. These applications support NASA’s STMD strategic thrust “Live: Sustainable Living and Working Farther from Earth” Excavation, Construction, and outfitting (ECO) capability area and directly address the needs of NASA Technology Taxonomies TX07.2 Mission Infrastructure, Sustainability, and Supportability; and TX09.4.5 Modeling and Simulation for Entry, Descent, and Landing. Potential non-NASA applications include the design and evaluation of materials for reducing the generation of dust by helicopters and other aircraft engaging in vertical Take Off and Landing (VTOL). These materials may be used in forward operating bases with minimal infrastructure to reduce the effects of abrasive sand and dust on nearby equipment while improving visibility for pilots. The proposed Launch and Landing Pad Design Tool may be applied with little modification to these problems on Earth for evaluating temporary landing pad materials, geometries, and configurations based on the amount of dust generated during simulated launch and landing events.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158227</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX07: Exploration Destination Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 2 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2024-08-07</td></tr>
+<tr><th>Project End Date</th><td>2025-09-08</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Kennedy Space Center (KSC) — Kennedy Space Center, Florida</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Colorado School of Mines — Golden, Colorado; Blueshift, LLC — Broomfield, Colorado</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO), Florida (FL)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Nima Goudarzi (Principal Investigator); Beverly W Kemmerer (Project Manager) &lt;beverly.kemmerer@nasa.gov&gt;; Ryan Garvey (Primary Point of Contact)</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158227">https://techport.nasa.gov/projects/158227</a>
+    </div>
+  </div>
+</body>
+</html>

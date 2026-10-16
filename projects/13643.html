@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Cubesat Flight Demonstration of a Photon Counting Infrared Detector (LMPC CubeSat) | NASA TechPort Project 13643</title>
+  <meta name="description" content="Demonstrate that an IR detector with photon sensitivities at 1, 1.5, and 2 microns with linear mode photon counting (LMPC) response can be achieved in a Earth observing orbitwith on-orbit radiation exposure. Demonstrate that the detector can be integrated with">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/13643">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 13643</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">ESD</span>
+          <span class="badge">TX08.1.1</span>
+        </div>
+        <h1>A Cubesat Flight Demonstration of a Photon Counting Infrared Detector (LMPC CubeSat)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 13643</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/13643" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Demonstrate that an IR detector with photon sensitivities at 1, 1.5, and 2 microns with linear mode photon counting (LMPC) response can be achieved in a Earth observing orbitwith on-orbit radiation exposure. Demonstrate that the detector can be integrated with its cooler and instrumented with radiation and IR test devices within a 3U CubeSat. Understand the detector dark current and radiation dosage throughout the mission. Determine suitability of detector for future Earth science measurements The objective of this project is to demonstrate in space, a new detector with high quantum efficiency and single photon level response at several important remote sensing wavelength detection bands from 0.9 to 4.0 microns. A key element of this demonstration will include the characterization of the detector's response and dark current levels for specific detection periods as a function of exposure time and thus integrated space based radiation dosage. The detector being demonstrated will be a 2 by 8 HgCdTe Avalanche Photo Diode (APD) array developed by DRS -RSTA in Richardson, Texas. The detector will be housed in a small 80K tactical cooler. Currently, there is no space-qualified photon level counting detector at >1-micron which is compatible with long-term space operation. Because a qualified single photon multi-pixel detector was not available at 1 micron, the ICESat-2 mission had to convert its 1-micron laser into the green, which significantly increased the instrument's power and complexity. There are significant NASA needs for photon sensitive IR detector arrays for the ASCENDS, LIST and other planned missions. For this experiment, we will integrate the detector assembly into a 3U cubesat built by the Aerospace Corporation. This will accommodate the DRS device, and will have attitude knowledge and control and ground connectivity similar to the Aerospace cubesats currently operating in space. The experiment only requires the cubesat to point to the ground station and support the detector and cooler operation over short time periods (5 minutes) for multiple missions per week. This mission design significantly simplifies the cubesat hardware design, but provides a long term monitoring of the detector characteristics in a low earth orbit environment. The baseline on-orbit test will use an on-board broad-band optical source integrated with a selectable cubesat flight proven filter mechanism which optically illuminates the detector. We will also endeavor to use the sunlit Earth as another test source and compare the results with multispectral images taken by other Earth observing satellites. A more challenging goal, will involve orienting the cubesat so that it acquires and records laser emissions from our ground station as a one-way lidar to aid in establishing more dynamic operating envelopes for the device compatible with several earth science missions, including LIST, ASCENDS, follow-on ICESat missions, photon-counting laser communications and passive spectrometers in the shortwave to midwave infrared band. To understand radiation exposure details, we will integrate for the first time in a cubesat, the Aerospace dosimeter which was licensed to Teledyne and flew on NASA/LRO, and NASA RBSP-ECT/RPS.
+        </div>
+
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>13643</td></tr>
+<tr><th>Acronym</th><td>LMPC CubeSat</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Earth Science (ESD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.1: Detectors and Focal Planes</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 5 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2013-08-01</td></tr>
+<tr><th>Project End Date</th><td>2017-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>NASA Headquarters (HQ) — Washington, District of Columbia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Renny A Fields (Principal Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Michael S Seablom (Program Director) &lt;michael.s.seablom@nasa.gov&gt;; Parminder S Ghuman (Program Manager) &lt;p.ghuman@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-07-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Link]</strong> Closeout Link</li><li><strong>13643-1389275328164.jpg</strong> — Project Image A CubeSat Flight Demonstration of a Photon-counting Infrared Detector (LMPC CubeSat)</li><li><strong>91-1373479894122.png</strong> — ALHAT - ETD Autonomous Landing &amp; Hazard Avoidance Tech Earth Science Technology Office</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/13643">https://techport.nasa.gov/projects/13643</a>
+    </div>
+  </div>
+</body>
+</html>

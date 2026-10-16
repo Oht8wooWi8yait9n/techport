@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StarNAV: An Architecture for Autonomous Spacecraft Navigation by the Relativistic Perturbation of Starlight | NASA TechPort Project 106039</title>
+  <meta name="description" content="StarNAV is a novel architecture for navigating anywhere in the Solar System or beyond using the relativistic perturbation of starlight. The proposed StarNAV technique measures the change in inter-star angle due to stellar aberration to estimate vehicle velocit">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/106039">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 106039</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">NIAC</span>
+          <span class="badge">TX05.4.2</span>
+        </div>
+        <h1>StarNAV: An Architecture for Autonomous Spacecraft Navigation by the Relativistic Perturbation of Starlight</h1>
+        <div class="meta-id">NASA TechPort Project ID: 106039</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/106039" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>StarNAV is a novel architecture for navigating anywhere in the Solar System or beyond using the relativistic perturbation of starlight. The proposed StarNAV technique measures the change in inter-star angle due to stellar aberration to estimate vehicle velocity. These velocity estimates may be used for navigation. By converting the effect of stellar aberration from a nuisance parameter into the navigation observable, StarNAV represents a significant departure from the conventional way that star sightings are used for navigation. The StarNAV architecture could benefit a wide array of proposed NASA missions, especially those operating at large distances from Earth. The proposed work considers two such scenarios: (1) a flagship-scale exploration mission to Neptune and (2) a mission to perform in situ exploration of the interstellar medium. The anticipated NIAC Phase I activities include (1) exploration of the StarNAV sensor trade space and (2) evaluation of StarNAV within an aerospace architecture. It is impossible to complete either of these activities without the other. Our Phase I efforts are expected to advance StarNAV from TRL 1 to TRL 3.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>StarNAV represents an alternative (or compliment) to other autonomous navigation techniques: OPNAV, XNAV, DSAC. In some cases, StarNAV has favorable sensing conditions, viewing geometry, and observability when compared to the competing techniques. Encourages the aerospace community to reconsider how stars are used for deep space navigation. Development is needed now if StarNAV is to be used to support anticipated missions to the outer planets or to the interstellar medium.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>106039</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>NASA Innovative Advanced Concepts (NIAC)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX05.4.2: Revolutionary PNT Technologies</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX17.2.4: Relative Navigation Aids</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2020-05-27</td></tr>
+<tr><th>Project End Date</th><td>2021-03-12</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Rensselaer Polytechnic Institute — Troy, New York</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>New York (NY)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Others Inside the Solar System, Outside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>John Christian (Principal Investigator) &lt;john.w.christian@jpl.nasa.gov&gt;; Michael Kudenov (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Vianni Ricano Cadenas (Program Manager) &lt;vianni.ricanocadenas@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The results of this NIAC Phase I study suggest three directions of forward work. The first and most promising area of forward work is the detailed development of a wide field-of view (FOV) StarNAV sensor that fits within a CubeSat platform (maturation of the sensor concept shown Section 2.2.2.3). If found to be feasible after a detailed analysis and complete system design, we believe this to be a strong candidate for a future technology demonstration effort—especially since it fits within a 3U CubeSat volume. The wide FOV sensor has lower performance than a precision two-star sensor, but it provides a promising alternative for missions with less stringent navigation needs. A technology demonstration using a sensor of this type would provide a good proof-of-concept for the StarNAV idea. The second area of forward work is continued consideration of high-performance StarNAV with observations of a star pair. As can be seen from Section 2.2.1, such systems tend to be large and complicated—thus making precision two-star configurations undesirable for many practical missions. We remain hopeful that a fundamentally different sensing approach may make these types of measurements feasible, which remain the key to developing a StarNAV system with competitive performance for exploration missions inside the solar system. The third area of forward work is to consider solutions to the star identification (ID) problem in interstellar space. It has long been assumed that star ID in interstellar space could be achieved in much the same way as within the solar system, with our study being the first to prove this is not the case (which was done by applying well-established theoretical results from another field). Without functioning star ID, it is impossible to perform StarNAV or any other type of star-based navigation.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Spacecraft Navigation by the Relativistic Perturbation of Starlight</strong> — Illustration of the StarNAV concept. Credits: John Christian</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/106039">https://techport.nasa.gov/projects/106039</a>
+    </div>
+  </div>
+</body>
+</html>

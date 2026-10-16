@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optimal Aerocapture Guidance | NASA TechPort Project 91573</title>
+  <meta name="description" content="The main goal of my research is to develop, implement, verify, and validate an optimal numerical predictor-corrector aerocapture guidance algorithm that is applicable to a wide range of vehicle configurations and lifting capabilities, and to different missions">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91573">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91573</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX09.5</span>
+        </div>
+        <h1>Optimal Aerocapture Guidance</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91573</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91573" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The main goal of my research is to develop, implement, verify, and validate an optimal numerical predictor-corrector aerocapture guidance algorithm that is applicable to a wide range of vehicle configurations and lifting capabilities, and to different missions from orbital and suborbital atmospheric entry to aerocapture. The algorithm will be capable of effectively enforcing trajectory constraints on heating rates and aerodynamic load, and will also be flexible to accommodate further mission considerations such as maximization of apogee velocity for aerocapture missions. The algorithm framework and core software part will be the same if the algorithm is reconfigured to produce an advanced entry guidance algorithm. Testing of the algorithm will be carried out through the use of extensive simulations in a NASA high-fidelity simulation environment.  A two-phase optimal aerocapture guidance algorithm will be developed using closed-loop guidance to minimize the required delta V to establish the desired final orbit. A numerical predictor-corrector will perform on-board calculations to determine the switching time that produces the optimal flight to satisfy the desired conditions and minimize the required delta V. This algorithm will use the optimal bang-bang bank angle profile structure, in which the vehicle first flies with the lift force pointed straight up, and then flies full lift-down until it exits the atmosphere. The optimal trajectory is found by determining the time at which the vehicle switches between full lift-down flight and full-lift up flight.  The predictor-corrector algorithm will play the role of on-board trajectory planner where a feasible trajectory is planned periodically based on the current condition and target condition, at a much lower frequency. Between the trajectory updates, the trajectory-tracking guidance will track the planned trajectory and provide the guidance commands. Such a hybrid approach could retain the main benefits of both approaches: the adaptive capability of the predictor-corrector algorithm and the low computational requirement of trajectory-tracking guidance. The design of the trajectory tracking guidance law will be accomplished by the Linear Quadratic Regulator (LQR) approach. This feature is very important to the proposed hybrid approach because it means that a single LQR tracking law will be applicable to all reference trajectories generated/updated by the predictor-corrector algorithm. This project will investigate the effectiveness of this hybrid approach and compare it with fully numerical predictor-corrector guidance and trajectory-tracking (only) guidance approaches.  No other existing aerocapture guidance algorithms have the capability to ensure truly optimal performance in terms of minimum post-exit orbital insertion delta V. This novel algorithm allows for reliable optimal solutions to nonlinear, constrained control problems. The algorithm is also innovative in that it is the first that is optimal based on the optimal control theory, and therefore could offer a potentially significant advantage in reducing propellant consumption for aerocapture missions. An algorithm of this type would significantly reduce or even eliminate the need for the design and implementation of different guidance algorithms for different vehicles and aeroassist missions, including entry guidance. In addition, the load factor and heating constraints can be observed directly, unlike current available entry guidance algorithms such as the Apollo or Space Shuttle entry guidance approaches.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          No other existing aerocapture guidance algorithms have the capability to ensure truly optimal performance in terms of minimum post-exit orbital insertion delta V. This novel algorithm allows for reliable optimal solutions to nonlinear, constrained control problems. The algorithm is also innovative in that it is the first that is optimal based on the optimal control theory, and therefore could offer a potentially significant advantage in reducing propellant consumption for aerocapture missions. An algorithm of this type would significantly reduce or even eliminate the need for the design and implementation of different guidance algorithms for different vehicles and aeroassist missions, including entry guidance. In addition, the load factor and heating constraints can be observed directly, unlike current available entry guidance algorithms such as the Apollo or Space Shuttle entry guidance approaches.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91573</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.5: Flight Mechanics and GN&amp;C for Entry, Descent, and Safe Precise Landing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2015-08-16</td></tr>
+<tr><th>Project End Date</th><td>2016-08-15</td></tr>
+<tr><th>Lead Organization / Center</th><td>Iowa State University — Ames, Iowa</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Iowa (IA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Ping Lu (Principal Investigator) &lt;ping.lu@nasa.gov&gt;; Kyle D Webb (Co-Investigator); Alicia M Dwyer Cianciolo (Project Manager) &lt;alicia.m.dwyercianciolo@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The main goal of my research was to implement, verify, and validate an optimal numerical predictor-corrector aerocapture guidance algorithm that was applicable to a wide range of vehicle configurations and lifting capabilities, and different post-exit orbits. The algorithm would be capable of effectivel y enforcing a trajectory constraint on aerodynamic load, and would also be flexible to accommodate further mission considerations such as maximization of apogee velocity for aerocapture missions. The algorithm frame work and core software part would be the same if the algorithm was reconfigured to produce an advanced entry guidance algorithm. Testing of the algorithm would be carried out through the use of extensive simulations in a NASA high-fidelity simulation environment. A two- phase optimal aerocapture guidance algorithm was developed using closed-loop guidance to minimize the required delta V to establish the desired final orbit. A numerical predictor corrector performed on-board calculations to determine t he switching time that produced the optimal flight to satisfy the desired conditions and minimize the required delta V. This algorithm used t he optimal bang- bang bank angle profile structure, in which t he vehicle first flies with the lift force pointed straight up, and then flies full lift-down until it exits the atmosphere. The optimal trajectory was found by deter mining the time at which the vehicle switches between full lift-down flight and full-lift up flight. The Fully Numerical Predictor- Corrector Aerocapture Guidance (FNPAG) algorithm was developed and implemented in a high-fidelity NASA environment and Monte Carlo simulations were conducted for a Hypersonic Inflatable Aerodynamic Decelerator (HIAD), the Adaptable, Deployable Entry Placement Technology (ADEPT) vehicle, and a mid L/ D aeroshell vehicle. A flyoff was performed between FNPAG and existing state-of-the-art aerocapture algorithms using the HIAD vehicle and a 1-sol target orbit. The FNPAG algorithm displayed strong performance, winning the flyoff. Additionally, a technical paper based on preliminary research was presented at the Atmospheric Flight Mechanics Conference of the AIAA Science and Technology Forum and Exposition 2016 in San Diego, California. A thesis was written and successfull y defended, an in-house simul ation was completed and verified at Iowa St ate, and a C code version of the algorithm was deve oped. A technical paper based on the results of the flyoff will also be presented at AIAA Sci Tech 2017 in Grapevine, Texas.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91573">https://techport.nasa.gov/projects/91573</a>
+    </div>
+  </div>
+</body>
+</html>

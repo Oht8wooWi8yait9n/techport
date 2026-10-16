@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NASA SERVIR-Nepal Air Quality Explorer UI/UX Challenge | NASA TechPort Project 157160</title>
+  <meta name="description" content="SERVIR Mekong has recently launched the Air Quality Explorer that is a very important free service and tool to forecast air quality in the region that is available to everyone (open science). This tool can be ported to an app with improved UI/UX (user interfac">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/157160">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 157160</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">PCC</span>
+          <span class="badge">TX11.6.7</span>
+        </div>
+        <h1>NASA SERVIR-Nepal Air Quality Explorer UI/UX Challenge</h1>
+        <div class="meta-id">NASA TechPort Project ID: 157160</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/157160" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          SERVIR Mekong has recently launched the Air Quality Explorer that is a very important free service and tool to forecast air quality in the region that is available to everyone (open science). This tool can be ported to an app with improved UI/UX (user interface and user experience) that could bring greater awareness to the public as well as bring opportunity for private business to make money thru advertising on the app or adding additional resolution or data that could be worthy of monetary subscription to private individuals. A competition to build an application and improve UI/UX will also provide the SERVIR network around the world with ideas and tools to help improve other services and tools.<br \> The purpose of this project was to develop a mobile application and a full-feature website that improves upon the existing user interface for the SERVIR-Mekong Air Quality Explorer tool that combines ground, satellite data, and model outputs to enable monitoring and forecasting of air quality in Thailand. The new mobile application and full-feature website will be built upon the existing underlying data architecture. Changes to the backend system and the data architecture were out of scope.  There are two primary audiences for a new UI/UX: - Public. This type of user needs a basic interface that provides the forecasts with some basic parameter manipulation for location and other variables. - Expert User/Scientist/Researcher. This type of user needs to be able to manipulate data (present and historic) extensively for analysis and forecasting of Air Quality conditions.
+        </div>
+
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>157160</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Prizes, Challenges, and Crowdsourcing (PCC)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.6.7: High-Performance Data Analytics Platform</td></tr>
+<tr><th>Project Start Date</th><td>2022-09-19</td></tr>
+<tr><th>Project End Date</th><td>2023-06-15</td></tr>
+<tr><th>Lead Organization / Center</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>CrowdPlat Inc.</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>HONG KIM (Project Manager) &lt;hong.kim@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jarah A Meador (Program Director) &lt;jarah.meador-1@nasa.gov&gt;; Jennifer E Edmunson (Program Manager) &lt;jennifer.e.edmunson@nasa.gov&gt;; Ryon C Stewart (Program Manager) &lt;ryon.stewart@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Significant progress Planned for future implementation Build a mobile app and a full-featured website that improves on the existing user interface for the ICIMOD Air Quality Explorer tool. Learning the technologies needed for future enhancements/maintenance for the product. NASA SERVIR will support ICIMOD (hub) team. If any changes need to be made, the NASA SERVIR/ICIMOD team will make them and then the mobile app will be deployed to the apple/google play store. Website is already deployed. Collecting end user feedback and updating the apps accordingly.</li><li><strong>Closed Out</strong>: Significantly advanced towards a solution Planned for future implementation Build a mobile app and a full-featured website that improves on the existing user interface for the ICIMOD Air Quality Explorer tool. Learning the technologies needed for future enhancements/maintenance for the product. NASA SERVIR will support ICIMOD (hub) team. If any changes need to be made, the NASA SERVIR/ICIMOD team will make them and then the mobile app will be deployed to the apple/google play store. Website is already deployed. Collecting end user feedback and updating the apps accordingly.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/157160">https://techport.nasa.gov/projects/157160</a>
+    </div>
+  </div>
+</body>
+</html>

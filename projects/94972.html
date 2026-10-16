@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Compression and Camera Control | NASA TechPort Project 94972</title>
+  <meta name="description" content="There are two major challenges to overcome with any space video application; limited bandwidth, and extreme environmental constraints. We aim to create a space rated video compression and camera control platform using the new H.265 High Efficiency Video Codec ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/94972">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 94972</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">MSFC IRAD</span>
+          <span class="badge">TX04.5.1</span>
+        </div>
+        <h1>Video Compression and Camera Control</h1>
+        <div class="meta-id">NASA TechPort Project ID: 94972</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/94972" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>There are two major challenges to overcome with any space video application; limited bandwidth, and extreme environmental constraints. We aim to create a space rated video compression and camera control platform using the new H.265 High Efficiency Video Codec (HEVC) using the latest hardware available. This system will be able to provide twice the video compression when compared to the H.264 codec, which is the current standard. Additionally, it will be able to survive typical launch vehicle environments and handle single event radiation events.</p><p>Space rated imagery systems are a rarity, and <strong>none</strong> exist which utilize the latest imagery compression algorithms. Such a system is highly sought after in the space avionics industry due to the significant reduction in communication bandwidth. If a flexible and standardized platform that is focused on contextual imagery could be created, cost and integration time into a launch vehicle, lander, or other system requiring rugged video feed would be greatly reduced.</p><p>If fully funded, a prototype can be built and environmentally tested in a year. Starting in 2020, engineering development units could be created and tested while end users are identified and the platform is advertised and generally made known. We expect a significant Return on Investment (ROI) and future work being brought to MSFC regarding future imagery systems.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Steady advancement in the manufacturing feature size of both Field Programmable Gate Arrays (FPGA&rsquo;s) and microprocessors has enabled more computational power at equivalent energy consumption. The release of the H.265 encoding algorithm, created in 2014, ushered a surge of hardware and software products which utilize this codec. H.265 encodes video using half the bandwidth as its predecessor, H.264, at the cost of higher power consumption. At its release, H.265 wasn&rsquo;t a problem for high-end and high-power processing systems, but only recently have products been available that can handle this video codec using a low power Reduced Instruction Set Computer (RISC) processor or FPGA.</p><p>H.265 offers tailoring to project needs. There are many parameters of an H.265 encoder that can be adjusted: frame rate, frame decimation, cropping, target bitrate, constant or variable bitrate, I frame and P frame variations. The H.265 encoder that we plan to use was developed by Xilinx. It can support up to eight 1080p30 video feeds, and can be tailored to one 8k30 video feed depending on the target application. The high efficiency of H.265 encoders has the capability to compress a 4K 24fps video stream (a cinema standard) from hundreds of Mbps to 10 Mbps without sacrificing video quality as perceived by the human eye. ES34 performed an extensive study on the quality of H.265 encoders. Highly specialized video equipment known as a Picture Quality Analyzer (PQA) was used to perform a quantitative analysis of encoded video from various encoders. We were able to confirm that H.265 is roughly twice as efficient as H.264.</p><p>While H.265 encoders are starting to become available in very high-end consumer products, the use of this advanced algorithm has not entered the realm of space flight hardware. An extensive market research trade study, performed by ES34, found no available space qualified H.265 COTS video encoders. Current SLS video systems use COTS components that were not designed with space flight in mind and required extensive modification to survive the extreme environments. The challenges have been overcome but at great cost to weight and elegance.</p><p>By building a video compressor and camera controller with space flight in mind, the system can be incredibly small, simple and elegant while at the same time greatly improving performance and power efficiency. The system will be built with standard flight environments in mind. The majority of our team, as defined in this proposal, is currently working on the SLS imagery system, the Flight-Imaging Launch-Monitoring Real-time System (FILMRS) and will leverage many environmental requirements of this program. The design goals of the project include:</p><ul><li>Operational temperature between -40C to +125C.</li><li>Acceptable EMI performance.</li><li>Withstand vibrational loads up to 25 GRMS.</li><li>Use standard 28V dc power and handle power dropouts up to 100ms.</li><li>Weight less than 10 lbs</li><li>Radiation tolerant</li><li>Power and control up to 8 cameras</li><li>Export compressed video over Ethernet in a flexible format</li></ul><p>With those design goals in mind the system can be implemented in a wide variety of uses including landers, launch vehicles, vehicle docking, external views of space stations, and post flight photogrammetry.</p><p>We plan to achieve a TRL4 for this platform by demonstrating a complete system in a laboratory environment and some testing in a relevant environment as defined by SLS EFILMRS program or another interested program. The demonstration would include real-time video compression performed by our system, and displayed on a monitor to show functionality. Video will also be tested using the PQA to provide a quantitative assessment of the compressed video using challenging imagery scenes. The results will be compared to a comparable H.264 encoding system to quantify improvements in bandwidth and quality over currently available systems.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>94972</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: MSFC IRAD (MSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX04.5.1: Relative Navigation Sensors</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 3 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2018-10-01</td></tr>
+<tr><th>Project End Date</th><td>2019-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Office of the Chief Technologist (OCT)</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Others Inside the Solar System, Outside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jarret C Bone (Principal Investigator) &lt;jarret.c.bone@nasa.gov&gt;; Jonathan E Pryor (Co-Investigator) &lt;jonathan.pryor@nasa.gov&gt;; Jarret C Bone (Project Manager) &lt;jarret.c.bone@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>John W Dankanich (Program Manager) &lt;john.dankanich@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2019-03-19</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: TBD</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/94972">https://techport.nasa.gov/projects/94972</a>
+    </div>
+  </div>
+</body>
+</html>

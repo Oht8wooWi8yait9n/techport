@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Predicting Acute Cardiovascular and Ocular Changes due to Changes in the Gravitational Vector and Effects of Countermeasures | NASA TechPort Project 156512</title>
+  <meta name="description" content="Exposure to weightlessness results in the removal of hydrostatic pressure gradients and a permanent headward fluid shift, causing a redistribution of blood. Additionally, in space postural changes don’t occur and thus, astronauts are not exposed to daily fluid">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/156512">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 156512</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          
+        </div>
+        <h1>Predicting Acute Cardiovascular and Ocular Changes due to Changes in the Gravitational Vector and Effects of Countermeasures</h1>
+        <div class="meta-id">NASA TechPort Project ID: 156512</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/156512" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Exposure to weightlessness results in the removal of hydrostatic pressure gradients and a permanent headward fluid shift, causing a redistribution of blood. Additionally, in space postural changes don’t occur and thus, astronauts are not exposed to daily fluid shifts (between supine and upright postures) as we are on Earth. This has currently unknown consequences, but it might be related to a series of neuro-ocular and functional changes developed in some astronauts during both short and long-duration spaceflight, collectively known as Spaceflight Associated Neuro-Ocular Syndrome (SANS). While the exact etiology of SANS is currently unknown, chronic fluid redistribution affecting intravascular, interstitial, and cerebrospinal fluids and pressures is widely hypothesized to be a contributing factor. Additionally, recently demonstrated stagnant and retrograde blood flow and venous thrombosis in the left internal jugular vein during spaceflight could also be associated with sustained headward blood and tissue fluid shift.     <p></p> Based on the current knowledge and hypotheses, countermeasures focused on producing hydrostatic gradients or reducing the microgravity-induced fluid shift, such as lower body negative pressure (LBNP) or centrifugation, become particularly interesting. LBNP shifts fluids from the head to the lower body is expected to reduce the translaminar pressure across the eye and thus, might prevent some of the ocular changes and remodeling associated with SANS. LBNP is also a promising countermeasure to enhance venous flow in the upper body. Similarly, head-to-foot (Gz) centrifugation also produces a fluid shift and induces hydrostatic gradients within the vessels in the body, which may also reduce intraocular pressure (IOP), reduce the translaminar pressure, and enhance venous flow. However, at present, it is not possible to estimate the overall physiological response (neither acute nor long term) of a particular “dose” of artificial gravity (AG) or LBNP, and more specifically and relevant to our purposes, the response in the upper body and around the eye.     As a first step and in the context of this short project, we propose to focus on acute responses. Our objective is to generate acute gravitational dose-response curves of cardiovascular (CV) and ocular variables due to changes in the gravitational vector, with and without countermeasures. We propose to conduct a series of experimental studies (using tilt table, LBNP, and centrifugation), and combine the results with numerical modeling to leverage the advantages of both experimental and computational methodologies. Then, we propose to exert the full flexibility of the numerical framework to investigate CV and ocular responses in additional configurations where data collection is difficult, expensive, or infeasible.    <p></p> A short-description of the experiments is shown below:     <p></p> -	Experiment 1: Tilt table. Subjects will be exposed to multiple tilt angles, from 45° HUT (head up tilt) to 45° HDT (head down tilt), in both prone and supine configurations. CV and ocular measures will be collected and used to generate gravitational dose-response curves as a function of tilt angle.    <p></p> -	Experiment 2: LBNP. Subjects will be exposed to multiple levels of negative pressure (from 0 to -50 mmHg), in both supine and 15° HDT. Similarly, CV and ocular measures will be collected and used to generate gravitational dose-response curves as a function of external pressure.     <p></p> -	Experiment 3: Centrifugation. Subjects will be exposed to multiple levels of artificial gravity on the human short-radius NASA centrifuge that is being relocated and installed at Texas A&M University (TAMU). CV and ocular measures will be collected and used to generate gravitational dose-response curves as a function of g-level.     <p></p> In addition to the experiments, we will develop a numerical model from two different but complementary lumped-parameter models that have been previously validated and published in the literature: 1) A full-body model that provides an accurate simulation of short-term CV regulatory changes during changes in the gravitational vector (i.e., different tilt angles, centrifugation) and countermeasures (i.e., LBNP, exercise). This model features a more accurate body representation, including a cardiac pacemaker (i.e., pulsatile waveform), baroreceptor and cardiopulmonary feedback control of heart and arterial parameters, and a large number of compartments, particularly in the Gz direction, allowing for an improved representation of hydrostatic gradients in this direction and overall body hemodynamics. 2) An eye model that simulates volume/pressure alterations in the eye during gravitational changes. We will combine both approaches leveraging the advantages of each one of them into a unique more powerful and versatile model to study SANS, the cranial venous system, and other fluid shifts mechanisms and the effects of potential countermeasures. The model will be validated with the experimental data generated during the experiments.    <p></p> Results from this investigation will inform current and future countermeasure development and in-flight prescriptions. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This project investigates the influence of gravity (or more generally fluid shifts) on cardiovascular and ocular responses using a variety of interventions, including tilt paradigms, Lower Body Negative Pressure (LBNP), and centrifugation. Results will provide critical information for current and future cardiovascular and ocular related countermeasures and in-flight prescriptions. In addition, this research effort has direct application to cardiovascular and ocular pathologies on Earth, for example, orthostatic hypotension and conditions related to cardiovascular regulation. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>156512</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Project Start Date</th><td>2020-09-01</td></tr>
+<tr><th>Project End Date</th><td>2025-06-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Texas A &amp; M University-College Station (Texas A&amp;M) — College Station, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Ana Diaz Artiles (Principal Investigator); Bonnie J Dunbar (Co-Investigator); Michael B Stenger (Project Manager) &lt;michael.b.stenger@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Abstracts for Journals and Proceedings</strong> — Whittle RS, Lee J, Sieker J, Petersen JCG, Petersen LG, Diaz-Artiles A. &quot;Modeling changes in intraocular pressure associated with the physiological response to changes in the gravitational vector.&quot; 2021 AsMA 91st Annual Scientific Meeting, Denver, CO, August 29-September 2, 2021. AsMA 2021 Proceedings, in press as of July 2021., Jul-2021</li><li><strong>Abstracts for Journals and Proceedings</strong> — Whittle RS, Keller N, Hall EA, Vellore HS, Stapleton LM, Findlay KH, Dunbar BJ, Diaz-Artiles A. &quot;Hemodynamic and autonomic response of the cardiovascular system to tilt: gravitational dose-response curves.&quot; 2022 NASA Human Research Program Investigators&#x27; Workshop, Virtual, February 7-10, 2022. Abstracts. 2022 NASA Human Research Program Investigators&#x27; Workshop, Virtual, February 7-10, 2022., Feb-2022</li><li><strong>Abstracts for Journals and Proceedings</strong> — Diaz-Artiles A, Whittle RS, Stapleton L, Dunbar BJ. &quot;Predicting Acute Cardiovascular and Ocular Changes due to Changes in the Gravitational Vector.&quot; 2021 NASA Human Research Program Investigators’ Workshop, Virtual, February 1-4, 2021. Abstracts. 2021 NASA Human Research Program Investigators’ Workshop, Virtual, February 1-4, 2021., Feb-2021</li><li><strong>Abstracts for Journals and Proceedings</strong> — Whittle R, Keller N, Stapleton LM, Hall EA, Dunbar BJ, Diaz-Artiles A. &quot;Acute gravitational dose-response curves in hemodynamic and ocular variables induced by tilt.&quot; International Society for Gravitational Physiology (ISGP) 2021 Meeting, Virtual, May 24-27, 2021. ISGP 2021 Proceedings. International Society for Gravitational Physiology (ISGP) 2021 Meeting, Virtual, May 24-27, 2021., May-2021</li><li><strong>Articles in Peer-reviewed Journals</strong> — Whittle RS, Keller N, Hall EA, Vellore HS, Stapleton LM, Findlay KH, Dunbar BJ, Diaz-Artiles A. &quot;Gravitational dose-response curves for acute cardiovascular hemodynamics in a tilt paradigm.&quot; J Am Heart Assoc. 2022 Jul 19;11(14):e024175. https://doi.org/10.1161/JAHA.121.024175 ; PMID: 35861832, Jul-2022</li><li><strong>Abstracts for Journals and Proceedings</strong> — Diaz-Artiles A, Whittle RS, Real Fraxedas F, Hall EA, Vellore HS, Dunbar BJ. &quot;Gravitational dose-response curves during tilt, LBNP, and centrifugation.&quot; 2022 NASA Human Research Program Investigators&#x27; Workshop, Virtual, February 7-10, 2022. Abstracts. 2022 NASA Human Research Program Investigators&#x27; Workshop, Virtual, February 7-10, 2022., Feb-2022</li><li><strong>Abstracts for Journals and Proceedings</strong> — Real Fraxedas F, Whittle RS, Diaz-Artiles A. &quot;Modeling gravitational dose-response curves during tilt, LBNP, and centrifugation.&quot; 2022 NASA Human Research Program Investigators&#x27; Workshop, Virtual, February 7-10, 2022. Abstracts. 2022 NASA Human Research Program Investigators&#x27; Workshop, Virtual, February 7-10, 2022., Feb-2022</li><li><strong>Abstracts for Journals and Proceedings</strong> — Vellore H, Davis L, Karri A, Diaz-Artiles A. &quot;Cardiovascular effects during parabolic flight: Literature review.&quot; International Society for Gravitational Physiology (ISGP) 2021 Meeting, Virtual, May 24-27, 2021. ISGP 2021 Proceedings. International Society for Gravitational Physiology (ISGP) 2021 Meeting, Virtual, May 24-27, 2021., May-2021</li><li><strong>Abstracts for Journals and Proceedings</strong> — Whittle RS. &quot;Quantifying and modeling the acute cardiovascular response to altered-gravity and spaceflight countermeasures.&quot; 2022 Rising Stars in Aerospace Symposium, Boulder, CO, May 12-13, 2022. Abstracts. 2022 Rising Stars in Aerospace Symposium, Boulder, CO, May 12-13, 2022., May-2022</li><li><strong>Abstracts for Journals and Proceedings</strong> — Whittle RS, Vellore HS, Hall EA, Real Fraxedas F, Findlay KH, Stapleton LM, Dunbar BJ, Diaz-Artiles A. &quot;Cardiovascular, autonomic, and cephalad dose-response to graded lower body negative pressure.&quot; 2022 Aerospace Medical Association (AsMA) Annual Scientific Meeting 2022 (Aerospace Medical Association/Undersea &amp; Hyperbaric Medical Society), Reno, NV, May 22-26, 2022. Proceedings. 2022 Aerospace Medical Association (AsMA) Annual Scientific Meeting 2022 (Aerospace Medical Association/Undersea &amp; Hyperbaric Medical Society), Reno, NV, May 22-26, 2022., May-2022</li><li><strong>Articles in Peer-reviewed Journals</strong> — Whittle RS, Stapleton LM, Petersen LG, Diaz-Artiles A. &quot;Indirect measurement of absolute cardiac output during exercise in simulated altered gravity is highly dependent on the method.&quot; J Clin Monit Comput. 2021 Oct 22:1-12. https://doi.org/10.1007/s10877-021-00769-y ; PMID: 34677821, Oct-2021</li><li><strong>Papers from Meeting Proceedings</strong> — Whittle RS, Diaz Artiles A. &quot;Metabolic Modeling in Altered-Gravity.&quot; 2020 IEEE Aerospace Conference, Big Sky, MT, March 7-14, 2020. IEEE Conference on Aerospace, March 2020. https://doi.org/10.1109/AERO47225.2020.9172582 , Mar-2020</li><li><strong>Articles in Peer-reviewed Journals</strong> — Whittle RS, Diaz-Artiles A. &quot;Modeling individual differences in cardiovascular response to gravitational stress using a sensitivity analysis.&quot; J Appl Physiol (1985). 2021 Jun;130(6):1983-2001. https://doi.org/10.1152/japplphysiol.00727.2020 ; PMID: 33914657 , Jun-2021</li><li><strong>Articles in Peer-reviewed Journals</strong> — Petersen LG, Whittle RS, Lee JH, Sieker J, Carlson J, Finke C, Shelton CM, Petersen JCG, Diaz-Artiles A. &quot;Gravitational effects on intraocular pressure and ocular perfusion pressure.&quot; J Appl Physiol. 2021 Dec 30;132(1):24-35. https://doi.org/10.1152/japplphysiol.00546.2021 ; PMID: 347625251, Dec-2021</li><li><strong>Significant Media Coverage</strong> — Revels M. &quot;The Human Research Program is funding two research proposals to study the effect of altered gravity on bimanual coordination and cardiovascular and ocular health.&quot; Texas A&amp;M Today, January 15, 2021. https://today.tamu.edu/2021/01/15/nasa-funds-texas-am-research-on-effects-of-altered-gravity/ , Jan-2021</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/156512">https://techport.nasa.gov/projects/156512</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice Activated Cockpit Management Systems: Voice-Flight NexGen | NASA TechPort Project 16762</title>
+  <meta name="description" content="Speaking to the cockpit as a method of system management in flight can become an effective interaction method, since voice communication is very efficient. Automated Speech Recognition in general, and aided and abetted now by Southern Air Aviation&#x27;s Voice Acti">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/16762">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 16762</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX16.3</span>
+        </div>
+        <h1>Voice Activated Cockpit Management Systems: Voice-Flight NexGen</h1>
+        <div class="meta-id">NASA TechPort Project ID: 16762</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/16762" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Speaking to the cockpit as a method of system management in flight can become an effective interaction method, since voice communication is very efficient. Automated Speech Recognition in general, and aided and abetted now by Southern Air Aviation's Voice Activated Cockpit Management Systems including the innovative heuristic technology Voice-Flight NexGen (VFNG) has advanced significantly in recent years and is now ideally suited to this application. VFNG is speaker-independent, achieves a word recognition rate of 98% in high noise and up to 120Db, and permits the chaining of up to four commands in a single utterance and a correction of a misspoken command in the same utterance. All of these performance requirements are met within a 2% time-slice of a 1.2GHz Power PC processor and within 1 GB of memory. VFNG includes the following unique key capabilities, Grammar Development, Dictionary Development, Automated Batch Grammar Testing, Grammar Coverage Query, Phonetic Distance Analysis, and Co‐articulation Handling, Command Based Confidence Algorithm, Accent Tolerability Handling, State Based Dynamic Grammar, and Clipped Audio Recovery Processing. VFNG incorporates proprietary Julius based grammar and vocabulary of advanced performance and reduced recognition error together with an acoustic model derived from the VoxForge acoustic model. The VFNG-Emergency Failures (VFNG-E) system is used as the sole human/machine interface in flight in real emergency situations, in addition to the system having applications for simulator and ground training. This training system is remarkable in that it achieves very high recognition rates (98%) with a very large command set (131,000 unique words and thousands of word combinations) in challenging environmental conditions and operator profiles providing much added safety and efficiency to the pilot in the cockpit.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Voice Activated Cockpit Management Systems represented by Voice-Flight:NexGen (VFNG) Technologies and Products have applications for NASA's Aeronautics Research Mission Directorate (ARMD) since it advances the boundaries of aeronautical knowledge for the benefit of the Nation and the broad aeronautics community, which includes the Agency's partners in academia, industry, and other government agencies. VFNG Products include integrated systems and support interfacing with multiple emerging applications and revolutionary concepts that will enable radical change to both the airspace system and the aircraft that fly within it, facilitating a safer, more environmentally friendly, and more efficient air transportation system. VFNG Technologies and Products will provide advanced levels of automated support and efficiency to air navigation service providers and aircraft operators enabling shortened routes for time and fuel savings, reduced traffic delays, increased capacity, and permitting controllers to monitor and manage aircraft with greater safety margins. This transformation has the aim of reducing gridlock in the sky and at airports. In conjunction with expanding air traffic management capabilities, VFNG technologies are being used for research to help define the boundaries for safe flight, noise reduction, efficiency, performance, and safety challenges that are required to ensure vehicles can support the NextGen vision.<br /> <br />� Voice-Flight NexGen Emergency Failures System (VFNG-E) Comprises VFNG Technology and Voice Activated Emergency Failure Recoveries Specific for Each Aircraft System Failure and Specific Command Configurations for Each Recovery. � Voice-Flight NexGen Instrument System (VFNG-IFR) Comprises VFNG Technology and Voice Activated ILS and TACAN Control, Communications systems control, Frequency selection, Targeting and Assignment, Waypoint entry, Steer point entry. � Voice-Flight NexGen Automated Navigation (VFNG-Nav) Comprises VFNG Technology and Voice Activated Autopilot control, TFLIR Control, Command Macros, Lights control, Transponder entry and control. � Voice-Flight NexGen Automated Weather (VFNG-WX) Comprises VFNG Technology and Voice Activated Weather Display management, System information requests and updates.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>16762</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX16.3: Traffic Management Concepts</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 9 | Target End TRL: 9</td></tr>
+<tr><th>Project Start Date</th><td>2013-05-23</td></tr>
+<tr><th>Project End Date</th><td>2013-11-23</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Southern Air Aviation, Inc. — Carlsbad, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Doinita Serban (Principal Investigator); Vincent E Houston (Project Manager) &lt;vincent.e.houston@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li><li><strong>Project Image</strong> — Voice Activated Cockpit Management Systems: Voice-Flight NexGen</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/16762">https://techport.nasa.gov/projects/16762</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Towards On-Demand Planetary Landing through On-Board Autonomous Mapping and Cross-Modality Map Relative Localization | NASA TechPort Project 183679</title>
+  <meta name="description" content="The most scientifically interesting locations often present significant challenges for planetary landing. Current navigation methods for landing are inadequate for future planetary science ambitions at destinations including Titan, Venus, Enceladus, Europa, co">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/183679">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 183679</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX09.5.1</span>
+        </div>
+        <h1>Towards On-Demand Planetary Landing through On-Board Autonomous Mapping and Cross-Modality Map Relative Localization</h1>
+        <div class="meta-id">NASA TechPort Project ID: 183679</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/183679" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The most scientifically interesting locations often present significant challenges for planetary landing. Current navigation methods for landing are inadequate for future planetary science ambitions at destinations including Titan, Venus, Enceladus, Europa, comet nuclei, or the Centaurs that have challenges such as low-resolution or no prior maps, poor communication or poor visibility. The current state-of-the-art in landing navigation technology applied on Mars performs Map Relative Localization, using a visible-spectrum camera to localize to an existing high-quality, visible-spectrum map of the landing area. However, such prior maps will be unavailable or prohibitively costly to provide for many planned future destinations, motivating a need for methods less reliant on prior maps and tolerant of differences in map modality and resolution. I propose two improvements to the state-of-the-art that will address this problem: (1) Autonomous onboard mapping, to create landing area maps on-the-fly, removing the need for prior knowledge, downlink, and processing of terrain information (2) Cross-modal Map Relative Localization, enhancing mission flexibility by allowing algorithms to use landing images of one modality, for example high-resolution, short wave infrared imaging, with information of a different modality, for example radar or visual imagery. I would approach the former by leveraging recent advances in Simultaneous Localization and Mapping to create and update a map of safe landing regions, focusing on perceptually degraded environments. Different map representations offer distinct advantages; an analysis of representations for planetary landing is lacking, and advancing mapping methods to respect space computing constraints will require innovation. Missions to unmapped, poorly mapped, perceptually degraded, and faraway destinations would benefit. Little prior work exists on cross-modal localization. Cross-modal image registration has been explored on Earth, but the prior art predominantly matches visible spectrum images to other modalities. Deep-learning methods have been proposed, but their black-box nature requires careful consideration for planetary landing, a high-stakes event. My approach would advance methods that have shown promise to work with radar and infrared modalities, which can see better through dust and haze. Missions to Venus, Titan, and Mars during dust events and otherwise unclear environments would benefit. Autonomous onboard mapping directly relates to "Real-time mapping technologies for active terrain relative navigation" on the Landing Precision: Highest-Priority Technology Gaps & the Closure Path. Cross-modal Map Relative Localization enables "Multi-mode EDL/PL&HA sensors" outlined in Landing Precision: Logical Next-Steps. The relevant technology areas and high-priority civil space shortfalls are listed below: Relevant Technology Areas TX17.2.1 Onboard Navigation Algorithms TX10.1.2 State Estimation and Monitoring TX09.5.2 EDL Navigation Sensors and Algorithms Civil Space Shortfalls 1571 Navigation Sensors for Precision Landing (ranked 24 overall) 1573 Terrain Mapping Capabilities for Precision Landing and Hazard Avoidance (ranked 25 overall) 1562 Advanced Algorithms and Computing for Precision Landing (ranked 26 overall) Ultimately, the proposed research would make possible science return from the most interesting places in the solar system while increasing flexibility and reliability of future missions. Nearly every mission recommended by the 2023 Planetary Science Decadal survey involves landing. The proposed research is germane to each, and the implications are profound; unlike before, scientists will not have to compromise on science due to limitations in landing technology.
+        </div>
+
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>183679</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.5.1: EDL Guidance Algorithms</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2025-08-01</td></tr>
+<tr><th>Project End Date</th><td>2029-08-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Carnegie Mellon University — Pittsburgh, Pennsylvania</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Pennsylvania (PA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars, Moon and Cislunar, Others Inside the Solar System, Outside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Tushaar Jain (Co-Investigator) &lt;tushaar.jain@jpl.nasa.gov&gt;; Andrew J Liounis (Project Manager)</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-09-28</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/183679">https://techport.nasa.gov/projects/183679</a>
+    </div>
+  </div>
+</body>
+</html>

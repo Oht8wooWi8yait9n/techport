@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATD (Anthropomorphic Test Dummy) Injury Metric Development | NASA TechPort Project 92121</title>
+  <meta name="description" content="Data from the Hybrid III and THOR (Test Device for Human Occupant Restraint), anthropomorphic test devices (ATD) currently available to test the Occupant Protection requirements, are not well correlated to low-injury risk, as these ATDs were designed for autom">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/92121">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 92121</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.2</span>
+        </div>
+        <h1>ATD (Anthropomorphic Test Dummy) Injury Metric Development</h1>
+        <div class="meta-id">NASA TechPort Project ID: 92121</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/92121" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Data from the Hybrid III and THOR (Test Device for Human Occupant Restraint), anthropomorphic test devices (ATD) currently available to test the Occupant Protection requirements, are not well correlated to low-injury risk, as these ATDs were designed for automotive use. Automotive research is directed at preventing severe injuries in very low probability events. NASA vehicles require a lower risk of injury because the vehicles will land every time, making that a high probability event. The objective of this study is to develop injury risk functions for the Hybrid III and THOR ATDs. Matched pair tests between postmortem human surrogates (PMHS) and each ATD will be used to determine ATD-specific injury criteria. The merit of the matched pair design is the one-to-one correspondence of the results from external loads to both surrogates. Injury outcomes from PMHS tests will be used with region-specific data, such as forces and moments either individually or in combination, to derive ATD-specific injury criteria.     <p></p> Specific Aims    <p></p> 1.	Identify appropriate datasets for ATD comparison    <p></p> 2.	Test Hybrid III 50th percentile male and THOR in same conditions as historical testing    <p></p> 3.	Use historical human data to establish tolerance and injury risk focusing on lower neck injury, lateral responses, and sex differences    <p></p> 4.	Perform survival analysis with human tolerance to estimate injury risk and use results of prior data mining and existing literature as prior distribution    <p></p> 5.	Develop new Injury Assessment Reference Values (IARVs) based on the new statistical analysis.    <p></p> For each phase of this study, historical PMHS test cases were first selected from the Medical College of Wisconsin (MCW) database for matched-pair testing. Selection of these cases was made based on their similarity to spaceflight loading dynamics and astronaut demographics. Once these data were selected, the Hybrid III 50th percentile male and THOR ATD are tested in identical conditions. The following injury criteria were evaluated:     <p></p> 1. Lower neck injury in rearward loading    <p></p> 2. Vertical neck loading    <p></p> 3. Upper and lower neck under lateral loading    <p></p> 4. Thorax in lateral loading    <p></p> 5. Pelvis in lateral loading    <p></p> A survival analysis was used to relate the resulting dynamic responses to identified PMHS injuries and develop injury risk correlation. This correlation was used to improve upon the injury metrics previously developed under the Occupant Protection (OP) Data Mining and Modeling Task. The resulting metrics will be used to update NASA standards and provided to the Orion and Commercial Crew programs to allow additional insight into verification, validation, and risk analysis. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The outcome of this research will be improved Injury Assessment Reference Values (IARVs) for Anthropomorphic Test Devices or crash test dummies. By improving the quality of IARVs at low severity impacts in multiple directions, automotive vehicle designers can create safer cars and trucks and have the tools needed to show that a design is actually safer. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>92121</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.2: Prevention and Countermeasures</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2015-07-01</td></tr>
+<tr><th>Project End Date</th><td>2020-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Medical College of Wisconsin — Milwaukee, Wisconsin</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jeffrey T Somers (Principal Investigator) &lt;jeffrey.t.somers@nasa.gov&gt;; Narayan Yoganandan (Co-Investigator); John Humm (Co-Investigator); Preston C Greenhalgh (Co-Investigator) &lt;preston.c.greenhalgh@nasa.gov&gt;; Thomas J Williams (Project Manager) &lt;thomas.j.williams-1@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: 1 Lower Neck Injury in Rearward Loading. A total of 18 post mortem human surrogates (PMHS) were selected for this phase of the study. Each PMHS was exposed to accelerations inducing a combination shear force and extension moment of the neck. Matched pair testing of the Hybrid III and THOR Anthropomorphic Test Devices (ATDs) were also conducted in the same loading conditions, allowing direct comparison of the ATD responses and injury outcomes reported in the PMHS tests. A lower neck injury criteria (LNij) was calculated using parametric survival analysis for the PMHS, Hybrid III, and THOR using a critical intercept for both the shear force and extension moments. The resulting injury risk curves (IRCs) were calculated along with confidence intervals. The quality of the fit for each injury assessment reference values (IARVs) was evaluated using the normalized confidence interval size (NCIS). The LNij was evaluated at the 5% risk level (consistent with NASA standards for injury risk during dynamic phases of flight). For the PMHS and THOR ATD, the LNij was found to be a good fit. For the Hybrid III ATD, the LNij fit was found to be fair. 2 Vertical Neck Loading. A total of 36 PMHS were selected for this phase of the study. There were 2 groups used for testing, a group that was tested in an upright orientation, and the other tested in an inverted orientation. Each PMHS head-neck was loaded axially inducing a compression force. Because of the nature of the loading, and because ATD responses are not biofidelic, matched pair testing of the Hybrid III and THOR ATDs could not be conducted. As with the previous phase, the injury metric (axial force) was calculated using parametric survival analysis for the PMHS. The resulting IRCs were calculated along with confidence intervals with the same quality assessment used. The axial force was evaluated at the 5% risk level and found have a good fit quality in both the upright and inverted tests, as well as with the combined female data set of all ages. 3. Upper and Lower Neck under Lateral Loading. A total of 11 PMHS were selected for this phase of the study. There were 3 groups used for testing, with varying torso restraint used. Each PMHS was accelerated laterally, inducing a combined lateral moment, lateral shear force, and axial tension force in the neck of the PMHS. Matched pair testing of the Hybrid III and THOR ATD were also conducted in the same loading conditions, allowing direct comparison of the ATD responses and injury outcomes reported in the PMHS tests. As with the previous phase, the injury metric (lower lateral neck injury criteria, lower LatNij) was calculated using parametric survival analysis for the PMHS. The resulting IRCs were calculated along with confidence intervals with the same quality assessment used. The lower LatNij was evaluated at the 5% risk level. For the PMHS and THOR ATD, the lower LatNij was found to be an excellent fit. For the Hybrid III ATD, the lower LatNij fit was found to be a good. 4. Thorax in Lateral Loading. A total of 17 PMHS were selected for this phase of the study. Each PMHS was accelerated laterally, inducing chest deflection in the torso of the PMHS. Matched pair testing of the THOR ATD was also conducted in the same loading conditions; however, the instrumentation in the THOR chest did not respond significantly to the lateral deflections. The Hybrid III lacks lateral instrumentation required to respond to lateral loading and was not tested. As with the previous phase, the injury metric (lateral chest deflection) was calculated using parametric survival analysis for the PMHS. The resulting IRCs were calculated along with confidence intervals with the same quality assessment used. The lateral chest deflection was evaluated at the 5% risk level on the PHMS and was found to be an excellent fit. 5. Pelvis in Lateral Loading. A total of 22 PMHS were selected for this phase of the study. Each PMHS was loaded directly with a pendulum mass centered on the greater trochanter. Matched pair testing of the THOR ATD was also conducted in the same loading conditions; however, the instrumentation in the THOR acetabulum load cells reached their maximum range before reaching the injury conditions in the PMHS and thus the results were not able to be used to create IARVs. The Hybrid III lacks lateral instrumentation required to respond to lateral loading and was not tested. As with the previous phase, the injury metric (lateral greater trochanter force) was calculated using parametric survival analysis for the PMHS. The resulting IRCs were calculated along with confidence intervals with the same quality assessment used. The lateral greater trochanter force was evaluated at the 5% risk level on the PHMS and was found to be a good fit.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Articles in Peer-reviewed Journals</strong> — Yoganandan N, Chirvi S, Pintar FA, Baisden JL, Banjeree A. &quot;Preliminary female cervical spine injury risk curves from PMHS tests.&quot; J Mech Behav Biomed Mater. 2018 Jul;83:143-7. https://doi.org/10.1016/j.jmbbm.2018.04.020 ; PMID: 29709826, Jul-2018</li><li><strong>Abstracts for Journals and Proceedings</strong> — Wells JA, Somers JT, Newby NJ, Putnam JB, Siders BA. &quot;ATD Injury Metric Development.&quot; Presented at the 2017 Human Research Program Investigators’ Workshop, Galveston, TX, January 23-26, 2017. 2017 Human Research Program Investigators’ Workshop, Galveston, TX, January 23-26, 2017., Jan-2017</li><li><strong>Abstracts for Journals and Proceedings</strong> — Wells JA, Somers JT, Newby NJ. &quot;ATD Injury Metric Development.&quot; Presented at the 2016 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 8-11, 2016. 2016 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 8-11, 2016., Feb-2016</li><li><strong>Articles in Peer-reviewed Journals</strong> — Yoganandan N, Pintar FA, Banjeree A. &quot;Load-based lower neck injury criteria for females from rear impact from cadaver experiments.&quot; Ann Biomed Eng. 2017 May;45(5):1194-203. Epub 2017 Jan 13. http://dx.doi.org/10.1007/s10439-016-1773-5 ; PubMed PMID: 28091968, May-2017</li><li><strong>Articles in Peer-reviewed Journals</strong> — Yoganandan N, Humm JR, DeVogel N, Banerjee A, Pintar FA, Somers JT. &quot;Pelvis injury risk curves in side impacts from human cadaver experiments using survival analysis and Brier score metrics.&quot; Traffic Injury Prevention. 2019;20 Suppl 2:S137-S142. Published online: 25 Nov 2019. https://doi.org/10.1080/15389588.2019.1682565 ; PubMed PMID: 31762331, Nov-2019</li><li><strong>Abstracts for Journals and Proceedings</strong> — Somers JT, Kreutzberg GA. &quot;ATD Injury Metric Development.&quot; Presented at the 2018 Human Research Program Investigators&#x27; Workshop, Galveston, Texas, January 22-25, 2018. 2018 Human Research Program Investigators&#x27; Workshop, Galveston, Texas, January 22-25, 2018., Jan-2018</li><li><strong>Articles in Peer-reviewed Journals</strong> — Yoganandan N, Chirvi S, Voo L, Pintar FA, Banerjee A. &quot;Role of age and injury mechanism on cervical spine injury tolerance from head contact loading.&quot; Traffic Inj Prev. 2018 Feb 17;19(2):165-72. Epub 2017 Oct 16. https://doi.org/10.1080/15389588.2017.1355549 ; PubMed PMID: 28738168, Feb-2018</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/92121">https://techport.nasa.gov/projects/92121</a>
+    </div>
+  </div>
+</body>
+</html>

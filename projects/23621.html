@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modeling and Mitigating Spatial Disorientation in Low g Environments | NASA TechPort Project 23621</title>
+  <meta name="description" content="Original Aims: The goal of this industry-university research and development project is to extend Alion&#x27;s spatial disorientation mitigation software -- originally developed for aeronautical use -- to NASA&#x27;s space applications including the Shuttle, CEV (crew e">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23621">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23621</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.2.3</span>
+        </div>
+        <h1>Modeling and Mitigating Spatial Disorientation in Low g Environments</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23621</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23621" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Original Aims:  The goal of this industry-university research and development project is to extend Alion's spatial disorientation mitigation software -- originally developed for aeronautical use -- to NASA's space applications including the Shuttle, CEV (crew exploration vehicle), Altair, and Mars exploration missions.  Alion's Spatial Disorientation Analysis Tool (SDAT) was designed for post hoc analyses of aircraft trajectory data from U.S. Navy, Air Force, and National Transportation Safety Board (NTSB) mishaps to determine the presence or absence of vestibular spatial disorientation (SD).  SOAS (Spatial Orientation Aiding System) is a real-time cockpit aid that has been evaluated in simulators with rated pilots.  Both tools incorporate models of the vestibular system and assessor heuristics to predict the epoch and probability of an SD event such as Leans, Coriolis, or Graveyard Spiral illusions, as well as any other significant disparities between actual and perceived pitch attitude (somatogravic), roll rate, or yaw/heading rate.  SOAS assesses multi-sensory workload to determine the types of countermeasures to trigger and when to trigger them. This project will:  1) Enhance the utility of SDAT/SOAS by including appropriate mathematical models for vestibular and visual sensory cues, and CNS (central nervous system) gravito-inertial force resolution into perceived tilt and translation estimates from Massachusetts Institute of Technology's (MIT's) Observer model, and revalidating it using existing aeronautical data sets.  2) Extend the models to describe 0-G, Shuttle, and Altair landing illusions, validating the models using Shuttle and Altair simulator data sets, and current theories (e.g., ROTTR).  3) Extend SDAT/SOAS to consider multiple visual frames of reference, the effects of visual attention and sensory workload, and the cognitive costs of mental rotation and reorientation.  The enhanced SDAT/SOAS from Aims 1-3 will be validated via simulator experiments.    <p></p> Key Findings:  During the project's fourth year, we focused on:  merging MIT's Observer model with Alion's SDAT; enhancing SDAT with N-SEEV (noticing-salience, expectancy, effort, and value) and with three new illusion models, verification tests, and comparisons of analytical results produced by SDAT and Observer; validation of SDAT with anonymous data sets of helicopter pilots who experienced SD; and administering an Institutional Review Board (IRB)-approved Space Shuttle spatial orientation survey.    <p></p> Observer was 'packaged' as a DLL (dynamically linked library) within SDAT.  SDAT users can select whether they wish to use Observer algorithms for predicted perception, or SDAT's algorithms.  While Observer may be more physiologically accurate, Observer requires data sets to be of a fixed rate and fairly high frequency (10-100 Hz).  Unfortunately, actual vehicle flight data recordings rarely meet these requirements.  In addition, Observer does not account for misperceptions due to sub-threshold motions, which are critical to many SDAT illusion models.  Therefore, we give users the option to select Observer or SDAT algorithms for attitude perception predictions.    <p></p> We designed three new illusion models to SDAT based upon vertical landing vehicle scenarios that we observed in data sets provided by an anonymous source of helicopter data -- data sets that included confirmed SD events.  The three models are:  (1) "Undetected loss of lift," which occurs when the pilot unwittingly flies out of ground effect with insufficient thrust to maintain the new altitude, resulting in a sudden plunge toward the surface; (2) "Inadvertent drift during hover" that could result in the vehicle striking an obstacle; and (3) "Undetected drift during landing" that could cause the vehicle to tip-over.    <p></p> SDAT has also been enhanced with a pilot attention model called N-SEEV.  N-SEEV elevates applied countermeasures when SDAT predicts that the pilot is suffering from SD and has not attended to a lower level of countermeasures.  We created an updated version of SDAT's user manual and delivered SDAT and its user manual to the National Space Biomedical Research Institute (NSBRI).  We did not undertake an experiment to validate the newly enhanced SDAT because we could use existing data sets plus the new ones acquired from our anonymous source of helicopter data sets.  We also judged that a simulator validation experiment would use resources needed to do the best possible job of integrating Observer into SDAT.    <p></p> FORT (frame of reference transformation) tool cost scores were not integrated into SDAT.  The FORT tool remains a separate stand-alone tool.  We performed additional FORT tool validation, and submitted an article for the Human Factors Journal.    <p></p> We received 40 usable survey responses, analyzed the data from the 71 missions in the responses, and submitted an article to Aviation, Space, and Environmental Medicine reporting our method and results.  We also sent de-identified data to our customer, NASA-Johnson Space Center (JSC's) Dr. Jacob Bloomberg, and will make the full set of de-identified data available to anyone who wishes it. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          An important goal of this research and development project was to enhance Alion's spatial disorientation analysis tool (SDAT) and spatial orientation aiding system (SOAS), and MIT's Observer human perception model, so that the combined system accurately detects and classifies spatial disorientation events, and triggers the appropriate countermeasures for the situation.  The combined system could be useful for aircraft pilots, space travelers, accident investigators, flying safety offices, and physiologists.  This wide range of applicability is due to the intentional design of the system's components (i.e., SDAT, SOAS, & Observer) to be useful for post hoc analyses and for in-cockpit pilot aiding. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23621</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.2.3: Informatics and Decision Support Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2007-09-01</td></tr>
+<tr><th>Project End Date</th><td>2011-08-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>National Space Biomedical Research Institute (NSBRI) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Alion Science And Technology Corporation — Boulder, Colorado; Massachusetts Institute of Technology (MIT) — Cambridge, Massachusetts</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Ron Small (Principal Investigator); Laurence R Young (Co-Investigator); Christopher D Wickens (Co-Investigator) &lt;khanh.van-obrecht@nasa.gov&gt;; Charles W Oman (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2020-10-27</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Observer was &#x27;packaged&#x27; as a DLL (dynamically linked library) within SDAT. SDAT users can select whether they wish to use Observer algorithms for predicted perception, or SDAT&#x27;s algorithms. While Observer may be more physiologically accurate, Observer requires data sets to be of a fixed rate and fairly high frequency (10-100 Hz). Unfortunately, actual vehicle flight data recordings rarely meet these requirements. In addition, Observer does not account for misperceptions due to sub-threshold motions, which are critical to many SDAT illusion models. Therefore, we give users the option to select Observer or SDAT algorithms for attitude perception predictions. We designed three new illusion models to SDAT based upon vertical landing vehicle scenarios that we observed in data sets provided by an anonymous source of helicopter data -- data sets that included confirmed SD events. The three models are: (1) &quot;Undetected loss of lift&quot; which occurs when the pilot unwittingly flies out of ground effect with insufficient thrust to maintain the new altitude, resulting in a sudden plunge toward the surface; (2) &quot;Inadvertent drift during hover&quot; that could result in the vehicle striking an obstacle; and (3) &quot;Undetected drift during landing&quot; that could cause the vehicle to tip-over. SDAT has also been enhanced with a pilot attention model called N-SEEV. N-SEEV elevates applied countermeasures when SDAT predicts that the pilot is suffering from SD and has not attended to a lower level of countermeasures. We created an updated version of SDAT&#x27;s user manual and delivered SDAT and its user manual to NSBRI. We did not undertake an experiment to validate the newly enhanced SDAT because we could use existing data sets plus the new ones acquired from our anonymous source of helicopter data sets. We also judged that a simulator validation experiment would use resources needed to do the best possible job of integrating Observer into SDAT. FORT tool cost scores are not integrated into SDAT because it is inappropriate to do so; they could be integrated into Observer. The FORT tool remains a separate stand-alone tool. We performed additional FORT tool validation, and submitted an article to the Human Factors Journal. We received 40 usable survey responses, analyzed the data from the 71 missions in the responses, and submitted an article to Aviation, Space, and Environmental Medicine reporting our method and results. We also sent de-identified data to our customer, NASA-JSC&#x27;s Dr. Jacob Bloomberg, and will make the full set of de-identified data available to anyone who wishes it.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Dissertations and Theses</strong> — Venkatesan RH. &quot;Multisensory models for human spatial orientation including threshold effects.&quot; Thesis, Massachusetts Institute of Technology, May 2010., May-2010</li><li><strong>Abstracts for Journals and Proceedings</strong> — Oman CM, Newman MC. &quot;Observer model for spatial orientation research and accident investigation.&quot; 80th Annual Meeting of the Aerospace Medical Association, Los Angeles, CA, May 3-8, 2009. Aviat Space Environ Med. 2009 Mar;80(3):208., Mar-2009</li><li><strong>Articles in Other Journals or Periodicals</strong> — Wickens C, Keller J, Small R. &quot;Development &amp; Validation of the Frame of Reference Transformation (FORT) Tool.&quot; Human Factors, Submitted, August 2011. (Ed. note Apr 2019: recategorized as Other Journals since not yet published), Aug-2011</li><li><strong>Articles in Other Journals or Periodicals</strong> — Selva P, Oman CM. &quot;Relationships between observer and kalman filter models for human dynamic spatial orientation.&quot; Biological Cybernetics. In press, 2010., May-2010</li><li><strong>Significant Media Coverage</strong> — Small R, Jones T, Oman C. &quot;The Space Show, online show.&quot; The Space Show, online show, March 2009., Mar-2009</li><li><strong>Papers from Meeting Proceedings</strong> — Wickens CD, Keller JW, Small RL. &quot;Left. No, right! Development of the frame of reference transformation tool (FORT).&quot; To be presented at Human Factors and Ergonomics Society (HFES) 54th Annual Meeting, San Francisco, CA, September 27-October 1, 2010. Human Factors and Ergonomics Society (HFES) annual meeting, Proceedings. In press, September 2010., Sep-2010</li><li><strong>Articles in Peer-reviewed Journals</strong> — Clark TK, Young LR, Stimpson AJ, Duda KR, Oman CM. &quot;Numerical simulation of human orientation perception during lunar landing.&quot; Acta Astronaut. 2011 Sep-Oct;69(7-8):420-8. http://dx.doi.org/10.1016/j.actaastro.2011.04.016 , Sep-2011</li><li><strong>Articles in Peer-reviewed Journals</strong> — Small RL, Oman CM, Jones TD. &quot;Space shuttle flight crew spatial orientation survey results.&quot; Aviation, Space, and Environmental Medicine. 2012 Apr;83(4):383-7. PMID: 22462365 (originally reported as Submitted, August 2011.) , Apr-2012</li><li><strong>Articles in Peer-reviewed Journals</strong> — Keller JW, Wickens CD, Small RL. &quot;N-SEEV in SOAS: Predicting time to notice for multi-modal cockpit alerting events.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting September 2011. 2011 Sep;55(1):1389-93. http://dx.doi.org/10.1177/1071181311551289 , Sep-2011</li><li><strong>Abstracts for Journals and Proceedings</strong> — Small R, Wickens CD, Keller JW, Oman CM, Young LR, Jones TD, Newman M, Brehon M. &quot;Modeling and mitigating spatial disorientation in low g environments.&quot; Poster at 15th International Symposium on Aviation Psychology, Dayton, OH, April 27-30, 2009. International Symposium on Aviation Psychology, April 2009., Apr-2009</li><li><strong>Abstracts for Journals and Proceedings</strong> — Small RL, Keller JW, Wickens CD, Oman CM, Jones TD. &quot;Modeling and mitigating spatial disorientation in low g environments: A progress report.&quot; Presented at Eighth Symposium on the Role of the Vestibular Organs in Space Exploration, Houston, TX, April 8-10, 2011. Eighth Symposium on the Role of the Vestibular Organs in Space Exploration, Abstract Book, April 2011., Apr-2011</li><li><strong>Significant Media Coverage</strong> — Jacobs PJ. &quot;Alion to Research Spatial Disorientation Faced by Astronauts in Flight under $1.73M National Space Biomedical Research Institute Grant.&quot; Alion press release, January 2009., Jan-2009</li><li><strong>NASA Technical Documents</strong> — Small RL, Keller JW, Wickens CD, Oman CM, Newman M, Young LR, Jones TD, Brehon M. &quot;Modeling and mitigating spatial disorientation in low g environments: year 2 report.&quot; Boulder, CO : Alion Science and Technology Corp., 2010., Feb-2010</li><li><strong>Articles in Peer-reviewed Journals</strong> — Wickens CD, Keller JW, Small RL. &quot;Left. No, right! Development of the frame of reference transformation tool (FORT).&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting September 2010. 2010 Sep;54(13):1022-6. http://dx.doi.org/10.1177/154193121005401305 , Sep-2010</li><li><strong>Abstracts for Journals and Proceedings</strong> — Wickens CD, Keller JW, Small RL. &quot;FORT: A frame of reference transformation model of 3D control-display relationships.&quot; Presented at the Aerospace Medical Association 82nd Annual Meeting, Anchorage, AK, May 8-12, 2011. Aviation, Space, and Environmental Medicine, 2011 Mar; 82(3):371-2. http://www.ingentaconnect.com/content/asma/asem/2011/00000082/00000003 ;jsessionid=61tp278blca3e.alexandra , Mar-2011</li><li><strong>Dissertations and Theses</strong> — Newman MC. &quot;A multisensory observer model for human spatial orientation perception.&quot; Dissertation, Massachusetts Institute of Technology, May 2009., May-2009</li><li><strong>NASA Technical Documents</strong> — Small RL, Wickens CD, Keller JW, Oman CM, Young LR, Jones TD, Newman M, Brehon M. &quot;Modeling and mitigating spatial disorientation in low g environments: Year 1 report.&quot; Alion Science and Technology Corp. Year 1 report, November 2008., Nov-2008</li><li><strong>Articles in Peer-reviewed Journals</strong> — Selva P, Oman CM. &quot;Relationships between Observer and Kalman filter models for human dynamic spatial orientation.&quot; J Vestib Res. 2012 Jan 1;22(2):69-80. http://dx.doi.org/10.3233/VES-2012-0451 ; PMID: 23000607, Jan-2012</li><li><strong>Significant Media Coverage</strong> — Thomas B. &quot;Space researchers developing tool to help disoriented pilots.&quot; NSBRI press release, December 2008., Dec-2008</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23621">https://techport.nasa.gov/projects/23621</a>
+    </div>
+  </div>
+</body>
+</html>

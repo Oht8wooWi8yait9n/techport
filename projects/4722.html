@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robotic Localization using Shadow Information in Imagery | NASA TechPort Project 4722</title>
+  <meta name="description" content="My overall research goal is to enable a new capability to rendezvous and dock autonomously with an aggressively tumbling target (e.g. disabled satellite or space debris) for which we have little or no a priori information. In particular, my aim is to enable th">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/4722">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 4722</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX17.2.6</span>
+        </div>
+        <h1>Robotic Localization using Shadow Information in Imagery</h1>
+        <div class="meta-id">NASA TechPort Project ID: 4722</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/4722" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>My overall research goal is to enable a new capability to rendezvous and dock autonomously with an aggressively tumbling target (e.g. disabled satellite or space debris) for which we have little or no a priori information. In particular, my aim is to enable this new capability for small satellite missions. While focusing on small satellite missions imposes restrictions on sensing and computational resources, it will drive my research toward developing robust and affordable solutions to enable this critical technology. Furthermore, I believe that the results of this work for small satellite missions will be extensible to larger missions, and will thus leverage the affordability of in situ testing on small missions before implementation of the technology on larger missions. My approach is to develop and demonstrate a framework for fusing feature-based (i.e. vision) and range-based (i.e. LIDAR) simultaneous localization and mapping (SLAM) techniques in a real-time framework that will enable estimating both the shape of a target (i.e. reconstruction) and its pose relative to the servicing satellite. Robustness will be achieved by exploiting the complementary strengths of each sensing approach. This approach significantly extends work in the Stanford Aerospace Robotics Laboratory (ARL) in feature-based and range-based target reconstruction and relative pose estimation for autonomous rendezvous. The ARL has a rich history in controls and estimation research applied to robotic systems, with recent successes that lay a solid foundation for my proposed work. Further, my approach will involve experimental demonstrations on existing ARL hardware platforms, with no additional (major) equipment required. This proposed research addresses several of the Robotics, Tele-Robotics and Autonomous Systems (Technology Area 04) Technical Areas as outlined in "TABS_NSTRF_FY11.pdf". These areas include: Autonomous Rendezvous and Capture (4.6.1), Simultaneous Localization and Mapping (4.2.1), Stereo Vision (4.1.1), LIDAR (4.1.2), and Proximity Sensing (4.1.3). Furthermore, this new capability will be critical to the development of an effective, affordable, and robust solution to the NASA Grand Challenge of Space Debris Hazard Mitigation, especially for safe mitigation of man-made orbital debris.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This new capability will be critical to the development of an effective, affordable, and robust solution to the NASA Grand Challenge of Space Debris Hazard Mitigation, especially for safe mitigation of man-made orbital debris.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>4722</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX17.2.6: Rendezvous, Proximity Operations, and Capture Trajectory Design and Orbit Determination</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-08-01</td></tr>
+<tr><th>Project End Date</th><td>2015-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Stanford University — Stanford, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Steve Rock (Principal Investigator); Jose A Padial (Co-Investigator); Terrence W Fong (Project Manager) &lt;terry.fong@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: My overall goal was to develop algorithms to effectively use shadow (occlusion) information in visual imagery as a vehicle navigational aid, be it absolute navigation with respect to static terrain (e.g. using landing imagery for rover localization), or with respect to a moving target (e.g. using visual imagery of a tumbling asteroid in an AR&amp;D application). During my four years of NSTRF work, my research has touched on a few application areas. A significant portion of the research focused on uses of shadow information in sonar imagery for underwater robotic localization, and this underwater research was the subject of my thesis. Additionally, a portion of the research focused on the use of shadow information in visual descent imagery for lunar rover localization with respect to prior maps. Furthermore, in the first year of NSTRF work I developed an algorithm for the fusion of visual imagery and sparse pattern laser range data for tumbling target pose and shape estimation. Underwater Robotic Localization using Shadow Information in Sonar Imagery Robotic localization in the underwater environment is a challenging problem, as GPS signals do not penetrate the water column. There has been a wealth of research in methods for underwater localization, including those in the general area of dead reckoning, visual-aided navigation, and sonar-aided navigation. My research was the first to successfully demonstrate localization using sonar imagery with respect to prior topographical seafloor maps. Imaging sonars are commonly found on underwater vehicles, and high-resolution topographical maps are increasingly available. In my research, I demonstrated meter-level accuracy using sonar images collected from remotely-operated underwater vehicles (ROVs) and autonomous underwater vehicles (AUVs), in collaboration with the Monterey Bay Aquarium Research Institute (MBARI). The major conclusions of the research are as follows: • Meter-level localization accuracy can be achieved with sonar imagery with respect to prior topographical seafloor maps by using the acoustic shadow data in the imagery as the information source. • Acoustic shadow data in sonar imagery are primarily geometric in nature, and as such are predicted well from seafloor topography alone. This conclusion was not obvious from the outset of the investigation. • For ROVs, which are capable of holding a fixed position with respect to the seafloor, meter-level localization was achievable from a single sonar image (100m maximum range), provided there was a reasonable amount of shadow information in the image. • By accounting for shadow uncertainty based on the terrain map, localization was made far more robust. This research holds the potential to enable map-relative localization for vehicles that previously could not do so. Please refer to my thesis for details. Lunar Rover Localization using Shadow Information in Visual Descent Imagery Localization is a key capability for planetary rovers. Rovers carry onboard sensors (cameras, laser range finders, etc.) that measure terrain, where these measurements may be compared to prior maps (e.g. topography). Furthermore, there is an opportunity to improve the initial rover position estimate using descent imagery from the lander. In collaboration with Ara Nefian at NASA Ames IRG, we developed a new method to use shadow information from a prior planetary (lunar) digital elevation map (DEM) to localize a landing rover using descent imagery. • Position localization accuracy on the order of map resolution was obtained in a simulation study, along with sub-degree pointing accuracy. A real lunar DEM was used in the study. • By pre-computing the shadow map, given known sun position relative to the DEM for the landing window, the computational burden can be significantly decreased such that 6- DOF pose estimation is feasible. Fusion of Visual Imagery and Sparse-Pattern Laser Range Data for Tumbling Target Pose and Shape Estimation. In the first year of NSTRF work I developed an estimation framework for tumbling target pose and shape estimation through the fusion of vision and sparse-pattern range data. The method was rooted in a Rao-Blackwellized particle filter formulation. The high-level concept of this filter was to use the bearings-only vision measurements to track sparse features (e.g. SIFT, SURF) for pose estimation, with enforcement of vision-range consistency in order to recover absolute scale and a dense reconstruction (from projection of the LIDAR returns). • First development of topography-relative localization using imaging sonars, a class of sonar commonly found on operational underwater vehicles. • Demonstrated meter-level localization using imaging sonars and prior seafloor topography maps with real operational underwater vehicles (ROVs and AUVs). • Authored four peer-reviewed conference publications. • Thesis defended in the school of Aeronautics &amp; Astronautics at Stanford University.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>4722-1363264100012.jpg</strong> — Project Image Robust Sensing for Rendezvous and Docking: Fusion of Vision and LIDAR in a SLAM Framework</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/4722">https://techport.nasa.gov/projects/4722</a>
+    </div>
+  </div>
+</body>
+</html>

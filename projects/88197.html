@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Model Process Control Language (MPC) | NASA TechPort Project 88197</title>
+  <meta name="description" content="The MPC (Model Process Control) language enables the capture, communication and preservation of a simulation instance, with sufficient detail that it can be analyzed, augmented, aggregated, replayed &amp;nbsp;and preserved without the need for the initial simulati">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/88197">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 88197</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">OCIO</span>
+          <span class="badge">OCIO Program</span>
+          <span class="badge">TX11.3.1</span>
+        </div>
+        <h1>Model Process Control Language (MPC)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 88197</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/88197" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The MPC (Model Process Control) language enables the capture, communication and preservation of a simulation instance, with sufficient detail that it can be analyzed, augmented, aggregated, replayed &nbsp;and preserved without the need for the initial simulation tool or resources (infrastructure, team, tools). &nbsp;MPC was initially focused on 4-D (visual across time) simulations, and this is where the majority of the work has occurred. &nbsp;However additional domains can be supported. &nbsp;In the 4-D case, MPC is focused on description of state and meta information associated with each of the items and elements in a simulation. &nbsp;With these elements preserved, an appropriate tool can replay the simulation well past end of life for the associated simulator. &nbsp;This is critical when system and mission lifecycles are measured in decades and generations. &nbsp;An additional benefit is that the MPC representation of a simulation does not need to contain critical software codes, models or intellectual property; allowing it to be easily shared with partners (domestic or international). &nbsp;</p> <p>MPC grew from the Constellation System Engineering and Integration (SE&amp;I) Modeling and Simulation Teams (MaST). &nbsp;It was created to capture simulation data in a manner more quantitative than recorded video and a more portable than an &quot;in tool&quot; recording (requiring use of the tool to view the data). &nbsp;It allows simulation information to be preserved outside the simulation tools and re-used by other tools. &nbsp;</p><p>MPC data is also extensible. &nbsp;In the most basic case, the simulator provides time and location information. &nbsp;Average velocity can then be calculated from 2 time stamped, location entries; and acceleration is available from 2 velocity entries. &nbsp;This new information can then be written back into the MPC file for use and re-use by others.</p><p>MPC itself is extensible. &nbsp;Constellation held annual Confabs to partner extensions. &nbsp;MPC 1 consisted of a comma-delimited text file, with each line consisting of a single state definition for a single entity. &nbsp;Version 2 added XML encoding with additional data elements and removed the requirement to update every element every time cycle. &nbsp;MPC Version 3, the current version, added Parent Child Relationships, &nbsp;a separate configuration file to accompany the dynamic data file and standardized some of the freeform metadata into structured information.&nbsp; Recent additions include support for thruster and joint data types.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>NASA&#39;s Exploration missions are multi-decadal, multi-generational endeavors. &nbsp;Decisions made in the 2010&#39;s, will be implemented in the 2020&#39;s and used in the 2030&#39;s. &nbsp;NASA simulations help develop concepts, study options, make decisions and communicate intents. &nbsp;However, due to the inevitable obsolescence of the computational infrastructure, the lifespan of these tools is measured in years, not the necessary decades and definitely not in generations. &nbsp;</p><p>Quantitative preservation and communication of analysis results enables the sharing of knowledge and expertise with future teams, leaders and decision makers. &nbsp;MPC enables this preservation. &nbsp;Experience has shown the ability to preserve and re-use student simulation data (Simulation Exploration Experience or SEE) with MPC long after the simulators are not longer available. &nbsp;This capability to share information and knowledge across multi-generational teams is critical for NASA&#39;s long term missions.</p> <p>NASA&#39;s Exploration missions are multi-decadal, multi-generational endeavors. &nbsp;Decisions made in the 2010&#39;s, will be implemented in the 2020&#39;s and used in the 2030&#39;s. &nbsp;NASA simulations help develop concepts, study options, make decisions and communicate intents. &nbsp;However, due to the inevitable obsolescence of the computational infrastructure, the lifespan of these tools is measured in years, not the necessary decides and definitely not generations. &nbsp;</p><p>Quantitative preservation and communication of analysis results today enables the sharing of knowledge and expertise with future teams, leaders and decision makers. &nbsp;MPC enables this preservation. &nbsp;Projects have already shown the ability to preserve and re-use Exploration and student team simulation data (Simulation Exploration Experience or SEE)&nbsp;long after the simulators are not longer available. &nbsp;This capability to share information and knowledge across multi-generational teams is critical for NASA&#39;s long term missions. &nbsp;</p><p>This ability is even more critical for future, currently unfunded, missions. &nbsp;Often the formulation teams for these missions are assembled only for the formulation task, with preserved results limited to papers and presentations. &nbsp;The team does not carry over to the subsequent development effort. &nbsp;The ability to quantitatively capture the analysis data in an extensible and reusable format will provide long term benefits when NASA activates these missions.</p> <p>Any entity with multi-decadal or multi-generational missions will benefit from the ability to preserve, share and extend complex and rich analysis information.</p><p>NASA uses simulation develop concepts, study options, make decisions and communicate intents. &nbsp;Other do as well. &nbsp;However, due to the inevitable obsolescence of the computational infrastructure, the lifespan of these tools is measured in years, not decades and definitely not generations. &nbsp;</p><p>Quantitative preservation and communication of analysis results today, for use by future teams and decision makers, is of benefit to any organization with multi-decadal and multi-generational systems. &nbsp;The capability to share information and knowledge across multi-generational teams is critical to the success of any organization&#39;s long term missions.</p> <p>Any agency with multi-decadal or multi-generational missions will benefit from the ability to preserve, share and extend complex and rich analysis information.</p><p>NASA uses simulation develop concepts, study options, make decisions and communicate intents. &nbsp;Other do as well. &nbsp;However, due to the inevitable obsolescence of the computational infrastructure, the lifespan of these tools is measured in years, not decades and definitely not generations. &nbsp;</p><p>Quantitative preservation and communication of analysis results today, for use by future teams and decision makers, benefits any organization with multi-decadal or multi-generational systems. &nbsp;The capability to share information and knowledge across generations is critical to the success of any organization&#39;s long term missions.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>88197</td></tr>
+<tr><th>Acronym</th><td>MPC</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Office of the Chief Information Officer (OCIO)</td></tr>
+<tr><th>NASA Program</th><td>OCIO Program</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.3.1: Distributed Simulation</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 9 | Target End TRL: 9</td></tr>
+<tr><th>Project Start Date</th><td>2003-04-01</td></tr>
+<tr><th>Project End Date</th><td>2014-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Kennedy Space Center (KSC) — Kennedy Space Center, Florida</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas; Langley Research Center (LaRC) — Hampton, Virginia; Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Florida (FL), Texas (TX), Virginia (VA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Michael P Conroy (Principal Investigator) &lt;mike.conroy@nasa.gov&gt;; Michael P Conroy (Project Manager) &lt;mike.conroy@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Tracy A Bierman (Program Manager) &lt;tracy.bierman@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2018-10-10</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Simulation Enabled Lifecycle Presentation</strong> — The attacehed presentation outlines the model based system engineering activities enabled by interoperable and standards based data. &amp;nbsp;MPC was the go-to format for Conetellaion Simulation information and used in the Exploration Mars world for simulation aggregation.</li><li><strong>Model Process Control (MPC) Spec, version 3</strong> — Data element description and tags for MPC version 3.&amp;nbsp; For use with the Distributed Observer Network (DON) version 3.1 and select Exploration tools.</li><li><a href="http://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20120017461.pdf" target="_blank" rel="noopener noreferrer">NASA Model Use and Re-Use White Paper (NIMA)</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/88197">https://techport.nasa.gov/projects/88197</a>
+    </div>
+  </div>
+</body>
+</html>

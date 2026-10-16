@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Module for Event Driven Operations on Spacecraft (MEDOS) Expanded for Multi-Agent Decision Making and Teaming | NASA TechPort Project 158575</title>
+  <meta name="description" content="Operations engineers face the task of maintaining the health and functionality of a spacecraft, based on extremely limited information. This task becomes even more complicated when considering lag time between contacts, the light-time delay of bidirectional co">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158575">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158575</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX10</span>
+        </div>
+        <h1>Module for Event Driven Operations on Spacecraft (MEDOS) Expanded for Multi-Agent Decision Making and Teaming</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158575</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158575" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Operations engineers face the task of maintaining the health and functionality of a spacecraft, based on extremely limited information. This task becomes even more complicated when considering lag time between contacts, the light-time delay of bidirectional communications, and the prospect of multiple spacecraft operating simultaneously. Simple pre-programmed time tagged commands become increasingly burdensome in multi-spacecraft missions, particularly when trying to target ephemeral events in space that are difficult to predict with any accuracy.  The Module for Event Driven Operations on Spacecraft (MEDOS) puts the operations engineer on the spacecraft. MEDOS takes raw telemetry and fuses them together into physically meaningful quantities that an engineer understands  turning voltages and decay times into methane concentration, or turning count rates and field vectors into plasma density. Then, MEDOS compares the physical parameters to generalized event definitions that scientists use all the time  when the plasma density jumps and the magnetic field reverses direction, we crossed a boundary. MEDOS computes a mathematical distance between measured parameters and rules from engineer to provide a numerical confidence in an event occurring. MEDOS does not require any training data, discrete if/then rules, or a PhD in AI to tune the model. All that MEDOS requires is for an engineer or scientist to describe the process that they go through every day  and then MEDOS encodes that process onto the spacecraft.  MEDOS is able to analyze the ambient environment in real time, and respond to it in a way consistent with the response of an operations engineer. In Phase II we will expand MEDOSs capability for multi-agent teaming with a new module, MADEM (Multi Agent Decision Engine for MEDOS.) We will also port the entire MEDOS framework into NASAs core Flight System (cFS) and verify + validate MEDOS on flight qualified hardware, readying it for mission deployment.  MEDOS proposes to put an operations engineer on the spacecraft. MEDOS takes raw data and fuses them together into physically meaningful quantities that an engineer understands &ndash; voltages and decay rates into &ldquo;methane concentration&rdquo;, count rates and field vectors into &ldquo;plasma density&rdquo;. Then, MEDOS compares the physical parameters to generalized event definitions that experts use in their analysis &ndash; &ldquo;when the plasma density jumps and the magnetic field reverses direction, it means we crossed a boundary.&rdquo; MEDOS computes a mathematical distance between the measured parameters and the fuzzy rules set out by the engineer to provide a numerical confidence in the likelihood that an event is occurring, leveraging knowledge received from other spacecraft and, with the development of MADEM, allows a heterogenous team to work together. MEDOS does not require any training data, discrete if/then rules, or a PhD in AI to tune a model. All that MEDOS requires is for an engineer to describe the process that they go through every day &ndash; and then MEDOS encodes that process onto the spacecraft.  Major Technical Objectives:   	Improvements to MEDOS (Single Agent) 	 		Implement Improved Feature Extraction, Event Detection, and Uncertainty Quantification 		Introduce Multi-Spacecraft Telemetry in MEDOS 		Implement MEDOS in cFS 	 	 	Testing in Flight-Like Environment 	 		Configure Telemetry Feeder to Interface With MMS Flatsat and EM-CIDP 		Develop Complex Science Signature Synthetic Mission 		Testing on MMS Flatsat EM-CIDP 	 	 	Implement Multi-Agent Decision Engine for MEDOS (MADEM) 	 		Design Policy Interpreters/Problem Definitions 		Design Robotic Teaming Environment in CAIRO Lab 		Perform Software Simulations of MADEM 		Perform Robotic Testing Validation of MADEM 	 	 	Reporting / Task Closeout / Margin   Deliverables:   	MEDOS Software 	 		Python Port 		cFS Port with MADEM implementation 		Updated Telemetry Feeder 	 	 	Data and Logs from Verification and Validation Testing 	Final Report
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          MEDOS has secured a spot to fly on the SCENIC platform on the ISS (PI C. Wilson), and has been selected to fly on the NAMASTE effort, detecting methane from melting permafrost in Alaska (PI M. Sultana), pending Phase II completion. We&nbsp;have had communication with the MMS project scientist (G. Le) about infusing MEDOS into the MMS mission pending Phase II. We are also in contact with teams in earlier mission phases (GDC, 7 Sisters, Enceladus). We are also working to complement AutoNGC with MEDOS.  Outside of NASA we aim to target other space players, such as NOAA and DoD, particularly for detection of and response to surface events (fires, missile launches, etc.) We will also approach the private space industry (e.g. Starlink and Iridium.) Beyond space, underwater submersibles (such as the Titan submarine) as well as mining and resource extraction system could greatly benefit from MEDOS.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158575</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX10: Autonomous Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 5 | Current TRL: 5 | Target End TRL: 8</td></tr>
+<tr><th>Project Start Date</th><td>2024-01-19</td></tr>
+<tr><th>Project End Date</th><td>2026-01-18</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Colorado Boulder — Boulder, Colorado; Aurora Engineering — Potomac, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Alexander C Barrie (Principal Investigator) &lt;alexander.c.barrie@nasa.gov&gt;; Wayne H Yu (Project Manager) &lt;wayne.h.yu@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158575">https://techport.nasa.gov/projects/158575</a>
+    </div>
+  </div>
+</body>
+</html>

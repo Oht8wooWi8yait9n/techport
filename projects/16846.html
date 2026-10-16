@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mars Atmosphere and Regolith COllector/PrOcessor for Lander Ops (MARCO POLO) Atmospheric Processing Module (MARCO POLO APM) | NASA TechPort Project 16846</title>
+  <meta name="description" content="The multi-NASA center M ars A tmosphere and R egolith CO llector/ P r O cessor for L ander O perations (MARCO POLO) project was established to build and demonstrate a methane/oxygen propellant production system in a Mars analog environment.&amp;nbsp; The MARCO POL">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/16846">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 16846</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">KSC IRAD</span>
+          <span class="badge">TX07.1.3</span>
+        </div>
+        <h1>Mars Atmosphere and Regolith COllector/PrOcessor for Lander Ops (MARCO POLO) Atmospheric Processing Module (MARCO POLO APM)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 16846</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/16846" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The multi-NASA center <strong>M</strong>ars <strong>A</strong>tmosphere and <strong>R</strong>egolith <strong>CO</strong>llector/<strong>P</strong>r<strong>O</strong>cessor for <strong>L</strong>ander <strong>O</strong>perations (MARCO POLO) project was established to build and demonstrate a methane/oxygen propellant production system in a Mars analog environment.&nbsp; The MARCO POLO project will provide a demonstration platform for all aspects of Martian soil and atmospheric processing, beginning with the extraction of water from Martian soil, which would then be electrolyzed into hydrogen (H<sub>2</sub>) and oxygen (O<sub>2</sub>), and the capture of carbon dioxide (CO<sub>2</sub>) from the Martian atmosphere to produce methane (CH<sub>4</sub>) using H<sub>2</sub> from the water. The lander is designed in a modular fashion with an Atmospheric Processing Module (APM), Soil Processing Module, Water Cleanup Module, Water Processing Module, and Power Production Module.&nbsp; Work at the Kennedy Space Center (KSC) has focused on the Atmospheric Processing Module (APM).&nbsp; The purpose of the APM is to freeze CO<sub>2</sub> from a simulated Martian atmosphere at Martian pressures (~7 mbar) by using dual cryocoolers.&nbsp; The resulting pressurized CO<sub>2</sub> and H<sub>2</sub> are fed to a Sabatier reactor to make CH<sub>4</sub> and water vapor.&nbsp; The CO<sub>2</sub> freezer subsystem has a collection/supply design requirement of 88 g CO<sub>2</sub>/hr., and the Sabatier subsystem has a design requirement to produce 31.7 g/hr. CH<sub>4</sub> fuel and 71.3 g/hr. H<sub>2</sub>O, which would also be electrolyzed to H<sub>2</sub> and O<sub>2</sub>.</p> <p>The atmosphere of Mars consists of 95.32% CO<sub>2</sub>, 2.7% nitrogen, 1.6% argon, and trace amounts of water, carbon monoxide, and several other gases. At 7&nbsp;mbar, the average pressure on the Martian surface, the freezing point of CO<sub>2</sub> is 150&nbsp;K (&ndash;123<sup>o</sup>C), which makes it necessary to use a cryocooler as the condensation method.&nbsp; Dual cryocoolers are needed to operate in tandem (one collecting CO<sub>2</sub> while the other is supplying the Sabatier reactor). The Sunpower Cryotel Model GT Stirling cycle cryocooler has the proper cooling capacity, low mass and power, and space flight heritage.&nbsp; Lab testing of three copper cryocooler cold head designs to collect the CO<sub>2</sub> show that only the &ldquo;Ferris Wheel&rdquo; design met the APM requirements.</p><p>The full APM was designed and constructed during a series of projects at KSC.&nbsp; The current APM CO<sub>2</sub> Freezer consists of two cryocoolers and freezing chambers, a chiller to remove heat from the cryocoolers, a vacuum pump to produce Mars pressures in the chambers, two CO<sub>2</sub>.storage tanks, a mass flow controller for&nbsp;simulated Mars atmosphere,&nbsp;and various valves to control gas flow&nbsp;and cooling water flow.&nbsp;&nbsp;Multiple optimization tests at varying flow rates showed that the CO<sub>2</sub> Freezer subsystem captures an average of 99 g CO<sub>2</sub>/hr. in 1.4 hr. at a feed rate of 1.2 SLPM of Mars gas simulant, well above the required rate of 88 g/hr.&nbsp; The CO<sub>2</sub> capture fraction averaged 79% while the CO<sub>2</sub> sublimation rate averaged 95 g/hr.&nbsp; As the CO<sub>2</sub> sublimes, it is pumped into the storage tanks at the top of Figure 3.</p><p>To improve the CO<sub>2</sub> conversion efficiency of the Sabatier subsystem and to recover unreacted H<sub>2</sub>, a recycling process was added. After the water product is condensed a membrane module separates the CH<sub>4</sub> product from residual CO<sub>2</sub> and H<sub>2</sub>, then a compressor recycles the CO<sub>2</sub> and H<sub>2</sub> back through the Sabatier reactor.&nbsp; Testing of the new Sabatier reactor without recycling has been promising, with 97% conversion of the CO<sub>2</sub> without the overheating experienced with a reactor supplied by JSC. Testing of the recycling system is currently underway with the membrane module producing pure CH<sub>4</sub>, but without recycling the CO<sub>2</sub> and H<sub>2</sub> yet.&nbsp; Integration and testing of the Sabatier subsystem and the CO<sub>2</sub> Freezer is planned in the near future.</p><p>&nbsp;</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The APM provides a technology demonstration of one part of a Mars Propellant Production System capable of producing 0.44 kg of methane and 1.77 kg of oxygen per 14 hr. day, which would be sufficient for a small Mars Sample Return mission.&nbsp; MARCO POLO has been proposed as the starting point for the new Advanced Exploration Systems (AES) ISRU project for a long-term ground demonstration of a Mars ISRU system to produce oxygen at 0.200 kg/hr. or more.&nbsp; The ground prototype could lead to an ISRU system on the proposed 2024/2026 Mars Surface Pathfinder that would demonstrate key technologies for crewed missions.</p> <p>SpaceX has declared its intentions to send people to Mars.&nbsp; The MARCO POLO APM is a key technology for the production of rocket propellant and life support oxygen that would support these ambitions.&nbsp; SpaceX has already expressed an&nbsp;interest in our work.</p> <p>Carbon dioxide capture and sequestration is under investigation by the Department of Energy.&nbsp; Cryogenic capture of CO<sub>2</sub> is being developed.&nbsp; The MARCO APM project has already improved the CO<sub>2</sub> collection cold head design over the NASA state of the art.&nbsp; This improvement and potential insights into conversion of CO<sub>2</sub> into useful products such as methane could be useful to the DO2 as well.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>16846</td></tr>
+<tr><th>Acronym</th><td>MARCO POLO APM</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: KSC IRAD (KSC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX07.1.3: Resource Processing for Production of Mission Consumables</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2013-01-01</td></tr>
+<tr><th>Project End Date</th><td>2014-02-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Kennedy Space Center (KSC) — Kennedy Space Center, Florida</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Anthony C Muscatello (Principal Investigator); Paul E Hintze (Co-Investigator) &lt;paul.e.hintze@nasa.gov&gt;; Stephen M Anthony (Co-Investigator) &lt;stephen.m.anthony@nasa.gov&gt;; Anne J Meier (Co-Investigator) &lt;anne.meier@nasa.gov&gt;; James G Captain (Co-Investigator) &lt;james.g.captain@nasa.gov&gt;; Matthew W Nugent (Co-Investigator) &lt;matthew.w.nugent@nasa.gov&gt;; Robert W Devor (Co-Investigator) &lt;robert.w.devor@nasa.gov&gt;; Pamela A Mullenix (Project Manager) &lt;pamela.a.mullenix@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Kelvin R Ruiz (Program Manager) &lt;kelvin.r.ruiz@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-01-27</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Atmospheric Processing Module for Mars Propellant Production - 17th Annual Mars Society Convention</strong> — This presentation was an update of the progress on the MARCO POLO Atmospheric Processing Module and was presented at the 17th Annual Mars Society Convention in League City, TX on August 7, 2014.</li><li><strong>KSC Success Story - Mars Atmospheric Processing Module</strong> — KSC Success Story - Mars Atmospheric Processing Module</li><li><strong>Atmospheric Processing Module for Mars Propellant Production</strong> — ABSTRACT &amp;nbsp; The multi-NASA center M ars A tmosphere and R egolith CO llector/ P r O cessor for L ander O perations (MARCO POLO) project was established to build and demonstrate a methane/oxygen propellant production system in a Mars analog environment.&amp;nbsp; Work at the Kennedy Space Center (KSC) has focused on the Atmospheric Processing Module (APM).&amp;nbsp; The purpose of the APM is to freeze carbon dioxide from a simulated Martian atmosphere at Martian pressures (~8 torr) by using dual cryocoolers.&amp;nbsp; The resulting pressurized CO 2 and hydrogen are fed to a Sabatier subsystem to make methane and water vapor.&amp;nbsp; This paper covers (1) the design and selection of major hardware items, such as the cryocoolers, pumps, tanks, chillers, and membrane separators, (2) the determination of the optimal cold head design and flow rates needed to meet the collection requirement of 88 g CO 2 /hr for 14 hr, (3) the testing of the CO 2 freezer subsystem, and (4) testing of the Sabatier subsystem.</li><li><a href="http://ascelibrary.org/doi/full/10.1061/%28ASCE%29AS.1943-5525.0000214" target="_blank" rel="noopener noreferrer">Prototype Development of an Integrated Mars Atmosphere and Soil-Processing System</a></li><li><strong>Atmospheric Processing Module</strong> — Photo of the Atmospheric Processing Module. The CO2 Freezer is on the right. The Sabatier Subsystem is on the left.</li><li><strong>Sabatier Subsystem</strong> — Photo of the Sabatier subsystem while still under development. Near the center is the Sabatier reactor wrapped with white insulation. The membrane module is the gray tube to its right. The condenser is wrapped in black insulation with orange tape.</li><li><strong>&quot;Ferris Wheel&quot; Cold Head</strong> — Photo of the copper &quot;Ferris Wheel&quot; cold head used to collect frozen carbon dioxide.</li><li><strong>CO2 Freezer Subsystem</strong> — Photo of the MARCO POLO Atmospheric Processing Module CO2 Freezer Subsystem. The two cryocoolers and freezing chambers are at the lower left. The CO2 storage tanks are at the top.</li><li><strong>3D Drawing of the Atmospheric Processing Module</strong> — 3D model of the initial design of the Atmospheric Processing Module.</li><li><strong>MARCO POLO System Configuration</strong> — Conceptual top-down drawing of the MARCO POLO modules on the lander.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/16846">https://techport.nasa.gov/projects/16846</a>
+    </div>
+  </div>
+</body>
+</html>

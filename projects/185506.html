@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event-Driven High Angular Rate Star Tracker | NASA TechPort Project 185506</title>
+  <meta name="description" content="CubeSats have emerged as vital tools for remote sensing, particularly for Earth&#x27;s atmosphere and surface, yet their compact size poses a challenge for sensors which incorporate rapidly spinning antennas. We propose the development of a CubeSat-ready star track">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/185506">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 185506</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX17</span>
+        </div>
+        <h1>Event-Driven High Angular Rate Star Tracker</h1>
+        <div class="meta-id">NASA TechPort Project ID: 185506</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/185506" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          CubeSats have emerged as vital tools for remote sensing, particularly for Earth's atmosphere and surface, yet their compact size poses a challenge for sensors which incorporate rapidly spinning antennas.  We propose the development of a CubeSat-ready star tracker capable of providing accurate attitude information to rapidly spinning CubeSats hosting Earth-observing instruments. Current star trackers offer high pointing accuracy under stable conditions but struggle with rapidly spinning platforms. Our solution addresses this critical gap by developing a compact, low-power star tracker that maintains precision even at high spin rates, enabling CubeSats to acquire accurate Earth observation data.  The proposed star tracker aims to achieve a pointing accuracy of 0.05° or better across roll, pitch, and yaw axes while the CubeSat spins at up to 20 revolutions per minute (rpm) in low Earth orbit. This capability is essential for off-nadir observations necessary for retrieving ocean surface winds and other atmospheric parameters. We will ensure the SmallSat readiness of the tracker, targeting SWaP (Size, Weight, and Power) characteristics comparable to existing CubeSat payloads.  Phase I focuses on demonstrating technical feasibility, outlining a clear path for Phase II integration and testing. Phase II will involve developing a laboratory-tested to space-qualified hardware prototype of the star tracker, reaching TRL 5 to 6.  This project aligns with NASA's goals of advancing CubeSat technology for Earth observation, with potential applications in oceanography, meteorology, and environmental monitoring. By enhancing CubeSat attitude control capabilities, this project contributes to the broader objective of improving space-based remote sensing and scientific research.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The proposed CubeSat-ready spinning star tracker offers promising applications across various NASA missions, particularly in Earth observation and planetary exploration endeavors. In the context of Earth observation, the technology could revolutionize the study of atmospheric dynamics, oceanography, and environmental monitoring. By accurately tracking the orientation of CubeSats during rapid spins, the star tracker enables precise measurement of Earth's surface features, including ocean currents, wind patterns, and atmospheric composition. This data is crucial for understanding climate change, weather forecasting, and disaster response efforts.  Furthermore, the spinning star tracker holds potential for enhancing planetary exploration missions. Its ability to maintain attitude control in rapidly spinning CubeSats opens new avenues for innovative mission designs, including small satellite swarms for detailed reconnaissance of planetary surfaces or formation flying missions for asteroid exploration. Additionally, the technology could facilitate novel approaches to sample collection and analysis on planetary bodies, enabling more efficient and cost-effective exploration missions.  Moreover, the compact size and low power requirements of the star tracker make it suitable for deployment on CubeSats participating in international collaborative efforts, such as global climate monitoring initiatives or joint space exploration missions. Overall, the proposed technology represents a significant advancement in CubeSat capabilities, with far-reaching implications for both Earth science and planetary exploration missions, aligning closely with NASA's goals of advancing scientific understanding and exploration of our solar system and beyond.  Beyond NASA missions, the proposed CubeSat-ready spinning star tracker presents a range of potential applications in the commercial and scientific sectors. In the realm of commercial satellite imaging and telecommunications, the technology offers a compact and cost-effective solution for maintaining precise attitude control in small satellites, enabling high-resolution imaging and reliable communication services. This could lead to advancements in satellite constellations for global internet coverage, remote sensing for agriculture and natural resource management, and disaster monitoring.  Furthermore, the compact and lightweight nature of the star tracker makes it suitable for deployment on small satellites and spacecraft developed by emerging space agencies and private space companies. These entities could leverage the technology to enhance their capabilities in Earth observation, climate monitoring, and space exploration missions, thereby expanding the global reach of space-based research and technology development.  While the proposed CubeSat-ready spinning star tracker primarily targets civilian and scientific applications, its capabilities could also be of interest to military organizations seeking advanced reconnaissance and surveillance technologies and for incorporation in strategic weapon systems. The precise attitude control provided by the star tracker, even during rapid spins, could enhance the effectiveness of military systems deployed for intelligence gathering and battlefield monitoring.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>185506</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX17: GN&amp;C</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2025-09-29</td></tr>
+<tr><th>Project End Date</th><td>2026-03-27</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Moon and Cislunar, Mars, Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Billy McCulloch (Principal Investigator); Timothy J Lang (Project Manager) &lt;timothy.j.lang@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-19</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/185506">https://techport.nasa.gov/projects/185506</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computer Vision Dataset for Aircraft Taxi Operations | NASA TechPort Project 157798</title>
+  <meta name="description" content="The development and democratization of computer vision algorithms are contingent on the availability of high-quality datasets. In this paper, we introduce a database of forward-facing videos from taxiing aircraft as well as the time-correlated flight data at a">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/157798">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 157798</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">ARMD</span>
+          <span class="badge">TACP</span>
+          <span class="badge">TX10.1.1</span>
+        </div>
+        <h1>Computer Vision Dataset for Aircraft Taxi Operations</h1>
+        <div class="meta-id">NASA TechPort Project ID: 157798</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/157798" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The development and democratization of computer vision algorithms are contingent on the availability of high-quality datasets. In this paper, we introduce a database of forward-facing videos from taxiing aircraft as well as the time-correlated flight data at approximately 1 to 10 Hz containing aircraft state data and environmental conditions. The video data is sourced from the National Aeronautics and Space Administration Airborne Science Program archive and includes over 33 hours of 4k, 1080p, and 720p video from twenty-two airports around the world.</p><p>See taxi_metadata_csv.csv for an index of the video segments with associated metadata.</p><p>This activity is in support of the <a href="https://www.nasa.gov/aeroresearch/programs/tacp/">Transformative Aeronautics Concepts Program (TACP)</a> <a href="https://nari.arc.nasa.gov/ttt-ram/">Transformational Tools & Technologies Project <strong>Revolutionary Aviation Mobility</strong></a> subproject.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>We hope to inspire autonomous aviation advances by creating large, diverse, open datasets in an aviation context. The video and associated metadata are useful for computer vision research, especially in training and evaluation of machine learning algorithms.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>157798</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Aeronautics Research Mission Directorate (ARMD)</td></tr>
+<tr><th>NASA Program</th><td>Transformative Aeronautics Concepts Program (TACP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX10.1.1: Sensing and Perception for Autonomous Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 5 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2024-01-01</td></tr>
+<tr><th>Project End Date</th><td>2024-12-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Armstrong Flight Research Center (AFRC) — Edwards, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Nelson A Brown (Principal Investigator) &lt;nelson.brown@nasa.gov&gt;; Siena Whiteside (Project Manager) &lt;siena.k.whiteside@nasa.gov&gt;; George E Gorospe (Project Manager) &lt;george.e.gorospe@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>John A Cavolowsky (Program Director) &lt;john.a.cavolowsky@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-01-02</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>T844V1.mp4</strong> — index: 844 videoIndex: 1 videoFile: T844V1 tailNumber: N426NA campaign: CAMP2EX iwg1Url: https://asp-archive.arc.nasa.gov/CAMP2EX/N426NA/2019-08-15/IWG1.16Aug2019-0143 taxiStartDateUTC: 2019-08-15T19:25:38 taxiEndDateUTC: 2019-08-15T19:38:52 airport: PHNL videoDuration: 211.02 dayPhase: Day taxiType: Taxi + Takeoff videoQualityNotes:</li><li><strong>T850V0.mp4</strong> — index: 850 videoIndex: 0 videoFile: T850V0 tailNumber: N426NA campaign: CAMP2EX iwg1Url: https://asp-archive.arc.nasa.gov/CAMP2EX/N426NA/2019-08-24/IWG1.25Aug2019-0541 taxiStartDateUTC: 2019-08-24T22:05:08 taxiEndDateUTC: 2019-08-24T22:12:31 airport: RPLC videoDuration: 443.19 dayPhase: Day taxiType: Taxi + Takeoff videoQualityNotes: Rain, fog</li><li><strong>T846V0.mp4</strong> — index: 846 videoIndex: 0 videoFile: T846V0 tailNumber: N426NA campaign: CAMP2EX iwg1Url: https://asp-archive.arc.nasa.gov/CAMP2EX/N426NA/2019-08-16/IWG1.17Aug2019-0622 taxiStartDateUTC: 2019-08-16T22:04:54 taxiEndDateUTC: 2019-08-16T22:13:11 airport: PWAK videoDuration: 231.87 dayPhase: Day taxiType: Taxi videoQualityNotes: Blurry</li><li><strong>T725V0.mp4</strong> — index: 725 videoIndex: 0 videoFile: T725V0 tailNumber: N817NA campaign: ATOM-3 iwg1Url: https://asp-archive.arc.nasa.gov/ATOM-3/N817NA/2017-10-11/IWG1-10hz.12Oct2017-0400 taxiStartDateUTC: 2017-10-11T17:46:36 taxiEndDateUTC: 2017-10-11T17:58:26 airport: NZCH videoDuration: 587.2 dayPhase: Day taxiType: Taxi + Takeoff videoQualityNotes:</li><li><strong>T838V0.mp4</strong> — index: 838 videoIndex: 0 videoFile: T838V0 tailNumber: N426NA campaign: CAMP2EX iwg1Url: https://asp-archive.arc.nasa.gov/CAMP2EX/N426NA/2019-08-05/IWG1.05Aug2019-1932 taxiStartDateUTC: 2019-08-05T19:27:57 taxiEndDateUTC: 2019-08-05T19:32:36 airport: KWAL videoDuration: 279.18 dayPhase: Day taxiType: Landing + Taxi videoQualityNotes: Blurry, smudges</li><li><strong>T842V0.mp4</strong> — index: 842 videoIndex: 0 videoFile: T842V0 tailNumber: N426NA campaign: CAMP2EX iwg1Url: https://asp-archive.arc.nasa.gov/CAMP2EX/N426NA/2019-08-13/IWG1.14Aug2019-0041 taxiStartDateUTC: 2019-08-13T17:02:10 taxiEndDateUTC: 2019-08-13T17:05:07 airport: KONT videoDuration: 177.17 dayPhase: Day taxiType: Takeoff videoQualityNotes: Blurry</li><li><strong>T839V1.mp4</strong> — index: 839 videoIndex: 1 videoFile: T839V1 tailNumber: N426NA campaign: CAMP2EX iwg1Url: https://asp-archive.arc.nasa.gov/CAMP2EX/N426NA/2019-08-12/IWG1.12Aug2019-2205 taxiStartDateUTC: 2019-08-12T14:57:52 taxiEndDateUTC: 2019-08-12T15:04:40 airport: KWAL videoDuration: 5.03 dayPhase: Day taxiType: Low flight videoQualityNotes:</li><li><strong>csv-flight-data.zip</strong> — Aircraft flight data in comma separated value (CSV) text files. For all video segments.</li><li><strong>T718V1.mp4</strong> — index: 718 videoIndex: 1 videoFile: T718V1 tailNumber: N817NA campaign: ATOM-3 iwg1Url: https://asp-archive.arc.nasa.gov/ATOM-3/N817NA/2017-10-01/IWG1-10hz.02Oct2017-0222 taxiStartDateUTC: 2017-10-02T02:00:06 taxiEndDateUTC: 2017-10-02T02:12:27 airport: PANC videoDuration: 300.41 dayPhase: Evening taxiType: Landing + Taxi videoQualityNotes:</li><li><strong>taxi_metadata_csv.csv</strong></li><li><strong>T849V0.mp4</strong> — index: 849 videoIndex: 0 videoFile: T849V0 tailNumber: N426NA campaign: CAMP2EX iwg1Url: https://asp-archive.arc.nasa.gov/CAMP2EX/N426NA/2019-08-24/IWG1.25Aug2019-0541 taxiStartDateUTC: 2019-08-24T21:52:58 taxiEndDateUTC: 2019-08-24T22:04:11 airport: RPLC videoDuration: 54.01 dayPhase: Day taxiType: Taxi + Stationary videoQualityNotes: Rain</li><li><strong>corrected-frame-timestamps.zip</strong> — The videos in this set were recorded at a variable frame rate. For the convenience of the user, a separate CSV file is provided for each video, listing the frame offset time for each frame in the video.</li><li><strong>ROS2-flight-data.zip</strong> — Aircraft flight data in rosbag2 format. For all video segments.</li><li><strong>T835V0.mp4</strong> — index: 835 videoIndex: 0 videoFile: T835V0 tailNumber: N426NA campaign: CAMP2EX iwg1Url: https://asp-archive.arc.nasa.gov/CAMP2EX/N426NA/2019-08-03/IWG1.03Aug2019-1850 taxiStartDateUTC: 2019-08-03T18:45:08 taxiEndDateUTC: 2019-08-03T18:49:47 airport: KWAL videoDuration: 276.41 dayPhase: Day taxiType: Landing + Taxi videoQualityNotes: Smudges</li><li><strong>T836V0.mp4</strong> — index: 836 videoIndex: 0 videoFile: T836V0 tailNumber: N426NA campaign: CAMP2EX iwg1Url: https://asp-archive.arc.nasa.gov/CAMP2EX/N426NA/2019-08-05/IWG1.05Aug2019-1932 taxiStartDateUTC: 2019-08-05T13:58:55 taxiEndDateUTC: 2019-08-05T14:03:37 airport: KWAL videoDuration: 282.17 dayPhase: Day taxiType: Taxi videoQualityNotes: Blurry, smudges</li><li><strong>T839V0.mp4</strong> — index: 839 videoIndex: 0 videoFile: T839V0 tailNumber: N426NA campaign: CAMP2EX iwg1Url: https://asp-archive.arc.nasa.gov/CAMP2EX/N426NA/2019-08-12/IWG1.12Aug2019-2205 taxiStartDateUTC: 2019-08-12T14:57:52 taxiEndDateUTC: 2019-08-12T15:04:40 airport: KWAL videoDuration: 402.49 dayPhase: Day taxiType: Taxi + Takeoff videoQualityNotes: Blurry</li><li><strong>T840V0.mp4</strong> — index: 840 videoIndex: 0 videoFile: T840V0 tailNumber: N426NA campaign: CAMP2EX iwg1Url: https://asp-archive.arc.nasa.gov/CAMP2EX/N426NA/2019-08-12/IWG1.12Aug2019-2205 taxiStartDateUTC: 2019-08-12T21:57:44 taxiEndDateUTC: 2019-08-12T22:04:37 airport: KONT videoDuration: 322.96 dayPhase: Day taxiType: Landing + Taxi videoQualityNotes: Blurry, reflections</li><li><strong>T834V0.mp4</strong> — index: 834 videoIndex: 0 videoFile: T834V0 tailNumber: N426NA campaign: CAMP2EX iwg1Url: https://asp-archive.arc.nasa.gov/CAMP2EX/N426NA/2019-08-03/IWG1.03Aug2019-1850 taxiStartDateUTC: 2019-08-03T15:33:53 taxiEndDateUTC: 2019-08-03T15:43:36 airport: KWAL videoDuration: 513.01 dayPhase: Day taxiType: Taxi + Takeoff videoQualityNotes:</li><li><strong>T841V0.mp4</strong> — index: 841 videoIndex: 0 videoFile: T841V0 tailNumber: N426NA campaign: CAMP2EX iwg1Url: https://asp-archive.arc.nasa.gov/CAMP2EX/N426NA/2019-08-13/IWG1.14Aug2019-0041 taxiStartDateUTC: 2019-08-13T16:47:03 taxiEndDateUTC: 2019-08-13T16:56:26 airport: KONT videoDuration: 563.16 dayPhase: Day taxiType: Taxi videoQualityNotes: Blurry, reflections</li><li><strong>T844V0.mp4</strong> — index: 844 videoIndex: 0 videoFile: T844V0 tailNumber: N426NA campaign: CAMP2EX iwg1Url: https://asp-archive.arc.nasa.gov/CAMP2EX/N426NA/2019-08-15/IWG1.16Aug2019-0143 taxiStartDateUTC: 2019-08-15T19:25:38 taxiEndDateUTC: 2019-08-15T19:38:52 airport: PHNL videoDuration: 583.04 dayPhase: Day taxiType: Taxi videoQualityNotes: Blurry</li><li><strong>T837V0.mp4</strong> — index: 837 videoIndex: 0 videoFile: T837V0 tailNumber: N426NA campaign: CAMP2EX iwg1Url: https://asp-archive.arc.nasa.gov/CAMP2EX/N426NA/2019-08-05/IWG1.05Aug2019-1932 taxiStartDateUTC: 2019-08-05T14:06:01 taxiEndDateUTC: 2019-08-05T14:07:30 airport: KWAL videoDuration: 89.06 dayPhase: Day taxiType: Takeoff videoQualityNotes: Blurry, smudges</li><li><strong>T722V0.mp4</strong> — index: 722 videoIndex: 0 videoFile: T722V0 tailNumber: N817NA campaign: ATOM-3 iwg1Url: https://asp-archive.arc.nasa.gov/ATOM-3/N817NA/2017-10-04/IWG1-10hz.05Oct2017-0129 taxiStartDateUTC: 2017-10-05T01:22:37 taxiEndDateUTC: 2017-10-05T01:28:15 airport: PHKO videoDuration: 339.6 dayPhase: Day taxiType: Landing + Taxi videoQualityNotes:</li><li><strong>T721V0.mp4</strong> — index: 721 videoIndex: 0 videoFile: T721V0 tailNumber: N817NA campaign: ATOM-3 iwg1Url: https://asp-archive.arc.nasa.gov/ATOM-3/N817NA/2017-10-04/IWG1-10hz.05Oct2017-0129 taxiStartDateUTC: 2017-10-04T17:48:41 taxiEndDateUTC: 2017-10-04T18:00:01 airport: PANC videoDuration: 387.17 dayPhase: Day taxiType: Taxi + Takeoff videoQualityNotes: Lots of rain</li><li><strong>T846V1.mp4</strong> — index: 846 videoIndex: 1 videoFile: T846V1 tailNumber: N426NA campaign: CAMP2EX iwg1Url: https://asp-archive.arc.nasa.gov/CAMP2EX/N426NA/2019-08-16/IWG1.17Aug2019-0622 taxiStartDateUTC: 2019-08-16T22:04:54 taxiEndDateUTC: 2019-08-16T22:13:11 airport: PWAK videoDuration: 265.01 dayPhase: Day taxiType: Taxi + Takeoff videoQualityNotes:</li><li><strong>T851V0.mp4</strong> — index: 851 videoIndex: 0 videoFile: T851V0 tailNumber: N426NA campaign: CAMP2EX iwg1Url: https://asp-archive.arc.nasa.gov/CAMP2EX/N426NA/2019-08-24/IWG1.25Aug2019-0541 taxiStartDateUTC: 2019-08-25T05:25:19 taxiEndDateUTC: 2019-08-25T05:32:58 airport: RPLC videoDuration: 459.12 dayPhase: Day taxiType: Landing + Taxi videoQualityNotes:</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/157798">https://techport.nasa.gov/projects/157798</a>
+    </div>
+  </div>
+</body>
+</html>

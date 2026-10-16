@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CC20 NASA Image Co-registration Code Challenge | NASA TechPort Project 117519</title>
+  <meta name="description" content="This challenge is to develop the software tools necessary to support a comparison of imagery from NASA&#x27;s Lunar Orbiter (LO) spacecraft, flown prior to the Apollo landings, as well as images from Apollo 15-17, with imagery from Clementine, Kaguya, and the curre">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/117519">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 117519</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">PCC</span>
+          <span class="badge">TX07.3.2</span>
+        </div>
+        <h1>CC20 NASA Image Co-registration Code Challenge</h1>
+        <div class="meta-id">NASA TechPort Project ID: 117519</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/117519" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          This challenge is to develop the software tools necessary to support a comparison of imagery from NASA's Lunar Orbiter (LO) spacecraft, flown prior to the Apollo landings, as well as images from Apollo 15-17, with imagery from Clementine, Kaguya, and the currently operating Lunar Reconnaissance Orbiter. Doing so will make it possible to perform "before and after" studies of areas on the lunar surface that may have changed in the half-century between the two sets of imagery. These changes may have arisen both from the impact of human-fabricated hardware, such as the ascent stages of Apollo lunar modules, and from natural processes of meteoroid impact and downslope movements. Note that owner of challenge is Jim Green, NASA Chief Scientist, submitter is Dave Draper, Deputy Chief Scientist. Team includes Noah Petro and David Williams, GSFC, Brian Day, ARC, Emily Law, JPL. The "add co-submitters" field below is broken and will not accept my entries, it keeps forcing the first person having the first few letters I type in to be chosen. Needs fixing! Background The Moon is our closest neighbor and has been studied more than any other body in the solar system. The future of space exploration beyond low Earth orbit starts at the Moon. NASA's plans for the Artemis program focuses on the Moon where humans will learn to live and work on a planetary system before going to the planet Mars. The Moon was also the main target of our early space exploration and therefore we used it also to learn how to navigate in the space environment. Over time, space agencies have crashed on the moon on their way to gaining the knowledge necessary to having successful landers and orbiter missions. Now with space travel on the verge of becoming commercial, in addition to nation's going to the Moon, many other commercial companies are aggressively approaching the capability to routinely travel to the moon. Due to the Moon's lumpy gravity shape, no spacecraft has been able to obtain a completely stable orbit resulting in even orbiters eventually crashing on the Moon. The large amount of lunar surface imaging, from many missions over the last 60 years, now enables us to search and find anthropogenic features on the Moon in addition to finding new craters and other geological features that have changed on the Moon during the space age. Since Luna 2 crashed into the Moon on 14 September 1959, almost 100 spacecraft from various countries have impacted, soft-landed, or even driven across the lunar surface. (See table at: https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html) We have identified 84 of these which should have left evidence observable by some of the currently or recently operating lunar-orbiting spacecraft. Of these, 38 craters or landed objects have already been identified in Lunar Reconnaissance (LRO) images. Of the remaining 46, 18 of the objects were not tracked long enough to estimate a position, ...<br \> NASA has new data from the moon and images from the early 1970s. The Office of the Chief Scientist is seeking development of a software application - Lunar Mission Coregistration Tool (LMCT) that will process publicly available imagery files from past lunar missions and will enable manual comparison to imagery from the Lunar Reconnaissance Orbiter (LRO) mission. The imagery processed by this software will be used in existing citizen science applications to identify long lost spacecraft components as well as natural impacts to the lunar surface. They're teaming up with the Topcoder community to develop this application In this challenge, competitors are asked to develop the first version of this image registration tool. Specifically, this tool should be able to process various images, such as images captured under different lighting conditions, different spacecraft/camera characteristics, different observation geometries etc. This challenge is to develop the software tools necessary to support a comparison of imagery from NASA's Lunar Orbiter (LO) spacecraft, flown prior to the Apollo landings, as well as images from Apollo 15-17, with imagery from Clementine, Kaguya, and the currently operating Lunar Reconnaissance Orbiter. Doing so will make it possible to perform "before and after" studies of areas on the lunar surface that may have changed in the half-century between the two sets of imagery. These changes may have arisen both from the impact of human-fabricated hardware, such as the ascent stages of Apollo lunar modules, and from natural processes of meteoroid impact and downslope movements. Note that owner of challenge is Jim Green, NASA Chief Scientist, submitter is Dave Draper, Deputy Chief Scientist. Team includes Noah Petro and David Williams, GSFC, Brian Day, ARC, Emily Law, JPL. The "add co-submitters" field below is broken and will not accept my entries, it keeps forcing the first person having the first few letters I type in to be chosen. Needs fixing! Background The Moon is our closest neighbor and has been studied more than any other body in the solar system. The future of space exploration beyond low Earth orbit starts at the Moon. NASA's plans for the Artemis program focuses on the Moon where humans will learn to live and work on a planetary system before going to the planet Mars. The Moon was also the main target of our early space exploration and therefore we used it also to learn how to navigate in the space environment. Over time, space agencies have crashed on the moon on their way to gaining the knowledge necessary to having successful landers and orbiter missions. Now with space travel on the verge of becoming commercial, in addition to nation's going to the Moon, many other commercial companies are aggressively approaching the capability to routinely travel to the moon. Due to the Moon's lumpy gravity shape, no spacecraft has been able to obtain a completely stable orbit resulting in even orbiters eventually crashing on the Moon. The large amount of lunar surface imaging, from many missions over the last 60 years, now enables us to search and find anthropogenic features on the Moon in addition to finding new craters and other geological features that have changed on the Moon during the space age. Since Luna 2 crashed into the Moon on 14 September 1959, almost 100 spacecraft from various countries have impacted, soft-landed, or even driven across the lunar surface. (See table at: https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_artifact_impacts.html) We have identified 84 of these which should have left evidence observable by some of the currently or recently operating lunar-orbiting spacecraft. Of these, 38 craters or landed objects have already been identified in Lunar Reconnaissance (LRO) images. Of the remaining 46, 18 of the objects were not tracked long enough to estimate a position.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This challenge resulted in a lightweight solution. that performs advanced co-registration on images taken of the same area. In terms of solution accuracy, this solution meets the required industry standard accuracy of LROC Pixels with the following results across a three point spread: - Industry Standard: 32, 28, 6 - New Solution: 43, 25, 5 The value of this solution is that the Office of Chief Scientist and developers at JPL plan to use the solution as part of an integrated tool that will be made available to citizen scientists to identify differences in lunar images of the same area. It has been posted publicly for amateur astronomers and academia to use in their pursuits. The source code is posted here https://github.com/topcoderinc/lunar-imaging. Of note, the code itself has been loaded onto computers at JPL and any further development will be maintained internal to NASA.<br />Significantly Advanced Towards a Solution<br />Planned for future implementation<br />Software/App</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>117519</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Prizes, Challenges, and Crowdsourcing (PCC)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX07.3.2: Integrated Flight Operations Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2020-10-01</td></tr>
+<tr><th>Project End Date</th><td>2021-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>NASA Headquarters (HQ) — Washington, District of Columbia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Appirio/Topcoder</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>District of Columbia (DC)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>James L Green (Project Manager) &lt;james.green@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jarah A Meador (Program Director) &lt;jarah.meador-1@nasa.gov&gt;; Jennifer E Edmunson (Program Manager) &lt;jennifer.e.edmunson@nasa.gov&gt;; Ryon C Stewart (Program Manager) &lt;ryon.stewart@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-05-06</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Significantly advanced towards a solution Planned for future implementation This challenge resulted in a lightweight solution. that performs advanced co-registration on images taken of the same area. In terms of solution accuracy, this solution meets the required industry standard accuracy of LROC Pixels with the following results across a three point spread: - Industry Standard: 32, 28, 6 - New Solution: 43, 25, 5 The value of this solution is that the Office of Chief Scientist and developers at JPL plan to use the solution as part of an integrated tool that will be made available to citizen scientists to identify differences in lunar images of the same area. It has been posted publicly for amateur astronomers and academia to use in their pursuits. The source code is posted here https://github.com/topcoderinc/lunar-imaging. Of note, the code itself has been loaded onto computers at JPL and any further development will be maintained internal to NASA.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/117519">https://techport.nasa.gov/projects/117519</a>
+    </div>
+  </div>
+</body>
+</html>

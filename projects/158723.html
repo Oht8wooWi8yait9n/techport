@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Improved Autonomous Navigation Through Optimal Sensor Outliers | NASA TechPort Project 158723</title>
+  <meta name="description" content="One of the greatest challenges associated with pose estimation using cameras or sensors such as LIDAR is removal of sensor outliers. Outliers exist for numerous reasons, such as incorrectly associated feature points, extraneous data points, etc. Without proper">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158723">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158723</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX17</span>
+        </div>
+        <h1>Improved Autonomous Navigation Through Optimal Sensor Outliers</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158723</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158723" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          One of the greatest challenges associated with pose estimation using cameras or sensors such as LIDAR is removal of sensor outliers. Outliers exist for numerous reasons, such as incorrectly associated feature points, extraneous data points, etc. Without proper removal of outliers, an incorrect pose estimate may result, which can lead to difficulty in achieving mission goals for autonomous operations. A common approach to remove outliers is the RANSAC algorithm. But RANSAC may not be optimal, especially if an incorrect model is used, thus leading to outliers that may pass the RANSAC test but may degrade the pose estimate.    In Phase I an optimal closed-form approach to replace the RANSAC algorithm was shown that it is based on using the statistical properties of the sensor error in its derivation. The heart of the solution is based on an optimally derived pose estimation solution from a Total Least Squares (TLS) approach. A byproduct of the TLS solution is the covariance of the sensor residuals, which is the key to remove outliers. The Phase I work showed that because the covariance is optimal, it results in a more robust approach to remove outliers than the standard RANSAC algorithm and its variants. The Phase I work focused on studying the effectiveness of the newly derived closed-form covariance in a new RANSAC-type algorithm, called the Statistical Optimal RANSAC (SO-RANSAC) algorithm.    For the Phase II work, SO-RANSAC will be further refined to include the two-camera scenario. Invariant methods will also be employed to initialize the SO-RANSAC algorithm. Also, a colored-noise filter will be implemented to handle heavy-tail errors associated with feature mis-associations. Furthermore, studies will be performed to provide the computational effort required to implement SO-RANSAC on a real spacecraft processor. All these efforts will significantly increase the TRL capability of SO-RANSAC, leading to an actual implementation capability.  The significance of proposed technology is the development of an optimal feature outlier detection algorithm that can be used in a navigation system for an arbitrary noncooperative object.&nbsp; The developed algorithm consists of extracting feature information from images collected by the optical sensor or point clouds from LIDAR-type measurements.&nbsp; The new algorithm, called Statistical Optimal RANSAC (SO-RANSAC), is based on a rigorously derived solution using the statistical properties of the sensor errors. &nbsp;This new algorithm will ensure that the features are accurately extracted, thus providing a robust approach compared to the current state-of-the-art, such as traditional RANSAC algorithms.  Technical Objectives   	Objective 1 &minus; Expand the Theoretical Developments to Include the Two-Camera Case 	Objective 2 &minus; Implement an Invariant-Based Outlier Rejection for Initialization 	Objective 3 &minus; Assess the Computational Effort Versus the Performance   &nbsp;  Work Plan Summary  The Phase II effort will focus on relative spacecraft navigation algorithm development and extensive simulation studies. &nbsp;This will build a foundation to develop benchmark testing at the onset of Phase III, with the end of this work being a fully functional demonstration unit. &nbsp;This can lead to a future mission to test the proposed technology.  &nbsp;  Proposed Deliverables  Bimonthly Progress Reports, Prototype Software, Simulation Studies and a Final Report.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          NASA has flown several formation flying missions, such A-Train and Cluster. &nbsp;Also, applications involving proximity operations are of great interest to NASA, as well as safe, precision landing on small bodies. &nbsp;The proposed technology further advances current navigation applications related to all these applications since it provides a robust solution for noncooperative objects. &nbsp;The application is based on rigorously derived error definitions, so that physically correct uncertainty bounds are provided for feature outlier mitigation.  Non-NASA applications, especially DoD ones, are heavily focusing on anti-jamming communication and navigation systems, such as GPS-less navigation. &nbsp;The proposed technology can significantly advance these focus areas because it is self-contained and decreases the susceptibility to outside attacks.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158723</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX17: GN&amp;C</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 3 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2024-06-13</td></tr>
+<tr><th>Project End Date</th><td>2026-06-12</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>XAnalytix Systems — New York</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD), New York (NY)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Yang Cheng (Principal Investigator) &lt;yang.cheng@jpl.nasa.gov&gt;; Claude E Skelton (Project Manager) &lt;eugene.skelton@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158723">https://techport.nasa.gov/projects/158723</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OptoGeneSat: An Optogenetic Experimental Platform For Space | NASA TechPort Project 14641</title>
+  <meta name="description" content="Dynamic control of gene expression in space is impractical, although it is a critical parameter to mitigate the effects of the space environment on living organisms of all types. The current solution, namely coarse control via complex fluidics and chemistries ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/14641">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 14641</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">ARC CIF</span>
+          
+        </div>
+        <h1>OptoGeneSat: An Optogenetic Experimental Platform For Space</h1>
+        <div class="meta-id">NASA TechPort Project ID: 14641</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/14641" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Dynamic control of gene expression in space is impractical, although it is a critical parameter to mitigate the effects of the space environment on living organisms of all types. The current solution, namely coarse control via complex fluidics and chemistries with low throughput, is viable only for cultures of cells and microganisms and thus far only in a research modality. We proopse to develop an integrated system that will use optogenetic control for quantitative, multiplexed up/down control of gene expression with closed-loop feedback and the potential for high throughput and extensibility beyond model microorganisms. This technology will enable in-space control and characterization of synthetic & natural gene circuits. Introduction Synthetic biology is a quickly growing NASA research area, highlighted as a highly valuable emerging field by the Presidential Commission on Bioethics. It could revolutionize NASA's efforts in multiple roadmap areas including molecular manipulation for in-situ resource utilization and probiotic astronaut health. Recent studies of microbial growth and gene expression1,5,6,7 suggest, however, that synthetic organisms may function differently than on Earth due to microgravity-induced responses and/or intracellular physiological changes—the mechanisms of which are not unequivocally known. Because synthetic gene circuits are highly sensitive to cellular physiological state, growth stage, and extracellular environment,3 both natural and synthetic gene regulatory networks must be characterized in space in order to evaluate performance changes resulting from microgravity, as well as to develop microgravity-insensitive organisms and circuits. This characterization requires the ability to deliberately and precisely perturb cellular gene expression, but there is currently no platform available for controlling gene expression in space that enables the necessary targeted fundamental biological experiments: microbial microgravity gene expression experiments to date have been limited to control by, at most, a single chemical inducer. Technical Objectives and Innovation A simple, targeted means to quantitatively perturb gene expression in space is to use optogenetic systems, light-sensitive proteins that manipulate gene expression10 as well as other cellular processes including targeted protein degradation11,12 and dimerization.8,9 We propose to develop initial hardware prototypes, integrating them with optogenetically enabled microorganisms, to demonstrate at proof-of-concept level the feasibility of such a system—ultimately, with full autonomy—for biology experiments in space aboard free-flying nano/cube satellites, the International Space Station, and other platforms. Enabling optogenetic experiments in space will provide NASA (exo)biologists, astrobiologists, and bioengineers with new tools to study and, in the best cases, control the effects of microgravity on fundamental microbiological processes and synthetic biological systems. Towards this end, we recently demonstrated state-of-the-art quantitative gene circuit manipulation and evaluation using optogenetic methods to quantitatively and dynamically control gene expression via multiple simultaneous channels.4 This "biological function generator" enables analysis of the structure, state, and performance of gene circuits in any environmental context. Coupling these synthetic biological methods with the use of mathematical models to describe the relationship between input light and output promoter activity, we are can precisely predict gene expression from orthogonal optogenetic systems. Quantitative, targeted perturbation of cellular gene expression using optogenetic methods will enable: (1) cellular reengineering to obviate or eliminate microgravity-induced loss of performance, (2) testing of synthetic gene circuits in their intended context, which is currently prohibitively expensive or impossible, and (3) a deeper understanding of fundamental cellular biology in space by enabling the study of natural gene regulation using synthetic genetic methods. To achieve this, the OptoGeneSat platform will build upon existing hardware and methods from GeneSat, PharmaSat, O/OREOS-SESLO, and EcAMSat developed by Ames' Small Satellite/Payloads team, as well as custom optogenetic hardware and techniques developed in the Tabor Lab at Rice University, including an optical turbidostat. Building on the fluidics-integrated multiwell plate format of ARC's successful nanosat biology missions, OptoGeneSat will demonstrate a significant enhancement: feedback-based continuous culture to maintain cells at the appropriate density for experimentation by addition of dilution media and removal of cells from each well, enabling multifold improvement in experimental lifetime and data output per mission. Relative to PharmaSat fluidics, OptoGeneSat is adding a cell-outlet port to each well with feedback control. To this mini-turbidostat, we are adding an array of LEDs and filtered photodiodes to actuate optogenetic control and measure bulk cell gene expression, building on a prototype whose design was begun at ARC in June of 2013. We are working closely with the ARC SpaceShop to rapidly iterate our prototype and experiment with multiple excitation/emission configurations to maximize both reporter sensitivity and the number of simultaneously-measured strains. This extensible platform will require minimal training and require no background in optogenetics per se; the modular hardware will be supported by a robust Arduino library to program optogenetic perturbations. The target 2U cubesat payload form factor will keep experimental costs low and flight opportunities plentiful while being readily adaptable to NanoRacks on ISS as well as EM flight opportunities to probe beyond-LEO radiation environments. The simplicity and throughput of this system will also make it highly useful for ground-based labs in all fields of cellular and synthetic biology, in standalone mode or with common fluorescence plate readers. Ultimately, OptoGeneSat hardware will offer both exobiologists and space synthetic biologists a practical method of gathering targeted-gene-expression-control data at costs and in volumes that will facilitate the engineering of microbes whose genetic programming is robust to spaceflight and can therefore support manned missions by producing nutrient-rich food from in-situ resources, by remediating waste, and by protecting astronauts from microbes with increased virulence7 during long-duration missions. References References (1) Crabbé (2011). App & Env Microbio, 77(4), 1221–30. (2) Duran (2013). Poster: SB6.0 Conference, London, UK. (3) Moser (2012). ACS Syn Bio, 1(11), 555–64. (4) Olson, Hartsough, Schroff, Tabor In Review (5) Paul (2011). Astrobio, 11(8), 743–58. (6) Paul (2012). Astrobio, 12(1), 40–56. (7) Wilson (2007). PNAS 104(41) 16299-304 (8) Levskaya (2009) Nature 461:997-1001 (9) Kennedy (2010) Nat. Meth. 7(12): 973-975 (10) Tabor (2011) J Mol. Bio. 405(2): 315-324 (11) Renicke (2013) Chem & Bio 20(4): 619-626. (12) Gerhardt (2013). Poster: SB6.0 Conference.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This project may provide benefits to the currently funded Space Life and Physical Science (SLPS) Research Program, including experiments funded on the International Space Station. This project will enhance and enable the efforts of NASA & academic astro/exobiologists, and synthetic biologists involved in both ground and space studies to understand and control the biological consequences of the space enviornment at the gene expression level. This project will also support NASA projects for in-situ resource utilization (ISRU) and optimization, for example the use of simple plants such as microalgae to clean and process air and water, to regenerate oxygen, and to provide food for space, lunar, or planetary habitats. This project will also support activities of the NASA Human Resarch Program (HRP) in the crew health and performance by providing insights on mechanisms by which to enhance adaptation to the space environment. The ability to actively control gene expression in a range of organisms, lower and higher, may be of benefit to adaptation to changing or stressful environments. This could be beneficial to US government agencies involved in defense, health, and agriculture.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>14641</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: ARC CIF (ARC CIF)</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2013-11-01</td></tr>
+<tr><th>Project End Date</th><td>2014-10-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Rice University — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Texas (TX)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Antonio J Ricco (Principal Investigator) &lt;antonio.j.ricco@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li><li><strong>Advanced To</strong></li><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>1676 Approval #17536</strong> — Ames Approval 11/26/14</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/14641">https://techport.nasa.gov/projects/14641</a>
+    </div>
+  </div>
+</body>
+</html>

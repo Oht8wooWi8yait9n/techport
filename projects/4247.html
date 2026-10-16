@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avionics for Hibernation and Recovery on Planetary Surfaces | NASA TechPort Project 4247</title>
+  <meta name="description" content="Landers and rovers endure on the Martian equator but experience avionics failures in the cryogenic temperatures of lunar nights and Martian winters. The greatest vulnerability is battery failure due to dielectric breakdown. Other components fail, and interconn">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/4247">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 4247</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX03.2.3</span>
+        </div>
+        <h1>Avionics for Hibernation and Recovery on Planetary Surfaces</h1>
+        <div class="meta-id">NASA TechPort Project ID: 4247</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/4247" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Landers and rovers endure on the Martian equator but experience avionics failures in the cryogenic temperatures of lunar nights and Martian winters. The greatest vulnerability is battery failure due to dielectric breakdown. Other components fail, and interconnects break from fatigue. The current state of practice is for planetary robots to keep their electronics above cryogenic temperatures by using radioisotope heater units (RHUs) and electrical heaters from stored energy. RHUs are costly, risky, and impossible for non-government use. Radioisotope thermoelectric generators and future sources like reactors and fuel cells might power lunar, polar, and mercurial nights but they are impractical for small missions. Small, near-term surface systems must recover after enduring cryogenic hibernation. This ambition requires freeze tolerant batteries, durable devices, and systems. Certain battery chemistries hold the prospect for tolerating cryo-freeze and freeze tolerant electronics would address temperature relevant failure mechanisms, removing the need for heating because the entire system could withstand exposure to cryogenic temperatures without damage. A power system designed around these concepts could enable planetary rovers and landers to withstand the cold of lunar, Martian, asteroidal, and mercurial nights without the aid of survival heaters or isotope power sources. This is possible by hibernating at cryogenic night temperatures and then reviving repeatedly with rising of the sun. This research proposes to develop avionics capable of hibernation and recovery from cryo-freeze. The initiative will illustrate principles by integrating and testing a solar power system including battery that survives three cycles from -170ºC to 115ºC in a thermal vacuum chamber without fault. After each hibernation and recovery phase, the power system will provide energy to a resistive load to simulate power consumption by scientific instruments, electrical motors, or a flight computer. This research is of significance to NASA because it will further the development of several key technologies presented in the NASA technology roadmap. These include photovoltaic (PV) arrays with low intensity and temperature capabilities for both outer planetary missions and surface missions where exposure to cryogenic night temperatures is anticipated, ultra-low temperature rechargeable batteries for planetary exploration, and a power system that is modular, configurable, low loss, and implements user selectable protection algorithms. An archetypal power system will be conceived, designed, analyzed, prototyped, and tested. This system will generate electricity with a multi-junction PV array, maximize collected energy through maximum power point tracking, store collected energy in a freeze tolerant battery, and detect and isolating faults. The power system will be designed to enter a state of hibernation when its temperature falls below -20ºC, and emerge from hibernation when its temperature rises above 0ºC. A test campaign will characterize the capabilities of each subsystem across a broad spectrum of thermal profiles and under vacuum. After subsystem testing, the power system will be integrated and retested as a complete unit. After the complete system has passed tests at Carnegie Mellon's facilities the system will be tested in thermal vacuum at a NASA. The findings of this research will be presented at the Lunar Superconductor Applications 2nd International Workshop (LSA). Additionally, findings will be incorporated into a lander/rover mission to endure diurnal cycles on the moon's surface.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This research is of significance to NASA because it will further the development of several key technologies presented in the NASA technology roadmap. These include photovoltaic (PV) arrays with low intensity and temperature capabilities for both outer planetary missions and surface missions where exposure to cryogenic night temperatures is anticipated, ultra-low temperature rechargeable batteries for planetary exploration, and a power system that is modular, configurable, low loss, and implements user selectable protection algorithms.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>4247</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX03.2.3: Advanced Concepts for Energy Storage</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-08-29</td></tr>
+<tr><th>Project End Date</th><td>2013-02-14</td></tr>
+<tr><th>Lead Organization / Center</th><td>Carnegie Mellon University — Pittsburgh, Pennsylvania</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Pennsylvania (PA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>William Whittaker (Principal Investigator); Ethan M Minogue (Co-Investigator); Phillip B Abel (Project Manager) &lt;phillip.abel@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Robots are challenged to endure extreme cold during nights in planetary environments such as the moon and Mercury, and polar winters on Mars. A process for robots to endure cryogenic temperature, and then recover when the environment has warmed, is essential to solar system exploration. We present a novel power system that uses a mechanical thermostat to de-power all electronics to hibernate when temperatures fall. The thermostat automatically restarts the electronics when warmed to operating temperature. Environmental testing shows reliable recovery of the prototype after repeated freezes as cold as the -173°C temperature of lunar night. Landers and rovers endure on the Martian equator but experience avionic failures in the cryogenic temperatures of lunar nights and Martian winters. The greatest vulnerability is battery failure due to dielectric breakdown. Integrated circuits and semiconductors will exhibit unexpected behavior as temperatures fall because the resistance of N-type and P-type transistors is not linearly correlated with temperature [1]. Other components fail, and interconnects break from fatigue. The Surveyor program demonstrated partial success reactivating landers after lunar night, but their batteries and electronics were damaged by the extreme cold [2]. Five Surveyors landed on the moon, one of which is pictured in Figure 1. Of these, only Surveyors I and V could be reactivated (two and three times respectively), and the reactivated spacecraft had reduced capability due to component failures. The current state of practice is for planetary robots to keep their electronics above cryogenic temperatures by using radioisotope heater units (RHUs) and electrical heaters from stored energy [3]. Stored heat and resistive heating are viable for bridging short, mild cooling over a Martian night, but storage is not viable for seasonal winters or long lunar nights. Isotopic heating is viable for some missions, but isotopic decay cannot be turned off and becomes an overheating problem when the cold of night turns to the heat of day. The processes, permissions, and costs required to implement an isotopic solution are a severe risk to budget and schedule. Moreover, the plutonium-238 used in RHUs and RTGs is scarce because production of the isotope ceased after the Cold War. The global stockpile of plutonium-238 is nearly depleted and new material will not be available before 2017 [4]. For these reasons, isotopic solutions are not viable for commercial missions. Small, near-term surface systems must recover after enduring cryogenic hibernation. This ambition requires freeze-tolerant batteries and durable devices. Freeze tolerant batteries are electrochemical cells that endure repeated thermal cycling to cryogenic temperature without losing the ability to store energy. Durable devices are electronic components and interconnects that neither break nor change behavior after repeated thermal cycling to cryogenic temperature. A system with freeze tolerant batteries and durable devices does not require isotopic heating because the entire system can withstand storage at cryogenic temperatures without damage. This research asserts that a system constructed using commercially available electronics and Lithium Iron Phosphate batteries can withstand cryogenic temperature when unpowered and recover automatically when the temperature warms. This work affirms that hibernating through long nights and seasonal winters, then recovering at the start of the next period of operation is a viable alternative to isotopic heating for planetary surface missions. The recovery of consumer grade electronics and batteries after exposure to -173°C indicates production process improvements implemented over the last forty years have resulted in durable devices capable of withstanding cryogenic temperature without modification. This result enables low cost planetary science by supporting mission planning with lower cost spacecraft that have longer mission duration.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>4247-1363269319464.jpg</strong> — Project Image Avionics for Hibernation and Recovery on Planetary Surfaces</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/4247">https://techport.nasa.gov/projects/4247</a>
+    </div>
+  </div>
+</body>
+</html>

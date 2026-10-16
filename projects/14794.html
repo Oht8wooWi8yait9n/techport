@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Familiarization and Detection of Green Monopropellants | NASA TechPort Project 14794</title>
+  <meta name="description" content="Ammonium dinitramide (ADN) and hydroxyl ammonium nitrate (HAN) are &quot;green&quot; monopropellants which will be appearing at Kennedy Space Center (KSC) for processing in the next few years. These are relatively safe replacements for hydrazine as a monopropellant; how">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/14794">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 14794</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">KSC CIF</span>
+          <span class="badge">TX01.1.2</span>
+        </div>
+        <h1>Familiarization and Detection of Green Monopropellants</h1>
+        <div class="meta-id">NASA TechPort Project ID: 14794</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/14794" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Ammonium dinitramide (ADN) and hydroxyl ammonium nitrate (HAN) are "green" monopropellants which will be appearing at Kennedy Space Center (KSC) for processing in the next few years. These are relatively safe replacements for hydrazine as a monopropellant; however, little is known about methods of leak detection, vapor scrubbing, air emissions, or cleanup that will be required for safe and environmentally benign operations at KSC. ADN was developed by the Swedish Space Corporation (SSC), while HAN was developed by the Air Force Research Laboratory to be a propellant. Alliant Techsystems Inc (ATK) is predominantly evaluating ADN for future use, while Ball Aerospace was awarded a NASA Technology Demonstration Mission (TDM) to use HAN as a monopropellant to be launched from KSC/Cape Canaveral Air Force Station. Kennedy Space Center needs the technology in place prior to their arrival and needs to make recommendations as to their adoption if significant issues are found. This is novel work that is necessary to safely support the evaluation and development of the next generation of "green" propellants. The goal of this project is to develop leak detection and related technologies for the two new "green" monopropellants. This project is in its early stage of development; information regarding this project will be updated in the near future.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The unique capability of the Applied Chemistry Laboratory for hypergol generation and detection, and the development/evaluation of sensors, continues to bring in customers from across the country who are interested in validating new technology for hypergol systems. The ADN sensor, HAN detector and propellant familiarization project will continue to build this unique capability for future businesses and customers as well as supporting the need for "green" propellant sensors for potential future program needs. Marshall Space Flight Center (MSFC) is currently working with the U.S. Air Force to test green propellants in F-16's Emergency Power Unit (EPU). Familiarization and sensor detection of "green" propellants will allow KSC and NASA to be able to support future hardware using these types of fuel with increased safety and mission reliability. Data acquired during this project may lead to potential new detection methods for other materials outside NASA, including toxic industrial materials and industrial processing waste. The Swedish Space Corporation, as well as the U.S. Air Force, are currently investigating the use of green propellants in various systems. The information gained during this project will be useful to other government agencies and commercial organizations that utilize hypergol propellants.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>14794</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: KSC CIF (KSC CIF)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.1.2: Earth Storable Propellants</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2015-04-01</td></tr>
+<tr><th>Project End Date</th><td>2016-06-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Kennedy Space Center (KSC) — Kennedy Space Center, Florida</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Air Force Reserve Command — Robins AFB, Georgia; Marshall Space Flight Center (MSFC) — Huntsville, Alabama; Orbital ATK Space Systems Group — Dulles, Virginia; Armstrong Flight Research Center (AFRC) — Edwards, California; Ball Aerospace &amp; Technologies Corporation — Boulder, Colorado; Technology Demonstration Missions (TDM)</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO), Florida (FL), Virginia (VA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Mary R Skow (Principal Investigator) &lt;mary.coan@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-15</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Drip test using a rope sensor</strong> — Image of a drip test using Commercial Off the Shelf (COTS) Rope Sensor to determine if and how the Rope Sensor responds to AF-M315E and LMP-103S which are &#x27;green&#x27; mono-propellants currently in use by various Industries, Agencies and Countries.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/14794">https://techport.nasa.gov/projects/14794</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shell Buckling Knockdown Factors (SBKF) | NASA TechPort Project 33077</title>
+  <meta name="description" content="The Shell Buckling Knockdown Factor (SBKF) Project, NASA Engineering and Safety Center&amp;nbsp;(NESC) Assessment #: 07-010-E, was established in March of 2007 by the NESC in&amp;nbsp;collaboration with the former NASA Constellation Program (CxP) and now the Space Lau">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/33077">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 33077</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">OCE</span>
+          <span class="badge">NESC</span>
+          <span class="badge">TX15.1.3</span>
+        </div>
+        <h1>Shell Buckling Knockdown Factors (SBKF)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 33077</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/33077" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The Shell Buckling Knockdown Factor (SBKF) Project, NASA Engineering and Safety Center&nbsp;(NESC) Assessment #: 07-010-E, was established in March of 2007 by the NESC in&nbsp;collaboration with the former NASA Constellation Program (CxP) and now the Space Launch System (SLS) Program. The SBKF Project has the goal of&nbsp;developing and experimentally validating improved (i.e., less-conservative, more robust)&nbsp;analysis-based shell buckling design factors (a.k.a., knockdown factors (KDFs)) and developing&nbsp;design recommendations for launch vehicle structures.</p> <p>Shell buckling knockdown factors have been historically based on test data from laboratory-scale&nbsp;test articles obtained from the 1930s through the 1960s. The knockdown factors are used to account&nbsp;for the differences observed between the theoretical buckling load and the buckling load obtained&nbsp;from test. However, these test-based KDFs may not be relevant for modern launch- vehicle designs,&nbsp;and are likely overly conservative for many designs. Significant advances in structural stability&nbsp;theory, high-fidelity analysis methods, manufacturing, and testing are&nbsp;enabling the development of new, less conservative, robust analysis-based knockdown factors for&nbsp;modern structural concepts. Preliminary design studies indicate that implementation of new&nbsp;knockdown factors can enable significant weight savings in these vehicles and will help mitigate&nbsp;some of NASA&rsquo;s launch-vehicle development and performance risks, by reducing reliance on&nbsp;large-scale testing, and providing high-fidelity estimates of as-built structural performance,&nbsp;increased payload capability, and improved structural reliability.</p><p>To achieve its KDF development and implementation goals, the SBKF Project is engaged in several&nbsp;work areas including launch-vehicle design trade studies, subcomponent and component level design,&nbsp;analysis and structural testing, and shell buckling design technology development including&nbsp;analysis-method development, analysis benchmarking and standardization, and analysis-based KDF&nbsp;development. Finite-element analysis is used extensively in all these work areas. In particular,&nbsp;there are four main categories analyses conducted by SBKF and include:<br />1) high-fidelity structural simulations, 2) imperfection sensitivity studies, 3) test article&nbsp;design and analysis and 4) exploratory studies. Each of these types of analysis may have different&nbsp;analysis objectives and utilize different modeling approaches that depend on the results required&nbsp;<br />to meet the Project needs. A description of the four main categories follows.&nbsp;</p><p><u>High-fidelity structural simulations</u></p><p>High-fidelity structural simulations are defined as simulations that can predict accurately the&nbsp;complex behavior of a structural component or an assembly of components (e.g., virtual structural&nbsp;test) and often require a significant level of modeling detail and knowledge of the structural&nbsp;system (e.g., its physical behavior and expected variability). Models are considered high-fidelity&nbsp;if results predicted with these models correlate with&nbsp;test data to within a small range of variance and represent accurately the true physical behavior&nbsp;of the structure. The permissible amount of variance is determined based on the analysis&nbsp;requirements defined by the Project in accordance with the intended end use of the predicted data.&nbsp;High-fidelity shell buckling analysis objectives considered by the SBKF Project often require the&nbsp;accurate prediction of stiffnesses, local and global deformations, strains, load paths and&nbsp;buckling-induced load redistribution, and buckling and failure loads and modes. To achieve these&nbsp;analysis goals, the models typically must accurately represent loading and boundary conditions, and&nbsp;expected or measured geometric and material variations (imperfections). It is expected that&nbsp;high-fidelity models developed by SBKFwill predict effective axial stiffness (slope of the load versus end-shortening curve) within&nbsp;&plusmn;2%, buckling loads and point displacements (displacement measured at a point) within&nbsp;&plusmn;5%, and point strains within &plusmn;10%. However, if the displacements or strains of interest are in a&nbsp;high-gradient location, then the overall trend will be assessed for correlation.</p><p><u>Imperfection sensitivity studies</u><br />Imperfection sensitivity studies are used to assess the sensitivity of a structure&rsquo;s nonlinear&nbsp;response and buckling load to initial imperfections, such as geometric imperfections (imperfections&nbsp;in the shell wall geometry including out-of-roundness or local dimples), and loading and material&nbsp;<br />non-uniformities. Geometric imperfections included in an analysis model can be based upon the&nbsp;measured geometry of test articles or flight hardware, or they can be defined analytically using&nbsp;eigenmode shapes or other perturbations.&nbsp;The SBKF Project is developing analysis-based SBKFs (KDFs) that are derived from imperfection&nbsp;sensitivity studies and several imperfection types are being investigated. First, a single&nbsp;dimple-shaped imperfection is being used as a &ldquo;worst-expected&rdquo; imperfection shape and is similar to&nbsp;the initial dimple that is observed in the shell wall at the onset of buckling. The dimple is&nbsp;created in the shell by applying a radially inward lateral load at the mid-length of the cylinder.&nbsp;The magnitude of the lateral load is held fixed and the active destabilizing load (e.g., axial&nbsp;compression) is then applied until buckling occurs in the shell. The magnitude of the lateral load&nbsp;is increased incrementally in subsequent buckling analyses until a minimum or lower-bound buckling&nbsp;load is achieved. A second imperfection type used includes actual measured geometry data from&nbsp;as-built launch-vehicle-like test articles and flight hardware. These measured geometric&nbsp;imperfections are included in the model by adjusting the original geometrically perfect&nbsp;finite-element mesh nodal coordinates to the perturbed imperfect geometry. Finally, the effects of&nbsp;loading imperfections are investigated by applying localized concentrated loads on the ends of the&nbsp;shell in combination with the geometric imperfections or separately. Loading imperfections can&nbsp;occur due to manufacturing/machining variabilities and/or fit- up mismatch at component interfaces.</p><p><u>Test article design and analysis</u></p><p>Test article design and analysis encompass unique requirements that differ significantly from those&nbsp;associated with the design of aircraft, spacecraft, or launch-vehicle structures. Aerospace&nbsp;structures are designed and evaluated to ensure that they are able to sustain the required loads,&nbsp;but they are not typically required to exhibit a specific controlling or critical failure mode&nbsp;(i.e., they are not typically designed such that a specific failure mode&nbsp;has the minimum design margin). In contrast, test articles used in the SBKF Project are&nbsp;designed and evaluated to ensure that a particular failure mechanism is exhibited during a&nbsp;test so that the resulting test data may be used to validate modeling and analysis methods<br />for predicting specific behaviors. In addition, the test articles are typically designed such&nbsp;that they lie within the same design space as the full-scale structure they represent and&nbsp;exhibit similar response characteristics.</p><p><u>Exploratory studies</u><br />Exploratory studies are typically quick assessments used to guide future detailed analysis&nbsp;tasks. Data from these exploratory studies are not intended for future use or as decisional&nbsp;data and are often only used by the analyst to make informed decisions on the direction of&nbsp;future work. Thus, rigorous quality control and reporting of these analysis studies is&nbsp;typically not required.</p><p>The specific class of analysis and corresponding analysis and data requirements shall be determined&nbsp;by the SBKF team leads and the analyst. The analysis approach shall be based on standard best&nbsp;practices, when possible, and shall be uniform across all related analysis activities to ensure&nbsp;consistency. However, deviations from standard practice may be required and/or new approaches may&nbsp;be necessary to meet the analysis objectives. In such circumstances, the analyst and team lead will&nbsp;work together to develop and validate any new approach required.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Reduction in mass of SLS launch vehicle due to less conservitive knockdown factors on cylindrical thin shell walls.</p>  <p>Benefits any new commerical launch vehicle design.</p> <p>Benefits any new launch vehicle design for the DoD.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>33077</td></tr>
+<tr><th>Acronym</th><td>SBKF</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Office of the Chief Engineer (OCE)</td></tr>
+<tr><th>NASA Program</th><td>NASA Engineering and Safety Center Program (NESC)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX15.1.3: Aeroelasticity</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 4 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2007-10-01</td></tr>
+<tr><th>Project End Date</th><td>2016-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama; The Boeing Company — Chicago, Illinois; Northrop Grumman Systems Corporation — Redondo Beach, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL), Virginia (VA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Mark W Hilburger (Principal Investigator) &lt;mark.w.hilburger@nasa.gov&gt;; Marc R Schultz (Co-Investigator) &lt;marc.r.schultz@nasa.gov&gt;; Clinton H Cragg (Project Manager) &lt;clinton.h.cragg@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Timmy R Wilson (Program Director) &lt;timmy.r.wilson@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2019-09-03</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Buckling Analysis of a Honeycomb-Core Composite Cylinder with Initial Geometric Imperfections NASA/TM?2013-217967</strong></li><li><a href="http://ntrs.nasa.gov" target="_blank" rel="noopener noreferrer">SBKF Modeling and Analysis Plan:Buckling Analysis of Compression-Loaded Orthogrid and Isogrid Cylinders NASA/TM-2013-218037</a></li><li><a href="http://www.elsevier.com/locate/compositesb" target="_blank" rel="noopener noreferrer">An experimental study of the compression response of fluted-core composite panels with joints</a></li><li><strong>Shell Buckling Knockdown Factor Project Overview and Status</strong> — Shell Buckling Knockdown Factor Project Overview and Status</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/33077">https://techport.nasa.gov/projects/33077</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create a Proof of Concept Device for a Compact Multi-VCSEL Swept Source-OCT Including Associated Signal Analysis Algorithms, and Data Review Software for Deep Space Missions | NASA TechPort Project 96035</title>
+  <meta name="description" content="Focused Investigation Project Acucela Inc. will develop a Swept Source Optical Coherence Tomography (SS-OCT) Proof of Concept device, employing a unique inexpensive light source, a Vertical Cavity Surface Emitting Laser (VCSEL). Additionally, Acucela Inc. will">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/96035">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 96035</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.1</span>
+        </div>
+        <h1>Create a Proof of Concept Device for a Compact Multi-VCSEL Swept Source-OCT Including Associated Signal Analysis Algorithms, and Data Review Software for Deep Space Missions</h1>
+        <div class="meta-id">NASA TechPort Project ID: 96035</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/96035" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Focused Investigation Project    <p></p>   Acucela Inc. will develop a Swept Source Optical Coherence Tomography (SS-OCT) Proof of Concept device, employing a unique inexpensive light source, a Vertical Cavity Surface Emitting Laser (VCSEL). Additionally, Acucela Inc. will create an alpha Phase Emulation Algorithm (PEA) that will arithmetically combine waveforms of between 2 and 4 Vertical Cavity Surface Emitting Lasers (VCSELs) with overlapping swept wavelengths, effectively creating a single wider scan SS-OCT. Acucela Inc.will also demonstrate alpha implementation of self-imaging capabilities and alpha data reviewing software that will display retinal thickness will be delivered. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The results of this research could ultimately form the backbone of a deployable system for long term expeditionary space missions to detect and monitor treatment of  Spaceflight Associated Neuro-ocular Syndrome (SANS). Current OCTs are not compatible with long term spaceflight due to their size, fragility, and inability to perform self-examination. We have demonstrated that higher resolution OCT data can be achieved using multiple VCSELs as a sweeping laser source. Our device is compact, self-imaging, and durable. Future iterations will provide imaging on the peripapillary and macular regions of the human retina. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>96035</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.1: Medical Diagnosis and Prognosis</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2019-03-01</td></tr>
+<tr><th>Project End Date</th><td>2020-02-29</td></tr>
+<tr><th>Lead Organization / Center</th><td>Translational Research Institute for Space Health (TRISH) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Acucela, Inc. — Seattle, Washington</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Washington (WA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Ryo Kubota (Principal Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Acucela Inc. developed a Swept Source Optical Coherence Tomography (SS-OCT) Proof of Concept device, employing a unique inexpensive light source, a Vertical Cavity Surface Emitting Laser (VCSEL). Additionally, we created an alpha Phase Emulation Algorithm (PEA) that will arithmetically combine waveforms of between 2 and 4 Vertical Cavity Surface Emitting Lasers (VCSELs) with overlapping swept wavelengths, effectively creating a single wider scan SS-OCT. We also demonstrated alpha implementation of self-imaging capabilities and alpha data reviewing software that will display retinal thickness will be delivered. Original project aims/objectives To deliver a swept source Optical Coherence Tomographer (OCT) employing multiple Vertical Cavity, Surface Emitting Lasers (VCSELs) to demonstrate that the signals from multiple VCSELs can be mathematically combined to create a higher sweep range and axial resolution. A small hand-held device was optically and electronically connected to the light source. Using that, we demonstrated the ability to self-administer the examination and to track the alignment of the patient during testing. Software was created to demonstrate retinal thickness data. Institutional Review Board (IRB) approval was obtained to perform testing on humans. Key findings VCSELs can have their output wavelength change by varying the input current. Continuously varying the current creates an output frequency sweep. We attempted to mathematically combine 2 to 4 VCSELs with overlapping sweep ranges. A higher sweep range creates higher axial resolution. For example a Single VCSEL may have a sweep range of 7 to 9 microns yielding 50 microns of axial resolution, by mathematically combining the sweeps of 4 VCSELs taking into account their phase we would get an effective sweep range of approximately 23 nm, yielding axial resolution of 18 microns. We were able to obtain 4 VCSELs from Phillips, three with overlapping waveforms and one with a sweep range that touched the other, VCSEL 4. Therefore, we attempted a more difficult task of determining if a touching waveform could be combined. If so, this would expand the effective sweep range further and increase axial resolution. Unfortunately, VCSEL #3 proved to have defective coupling to the fiber optic which was connected to a laser multiplexer to allow all of the VCSELs to use a common optical path. When this was corrected, the vendor accidentally applied too much current, which permanently reduced the laser output. This meant that the bridge of wavelength sweep between VCSEL 2 and 4 was not available. Therefore, we only combined two VCSELs, but were able to demonstrate a higher axial resolution in the combined waveforms when performing examination on a human retina. Note the narrower peaks of the combined 2 VCSEL waveforms. We incorporated self-alignment into the handheld unit connected to the light source box to capture the human data in our lab in Switzerland. Unfortunately, we found that it was cost prohibitive to ship the multi-VCSEL instruments to NASA. In order to demonstrate the ability for an astronaut to self-align and auto-capture the data, an identical handheld device with only one VCSEL light source, which cost a fraction to ship, was sent for demonstration to NASA, where NASA staff successfully self-aligned and the device successfully auto-captured data. While we were unable to combine 4 VCSELs with one touching waveform, we successfully mathematically combined two overlapping waveforms and demonstrated the associated higher resolution. We were able to successfully multiplex all four VCSELs into a common optical path as well as demonstrate self-alignment and auto-capture, displaying the resultant interferograms. We therefore confirmed our hypothesis that combining the waveforms of multiple VCSELs will yield higher axial resolution in human subjects. The MEMS laser multiplexer we used introduced noise into the system. We have researched and identified several potential methods for multiplexing that will reduce noise, physical size, and current requirements. Additionally, previous experience has demonstrated that converting most if not all of the optical path from free space to fiber optics dramatically increases the signal to noise ratio.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/96035">https://techport.nasa.gov/projects/96035</a>
+    </div>
+  </div>
+</body>
+</html>

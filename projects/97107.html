@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operational Performance Effects and Neurophysiology in Partial Gravity (OPEN-PG) | NASA TechPort Project 97107</title>
+  <meta name="description" content="Background: Understanding human performance under various partial-gravity loadings is critical to NASA’s crewed mission strategies. For example, current vehicle and mission designs for Mars landings require the crew to use robotic teleoperation within 24 hours">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/97107">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 97107</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX11.2.3</span>
+        </div>
+        <h1>Operational Performance Effects and Neurophysiology in Partial Gravity (OPEN-PG)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 97107</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/97107" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Background: Understanding human performance under various partial-gravity loadings is critical to NASA’s crewed mission strategies. For example, current vehicle and mission designs for Mars landings require the crew to use robotic teleoperation within 24 hours of landing—unaided from Earth—to connect landing craft power systems with pre-positioned power generators. This design requires the crew to perform complex sensorimotor operations to maintain life support, as soon as possible after a gravitational transition, and in an unfamiliar partial-gravity setting. Unfortunately, there remains limited knowledge about how the sensorimotor system is affected by exposure to both partial gravity and gravity transitions. Addressing these gaps will in part require integrated assessment of operational and sensorimotor performance alongside neurovestibular and neurophysiological responses during exposure to various gravitational loads.     <p></p>   Aim 1:  Characterize and quantify changes in operationally-relevant sensorimotor and vestibular performance as a function of gravitational load.     <p></p>   Aim 2:  Characterize and quantify changes in physiology—particularly in brain function and autonomic activation during behavioral performance—as a function of gravitational load.     <p></p>   Aim 3: Develop a model to predict behavioral performance and neurophysiological responses under different gravitational loads based on preflight ground testing data.      <p></p>   Hypotheses: (Hyp1) We predict a monotonic but non-linear relationship between Robotics On-Board Trainer-r (ROBoT-r) performance and gravitational load, with larger departures from 1g leading to more impaired performance. (Hyp2) Behavioral alterations will be paralleled by physiological changes at different gravity loads, including activation of prefrontal and vestibular cortex, and autonomic nervous system activation. (Hyp3) Ground-based challenges to the vestibular system will induce detectable neurophysiological responses, and the amplitude of these responses (i.e., an indicator of individual “sensitivity” to these provocations) will help (3a) predict neurophysiological responses in-flight, and (3b) predict behavioral performance in flight.    <p></p>   Deliverables: Overall, our project will characterize (1) operationally-relevant performance and (2) neurophysiological responses as a function of gravity load, as well as (3) providing models to predict performance and neurophysiological impacts of partial gravity based on preflight-data. This work has the potential to identify individuals who are particularly resilient to altered gravity, and will be key for planning future exploration-class missions where survival will depend on the operational capabilities of astronauts in partial-gravity environments. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The proposed parabolic flights will help fill critical knowledge gaps regarding human exposure to fractional-gravity conditions. Specifically, our project will address gaps regarding operational performance, neurophysiological status, individual sensitivity to different gravitational loads between 0-1g, as well as prediction of behavioral performance and physiological responses to partial gravity. In addition to filling key gaps surrounding human performance of operationally-relevant tasks in partial gravity, this work may provide a method to help identify crewmembers who are particularly resilient for performing particular tasks under novel gravity loadings. The results have the further benefit of providing a better understanding of the role of disorientation in Earth-based operational performance. This is relevant not only to fighter pilots, but to task performance by individuals with neurological or medical conditions that adversely affect the vestibular system (e.g., stroke, infections). <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>97107</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.2.3: Human-System Performance Modeling</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 3 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2020-09-01</td></tr>
+<tr><th>Project End Date</th><td>2024-08-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Massachusetts General Hospital — Charlestown, Massachusetts</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Massachusetts (MA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Gary E Strangman (Principal Investigator); Quan Zhang (Co-Investigator); Vladimir Ivkovic (Co-Investigator) &lt;vladimir.ivkovic@nasa.gov&gt;; Michael B Stenger (Project Manager) &lt;michael.b.stenger@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Since project initiation, the project has been in definition phase, while Human Research Program (HRP)-Novespace negotiations continue. The primary efforts have therefore focused on adjusting the research plan based on requirements from the carrier. Changes to date are described below. • Flight campaign: The date of the parabolic flight campaign was tentatively set to the last half of 2022, and there will most likely be a single flight campaign of 3-4 days instead of two flight campaigns. • Experimental re-design: Due to the reduction in flight campaigns from our proposal’s original plan, the experimental plan was re-designed to maximize statistical power. Changes included the following: o Flights &amp; Parabolas: We had assumed 2 campaigns of 4-flights each (8 flights total), with 40 parabolas in each flight, or a total of 320 parabolas. This would have provided 10 parabolas at each of 0, ¼, ½, and ¾ g loadings (with blocks of 10 g loads pseudorandomly interleaved for counterbalancing). An amount of time equal to 10 parabolas would also be spent on the ground or in level flight to conduct 1g testing. To date, negotiations have indicated 4 flights of 30 parabolas each, or 120 parabolas total. This spurred various other changes (below). o ROBoT-r (Robotic On-Board Trainer (ROBoT)): To help recover statistical power, it was decided that ROBoT-r would be used exclusively, instead of half of the data from ROBoT-r and half from SpaceDock. This required the fabrication and assembly of multiple additional ROBoT-r workstations, including multiple sets of new hand controllers. The delivery time for these pushed the flight to sometime past the middle of 2022. o New Hand Controllers; Dr. Strangman worked closely with HRP and the DST Lab to finalize the design and performance characteristics of the new hand controllers, to be fabricated by DST lab personnel. o Ratio of Operational Performance Measures: Originally, due to the ROBoT-r recycle-time, we anticipated only being able to use every other parabola for ROBoT-r because the computers would be re-initializing for the next run during the intervening parabolas. However, Novespace pauses longer between parabolas—more so than other NASA/Zero-G flights—giving ROBoT-r just enough time to reset for every parabola. We therefore were able to re-assign the 10 parabolas such that ROBoT-r is used for 7 of them, and the balance force-plate is used for the remaining 3. This improves power on ROBoT-r, without having a significant negative impact on the postural stability assessments. o Ground Testing: Various plans for ground-based pretesting have been considered, given the constraints on availability of test subjects for training and assessment prior to flight. This issue is still under discussion, with a target of at least 4 days (ideally consecutive) for training/testing on the ground prior to the first flight-day. • Institutional Review Board (IRB) Protocols are well underway. These will be completed and submitted once the experimental design/logistics details above are finalized.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Abstracts for Journals and Proceedings</strong> — Ivkovic V, Shelhamer M, Kelly A, Reilly G, Zhang Q, Strangman GE. &quot;Operational Performance Effects and Neurophysiology in Partial Gravity (OPEN-PG).&quot; 2022 NASA Human Research Program Investigators’ Workshop, Virtual, February 7-10, 2022. Abstracts. 2022 NASA Human Research Program Investigators’ Workshop, Virtual, February 7-10, 2022., Feb-2022</li><li><strong>Abstracts for Journals and Proceedings</strong> — Ivkovic V, Shelhamer M, Kelly A, Reilly G, Zhang Q, Strangman GE. &quot;Operational Performance Effects and Neurophysiology in Partial Gravity (OPEN-PG).&quot; 2021 NASA Human Research Program Investigators’ Workshop, Virtual, February 1-4, 2021. Abstracts. 2021 NASA Human Research Program Investigators’ Workshop, Virtual, February 1-4, 2021., Feb-2021</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/97107">https://techport.nasa.gov/projects/97107</a>
+    </div>
+  </div>
+</body>
+</html>

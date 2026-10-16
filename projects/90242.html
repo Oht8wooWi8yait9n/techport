@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mREST: Flexible Open Interface Standard for Test and Launch Operations | NASA TechPort Project 90242</title>
+  <meta name="description" content="Spaceflight systems must pass through a complex set of testing and processing before being cleared for launch. A significant portion of the pre-launch processing involves integration with other flight systems, general ground support equipment, and test equipme">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/90242">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 90242</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX13.4.4</span>
+        </div>
+        <h1>mREST: Flexible Open Interface Standard for Test and Launch Operations</h1>
+        <div class="meta-id">NASA TechPort Project ID: 90242</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/90242" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Spaceflight systems must pass through a complex set of testing and processing before being cleared for launch. A significant portion of the pre-launch processing involves integration with other flight systems, general ground support equipment, and test equipment. The process of interfacing this equipment has historically been a source of numerous delays and unplanned work prior to launch. The proliferation of different interface types, designs, and manufacturers only serves to increase the difficulties associated with pre-launch integration and testing.The development and adoption of improved, standardized interfaces holds the potential of reducing the cost and complexity of the testing and launch processing processes and could provide eventual benefits to autonomous servicing in future space missions. In-space and surface servicing of multiple types of spacecraft becomes more feasible if a common interface approach can be developed and widely adopted. In 2012, METECS developed the mREST Architecture and Interface Specification and began developing software prototypes that could be used to evaluate the effectiveness of the standard for the automation of testing in flight laboratories at the NASA/Johnson Space Center. This specification and the associated software became collectively known simply as "mREST". The proposed innovation is to expand on the mREST foundational work to design an interface standard that can be utilized to solve the issues associated with test and launch operations. This will be accomplished by first doing research into the specific issues that typically arise during the pre-launch process and identifying areas where the existing mREST specification should be expanded and/or refined.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The mREST interface specification has the potential to greatly enhance existing flight test and processing capabilities at NASA. Any facility which requires integration and testing of hardware and/or software elements would benefit. In addition, development of web-based user interfaces would be streamlined for any mREST element or system. Systems that utilize common NASA components with existing web-based interfaces such as LabVIEW, the Trick Simulation Environment, and/or EDGE graphics have a greater initial potential for implementation. Other applications that have potential for NASA are: 1. Remote data monitoring 2. Integrated test automation and orchestration 3. Simulation monitoring and control 4. Model-based system engineering (MBSE) 5. Facility monitoring and control 6. Monitoring and control of environmental control systems 7. Process management and control 8. Security system management 9. Computer system administration monitoring and optimization 10. Failure analysis and testing 11. Browser-based graphical user interfaces<br /> <br />Any object that requires a simple web-based interface would be able to use software designed using the mREST interface specification. Likewise, any system of disparate elements could easily be integrated using mREST. Some potential non-NASA commercial applications include building environmental control and monitoring, product verification and validation, hardware testing, remote monitoring equipment, safety and security monitoring systems, and automated processes. The potential NASA commercial applications listed in the previous section would also apply for non-NASA applications: 1. Remote data monitoring 2. Integrated test automation and orchestration 3. Simulation monitoring and control 4. Model-based system engineering (MBSE) 5. Facility monitoring and control 6. Monitoring and control of environmental control systems 7. Process management and control 8. Security system management 9. Computer system administration monitoring and optimization 10. Failure analysis and testing 11. Browser-based graphical user interfaces
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>90242</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX13.4.4: Autonomous, Real-Time Command and Control</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2016-06-10</td></tr>
+<tr><th>Project End Date</th><td>2016-12-09</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>METECS — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Kennedy Space Center (KSC) — Kennedy Space Center, Florida</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Florida (FL), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Pat Mccartney (Principal Investigator); Craig R Fortier (Project Manager) &lt;craig.r.fortier@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li><li><strong>Briefing Chart</strong> — mREST: Flexible Open Interface Standard for Test and Launch Operations, Phase I Briefing Chart</li><li><strong>Briefing Chart Image</strong> — mREST: Flexible Open Interface Standard for Test and Launch Operations, Phase I</li><li><strong>Final Summary Chart Image</strong> — mREST: Flexible Open Interface Standard for Test and Launch Operations, Phase I Project Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/90242">https://techport.nasa.gov/projects/90242</a>
+    </div>
+  </div>
+</body>
+</html>

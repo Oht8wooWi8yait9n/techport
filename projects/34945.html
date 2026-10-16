@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Life Prediction for FRP composites with Data Fusion &amp; Machine Learning | NASA TechPort Project 34945</title>
+  <meta name="description" content="High-fidelity, probabilistic predictions of damage evolution in fiber-reinforced polymer (FRP) composite structures could accelerate development and certification of new concepts through a reduction in the need for physical testing and an increase in structura">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/34945">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 34945</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">LaRC CIF</span>
+          <span class="badge">TX09.4.5</span>
+        </div>
+        <h1>Life Prediction for FRP composites with Data Fusion &amp; Machine Learning</h1>
+        <div class="meta-id">NASA TechPort Project ID: 34945</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/34945" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>High-fidelity, probabilistic predictions of damage evolution in fiber-reinforced polymer (FRP) composite structures could accelerate development and certification of new concepts through a reduction in the need for physical testing and an increase in structural health awareness. Unfortunately, high-fidelity models often carry the burden of excessive computation times. Probabilistic damage prognosis involves fusing structural health data with physics-based models using what are sometimes referred to as inverse uncertainty quantification techniques. Here, model parameters that cannot be determined directly are calibrated based on measurement data, and the associated parameter uncertainties are simultaneously quantified. However, these techniques require thousands or even millions of simulations to converge, which compounds the computational problem associated with high-fidelity models. The current state-of-the-art in damage prognosis avoids this issue through a simplification of the damage models, which in turn sacrifices the potential of these predictions to significantly impact research and development at NASA. This proposal aims to achieve a high-fidelity, probabilistic predictive capability for FRP composites utilizing data fusion, advanced modeling and simulation, and machine learning.</p> <p><strong>Objective</strong>: Reach beyond the state-of-the-art utilizing machine learning and data fusion to enable probabilistic life predictions for real-world structures comprised of fiber-reinforced polymer (FRP) composite materials.</p><p><strong>Problem: </strong>Accurately predicting the remaining life of these structures requires the integration of high-fidelity damage progression models, uncertainty quantification (UQ), and inverse uncertainty quantification (iUQ) for data fusion (e.g., Markov chain Monte Carlo methods). Unfortunately, state-of-the-art, high-fidelity damage models can be excessively time consuming which often prohibits their use with standard iUQ methods (e.g., a predictive analysis with 10,000 simulations, each with a runtime of ~3 hours, would take on the order of years to complete). The issue is further complicated in that parallelization of iUQ techniques is inherently restricted.</p><p><strong>Current Practice: </strong>Probabilistic life predictions are typically conducted using simplified one- or two-dimensional analytical models that are time-efficient for use with iUQ. However, these models sacrifice fidelity and are generally incapable of representing damage evolution in real-world structures that are complex in geometry, loading, and material. Damage in these structures is subject to mixed-mode driving forces and progresses in three-dimensions.</p><p><strong>Innovations: (1) </strong>The aforementioned issue of prohibitive computation times will be addressed using surrogate models in place of time consuming finite element analyses (FEA). Structural health monitoring data will then be fused with the proposed high-fidelity damage modeling framework to form probabilistic life predictions for real-world structures using iUQ. Based on initial estimates, prediction times have the potential to be reduced by almost three orders of magnitude using this approach. <strong>(2) </strong>To accomplish the above goal, state-of-the-art composites damage progression research (see attached supplemental material) will be implemented in the three-dimensional fracture mechanics software FRANC3D, developed by Fracture Analysis Consultants, Inc. Machine learning techniques will be used to train the surrogate models utilizing FRANC3D simulations completed <em>a priori </em>and in parallel, leveraging high performance computing.&nbsp;</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The proposed technology could greatly accelerate progress toward the Advanced Composites Program (ACP) objective, which is to reduce the time and cost for certifying structural airframe components comprised of FRP composite materials. The proposed predictive innovations could replace a significant number of certification tests on the element and sub-component level. Furthermore, this research could add life prediction capabilities for complex composite structures to Digital Twin, which was recently selected as a Convergent Aeronautics Solutions (CAS) project. Digital Twin relies on data fusion with advanced predictive models, but the CAS funding focuses on a proof-of-concept for the truss braced wing (TWB) and not for composite-specific research. The aggregation of the proposed technologies in the Digital Twin framework could expand the design space for future NASA concepts, reduce testing burdens for certification and mission development, increase safety and reliability for aerospace structures, and enable condition-based maintenance. From this perspective, the impact of the proposed technology could be far-reaching in aerospace applications within NASA and in industry.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>34945</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: LaRC CIF (LaRC CIF)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.4.5: Integrated Modeling and Simulation for EDL</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 1 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2015-10-01</td></tr>
+<tr><th>Project End Date</th><td>2016-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Fracture Analysis Consultants, Inc (FAC) — Ithaca, New York</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Patrick E Leser (Principal Investigator) &lt;patrick.e.leser@nasa.gov&gt;; Jacob D Hochhalter (Co-Investigator) &lt;jacob.d.hochhalter@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2018-10-10</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/34945">https://techport.nasa.gov/projects/34945</a>
+    </div>
+  </div>
+</body>
+</html>

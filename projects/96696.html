@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Human Simulation Framework | NASA TechPort Project 96696</title>
+  <meta name="description" content="Focused Investigation Project Long-duration human space flight requires new approaches to translating terrestrial medical technologies for use in space. Level Ex develops medical simulation apps used for physician training and proposes to adapt its simulation ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/96696">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 96696</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.6.2</span>
+        </div>
+        <h1>Virtual Human Simulation Framework</h1>
+        <div class="meta-id">NASA TechPort Project ID: 96696</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/96696" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Focused Investigation Project    <p></p>   Long-duration human space flight requires new approaches to translating terrestrial medical technologies for use in space. Level Ex develops medical simulation apps used for physician training and proposes to adapt its simulation framework to the environment and conditions found in spacecraft. Multiple factors impact medical care in space environments including anatomical changes to the human body when exposed to microgravity over long durations, activity differences in microgravity, and spatial limitations. Multiple programs are devoted to studying space medicine, such as a four-week aerospace medicine clerkship at NASA Johnson Space Center and two military residency programs. However, the ultimate method of studying medical procedures in space and training astronauts on these procedures is within an actual environment, such as the International Space Station (ISS), although this is infeasible for all except for those few astronauts assigned to the ISS. Another option is training during a low-gravity parabolic flight but this scenario is expensive and would still lack the ability to induce changes in human physiology that would occur during a long-duration space flight. Thus, there exists a critical need to expand the accessibility of medical research and training through simulated environments that account for space conditions and their impact on the human body. Both NASA and the private sector have worked toward developing capabilities to simulate many health aspects of space flight. These studies and virtual simulations by NASA and third-party vendors, such as within the Digital Astronaut Project and now the Integrated Medical Model Project, have focused on how a specific component of human anatomy and physiology is impacted by long periods in microgravity. Simulations and mathematical models of the heart, eyes, and skeletal structure have been developed to a high degree of fidelity to enable a clearer scientific understanding of human health needed for space flight planning and research. However, simulations to date have a key limitation, in that they are discrete programs that capture only a single individual component of the human system. None of the work to date has been capable of incorporating all of the known research around space health into a cohesive, simulated, and interactive hyper-realistic environment.     <p></p>   To address this need, Level Ex proposes to adapt its real-time medical simulation platform to include the effects of long-duration space flight. Through a significant investment in R&D, the existing Level Ex platform has been developed by a team of top video game/ simulation developers/artists, biomedical engineers, and physicians from around the United States who are expert in the simulation of medical reality in mobile, virtual reality (VR), and augmented reality (AR) environments. Major components include tissue recreation and rendering technology used for high-resolution visualization. Level Ex also applies its extensive experience in building physics-based computational models (such as fluid dynamics) that run in real time and enable medical professionals to practice complex medical procedures based on medical data.     <p></p>   To adapt its current simulation framework to a space medical environment, Level Ex proposed the following project objectives:     <p></p>   (1) Simulate and render the environmental physics of the spacecraft (physical modeling of volume, interiors, mass, temperature, light, radiation, barometric pressure, sound, and gas).     <p></p>   (2) Develop or adapt the virtual human simulation to include anatomical and physiological changes caused by long-duration exposure to space.     <p></p>   (3) Demonstrate the use of medical tool technologies relevant to space flight.     <p></p>   (4) Research and report on existing data simulation gaps and future simulation needs. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          During the first year of the Virtual Human Simulation (VHS) project the Level Ex team demonstrated the ability to adapt existing medical research and simulation development practices from the commercial terrestrial medical industry to meet the space flight medicine needs identified by NASA stakeholders as well as risks and gaps contained within Human Research Roadmap. The Anatomy Viewer component of VHS platform prototype provides users with a robust and scalable framework for the aggregation and visualization of data from space flight medical research studies, terrestrial medical research, and best practice guidelines. The Anatomy Viewer content is informed by medical conditions identified in the NASA Summary of Human Risk of Spaceflight and Exploration Medical Conditions list. Medical content from cardiovascular, ocular, and pulmonary research topic areas was incorporated into the Anatomy Viewer in the first year. Specific conditions were selected, based upon input from subject matter experts (SME) interviews, for additional detailed visual content development and inclusion into the initial iteration:     <p></p>   • Vasodilation associated with microgravity fluid shifts and potential internal jugular vein (IJV) thrombosis.     <p></p>   • Spaceflight Associated Neuro-ocular Syndrome (SANS).     <p></p>   • Cardiac rhythm problems and changes in the shape of the heart due to prolonged microgravity exposure, specifically atrial fibrillation.     <p></p>   • Adverse health effects due to host-microorganism interaction, specifically respiratory infections: Bronchitis.    <p></p>   One of the most substantial technological innovations developed during the first project year is a real-time virtual ultrasound simulation and volumetric anatomical reference modeling process. For this project, Level Ex's R&D team developed some of the most advanced real-time ultrasound simulation technology available to date and demonstrated its application within the VHS platform. Features include:     <p></p>   • Physics-based ultrasound simulation including simulated wave propagation and backscatter, which produces realistic interactions with a range of participating media.     <p></p>   • Real-time rendering through highly optimized Graphics Processing Unit (GPU) acceleration.     <p></p>   • Realistic ultrasound artifacts including ringdown and acoustic shadowing. These artifacts emerge from the mathematical properties of the simulation, as opposed to artifacts added on as a special-case visual effect.     <p></p>   • Validation against phantom tissue analogs used to test and calibrate real transducer arrays.     <p></p>   • Ability to dynamically generate realistic ultrasound images from voxelized patient data. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>96696</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.6.2: Training</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2019-08-01</td></tr>
+<tr><th>Project End Date</th><td>2020-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Translational Research Institute for Space Health (TRISH) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Level Ex — Chicago, Illinois</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Illinois (IL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Erik Funkhouser (Principal Investigator); Victoria Perizes (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The objectives of the initial project year were to: 1. Aggregate and present research on space flight adaptations and medical conditions prioritized by Exploration Medical Capabilities (ExMC). 2. Develop virtual astronauts and environments to visualize space adaptations and medical conditions. 3. Create ultrasound simulation technologies for image acquisition and diagnostic training. 4. Investigate ways to support just-in-time training for urgent and emergency care procedures. Level Ex worked with TRISH (Translational Research Institute for Space Health) and NASA during the initial project year to research medical conditions and adaptations of concern and develop a data driven Virtual Human Simulator platform that provides a foundation for future development of medical training and real-time guidance solutions. The Level Ex team researched six principal topic areas of biological systems covering cardiovascular, airway, thoracoabdominal, musculoskeletal, neuro-ocular, and cerebrospinal fluid (CSF) adaptations and conditions. Dozens of subject matter experts, researchers, flight surgeons, physician astronauts, and other key stakeholders within TRISH, NASA, and supporting organizations were interviewed to discuss medical conditions and adaptations, and identify short-term and long-term goals for the advancement of clinical decision support and training solutions to support future crewed missions. The initial research and feedback informed the refinement of project objectives and the development of the Virtual Human Simulator platform prototype software. The completion of these objectives led to the successful development and delivery of the VHS platform prototype, which consists of two primary components: the Anatomy Viewer and the Clinical Training Scenario. The Anatomy Viewer component of VHS platform prototype provides users with a robust and scalable framework for the aggregation and visualization of data from space flight medical research studies, terrestrial medical research, and best practice guidelines. The Anatomy Viewer content is informed by medical conditions identified in the NASA Summary of Human Risk of Spaceflight and Exploration Medical Conditions list. Medical content from cardiovascular, ocular, and pulmonary research topic areas was incorporated into the Anatomy Viewer in the first year. Specific conditions were selected, based upon input from SME interviews, for additional visual content development and inclusion into the initial iteration: - Vasodilation associated with microgravity fluid shifts and potential IJV Thrombosis. - Spaceflight Associated Neuro-ocular Syndrome (SANS). - Cardiac rhythm problems and changes in the shape of the heart due to prolonged microgravity exposure, specifically atrial fibrillation. - Adverse health effects due to host-microorganism interaction, specifically respiratory infections: Bronchitis. The NASA Exploration Medical Conditions list currently identifies more than one hundred medical conditions of concern for manned space flight exploration missions. The Anatomy Viewer is extensible to include textual and visual medical content for all one hundred or more ExMC conditions, and content can be updated as new information becomes available. One of the future goals for the project is to provide crews with a version of the Anatomy Viewer that contains medical reference content for all of the conditions and risks identified by ExMC. The Clinical Training Scenario component of the VHS platform prototype provides users with an integrated clinical training environment with clinical decision mechanics, virtual astronaut models, and novel ultrasound simulation technology. It is extensible and can be populated with modules specific to each medical condition in the ExMC Medical Conditions List or any other clinical scenario of interest to mitigate human systems risks to future long duration manned space flight missions. The first clinical scenario developed within the VHS prototype is an inflight diagnostic and procedural intervention scenario related to occlusive thrombus in the internal jugular vein due to chronic exposure to space flight conditions. One of the most substantial technological innovations developed during the first project year is a real-time virtual ultrasound simulation and volumetric anatomical reference modeling process. Level Ex&#x27;s R&amp;D team developed some of the most advanced real-time ultrasound simulation technology available to date and demonstrated its application within the VHS platform. Features include: - Physics-based ultrasound simulation including simulated wave propagation and backscatter, which produces realistic interactions with a range of participating media. - Real-time rendering through highly optimized GPU acceleration. - Realistic ultrasound artifacts including ringdown and acoustic shadowing. These artifacts emerge from the mathematical properties of the simulation, as opposed to artifacts added on as a special-case visual effect. - Validation against phantom tissue analogs used to test and calibrate real transducer arrays. - Ability to dynamically generate realistic ultrasound images from voxelized patient data. During the first year of the VHS project the Level Ex team demonstrated the ability to adapt existing medical research and simulation development practices from the commercial terrestrial medical industry to meet the space flight medicine needs identified by NASA stakeholders. During the next phase of the project the Level Ex team seeks to: 1. Investigate the design, development, and integration of technologies to provide a prototype and developmental roadmap for the creation of dynamic and adaptable personalized anatomical models of crew members. 2. Advance the capabilities of the VHS framework prototype developed in year-one to create a remote collaborative environment that allows crew members and flight surgeons to engage in experiential medical practice and procedural scenarios while synchronously interacting with one another from anywhere in the world.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/96696">https://techport.nasa.gov/projects/96696</a>
+    </div>
+  </div>
+</body>
+</html>

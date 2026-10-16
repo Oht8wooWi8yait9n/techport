@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Guidance Service for Upper Class E Traffic Management, Phase II | NASA TechPort Project 125822</title>
+  <meta name="description" content="Todays operational wind guidance lacks turbulence forecasts in Upper Class E (UCE) airspace. Nor does it provide sufficient spatial and temporal granularity necessary to support accurate flight intent prediction. This gap threatens the economic viability and s">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/125822">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 125822</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX16</span>
+        </div>
+        <h1>Weather Guidance Service for Upper Class E Traffic Management, Phase II</h1>
+        <div class="meta-id">NASA TechPort Project ID: 125822</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/125822" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Todays operational wind guidance lacks turbulence forecasts in Upper Class E (UCE) airspace. Nor does it provide sufficient spatial and temporal granularity necessary to support accurate flight intent prediction. This gap threatens the economic viability and scalability of increased UCE flight operations above FL600. The proposed SBIR address these significant challenges by developing several innovations: (1) the extension of NCARs gold-standard wind turbulence prediction model to UCE altitudes to create the first-ever UCE wind turbulence forecast model, (2) high-resolution wind forecast-driven Analytical Trajectory Simulations for several UCE vehicle types, (3) dynamic, wind- and aircraft-type-sensitive separation envelope guidance, and (4) wind-sensitive conflict detection. UWGS is highly relevant to Subtopic A3.01 because it addresses the above discussed key ATM challenges to improve efficiency, capacity, throughput, and safety of near-future (2025-30) diverse and unconventional NAS operations in UCE airspace as well as enabling more efficient high-altitude, UTM-based cooperative separation concepts. Phase I demonstrated that UWGS outperformed state-of-the-art flight intent prediction methods and provided actionable wind hazard guidance with thresholds customizable to individual vehicle types. Phase II validates and enhance Phase I methods, and develops new innovations for Separation Budget method-based separation envelope guidance, probabilistic flight intent prediction, and probabilistic wind/turbulence forecasts. UWGS supports crucial weather guidance service needs for the ETM Separation Service simulations planned by NASA ATM-Xs xTM sub-project. UWGS also provides a digital service for integration into NASA ATM-Xs DIP sub-projects Digital Information Platform. Anticipated results are a working prototype Supplemental Data Service for one or more high-value customer applications, which will be chosen in coordination with NASA, FAA, and ETM operators.  Lack of wind turbulence forecasts in the Upper Class E (UCE) airspace and absence of high-resolution wind-forecast-driven flight intent prediction methods pose significant challenges to the burgeoning market for UCE flight operations. To address these capability gaps and in response to Subtopic A3.01, ATAC and NCAR develop the UCE Weather Guidance Service (UWGS) to aid near-future (2025-30) NAS diverse and unconventional operations in four areas: (1) wind-informed flight intent prediction, (2) aircraft-type-sensitive wind hazard guidance, (3) dynamic, wind- and aircraft-performance-dependent separation envelope guidance, and (4) wind-sensitive conflict prediction. To create UWGS, we develop the first-ever numerical wind turbulence forecasts for UCE altitudes and apply innovative weather translation methods to these forecasts for creating multiple high-value UCE wind guidance services. UWGS benefits ETM operators, the FAA, and NASA ATM-X&rsquo;s Extensible TM sub-project by providing a UCE weather guidance supplementary data service. We also integrate this service into NASA&rsquo;s DIP platform.  There are five primary objectives:  1. Refine Definition of UWGS User Needs and Value Creation  2. Enhance Phase I Wind Simulation and Wind-Impact-Translation Methods  3. Develop New Capabilities to Address Top-priority Customer Problems  4. Create End-to-End UWGS Working Prototype(s) and Integrate with Cloud-based and/or Customer Platform  5. Pursue Commercialization Opportunities  &nbsp;  The five tasks follow the five technical objectives outlined above. Task 1 conducts expert interviews and performs exploratory data analyses to down-select most promising customer problems and Phase I prototype enhancements to work on. Task 2 enhances Phase I methods by applying machine learning to expedite flight intent prediction and wind hazard region computations and validates the wind/turbulence forecasts. Task 3 develops new capabilities including separation envelope guidance, probabilistic flight intent prediction, and probabilistic wind forecasts that are required to address top-priority customer problems. Task 4 integrates the Task 2 and 3 outcomes into the NASA DIP cloud-based platform to create working prototypes or minimum viable products (MVPs) for the most promising customer application(s). Task 5 performs commercialization activities.  &nbsp;  Deliverables to NASA include kickoff briefing, quarterly demonstration reports, final briefing, final report and several customer prototype MVP demonstrations.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          1. Weather Guidance Supplemental Data Service (including wind, turbulence, and other weather effects) for supporting Upper Class E Traffic Management (ETM) Separation Service simulations planned by NASA ATM-X&rsquo;s Extensible Traffic Management (xTM) sub-project  2. ETM digital services for integration into NASA ATM-X&rsquo;s DIP sub-project&rsquo;s Digital Information Platform  3. NASA ER-2 high-altitude airborne science aircraft flight planning and dispatching improvements  1. Flight planning decision aids for commercial and DoD ETM operators  2. Wind-Informed Flight Intent Prediction Service for ETM operators  3. UCE Wind Hazard Guidance Service for ETM operators  4. Dynamic Separation Envelope Guidance Service for supporting ETM operators&rsquo; cooperative separation services as well as FAA&rsquo;s regulatory oversight service  5. ETM Conflict Detection Service for ETM operators
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>125822</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX16: Air Traffic Management and Range Tracking Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2022-04-21</td></tr>
+<tr><th>Project End Date</th><td>2024-10-20</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>ATAC — Santa Clara, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Aditya Saraf (Principal Investigator); Todd C Farley (Project Manager) &lt;todd.farley@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li><li><strong>Briefing Chart</strong></li><li><strong>Final Summary Chart Image</strong> — Final Summary Chart Image</li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/125822">https://techport.nasa.gov/projects/125822</a>
+    </div>
+  </div>
+</body>
+</html>

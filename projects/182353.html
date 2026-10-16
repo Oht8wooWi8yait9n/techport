@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Machine-learning to improve cycling and forecasts with GEOS and expedite the evaluation of assimilating observations from new instruments. | NASA TechPort Project 182353</title>
+  <meta name="description" content="Primary Objective: This is a two-tiered effort to use machine learning (ML) surrogate models to: (i) accelerate integration of the GEOS Atmospheric Data Assimilation System (ADAS) to facilitate studying the potential improvement and impact resulting from the a">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/182353">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 182353</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">SMD</span>
+          <span class="badge">AMT</span>
+          <span class="badge">TX11.2</span>
+        </div>
+        <h1>Machine-learning to improve cycling and forecasts with GEOS and expedite the evaluation of assimilating observations from new instruments.</h1>
+        <div class="meta-id">NASA TechPort Project ID: 182353</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/182353" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Primary Objective: This is a two-tiered effort to use machine learning (ML) surrogate models to: (i) accelerate integration of the GEOS Atmospheric Data Assimilation System (ADAS) to facilitate studying the potential improvement and impact resulting from the addition of new instruments to GEOS ADAS; and a demonstration of capability by (ii) generating forecasts of sea-surface-temperature and sea-ice to improve short- to mid-range (10-day) forecasts with GEOS. Motivation: Machine-Learning (ML) surrogate models for dynamical systems promise dramatic gains in predictive capabilities for various science applications. Surrogate models provide an avenue for constructing Earth Systems Digital Twins (ESDT) envisioned in the AIST solicitation. More specifically, these AI-based models have become central to so-called 'outer-loop' applications, when the nonlinear and linearized (or perturbation) models, used in data assimilation (DA) procedures, are replaced with surrogate models and result in a multiple-times faster DA. Such faster DA algorithms can be used to expedite improvements on the DA procedures themselves, including the assimilation of new observations. Objectives: The main objective of this proposal is to demonstrate how the use of surrogate models can: (i) help expedite the assessment of contribution from new observations to the GEOS assimilation system, and (ii) to provide an illustration for how the GEOS near-real-time forecasts can be improved by using AI predictions of ocean boundary conditions, namely, SST and sea-ice. These areas are of direct interest to NASA Earth Science Missions and its future Earth System Observatory. Approach: We propose to adapt to GEOS the existing ERA5-based surrogate model developed by the PI and some of the Co-Is. This project will rely on (1) the development of data-driven surrogate models for both the SST/sea-ice and GEOS and (2) the investigation of how the GEOS surrogate may be used for accelerated DA specifically with a focus on the addition of new instruments to ADAS. The AI architecture we wish to leverage is the vision transformer neural network, which has proven superior for learning complex dynamical systems, with particularly impressive results for atmospheric variable forecasting. Once the GEOS surrogate model is trained, our goal to use it to accelerate the GEOS ensemble DA system underlying the hybrid 4D Ensemble DA (4DEnVAR) algorithm used in the GMAO near-real time DA system. Expectations: The main effort of this proposal is expected to facilitate the assessment and evaluation of the benefits of introducing new observations in the GEOS data assimilation system. The series of experiments routinely employed by researchers when adding new observations to the DA system and validating the quality of the resulting products and forecasts will be dramatically accelerated with use of the GEOS surrogate model introduced by this proposal. This expediency will add to the agile procedures already in place in the Joint Effort for Data assimilation Integration (JEDI) in association with incorporation of new observing types in the unified observation operator. The second of these efforts will serve to demonstrate the ability of surrogate models to be used for direct system improvement. This is expected to bring an improvement in the skill of GEOS forecasts. Once the GEOS surrogate is trained it is conceivable to use it to investigate rapid evaluation of model gradients via automatic differentiation and thus consider improvements in the DA to bring it from Hybrid 4DEnVar to Hybrid 4D Variational DA (4DVar). Relevance: The proposed work responds to the AIST objectives by providing a prototype for enabling agile science analysis that utilizes diverse observations using an advanced ML tool. Our demonstration will directly improve near-real-time GEOS forward processing system.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Expand current definitions of modeling and  leverage state-of-the-art computer and information science for innovating advanced modeling techniques as well as new technologies and frameworks that will be essential in the development of Earth System Digital Twins
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>182353</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Advanced Modeling Technology (AMT)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.2: Modeling</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2025-06-01</td></tr>
+<tr><th>Project End Date</th><td>2027-05-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Pennsylvania State University-Main Campus (Penn State) — Reading, Pennsylvania</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Argonne National Laboratory (ANL) — Naperville, Illinois; Goddard Space Flight Center (GSFC) — Greenbelt, Maryland; University of Chicago — Chicago, Illinois</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Illinois (IL), Maryland (MD), Pennsylvania (PA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Romit Maulik (Principal Investigator); Troy Arcomano (Co-Investigator); Alexander P Wikner (Co-Investigator); Steven J Greybush (Co-Investigator); Tracy L Ray (Co-Investigator); Santharam Akella (Co-Investigator) &lt;santha.akella@nasa.gov&gt;; Ricardo Todling (Co-Investigator) &lt;ricardo.todling@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Michael S Seablom (Program Director) &lt;michael.s.seablom@nasa.gov&gt;; Laura J Rogers (Program Manager) &lt;laura.j.rogers@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-06-26</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/182353">https://techport.nasa.gov/projects/182353</a>
+    </div>
+  </div>
+</body>
+</html>

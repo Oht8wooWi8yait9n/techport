@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polaris Project: Data Planning and Control Tool (DPAC) | NASA TechPort Project 116433</title>
+  <meta name="description" content="Enabling Capabilities special project series: Polaris Project, small flight experiments or risk reduction projects to fulfill high-priority capabilities gaps. Project Description &amp; Objectives The Data Planning and Control (DPAC) Tool provides generic automated">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/116433">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 116433</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">ESDMD</span>
+          <span class="badge">MCO</span>
+          <span class="badge">TX10.2.4</span>
+        </div>
+        <h1>Polaris Project: Data Planning and Control Tool (DPAC)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 116433</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/116433" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Enabling Capabilities special project series: Polaris Project, small flight experiments or risk reduction projects to fulfill high-priority capabilities gaps.</p><p><strong>Project Description & Objectives</strong></p><p>The Data Planning and Control (DPAC) Tool provides generic automated mission operations capable of responding to dynamic mission operations, such as those often encountered with to crew-tended payload operations or payload operations on crewed or uncrewed vehicles. Designed to accommodate a variety of mission systems, the DPAC tool provides a generic operations capability that can be integrated into a mission architecture with minimal additional development. DPAC focuses on easy integration with mission planning systems, a robust mission activity scheduling and management system, interfaces to external command and telemetry systems, a command scripting system, and a Command and Telemetry Test Tool. While developed and deployable as independent capabilities, the fully integrated suite offers the user end-to-end automated spacecraft ground operations.</p><p> </p><p>Originally intended for use at the Payload Operations Integration Center for the International Space Station, this tool is also fully capable of integrating into other mission ground systems. The heart of the tool is the Planning Automation Service (PAS). PAS can receive mission planning activities using generic mission planning interfaces, sorts and schedules mission activities in a user-friendly interface, and then provides that activity information to external mission command and telemetry interfaces for execution. Users may view, add, remove, and modify planned activities. The system also allows different activities to execute at one of three levels of automation: manual mode where the activity is automatically executed immediately once authorized by an operator, semi-automatic where the activity is reviewed by an operator ahead of time and then authorized for automated execution in the future, and fully-automatic where the activity is automatically executed without prior operator reviewed. Different activities may call for different levels of oversight and pre-coordination, particularly when dealing with the dynamic schedules NASA often encounter in crewed missions. The PAS service is fully ready to provide maximum flexibility and control while still automating the actual execution of activities themselves. PAS is also a key component in the Huntsville Operations Support Center’s (HOSC) automate ground system operations such as the scheduling of connections to NASA’s Deep Space Network or commercial ground stations.</p><p>DPAC’s command and telemetry system interfaces, automated command scripts (called Ground Command Scripts (GCS), and GCS execution interface provide the tools to develop and execute spacecraft command sequences, read spacecraft telemetry, and verify successful activity execution. While developed for the International Space Station and it’s CCSDS format commanding system, it is easily adapted to other mission architectures and concepts. The Command and Telemetry Test Tool is a capability specific to the Enhanced HOSC Systems (EHS) ground command and telemetry system that allows users to simulate telemetry values in a defined sequence, thus providing a robust testing tool to validate GCS execution, command packet contents, and other EHS command and telemetry system applications.</p><p>This project was completed in September 2023 and future development and sustainment is being conducted at Marshall Space Fight Center in the Payload Mission Operations Division.</p><p><strong>Alignment</strong></p><p>The proposal benefits the following unfunded HEOMD Gaps:</p><ul><li>Tier 1, #13-06: "Uncrewed Surface Systems Automated/Autonomous Planning and Scheduling ”<ul><li>Results in knowledge, experience, and technology enhancements. </li></ul></li><li>Tier 2, #10-06: "Creation, scheduling and execution of activities by autonomous systems”</li></ul>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p><strong>Technology infusion & innovation approach</strong></p><p>The Data Planning And Control (DPAC) tool will automate planning by merging telemetry, flight control, and procedures into a seamless operational interface for the Data Systems Ground Operators. DPAC will reduce operator workload, lower the risk for human errors, reduce training time, enable new/more flexible mission operations concepts, and provide modular interfaces for quick adaptation by other programs such as Gateway, Lunar Surface Ops, independent science missions, and other NASA partnership missions. The Payload Mission Operations Division at Marshall Space Flight Center has deployed elements of the DPAC’s Planning Automation Service (PAS), flight task automation scripts, and the Command and Telemetry Test tools for use in operations to operations in 2024 in support of the International Space Station program and other HOSC mission operations. Some ISS-specific implementations of the DPAC functionality are on long-term hold until ISS systematic planning challenges and operations constraints can be eliminated.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>116433</td></tr>
+<tr><th>Acronym</th><td>DPAC</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Exploration Systems Development Mission Directorate (ESDMD)</td></tr>
+<tr><th>NASA Program</th><td>Mars Campaign Office (MCO)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX10.2.4: Execution and Control</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX10.2.1: Mission Planning and Scheduling; TX10.2.2: Activity and Resource Planning and Scheduling</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 7 | Target End TRL: 9</td></tr>
+<tr><th>Project Start Date</th><td>2021-05-01</td></tr>
+<tr><th>Project End Date</th><td>2023-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Josiah M Johnson (Co-Investigator) &lt;josiah.m.johnson@nasa.gov&gt;; Ramon W Pedoto (Co-Investigator) &lt;ramon.pedoto@nasa.gov&gt;; Robert M Hall (Project Manager) &lt;robert.m.hall@nasa.gov&gt;; Julius J Edelmann (Project Manager) &lt;j.edelmann@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Thomas W Inman (Program Director) &lt;thomas.w.inman@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Transitioned To</strong> (International Space Station): The DPAC effort has transitioned future development, sustaining, and implementation to the ISS program under the Payload Mission Operations Division (PMOD) at MSFC.</li><li><strong>Closed Out</strong>: This project was transitioned previously and is being marked as formally closed.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Polaris DPAC Closeout Report</li><li><strong>DPAC Architecture Overview</strong> — DPAC Architecture Overview - This diagram provides a visual representation of the connectivity between different key subcomponents of the DPAC suite of software.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/116433">https://techport.nasa.gov/projects/116433</a>
+    </div>
+  </div>
+</body>
+</html>

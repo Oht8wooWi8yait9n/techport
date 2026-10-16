@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commanding and Planning for Robots in Space Operations | NASA TechPort Project 94003</title>
+  <meta name="description" content="Autonomous and semi-autonomous systems like unmanned spacecraft or robotic vehicles have filled critical roles in NASA&#x27;s great successes, surviving the harsh environs that lie outside Earth&#x27;s protective atmosphere. Beyond robotic missions today, NASA is invest">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/94003">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 94003</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX10.2.4</span>
+        </div>
+        <h1>Commanding and Planning for Robots in Space Operations</h1>
+        <div class="meta-id">NASA TechPort Project ID: 94003</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/94003" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Autonomous and semi-autonomous systems like unmanned spacecraft or robotic vehicles have filled critical roles in NASA's great successes, surviving the harsh environs that lie outside Earth's protective atmosphere. Beyond robotic missions today, NASA is investigating robots that have capabilities similar to humans, such as NASA's research platforms Robonaut 2 (R2) and Valkyrie. Robots like R2 and Valkyrie could provide sustainable, persistent care of infrastructure and equipment while there are humans present and when not. A future robotic team could lay the groundwork for human arrival on Mars, freeing precious time for scientific mission goals. This proposal aims to design an interface and the technology necessary to formulate and plan for complex tasks on complicated, humanoid robots operating in space. An example of an application of such a system is in dormancy operations for long-term space exploration. In the future, an operator for a robot managing a habitat may need to accomplish some task, such as moving cargo from one module of the habitat to another. The operator would observe the robot, establish parameters and constraints of the plan, and request a plan. To exert finer control over the robot's motions, the operator could add more complex constraints. The system would generate a plan that respects constraints, possibly drawing upon previous plans to suggest improvements, and then display the motion and relevant statistics to the operator for approval. If a problem occurs, the operator can rest assured that there is a contingency in place so that the robot can safely recover, and begin planning anew. To achieve this vision, many fields of active robotics research need to be drawn from. Foundational research must be done for disparate problems in robotics as to integrate them into a whole, usable system. Humanoid robots benefit from their form as they may utilize the same tools and environment as humans, but accounting for their formidable mechanical capability while planning is a hard task. To achieve tasks in spaces designed for humans, the robot must respect constraints imposed from the tools used and intrinsic details of the navigable space. Sampling-based constrained motion planners are a promising approach to solve problems of this nature. However, contemporary constrained motion planners do not generalize to arbitrary, complex combinations of constraints. To this end, the proposed work includes development of a rigorous mathematical model of general constraints that can be leveraged by a novel constrained motion planner for effective motion planning. For a robot to remain safe while executing motions, the inherent uncertainty in the world must be accounted for, through planning under uncertainty. This proposal will investigate integration of constrained planning with contingency planning, as to have readily available motions to bring the robot back to safety in the event of failure. For safety and accountability, operators must also have feedback from the planning process to iteratively refine and eventually approve motions for execution. Approved plans will then be stored for later reuse as to not repeat previous efforts, using experience-based planning and cloud robotic systems to synchronize robotic teams. Possible improvement of stored knowledge through geometric and optimal planning techniques will also be investigated. A robotic agent that could be accurately and safely commanded aligns significantly with NASA's goals for autonomous agents and further long-term space exploration. Although this proposal focuses on humanoid robots in space operations, the ideas and techniques presented are general, and widely applicable to other systems that must plan and require human operation. Methods from this proposal could be applied to other systems such as configurable habitats, rovers, and assistive or household robotics back on Earth.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>A robotic agent that could be accurately and safely commanded aligns significantly with NASA's goals for autonomous agents and further long-term space exploration. Although this proposal focuses on humanoid robots in space operations, the ideas and techniques presented are general, and widely applicable to other systems that must plan and require human operation. Methods from this proposal could be applied to other systems such as configurable habitats, rovers, and assistive or household robotics back on Earth.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>94003</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX10.2.4: Execution and Control</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2017-08-01</td></tr>
+<tr><th>Project End Date</th><td>2021-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Rice University — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge, Mars, Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Lydia Kavraki (Principal Investigator); Zachary K Kingston (Co-Investigator) &lt;zachary.k.kingston@nasa.gov&gt;; Julia M Badger (Project Manager) &lt;julia.m.badger@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The foundation of future space exploration lies within robotics. Beyond the orbiters and rovers employed today, robots like NASA’s Robonaut 2 (R2) or Valkyrie have potential to revolutionize space travel by providing human-like capabilities when humans are not present. However, robots are notoriously hard to command – specifying a simple task requires hours of work to spin primitive actions together. Robot manipulation covers a wide breadth of tasks that would be useful for robots such as R2 to solve, such as various chores or logistic tasks on the space station. However, manipulation problems are complex, and as the size of problems scale larger (more objects, more actions the robot can take) these algorithms can take a very long time or are unable to find solutions, even for seemingly simple problems. The research focus of this NSTRF was on how to make planning algorithms for robot manipulation problems faster, more efficient, and generalize to more types of problems. Many manipulation problems are multi-modal. That is, the inherently continuous manipulation problem has some underlying discrete structure. Specifically, there is a finite set of high-level actions (e.g., picking up or placing an object) that each have a continuous infinity of instantiations determined by a parameter (e.g., placing an object at some point on a table). Every specific instantiation is a mode that adds constraints to the robot&#x27;s motion (e.g., adding an end-effector constraint, or constraining where the robot can place a second object). There are two primary challenges with these types of problems: how to plan effectively given mode constraints, and how to choose the sequence of modes such that the desired task is achieved. As a result of this fellowship, there are contributions that address both of these challenges. First, a general framework for planning under manifold constraints, a type of constraint that is commonly found in robotics, was developed and published as “Exploring Implicit Spaces for Constrained Sampling-Based Planning” in the International Journal of Robotics Research, one of the highest impact factor journals in robotics. The method proposed in this article has also been deployed to the motion planning system utilized by Robonaut 2 by the team at NASA Johnson Space Center. Second, two works on multi-modal planners, which solve the entire multi-modal planning problem and address how to achieve entire tasks, have been published: “Informing Multi-Modal Planning with Synergistic Discrete Leads” was published at the IEEE International Conference on Robotics and Automation and “Using Experience to Improve Constrained Planning on Foliations for Multi-Modal Problems” was published at the IEEE/RSJ International Conference on Intelligent Robots and Systems, both high-impact conferences in robotics. These papers propose a general system for multi-modal planning that extends the general manifold-constrained planning framework. This multi-modal planning system can solve problems such as Robonaut 2 climbing across handrails (shown in Illustration 1) and the Fetch robot manipulation objects with complex geometry (shown in Illustration 2). Currently efforts are underway to provide this planner to the team at NASA JSC.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><a href="http://dx.doi.org/10.1177/0278364919868530" target="_blank" rel="noopener noreferrer">Exploring implicit spaces for constrained sampling-based planning</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/94003">https://techport.nasa.gov/projects/94003</a>
+    </div>
+  </div>
+</body>
+</html>

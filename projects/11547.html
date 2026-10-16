@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Super Ball Bot - Structures for Planetary Landing and Exploration | NASA TechPort Project 11547</title>
+  <meta name="description" content="We propose to develop a radically different robot based on a &quot;tensegrity&quot; built purely upon tensile and compression elements. These robots can be light-weight, absorb strong impacts, are redundant against single-point failures, can recover from different landi">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/11547">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 11547</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">NIAC</span>
+          <span class="badge">TX04.2.1</span>
+        </div>
+        <h1>Super Ball Bot - Structures for Planetary Landing and Exploration</h1>
+        <div class="meta-id">NASA TechPort Project ID: 11547</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/11547" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>We propose to develop a radically different robot based on a "tensegrity" built purely upon tensile and compression elements. These robots can be light-weight, absorb strong impacts, are redundant against single-point failures, can recover from different landing orientations and are easy to collapse and uncollapse. Small, light-weight and low-cost missions will become increasingly important to NASA's exploration goals for our solar system. Ideally teams of dozens or even hundreds of small, collapsable robots, weighing only a few kilograms a piece, will be conveniently packed during launch and would reliably separate and unpack at their destination. Such teams will allow rapid, reliable in-situ exploration of hazardous destination such as Titan, where imprecise terrain knowledge and unstable precipitation cycles make single-robot exploration problematic. Unfortunately landing many lightweight conventional robots is difficult with conventional technology. Current robot designs are delicate, requiring combinations of devices such as parachutes, retrorockets and impact balloons to minimize impact forces and to place a robot in a proper orientation. Instead we propose to develop a radically different robot based on a "tensegrity" built purely upon tensile and compression elements. These robots can be light-weight, absorb strong impacts, are redundant against single-point failures, can recover from different landing orientations and are easy to collapse and uncollapse. We believe tensegrity robot technology can play a critical role in future planetary exploration.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>We are developing a radically different robot based on a tensegrity structure and built purely with tensile and compression elements. Such robots can be both a landing and a mobility platform allowing for dramatically simpler mission profile and reduced costs. These multi-purpose robots can be light-weight, compactly stored and deployed, absorb strong impacts, are redundant against single-point failures, can recover from different landing orientations and can provide surface mobility. These properties allow for unique mission profiles that can be carried out with low cost and high reliability. We believe tensegrity robot technology can play a critical role in future planetary exploration.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>11547</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>NASA Innovative Advanced Concepts (NIAC)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX04.2.1: Below-Surface Mobility</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 2 | Target End TRL: 2</td></tr>
+<tr><th>Project Start Date</th><td>2012-09-01</td></tr>
+<tr><th>Project End Date</th><td>2013-06-01</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of California-Santa Cruz — Santa Cruz, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars, Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Adrian K Agogino (Principal Investigator) &lt;adrian.k.agogino@nasa.gov&gt;; Vytas Sunspiral (Co-Investigator) &lt;vytas.sunspiral@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Vianni Ricano Cadenas (Program Manager) &lt;vianni.ricanocadenas@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced To</strong></li><li><strong>Closed Out</strong>: OurPhaseIstudyexplored:1)Feasibility of applying tensegrities to a low-cost ,high science return mission to Saturn&#x27;s moon Titan. 2) Ability to control these structures that exhibit oscillatory and non-linear behavior through evolutionary and central pattern generator based algorithms. 3) Effectiveness of tensegrities as a landing and mobility platform.These studies resulted in three important conclusions: 1.Having analyzed the mission design from trajectory planning, to science instrument election, deployment ,and mass estimation, we showed that tensegrities can be an effective landing and mobility platform for a Titan mission. A tensegrity mission can have a high-mass fraction between science payload and overall weight (as measured at atmosphericentry) due to its dual use as a landing system (like an airbag) and as a system for surface mobility. As a result, tensegrity-based missions can be cheaper and open up new forms of surface exploration that take advantage of their natural tolerance to impacts. 2.We demonstrated in our physics-based simulator that tensegrity probes can be controlled effectively with evolutionary and dynamical algorithms resulting in robust smooth rolling motion over a variety of terrains. 3. Using multiple analysis and simulation tools we showed that tensegrities are a very robust landing platform ,and can protect delicate payloads from a landing impact of 15m/s (and possibly beyond). This was further confirmed by performing droptests on multiple physical prototypes.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>11547-1366220180200.jpg</strong> — Project Image Super Ball Bot - Structures for Planetary Landing and Exploration</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/11547">https://techport.nasa.gov/projects/11547</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objective Function Allocation Method for Human-Automation/Robotic Interaction using Work Models that Compute | NASA TechPort Project 95457</title>
+  <meta name="description" content="To develop effective Human-Automation/Robotic (HAR) systems, NASA requires the development of methods and tools to inform the decisions regarding function allocation between robots and crew members that are able to objectively assess the implications of the as">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/95457">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 95457</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX11.2.3</span>
+        </div>
+        <h1>Objective Function Allocation Method for Human-Automation/Robotic Interaction using Work Models that Compute</h1>
+        <div class="meta-id">NASA TechPort Project ID: 95457</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/95457" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          To develop effective Human-Automation/Robotic (HAR) systems, NASA requires the development of methods and tools to inform the decisions regarding function allocation between robots and crew members that are able to objectively assess the implications of the assignment of these roles for the human-system performance trade space. This research will establish a validated method for the evaluation of function allocation between robots and automated systems and their human crew mates for use in deep space exploration missions.  It will further produce computational models of different possible combinations of a three person human crew and various classes of robots for a variety of tasks which can be used as-is for additional analysis or modified for future concepts of operation.  The method for function allocation will apply fast-time simulation, which will be validated by ground-based human-in-the-loop experimentation.  It may also include human-in-the-loop simulation in an analog environment.       <p></p> The proposed research addresses three main research questions: First, how should roles and responsibilities be optimally assigned to robots and humans based on a combination of task demands, robotic capabilities, and available crew resources, with special attention to the capabilities inherent to classes of robots? Second, what is the human-robot system performance trade-space that serves as the basis for the allocation? Third, how can this function allocation method be validated as creating appropriate function allocation for both nominal and off-nominal operations?     <p></p> We propose a three year effort to address these questions.  In the first year we propose to model the function allocation design space that exists between humans and robots in deep space exploration missions.  We will use a computational framework called Work Models that Compute (WMC), which allows us to model dynamical systems (such as space vehicles and robots), automated systems (such as the automated rendezvous and docking system), and human agents working together to achieve common goals.  WMC was custom designed to model function allocation and to measure eight metrics of function allocation previously established by the proposers.  In the second year we will explore the design space, deeply investigating each metric such as taskload, authority-responsibility mismatch, coherency, etc., while beginning the validation process through the use of human-in-the-loop  experiments with simulated robots.  In the final year we will move from exploring each metric individually to looking at their combined effects as we vary the design space constraints, the tasks, crew stress levels, and function allocation options.  We will continue our validation efforts using human-in-the-loop experiments using a combination of simulated robots and/or real robots.  These experiments will systematically explore a large number of conditions such that they serve not only to demonstrate the function allocation chosen by the method, but also to validate the method. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This research has the potential to impact several fields including computational modeling of function allocation, cognitive engineering methods, and the field human-robot teaming.     <p></p> 	First, this project uses current-day computational methods to model and simulate the human-robot teams at work. We are expanding on existing methods used in aeronautics to advance the field of computational simulation of function allocation for the improvement of crewed space exploration where we encounter additional challenges of agents with differential capabilities, time delay of communication, and the need to represent limitations in resources which might be both physical (say a wrench or oxygen) as well as informational (say the current CO2 levels).   The capability to simulate how human-robot teams work together will help systems designers understand the interaction between humans and space robotics to allow for robust and effective as well as efficient teamwork across missions and different crew-robot complements.  In turn, human-robot teams not only become better at doing their taskwork, but also expand the capacity of what human-robot teams can accomplish. Human-robot teams may then go on to accomplish the numerous tasks that will expand humanity's knowledge of space exploration.     <p></p> 	Second, our research also impacts the growing field of human-robot teaming, as robots continue to advance technically and become less like tools for humans and more like peers and teammates. The computational framework and capabilities we are creating and demonstrating advance the field of cognitive engineering to investigate robot-human teaming, which is a research area applicable to domains beyond space exploration including manufacturing, healthcare, transportation, and agriculture. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>95457</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.2.3: Human-System Performance Modeling</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 5 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2016-10-07</td></tr>
+<tr><th>Project End Date</th><td>2020-10-06</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Georgia Institute of Technology-Main Campus (GA Tech) — Atlanta, Georgia; Pennsylvania State University-Main Campus (Penn State) — Reading, Pennsylvania</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Georgia (GA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Karen Feigh (Principal Investigator); Amy R Pritchett (Co-Investigator); Alexandra M Whitmire (Project Manager) &lt;alexandra.m.whitmire@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Finally, with a small amount of remaining funds we entered a no-cost extension year (NCR), we expanded upon both the on-orbit and rover scenario by introducing stochasticity as a modeling tool to predict how action durations, human and robot responsibilities to the scenarios affect teamwork metrics. Finally, we introduced stochasticity into the simulation to identify how different inputs to our model affect various teamwork metrics. Throughout this work thus far, our various case studies have only used a few predetermined sets of inputs to analyze different scenarios. We expand upon our modeling by introducing Monte-Carlo simulations to randomly sample our various inputs and observe the output trends produced. The input variables that we introduced stochasticity to were action durations, responsibilities, and work strategies. The output metrics that we measured were mission metrics, team co-ordinations, physical coherency, informational coherency, and collaboration. We present four different case studies, the first three of which are based upon the in-orbit maintenance scenario and the fourth based upon the rover scenario. A. Action Duration Case Study – On-orbit Maintenance. This case study focuses on the impact of action durations on the output metrics. We created five hundred different work allocations by randomly sampling five out of the thirty-nine actions to complete the work. The specific output metrics we observed were total mission durations, and human-robot teaming fluency metrics. We first examine how action durations impact the overall mission duration and teamwork. We observe three different kinds of patterns in agent busy time when the action they are conducting varies in action duration. All three cases have linear relationships where increasing the action duration increases the total agent busytime; however, each has a different number of linear trends where the slope is the same but contain different intercepts. The Free flying robot has three clear trends, while the humanoid and EV (extra-vehicular) Astronaut each have two and one, respectively. We found these differences occurred from the way actions were scheduled in that small variations in action durations resulted in complex patterns where various agents traveled to different locations in different orders. This resulted in redundancies in locations traveled which is where the clear differences in intercepts lie. Therefore, we confirm part of our Hypothesis 1 that longer action durations will cause fluency metrics to be higher but with the caveat that how the robots traverse is a confounding factor. B. Human and Robot Responsibilities Case Studies – On-orbit Maintenance. In these case studies, each of the actions that was authorized (conducted) by a robotic agent was varied between being responsible by the intra-vehicular (IV) astronaut or the EV astronaut. Out of the 39 total number of actions, 11 were allocated to the free flying robot, 3 to the Humanoid robot, and 8 to the Remote Manipulator System (RMS). In total, 600 different variations of work allocations were created by randomly selecting either the IV astronaut or EV astronaut to be responsible for every robot action. Our second and third case studies took a deeper dive into how responsibility is related to human-robot teaming metrics. We found that giving robots responsibility of their own actions generally reduces the amount of communication that occurs between robot and human agents. However, this relationship was not completely linear with many variations on how much work the human IV astronaut conducted for each number of actions the robots were responsible for. This was due to the variety of action durations for which the robots were responsible. We also showed that changing the responsibility of actions can change how team members communicate with each other. This tradeoff between agents can be used by team designers to ensure that team members are not overloaded or underloaded with work. We similarly show that goals, perceptions, intents, and evaluations can be traded between the IV astronaut and EV astronaut. C. Work Strategies Case Study – Rover. In our fourth and last case study, we observed how work strategies impacted the total mission duration in a scenario where a rover and astronaut worked together in tandem. Unlike the action durations or responsibility results, the various work strategies changed the configuration of the mission into four discrete categories rather than a continuous distribution. This is because ordering the rover activities in different orders caused cases where interdependent activities had to be conducted in series rather than parallel. We show that Work Models that Compute (WMC) can survey a large state-space of work strategies and provide insight to mission designers on how interdependent activities interact with each other in complex scenarios. X. DISCUSSION Computational simulation of function allocation can provide objective insight in the teamwork that is required for human-robot interaction. We have created models suitable for such computational simulation, representing key aspects of human-robot interaction relative to the allocation of tasks between them. We present two human-robot teaming scenarios: one on the International Space Station (ISS) with multiple robots and the other on the surface of the moon with a lunar rover. These scenarios demonstrate our capability to both model complex teams and also introduce kinematics and dynamics to our models. We also present various metrics and measures and how they relate to teaming fluency and human perceptions of the robot. An experimental confirmation was conducted to test how similar our models performed to real scenarios. The benefit of using computational simulations to evaluate function allocation is that they can be used to identify potential pros and cons of various function allocations in the earliest design stages, without a need to conduct costly human-in-the-loop experiments. When potential problems are identified early in design, changes to the supporting technology and operations can still be made to alleviate the negative effects of a selected function allocation.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Papers from Meeting Proceedings</strong> — IJtsma M, Ye S, Feigh KM, Pritchett AR. &quot;Simulating Human-Robot Teamwork Dynamics for Evaluation of Work Strategies in Human-Robot Teams.&quot; Paper presented at the 20th International Symposium on Aviation Psychology, Dayton, OH, May 7-10, 2019. 20th International Symposium on Aviation Psychology, Dayton, OH, May 7-10, 2019. , May-2019</li><li><strong>Articles in Peer-reviewed Journals</strong> — IJtsma M, Ma LM, Feigh KM, Pritchett AR. &quot;Demonstration of the “Work Models that Compute” simulation framework for objective function allocation.&quot; Proceedings of the Human Factors and Ergonomics Society Annual Meeting. 2018 Sep;62(1):321-4. (62nd Annual Meeting of the Human Factors and Ergonomics Society, Philadelphia, Pennsylvania, October 1–5, 2018.) https://doi.org/10.1177/1541931218621074 , Sep-2018</li><li><strong>Articles in Peer-reviewed Journals</strong> — IJtsma M, Ma LM, Pritchett AR, Feigh KM. &quot;Computational methodology for the allocation of work and interaction in human-robot teams.&quot; Journal of Cognitive Engineering and Decision Making. First published online August 30, 2019. https://doi.org/10.1177/1555343419869484 [note will be part of Special Issue on Human-Machine Teaming], Aug-2019</li><li><strong>Papers from Meeting Proceedings</strong> — Ma LM, Ijtsma M, Feigh MK, Paladugu A, Pritchett AR. &quot;Modelling and evaluating failures in human-robot teaming using simulation.&quot; 2018 IEEE Aerospace Conference, Big Sky, MT, March 3-10, 2018. In: 2018 IEEE Aerospace Conference. 16 p. https://doi.org/10.1109/AERO.2018.8396581 , Mar-2018</li><li><strong>Papers from Meeting Proceedings</strong> — Ma LM, Fong T. &quot;Human Robot Teaming for Space Exploration.&quot; FSR 2017, 11th Conference on Field and Service Robotics, Zurich, Switzerland, September 2017. FSR 2017, 11th Conference on Field and Service Robotics, Zurich, Switzerland, September 2017., Sep-2017</li><li><strong>Abstracts for Journals and Proceedings</strong> — Feigh KM, IJtsma M, Prichett AR, Ma L. &quot;Computational Models and Measures of Human Robot Teaming for Space Exploration and Beyond.&quot; Robotics: Science and Systems (RSS) Workshop on Space Robotics, Pittsburgh, Pennsylvania, June 26-30, 2018. Robotics: Science and Systems (RSS) Workshop on Space Robotics, Pittsburgh, Pennsylvania, June 26-30, 2018., Jun-2018</li><li><strong>Papers from Meeting Proceedings</strong> — Ma L, Ye S, Ijtsma M, Feigh K, Pritchett A. &quot;An Experimental Refinement of Computational Models of Human-Robot Teams.&quot; AIAA Scitech 2020 Forum, Orlando, FL, January 6-10, 2020. AIAA Scitech 2020 Forum, Orlando, FL, January 6-10, 2020. Paper AIAA 2020-1650. https://doi.org/10.2514/6.2020-1650 , Jan-2020</li><li><strong>Papers from Meeting Proceedings</strong> — Ye S, Feigh K. &quot;Lunar and In-Orbit Human-Robot Teaming.&quot; AIAA Ascend, Online conference, November 16-18, 2020. AIAA Ascend, Online conference, November 16-18, 2020. Paper. , Nov-2020</li><li><strong>Articles in Peer-reviewed Journals</strong> — IJtsma M, Ma LM, Pritchett AR, Feigh KM. &quot;Computational methodology for the allocation of work and interaction in human-robot teams.&quot; Journal of Cognitive Engineering and Decision Making. 2019 Dec;13(4):221-41. https://doi.org/10.1177/1555343419869484 , Dec-2019</li><li><strong>Abstracts for Journals and Proceedings</strong> — Ma LM, Ijtsma M, Feigh MK, Pritchett RA. &quot;Objective Function Allocation for Human-Robotic Interaction.&quot; 2017 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 23-26, 2017. 2017 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 23-26, 2017., Jan-2017</li><li><strong>Abstracts for Journals and Proceedings</strong> — Ijtsma M, Ma LM, Pritchett RA, Feigh MK. &quot;Work Dynamics of Taskwork and Teamwork in Function Allocation for Manned Spaceflight Operations.&quot; 19th International Symposium on Aviation Psychology, Dayton, OH, May 8-11, 2017. 19th International Symposium on Aviation Psychology, Dayton, OH, May 8-11, 2017., May-2017</li><li><strong>Papers from Meeting Proceedings</strong> — IJtsma M, Ye S, Feigh KM, Pritchett AR. &quot;Simulating Human-Robot Teamwork Dynamics for Evaluation of Work Strategies in Human-Robot Teams.&quot; 20th International Symposium on Aviation Psychology, Dayton, OH, May 7-10, 2019. 20th International Symposium on Aviation Psychology, 2019. p. 103-108. https://corescholar.libraries.wright.edu/isap_2019/18 ; accessed 2/11/21., May-2019</li><li><strong>Abstracts for Journals and Proceedings</strong> — Ijtsma M, Pritchett RA, Ma LM, Feigh MK. &quot;Modeling Human-Robot Interaction to Inform Function Allocation in Manned Spaceflight Operations, Robotics: Science and Systems.&quot; Robotics: Science and Systems (RSS), Cambridge, MA, July 12-16, 2017. Robotics: Science and Systems (RSS), Cambridge, MA, July 12-16, 2017., Jul-2017</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/95457">https://techport.nasa.gov/projects/95457</a>
+    </div>
+  </div>
+</body>
+</html>

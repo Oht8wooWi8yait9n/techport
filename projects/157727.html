@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Powered Goddard Proposal Assistant (GPA) for Missions | NASA TechPort Project 157727</title>
+  <meta name="description" content="This project aims to develop a suite of specialized AI-assisted capabilities to aid mission proposal development and planning at NASA Goddard Space Flight Center. By combining human expertise with advanced AI capabilities, this project aims to significantly en">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/157727">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 157727</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX11.4.7</span>
+        </div>
+        <h1>AI Powered Goddard Proposal Assistant (GPA) for Missions</h1>
+        <div class="meta-id">NASA TechPort Project ID: 157727</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/157727" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>This project aims to develop a suite of specialized AI-assisted capabilities to aid mission proposal development and planning at NASA Goddard Space Flight Center. By combining human expertise with advanced AI capabilities, this project aims to significantly enhance the efficiency, quality, and competitiveness of NASA Goddard mission proposals, ultimately advancing the agency&#39;s space exploration and scientific discovery goals.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <ol><li> 	<p>Enhanced proposal development and competitiveness: AI tools will accelerate mission implementation planning by enabling teams to create high-quality drafts earlier. The result is higher-fidelity mission implementation plans, identification and addressing of potential weaknesses, and overall stronger proposals. This streamlined process improves NASA Goddard&#39;s mission proposal competitiveness while optimizing the use of time and resources throughout the development cycle.</p> 	</li><li> 	<p>Streamlined mission planning and documentation: The project aims to reduce effort in transitioning to digital threads and MBSE models, enabling faster design iterations and improvements. Additionally, AI tools will efficiently generate initial drafts of supporting documents based on mission context, such as cost Basis of Estimates, design review slides, requirements, risk statements, heritage summaries and more. This comprehensive approach to mission planning and documentation enhances overall efficiency and quality.</p> 	</li><li> 	<p>Improved onboarding and communication: The project will reduce the time needed to onboard new proposal support staff and decrease communication overhead for key personnel, including Principal Investigators, Project Managers, Systems Engineers, and Subject Matter Experts. This improvement facilitates smoother team integration and more effective collaboration.</p> 	</li><li> 	<p>Integration with NASA&#39;s digital transformation: The project directly contributes to NASA&#39;s ongoing Digital Transformation and Digital Engineering efforts by implementing AI-powered tools in the proposal development process. This integration provides a clear path for future missions to adopt these new capabilities, ensuring Goddard remains at the forefront of technological advancements in mission planning and execution.</p> 	</li><li> 	<p>Broader applicability and industry impact: While focused on NASA missions, the tools and methodologies developed have potential applications in the commercial space industry and other government agencies. For example, the AI-assisted document generation and proposal review processes could be adapted for use in commercial satellite development or in planning Earth observation missions for other agencies.</p> 	</li><li>Advancing national space leadership: By enhancing NASA&#39;s ability to develop and propose innovative space missions more efficiently, this project strengthens the nation&#39;s position in space exploration and scientific discovery. The improved proposal process and resource optimization contribute to higher-fidelity mission concepts and more robust implementation plans. This increased proposal quality and thoroughness translates into selected missions that have a better chance of meeting schedule, budget, and performance targets during implementation. Consequently, this leads to more successful space missions, accelerated scientific advancements, and reinforces NASA&#39;s role as a global leader in space exploration.</li></ol>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>157727</td></tr>
+<tr><th>Acronym</th><td>GPA</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.4.7: Digital Assistant</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX11.4.2: Intelligent Data Understanding; TX11.4.4: Collaborative Science and Engineering</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2024-10-01</td></tr>
+<tr><th>Project End Date</th><td>2025-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Michael P Biskach (Principal Investigator) &lt;michael.biskach@nasa.gov&gt;; Michael A Johnson (Project Manager) &lt;michael.a.johnson@nasa.gov&gt;; Renee M Reynolds (Project Manager) &lt;renee.m.reynolds@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-04-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: There were significant advancements made. Substantial portions of a sample historical mission study report were successfully converted into a structured knowledge graph optimized for both low level detailed questions as well as high level summary queries as a proof of concept. As a result Large Language Models generated higher quality, higher accuracy, and well cited responses compared to a conventional Retrieval Augmented Generation (RAG) baseline approach. Additionally, the approach was compatible with a dynamic data landscape, typical of mission proposal development efforts, demonstrating promise for future AI acceleration. The completion of a project does not necessarily indicate that the development work has stopped. The work could potentially continue in the future as a follow-on IRAD; or be used in collaboration or partnership with Academia, Industry, and other Government Agencies. Goddard Space Flight Center’s IRAD program is managed under its Office of Chief Technologist. Activities develop concepts, reduce technology risk, and advance human capital and technological capabilities. Goddard’s IRAD program is highly competitive, opportunity-driven, and 100% strategically aligned with NASA&#x27;s and Goddard&#x27;s strategic priorities. A significant portion of the program is focused on Early Stage Innovations for high-risk, strategically aligned, potential high-payoff technologies that are longer-term or lower TRL.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://etd.gsfc.nasa.gov/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>Goddard Proposal Assistant Logo</strong> — Goddard Proposal Assistant Logo</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/157727">https://techport.nasa.gov/projects/157727</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anytime Summarization for Remote Robot Operations | NASA TechPort Project 10417</title>
+  <meta name="description" content="NASA plans to use intelligent planetary rovers to improve the productivity and safety of human explorers. A key challenge in using robots to support human exploration is orienting remote personnel about robot operations as latency and communication constraints">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/10417">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 10417</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX10.2.4</span>
+        </div>
+        <h1>Anytime Summarization for Remote Robot Operations</h1>
+        <div class="meta-id">NASA TechPort Project ID: 10417</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/10417" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          NASA plans to use intelligent planetary rovers to improve the productivity and safety of human explorers. A key challenge in using robots to support human exploration is orienting remote personnel about robot operations as latency and communication constraints make real-time monitoring impractical. Communication bandwidth will be limited, making it essential to downlink important information early. Periods with no communication will require ground operations to catch up quickly when communication resumes. Consequently ground operators can no longer rely on eyes-on monitoring to orient them about robot performance and progress on mission objectives. Summary measures are needed to identify what progress the robot has made and, when progress is impeded, to indicate what went wrong. Trending measures also are needed that determine how well robotic assets are being utilized and identify opportunities to improve robot productivity. TRACLabs and Brigham Young University propose to develop software for anytime summarization that orients remote personnel quickly about rover operations performed without continuous, high bandwidth communication. An anytime summary will characterize progress on robot operations using whatever data has been downlinked when the summary request is made. It will compute performance measures that give an overview of robot mission success and the efficiency and effectiveness of robot operations, and will provide a launch point for interactive exploration of performance data. Because the quality of an anytime summary is affected by the latency in data availability for ground processing, we will investigate what summary information should be pre-computed by the robot, and the preferred order in which information should be downlinked. During Phase I we will design and prototype software for anytime summarization. We will evaluate this design for use in rover operations using NASA IRG robots. Phase I will produce a design for implementation in Phase II.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Anytime summarization supports crew-centered operations by assisting astronauts in understanding robot performance without eyes-on supervision. These summaries also help remote controllers come up to speed quickly when they cannot observe operations directly due to communication constraints. The proposed project will develop and evaluate quantifiable metrics for robot performance that can be applied at different levels of robot autonomy (NASA Roadmap TA4). The technology for anytime summarization has direct application in NASA analogue field tests with intelligent rovers. One such test is rover exploration of a lava tube as a terrestrial analog for Mars subsurface exploration. Such subsurface operations will result in periods where the rover is out of communication. The proposed software will provide key performance indicators and interactive data exploration to quickly orient personnel once the rover is back in communication. The proposed metrics for data coverage and quality should help science teams find the best data collected by intelligent rovers, such as the Haughton Mars Project field tests. The strategies developed for providing the summaries when access to data is delayed should be applicable for field tests investigating time-delayed operations, such as Desert RATS.<br /> <br />The Department of Defense has increasingly relied on remotely operated robots and unmanned drones for hazardous missions, such as disarming improvised explosive devices or performing aerial surveillance. The software for anytime summarization supports remote situation awareness of such operations. In fact the measures of data quality and coverage were originally developed for video collected by UAV. In the private sector, remote monitoring of drilling operations has much in common with remote space operations. Drilling operations are hazardous, making remote operations desirable. Monitoring for key performance indicators is needed to ensure safety and to make operations more cost effective. The proposed anytime summarization aids situation awareness for remote monitoring of drilling operations.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>10417</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX10.2.4: Execution and Control</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2012-02-13</td></tr>
+<tr><th>Project End Date</th><td>2013-02-12</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>TRACLabs, Inc. — Webster, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California; Brigham Young University-Provo — Provo, Utah</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Texas (TX), Utah (UT)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Debra L Schreckenghost (Principal Investigator) &lt;debra.l.schreckenghost@nasa.gov&gt;; Debra Schreckenghost (Principal Investigator); Matthew C Deans (Project Manager) &lt;matthew.c.deans@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/10417">https://techport.nasa.gov/projects/10417</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Construction of Predictive Uncertainty Quantification Framework to the Extrapolation of TPS Arc-Jet Experiment Data to Flight Conditions | NASA TechPort Project 93977</title>
+  <meta name="description" content="Objective 1.1 of the 2014 Strategic Plan states that NASA&#x27;s efforts will continue to be to &quot;Expand human presence into the solar system and to the surface of Mars to advance exploration, science, innovation, benefits to humanity, and international collaboratio">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/93977">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 93977</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX14.3.3</span>
+        </div>
+        <h1>Construction of Predictive Uncertainty Quantification Framework to the Extrapolation of TPS Arc-Jet Experiment Data to Flight Conditions</h1>
+        <div class="meta-id">NASA TechPort Project ID: 93977</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/93977" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Objective 1.1 of the 2014 Strategic Plan states that NASA's efforts will continue to be to "Expand human presence into the solar system and to the surface of Mars to advance exploration, science, innovation, benefits to humanity, and international collaboration." Although NASA's safe delivery of the Curiosity rover to the surface of Mars proved the organization's ability to transport unmanned cargo, significant progress must be made prior to accomplishing the same feat with human astronauts onboard. Namely the understanding of the physical processes and ability to protect the space vehicle from the harsh conditions encountered in hypersonic atmosphere entries must be expanded upon. Researchers depend on computational models and ground facility scale tests to study the performance of thermal protection systems [TPS] that protect space vehicles from the high temperature gases involved. However, the conditions reproduced at current complexes such as plasma flow wind tunnels cannot match simultaneously all of the actual flight conditions. More importantly, the aerothermal environment on the entire vehicle cannot be reproduced. It can only be approximated at few points such as the stagnation line. The need for proper uncertainty quantification and propagation of, including but not limited to, epistemic uncertainty of systems is outlined in section 11.3.6 of TA-11 as well as validation of modeling tools in section 11.3.8.1 of TA-11. The proposed work focuses on the development of a stochastic model for enhancing the ability to extrapolate arc-jet facility TPS data to flight conditions as well as validation and uncertainty quantification through Bayesian methods. It has been shown that even for small probes, radiative heating constitutes 10% of the total heat flux [Chazot]. However, current plasma flow wind tunnel methodologies are unable to reproduce the effects of the radiative processes or the Mach number of the flow experienced in hypersonic Mars return atmosphere entries. By applying a stochastic model to arc-jet facility data that accounts for the inability to recreate all flight conditions at the stagnation point, and propagation and quantification of uncertainty of the system, the confidence with which the results can be extrapolated will be increased and limitations made known. The statistical approach to model validation will be tested using EFT1 flight data. The construction of the stochastic model and planned uncertainty quantification and validation treatments will help increase the compatibility of ground facility results with flight conditions.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>By applying a stochastic model to arc-jet facility data that accounts for the inability to recreate all flight conditions at the stagnation point, and propagation and quantification of uncertainty of the system, the confidence with which the results can be extrapolated will be increased and limitations made known. The statistical approach to model validation will be tested using EFT1 flight data. The construction of the stochastic model and planned uncertainty quantification and validation treatments will help increase the compatibility of ground facility results with flight conditions.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>93977</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX14.3.3: Thermal Protection Analysis</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2017-08-01</td></tr>
+<tr><th>Project End Date</th><td>2021-12-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Illinois at Urbana-Champaign — Urbana, Illinois</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Illinois (IL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Marco Panesi (Principal Investigator); Przemyslaw Rostkowski (Co-Investigator); Jeremie B Meurisse (Project Manager) &lt;jeremie.b.meurisse@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The increased interest in space exploration and study of nearby non-stellar objects necessitates further development of modeling capabilities for accurate prediction of physical phenomena encountered. Among those, understanding of material response behavior and accurate uncertainty quantification for determined predictions in hypersonic entry scenarios is critical for proper sizing of TPS materials in vehicle heat shield designs. Studies concerning these articles are conducted in plasma wind tunnel facilities that enable a multitude of diagnostic techniques to be utilized where obtained data are used in validation and calibration of existing numerical tools among others. However, these facilities are not able to fully recreate encountered flight environments and predictions made with tools calibrated with corresponding data extrapolate beyond the achievable ground testing envelope. Objectives of this effort were to increase the confidence with which results of computational tools calibrated with data obtained at plasma wind tunnel facilities can be extrapolated to in-flight performance. This was addressed with development and formulation of a non-deterministic framework that considers model inadequacy and shortcomings of ground testing strategies through application of physics and probability based stochastic model(s). Anticipated statistical treatments necessitated development of the in-house Stochastic Modeling and Uncertainty Quantification (SMUQ) toolbox. Written following an object-oriented design, a number of statistical methodologies spanning fields of sensitivity analysis, surrogate modeling, non-deterministic calibration, and uncertainty quantification were included as part of the framework and validated against results from existing applications. The implemented routines take advantage of a multitude of optimizations and boast highly configurable input parametrization to ensure, together with streamlined pairing with external computational models, high versatility and applicability in a wide range of scientific fields and audience. The SMUQ toolbox was utilized in all applications of statistical methodologies performed as part of this work. In addition to plasma wind tunnel facility and Mars Science Laboratory (MSL) flight-oriented studies, the toolbox was also employed in research concerning re-entry of the Orion vehicle as well as more nuanced applications in the fields of aerodynamics and non-equilibrium chemistry. A large body of preliminary investigations was performed to meet the objectives of the research training plan over the course of the fellowship. Some of these included studies concerning effects of uncertainty models utilized as part of Bayesian inference exercises where it was found that inclusion of correlation effects in model error across the response domain can have significant impacts on calibration results. Effects of common simplification approaches like dimension reduction, grid discretization level, and absence of input correlation were also investigated through application of a series of sensitivity treatments with 3-D monolithic, recessing 1-D, and 1-D TC1-driver scenarios for the MSL heatshield. Of the myriad of obtained conclusions, it was found that reduction from 3-D to 1-D scenarios near the stagnation region did not appreciably alter dependence of the model output to input variation. These effects were even less prominent in the case of coarse grids where non-negligible deviation in quantity of interest predictions between simulations using different grid densities was observed. Limitations of state-of-the-art approaches in straight forward propagation of results obtained from non-deterministic calibration exercises with HyMETS ground facility measurements were also explored. It was found that given limited related body of work in the charring ablator field, without ad-hoc approaches model inadequacy could not be applied in extrapolation scenarios and limited uncertainty that could be accounted for did not adequately capture uncertainty quantified with available flight data. More importantly, based on calibrated predictions with ground facility data, quantified uncertainty bounds did not reliably encapsulate captured flight measurements. The non-deterministic framework addresses prediction of uncertainty due to model inadequacy as well as applicability of ground facility testing strategies to flight environments through a novel combination approach. A Gaussian process formulation is first utilized to approximate uncertainty due to model inadequacy beyond the calibration scenario. It is established that additional model and environmental quantities can be used in its formulation in addition to corresponding hyperparameters that are calibrated simultaneously with material response framework parameters. It was also found that there exists a conflict in how ground facility and flight data inform input quantities during a calibration exercise due to differences in obtained environments. A prior-posterior mixture is utilized in a following treatment to resolve discrepancy in obtained information where posterior obtained with plasma wind tunnel data is weighed against prior knowledge based on the applicability of the ground scenario to the extrapolated environment. Predictions concerning most likely outcomes as well as associated uncertainty are shown to be much more closely representative of uncertainty obtainable computationally once flight data are available. In addition to more adequate uncertainty bounds, predictions are also biased based on relevance of calibration data given the physical knowledge implemented in the computational model. The general structure and formulation of the framework allows for further development of the model inadequacy emulator once more data are available. While the present work was concerned with material response aspect of the hypersonic entry, contributing factors due to uncertainty in aerothermal environment solution process can also trivially be implemented in future efforts in a hierarchical procedure. The developed framework in sum yields significantly more accurate depictions of uncertainty in predictions for extrapolation scenarios with respect to material response of charring ablator TPS materials. Improved uncertainty quantification capabilities reliant on thorough probabilistic treatments can subsequently be leveraged in material sizing procedures for more optimal designs.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/93977">https://techport.nasa.gov/projects/93977</a>
+    </div>
+  </div>
+</body>
+</html>

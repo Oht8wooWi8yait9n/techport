@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phobos L1 Operational Tether Experiment (PHLOTE) | NASA TechPort Project 92632</title>
+  <meta name="description" content="A sensor package that floats just above the surface of Phobos, suspended by a tether from a small spacecraft operating at the Mars/Phobos Lagrange 1 (L1) Point would offer exciting opportunities for science (SMD), for human exploration (HEOMD) and for advancem">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/92632">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 92632</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">NIAC</span>
+          <span class="badge">TX04.2.2</span>
+        </div>
+        <h1>Phobos L1 Operational Tether Experiment (PHLOTE)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 92632</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/92632" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          A sensor package that floats just above the surface of Phobos, suspended by a tether from a small spacecraft operating at the Mars/Phobos Lagrange 1 (L1) Point would offer exciting opportunities for science (SMD), for human exploration (HEOMD) and for advancements in space technology (STMD). Detailed information on the Martian moon Phobos is limited even though it is considered an important destination for near term human exploration. A PHLOTE spacecraft would perform fixed point station keeping at the Mars/Phobos L1 point to allow a tethered sensor package to float just above the moon's surface and also park instruments on the surface for in situ science measurements. This can include ground penetrating radar for subsurface composition measurements to determine how thick the layer of fine grained regolith is for future landings. Other key instruments would be dosimeters for understanding the radiation environments for future human missions, cameras, and a spectrometer for surface mineral analysis. If deployed after a human landing, a PHLOTE spacecraft could provide a constant eye in the sky for ground controllers to monitor mission deployments and operational activities. The PHLOTE mission concept has only now become feasible due to recent technology advances, many of which have been supported by NASA's STMD. Key technologies that make this mission concept feasible include: The Navigation Doppler Lidar (NDL) Sensor for the providing precise spacecraft position and rate knowledge relative to Phobos. This high precision is needed to maintain position at the L1 point; Carbon Nanotube (CNT) braided yarns for a structurally strong tether that doubles as a power and data conduit, Ultralightweight solar arrays, and highly efficient electrospray micro-propulsion thrusters for long term hover mode station keeping.##The Martian Moon Phobos offers a key waypoint toward enabling human surface landings on Mars. In particular Stickney Crater, which always faces Mars due to Phobos' synchronous rotation, provides an excellent stepping stone destination as a precursor to a human Mars landing. There is very limited information on the composition and the environments at Stickney Crater on Phobos. Since Phobos has a composition similar to carbonaceous chondrite meteorites, it is believed that it could provide minerals that can be used for In Situ Resource Utilization (ISRU) to recover key elements such as Oxygen for use as return trip propellant. The mission concept below would answer many of these questions as well as provide TRL advancement in key technology areas for human exploration.##This mission concept is a synthesis of new technologies that would provide a unique platform for multiple sensors directed at Phobos as well as Mars. Since the Mars/Phobos L1 point is only ~3.1 km from the surface of Phobos, the PHLOTE tether length only needs to be a few kilometers long. A tether configuration with its Center of Gravity at the Mars/Phobos L1 point can place a sensor package on the moon's surface or float it just above. Due to Phobos' very low gravity, the tether will be under very low tensile loads.##Using a longer tether, this concept can be similarly used for other missions such as Mars/Deimos or at the Pluto/Charon L1 point where both bodies are tidally locked which means a PHLOTE spacecraft with a much longer tether could descend into Pluto's tenuous atmosphere and sample its chemistry at all elevations unlike a traditional probe.##If selected, a feasibility study for the Phobos L1 Operational Tether Experiment (PHLOTE) mission would be performed that will define the PHLOTE mission, determine the technology needs and assess the technology readiness. The study would also model the system, identify risks, as well as explore new science opportunities that could be done with this unique sensor platform.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The mission concept would provide detailed information on the Martian moon Phobos as well as provide TRL advancement in key technology areas for human exploration.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>92632</td></tr>
+<tr><th>Acronym</th><td>PHLOTE</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>NASA Innovative Advanced Concepts (NIAC)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX04.2.2: Above-Surface Mobility</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2017-04-01</td></tr>
+<tr><th>Project End Date</th><td>2018-01-31</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars, Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Kevin S Kempton (Principal Investigator) &lt;kevin.s.kempton@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Vianni Ricano Cadenas (Program Manager) &lt;vianni.ricanocadenas@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The PHLOTE Phase 1 study has investigated the key technical challenges to implementing a PHLOTE mission at the Mars-Phobos L1 location. Based on the initial study it appears that the innovative method of using tether length control can help manage the periodic motion of the L1. In addition it appears long term station keeping is possible using the NDL and electrospray thusters without excessive propellant requirements. Simulations of PHLOTE at Phobos will continue to be refined in Phase 2. The top technical challenge has now become the deployment of the sensor platform at the Mars-Phobos L1 point. Deploying tether systems in space is hard. Deploying a tether system while maintaining position with very limited control authority at an unstable orbital location all under autonomous control is really hard. A credible PHLOTE spacecraft design has been developed as a foundation for future design iterations. A key focus of future studies will be the design of the tether system which will have some challenging requirements. It will need pretensioners due to the low tension. It will need to be reeled in and out almost continuously to enable tether length control to account for the motion of the L1 point. It will need sensors to help dampen out unwanted oscillations. The tether system design will be developed in Phase 2 once the optimal deployment method is selected. There is a lot of interest in the NDL for precision landing. Specific work to tailor the NDL for a PHLOTE application must be done. This work will continue in Phase 2 with actual hardware testing of new components that will greatly reduce mass and power. A PHLOTE mission has a great deal of science potential and feedback from the science, exploration, and technology development community has been very positive. There are many really exciting technology demonstration opportunities that can be done with a PHLOTE platform (i.e. using PHLOTE as the first operational space elevator). In Phase 2, the team will increase advocacy for a PHLOTE mission. This includes bringing on teammembers from JPL and also providing a generous number of internship opportunities to continue work on the PHLOTE mission design.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Report PDF\Final Report URL</li><li><strong>[Closeout Link]</strong> Closeout Link</li><li><a href="https://www.nasa.gov/directorates/spacetech/niac/2017_Phase_I_Phase_II/PHLOTE" target="_blank" rel="noopener noreferrer">NASA.gov Feature Article</a></li><li><strong>Project Image</strong> — Phobos L1 Operational Tether Experiment (PHLOTE) Credits: Kevin Kempton</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/92632">https://techport.nasa.gov/projects/92632</a>
+    </div>
+  </div>
+</body>
+</html>

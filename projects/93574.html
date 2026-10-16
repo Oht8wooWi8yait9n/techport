@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integrating Standard Operating Procedures with Spacecraft Automation | NASA TechPort Project 93574</title>
+  <meta name="description" content="Spacecraft automation can be used to greatly reduce the demands on crew member and flight controllers time and attention. Automation can monitor critical resources, perform routine tasks, respond to unexpected events, and manage the overall operation of on-boa">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/93574">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 93574</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          
+        </div>
+        <h1>Integrating Standard Operating Procedures with Spacecraft Automation</h1>
+        <div class="meta-id">NASA TechPort Project ID: 93574</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/93574" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Spacecraft automation can be used to greatly reduce the demands on crew member and flight controllers time and attention. Automation can monitor critical resources, perform routine tasks, respond to unexpected events, and manage the overall operation of on-board systems. Crew members and flight controllers also use standard operating procedures to manage the tasks necessary to operate complex space missions. These procedures document both manual, non-automatable tasks and the interaction with automated space systems. In current NASA operations, however, automation systems and procedures are completely divorced from each other. Thus, procedures cannot start automation processes, monitor automation systems, or respond to state changes in automated systems. TRACLabs has developed an integrated development environment for electronic procedures called PRIDE. Our subcontractor, The Hammers Company, has developed an automation system called Galaxy and its Spacecraft Test and Operations Language (STOL) interpreter. In Phase I of this research, TRACLabs and The Hammers Company integrated PRIDE with Galaxy as a proof-of-concept example of the capabilities provided by a link between standard operating procedures and automation systems. Phase II of this research will focus on a much tighter interaction between PRIDE and Galaxy and application to NASA?s Resource Prospector mission.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          PRIDE is being evaluated for use in ground control operations for the Resource Prospector (RP) robot being developed by NASA JSC and ARC for lunar surface operations. Galaxy is already being used by RP ground operators. The results of this research are expected to have immediate applicability to RP and we anticipate RP using PRIDE for their ground operations. This work is also applicable to human spaceflight including ISS and Orion operations. This includes EVA, VVO, and ROBO, all of whom have seen demonstrations of this research. We are working with researchers at Armstrong Flight Research Center to use PRIDE to automate their AirVolt test stand operations in advance of testing for the SCEPTOR X-57 project. The new automation features developed in this project will be directly applicable to AirVolt and SCEPTOR X-57. NASA's Space Network Ground Segment Sustainment (SGSS) project that is modernizing the space agency's ground infrastructure systems for their Space Network is evaluating PRIDE as a potential technology for Local Operating Procedures (LOPs).<br /> <br />TRACLabs is already selling the core technology proposed in this project as a commercial product with a large oil field services company as a launch customer. Field-testing at several sites world-wide is currently underway before deployment in actual operations in mid-2017. TRACLabs expects additional customers in the oil and gas industry will deploy PRIDE once it has been proven effective by by our launch customer. Sierra Nevada Corporation has also purchased licenses for use in their Dream Chaser program, which was recently selected to deliver cargo to ISS. TRACLabs is beginning a pilot program with a large chemical manufacturer to explore the usefulness of electronic procedures in their operations. By partnering with the Hammers Company and integrating with Galaxy we expect to acquire customers in satellite operations.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>93574</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2017-04-19</td></tr>
+<tr><th>Project End Date</th><td>2021-01-15</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>TRACLabs, Inc. — Webster, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>David Kortenkamp (Principal Investigator); Robert Carvalho (Project Manager) &lt;robert.e.carvalho@nasa.gov&gt;; Ryszard L Pisarski (Project Manager) &lt;ryszard.l.pisarski@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li><li><strong>Briefing Chart</strong> — Integrating Standard Operating Procedures with Spacecraft Automation, Phase II Briefing Chart</li><li><strong>Final Summary Chart Image</strong> — Final Summary Chart Image</li><li><strong>Briefing Chart Image</strong> — Integrating Standard Operating Procedures with Spacecraft Automation, Phase II Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/93574">https://techport.nasa.gov/projects/93574</a>
+    </div>
+  </div>
+</body>
+</html>

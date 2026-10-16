@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synthetic Pulse Artemis Radar for Crustal Imaging (SPARCI) | NASA TechPort Project 157595</title>
+  <meta name="description" content="NASA’s Artemis program is planning on returning astronauts to the Moon in the current decade. Part of the astronauts’ duties will be to deploy instruments that enable science that is challenging to do robotically. A science goal 1e of the Artemis III SDT focus">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/157595">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 157595</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">SMD</span>
+          <span class="badge">DALI</span>
+          <span class="badge">TX08.1</span>
+        </div>
+        <h1>Synthetic Pulse Artemis Radar for Crustal Imaging (SPARCI)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 157595</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/157595" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          NASA’s Artemis program is planning on returning astronauts to the Moon in the current decade. Part of the astronauts’ duties will be to deploy instruments that enable science that is challenging to do robotically. A science goal 1e of the Artemis III SDT focuses on impact processes and how impacts have left little intact bedrock in the Artemis landing sites. Thus, to interpret the present surface it is essential to understand how cratering mixed and deformed crustal rocks.  Our proposed science objectives are to: - Determine the depth to the upper-lower megaregolith boundary, - Determine the thickness of the surficial regolith, - Determine the density profile of the upper megaregolith, - Determine the structure of the upper megaregolith, and - Determine the abundance of subwavelength scatterers.  We propose the Synthetic Pulse Artemis Radar for Crustal Imaging (SPARCI; pronounced “sparky”) instrument that is a novel Ground Penetrating Radar (GPR). SPARCI is designed to radiate over a large bandwidth from 100 kHz to 100 MHz. To transmit to such low frequencies a 172-meter antenna is needed. Such a large antenna is difficult to deploy robotically, but simple for an astronaut to layout. This long antenna is an asymmetric dipole to reduce null frequencies where destructive waves cause low radiated efficiencies. To further cover the lack of efficiency of the first null frequency, astronauts will deploy a second 40-m asymmetric dipole antenna orthogonal to the first. Such large antennas cannot be moved. Thus, the transmitted energy will be received using a voltage probe array onboard a rover to measure the electric field over the bandwidth. The rover will traverse away from the transmitter. As it traverses radially away, reflections from interfaces “moveout” to larger two-way travel times. Such moveout is proportional to the subsurface velocity. The Moon’s extremely low loss electrical properties allow for deep penetration, wave propagation down to 100 kHz, and a velocity that is proportional to density. Thus, this moveout will allow SPARCI to measure the density profile as a function of depth. SPARCI will also measure the thickness of the regolith and resolve ejecta blocks within the 30 meters of the Tx.   We propose to advance SPARCI to TRL-6 from TRL-4 by conducting field tests at the Great Sand Dunes in Colorado and at the Harding Icefield near Seward, Alaska to demonstrate deep radar reflections and better measure the capabilities of the instrument. We will then perform environmental tests (shock and vibration and temperature cycling under vacuum) to ensure SPARCI can withstand the launch and the temperature range of the south pole.      SPARCI will have a high perceived impact in the measuring of the structure of the upper megaregolith, from the depth of the surficial regolith, to the density profile, to the depth of the upper to lower megaregolith boundary. None of these values are well known as they have been estimated via theoretical models, inferences from impact cratering morphology, and constraints from gravity and seismic data. For example, we will be able to determine how the density profile at the south pole compares density profiles derived from seismic, radar interferometry, and gravity data. SPARCI will also better constrain the structure of the upper megaregolith and can be used as a calibration tie point for improving theoretical models of megaregolith formation. Overall, SPARCI will allow a greater understanding of impact processes not only on the Moon, but similar airless bodies and even Mars.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Improved scientific instruments for future Lunar science missions.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>157595</td></tr>
+<tr><th>Acronym</th><td>SPARCI</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Development and Advancement of Lunar Instrumentation (DALI)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1: Remote Sensing Instruments and Sensors</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2024-01-01</td></tr>
+<tr><th>Project End Date</th><td>2027-03-31</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Southwest Research Institute - Boulder — Boulder, Colorado; Southwest Research Institute - San Antonio (SWRI) — San Antonio, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>David Stillman (Principal Investigator); W Troy Nagy (Co-Investigator); Michael Shoffner (Co-Investigator); Bryan R Pyke (Co-Investigator); Zane Meyer (Co-Investigator); Robert E Grimm (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Erica N Montbach (Program Director) &lt;erica.n.montbach@nasa.gov&gt;; Anna Maria T Pal (Program Manager) &lt;a.pal@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-08-22</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/157595">https://techport.nasa.gov/projects/157595</a>
+    </div>
+  </div>
+</body>
+</html>

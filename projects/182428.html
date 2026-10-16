@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compact Electron Proton Spectrometer Development (CEPS) | NASA TechPort Project 182428</title>
+  <meta name="description" content="The Compact Electron Proton Spectrometer (CEPS) Development project will design, develop and deliver CEPS instruments for long term operational space weather and radiation monitoring. The primary science goal is to provide topical and timely Solar Energetic Pa">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/182428">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 182428</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">ESDMD</span>
+          <span class="badge">MCO</span>
+          <span class="badge">TX06.1</span>
+        </div>
+        <h1>Compact Electron Proton Spectrometer Development (CEPS)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 182428</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/182428" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The Compact Electron Proton Spectrometer (CEPS) Development project will design, develop and deliver CEPS instruments for long term operational space weather and radiation monitoring. The primary science goal is to provide topical and timely Solar Energetic Particle data that are the direct inputs for space weather nowcasting models. The CEPS External to Vehicle (CEPS-EV) detector is being developed for this purpose. Nowcasting models are used operationally by NASA for crew protection during exploration missions. CEPS-EV will also provide valuable data for the wider Helio physics community.</p><p>CEPS-EV is expected to offer this capability in a 4W package with a 1U form factor including an avionics package designed for a 10-year lifespan outside of a spacecraft (in free space). CEPS-EV achieves this by using a pixelated 1mm thick Cadmium Telluride (CdTe) sensor attached to a Timepix2 ASIC. The pixel detector architecture also offers a number of additional advantages over conventional ‘silicon telescope’ designs including superior proton and electron separation and pile-up-free operation from Galactic Cosmic Ray (GCR) flux rates through the very largest Space Weather events. While Timepix2 CdTe is a new technology for use in space, the CEPS-EV hardware development benefits from a strong program of designing, manufacturing, delivering and flying radiation measurement flight hardware for crew protection, exploration and scientific measurement.</p><p>A CEPS Internal to Vehicle (CEPS-IV) variant of the CEPS instrument will also be developed to meet NASA’s operational monitoring requirements for long duration lunar surface and Mars missions. The CEPS-IV will use the same radiation-hardened avionics to deliver a high-reliability radiation monitor with a 10-year operational lifetime for spacecraft and habitat interiors. </p><p>This effort will focus on the development and delivery of CEPS instruments. This will entail the delivery of CEPS-EV and CEPS-IV instruments for technology demonstrations on Gateway or another spacecraft, which will result in TRL8 instruments ready for infusion into a flight program such as the Artemis pressurized rover. Intermediate goals (thru FY27) include PDR, CDR and construction, test and environmental qualification and science verification of a TRL6 CEPS-EV qualification unit. Development of the CEPS-IV will trail that of the CEPS-EV, with an initial design and prototype completed by the end of FY27.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This project will provide an external instrument on the vehicle that can monitor the electron levels to support predictive responses for upcoming Solar Particle Events (SPE), which will expand the time crew has to prepare for large solar events. When used with space weather modeling tools, this detector is expected to increase warning time from zero minutes for Earth-Independent missions, if no external space weather monitor is provided, to 30 minutes. This project will also provide an internal instrument needed for operational monitoring for long duration missions and missions with long lead times.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>182428</td></tr>
+<tr><th>Acronym</th><td>CEPS</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Exploration Systems Development Mission Directorate (ESDMD)</td></tr>
+<tr><th>NASA Program</th><td>Mars Campaign Office (MCO)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.1: Environmental Control and Life Support Systems and Habitation Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 4 | Target End TRL: 8</td></tr>
+<tr><th>Project Start Date</th><td>2024-10-01</td></tr>
+<tr><th>Project End Date</th><td>2031-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Los Alamos National Laboratory (LANL) — Los Alamos, New Mexico; Goddard Institute of Space Studies (GISS) — New York, New York</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD), New Mexico (NM), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars, Moon and Cislunar, Low Earth Orbit</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Edward J Semones (Principal Investigator) &lt;edward.j.semones@nasa.gov&gt;; Stuart P George (Project Manager) &lt;stuart.p.george@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Thomas W Inman (Program Director) &lt;thomas.w.inman@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-07-10</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Transitioned From</strong>: RadWorks transitioned from a single project to multiple projects in Sept 2024.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Compact Electron Proton Spectrometer (CEPS) Development</strong> — Compact Electron Proton Spectrometer Full System Prototype</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/182428">https://techport.nasa.gov/projects/182428</a>
+    </div>
+  </div>
+</body>
+</html>

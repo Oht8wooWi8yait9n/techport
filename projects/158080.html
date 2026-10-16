@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GAS on Fire (Guided, Accurate Slurry drops on Fire) | NASA TechPort Project 158080</title>
+  <meta name="description" content="RoGO was born of wildland firefighting. We create technologies providing communications and situational awareness in austere and cellular-denied areas like Wildland Firefighters often work in. RoGO’s DropBlock technology empowers Wildland Firefighters with the">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158080">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158080</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX16</span>
+        </div>
+        <h1>GAS on Fire (Guided, Accurate Slurry drops on Fire)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158080</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158080" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          RoGO was born of wildland firefighting. We create technologies providing communications and situational awareness in austere and cellular-denied areas like Wildland Firefighters often work in. RoGO’s DropBlock technology empowers Wildland Firefighters with the ability to communicate, collaborate and be informed of current fire weather behavior, GPS locations of human and non-human firefighting resources and tactical collaborations at the edge. RoGO’s small, satellite-enabled “DropBlock” devices are now deployed with Wildland Firefighters in 7 western U.S. States.   RoGO proposes improving our DropBlock communications devices with the ability to provide GPS slurry drop start point, vector positioning and wind drift data to aerial resources from DropBlocks on the ground. This technology serves two critical aerial firefighting purposes: 1) It makes slurry drops more accurate and effective 2) It improves firefighter safety by confirming an “All-Clear” to the slurry bomber, denoting if all firefighters have evacuated the drop zone or not, and if it is safe to drop the slurry.  Proposal supports the TX10 subtopic of A2.02: Enabling Aircraft Autonomy. But we find primary fit with TX16 subtopic A3.02 for Aerial Wildfire Response. I believe readers will appreciate that supporting RoGO in our TX16 application supports the TX10 mission symbiotically.    Use of funding is validating needs of the ideas/features above with Federal and State Air Attack operators and Wildland Firefighters. Funds will be used to disseminate if the proposed negates the need for a spotter aircraft to fly ahead of a slurry bomber: If true, this can save thousands of dollars per slurry drop. We investigate integrating our DropBlock API with an aircraft’s electronic flight bag (EFB) for ease of pilot use and clarity of data to aircraft in flight. Target markets are public/private sector fixed/rotor wing aerial firefighting organizations, utility and insurance industries.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          RoGO’s DropBlock improvements proposed herein support A3.02 NASA’s mission directives because if the DropBlock version is improved with vector positioning and the ability to calculate wind drift, it supports the scope and intent of NASA’s advanced air mobility (AAM) by being a new tool which empowers both manned and (future) unmanned slurry-dropping fixed and rotor wing aircraft to make more accurate slurry drops, accounting for wind drift to ensure the slurry lands in an optimal spot(s) for wildfire suppression, and verifying an “all-clear” from firefighters on the ground that crews have vacated the area and confirming it is safe to drop the slurry.  In Phase II, we can look at integrating additional safety features into the DropBlock, serving as the communication portal for firefighting hand crews (who are always on foot) and nearby non-human firefighting resources (like bulldozers or masticators) that can tie into an aircraft’s ADS-B radio (an aircraft positioning broadcast technology), where airspeed and ADS-B position can be transmitted to the DropBlock over satellite for us to edge-compute an accurate arrival time of the slurry aircraft. Knowing of the aircraft’s arrival time in advance, crews can be sure to finish immediate tasks and have time to move to a safe area outside the drop zone long before the arrival of slurry drop. Verification of an “All-Clear” status can be transmitted over satellite via the DropBlock to the slurry pilot to verify crews have vacated the drop zone and that slurry dropping can proceed.  My brother, a 27-year Wildland Firefighter informs me that rotor wing water drops often miss their mark more often than fixed wing slurry drops do. A large part of this inaccuracy is due to ground/air communications difficulties, helicopter pilot visibility to fire on ground when dropping water through tree canopy, and because helicopter rotor wash disperses water away from drop targets.  Applications above support intent of NASA AAM priorities. Technology proposed here support commercial opportunities for urban air response communications’ PACE plan, coordinating ground and airborne assets as the “C” in the PACE plan. I know a SWIC in Washington D.C. who is interested in RoGO’s DropBlocks to support his PACE plan. When presidential events occur, the number of people on their cell phones can cause the middle of D.C. to become a cellular-denied area, this SWIC told me. If D.C. has this issue any other large American city who holds  political, sports or entertainment events can also have this problem.   Rural Search and Rescue (SAR) crews often need air support that DropBlocks can help in. Other applications include logging, oil & gas, hunting, remote utility grid work like UAV power line inspection. We identified All-Hazards emergency response needs in hurricane, earthquake, and flood disaster zones with FEMA. Border Patrol UAVs and border sensors are opportunities. IoT applications, DoD/military needs, and mining are other areas we have identified possible applications with, to be investigated in Phase I.   Another immediate need identified for this tech exists in Wildland Firefighting: If equipped with solid state wind speed/direction sensors, DropBlocks costing a few dollars per day for satellite data airtime use can replace $32,000 RAWS (Remote Access Weather Station). On a 100,000 acre fire there might only be 2 or 3 RAWS stations…this does not provide Incident Command granular weather data. A DropBlock with solid state wind speed/direction sensors allows DropBlock to act as a RAWS station. With possibly hundreds of DropBlocks tracking GPS locations of resources and transmitting weather data, this gives the IMET and FBAN (both fire weather folks) at Incident Command a granular view of wildfire behavior. This better informs tactical decisions and safety by showing who might be in possible danger of fire burn-over. Such a safety device does not exist for Wildland Firefighters today.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158080</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX16: Air Traffic Management and Range Tracking Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 2 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2025-08-06</td></tr>
+<tr><th>Project End Date</th><td>2027-08-05</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Colorado (CO)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Rodney K Goossen (Principal Investigator); Alexander V Sadovsky (Project Manager) &lt;alexander.v.sadovsky@nasa.gov&gt;; Rodney K Goossen (Primary Point of Contact)</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-19</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158080">https://techport.nasa.gov/projects/158080</a>
+    </div>
+  </div>
+</body>
+</html>

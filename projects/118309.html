@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Illumination Invariant Terrain Relative Navigation | NASA TechPort Project 118309</title>
+  <meta name="description" content="Terrain Relative Navigation (TRN) has enabled two successful rover touchdowns on Mars and a sample recovery mission on the asteroid Bennu. Many future missions plan to use TRN including vehicles for NASAs Commercial Lunar Payload Services (CLPS) and the Human ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/118309">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 118309</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX09.5</span>
+        </div>
+        <h1>Illumination Invariant Terrain Relative Navigation</h1>
+        <div class="meta-id">NASA TechPort Project ID: 118309</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/118309" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Terrain Relative Navigation (TRN) has enabled two successful rover touchdowns on Mars and a sample recovery mission on the asteroid Bennu. Many future missions plan to use TRN including vehicles for NASAs Commercial Lunar Payload Services (CLPS) and the Human Lander System (HLS). A TRN algorithm identifies surface features in images from spacecraft cameras and matches them to features in other images or reference maps. Those matches are processed to determine the spacecraft’s motion. Consistently matching features in a scene is difficult under different lighting conditions and from different camera positions. Past missions required significant human supervision to prepare surface maps or ensure trajectories were illuminated well. This research proposes an approach to identify feature properties which don’t change (are invariant) to different illumination and viewing conditions. Reflectance models for celestial bodies have been primarily developed for planetary science applications. This work will quantify the variance in feature matching performance due to perturbations in illumination model parameters. From this a reflectance model containing the parameters contribute the most to TRN. The existence of illumination invariants will be evaluated using the proposed model. An illumination invariant descriptor (a fingerprint) will be constructed from the invariants identified. The descriptor will be tested to ensure it can be identified and located accurately when model parameters are varied. Finally, the feature descriptor will be tested under two scenarios. The first scenario will quantify the descriptor’s feature matching performance under ideal conditions using synthetic imagery generated using the TRN reflectance model. The second scenario feature matching performance on real imagery from the OSIRIS-REx mission to Bennu. The resulting technology from this research will include a TRN reflectance model and an illumination invariant feature descriptor. This research will also demonstrate the ability to increase spacecraft autonomy using an illumination invariant feature descriptor for TRN.</p>
+        </div>
+
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>118309</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.5: Flight Mechanics and GN&amp;C for Entry, Descent, and Safe Precise Landing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2022-08-01</td></tr>
+<tr><th>Project End Date</th><td>2023-05-25</td></tr>
+<tr><th>Lead Organization / Center</th><td>Georgia Institute of Technology-Main Campus (GA Tech) — Atlanta, Georgia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Georgia (GA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars, Moon and Cislunar, Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>John Christian (Principal Investigator) &lt;hq-techport@mail.nasa.gov&gt;; Carl Vries (Co-Investigator) &lt;hq-techport@mail.nasa.gov&gt;; James S Mccabe (Project Manager) &lt;james.s.mccabe@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Several TRN architectures have flown on past, successful missions, however, matching features between an image of the surface and a map or another image is a common, non-trivial task for many pipelines. Specifically, feature matching is often sensitive to changes in illumination and viewing conditions. Visual odometry approaches mitigate illumination difficulties by collecting a sequence of images over a short period such that changes in illumination are manageable. Map-based approaches require significant human effort to build and photometrically verify maps for specific landing conditions. This work seeks to improve feature matching under significant changes in illumination to relax the illumination constraints for visual odometry and reduce the effort required to pre-build onboard maps designed for specific illumination conditions. The proposed research will develop the capability to identify arbitrary patches of terrain across multiple images under different illumination and viewing conditions. We will take advantage of knowledge of the lunar reflectance as well as illumination and viewing geometry known from other onboard navigation sensors. First, we will identify an appropriate reflectance model for TRN work. The Hapke reflectance model, a high-fidelity empirical model for planetary science, is quite popular, but highly non-linear and tightly coupled. We apply correlation and observability concepts to estimate lunar Hapke parameters to identify important parameters which will produce a reduced-order model. Second, we look to introduce invariant theory to determine if invariants, properties which do not change, exist in images of an arbitrary patch of terrain given knowledge of the surface reflectance. Invariant theory is most applicable using simple models such as points or polynomials. So, we expect to fit our reduced order model to a surrogate function – hopefully a polynomial. An illumination invariant feature descriptor (a fingerprint) will be constructed from the invariants identified. The descriptor will be tested to ensure it can be identified and located accurately when model parameters are varied. Finally, the feature descriptor will be tested under two scenarios. The first scenario will quantify the descriptor’s feature matching performance under ideal conditions using synthetic imagery generated using the TRN reflectance model. The second scenario will test feature matching performance on real imagery from the OSIRIS-REx mission to Bennu. The resulting technology from this research will include a TRN reflectance model and an illumination invariant feature descriptor. This research will also demonstrate the ability to increase spacecraft autonomy using an illumination invariant feature descriptor for TRN.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/118309">https://techport.nasa.gov/projects/118309</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integration of Robotic Perception and Action | NASA TechPort Project 91523</title>
+  <meta name="description" content="This proposal aims at approaching two of the top technical challenges in the NASA RTA Roadmap using a novel approach. For a high dexterity robot that is equipped with multiple visual and haptic sensors such as the Robonaut 2, the two technical challenges Objec">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91523">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91523</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX04.1.1</span>
+        </div>
+        <h1>Integration of Robotic Perception and Action</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91523</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91523" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          This proposal aims at approaching two of the top technical challenges in the NASA RTA Roadmap using a novel approach. For a high dexterity robot that is equipped with multiple visual and haptic sensors such as the Robonaut 2, the two technical challenges Object Recognition and Pose Estimation and Fusing vision, tactile and force control for manipulation are highly correlated. In many real world situations where objects are occluded, 3D perception itself is not sufficient for accurate object recognition and pose estimation. My research goal is to fuse continuous information acquired from multiple sensors and robot actions to achieve better recognition and understanding of the environment.  Although in recent years many computer vision algorithms have had some successes in recognizing real world images, these algorithms are not designed to be directly implemented on robots. There are two major reasons for this. First, these algorithms are trained on static 2D images while robots perceive a continuous change of input. Although motion blur decreases the recognition performance, there are very strong temporal relationships that correlate with the robots action that most vision algorithms do not exploit. Second, a robot could be equipped with multiple sensors such as laser sensors, cameras, inertial measurement units, and haptic sensors. Although some vision algorithms can take combined sensor data as input, they do not take advantage of cases when one sensor data stream is strongly correlated with another nor do they handle situations when some sensor information is the result of action.  In the field of Computer Vision, two types of object models are used to identify objects. One represents the object in 2D and the other represents it in 3D. However, none of these models incorporate information regarding how perception of these objects respond to actions. A robot that uses these kinds of object models knows nothing more than the label of the object. It is clear that humans have a different kind of understanding of objects, and incorporating action into the object model will allow robots to interact with objects and predict action outcomes. While a 3D object model contains information of visual features in their exact 3D position, it is harder to obtain and limited to rigid objects. Specifying how manipulation changes the appearance can be simpler and more descriptive than specifying a full 3D model.  Some previous work done in the Laboratory for Perceptual Robotics at the University of Massachusetts Amherst already shown promising results in combining manipulative actions with object recognition. The view-action-view object model concept proposed in this previous work would be the base of my object model. Besides storing object features from one viewpoint, the model also stores all view transitions accessible from the current view through action. This will lead to a graph representation of an object that is composed of viewpoint nodes and action edges. This research proposal will extend these ideas from toy objects that have fiducial markers to real objects and further explore temporal relationships between views.     This proposal aims at designing a robotic perception system that combines continuous information from multiple sensors and actions to achieve a better understanding of the environment. The systm's goal will be to assist Robonaut 2 in assembly or maintenance tasks that require handling a variety of tools and structures. Having a perception system that can learn about the world through actions is also crucial to a variety of space robotic tasks such as retrieving sample caches, robotic inspection, assembly, servicing, and repair operations in space. Besides space missions, this technique also has a broader impact on many robotic tasks ranging from manufacturing, disaster rescue to taking care of patients and seniors.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This proposal aims at designing a robotic perception system that combines continuous information from multiple sensors and actions to achieve a better understanding of the environment. The system's goal will be to assist Robonaut 2 in assembly or maintenance tasks that require handling a variety of tools and structures. Having a perception system that can learn about the world through actions is also crucial to a variety of space robotic tasks such as retrieving sample caches, robotic inspection, assembly, servicing, and repair operations in space. Besides space missions, this technique also has a broader impact on many robotic tasks ranging from manufacturing, disaster rescue to taking care of patients and seniors.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91523</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX04.1.1: Sensing for Robotic Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2014-08-01</td></tr>
+<tr><th>Project End Date</th><td>2018-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Massachusetts-Amherst (UMASS) — Amherst, Massachusetts</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Massachusetts (MA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Erik Learned-Miller (Principal Investigator); Li Yang Ku (Co-Investigator) &lt;liyang.ku@nasa.gov&gt;; Julia M Badger (Project Manager) &lt;julia.m.badger@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong>: This work addresses two of the technical challenges “Object Recognition and Pose Estimation” and “Fusing vision, tactile and force control for manipulation” in the NASA RTA Roadmap. The goal is to assist space robots such as the Robonaut 2 in assembly or maintenance tasks that require handling a variety of tools and structures. To act autonomously in an unstructured environment, it would be beneficial for a robot to integrate its perception and past experience to handle a wide variety of situations. However, traditional approaches generally represent action and perception separately---as object models in computer vision and as action templates in robot controllers. Due to this separation, the robot can only interact with objects based on learned models when the object label is identified. Interacting based on object labels is not only vulnerable to recognition errors but also limits how past experiences can be generalized to novel situations. In the book ``On Intelligence&quot;, Jeff Hawkins introduces the memory-prediction framework of intelligence and proposes that intelligence should be measured by the capacity to memorize and predict patterns. This work extends on this concept and proposes a memory model that integrates action and perception. With this integrated model, a robot would be capable of solving novel tasks through predicting perceptual action consequences based on memory and observation. Such capability is useful to a variety of space robotic tasks such as retrieving sample caches, robotic inspection, assembly, servicing, and repair operations in space. There are three major contributions in this work. 1) A memory model that fuses perception and action information: Instead of an independent object recognition system, we propose an integrated model called aspect transition graph (ATG) that fuses information acquired from sensors and robot actions to achieve better recognition and understanding of the environment. 2) A hierarchical aspect representation that can be associated with controllers of different kinematic subchains: The proposed hierarchical CNN feature captures the hierarchical support relations between filters in different convolutional neural network (CNN) layers. By associating features in different CNN layers with controllers that engage different kinematic subchains in the hand/arm systems, a hierarchical aspect representation that supports manipulation and captures the essential affordances of an object can be built. 3) An approach that learns memory models and aspect representations from demonstrations efficiently: The proposed approach treats identifying informative sensory features as part of the learning process. This gives the robot the capacity to manipulate objects without fiducial markers and to learn actions focused on salient parts of the object. With additional guidance provided by the operator, the informative features specific to an object instance can be identified automatically. Throughout the robotic experiments conducted on Robonaut-2 and uBot-6 in this work, we show the advantages of the proposed memory model and the merit of having hierarchical associations between controllers, perceptual features, and memory models. This framework is tested on multiple robotic tasks including 1) recognizing and modeling partially observed objects through interaction, 2) grasping tools with visual servoing, 3) handling error in a stochastic environment, 4) grasping novel objects, 5) tightening bolts with learning from demonstrations, and 6) grasping drills with both arms to extend reach. This framework has shown to be effective in many aspects and capable of accomplishing challenging tasks that few current approaches can achieve under similar conditions.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91523">https://techport.nasa.gov/projects/91523</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Control of Radiative Surface Properties with Origami-Inspired Design | NASA TechPort Project 91510</title>
+  <meta name="description" content="For a spacecraft to be mission ready, it must be able to regulate its own temperature. Necessary system electronics, sensitive scientific instruments and especially astronauts onboard the spacecraft must operate within a specific temperature window or the miss">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91510">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91510</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX14.2.3</span>
+        </div>
+        <h1>Dynamic Control of Radiative Surface Properties with Origami-Inspired Design</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91510</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91510" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>For a spacecraft to be mission ready, it must be able to regulate its own temperature. Necessary system electronics, sensitive scientific instruments and especially astronauts onboard the spacecraft must operate within a specific temperature window or the mission will fail. However, the tendency of a spacecraft's temperature is to increase. The sun and the earth radiate heat that is absorbed into the spacecraft while on-board electronics and personnel generate heat inside the spacecraft. On earth, this excess heat would normally be removed by air around the spacecraft. However, the spacecraft is in the vacuum of space. As such, the heat must ultimately be emitted away from the spacecraft as radiation. Components designed to emit this excess heat are called radiators and are a vital part of the thermal management system of any spacecraft. However, because the heat load on a system varies with orbit, radiators are designed for a worst-case heating scenario. As such, any heating configuration outside of the designed heating scenario causes the radiator to behave in an undesirable way, emitting more heat than desired or absorbing too much heat from the surroundings. Likewise, these radiators are heavy, often comprising 30 - 40% of total spacecraft weight. A simple yet effective solution, as discussed in the Thermal Management Systems Roadmap, is to develop a lightweight radiator which is able to manipulate its heat rejection rate in real time. This proposal discusses a light weight, variable heat rejection technology that may be utilized in many applications, including that of a deep space radiator. A thin, mirror-finish aluminum foil is folded into a simple, origami-inspired V-groove pattern. This pattern allows for the foil to be compressed, such that the V-grooves are very steep and tightly compacted, or stretched until it resembles a flat sheet. As the foil is compressed, the amount of heat radiated into space or the amount of heat absorbed is greatly increased. When pulled flat, the foil will emit and absorb very little radiation. This variable heat rejection capability is useful for both radiator and heat shield applications. As a radiator, the foil will give the user control of how much heat is entering or leaving the system. This technology will eliminate unnecessary radiator weight while delivering optimum heat rejection performance for the entire mission duration. Likewise, these foils may be used as heat shields, placed over components sensitive to temperature fluctuations (such as cryogenic fluid tanks). When illuminated by the sun, the shield can assume a flat state, reflecting 98% of the sun's energy away from the sensitive component. Upon entering the Earth's shadow, the shield will assume a compressed state, emitting excess heat originating from the spacecraft into deep space instead of reflecting this heat onto the cryogenic fluid tank. Preliminary work characterizing the behavior of V-grooves when exposed to radiation has been completed. However, the bulk of the work remains. The total heat rejected from a foil sample, accounting for emitting surface area, must be characterized. Likewise, the relationship between the foil and the surface it is protecting must be determined. Next, an actuation system and fixation components must be developed. Finally, the complete thermal system must be modeled and experimentally proven capable of maintaining the temperature of a protected surface under varying heat loads. Ultimately, the purpose of this work is to model a complete thermal system involving the use of a variable heat rejection shield, develop this technology to a space-ready state and experimentally validate its ability to maintain the temperature of a protected surface when exposed to varying heat loads.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This light weight, variable heat rejection technology may be utilized in many applications, including that of a deep space radiator.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91510</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX14.2.3: Heat Rejection and Storage</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2015-08-01</td></tr>
+<tr><th>Project End Date</th><td>2019-06-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Brigham Young University-Provo — Provo, Utah</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Utah (UT)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Sun, Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Brian Iverson (Principal Investigator); Rydge B Mulford (Co-Investigator) &lt;rydge.b.mulford@jpl.nasa.gov&gt;; Vivek H Dwivedi (Project Manager) &lt;vivek.h.dwivedi@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Transitioned To</strong> (Center Innovation Fund): 3D dimensional foldable origami radiator and Goddard RC is working on the oxide coating. No mention of NSTRF in article</li><li><strong>Closed Out</strong>: Develop an origami-inspired radiation heat shield / thermal radiator capable of varying its rate of radiative heat exchange in real time via geometric manipulation as a response to variations in the thermal environment. Mature the technology to TRL 4. Approach: The relationship between geometry and radiative surface properties is not known for most origami tessellations due to difficulties in modelling these tessellations theoretically. As such, numerical and analytical models were developed to determine the variation of radiative surface properties as a function of radiator geometry for the accordion origami tessellation. Numerical heat transfer models predicting the radiative heat exchange for an isothermal and non-isothermal collapsible radiative fin were developed and used to predict the behavior of a dynamic radiator. A prototype radiator was developed and tested in a relevant thermal environment. Results: Apparent radiative properties were shown to vary over orders of magnitude for an actuated origami tessellation with reflective surfaces. The apparent absorptivity of an accordion fold exhibits a three-fold decrease in magnitude over a small actuation range for collimated irradiation, demonstrating potential applications in the field of dynamic radiation heat shields. Numerical heat transfer models predict turn-down ratios in the range of 3 – 6 for actuated, multi-panel radiators. An experimental prototype tested in a relevant thermal environment exhibited a turn-down ratio of 1.32 over a limited actuation range with a potential turn-down ratio of 2.27. Dynamic radiators achieve large turn-down ratios using basic materials and common structures currently used on spacecraft and may be combined with other dynamic radiative property devices to achieve turn-down ratios exceeding the current state of the art while incorporating native redundancy. Likewise, these devices have the potential for active, passive or combined actuation.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="http://dx.doi.org/10.1016/j.ijheatmasstransfer.2018.03.041" target="_blank" rel="noopener noreferrer">Total hemispherical apparent radiative properties of the infinite V-groove with specular reflection</a></li><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91510">https://techport.nasa.gov/projects/91510</a>
+    </div>
+  </div>
+</body>
+</html>

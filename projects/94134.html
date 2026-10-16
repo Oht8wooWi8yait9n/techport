@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modeling and Control Methods for Supporting Scapulohumeral Rhythm with a Robotic Exoskeleton | NASA TechPort Project 94134</title>
+  <meta name="description" content="The shoulder is a highly mobile joint complex that depends on the movements of three component articulations. Biomechanics research has shown an inherent coordination pattern among these joints during various movements, which has been termed scapulohumeral rhy">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/94134">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 94134</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX06.3.2</span>
+        </div>
+        <h1>Modeling and Control Methods for Supporting Scapulohumeral Rhythm with a Robotic Exoskeleton</h1>
+        <div class="meta-id">NASA TechPort Project ID: 94134</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/94134" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The shoulder is a highly mobile joint complex that depends on the movements of three component articulations. Biomechanics research has shown an inherent coordination pattern among these joints during various movements, which has been termed scapulohumeral rhythm (SHR). This motion is considered important for proper shoulder function, and alterations in this coordination have been correlated with an increased risk for impingement and other musculoskeletal injuries. A tiger team review found that contemporary space suit (Extravehicular Mobility Unit, or EMU) designs limited the shoulder motion of crewmembers and contributed to shoulder injuries experienced during training. While current NASA efforts are being made to address this issues in upcoming suit designs, other restrictions on suit geometry or operating conditions are difficult to address with these methods. These include additional resistance from suit pressurization and fatigue during extended extravehicular activity (EVA). One possible solution is to use robotic devices, such as powered exoskeletons, in tandem with these suit changes. Providing direct support for proper shoulder motion in the presence of configuration- and time-dependent disruptions could reduce the risk of shoulder injury and improve EVA performance. The goal of this research is to explore robotic exoskeletons as a means to correct and support proper shoulder complex motion in the presence of environmental and physiological disturbances. This will begin with the development a novel kinematic model of the shoulder complex that can be used to estimate the configuration of the scapula. The model will use a reduced set of measurements relative to traditional motion capture methods, which are infeasible in highly occlusive environments. This will be followed by the design and evaluation of a mechanism for directly mobilizing the scapula during various tasks. This system will be compared with an existing upper body exoskeleton in terms of range of motion, joint loads, and other dynamic properties. This work will conclude with the formulation of robot control strategies for supporting and modifying scapular motion. These algorithms will be responsive to pressurized suit resistance, variable loading from tool use, and crewmember fatigue. This research will use Harmony, an existing upper body exoskeleton in the ReNeu Robotics Lab, as a platform for testing these concepts. The project will also utilize NASA resources on astronaut anthropometry and EMU characteristics to ensure applicability to mission objectives. The outcomes of this work will support Technical Areas 7.3 (Human Mobility Systems) and 6.2 (Extravehicular Activity Systems) by furthering knowledge of shoulder biomechanics and exploring new methods to reduce the incidence of EVA injury. In the future, these findings can support the development of assistive exoskeletons for use in both spaceflight and planetary missions. The shoulder is a highly mobile joint complex that depends on the movements of three component articulations. Biomechanics research has shown an inherent coordination pattern among these joints during various movements, which has been termed scapulohumeral rhythm (SHR). This motion is considered important for proper shoulder function, and alterations in this coordination have been correlated with an increased risk for impingement and other musculoskeletal injuries. A tiger team review found that contemporary space suit (Extravehicular Mobility Unit, or EMU) designs limited the shoulder motion of crewmembers and contributed to shoulder injuries experienced during training. While current NASA efforts are being made to address this issues in upcoming suit designs, other restrictions on suit geometry or operating conditions are difficult to address with these methods. These include additional resistance from suit pressurization and fatigue during extended extravehicular activity (EVA). One possible solution is to use robotic devices, such as powered exoskeletons, in tandem with these suit changes. Providing direct support for proper shoulder motion in the presence of configuration- and time-dependent disruptions could reduce the risk of shoulder injury and improve EVA performance. The goal of this research is to explore robotic exoskeletons as a means to correct and support proper shoulder complex motion in the presence of environmental and physiological disturbances. This will begin with the development a novel kinematic model of the shoulder complex that can be used to estimate the configuration of the scapula. The model will use a reduced set of measurements relative to traditional motion capture methods, which are infeasible in highly occlusive environments. This will be followed by the design and evaluation of a mechanism for directly mobilizing the scapula during various tasks. This system will be compared with an existing upper body exoskeleton in terms of range of motion, joint loads, and other dynamic properties. This work will conclude with the formulation of robot control strategies for supporting and modifying scapular motion. These algorithms will be responsive to pressurized suit resistance, variable loading from tool use, and crewmember fatigue. This research will use Harmony, an existing upper body exoskeleton in the ReNeu Robotics Lab, as a platform for testing these concepts. The project will also utilize NASA resources on astronaut anthropometry and EMU characteristics to ensure applicability to mission objectives. The outcomes of this work will support Technical Areas 7.3 (Human Mobility Systems) and 6.2 (Extravehicular Activity Systems) by furthering knowledge of shoulder biomechanics and exploring new methods to reduce the incidence of EVA injury. In the future, these findings can support the development of assistive exoskeletons for use in both spaceflight and planetary missions.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This research is important to several areas that are related to EVA mobility and astronaut health. First, quantifying the suit resistance, joint loads, and associated shoulder motion are vital to future redesigns of the EMU in order to reduce crew injury rates and increase the suit's mobility. This work will be important for astronaut medicine, as the information on muscle use and joint loads during EVA training can improve the prevention, diagnosis, and treatment potential shoulder problems. In addition, if future spacesuits incorporate technologies that allow for strength augmentation (such as those found in existing upper body exoskeletons), this information on joint forces and muscle use is necessary to ensure that these devices do not injure crew members.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>94134</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.2: Prevention and Countermeasures</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2016-08-01</td></tr>
+<tr><th>Project End Date</th><td>2018-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>The University of Texas at Austin — Austin, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Mars, Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Ashish D Deshpande (Principal Investigator); Evan M Ogden (Co-Investigator) &lt;evan.m.ogden@nasa.gov&gt;; Sudhakar L Rajulu (Project Manager) &lt;sudhakar.rajulu-1@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The purpose of this research is to create a numerical model for estimating the orientations of bones in the human shoulder, particularly the clavicle and scapula. This model is designed to rely on inputs that avoid some notable issues in sensing suited astronaut motion by restricting the available measurements for driving the model. The model currently solves this inverse kinematics problem with a stochastic filtering technique that includes nonlinearities inherent in the problem and a method for including situation-specific constraints. The model can replicate segment orientations from human motion data and is significantly more accurate than existing, regression-based methods. However, the model has proven to be sensitive to skeletal geometric parameters, such as clavicle length. Adding skeletal geometry to the estimated state resolves can alleviate this, but doing so creates greater need for more and higher quality measurements. This tradeoff should drive future development of sensors that are compatible with the suited shoulder. The model will be available for posted online for public access by NASA and other fields that may benefit from estimated shoulder bone angles in applications with restricted sensing options, such as rehabilitation exoskeletons.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/94134">https://techport.nasa.gov/projects/94134</a>
+    </div>
+  </div>
+</body>
+</html>

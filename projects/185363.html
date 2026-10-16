@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A software-based positioning, navigation, and timing solution for reliable operation in GPS-degraded environments | NASA TechPort Project 185363</title>
+  <meta name="description" content="PrecisionTerra proposes an end-to-end software-based GPS signal processor that can acquire, track, and process signals even in GPS-degraded environments. The software’s foundational IP is a patented signal tracking algorithm developed at the University of Colo">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/185363">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 185363</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX16</span>
+        </div>
+        <h1>A software-based positioning, navigation, and timing solution for reliable operation in GPS-degraded environments</h1>
+        <div class="meta-id">NASA TechPort Project ID: 185363</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/185363" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          PrecisionTerra proposes an end-to-end software-based GPS signal processor that can acquire, track, and process signals even in GPS-degraded environments. The software’s foundational IP is a patented signal tracking algorithm developed at the University of Colorado-Boulder and designed specifically to enhance the tracking of GPS signals in any GPS-degraded conditions. This proposal will explore the use of this technology for NASA ARMD’s autonomous aerial wildfire mitigation efforts, as these operations often take place in GPS-degraded locations like mountains, canyons, and forests. The first objective is to characterize the performance of PrecisionTerra’s tracking technology in relevant GPS-degraded environments. Data collected will be benchmarked against both simulation results and the current state-of-the-art for GPS units typically aboard small unmanned aircraft systems (sUAS). The second objective is to make PrecisionTerra’s software real-time operable, as UASs will need rapid positioning feedback for wildfire operations where speed is essential.  Funding from this proposal will be used to hire one full-time signal processing engineer that will optimize PrecisionTerra’s signal processor for real-time, low-latency operation and make changes to the software as more information is learned from in-environment tests. Since the PI works full-time on PrecisionTerra, funding will also be used for the PI’s salary, as the PI will be leading data collection and statistical analysis for this project. Finally, funding will be used to purchase the requisite testing equipment, including GPS receiver front-end boards and an inertial measurement unit (IMU) (both manufactured in the U.S.).  The three target markets for PrecisionTerra’s technology are GPS chipmakers for IoT devices (e.g., smartphones, passenger vehicles, UASs), high-precision GPS receiver manufacturers for commercial applications like construction and agriculture, and navigation device suppliers for the DoD.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          PrecisionTerra’s signal processing technology primarily has applications for the Aeronautics Research Mission Directorate, with potential applications for the Science Mission Directorate as well. Within ARMD, it is evident that the safe navigation of UASs in a crowded airspace is a top priority. Whether for cargo delivery, urban mobility, or emergency operations, UASs will continue to play a larger role in the transportation of goods and services across the U.S. Since UASs frequently operate in GPS-degraded environments, a vehicle navigation solution that’s reliable in such conditions is paramount for the successful completion of missions and for the avoidance of collisions with other aircraft and objects. PrecisionTerra’s GPS signal tracking method is designed for the operation of navigation systems in GPS-degraded environments. Thus, this technology can directly support NASA’s mission to advance safe air mobility for non-traditional aviation operations. As PrecisionTerra’s tracking technique is a generalized approach that is effective for any area experiencing GPS degradation, it does not need to be modified for different use cases or operating conditions. ARMD is actively exploring traffic management capabilities for sUASs specifically. As sUASs are particularly sensitive to additional payloads, improvements made with minimal size and weight increases are likely preferable. PrecisionTerra’s solution is entirely software-based and will therefore add no size and weight when implemented aboard a UAS. For the Science Mission Directorate, an understanding of space weather on critical systems like GPS is a stated objective. While PrecisionTerra’s technology does not directly model space weather, it can, in combination with other data and models, help NASA to quantify the impact of phenomena like ionospheric scintillations on GPS signals. This work can enable NASA to reinforce GPS and communications systems in preparation for future high-intensity space weather events. For commercial applications, the $5.2B market for GPS for IoT devices (including car navigation systems, smartphones, and UASs) will be PrecisionTerra’s largest market. Smartphone users and drivers are increasingly dependent on GPS, so reliable GPS systems are a growing priority for companies in this market segment. Since the GPS chips embedded in IoT devices must be low-cost and redesigning chip hardware is time-consuming and expensive, software improvements are preferable. Interviews have been conducted with senior engineers and business development VPs at Samsung, Google, Broadcom, Qualcomm, Hyundai, TomTom, and Ford to validate this industry’s need for PrecisionTerra’s technology. Companies that make their own chips (e.g. Samsung, Qualcomm) are best positioned to adopt PrecisionTerra’s solution, but other companies have expressed interest in pilot testing projects as well.  Within the $3.4B market for mid-high precision GPS receivers that operate in signal-degraded environments (e.g. forests and construction sites), PrecisionTerra has engaged with senior engineers and managers at large companies like Trimble and Hexagon and at smaller companies like Bad Elf and Tersus GNSS. All interviewees have affirmed the need for both resilient signal tracking capabilities and for software-based signal processors to modernize this market’s product offerings.  In 2024, the DoD requested $1.5B for resilient PNT capabilities, as this is an increasing area of priority for the military. GPS signal degradation can hinder air, ground, and sea-based missions, per PrecisionTerra’s DoD customer discovery interviews. Specific applications of PrecisionTerra’s technology include air mobility operations for delivering emergency supplies, counter-UAS systems, and passive sea sea-surface-based navigation in GPS-degraded conditions. Two companies in this market, NAL Research and Raytheon, have provided LOIs/LOSs and are interested in serving as transition partners into the DoD.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>185363</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX16: Air Traffic Management and Range Tracking Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2025-09-29</td></tr>
+<tr><th>Project End Date</th><td>2026-03-27</td></tr>
+<tr><th>Lead Organization / Center</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Maithreyi Gopalakrishnan (Principal Investigator); Rania W Ghatas (Project Manager) &lt;rania.w.ghatas@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-19</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/185363">https://techport.nasa.gov/projects/185363</a>
+    </div>
+  </div>
+</body>
+</html>

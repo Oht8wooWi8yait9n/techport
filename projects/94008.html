@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Drag Device and Control Algorithm for Spacecraft Attitude Stabilization and De-Orbit Point Targeting using Aerodynamic Drag | NASA TechPort Project 94008</title>
+  <meta name="description" content="To reduce the accumulation of human-made &quot;space junk&quot;, NASA has implemented a rule requiring the disposal of spacecraft below 2,000 km within 25 years. By deploying a device to increase the surface area of a satellite, the aerodynamic drag force will be great">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/94008">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 94008</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX09.1.3</span>
+        </div>
+        <h1>A Drag Device and Control Algorithm for Spacecraft Attitude Stabilization and De-Orbit Point Targeting using Aerodynamic Drag</h1>
+        <div class="meta-id">NASA TechPort Project ID: 94008</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/94008" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>To reduce the accumulation of human-made "space junk", NASA has implemented a rule requiring the disposal of spacecraft below 2,000 km within 25 years. By deploying a device to increase the surface area of a satellite, the aerodynamic drag force will be greater and the maximum altitude for de-orbit within 25 years will be higher. Additionally, for spacecraft containing components that do not disintegrate on re-entry, the only way to obtain a launch is to find some means of controlling the de-orbit location such that the risk of a person being struck by falling debris is less than 1 in 10,000. The first component of the proposed research involves the development of an algorithm to control the de-orbit location of a low Earth orbit spacecraft by modulating the spacecraft's ballistic coefficient. This algorithm could be utilized to control the de-orbit location of any space vehicle capable of varying its cross-sectional area either through changes in attitude or the deployment of a drag device. Ultimately, this will enable spacecraft without thrusters to target a de-orbit point away from populated areas and will enable vehicles with thrusters (such as rocket upper stages) to save fuel by leveraging the available aerodynamic drag to target a de-orbit location instead of performing a de-orbit burn. The majority of the guidance generation portion of this targeting algorithm has already been developed and was based on an analytical solution relating the spacecraft initial conditions and ballistic coefficient profile to the de-orbit location. Using this analytical solution along with an iterative numerical procedure, it is possible to determine the drag profile necessary to de-orbit in a desired location. The guidance tracking portion of the targeting algorithm that will modulate the satellite's ballistic coefficient to maintain the desired decay trajectory (guidance) is currently in development but initial simulation results with a simple PID control law indicate that performance will be satisfactory. Model reference adaptive control techniques will be utilized in future versions of the guidance tracking algorithm to improve performance in the face of discrepancies between the actual and estimated drag force. The second component of this project involves the development of a retractable CubeSat drag device that is capable of de-orbiting a 15 kg satellite from a 700 km circular orbit in 25 years and can be used to actively modulate the spacecraft's ballistic coefficient for aerodynamic orbit control and targeted re-entry. This device will consist of four measuring-tape-style booms inclined at 20 degrees relative to the rear face of the satellite. In addition to providing a means of modulating the ballistic coefficient, the dart configuration of the drag device will make the satellite aerodynamically stabilize in the ram-direction. Furthermore, partially retracting two of the booms opposite each other will result in a clear minimum moment of inertia axis which will naturally align with the nadir vector due to gravity gradient torques. The drag device will ultimately provide 3-axis attitude stabilization as well as orbital maneuvering capabilities using aerodynamic and gravity gradient effects, potentially eliminating the need for propulsion or attitude control systems on many satellites. Additionally, the entirety of the guidance generation and guidance tracking algorithms will be conducted on a microprocessor located inside the drag device. This will minimize ground operator workload but will demand robust and efficient algorithms capable of running on a platform with limited computational power. The team plans to launch a CubeSat in the next 2-3 years to test the drag device and targeting algorithm. A successful flight demonstration will hopefully make the drag device and de-orbit point targeting algorithm standard tools for attitude control, orbit control, and orbital debris mitigation.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This algorithm could be very useful for orbital debris mitigation and removal.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>94008</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.1.3: Passive Reentry Systems for SmallSats</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2017-08-15</td></tr>
+<tr><th>Project End Date</th><td>2020-01-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Florida — Gainesville, Florida</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Florida (FL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Riccardo Bevilacqua (Principal Investigator); Sanny R Omar (Co-Investigator) &lt;sanny.r.omar@nasa.gov&gt;; John M Rakoczy (Project Manager) &lt;john.m.rakoczy@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Infused To</strong> (TechEdSat): &quot;NASA Ames is implementing PI&#x27;s guidance algorithm and D3 system on a TechEdSat Cubesat mission for de-orbit&quot;</li><li><strong>Closed Out</strong>: The primary goal of this project was to develop an algorithm for controlling the re-entry location of a low Earth orbit space vehicle solely by modulating the aerodynamic drag experienced by the vehicle. An optional hardware goal involved designing and fabricating a retractable CubeSat drag device capable of facilitating aerodynamically based orbital maneuvering of the host satellite through changes in its cross-sectional area. Ultimately, a guidance trajectory generation algorithm was developed whereby an analytical solution with refinements via high fidelity numerical orbit propagation could be utilized to generate a trajectory and corresponding ballistic coefficient profile that if followed, would lead a satellite to de-orbit in a desired location. This algorithm was eventually expanded to generate a guidance trajectory all the way to a ground landing location for vehicles capable of surviving re-entry. A navigation algorithm was also developed whereby an Extended Kalman Filter (EKF) was employed to determine the spacecraft’s position relative to the guidance trajectory. A Linear Quadratic Regular (LQR) was then utilized to determine that ballistic coefficient the spacecraft must maintain to return to the nominal guidance trajectory in the face of perturbations or model uncertainties. In addition to developing and evaluating the re-entry point targeting algorithm via Monte Carlo simulations, I worked on the design and fabrication of the retractable Drag De-Orbit Device or D3 (see below). The D3 was designed to bolt to the back of a standard CubeSat structure and provided a .5 m2 increase in the drag area of the host satellite. The D3, unlike most drag devices, consisted of four fully retractable tape-spring booms, allowing for a drag area as small as .01 m2 for a 3U host CubeSat. The retractable nature of the D3 makes it ideal for orbital maneuvering using aerodynamic drag and facilitates operations such as re-entry point targeting, constellation management, and active collision avoidance. In addition to developing the D3 device, I led the development of a 2U CubeSat at the University of Florida to test the D3 and control algorithms on-orbit. This CubeSat is expected to launch in October 2021. I also developed a version of the D3 that is intended to fly on an upcoming TechEdSat CubeSat mission run by NASA Ames.</li><li><strong>Transitioned To</strong> (SRI International): SRI International funding for building the CubeSat.</li><li><strong>Transitioned To</strong> (Launch Services Program): NASA LSP funding for CubeSat development.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="http://dx.doi.org/10.1016/j.asr.2021.09.029" target="_blank" rel="noopener noreferrer">Precise re-entry and landing of propellantless spacecraft</a></li><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/94008">https://techport.nasa.gov/projects/94008</a>
+    </div>
+  </div>
+</body>
+</html>

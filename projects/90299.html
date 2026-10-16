@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plug-In Architecture for Software-Defined Radios | NASA TechPort Project 90299</title>
+  <meta name="description" content="The growing use in deep space of CubeSats is driving the need for small, flexible, full-featured telecom hardware like the Iris radio. The current Iris software is rudimentary compared the NASA Space Telecommunications Radio System (STRS). The software on each">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/90299">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 90299</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX05.2.4</span>
+        </div>
+        <h1>Plug-In Architecture for Software-Defined Radios</h1>
+        <div class="meta-id">NASA TechPort Project ID: 90299</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/90299" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The growing use in deep space of CubeSats is driving the need for small, flexible, full-featured telecom hardware like the Iris radio. The current Iris software is rudimentary compared the NASA Space Telecommunications Radio System (STRS). The software on each slice uses a simple 333 kHz loop as a basic scheduler to invoke small C elements. Changes can only be made before the radio is installed in the spacecraft, and no code updates in flight are possible without patching. This proposal would result in software to enable simple, low-effort elaboration of new capabilities for the Iris and similar radios. 1. Telecom Abstraction Layer (TAL) implements STRS capabilities, plus the infrastructure to dynamically select waveform applications on any sort of radio. A high-speed scheduler selects apps to run, collects execution information for debug, and reconfigures the system for needed operations. The TAL can be targeted to any radio with the modification of an i/o layer. 2. Plug-in Cognition Architecture (PiCA) running on a separate slice for cognitive link services, interfaced to each radio slice via serial. Services could include downlink rate selection in response to DSN site conditions, guaranteed data delivery, relay, antenna pointing, and access negotiation. Built-atop flight-proven VML sequencing and JPL AutoNav for spacecraft navigation, easy-to-code scripts provide sophisticated timing and event response, making cognitive services easy to write and deploy, even after launch. The longer-duration computations of the PiCA do not interfere with the high-rate waveform activities in the TAL. Both can be updated with new components at any point in the mission, allowing unprecedented flexibility to take advantage of new technologies or compensate for spacecraft idiosyncrasies. PASDR has the potential to shorten radio development cycles and allow easy collaboration between separate developers, benefiting the community as a whole.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          PASDR is applicable to any software-defined radio flying on any spacecraft. The potential for commercialization is therefore enormous. PASDR could be installed in Iris radios by the provider chosen by JPL, and any others that the market may offer for deep space and LEO use, to give NASA the ability to use sophisticated standardized communications across a broad range of different small missions. This would stimulate activity and reduce costs by freeing missions from having to implement any telecom software, leading to better reliability of communications, simpler mission conops, more cross-mission synergy, and lower barriers of entry for inexperienced mission sponsors. By lowering development costs of new capabilities, more companies may produce small software-defined radios for use in CubeSat missions. In addition to the data communications aspect, the PASDR would add radiometric data for 1-way ranging (with a suitable on-board oscillator) and Doppler, allowing the CubeSat community the opportunity for autonomous navigation. This will reduce the cost of missions by reducing the need for expert navigation. New mission component providers could use PASDR for larger spacecraft, providing them with the same software-defined flexibility as the CubeSat community reducing implementation costs, onboard navigation present in PASDR could be used on these more expensive missions due to its ready availability, reducing the need to use as much expert time for support.<br /> <br />Since PASDR works with any software-defined radio, it could be applied to non-NASA spacecraft: DoD, NOAA, and ESA missions are prime candidates. International release of software should be possible under ITAR controls. The PiCA element of PASDR could be directly applied to commercial launch vehicles, including for human access to space. PASDR is also applicable to terrestrial deployments. The capabilities produced by this SBIR could be applied to radios for autonomous vehicle control, airborne systems, and remote science stations with limited contact time. Doing so would allow easy crossover of waveform apps and cognition services between space and terrestrial deployments.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>90299</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX05.2.4: Flight and Ground Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2016-06-10</td></tr>
+<tr><th>Project End Date</th><td>2016-12-09</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Blue Sun Enterprise, Inc. — Boulder, Colorado</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Colorado (CO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Christopher A Grasso (Principal Investigator); Robert Jones (Project Manager) &lt;Robert.A.Jones@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li><li><strong>Briefing Chart</strong> — Plug-in Architecture for Software-Defined Radios, Phase I Briefing Chart</li><li><strong>Briefing Chart Image</strong> — Plug-in Architecture for Software-Defined Radios, Phase I</li><li><strong>Final Summary Chart Image</strong> — Plug-in Architecture for Software-Defined Radios, Phase I Project Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/90299">https://techport.nasa.gov/projects/90299</a>
+    </div>
+  </div>
+</body>
+</html>

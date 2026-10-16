@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Improved Foreign Object Damage Performance for 2D Woven Ceramic Matrix Composites | NASA TechPort Project 18373</title>
+  <meta name="description" content="As the power density of advanced engines increases, the need for new materials that are capable of higher operating temperatures, such as ceramic matrix composites (CMCs), is critical for turbine hot-section static and rotating components. Such advanced materi">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/18373">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 18373</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX13.1.7</span>
+        </div>
+        <h1>Improved Foreign Object Damage Performance for 2D Woven Ceramic Matrix Composites</h1>
+        <div class="meta-id">NASA TechPort Project ID: 18373</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/18373" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          As the power density of advanced engines increases, the need for new materials that are capable of higher operating temperatures, such as ceramic matrix composites (CMCs), is critical for turbine hot-section static and rotating components. Such advanced materials have demonstrated the promise to significantly increase the engine operating temperature relative to conventional super alloy metallic blades. They also show the potential to enable longer life, reduced emissions, growth margin, reduced weight and increased performance relative to super alloy blade materials. MR&D is proposing to perform a combined analytical, fabrication and experimental program to achieve the program objectives of developing innovative approaches to improving foreign object damage (FOD) resistance of CMC materials, specifically with Hyper-Therm High Temperature Ceramics's material system as this will be used by Rolls Royce for turbine engine hot-section components. MR&D will develop finite element math models of the CMC material specimens and the high velocity metal projectiles to simulate impact testing. The models will first be verified by reproducing experimental data measured on impacted baseline CMC specimens. Thereafter, candidate methods for potential improvement of the FOD resistance will be analytically investigated through mathematical simulations of impact tests.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          NASA Glenn has been directly involved in the effort to bring Ceramic Matrix Composites to turbine hot section components. The NASA Ultra Efficient Engine Technology program (UEET) was focused on driving the next generation of turbine engine technology. More recently, the NASA CLEEN and NextGen programs also aim to improve efficiency in aircraft propulsion. One of the major thrusts is the development and demonstration of advanced high-temperature materials which are capable of surviving the extreme environments of turbine combustion and exhaust. These materials enable higher engine operating temperatures which directly improves efficiency. Additionally, by reducing or eliminating the hardware needed to provide cooling, the system become less massive, further improving efficiency. Improved FOD resistance for SiC/SiC combined with the ability to accurately predict impact damage will significantly improve the ability to utilize these materials in future turbine engines.<br /> <br />In the commercial sector, the Rolls Royce Trent 1000 and Trent XWB engines are being developed for the Boeing 787 and Airbus A350 XWB aircraft, respectively. There are currently 838 Boeing 787s on order and 562 Airbus A350 XWBs on order. The Trent 1000 was the launch engine for the Boeing 787. These are large markets where the benefit of this technology will have a lasting impact in efficiency and cost. By working closely with Rolls Royce during the early stages of this development program, MR&D has ensured that the resulting products will meet the requirements of future customers. Both companies have expressed a serious interest in this technology and, as demonstrated above, have a sizable market for its application. The aerospace industry is not the only potential beneficiary of this technology. The Department of Energy (DOE) is working hard to improve the efficiency of power generators. Just as with aircraft engines, power turbines' efficiency improves with higher operating temperatures. As an example, current turbines operate at 2600F, which provided a large improvement in efficiency over earlier models operating at 2300F. CMC turbine blades and stators will allow even higher temperature operation and is a topic which the DOE is currently investigating.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>18373</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX13.1.7: Impact, Damage, and Radiation-Resistant Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2013-05-23</td></tr>
+<tr><th>Project End Date</th><td>2014-05-22</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Materials Research and Design, Inc. — Wayne, Pennsylvania</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Dayton Research Institute — Dayton, Ohio; Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Ohio (OH), Pennsylvania (PA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Edward J Klock-McCook (Principal Investigator); Michael J Pereira (Project Manager) &lt;J.M.Pereira@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li><li><strong>Project Image</strong> — Improved Foreign Object Damage Performance for 2D Woven Ceramic Matrix Composites</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/18373">https://techport.nasa.gov/projects/18373</a>
+    </div>
+  </div>
+</body>
+</html>

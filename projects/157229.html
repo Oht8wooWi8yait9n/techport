@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lattice Boltzmann Modeling of Capillary Driven Boiling Flows on Micro-Structured Surfaces | NASA TechPort Project 157229</title>
+  <meta name="description" content="The application of two-phase microchannel heat sinks in cooling modern electronic devices is becoming increasingly attractive due to the technology&#x27;s high efficiency in dissipating heat with liquid vaporization [1]. However, boiling instabilities in the two-ph">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/157229">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 157229</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">OSTEM</span>
+          <span class="badge">EPSCoR</span>
+          <span class="badge">TX14.2.1</span>
+        </div>
+        <h1>Lattice Boltzmann Modeling of Capillary Driven Boiling Flows on Micro-Structured Surfaces</h1>
+        <div class="meta-id">NASA TechPort Project ID: 157229</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/157229" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The application of two-phase microchannel heat sinks in cooling modern electronic devices is becoming increasingly attractive due to the technology's high efficiency in dissipating heat with liquid vaporization [1]. However, boiling instabilities in the two-phase flow may lead to large pressure fluctuations and high local temperatures, which can in turn cause significant performance degradation of the devices [2,3]. Integration of surface structures on the microchannel walls has been suggested, to mitigate the boiling instabilities and enhance the heat transfer efficiency through improved surface wickability, increased numbers of active nucleation sites, and enhanced heat transfer area [4-8]. Wickability, or the capillary effect, is the ability of a liquid to flow in narrow spaces without the assistance of external forces like gravity [9]. It has been experimentally proved that a wettable surface and implanted micro-structures provide a capillary-type drive for a liquid to flow along a solid surface and sustain a liquid film, which effectively delays liquid dry-out [6,7].   Due to the limitations of experimental techniques and facilities, the physics of the effects of surface structures on flow boiling, as well as the microscale heat and mass transfer involved, are still not well understood, and that uncertainty necessarily influences the design, and application of the cooling devices [5,8]. With the rapid increase in available computer power, however, numerical study has become an efficient and effective tool in the exploration of the complex phenomena of thermal fluid applications, and can provide access to thermal and flow characteristics that are not susceptible to experimental measurement [10]. Nonetheless, it is still an important challenge to numerically simulate the multi-phase heat and mass transfer processes like boiling heat transfer. The difficulties primarily lie in poor understanding of multi-scale and multi-phase thermal physics and the lack of appropriate numerical models dealing with complex multi-phase flows. The NASA’s Physical Sciences Informatics (PSI) system provides an important resource of data generated from the micro-gravity physical sciences experiments performed on the International Space Station (ISS), Space Shuttle flights, and related ground-based studies. These data will greatly help reveal the underlying mechanics of, and establish physics-based high-fidelity models for, complex multi-phase and multi-scale thermal flows.  Over the past thirty years, the lattice Boltzmann method (LBM) has been developed into an efficient and powerful simulation tool for a wide range of phenomena and processes [11-13], and many multiphase models have been developed [12,14]. Here we propose an LBM based computational framework for modeling capillary driven boiling flows in microchannel heat sinks. The focus will be utilizing the space experimental data from NASA’s PSI systems, to develop hierarchical structures of numerical models of the detailed mechanisms and processes involved in capillary driven boiling flows, and to explore the underlying physics of boiling heat transfer in the presence of embedded micro-structures. The data from three NASA space experiments, the Capillary Flow Experiments (CFE & CFE-2), the Pool Boiling Experiment (PBE), and the Nucleate Pool Boiling Experiment (NPBX), will be used to calibrate and validate each elementary model of the overall numerical framework with each component problem. The effects of reduced gravity will be considered as a priority. The data produced from the numerical investigation as well as the software developed based on the numerical models will be archived in the PSI system for future NASA research.  Announcement Number: NNH20ZHA001C. Research Title: Physical Sciences Informatics System. Research Area: Fluid Physics. Investigation: Computational Framework for Capillary Flows (PSI NRA science) (Page 38, No. 37 in the CAN)
+        </div>
+
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>157229</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Office of STEM Engagement (OSTEM)</td></tr>
+<tr><th>NASA Program</th><td>Established Program to Stimulate Competitive Research (EPSCoR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX14.2.1: Heat Acquisition</td></tr>
+<tr><th>Project Start Date</th><td>2020-07-01</td></tr>
+<tr><th>Project End Date</th><td>2021-06-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>New Mexico State University-Grants — Grants, New Mexico</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>New Mexico State University-Main Campus (NMSU) — Las Cruces, New Mexico; New Mexico State University-Main Campus (NMSU) — Las Cruces, New Mexico</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>New Mexico (NM)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Paulo A Oemig (Principal Investigator); Yanxing Wang (Co-Investigator); Alisha Giron (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Kathleen B Loftin (Program Director) &lt;kathleen.b.loftin@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-10-23</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/157229">https://techport.nasa.gov/projects/157229</a>
+    </div>
+  </div>
+</body>
+</html>

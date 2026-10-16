@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autonomous Navigation Using LiAISON in the Earth-Moon System | NASA TechPort Project 91169</title>
+  <meta name="description" content="An innovative technique using satellite-to-satellite tracking for onboard autonomous absolute navigation has been conceived at the Colorado Center for Astrodynamics Research (CCAR) at the University of Colorado at Boulder. This technique, known as LiAISON (Lin">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91169">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91169</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX17.2.1</span>
+        </div>
+        <h1>Autonomous Navigation Using LiAISON in the Earth-Moon System</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91169</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91169" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>An innovative technique using satellite-to-satellite tracking for onboard autonomous absolute navigation has been conceived at the Colorado Center for Astrodynamics Research (CCAR) at the University of Colorado at Boulder. This technique, known as LiAISON (Linked Autonomous Interplanetary Satellite Orbit Navigation), is a groundbreaking and enabling technology that can dramatically reduce the cost and/or improve the navigation accuracy of spacecraft in the Earth-Moon system by placing a navigation satellite in orbit about a lunar Lagrange point. LiAISON supports NASA's roadmap of Communication and Navigation (TA05) and specifically supports the subsection of Position, Navigation and Timing. This is a feed-forward technology that extends to exploration activity at Mars, its moons, and asteroids. The LiAISON concept consists of collecting simple radiometric tracking signals between two or more satellites, and using those signals to supplement or replace ground-based tracking and navigation. Several architecture concepts are possible from cooperative LiAISON constellations to a single LiAISON based navigation beacon that provides a GPS-like capability for lunar missions as well as Earth orbiting satellites. This technology alleviates the heavy dependence on current ground-based time and state vector updates allowing spacecraft to do autonomous navigation updates on-board with only satellite-to-satellite radiometric data. By introducing a navigation beacon on a libration point orbiter, there will be less reliance on the Deep Space Network (DSN) and ground-based navigational support, ultimately reducing the communication requirements on the tracking services making them available for missions with less on-board autonomy. The proposed research will focus on crewed and robotic missions in orbit about Earth-Moon Lagrange points and will: (1) replicate CCAR's success with LiAISON using operational JPL navigation software; (2) evaluate LiAISON navigation on the ARTEMIS lunar mission; (3) characterize the improvement in autonomous on-board station keeping and maneuver executions; (4) determine how many DSN tracking passes, or complexes, may be removed from a mission and obtain equal or better navigation accuracy; (5) optimize LiAISON orbits and constellations to quantitatively evaluate their use in future mission designs; and (6) measure the improvement in navigation accuracy obtained by adding LiAISON to conventional DSN tracking schedules for a variety of crewed or robotic missions, including lunar orbiters, and libration orbiters. The research primary deliverable is a quantitative evaluation of this new navigation technique in the context of the whole breadth of lunar exploration. This evaluation will include analyses to capture the costs (e.g., dedicated navigation satellite, additional hardware, etc.) and benefits (e.g., improved navigation accuracy, fewer DSN tracks, etc.) of LiAISON navigation applied to a variety of expected future missions. This project will provide the information that mission planners need in order to determine if LiAISON is practical for their mission. This proposal advances an innovative navigation technique called LiAISON that uses relative satellite-to-satellite range and/or Doppler measurements to determine the absolute states of both satellites. This navigation technology provides a major advancement in satellite navigation and maneuver design that may be used to improve navigation accuracy and/or reduce the amount and cost of ground tracking. The proposed research has the greatest impact on NASA's missions to the Moon. This research directly supports sending cargo and astronauts to a deep-space outpost beyond the moon's far side ultimately laying the groundwork for more ambitious manned missions to Mars. The results of this research provide a feed-forward technology that extends to GEO missions, asteroid missions, other missions in the Earth-Moon system, and Mars missions.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This navigation technology provides a major advancement in satellite navigation and maneuver design that may be used to improve navigation accuracy and/or reduce the amount and cost of ground tracking. The proposed research has the greatest impact on NASA's missions to the Moon. This research directly supports sending cargo and astronauts to a deep-space outpost beyond the moon's far side ultimately laying the groundwork for more ambitious manned missions to Mars. The results of this research provide a feed-forward technology that extends to GEO missions, asteroid missions, other missions in the Earth-Moon system, and Mars missions.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91169</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX17.2.1: Onboard Navigation Algorithms</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2013-08-26</td></tr>
+<tr><th>Project End Date</th><td>2015-06-07</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Colorado Boulder — Boulder, Colorado</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>George Born (Principal Investigator); Jason M Leonard (Co-Investigator); James R Carpenter (Project Manager) &lt;russell.carpenter@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced To</strong>: ECF16 - &quot;Developing Principles for Effective Human Collaboration with Free-Flying Robots&quot;, impact on Astrobee work.</li><li><strong>Closed Out</strong>: This research aimed to advance the understanding of LiAISON navigation and its application for increased spacecraft autonomy for crewed missions in the Earth-Moon system while evaluating its costs (e.g., dedicated navigation satellite, additional hardware, etc.) and benefits (e.g. improved navigation accuracy, fewer DSN tracks, etc.) ultimately providing information for future mission planners to determine its applicability. A baseline navigation capability utilizing ARTEMIS tracking data was conducted for use in subsequent simulations in the research. A large trade space was explored analyzing the navigation capabilities of LiAISON supplemented tracking data for crewed mission in Earth-Moon halo orbits, low lunar orbit, and trans-lunar cruise. An analysis of raw tracking data for the ARTEMIS mission was conducted to establish a baseline for navigation performance capabilities with current ground station configurations. Since ARTEMIS was the first mission to fly an Earth-Moon libration point orbit, it&#x27;s navigation capabilities and operations experiences provide an invaluable measure of what is to be expected. The work performed in this thesis systematically investigated techniques not used in operations to obtain the best navigation performance capabilities attainable. Significant findings include the necessity of a more complex solar radiation pressure shape model of the spacecraft, sequential estimation as opposed to batch processing, estimation of maneuvers and extended tracking data arc lengths. By properly editing tracking data residuals and extending the data arc length, it was shown that overlap precisions on the order of 150 m or less in position was possible. The most important aspect of longer data arcs is the reduction of uncertainty or increased precision in the velocity estimates of the spacecraft. With a longer data arc it is possible to achieve velocity uncertainties less than 1 mm/sec, whereas a shorter data arc as used in operations only provides uncertainties on the order of 5 mm/sec. Initial observability work discussing the capabilities of LiAISON data types was limited in scope however it did explore some features relating to the environment that allows LiAISON to use relative radiometric data to obtain absolute state estimates. An extension to this work is covered in this dissertation in which an exploration of the information content of range and Doppler using simplified first-order models was conducted. The Earth-Moon system was mapped out using partial derivatives of the relative acceleration between a spacecraft and the libration points to define regions where LiAISON Doppler data provides limited ranging information necessary to obtain full estimates of the spacecraft’s state. An extension of the local stability characteristics of halo orbits and how they related to the uncertainty propagation was examined. It was shown that the stability is directly related to the stretching and alignment of the uncertainty propagated along a halo orbit. A crewed vehicle disturbance and environment model (FLAK) was derived using data describing the expected crew ECLSS system. An introduction to a Poisson counting process for use with FLAK uncertainty propagation was derived using linearized assumptions. A Monte Carlo analysis of a trajectory undergoing FLAK showed that a linearized assumption of the uncertainty propagation was valid over the timeframe of concern between the end of a tracking data arc and the next performed maneuver. The inclusion of a Poisson noise model intuitively makes sense for modeling FLAK and requires minimal modifications to current navigation software to implement. Surveys of the trade space concerning LiAISON supplemented navigation for Earth-Moon halo orbiters, low lunar orbiters, and trans-lunar cruise trajectories was conducted. For lunar halo orbiters, TDRSS/GEO type LiAISON measurements can significantly improve the navigation capabilities of both the TDRSS/GEO satellite and a spacecraft in orbit about one of the Earth-Moon Lagrange points. There exists regions where the observability and information content of the data is reduced to due repetitious sampling of the same regions, specifically with a periodicity of 22 hours. An extension to LiAISON navigation of two spacecraft in lunar halo orbits, where one is a crewed vehicle, was conducted. It was shown that LiAISON alone is not sufficient to accurately determine the trajectories of both the navigation satellite and crewed vehicle. However, the addition of a dedicated LiAISON navigation satellite supplementing existing ground tracking networks significantly improves the navigation performance of a crewed vehicle. LiAISON supplementing the DSN produces similar navigation uncertainties as the proposed six station IDAC4B configuration. Similar results were seen for both a crewed vehicle in low lunar orbit and a crewed vehicle on a trans-lunar cruise trajectory. DSN and LiAISON performs on par with the IDAC4B configuration, while LiAISON supplementing the IDAC4B configuration produces the best navigation performance typically invariant of the level of FLAK experienced by the crewed vehicle.</li><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91169">https://techport.nasa.gov/projects/91169</a>
+    </div>
+  </div>
+</body>
+</html>

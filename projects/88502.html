@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Development of High-Fidelity Material Response Modeling for Resin-Infused Woven Thermal Protection Systems | NASA TechPort Project 88502</title>
+  <meta name="description" content="For future space exploration missions, it is essential for the thermal protection system (TPS) found on hypersonic vehicles or atmospheric entry probes to be well-designed in order to ensure mission safety. TPS materials can be classified as either ablative (e">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/88502">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 88502</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX09.4.5</span>
+        </div>
+        <h1>Development of High-Fidelity Material Response Modeling for Resin-Infused Woven Thermal Protection Systems</h1>
+        <div class="meta-id">NASA TechPort Project ID: 88502</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/88502" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>For future space exploration missions, it is essential for the thermal protection system (TPS) found on hypersonic vehicles or atmospheric entry probes to be well-designed in order to ensure mission safety. TPS materials can be classified as either ablative (e.g., ablators such as the Phenolic Impregnated Carbon Ablator, or PICA, used on Stardust) or non-ablative (e.g., reusable materials such as ceramic tiles used on the Space Shuttle). The former class is typically used in extreme entry conditions and the latter in milder environments. The proposed work seeks to use computational modeling techniques to provide essential tools to assist in the design of ablative TPS. In particular, the proposed work plan intends to develop a high-fidelity modeling framework for the new promising family of ablators, woven TPS (WTPS), a class of TPS known for its diversity and flexibility in design. The proposed modeling is divided into two main components: (i) coupled computational fluid dynamics-surface chemistry modeling of the gas-surface interaction in the vicinity of the TPS surface with inclusion of finite rate surface chemistry effects, (ii) high-fidelity material response modeling of the WTPS material. Emphasis is placed on the latter as high-fidelity modeling of woven systems is unprecedented. Both a macroscopic and microscopic level of analysis is proposed to study the multiscale aspects of WTPS. The proposed work will target modeling of WTPS for the Adaptive Deployable Entry Placement Technology (ADEPT) system due to the availability of high-quality experimental results from progressive arc jet testing. This will allow for an excellent validation campaign for the model developed. The products of the proposed research will be pivotal in guiding the design and sizing of WTPS for future NASA missions and experiments. This will be critical in transforming NASA missions and advancing the Nation's capabilities by maturing crosscutting and innovative space technologies. The proposed modeling effort is aligned with the goals of NASA's Entry Systems Modeling project under the Space Technology Mission Directorate and is of highly relevant interest to the entry systems modeling group at the NASA ARC.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The products of the proposed research will be pivotal in guiding the design and sizing of WTPS for future NASA missions and experiments. This will be critical in transforming NASA missions and advancing the Nation's capabilities by maturing crosscutting and innovative space technologies.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>88502</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.4.5: Integrated Modeling and Simulation for EDL</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2016-09-01</td></tr>
+<tr><th>Project End Date</th><td>2020-12-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Michigan-Ann Arbor — Ann Arbor, Michigan</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Michigan (MI)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Others Inside the Solar System, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Anthony Waas (Principal Investigator); David Zhenzhong Dang (Co-Investigator); Eric C Stern (Project Manager) &lt;eric.c.stern@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Transitioned To</strong> (Game Changing Development): RC: the development work that Dr. Dang did with respect to the coupled thermal-structural solver will form the basis of a funded task under the the Entry System Modeling (ESM) project (STMD-GCD), with intent of transitioning his PhD code into a production NASA TPS response solver</li><li><strong>Closed Out</strong>: The primary objective of the research was to advance the predictive capability for modeling woven thermal protection systems (TPS), in particular, the Heatshield for Extreme Entry Environment Technology (HEEET), a dual-layer woven TPS developed at the NASA Ames Research Center. The accomplishments and results can be divided into three aspects. First, a constrained optimization approach was used to infer an orthotropic thermal conductivity model for HEEET. Specifically, the model provides thermal conductivity properties for HEEET in the 295 - 2000 K temperature range in all three orthogonal directions for both layers of the HEEET material. When using the inferred thermal conductivity model, higher fidelity simulations can be performed, producing results that are in much better agreement with experimental measurements. The model will continue to be used in future simulation efforts to guide the design of HEEET and TPS for space exploration missions. Second, the manufacturing process for HEEET has changed in recent years, which has led to observable changes in the stiffness properties. Again, a constrained optimization approach was applied to infer room temperature stiffness properties, as well as properties at elevated temperatures. The properties at elevated temperatures result in a stiffness reduction model that can be used in simulations involving combined thermal and mechanical effects, increasing the predictive capability of modeling HEEET in a multiphysics environment. The stiffness reduction model will be particularly useful in future simulation efforts to guide the design of HEEET and TPS for space exploration missions. Finally, a linear elasticity solver was developed to model the effects of mechanical loading on thermal protection systems. The linear elasticity solver was implemented within a thermal response solver in a coupled manner, allowing for modeling the simultaneous effects of thermal and mechanical loading on TPS. Specifically, the coupling allows for the computation of deformation due to increased temperature as well as applied mechanical loading. The coupled solver will continue to be used to guide design, research, and TPS developmental efforts for future space exploration missions. These unique research contributions will be very useful for guiding future design, research, and experimental efforts of HEEET and woven TPS.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/88502">https://techport.nasa.gov/projects/88502</a>
+    </div>
+  </div>
+</body>
+</html>

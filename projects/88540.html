@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orbit Databases and Fast Gravity Fields for Rapid Trajectory Design Near Small Bodies | NASA TechPort Project 88540</title>
+  <meta name="description" content="Scientific and engineering interest has recently significantly shifted beyond the large planets and moons, which gravitationally dominate their respective localities, to the smaller, irregularly shaped, comets and asteroids roaming the solar system around us. ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/88540">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 88540</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX17.2.6</span>
+        </div>
+        <h1>Orbit Databases and Fast Gravity Fields for Rapid Trajectory Design Near Small Bodies</h1>
+        <div class="meta-id">NASA TechPort Project ID: 88540</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/88540" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Scientific and engineering interest has recently significantly shifted beyond the large planets and moons, which gravitationally dominate their respective localities, to the smaller, irregularly shaped, comets and asteroids roaming the solar system around us. Due to the multi-body dynamics and highly non-spherical gravity fields common to small bodies, state-of-the-art trajectory design and re-design around small bodies can be a slow, ground-based process requiring significant input from specialists. At the same time, the smaller scales and vast number of asteroids and comets often requires rapid recalculation of orbits and trajectories. Part of the solution to these conflicting realities is the fundamental ability to rapidly design trajectories around small bodies. By applying and enhancing fast gravity field techniques, implementing grid searches and root solvers to find useful periodic and quasi-periodic orbits, the proposed research aims to create and innovatively use a new catalogue of trajectories around small bodies of interest to enable rapid trajectory design in those environments.  Though there has been extensive research into various methods of generating gravity fields for small, irregularly shaped bodies, these methods have not yet been applied to a large set of mission candidate bodies in varied dynamical environments, nor have they been adapted or enhanced to suit the needs of the rapid trajectory design problem at small bodies. Among these are:  1) Adaptive computation of the potential field must be fast and efficient enough to allow rapid exploration of the trajectory design space, science instrument and experiment simulations, and in-mission trajectory re-design; and,  2) Acceleration values must adhere closely enough to reality to provide accurate trajectories, even in the presence of dynamics uncertainty and the need for rigorous Monte Carlo simulations.  Therefore, the research team seeks to study alternative ideas for basis functions and interpolation techniques, and implement the best solution for a broad set of small bodies of interest. The research team will also investigate interpolated gravity fields for the particular case of onboard use, since the spacecraft only requires a small local field representation to be stored onboard. To achieve speedups in field calculation and trajectory design times, modern parallel computing techniques and uncertainty quantification analysis will be leveraged.  Modern small-body orbit and trajectory design methods do not typically include higher-order shape irregularities in their dynamical models, nor do studies developing more detailed gravity field models conduct comprehensive orbit and trajectory searches using those models. To address both of these issues, the research team plans to conduct an exhaustive search for stable orbits and trajectories around a wide set of candidate small bodies, taking advantage of the implementation of the fast accurate gravity field calculation developed in the first objective. The purpose of this orbit archive will be to ease the rapid trajectory design and optimization processes on the ground and onboard a spacecraft by providing a large set of good initial guesses for targeted trajectories. This archive of orbits (analogous to Keplerian orbits in the two body problem), will also provide options for science orbits, and transfers between science orbits.  By extending the topics of fast accurate gravity field modeling and rapid small-body trajectory design and coupling the interactions between them in a catalogue of stable orbits and trajectories around real small bodies, the proposed research will expand and enable more rapid and thorough searches of the orbit design space around small bodies. This innovation is an important step toward lowering NASA mission costs because it allows pre- and post-launch quick redesigns of trajectories, as well as faster evaluation of trade-offs between proposed mission scenarios.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          By extending the topics of fast accurate gravity field modeling and rapid small-body trajectory design and coupling the interactions between them in a catalogue of stable orbits and trajectories around real small bodies, the proposed research will expand and enable more rapid and thorough searches of the orbit design space around small bodies. This innovation is an important step toward lowering NASA mission costs because it allows pre- and post-launch quick redesigns of trajectories, as well as faster evaluation of trade-offs between proposed mission scenarios.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>88540</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX17.2.6: Rendezvous, Proximity Operations, and Capture Trajectory Design and Orbit Determination</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2016-09-01</td></tr>
+<tr><th>Project End Date</th><td>2020-08-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>The University of Texas at Austin — Austin, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Ryan P Russell (Principal Investigator) &lt;ryan.p.russell@nasa.gov&gt;; Patrick Wittick (Co-Investigator); Kenneth M Getzandanner (Project Manager) &lt;kenneth.getzandanner@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Mission design in the vicinity of small celestial bodies must grapple with significant uncertainty in the body’s physical parameters and dynamical complexity, particularly near the body surface. This research aims to develop fast modeling approaches and tools for analyzing internal density distributions in order to accelerate the mission design lifecycle both before and after a spacecraft arrives at a target small body. The research objectives originally encompassed leveraging such tools to build out orbit databases to serve as good initial guesses for trajectory optimization, but such work is left to the future due to the time constraints of the project. The work completed took place in three main phases: the first phase focused on developing a hybrid discrete-element approach for small body gravity modeling that would provide fast and accurate proxy models for state-of-the-art polyhedral gravity models. Work involved development of a novel shape model packing algorithm and trade studies of potential-fitting algorithms to improve the accuracy of the hybrid gravity models. The second phase of research improved the tools developed in the first by adapting the packing procedure for robustness to extreme nonconvexity in the body shape and developing a systematic approach to identifying optimal model configurations for several small bodies of interest. The third phase tackled the problem of modeling the near-surface small body gravity field and estimating internal density distributions when a spherical harmonics reference field exists. Regionally-divided mascon models were employed to represent internal density heterogeneities in an approach that fitted the total mascon potential to the reference spherical harmonic potential. The first phase of work resulted in hybrid gravity models for 433 Eros that were shown in published research to offer up to order-of-magnitude computational speed-ups relative to state-of-the-art reduced resolution polyhedral gravity models of equivalent accuracy. Several such models were identified along a performance Pareto front, demonstrating the potential to generate several model alternatives adapted to specific use-cases. Similar computational benefits were demonstrated in the second phase for the asteroids 216 Kleopatra and 25143 Itokawa and Comet 67P/Churyumov-Gerasimenko, representing a broad range of shape and dynamical characteristics. Hybrid gravity model alternatives for these bodies will be publicly available in short order, along with simple Fortran driver routines for their evaluation. Overall, the gravity field modeling methods implemented in the first two research phases were shown to result in efficient proxy models for state-of-the-art polyhedral models that are typically employed as references in the pre-arrival phase of the mission lifecycle. Providing accelerated gravity field evaluations at little accuracy cost has the potential to accelerate mission design efforts from conceptual design through the approach phase. The third phase of research demonstrated the estimation of feasible heterogeneous mascon models for small bodies that are statistically consistent with a reference spherical harmonics field. In practice, the reference field would likely result from orbit determination efforts and represent (albeit with significant uncertainty) information about the body’s true gravity field. By applying a carefully tuned constant-density prior, the density estimation method results in all-positive density distributions. In addition, the gravity fields of the estimated regional mascon models can be evaluated within the Brillouin sphere and (for best-case models) have Stokes’ coefficients that fall within one standard deviation of the reference coefficients. In other words, the estimated regional mascon models provide a fast, statistically consistent proxy for the reference spherical harmonics field that can be used for near-surface trajectory design and analysis.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/88540">https://techport.nasa.gov/projects/88540</a>
+    </div>
+  </div>
+</body>
+</html>

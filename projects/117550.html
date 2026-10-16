@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploring Hell: Avoiding Obstacles on a Clockwork Rover | NASA TechPort Project 117550</title>
+  <meta name="description" content="Design a mechanical obstacle avoidance detector which can sense both rocks and holes for a Venus Rover. Imagine a world hot enough to turn lead into a puddle, where the atmospheric pressure can crush a nuclear-powered submarine. Now imagine sending a rover to ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/117550">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 117550</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">PCC</span>
+          <span class="badge">TX08.3</span>
+        </div>
+        <h1>Exploring Hell: Avoiding Obstacles on a Clockwork Rover</h1>
+        <div class="meta-id">NASA TechPort Project ID: 117550</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/117550" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Design a mechanical obstacle avoidance detector which can sense both rocks and holes for a Venus Rover.<br \> Imagine a world hot enough to turn lead into a puddle, where the atmospheric pressure can crush a nuclear-powered submarine. Now imagine sending a rover to explore that world. Venus, ancient sister of Earth with a planetary environment just this side of hellish, has been visited by a handful of probes since the early days of space flight. Of the many missions to our celestial neighbor, only about a dozen have made contact with the surface of the planet. The longest-lived landers only managed to function for a couple of hours before succumbing to the relentlessly oppressive heat and pressure. NASA's Jet Propulsion Laboratory (JPL), under a grant from the NASA Innovative Advanced Concepts (NIAC) program, envisions returning to the surface of Venus, something not accomplished since the Soviet Vega 2 landed in 1985. Current, state-of-the-art, military-grade electronics fail at approximately 125°C, so mission scientists at JPL have taken their design cues from a different source: automatons and clockwork operations. Powered by wind, the Automaton Rover for Extreme Environments (AREE) mission is intended to spend months, not minutes, exploring the landscape of our sister world. Built of advanced alloys, AREE will be able to collect valuable long-term longitudinal scientific data utilizing both indirect and direct sensors. As the rover explores the surface of Venus, collecting and relaying data to an orbiter overhead, it must also detect obstacles in its path like rocks, crevices, and steep terrain. To assist AREE on its groundbreaking mission, JPL needs an equally groundbreaking obstacle avoidance sensor, one that does not rely on vulnerable electronic systems. For that reason, JPL is turning to the global community of innovators and inventors to design this novel avoidance sensor for AREE. JPL is interested in all approaches, regardless of technical maturity. This sensor will be the primary mechanism by which the rover detects and navigates through dangerous situations during its operational life. By sensing obstacles such as rocks, crevices, and inclines, the rover can then navigate around the obstruction, enabling the rover to continue to explore the surface of Venus and collect more observational data. JPL has issued this Challenge to the global community because the rover must have the ability to successfully navigate in such a demanding environment in order to qualify for additional developmental funding. While the mission to the surface of Venus may be years off, the development of a suitably robust rover sensor will strengthen the case for returning to Venus with a rover, something that has never been attempted before. Design a mechanical obstacle avoidance detector which can sense both rocks and holes for a Venus Rover.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The Exploring Hell Challenge received 572 submissions from people in over 80 countries. The Judging Panel was so thrilled by the number of outstanding and innovative entries that NASA is recognizing an additional 12 solutions. The challenge sought early-stage ideas and solutions surpassed all expectations. The 15 awarded entries plus an additional ~25 entries included detailed CAD designs, calculations, and extensive reports. One submitting team even built a full-scale prototype of their design. The Challenge Owner compared the results to having 20-30 senior projects done on the topic. The diversity and variety of submissions allows JPL to quickly understand different approaches and also identify possible failure points early. The results of the challenge will be incorporated into the AREE report that is being prepared by Jonathan Sauder and will be used to inform future developments in mechanical sensors for Venus. More details can be found in the webinar that we hosted with JPL and the winners here: https://www.herox.com/VenusRover/128-meet-the-winners ------------- 1-year follow-up: The solutions were included into our final report to NIAC (which was submitted last summer), as approaches that should be implemented when creating the rover. There has not yet been any follow-on funding for this effort, so we haven't implemented things in terms of "building hardware". Currently, with the help of the challenge, all of the tall poles on the rover architecture have been solved, and our current proposals focus on evolving detailed aspects like the Wind Turbine and designing and demonstrating mechanisms to operating for months under the extreme Venus conditions. I expect we will continue to focus on continued development of component technology for quite some time.<br />Solved<br />In use or implemented<br />CAD/Mech Design</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>117550</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Prizes, Challenges, and Crowdsourcing (PCC)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.3: In Situ Instruments and Sensors</td></tr>
+<tr><th>Project Start Date</th><td>2019-11-18</td></tr>
+<tr><th>Project End Date</th><td>2020-08-13</td></tr>
+<tr><th>Lead Organization / Center</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>HeroX — Wilmington, Delaware</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jonathan F Sauder (Project Manager) &lt;jonathan.sauder@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jarah A Meador (Program Director) &lt;jarah.meador-1@nasa.gov&gt;; Jennifer E Edmunson (Program Manager) &lt;jennifer.e.edmunson@nasa.gov&gt;; Ryon C Stewart (Program Manager) &lt;ryon.stewart@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Solved In use or implemented The Exploring Hell Challenge received 572 submissions from people in over 80 countries. The Judging Panel was so thrilled by the number of outstanding and innovative entries that NASA is recognizing an additional 12 solutions. The challenge sought early-stage ideas and solutions surpassed all expectations. The 15 awarded entries plus an additional ~25 entries included detailed CAD designs, calculations, and extensive reports. One submitting team even built a full-scale prototype of their design. The Challenge Owner compared the results to having 20-30 senior projects done on the topic. The diversity and variety of submissions allows JPL to quickly understand different approaches and also identify possible failure points early. The results of the challenge will be incorporated into the AREE report that is being prepared by Jonathan Sauder and will be used to inform future developments in mechanical sensors for Venus. More details can be found in the webinar that we hosted with JPL and the winners here: https://www.herox.com/VenusRover/128-meet-the-winners ------------- 1-year follow-up: The solutions were included into our final report to NIAC (which was submitted last summer), as approaches that should be implemented when creating the rover. There has not yet been any follow-on funding for this effort, so we haven&#x27;t implemented things in terms of &quot;building hardware&quot;. Currently, with the help of the challenge, all of the tall poles on the rover architecture have been solved, and our current proposals focus on evolving detailed aspects like the Wind Turbine and designing and demonstrating mechanisms to operating for months under the extreme Venus conditions. I expect we will continue to focus on continued development of component technology for quite some time.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> NASA NOIS-069 Closeout Report_v2</li><li><strong>1-Year Follow-up</strong> — 1-year follow-up: The solutions were included into our final report to NIAC (which was submitted last summer), as approaches that should be implemented when creating the rover. There has not yet been any follow-on funding for this effort, so we haven&#x27;t implemented things in terms of &quot;building hardware&quot;. Currently, with the help of the challenge, all of the tall poles on the rover architecture have been solved, and our current proposals focus on evolving detailed aspects like the Wind Turbine and designing and demonstrating mechanisms to operating for months under the extreme Venus conditions. I expect we will continue to focus on continued development of component technology for quite some time.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/117550">https://techport.nasa.gov/projects/117550</a>
+    </div>
+  </div>
+</body>
+</html>

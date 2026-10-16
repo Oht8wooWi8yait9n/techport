@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>High Frequency Silicon-Germanium MMIC Development for Next Generation Space-based Radars | NASA TechPort Project 11539</title>
+  <meta name="description" content="Outlined in the NRC Decadal Survey (2007), the Aerosol-Cloud-Ecosystem (ACE) mission aims to reduce uncertainty of climate change prediction through studying the roles of aerosols on cloud formation and their tendency to reflect solar radiation. The Decadal Su">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/11539">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 11539</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX08.1.2</span>
+        </div>
+        <h1>High Frequency Silicon-Germanium MMIC Development for Next Generation Space-based Radars</h1>
+        <div class="meta-id">NASA TechPort Project ID: 11539</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/11539" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Outlined in the NRC Decadal Survey (2007), the Aerosol-Cloud-Ecosystem (ACE) mission aims to reduce uncertainty of climate change prediction through studying the roles of aerosols on cloud formation and their tendency to reflect solar radiation. The Decadal Survey calls for a 94 GHz cross-track radar for studying the compositions of clouds; however, the currently proposed implementations do not meet the specified cross-track scanning requirement at W-band due to the complexity and cost associated with such a design in conventional technology. Therefore, it is apparent that in order to meet not only the ACE mission goals, but for all future cloud profiling radars, an alternative method must be developed to implement the cross-track scanning requirement at 94 GHz in a low-cost platform. The high frequency performance of SiGe HBTs, CMOS compatibility, reduced system area requirements, and low-cost nature of the SiGe BiCMOS platform has placed SiGe BiCMOS technology into a position in which it can meet the requirements of ACE mission. Therefore, it is attractive to bring these benefits to the cloud profiling radar domain while eliminating the fixed, bulky W-band klystrons that are in use today. Additionally, the harsh environment of space is both widely varying in temperature and extremely radiation-rich, providing difficult design tradeoffs to meet specified performances over all the extremes. Fortunately, SiGe HBTs have inherent TID radiation tolerance, so it will be important to play to this strength by designing BiCMOS circuits which are radiation hardened by design. Notably, SiGe HBTs also exhibit improved performance at cryogenic temperatures; however, it will be necessary to design circuits with relatively temperature invariant performance in order to reduce time consuming calibration cycles of the cloud profiling radar.  The primary goal of this research is to develop low-cost SiGe BiCMOS W-band T/R MMICs to meet the cross-track scanning requirements of the ACE mission. The first year will focus on design tradeoff studies and the main MMIC designs. The second year will follow with MMIC integration into a monolithic T/R module. The third year will then focus on the design and testing of a monolithic multi-channel AESA. In the fourth year I will investigate the additional design considerations required to realize the cloud profiling radar in its entirety. All phases of design will consider radiation tolerance and temperature invariant performance due to the extreme environment that these circuits will face. Both the ACE mission and future Tier 3 missions involving cloud profiling radars stand to benefit greatly from this research.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Both the ACE mission and future Tier 3 missions involving cloud profiling radars stand to benefit greatly from this research.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>11539</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.2: Electronics</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2012-08-01</td></tr>
+<tr><th>Project End Date</th><td>2016-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Georgia Institute of Technology-Main Campus (GA Tech) — Atlanta, Georgia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Georgia (GA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Outside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>John Cressler (Principal Investigator); Peter Song (Co-Investigator) &lt;peter.song@jpl.nasa.gov&gt;; Denis Carbonne (Project Manager) &lt;gregory.a.sadowy@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The objective of this research is to investigate and develop techniques for millimeter-wave (mm wave) circuit design on Silicon-Germanium (SiGe) Bipolar-Complementary Metal Oxide Semiconductor (BiCMOS) platforms for spaced-based phased array radar applications. The demonstration vehicle is a monolithically integrated W-band (75–110 GHz) phased array radar to show both feasibility and scalability of the technology for potential system insertion in future Tier 2 and Tier 3 Earth observing science missions. What is ultimately demonstrated are the core front-end circuits, implemented in the latest generation SiGe BiCMOS technologies, can sufficiently meet performance requirements of the W-band radar, with multi-channel front-end functionality fully integratable into a single-chip solution. This significantly reduces costs associated with touch labor and engineering of a packaging solution, which can be a significant portion of the cost of the radar. A prototype transmit-receive channel was designed and submitted for fabrication and further component improvements are still planned for the year to come.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>11539-1363185274497.jpg</strong> — Project Image High Frequency Silicon-Germanium MMIC Development for Next Generation Space-based Radars</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/11539">https://techport.nasa.gov/projects/11539</a>
+    </div>
+  </div>
+</body>
+</html>

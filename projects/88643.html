@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multitarget Approaches to Robust Navigation | NASA TechPort Project 88643</title>
+  <meta name="description" content="The performance, stability, and statistical consistency of a vehicle&#x27;s navigation algorithm are vitally important to the success and safety of its mission. Autonomous decision-making procedures employed on these missions rely upon these navigation solutions, a">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/88643">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 88643</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX17.2.1</span>
+        </div>
+        <h1>Multitarget Approaches to Robust Navigation</h1>
+        <div class="meta-id">NASA TechPort Project ID: 88643</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/88643" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The performance, stability, and statistical consistency of a vehicle's navigation algorithm are vitally important to the success and safety of its mission. Autonomous decision-making procedures employed on these missions rely upon these navigation solutions, and, in order for the autonomous vehicle to make appropriate decisions, the vehicle must be well-informed. With this in mind, the goal of this work is to develop a high-performance, robust navigation framework that applies to a wide variety of active NASA projects, such as Orion, Osiris-REX, and ALHAT, to name a few. Specifically, this project will develop a robust navigation framework using novel, state-of-the-art multitarget tracking techniques to perform autonomous multitarget navigation for spacecraft, planetary landers, and rovers in the presence of unmodeled effects, imperfect data, and sensor anomalies. The objectives for achieving this include: 1) Develop a consider-based framework under the Bayesian single-target paradigm that accounts for imperfect sensing and unmodeled system effects in the interest of obtaining a more complete statistical description of the true distribution of the state of a vehicle. 2) Develop a square-root formulation of the developed Bayesian consider framework in the interest of numerical robustness and stability. 3) Lift the Bayesian consider techniques into the multitarget domain to enhance autonomous navigation, hazard avoidance, and rendezvous, docking, and landing capabilities by enabling multi-feature detection, tracking, identification, and classification. 4) Unify the results of the previous three objectives into a single, robust multitarget navigation framework that can be applied to a wide variety of autonomous navigation problems to ensure safe and successful operation of future NASA missions while reducing the cost of algorithm development. The completion of these objectives will produce a multitarget navigation framework with a broad relevance and an applicability to navigation for NASA's space vehicles and planetary landing missions. This research naturally produces a valuable analysis tool to evaluate the feasibility of different vehicle sensing configurations in a simulation environment, since the model-based approach comes with a strong degree of generality. The framework's wide applicability stands to reduce the development time of navigation architectures and thus reduce associated costs, while still permitting reliance on accurate, statistically descriptive navigation solutions.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The completion of these objectives will produce a multitarget navigation framework with a broad relevance and an applicability to navigation for NASA's space vehicles and planetary landing missions.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>88643</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX17.2.1: Onboard Navigation Algorithms</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2016-08-01</td></tr>
+<tr><th>Project End Date</th><td>2018-12-15</td></tr>
+<tr><th>Lead Organization / Center</th><td>Missouri University of Science and Technology — Rolla, Missouri</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Missouri (MO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Others Inside the Solar System, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Kyle J DeMars (Principal Investigator); James S Mccabe (Co-Investigator) &lt;james.s.mccabe@nasa.gov&gt;; Christopher N D&#x27;Souza (Project Manager) &lt;chris.dsouza-1@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Infused To</strong>: Material properties obtained used by MSR-EEV project to help design thermal protection system. [RC also plans to get funding to incorporate students software into NASA production code (Icarus), but this has not yet happened as of closeout review]</li><li><strong>Closed Out</strong>: This project has developed a high-performance, robust navigation framework using novel, state-of-the-art multitarget tracking techniques to perform autonomous multitarget navigation for spacecraft, planetary landers, and rovers in the presence of unmodeled effects, imperfect data, and sensor anomalies. This has been achieved via the following novel developments: • Development of a consider framework within the Bayesian paradigm to obtain knowledge of the entire probability density function of interest rather than being restricted to mean and covariance representations. • Development of a square-root formulation of the Bayesian consider framework and characterize sensor failures to produce a numerically robust and stable autonomous navigation filter implementation. • Generalization of the Bayesian consider estimation framework into the multitarget domain to enhance autonomous navigation, hazard avoidance, and rendezvous, docking, and landing capabilities. Reimagine the terrain-aided navigation concept as a multitarget tracking problem and utilize emerging tools based in finite set statistics to rigorously model the challenging stochastic motion and measurement properties of the studied problems. • Unification of the developed technologies using decentralized fusion into a robust navigation framework that can be applied to a wide variety of autonomous navigation problems to ensure safe and successful operation of future NASA missions while reducing the cost of algorithm development. The completion of these objectives has contributed a large step forward with respect to enhancing the navigation capabilities of NASA&#x27;s space vehicles and planetary landing missions.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/88643">https://techport.nasa.gov/projects/88643</a>
+    </div>
+  </div>
+</body>
+</html>

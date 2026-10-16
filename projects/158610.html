@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UAS Traffic Management (UTM) Prototype for 24 Hour Aerial Firefighting | NASA TechPort Project 158610</title>
+  <meta name="description" content="Climate change is increasing the frequency and severity of western wildfires. Threats to people and infrastructure are growing with more population living in the wildland-urban interface. Blindly throwing more resources at the problem while doing things the sa">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158610">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158610</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX16</span>
+        </div>
+        <h1>UAS Traffic Management (UTM) Prototype for 24 Hour Aerial Firefighting</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158610</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158610" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Climate change is increasing the frequency and severity of western wildfires. Threats to people and infrastructure are growing with more population living in the wildland-urban interface. Blindly throwing more resources at the problem while doing things the same way is not a cost-effective. Extending manned and unmanned aerial firefighting to 24-hour, second-shift operations will provide a major increase in firefighting effectiveness and efficiency. During the night, winds die down, temperatures decrease and humidity increases making night time a more productive time to fight fires from the air. But, existing airspace management processes are visual, manual, and not conducive to Unmanned Air Systems (UAS) participation. Hence, firefighting is largely restricted to manned, daytime, clear air mass visual operations. By applying emerging technology in innovative ways, firefighting will transition to round-the-clock operations with UAS picking up much of the workload.  During Phase II, a full prototype Second-Shift Aerial Supervision Module (SSASM) will be developed to extend aerial firefighting to second-shift operations while supporting simultaneous UAS support missions such as search and rescue, surveillance and resupply. SSASM eliminates the daytime overhead stack and allows manned/unmanned tanker loads to be delivered on arrival, vastly improving efficiency and lowering cost. Night operations are de-conflicted through the use of innovative 4-D corridors and airspace containers. Progress is monitored on AirBoss displays with automatic detection of traffic conflicts during planning and execution. SSASM supports ground based, manned and unmanned tanker mission planning, tasking, and 4D trajectory guidance from ingress, retardant delivery, and egress. Mission metrics are down linked for evaluation of drop effectiveness. Real-time, persistent surveillance enables night firefighting operations. Line-of-Sight and SATCOM data communication architectures are demonstrated.  Identification of the Problem:   	Climate change is increasing the frequency and severity of western wildfires.&nbsp;Threats to people and infrastructure are growing with more population living in the wildland-urban interface 	Existing airspace management processes are visual, manual, slow and not conducive to UAS participation 	Aerial firefighting operations are largely restricted to manned, daytime, clear air mass operations   Significance of Innovation:    	The Second-Shift Aerial Supervision Module (SSASM) extends firefighting to 24-hr operations and enables&nbsp;UAS support missions 	Eliminating the overhead stack improves efficiency and lowers emergency response cost 	Night operations in 4-D corridors and airspace containers eliminate the risk of mid-air collision. Progress monitored on the Air Boss display with automatic detection of conflicts during planning and execution 	Manned and unmanned tanker mission planning, tasking, and 4D trajectory guidance 	Real-time, persistent fire mapping enables night firefighting operations 	Line-of-Sight and SATCOM data communication architecture demonstrated    Technical Objectives:    	The Second-Shift Aerial Supervision Module (SSASM) system is prototyped to demonstrate UAS Traffic Management (UTM) and Emergency Airspace Management for Firefighting Operations.  	SSASM airborne avionics&nbsp;prototyped to extend aerial firefighting to second-shift and low visibility operations. 	Demonstrate aerial firefighting operations simultaneously with UAS support missions such as persistent surveillance and resupply.&nbsp;  	Phase II SSASM prototype is tested&nbsp;in a relevant&nbsp;environment&nbsp;with the Company&rsquo;s PA-39 twin-engine test aircraft and 680MM multi-rotor UAS to advance&nbsp;the technology to TRL 7.   Proposed Deliverables:    	Prototype Airborne Demonstration 	Interim and Final Technical Reports 	Prototype Software
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This research supports&nbsp;NASA Wildfire projects:   	SSASM is closely aligned with NASA&rsquo;s new Advanced Capabilities for Emergency Response Operations (ACERO) initiative and directly supports the ACERO Wildfire Airspace Management, Second Shift, and Aircraft Safety objectives.    	This SBIR research is aligned with NASA&rsquo;s Science Mission Directorate (SMD) FireSense program.&nbsp; Commercialization of our technology directly supports fielding capabilities to operational agencies with the goal of measurably improving wildland fire management.    	Federal &amp; State&nbsp;wildland firefighting agencies: USFS, BLM and CALFIRE.&nbsp;Each SSASM license will save hundreds of hours of flight time through better airspace management and by eliminating the overhead aerial supervisor and lead plane aircraft at night.&nbsp; Lower cost and improved effectiveness will drive adoption. 	State and Local Emergency Services will benefit from improved situational awareness.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158610</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX16: Air Traffic Management and Range Tracking Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 5 | Current TRL: 5 | Target End TRL: 7</td></tr>
+<tr><th>Project Start Date</th><td>2023-06-26</td></tr>
+<tr><th>Project End Date</th><td>2025-12-26</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Trident Sensing LLC — Park City, Utah</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Utah (UT)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Stephen J Pollard (Principal Investigator); Todd C Farley (Project Manager) &lt;todd.farley@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158610">https://techport.nasa.gov/projects/158610</a>
+    </div>
+  </div>
+</body>
+</html>

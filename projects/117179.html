@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A hosted analytic collaborative framework for global river water quantity and quality from SWOT, Landsat, and Sentinel-2 | NASA TechPort Project 117179</title>
+  <meta name="description" content="NASA&#x27;s soon to be launched SWOT mission promises a sea change for terrestrial hydrology. Principally, SWOT&#x27;s reservoir/lake volume change observations and SWOT&#x27;s derived river discharge product are each unprecedented in terms of their resolution, scale, and fr">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/117179">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 117179</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">AIST</span>
+          <span class="badge">TX11.2</span>
+        </div>
+        <h1>A hosted analytic collaborative framework for global river water quantity and quality from SWOT, Landsat, and Sentinel-2</h1>
+        <div class="meta-id">NASA TechPort Project ID: 117179</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/117179" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          NASA's soon to be launched SWOT mission promises a sea change for terrestrial hydrology. Principally, SWOT's reservoir/lake volume change observations and SWOT's derived river discharge product are each unprecedented in terms of their resolution, scale, and frequency. This water quantity information is among the primary reasons for SWOT's development and launch. SWOT water quantity algorithms and products are well documented in the literature, and a robust plan is in place to produce these products globally. Rivers are also more than just water quantity: the quality of river water is essential knowledge for ecosystems and society. There are currently no plans to assess river water quality from SWOT data. However, optical image analysis has a long history in hydrology and can detect river water quality, especially information regarding river sediment concentrations and algal blooms. However, hydrology faces a knowledge gap: computer vision has advanced separately from image analysis as practiced by hydrologists, and computer vision capabilities as practiced in computer science are far more accurate, efficient, and robust for extracting information from imagery than are traditional hydrologic measurement techniques. Many important hydrologic image-based tasks such as water surface classification, river and lake dimensional measurements, and water quality quantification (e.g. sediment and algae) could potentially benefit from improvements as practiced in computer vision. The launch of SWOT therefore presents a tremendous opportunity to combine SWOT and optical data in a single Analytic Collaborative Framework (ACF) to simultaneously co-predict river water quantity and quality at a scale that is not currently possible. This advance is non-trivial: multiplying the mass flux of water (estimated via SWOT) by its constituent concentrations (estimated via optical data) provides a constituent mass loading (e.g. sediment, algae) in the world's river systems and therefore a direct benefit to society and ecosystems. This project seeks to integrate data from the soon-to-be launched SWOT mission with traditional optical imagery into "a common platform to address previously intractable scientific and science-informed application questions" as solicited for an ACF. Specifically, we will build on an existing ACF already in development as part of the SWOT Science Team named 'Confluence.' Confluence currently seamlessly integrates with SWOT data (as solicited) but has a very narrow scope and mission: to analyze SWOT data and deliver the parameters needed for the SWOT river discharge product to NASA's JPL. In addition, Confluence is only available to its developers and not the broader community. Confluence also does not currently integrate optical data into its analysis framework and has no ability to predict water quality. We argue that the ability to co-predict river discharge and river water quality is currently intractable, and that our proposed ACF will make it tractable. The outputs of our ACF will be 1) a unique seamless data environment for SWOT and optical data, 2) an extended library of algorithms for water quantity, 3) a novel library of computer vision algorithms for water quality, and 4) an automated computational environment to produce river water quantity and quality products, globally. As an AET, we plan to transition our ACF to PO.DAAC in year 3, allowing our ACF and its outputs to reside 'alongside' the SWOT mission products (PO.DAAC is the designated NASA archive for SWOT) for ease of discovery and use by the hydrology community. Our proposed ACF should dramatically and uniquely advance our understanding of the world's river water quality and quantity, informing the management, use, and study of rivers as it is transitioned to PO.DAAC for year 3 and beyond.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Advance Earth system science knowledge through the Identification, develop, and demonstrate innovative information systems technologies
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>117179</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Advanced Information Systems Technology (AIST)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.2: Modeling</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2022-08-01</td></tr>
+<tr><th>Project End Date</th><td>2024-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Massachusetts-Boston — Boston, Massachusetts</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ohio State University-Main Campus (OSU) — Columbus, Ohio; University of Pittsburgh-Pittsburgh Campus — Pittsburgh, Pennsylvania; Jet Propulsion Laboratory (JPL) — Pasadena, California; University of North Carolina at Chapel Hill (UNC) — Chapel Hill, North Carolina; University of Massachusetts-Amherst (UMASS) — Amherst, Massachusetts</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Massachusetts (MA), North Carolina (NC), Ohio (OH), Pennsylvania (PA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Colin J Gleason (Principal Investigator); Michael T Durand (Co-Investigator); John R Gardner (Co-Investigator); Suresh Vannan (Co-Investigator) &lt;suresh.vannan@jpl.nasa.gov&gt;; Tamlin M Pavelsky (Co-Investigator) &lt;tamlin.pavelsky@jpl.nasa.gov&gt;; Mary Santos (Co-Investigator); Subhransu Maji (Co-Investigator); Nikki Tebaldi (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Michael S Seablom (Program Director) &lt;michael.s.seablom@nasa.gov&gt;; Laura J Rogers (Program Manager) &lt;laura.j.rogers@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-08-22</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://science.nasa.gov/science-research/science-enabling-technology/technology-highlights/nasas-cloud-based-confluence-software-helps-hydrologists-study-rivers-on-a-global-scale/" target="_blank" rel="noopener noreferrer">SMD Technology Highlight</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/117179">https://techport.nasa.gov/projects/117179</a>
+    </div>
+  </div>
+</body>
+</html>

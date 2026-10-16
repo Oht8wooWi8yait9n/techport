@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trajectory Design in a Combined Low-Thrust Multi-Body Environment | NASA TechPort Project 88556</title>
+  <meta name="description" content="Low-thrust propulsion (e.g. electric propulsion, solar sailing, etc.) is a promising new technology that may allow smaller, more efficient spacecraft to participate in space science and exploration. In order to undertake such missions, mission designers must o">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/88556">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 88556</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX15.2.1</span>
+        </div>
+        <h1>Trajectory Design in a Combined Low-Thrust Multi-Body Environment</h1>
+        <div class="meta-id">NASA TechPort Project ID: 88556</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/88556" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Low-thrust propulsion (e.g. electric propulsion, solar sailing, etc.) is a promising new technology that may allow smaller, more efficient spacecraft to participate in space science and exploration. In order to undertake such missions, mission designers must obtain feasible initial solutions for trajectories that allow transfers to regions of interest within the bounds of the small amounts of thrust available to the spacecraft. Current design efforts leverage simplified gravity models and optimization theory to produce a specific trajectory for a single mission. Although this technique is capable of producing useful designs, it is numerically difficult to implement and can be incapable of responding to errors during flight operations. This investigation will explore motion propagated under more complex and accurate models to generate a roadmap of trajectory options in multi-body environments. To begin, the low-thrust, multi-body dynamics will be simplified and their basic behavior compared to familiar motion in multi-body environments. Questions of interest include: how will known periodic and quasi-periodic orbits change when low-thrust is added to the governing equations? What kinds of new motion will appear, and what kinds of motion will disappear? The application of Poincare maps will provide tools to investigate motion patterns throughout the space. Finally, the motion observed in this research will be applied to past and current low-thrust mission trajectories to demonstrate the validity and usefulness of the proposed methods; NASA software will be used for this analysis in conjunction with the excellent computational capabilities provide by the Multi-Body Dynamics Research Group at Purdue University. This research has several perceived benefits. In general, the knowledge and tools gained will assist mission design experts in their work to construct paths for low-thrust-equipped vehicles through interplanetary space, contributing to NASA's goal to pioneer the future in space exploration. The improved landscape of trajectory options produced by this research will allow rapid re-design of low-thrust trajectories, and will extend intuition about the types of motion that can be feasibly obtained by applying low-thrust. Ultimately, this research may provide the framework to plan future low-cost missions throughout the solar system.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This research has several perceived benefits. In general, the knowledge and tools gained will assist mission design experts in their work to construct paths for low-thrust-equipped vehicles through interplanetary space, contributing to NASA's goal to pioneer the future in space exploration. The improved landscape of trajectory options produced by this research will allow rapid re-design of low-thrust trajectories, and will extend intuition about the types of motion that can be feasibly obtained by applying low-thrust. Ultimately, this research may provide the framework to plan future low-cost missions throughout the solar system.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>88556</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX15.2.1: Trajectory Design and Analysis</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2016-08-15</td></tr>
+<tr><th>Project End Date</th><td>2020-05-15</td></tr>
+<tr><th>Lead Organization / Center</th><td>Purdue University-Main Campus — West Lafayette, Indiana</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Indiana (IN)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars, Sun, Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Kathleen C Howell (Principal Investigator); Andrew Cox (Co-Investigator); David C Folta (Project Manager) &lt;david.c.folta@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Infused To</strong>: Students research was used to design trajectory for Lunar IceCube mission. Student was also hired and his work will likely be used for other trajectories in the future.</li><li><strong>Closed Out</strong>: A key challenge in low-thrust trajectory design is generating preliminary solutions that simultaneously detail the evolution of the spacecraft position and velocity vectors, as well as the thrust history. To address this di culty, a dynamical model that incorporates a low-thrust force into the circular restricted 3-body problem (CR3BP), i.e., the CR3BP+LT, is constructed and analyzed. Control strategies that deliver specic energy changes (including zero energy change to deliver a conservative system) are derived and investigated, and dynamical structures within the CR3BP+LT are explored as candidate solutions to seed initial low-thrust trajectory designs. Furthermore, insights from dynamical systems theory are leveraged to inform the design process. In the combined model, the addition of a low-thrust force modies the locations and stability of the equilibrium solutions, resulting in ow congurations that di er from the natural behavior in the CR3BP. The application of simplifying assumptions yields a conservative, autonomous system with properties that supply useful insights. For instance, \forbidden regions&quot; at xed energy levels bound low-thrust motion, and analytical equations are available to guide the navigation through energy space. Linearized dynamics about the equilibria supply hyperbolic and center manifold structures, similar to the ballistic CR3BP. Low-thrust periodic orbits in the vicinity of the equilibrium solutions also admit hyperbolic and center manifolds, providing an even greater number of dynamical structures to be employed in preliminary trajectory designs. Several applications of the structures and insights derived from the CR3BP+LT are demonstrated, including several strategies for transit and capture near the smaller CR3BP primary body. Finally, an interactive trajectory design framework is developed to explore and utilize the structures and insights delivered by this investigation. As many of the dynamical structures, insights, and trajectory design strategies are new results, this investigation advances the state-of-the-art methodologies for low-thrust trajectory design.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/88556">https://techport.nasa.gov/projects/88556</a>
+    </div>
+  </div>
+</body>
+</html>

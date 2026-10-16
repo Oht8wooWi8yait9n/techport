@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incorporating High-Speed, Optimizing, Interleaving, Configurable/Composable Scheduling into NASA&#x27;s EUROPA Planning Architecture | NASA TechPort Project 8843</title>
+  <meta name="description" content="Advanced, robust, autonomous planning systems have not focused on the scheduling decisions made by the planner. And high quality, optimizing schedulers have rarely been integrated with such planning systems and only at a very coarse level. Little research rega">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/8843">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 8843</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX10.2.1</span>
+        </div>
+        <h1>Incorporating High-Speed, Optimizing, Interleaving, Configurable/Composable Scheduling into NASA&#x27;s EUROPA Planning Architecture</h1>
+        <div class="meta-id">NASA TechPort Project ID: 8843</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/8843" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Advanced, robust, autonomous planning systems have not focused on the scheduling decisions made by the planner. And high quality, optimizing schedulers have rarely been integrated with such planning systems and only at a very coarse level. Little research regarding interleaving scheduling and planning has been done. Meanwhile, we have studied and implemented human scheduling decision processes over a 20 yr. period, developing the Aurora scheduling architecture in the process, which executes very rapidly and has solved scheduling problems in dozens of diverse critical domains. We propose to intimately integrate high speed, high quality scheduling algorithms from Aurora with NASA's existing EUROPA 2 architecture and expose high level descriptions of individual scheduling decision methods to end-users, enabling users to compose and configure these scheduling methods. A combined EUROPA-Aurora system would allow for more efficient plans and more optimal scheduling. It would allow EUROPA to better handle scheduling problems in its current domains and be better applied to domains with more significant scheduling issues. Better schedules will get more science done with the same time and resources. In Phase I, we will determine the requirements of the integrated EUROPA-Aurora system for the types of domains that would most benefit from the integration and will determine additional heuristics, algorithms, methods and techniques needed for Aurora for those domains. We will develop the Integration Design, including determining, with NASA's input, whether it is most beneficial to integrate Aurora with EUROPA directly or to port algorithms from Aurora to EUROPA. We will prove feasibility of the integration by implementing an integration prototype and applying it to two different domains to show its efficacy, generality, and adaptability. Two options that we are already familiar with are planning/scheduling for ISS operations and autonomous spacecraft/robots.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Applications with a significant planning component with a need or desire to achieve high resource utilization including autonomous spacecraft and planetary vehicles (to maximize returned science), real-time planning/scheduling relating to manned spacecraft operations (either ISS or next generation manned vehicles), and high speed replanning/rescheduling to respond to outages or problems with NASA's communication networks (Deep Space, Near Earth, and Space).<br /> <br />There are many similarities between NASA's autonomous and real-time planning and scheduling applications and similar applications in the DoD, which is a main Stottler Henke customer. In particular the DoD and defense contractors (Lockheed Martin, Boeing Defense, and Northrop Grumman are all current Stottler Henke customers) are dealing with the explosive growth of unmanned vehicles and need to increase their autonomy. Stottler Henke is already involved in those efforts such that EUROPA-Aurora can be marketed to our current contacts in the defense industry. Additionally, we are already marketing Aurora, our general intelligent scheduling framework, and customizing it for a variety of domains. EUROPA-Aurora can be marketed to this existing Aurora product customer base, which has already generated over $3 million in revenue for Stottler Henke. And the EUROPA-AURORA combination will have several unique competitive advantages it will be the only product that includes both high-quality, adaptable planning and high-quality, optimizing scheduling. Furthermore, its capability of interleaving planning and scheduling will be unique.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>8843</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX10.2.1: Mission Planning and Scheduling</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2011-02-18</td></tr>
+<tr><th>Project End Date</th><td>2011-09-29</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Stottler Henke Associates, Inc. — San Mateo, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Richard R Stottler (Principal Investigator); Paul Morris (Project Manager) &lt;Paul.H.Morris@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Incorporating High-Speed, Optimizing, Interleaving, Configurable/Composable Scheduling into NASAs EUROPA Planning Architecture, Phase I Project Image</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart Image</li><li><strong>Briefing Chart</strong> — Incorporating High-Speed, Optimizing, Interleaving, Configurable/Composable Scheduling into NASA&#x27;s EUROPA Planning Architecture, Phase I</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/8843">https://techport.nasa.gov/projects/8843</a>
+    </div>
+  </div>
+</body>
+</html>

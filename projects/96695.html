@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Towards a Real-Time Estimate of Circadian Phase During Spaceflight | NASA TechPort Project 96695</title>
+  <meta name="description" content="The 24-hour circadian clock, located in the hypothalamus of the brain, controls the timing and pattern of sleep, alertness, performance, and mood, disruption of which has a major impact on safety. The circadian clock also controls many other aspects of human p">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/96695">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 96695</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.3</span>
+        </div>
+        <h1>Towards a Real-Time Estimate of Circadian Phase During Spaceflight</h1>
+        <div class="meta-id">NASA TechPort Project ID: 96695</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/96695" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The 24-hour circadian clock, located in the hypothalamus of the brain, controls the timing and pattern of sleep, alertness, performance, and mood, disruption of which has a major impact on safety. The circadian clock also controls many other aspects of human physiology, perturbation of which will affect longer-term health and well-being. It is imperative that the timing of the circadian clock is measured routinely, as a standard measure of health and behavior, during long-duration space missions to ensure that these multiple brain and body systems are not disrupted and misaligned from either each other (internal desynchronization) or with the work schedule (external desynchronization). Once measured, and if out of phase, circadian rhythms can be resynchronized to the desired time using a number of countermeasures, including bright light, melatonin, and potentially exercise and meal timing. The effectiveness of these countermeasures depends critically, however, on the circadian phase at which they are administered; mistimed countermeasures can exacerbate circadian disruption, leading to worsening of health and performance outcomes rather than improvement. Circadian phase is highly individualized, however, varying by up to 5 hours in healthy individuals under stable conditions, and is even more variable in space. To date, no feasible method exists to measure circadian phase accurately and reliably in real-time during spaceflight. Existing methods currently being used in-flight require collection of serial urine samples for up to 48 hours, from which the concentration of the urinary metabolite 6-sulphatoxymelatonin is measured to determine the timing of the circadian rhythm. Importantly, however, no technology exists to measure concentrations of urinary 6-sulphatoxymelatonin directly in-flight; therefore, knowledge about in-flight circadian disruption can be determined only during post-hoc analyses once the samples have been returned to Earth, which limits the ability to treat circadian disruption in real time. This proposal addresses this critical gap by (1) validating the use of commercially available meters to derive circadian phase in real-time from other biomarkers that exhibit robust circadian rhythms; and (2) developing a metric that estimates circadian phase from only two samples, thereby minimizing the need for serial data collection. The successful validation of this approach will enable circadian phase to be measured in real-time during spaceflight with minimal burden to the crew such that countermeasures to mitigate the effects of circadian misalignment can be tailored to individual crewmembers needs, thereby enhancing the safety, performance, and well-being of all crewmembers during spaceflight. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          NASA has invested significant research into the design of countermeasures to mitigate the effects of circadian misalignment. These countermeasures will be ineffective if not timed appropriately relative to circadian phase. Our real-time circadian phase estimate is expected to significantly improve the impact of such countermeasures. In addition, treatments for a wide range of conditions, including circadian rhythm sleep disorders, hypertension, and cancer, are maximally effective when timed relative to circadian phase, yet circadian phase remains absent from standard clinical assessments due to significant time and cost constraints in obtaining an accurate measure. The ability to estimate circadian phase non-invasively in real-time over a short collection window is therefore expected to enable ‘circadian medicine’ within standard clinical practice. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>96695</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.3: Behavioral Health and Performance</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2020-02-01</td></tr>
+<tr><th>Project End Date</th><td>2022-01-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Brigham And Women&#x27;s Hospital, Inc. — Boston, Massachusetts</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Massachusetts (MA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Melissa A St Hilaire (Principal Investigator); Steven W Lockley (Co-Investigator); Shadab A Rahman (Co-Investigator) &lt;shadab.a.rahman@nasa.gov&gt;; Alexandra M Whitmire (Project Manager) &lt;alexandra.m.whitmire@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Aim 1: Validate the use of real-time measures of saliva cortisol and blood cholesterol to derive circadian phase. We have enrolled 19 (10 males, 9 females) of the targeted 20 participants into this study, and have completed sample collections in 13 participants. Participants are collecting several sample types (blood, urine, saliva) approximately every 3 hours over two 48-hour periods at home. We are collecting samples to assess several biomarkers using real-time assays via commercially available point-of-care devices as well as traditional assays for validation. Recruitment, data collection, and data analyses are ongoing. Aim 2: Develop a method to derive circadian phase from as few as three sample time points. Due to delays in sample collection due to COVID-19, we have started algorithm development and validation on available inpatient laboratory data. We have developed our preliminary approach to estimate circadian phase from biomarker concentrations measured from three samples collected over a 16-hour period. We have compared circadian phase estimates from this approach to the gold-standard marker of circadian phase, the dim light melatonin onset from plasma melatonin, and can estimate a significant proportion of circadian phases to within 45 minutes of the gold-standard marker. We will further refine, validate, and test this method with the real-time data collected in the current study as results are assayed and available.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Abstracts for Journals and Proceedings</strong> — Kent BA, Rahman SA, Lockley SW, St. Hilaire MA. &quot;Towards a real-time estimate of circadian phase during spaceflight. &quot; 2021 NASA Human Research Program Investigators’ Workshop, Virtual, February 1-4, 2021. Abstracts. 2021 NASA Human Research Program Investigators’ Workshop, Virtual, February 1-4, 2021., Feb-2021</li><li><strong>Articles in Peer-reviewed Journals</strong> — Kent BA, Rahman SA, St Hilaire MA, Grant LK, Rüger M, Czeisler CA, Lockley SW. &quot;Circadian lipid and hepatic protein rhythms shift with a phase response curve different than melatonin.&quot; Nat Commun. 2022 Feb 3;13(1):681. Erratum in: Nat Commun. 2022 Apr 20;13(1):2241. https://doi.org/10.1038/s41467-022-28308-6 ; PMID: 35115537; PMCID: PMC8814172, Feb-2022</li><li><strong>Articles in Peer-reviewed Journals</strong> — St Hilaire MA, Lammers-van der Holst HM, Chinoy ED, Isherwood CM, Duffy JF. &quot;Prediction of individual differences in circadian adaptation to night work among older adults: application of a mathematical model using individual sleep-wake and light exposure data.&quot; Chronobiol Int. 2020;37(9-10):1404-11. https://doi.org/10.1080/07420528.2020.1813153 ; PMID: 32893681, Sep-2020</li><li><strong>Articles in Peer-reviewed Journals</strong> — Brown LS, St Hilaire MA, McHill AW, Phillips AJK, Barger LK, Sano A, Czeisler CA, Doyle FJ 3rd, Klerman EB. &quot;A classification approach to estimating human circadian phase under circadian alignment from actigraphy and photometry data. &quot; J Pineal Res. 2021 Aug;71(1):e12745. https://doi.org/10.1111/jpi.12745 ; PMID: 34050968 PMCID: PMC8474125, Aug-2021</li><li><strong>Articles in Peer-reviewed Journals</strong> — Klerman EB, Rahman SA, St Hilaire MA. &quot;What time is it? A tale of three clocks, with implications for personalized medicine.&quot; J Pineal Res. 2020 May;68(4):e12646. https://doi.org/10.1111/jpi.12646 ; PMID: 32155668; PMCID: PMC7285860 , May-2020</li><li><strong>Articles in Peer-reviewed Journals</strong> — Grant LK, St Hilaire MA, Brainard GC, Czeisler CA, Lockley SW, Rahman SA. &quot;Endogenous circadian regulation and phase resetting of clinical metabolic biomarkers.&quot; J Pineal Res. 2021 Sep;71(2):e12752. https://doi.org/10.1111/jpi.12752 ; PMID: 34118084, Sep-2021</li><li><strong>Abstracts for Journals and Proceedings</strong> — Kent BA, Rahman SA, Lockley SW, St. Hilaire MA. &quot;Towards a real-time estimate of circadian phase during spaceflight. &quot; 2022 NASA Human Research Program Investigators’ Workshop, Virtual, February 7-10, 2022. Abstracts. 2022 NASA Human Research Program Investigators’ Workshop, Virtual, February 7-10, 2022., Feb-2022</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/96695">https://techport.nasa.gov/projects/96695</a>
+    </div>
+  </div>
+</body>
+</html>

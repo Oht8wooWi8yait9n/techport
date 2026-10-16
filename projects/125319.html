@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fault Management Analysis Tool For Model Centric Systems Engineering | NASA TechPort Project 125319</title>
+  <meta name="description" content="This proposal responds to the need for new technologies to effectively manage and streamline complex fault management (FM) systems, enable rapid diagnostic model generation and validation, and provide tools to perform FM analyses and trades e.g., fault contain">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/125319">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 125319</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX11</span>
+        </div>
+        <h1>Fault Management Analysis Tool For Model Centric Systems Engineering</h1>
+        <div class="meta-id">NASA TechPort Project ID: 125319</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/125319" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          This proposal responds to the need for new technologies to effectively manage and streamline complex fault management (FM) systems, enable rapid diagnostic model generation and validation, and provide tools to perform FM analyses and trades e.g., fault containment regions (FCRs), redundancy management, and sensor placement. Okean Solutions proposes to significantly improve FMsystem modeling and analysis by integrating their model-based fault management tool/system, called MONSID, with JPLs Computer Aided Engineering for Systems Architecture (CAESAR) platform. The innovation will create greater visibility into the FM process and lower the barriers to entry for users who are not FM experts. The combined capability will advance the practice of FM to ultimately decrease manually intensive and error-prone tasks and schedule costs while ensuring FM system robustness and appropriateness. The main application is FM analyses as well as design and software development. This could also be used in Integration and Test (IT) and operationalphases to update onboard FM models and in support of recovery operations. By integrating with CAESAR, Okean Solutions sees unique opportunities to increase visibility and the number of users of the MONSID toolset as well as to provide more functionality for CAESAR.  New technologies are sought to effectively manage and streamline more complex fault management systems, enable rapid diagnostic model generation and validation, and provide tools to perform FM analyses and trades e.g., fault containment regions (FCRs), FM model validation, and sensor placement. Okean Solutions proposes to significantly advance FM&nbsp;system modeling and analysis by integrating their model-based fault management tool suite, called MONSID&reg;, with JPL&rsquo;s Computer Aided Engineering for Systems Architecture (CAESAR) platform. The innovation will create greater visibility into the FM process and lower the barriers to entry for users who are not FM experts. Tighter integration of FM with other system-level and subsystem-level hardware/software development activities allows crucial redundancy and sensor placement trades to be performed earlier and throughout the mission lifecycle. The combined capability will&nbsp;ultimately decrease&nbsp;resource and schedule costs while ensuring a robust and appropriate FM system. The innovation can also be leveraged by other model-centric platforms.  The Phase II effort will evolve the Phase I&nbsp;MONSID-CAESAR interface to work with more complex, multi-domain CAESAR models and to continue reducing manual steps in MONSID model development. Specific Phase II objectives intended to improve model-based FM system engineering practices include:   	Reduction of FM model development time and manual errors through automation&nbsp; 	Enable extraction of different subsystems from CAESAR models 	Adaptability to system design changes/iterations 	Capability to perform FCR analyses and sensor placement trades   &nbsp;  Phase II deliverables include interface adapter software, generated MONSID models, tool use cases and evaluation results. Deliverables broken out by work plan main tasks are:  1. Requirements &amp; System Engineering   	Requirements and design goals for MONSID-CAESAR adapter 	Algorithms for FCR identification and analysis 	FM analysis use cases for combined tools   2. Adapter Design &amp; Development   	Define generalized mapping method between MONSID and CAESAR 	Design algorithms for FCR identification and sensor placement analysis 	Provide automated recommendations to improve FM modeling in CAESAR   3. Evaluation &amp; Analysis   	Comparison of auto-generated model correctness and completeness to validated hand-built models 	Demonstrated&nbsp;applicability to more than one domain 	Estimates of time savings for model creation   &nbsp;
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          A MONSID adapter for CAESAR can support FM development in current and future programs, providing rapid model development,&nbsp;improving HW/SW trade accuracy and efficiency for fault containment, and FM performance analyses. It is applicable to a broad range of NASA missions that leverage model-based systems engineering tools. Such missions include Europa Clipper, Mars Sample Retrieval Lander, Psyche, CubeSats (INSPIRE, SunRISE),and future missions&nbsp;from near-Earth to interplanetary, risk-averse, and experimental.  MONSID and CAESAR are both model-based and application agnostic. The combination of these tools makes it applicable to a wide variety of DoD, ESA, JAXA and commercial programs. This innovation can be adapted to other modeling environments to streamline and accelerate FM design and development practices. Industries including aerospace, automotive, and chemical can all benefit from this technology.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>125319</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11: Software, Modeling, Simulation, and Information Processing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2022-04-13</td></tr>
+<tr><th>Project End Date</th><td>2024-12-31</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Okean Solutions, Inc. — Seattle, Washington</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Washington (WA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Ksenia Kolcio (Principal Investigator); Lynn M Torres (Project Manager) &lt;lynn.m.torres@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/125319">https://techport.nasa.gov/projects/125319</a>
+    </div>
+  </div>
+</body>
+</html>

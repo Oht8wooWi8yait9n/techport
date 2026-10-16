@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Variable and Adaptive Coded Modulation for Cognitive Networking, Year 1 | NASA TechPort Project 10545</title>
+  <meta name="description" content="In this task, our objective is to design and implement a variable coded modulation (VCM) system capable of significantly increasing the data return of Space-to-Earth communications links, compared to non-VCM systems. This meets NASA&#x27;s goal of more power and sp">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/10545">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 10545</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">JPL CIF</span>
+          
+        </div>
+        <h1>Variable and Adaptive Coded Modulation for Cognitive Networking, Year 1</h1>
+        <div class="meta-id">NASA TechPort Project ID: 10545</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/10545" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          In this task, our objective is to design and implement a variable coded modulation (VCM) system capable of significantly increasing the data return of Space-to-Earth communications links, compared to non-VCM systems. This meets NASA's goal of more power and spectral-efficient technology, and is an enabling component of cognitive networks. Background. NASA missions undergo wide variation in communications link conditions. Over the course of months, the range changes dramatically from launch, to cruise, to say, Mars orbit, but link conditions change on much shorter time scales, as well. For example, a typical track of MRO tracked by the Deep-Space Network might start at antenna elevation 11°, rise to 72°, and then fall to 8° over a twelve hour period. Recent and near-future NASA missions have their data rates limited by dynamic effects such as weather (e.g., MRO Ka-band links), solar scintillation (e.g. Solar Probe), on-board interference (e.g., MRO CRISM interference), launch plumes, and other effects. A 2005 Mars Technology Program study reported that up to 50% more data can be returned on a typical Mars-lander to Mars-orbiter link when adaptive data rates are used on the link. Our task is to extend the concept of adaptive data rates to variable and adaptive coded modulation, in which the dynamic power and bandwidth resources can be much more effectively utilized. A 2010 study by ESA determined that in one practical scenario, a VCM system could more than double the total data volume returned. Our task is to make effective use of the CCSDS standard coded-modulations, thereby allowing us to operate close to the unconstrained capacity limit, regardless of link conditions. To do this, we will develop a physical-layer design that allows the transmitter to switch between coded modulations on a codeword-to-codeword basis, a mechanism to inform the receiver which coded modulation is being used, and the receiver tracking structures necessary to identify the coded-modulation and demodulate and decode the data appropriately.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Variable coded modulation (VCM) and adaptive coded modulation (ACM)has the following benefits: 1. Double a typical NASA mission's total downlink data volume, without increasing required power or bandwidth, by making more efficient use of time-varying resources. This meets NASA's strategic goals of more power and spectral-efficient technology. 2. Enable communication through launch plumes and through plasma during Earth reentry, and in other unpredictable, highly dynamic link conditions. VCM technology is cross-cutting, in the sense that once developed and standardized, every new mission will be able to take advantage of its benefits of increased data return. Thus, unfunded/planned missions will benefit in the same way as funded missions with this technology. NOAA and DoD space missions could make use of the VCM/ACM technology and achieve the same benefits as NASA. Since all or nearly all of these space missions are near-Earth, they are particularly subject to dynamic conditions. For example, a ground antenna receiving a transmission from a spacecraft at LEO has a higher slew rate than antennas tracking deep space missions. In addition, Doppler and RF interference is higher and more dynamic for these missions.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>10545</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: JPL CIF (JPL CIF)</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-12-01</td></tr>
+<tr><th>Project End Date</th><td>2012-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Alaska Fairbanks (UAF) — Fairbanks, Alaska</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jonathan Hamkins (Principal Investigator) &lt;jon.hamkins@jpl.nasa.gov&gt;; Kathryn L Andrews (Co-Investigator) &lt;kathryn.l.andrews@nasa.gov&gt;; Samuel J Dolinar (Co-Investigator) &lt;samuel.j.dolinar.jr@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-15</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>70.jpg</strong> — Project Image Variable and Adaptive Coded Modulation for Cognitive Networking</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/10545">https://techport.nasa.gov/projects/10545</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Non-Invasive Monitoring of Intracranial Pressure with Volumetric Ophthalmic Ultrasound: Integration with NASA&#x27;s Flexible Ultrasound System (FUS) | NASA TechPort Project 87681</title>
+  <meta name="description" content="This project is the initial integration of the 3-D ophthalmic imaging capability onto NASA&#x27;s next generation flexible ultrasound system (FUS). A separate National Space Biomedical Research Institute (NSBRI) project (SMST02803) led to the development of 3-D oph">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/87681">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 87681</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.1</span>
+        </div>
+        <h1>Non-Invasive Monitoring of Intracranial Pressure with Volumetric Ophthalmic Ultrasound: Integration with NASA&#x27;s Flexible Ultrasound System (FUS)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 87681</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/87681" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          This project is the initial integration of the 3-D ophthalmic imaging capability onto NASA's next generation flexible ultrasound system (FUS). A separate National Space Biomedical Research Institute (NSBRI) project (SMST02803) led to the development of 3-D ophthalmic ultrasound imaging on the current operational ultrasound platform (GE Vivid q) on board the International Space Station (ISS). The FUS is a state-of-the-art software beamforming architecture based on the GE Vivid E95 cardiovascular system with enhanced imaging capabilities. The FUS is switchable between its two operating modes, a high-quality clinical imager and a configurable research system with full control of the ultrasound acquisition and processing. Mechanical 3-D probes, like the prototype ophthalmic probe previously developed, are not compatible with the FUS platform and the frequency range of the electronic 3-D probes supported by the FUS platform are not suitable for ophthalmic imaging. The hardware and software differences between the current ISS ultrasound system and the newer FUS platform required additional effort to enable the ophthalmic imaging capabilities on the FUS.     <p></p> The goals for this project are to integrate the prototype 3-D ophthalmic probe onto the FUS for 2-D imaging and develop new hardware to connect the current volume acquisition hardware to the FUS for 3-D imaging. The approach seeks to minimize the hardware and software development through the reuse of existing components and implementation of the ultrasound imaging in the clinical mode of the FUS. The target outcome is preliminary lab testing of the 3-D imaging on the FUS. The scope of the project does not include fabrication of new volume acquisition hardware, exploring all of the advanced imaging on the FUS, acoustic safety testing, or integration with the FUS's acoustic output safety control for human scanning.     <p></p> A commercially-available probe adapter was modified allowing connection of the prototype ophthalmic probe to the FUS, and the FUS software was modified to recognize the prototype probe. Several new ophthalmic imaging modes were implemented in the FUS's clinical software to enable 2-D imaging on the FUS. This implementation, as opposed to implementation in the research mode, leveraged the clinical image quality on the FUS and reduced the development time. Additionally, the initial integration utilized two of the FUS's advanced imaging modes which included true confocal imaging to improve image resolution and virtual apex for broader anatomical coverage. The probe adapter was further modified to interface the probe's control signals with the previously-developed volume acquisition hardware, and the probe adapter was connected to a breadboard-version of the volume acquisition hardware allowing initial testing of the 3-D acquisitions on the FUS.     <p></p> The first 2-D images of an ultrasound phantom were acquired on the FUS and an initial integration test of the 3-D acquisition hardware on the FUS was completed. The 2-D imaging tests demonstrated improved depth of focus, higher spatial resolution, and larger anatomical coverage with the FUS. The 3-D integration testing revealed a hardware issue resulting in non-uniform rotation of the mechanical 3-D probe during the acquisitions and the source narrowed down to corruption of the control signals in the probe adapter box. Further effort is required to better isolate these signals in the probe adapter box and provide the uniform rotation of the ultrasound transducer array necessary for accurate reconstruction of the ultrasound data from the 3-D acquisition. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The Earth-based impacts of this project are the same as SMST02803 and are repeated here. The Earth-based clinical applications of volumetric ophthalmic ultrasound include non-invasive ICP assessment at the point of care and 3-D diagnostic imaging of ocular structures. Acute, non-invasive monitoring of ICP in traumatic brain injury patients has the potential to identify primary injuries in the emergency room and prevent secondary injuries in critical care units. 3-D ultrasound acquisitions coupled with automatic image analysis will provide easy-to-use, user-independent tools for rapid ICP assessment. Volume scanning with a portable ultrasound system provides the opportunity for frequent assessment of ocular structures at the point of care, eliminating the need to transport patients to an imaging suite and scanning by an expert sonographer. Automatic analysis of the 3-D ultrasound data will improve image quality, reduce review times, and ultimately provide automatic measurements. These new imaging tools have the potential to enhance existing ultrasound assessment of trauma in critical care settings, such as augmenting the extended-FAST exam used to locate free fluid as the result of internal bleeding and detect pneumothoraxes. The use of the technology to quantify 3-D ocular shapes and track changes in the ocular anatomy over time has applications to the diagnosis and treatment monitoring of patients with disorders affecting the ocular structure, such as high-myopia and staphyloma. Volumetric ultrasound provides a lower cost imaging alternative that could be acquired in a physician's office and allow multiple views of the anatomy to be acquired under a larger range of conditions for more detailed diagnoses. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>87681</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.1: Medical Diagnosis and Prognosis</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2015-04-01</td></tr>
+<tr><th>Project End Date</th><td>2016-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>National Space Biomedical Research Institute (NSBRI) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>GE Global Research — Niskayuna, New York</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>New York (NY)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Aaron Dentinger (Principal Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Aim 1 - Modifications were made to a commercially-available probe adapter allowing connection of the prototype mechanical 3-D probe to the FUS for 2-D imaging and interfacing the probe&#x27;s control signal with the previously-developed volume acquisition hardware for 3-D imaging. The signal channel count in the probe adapter was expanded to the full 128 transducer elements in the prototype ophthalmic probe. An existing breadboard-version of the motor control unit was used for the initial testing. Aim 2 - The FUS software was modified to recognize the mechanical 3-D ophthalmic probe and several new ophthalmic imaging modes were implemented in the FUS&#x27;s clinical software to enable 2-D imaging. Two of the FUS&#x27;s advanced imaging features were enable in these imaging modes. This included true confocal imaging to improve image resolution and virtual apex for broader anatomical coverage. The first 2-D images with the prototype ophthalmic probe on a prototype FUS platform were acquired and demonstrated improved depth of field, higher spatial resolution throughout the image, and larger anatomical coverage compared to the previous Vivid q implementation. Aim 3 - There were no modifications required to the visualization and analysis tools for the baseline linear (rectangular) scan geometry. Modifications were made to the data extraction software for the virtual apex scan geometry making it compatible with the GE 4D View volume rendering software. Further modifications are needed for compatibility with other volume rendering packages. The automatic image analysis algorithms also need to be updated for the virtual apex scan geometry. Final testing and modification of the visualization and analysis tools was limited by availability of accurately reconstructed volumes acquired on the FUS. Aim 4 - The initial 2-D testing was done on a pre-released FUS version at GE Global Research. The software modification were then re-implemented on the final FUS hardware and the software changes stored on a separate external hardware for use on any of the FUS prototypes. An integration test of the 3-D acquisition was performed on the FUS and identified a hardware issue impacting the 3-D ultrasound acquisition. Non-uniform rotation of the mechanical 3-D probe was observed and the source narrowed down to corruption of the control signals in the probe adapter box. Further effort would be required to address this hardware issue and validate the FUS implementation to achieve the target TRL (technology readiness level).</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/87681">https://techport.nasa.gov/projects/87681</a>
+    </div>
+  </div>
+</body>
+</html>

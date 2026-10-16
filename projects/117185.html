@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radiation Damage Effects and Charge Trapping Correction Techniques in the COSI Germanium Detectors | NASA TechPort Project 117185</title>
+  <meta name="description" content="The Compton Spectrometer and Imager (COSI) is a wide-field gamma-ray (0.2-5 MeV) imager and spectrometer utilizing germanium strip detectors. COSI had a successful super pressure balloon flight from New Zealand in 2016 (COSI-APRA), producing results on polariz">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/117185">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 117185</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">APRA</span>
+          <span class="badge">TX08.1.1</span>
+        </div>
+        <h1>Radiation Damage Effects and Charge Trapping Correction Techniques in the COSI Germanium Detectors</h1>
+        <div class="meta-id">NASA TechPort Project ID: 117185</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/117185" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The Compton Spectrometer and Imager (COSI) is a wide-field gamma-ray (0.2-5 MeV) imager and spectrometer utilizing germanium strip detectors.  COSI had a successful super pressure balloon flight from New Zealand in 2016 (COSI-APRA), producing results on polarization of Gamma-Ray Bursts (GRBs), positron annihilation emission from the Galactic Center, measurement of the 26-Al flux from the Galactic Center, and detections of other celestial gamma-ray sources.  COSI has recently been selected for a SMEX mission (COSI-SMEX) for launch in 2025.  We are now proposing a 3-year program focused on radiation damage effects and correction techniques in our cross-strip GeDs developed for the COSI program.  This work will focus on detector modeling of charge trapping effects, characterization of charge trapping resulting from radiation damage, and finally development of a detailed algorithm for correcting the effect of radiation damage to optimize and maintain the excellent spectral performance of these detectors.  Objective 1: Significantly improve our physical modeling of charge transport in the COSI-APRA GeDs to include charge trapping effects. This work will allow us to better understand the effects of radiation damage on charge collection, and ultimately spectral performance.   Objective 2: Perform proton beam irradiations on the COSI-APRA detectors at fluences comparable to those expected in LEO to characterize the effects of radiation damage on both the hole and electron collection. These measurements will allow us to benchmark the detector simulations for moderate-to-severe radiation damage.   Objective 3: Use the detector simulations to develop detailed techniques for correcting the effects of charge trapping on the spectral response of the detectors. These techniques will be demonstrated on the radiation-damaged COSI-ARPA detectors.   Objective 4: Annealing the COSI-APRA detectors to characterize the effectiveness in repairing the proton radiation damage.   Objective 5: Repeat the modeling and beam tests on a non-flight version of the COSI-SMEX detectors, enabling us to develop data analysis methods that incorporate the correction techniques for optimal spectral performance for the COSI-SMEX detector geometry.   Objective 6: Perform detailed background simulations of the COSI-SMEX detectors in their LEO environment to identify characteristics in the background data that we will be able to utilize to characterize the radiation damage effects and optimize the correction technique while on orbit.  The proposed work covers fundamental detector physics focused on radiation damage in germanium cross-strip detectors. The correction algorithms that we develop will be useful for optimizing the spectral performance for the COSI-SMEX detectors over the lifetime of the mission. This work is not part of the funded technology line for COSI-SMEX.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The Astrophysics Research and Analysis program (APRA) supports suborbital and suborbital-class investigations, development of detectors and supporting technology, laboratory astrophysics, and limited ground based observing. Basic research proposals in these areas are solicited for investigations that are relevant to NASA's programs in astronomy and astrophysics, including the entire range of photons, gravitational waves, and particle astrophysics. The emphasis of this solicitation is on technologies and investigations that advance NASA astrophysics missions and goals.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>117185</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Astrophysics Research and Analysis (APRA)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.1: Detectors and Focal Planes</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX08.1: Remote Sensing Instruments and Sensors; TX11.X: Other Software, Modeling, Simulation, and Information Processing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2022-10-23</td></tr>
+<tr><th>Project End Date</th><td>2025-10-22</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of California-San Diego (UCSD) — La Jolla, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland; Goddard Space Flight Center (GSFC) — Greenbelt, Maryland; University of California-Berkeley — Berkeley, California; University of California-Berkeley — Berkeley, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Maryland (MD)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Steven E Boggs (Principal Investigator); John A Tomsick (Co-Investigator); Albert Y Shih (Co-Investigator) &lt;albert.y.shih@nasa.gov&gt;; Andreas Zoglauer (Co-Investigator); Jarred M Roberts (Co-Investigator); Laura Louie (Co-Investigator); Dominic J Benford (Project Manager) &lt;dominic.j.benford@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Dominic J Benford (Program Director) &lt;dominic.j.benford@nasa.gov&gt;; David C Morris (Program Manager) &lt;david.c.morris@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-08-22</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/117185">https://techport.nasa.gov/projects/117185</a>
+    </div>
+  </div>
+</body>
+</html>

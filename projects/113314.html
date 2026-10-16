@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leak Mitigating Water Loop Connector | NASA TechPort Project 113314</title>
+  <meta name="description" content="Liquid connectors for the Liquid Cooling and Ventilation Garments (LCVG) within the Exploration Extravehicular Mobility Unit (xEMU) suffer from mechanical defects including leaking after long durations, latching mechanism deficiencies, and un-optimized size an">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/113314">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 113314</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX06</span>
+        </div>
+        <h1>Leak Mitigating Water Loop Connector</h1>
+        <div class="meta-id">NASA TechPort Project ID: 113314</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/113314" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Liquid connectors for the Liquid Cooling and Ventilation Garments (LCVG) within the Exploration Extravehicular Mobility Unit (xEMU) suffer from mechanical defects including leaking after long durations, latching mechanism deficiencies, and un-optimized size and mass. Mainstream aims to solve all of these issues for the primary thermal loop connector (PTLC) and auxiliary thermal loop connector (ATLC). In Phase I, Mainstream replaced the liquid sealing mechanism to eliminate the cold-flow driven leakage that the PTLC and ATLC currently experience. In Phase II, Mainstream will develop improved PTLC and ATLC connectors for use on the xEMU prior to 2024. We will integrate the liquid sealing mechanism as a drop-in replacement to the PTLC and redesign the ATLC. After long duration testing for pressure drop, leakage, and cyclic behavior, Mainstream will deliver 5 production-intent PTLCs and ATLCs to NASA for qualification testing.  Liquid connectors for the Liquid Cooling and Ventilation Garments (LCVG) within the Exploration Extravehicular Mobility Unit (xEMU) suffer from mechanical defects including leaking after long durations, latching mechanism deficiencies, and un-optimized size and mass.&nbsp; Mainstream aims to solve all of these issues for the primary thermal loop connector (PTLC) and auxiliary thermal loop connector (ATLC).&nbsp; Mainstream&rsquo;s solution decouples the clamping and sealing of the liquid connection and drastically reduces the contact pressure on the liquid tubing to drastically discourage cold flow that is the root cause of leaks in the existing connectors.&nbsp; In Phase I, Mainstream designed, built and successfully tested the seal.&nbsp;  The overall Phase II goal is to design, fabricate, and deliver improved PTLCs and ATLCs to NASA that use the Phase I&nbsp; sealing mechanism, improve the latching mechanism for the ATLC, and minimizes the size/mass of the ATLC. We will generate a requirements list in Phase II based on the current LCVG connector requirements document.&nbsp; Specific Phase II objectives include  &nbsp;  Fabricate a PLTC and an ALTC that complies with&nbsp;LCVG requirements, including   	 	 		Mate/de-mate leakage f less than 2 cc 		Operatinal leakage less than 0.5 cc/hr 		Withstand 200 mate/de-mate cycles 		Burst pressure greater than 50 psig 	 	   &nbsp;  Verify leak free operation after accelerated testing at 48.9&deg;C  &nbsp;  Reduce size and mass of the ATLC by at least 5%  &nbsp;  The PTLC retains the majority of its current design and we will only replace the liquid sealing mechanism and vent clamp.&nbsp; We will also apply the liquid sealing mechanism to the ATLC and also modify its mechanical construction to improve latching safety and minimize size and mass.&nbsp; Mainstream will verify the long-term performance of the drop-in replacement PTLC components through accelerated testing at elevated temperatures. The full Phase II testing protocol will be determined as verifying a portion of the existing xEMU connector requirements document.&nbsp; Mainstream will deliver five production-intent PTLCs and ATLCs to NASA for further test and evaluation.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Mainstream&rsquo;s primary goal is to develop an improved LCVG connector that eliminates the cold flow-derived liquid leakage that develops over long durations expected on future Moon and Mars missions. It has been stated in the Artemis Plan that &ldquo;on the [moon] surface [in 2024], the crew will wear the new exploration extravehicular mobility unit or xEMU spacesuit&rdquo;. Therefore, Mainstream is focusing primarily on improved connector components that can serve as drop-in replacements because the xEMU suit architecture is already selected.  The developed connector is highly specialized for the xEMU liquid connectors.&nbsp; Because the interface is unique to NASA, the non-NASA commercial applications are very limited.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>113314</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06: Human Health, Life Support, and Habitation Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 4 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2021-07-30</td></tr>
+<tr><th>Project End Date</th><td>2025-04-29</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Mainstream Engineering Corporation — Rockledge, Florida</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Florida (FL), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>David A Sykes (Principal Investigator); Jeffrey A Watters (Project Manager) &lt;jeffrey.a.watters@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/113314">https://techport.nasa.gov/projects/113314</a>
+    </div>
+  </div>
+</body>
+</html>

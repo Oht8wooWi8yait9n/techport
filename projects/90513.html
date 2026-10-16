@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time Monitor of Clumped CO2 Isotope in Ambient Air | NASA TechPort Project 90513</title>
+  <meta name="description" content="Greenhouse gas (GHG) emissions are the primary drivers of global climate change and hence there is a crucial need to quantify their sources and sinks. A powerful technique to help constrain source and sink strengths in GHG exchange processes is the analysis of">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/90513">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 90513</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX08.1.5</span>
+        </div>
+        <h1>Real-Time Monitor of Clumped CO2 Isotope in Ambient Air</h1>
+        <div class="meta-id">NASA TechPort Project ID: 90513</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/90513" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Greenhouse gas (GHG) emissions are the primary drivers of global climate change and hence there is a crucial need to quantify their sources and sinks. A powerful technique to help constrain source and sink strengths in GHG exchange processes is the analysis of the relative proportions of isotopic variants of GHG's. In this proposal, we focus on the most important GHG: carbon dioxide. The standard isotopes of carbon dioxide (13C-CO2 and 18O-CO2) are already being measured on a global scale (for example by NOAA and INSTAAR within the Global Greenhouse Gas Reference Network). We propose to demonstrate and commercialize new isotopic measurement capabilities for more exotic isotopes of carbon dioxide that are difficult to measure with existing techniques. Specifically, we propose using Tunable Infrared Laser Direct Absorption Spectroscopy (TILDAS) to measure the primary clumped isotope of CO2 (Δ13C18O16O) and to simultaneously measure the mass independent 17O content (Δ17O). The proposed instrument will directly measure atmospheric samples with no need for chemical separation and will report isotopic ratios with 0.02 per mil repeatability and with time resolution of 2 to 3 minutes. The instrument will be sufficiently compact to be field or flight deployable thus providing the possibility of continuous high accuracy measurements of Δ13C18O16O and Δ17O rather than occasional flask samples.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This technology will be complementary to and supportive of NASA's substantial effort to provide global monitoring of carbon dioxide (OCO-2, ASCENDS, etc). The powerful constraints provided by isotopic measurements of carbon dioxide can help achieve the stated goals of the ASCENDS mission, namely to provide improved ability to predict/model long-term changes in the climate cycle based both on the understanding of the natural processes driving the variability of natural carbon sources and sinks, and on the transport of carbon through the atmosphere. In addition, NASA plays a leading part in the U.S. Global Change Research Program (USGCRP). USGCRP has a pivotal role in implementing President Obama's Climate Action Plan, including the responsibility to grow the knowledge base needed to respond to a changing climate and a transforming world. The technology being developed in the proposed project will provide a crucial new tool to quantify the sources and sinks of carbon dioxide.<br /> <br />In addition to being an important research tool, this laser isotope monitor will be helpful to climate treaty verification and to the enforcement and verification of carbon cap and trade systems. For example, the climate agreements that were negotiated at the recent COP 21 meeting in Paris require that nearly every country will need to begin assembling detailed inventories of their greenhouse-gas emissions. Creating verifiable carbon dioxide budgets on this scale will require extensive and sophisticated carbon dioxide measurements systems and isotopic constraints will be extremely useful if not essential. The market for monitoring carbon dioxide is already large and will grow dramatically in coming years as the world begins to truly grapple with challenge of climate change. Isotopic measurements of carbon dioxide are certain play a significant role.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>90513</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.5: Lasers</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2016-06-10</td></tr>
+<tr><th>Project End Date</th><td>2016-12-09</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Aerodyne Research, Inc. — Billerica, Massachusetts</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Massachusetts (MA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>David Nelson (Principal Investigator); David D Nelson (Principal Investigator); Robert Jones (Project Manager) &lt;Robert.A.Jones@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li><li><strong>Briefing Chart</strong> — Real-time monitor of clumped CO2 isotope in ambient air, Phase I Briefing Chart</li><li><strong>Briefing Chart Image</strong> — Real-time monitor of clumped CO2 isotope in ambient air, Phase I</li><li><strong>Final Summary Chart Image</strong> — Real-time monitor of clumped CO2 isotope in ambient air, Phase I Project Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/90513">https://techport.nasa.gov/projects/90513</a>
+    </div>
+  </div>
+</body>
+</html>

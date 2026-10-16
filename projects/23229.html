@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Development of an Objective Behavioral Assay of Cohesion to Enhance Composition, Task Performance, and Psychosocial Adaptation in Long-Term Work Groups | NASA TechPort Project 23229</title>
+  <meta name="description" content="The long-term goal of the proposed research is to deliver a software tool (currently referred to by its working title of “Team Performance Task” [TPT]) that will allow long-duration exploration crews to autonomously derive objective, standardized, and quantifi">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23229">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23229</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.3</span>
+        </div>
+        <h1>Development of an Objective Behavioral Assay of Cohesion to Enhance Composition, Task Performance, and Psychosocial Adaptation in Long-Term Work Groups</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23229</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23229" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The long-term goal of the proposed research is to deliver a software tool (currently referred to by its working title of “Team Performance Task” [TPT]) that will allow long-duration exploration crews to autonomously derive objective, standardized, and quantifiable measures on social dynamics while serving as a decision-aid tool in astronaut selection and multinational crew composition. This approach is unique because it is simple, rapid, and operationally feasible like a questionnaire, but is entirely objective, is innovative in that it requires a group-level demonstration of social dynamics rather than relying on individual opinions, and is language-independent, thus making it suitable for cross-cultural applications. Such an empirically validated and operationally feasible software deliverable will contribute to an overall risk mitigation strategy comprised of quantitative, qualitative, objective, and subjective assessment technologies.    <p></p> To accomplish this, we have been conducting ground-based experiments to systematically investigate the effects of group composition (gender and personality) on voluntary cooperative propensity in 3-person teams. We are also assessing the predictive validity of pre-mission TPT "social personality profiles" and the effects of group composition on performance, task cohesion, social cohesion, and biopsychosocial adaptation in mixed-gender "crews" participating in a long-term simulated space exploration task. We are also developing next-generation software to advance the technology beyond our current prototype used for proof-of-concept/validation research into a broadly applicable tool with cross-platform networking and connectivity, enhanced usability/human factors features, extensive parameter manipulation/flexibility to maximize sensitivity, and integrated data collection and processing capabilities.    <p></p> The proposed project will elucidate the influences of personality, gender, behavior, and neurobiology at the individual and group levels while yielding powerful experimental insights on the relationships between group composition, mission performance, task cohesion, social cohesion, and psychosocial adaptation in long-term work groups. The work will provide a scientifically validated TPT concept translated into a flexible and operationally acceptable software tool suitable for field studies of predictive validity and/or countermeasure potential in mission-oriented analog populations and/or high-risk operational and long-duration space analog environments. This work will contribute to the empirical knowledge base used to inform the processes of crew selection, composition, training, monitoring, and maintenance, and will ultimately yield a broadly applicable software tool to help mitigate risks and maximize behavioral health and performance for long-duration space exploration. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The project will elucidate the interacting influences of personality, gender, and behavior at the individual and group levels while yielding powerful experimental insights on the relationships between group composition, task cohesion, social cohesion, and biopsychosocial adaptation in long-term work groups.  The broad knowledge-base and software tools derived from this work are relevant to social relationships, business, and education, as well as military, healthcare, commercial transportation, and other settings involving high-risk/high-performance teamwork and the need for scientifically based objective assessment methods. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23229</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.3: Behavioral Health and Performance</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2012-10-10</td></tr>
+<tr><th>Project End Date</th><td>2016-10-07</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Institutes for Behavior Resources, Inc.</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Peter G Roma (Principal Investigator) &lt;pete.roma@nasa.gov&gt;; Steven Hursh (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: We completed data collection for the Short-Term study (N=252 in 84 teams). We completed data collection for the Long-Term study (N=96 in 32 teams over 12 sessions). We completed data collection for space analog missions at NASA Extreme Environment Mission Operations (NEEMO) (one 7-day mission), Human Exploration Research Analog (HERA) (four 7-day and four 14-day missions), Hawai&#x27;i Space Exploration Analog and Simulation (HI-SEAS) (4-, 8-, and 12-month missions), and Concordia Station (three winters). We completed development of a software product called COHESION (Capturing Objective Human Econometric Social Interactions in Organizations and Networks), a simple, rapid, and objective behavioral assay of cooperation, productivity, and fairness in small groups.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Articles in Peer-reviewed Journals</strong> — Goswami N, Batzel JJ, Clément G, Stein TP, Hargens AR, Sharp MK, Blaber AP, Roma PG, Hinghofer-Szalkay HG. &quot;Maximizing information from space data resources: a case for expanding integration across research disciplines.&quot; Eur J Appl Physiol. 2013 Jul;113(7):1645-54. Epub 2012 Oct 17. http://dx.doi.org/10.1007/s00421-012-2507-5 ; PubMed PMID: 23073848, Jul-2013</li><li><strong>Significant Media Coverage</strong> — Fisher A. (Interviewed P.G.Roma) &quot;Space Colonization (A. Fisher, interviewer of Peter Roma).&quot; All Sides with Ann Fisher, National Public Radio, September 2016., Sep-2016</li><li><strong>Articles in Peer-reviewed Journals</strong> — Hursh SR, Roma PG. &quot;Behavioral economics and the analysis of consumption and choice.&quot; Managerial and Decision Economics. 2016 Jun-Jul;37(4-5):224-38. http://dx.doi.org/10.1002/mde.2724 , Jun-2016</li><li><strong>Articles in Peer-reviewed Journals</strong> — Roma PG, Hursh SR, Hudja S. &quot;Hypothetical purchase task questionnaires for behavioral economic assessments of value and motivation.&quot; Managerial and Decision Economics. Article first published online: 18 MAY 2015. http://dx.doi.org/10.1002/mde.2718 , May-2015</li><li><strong>Significant Media Coverage</strong> — Feder T. &quot;NASA Mars mockup explores team cohesion and performance. Includes comments from P.G. Roma.&quot; Physics Today. 2015 Dec;68(12):29-30. http://dx.doi.org/10.1063/PT.3.3015 , Dec-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Roma PG, Hursh SR, Hudja S. &quot;Hypothetical purchase task questionnaires for behavioral economic assessments of value and motivation.&quot; Managerial and Decision Economics. 2016 Jun-Jul;37(4-5):306-23. http://dx.doi.org/10.1002/mde.2718 , Jun-2016</li><li><strong>Books/Book Chapters</strong> — Roma PG, Bedwell WL. &quot;Key factors and threats to team dynamics in long-duration extreme environments.&quot; in &quot;Research on Managing Groups and Teams. Team Dynamics Over Time (Volume 18).&quot; Ed. E. Salas, W.B. Vessey, L.B. Landon. Bingley, UK: Emerald Group Publishing Limited, 2017. p. 155-187. https://doi.org/10.1108/S1534-085620160000018007 , Jan-2017</li><li><strong>Articles in Peer-reviewed Journals</strong> — Goswami N, Roma PG, De Boever P, Clément G, Hargens AR, Loeppky JA, Evans JM, Stein TP, Blaber AP, Van Loon JJ, Mano T, Iwase S, Reitz G, Hinghofer-Szalkay HG. &quot;Using the Moon as a high-fidelity analogue environment to study biological and behavioral effects of long-duration space exploration. &quot; Planetary and Space Science. 2012 Dec;74(1):111-20. http://dx.doi.org/10.1016/j.pss.2012.07.030 , Dec-2012</li><li><strong>Articles in Peer-reviewed Journals</strong> — Hursh SR, Roma PG. &quot;Behavioral economics and empirical public policy.&quot; J Exp Anal Behav. 2013 Jan;99(1):98-124. http://dx.doi.org/10.1002/jeab.7 ; PubMed PMID: 23344991, Jan-2013</li><li><strong>Abstracts for Journals and Proceedings</strong> — Roma PG, Hursh SR, Hienz RD, Brady JV. &quot;The Price of Cooperation: A novel behavioral economic task as a simple, rapid, and objective group-level assay of altruism, effort, and fairness.&quot; Society for Neuroscience 2012, New Orleans, LA, October 13-17, 2012. Society for Neuroscience 2012, New Orleans, LA, October 13-17, 2012. Program#/Poster#: 629.05. Abstract available at: http://www.abstractsonline.com/Plan/ViewAbstract.aspx?sKey=aaed0e9e-9e07-41f2-adfc-4f6ab29c63a5&amp;cKey=b1388a55-b974-48ba-a0c0-3cbf1e2a8ffd&amp;mKey={70007181-01C9-4DE9-A0A2-EEBFA14CD9F1} ; accessed 8/13/13., Oct-2012</li><li><strong>Articles in Peer-reviewed Journals</strong> — Hursh SR, Roma PG. &quot;Behavioral economics and the analysis of consumption and choice.&quot; Managerial and Decision Economics. Article first published online: 18 MAY 2015. http://dx.doi.org/10.1002/mde.2724 , May-2015</li><li><strong>Papers from Meeting Proceedings</strong> — Roma PG, Hursh SR, Hienz RD, Brinson ZS, Gasior ED, Brady JV. &quot;Interactive effects of autonomous operations and circadian factors on crew performance, behavior, and physiology.&quot; IAC 63: 63rd International Astronautical Congress, Naples, Italy, October 1-5, 2012. IAC 63: 63rd International Astronautical Congress, Naples, Italy, October 1-5, 2012., Oct-2012</li><li><strong>Books/Book Chapters</strong> — Roma PG, Hursh SR, Hienz RD, Brinson ZS, Gasior ED, Brady JV. &quot;Effects of autonomous mission management on crew performance, behavior, and physiology: Insights from ground-based experiments. Chapter 13.&quot; in &quot;On Orbit and Beyond: Psychological Perspectives on Human Spaceflight.&quot; Ed. D. A. Vakoch. New York : Springer, 2013. Space Technology Library Series; v. 29., p. 245-266. http://dx.doi.org/10.1007/978-3-642-30583-2_13 , Jan-2013</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23229">https://techport.nasa.gov/projects/23229</a>
+    </div>
+  </div>
+</body>
+</html>

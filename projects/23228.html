@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Individualized Real-Time Neurocognitive Assessment Toolkit for Space Flight Fatigue | NASA TechPort Project 23228</title>
+  <meta name="description" content="SUPPLEMENTAL REPORTING FOR FINAL REPORT (JULY 2017): KEY FINDINGS - In 2015, we completed data acquisition in Human Exploration Research Analog (HERA) 14-day missions (16 crew in 1-week missions, and 16 crew in 2-week missions total). A NASA report was submitt">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23228">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23228</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.3</span>
+        </div>
+        <h1>Individualized Real-Time Neurocognitive Assessment Toolkit for Space Flight Fatigue</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23228</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23228" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          SUPPLEMENTAL REPORTING FOR FINAL REPORT (JULY 2017):    <p></p> KEY FINDINGS     <p></p> - In 2015, we completed data acquisition in Human Exploration Research Analog (HERA) 14-day missions (16 crew in 1-week missions, and 16 crew in 2-week missions total). A NASA report was submitted in May 2016. We also completed data acquisition in 6 Hawaii Space Exploration Analog and Simulation (HI-SEAS) crew members in a 12-month mission, bringing our total N to 17. Finally, we completed collecting Cognition data at 3 Antarctic research stations along with N=13 control subjects at DLR (German Space Agency) to compare changes over mission-duration.     <p></p> - Also in 2016, we completed in-flight data collection on N=7 astronauts (2 of them participating in the 12-month mission, Aim 5). Post-flight data collection in all crewmembers was completed in September 2016.     <p></p> - Additionally, a validation study compared Cognition on both Windows and iPad with WinSCAT in N=96 high-performing subjects was completed. A manuscript was submitted to Aerospace Medicine and Human Performance and is in revision.     <p></p> - We finalized another National Space Biomedical Research Institute (NSBRI)-funded study to increase administration flexibility of Cognition in May 2017.     <p></p> - We recently completed data acquisition in a NASA funded study on the effects of elevated CO2 on cognitive performance.     <p></p> - Data collection was completed for an NSBRI head down-tilt and elevated CO2 study at DLR's envihab facility (SPACE-COT). We are currently preparing the manuscript for publication.     <p></p> - Finally, we supported NASA and NSBRI in their efforts transitioning Cognition into operations. We held two data results review meetings at JSC for Ops personnel and researchers. We also held two Cognition training sessions at JSC (Johnson Space Center) at the end of May.    <p></p> IMPACT OF KEY FINDINGS ON HYPOTHESES, TECHNICAL REQUIREMENTS, OBJECTIVES, AND SPECIFIC AIMS OF THE ORIGINAL PROPOSAL     <p></p> The findings support the feasibility of Cognition administration in astronauts and astronaut surrogate populations, on both the Windows and iPad platform, and in space analog environments. Participant feedback provided during debriefs (N>60) provided helpful insights for current and future improvements of the battery. Cognition is currently deployed in several key studies funded by NSBRI, NASA, and ESA (European Space Agency), and it was selected as a core component in the project to develop a standardized behavioral measures toolkit (BCM) for spaceflight operations, demonstrating the need for and the success of the Cognition battery.    <p></p> ORIGINAL PROJECT AIMS (AUGUST 2016 REPORT)    <p></p> This project addresses the National Space Biomedical Research Institute (NSBRI) Human Factors and Performance Team goal to develop tools to assess crew performance in real-time and evaluate countermeasures to mitigate the effects of fatigue, circadian misalignment, and work-overload. It has secondary relevance to the Neurobehavioral and Psychosocial Factors and Sensorimotor Adaptation Teams. It is responsive to the critical need to identify how a range of cognitive functions of astronauts can be affected in space flight by fatigue alone, its interaction with other risk factors and conditions (e.g., elevated CO2, intracranial pressure, space fog), and countermeasures. The project will deliver a comprehensive, software-based, neurocognitive toolkit (Cognition). By building on state-of-the-art neuropsychological test development, the toolkit will permit evaluation of a full range of cognitive functions using brief (1-5 min), validated procedures. The tests include -- but go beyond -- what is currently measured by WinSCAT and the Reaction Self Test on International Space Station (ISS). Importantly, the toolkit will permit rapid assessment of performance in cognitive, social-emotional, and sensorimotor domains. Performance assessment algorithms will be individualized to each astronaut's norm, and adjusted for learning using a data modeling approach, in order to optimize individual performance relative to the effects of fatigue and related cognitive impacts. The toolkit will facilitate identification of underlying neural mechanisms affected when cognitive deficits are identified, by using tests selected on the basis of published fMRI studies that identify the specific brain regions subserved by each test. The project begins at TRL (Technology Readiness Level) 5/CRL (Countermeasure Readiness Level) 6 and ends at TRL 7/CRL 8. Toolkit development will progress from laboratory, to data acquisition in astronauts at Johnson Space Center (JSC), to ISS. The resulting comprehensive, neuroscience-validated, cognitive test battery for real-time evaluation of astronauts in space will be an essential detection technology for effective fatigue countermeasure management of astronaut performance in space. The link to neuroscience will yield directions for mechanisms of cause and potential interventions.     <p></p> The project has the following 5 specific aims: 1: Development of short-duration adaptive versions of neuropsychological tests for space flight; 2: Establish learning curves for neuropsychological tests and validate sensitivity to sleep deprivation; 3: Cognition software development and optimization for space flight; 4: JSC field testing, astronaut learning curves, and astronaut norms for performance feedback algorithm development; 5: International Space Station (ISS) feasibility study.     <p></p> KEY FINDINGS     <p></p> -The first full version of Cognition was launched in November 2012 (Aims 1 and 3) and deployed in the sleep restriction studies at UPenn (Aim 2). These studies were completed in 2015, and a total of 108 laboratory participants completed the test battery (all 10 tests) 12-18 times (N=36 total sleep deprivation, N=101 partial sleep restriction, N=7 control subjects). Final results were presented at a review meeting in 7/2016 at NASA JSC.     <p></p> - Collection of normative data from mission controllers (N=11) and astronauts (N=7) at JSC was completed (Aim 4).     <p></p> - Data acquisition was also found to be feasible in space analog environments, particularly at the Human Exploration Research Analog (HERA) facility, the Hawaii Space Exploration Analog and Simulation (HI-SEAS) facility, and several Antarctic research stations (Concordia, Halley-VI, and Neumayer-III).     <p></p> - In the past year, we completed data acquisition in HERA 14-day missions (16 crew in 1-week missions, and 16 crew in 2-week missions total). A NASA report was submitted in May 2016.We also completed data acquisition in 6 HI-SEAS crew members in an 8-month mission, and began data collection in N=6 crew members participating in a 12-month mission. Finally, we continued collecting Cognition data at 3 Antarctic research stations along with N=13 control subjects at DLR (German Space Agency) to compare changes over mission-duration.     <p></p> - Earlier this year, we completed in-flight data collection on N=7 astronauts (2 of them participating in the 12-month mission, Aim 5). Post-flight data collection is ongoing in two 12-month mission astronauts/cosmonauts and two 6-month mission astronauts.     <p></p> - Additionally, a validation study compared Cognition on both Windows and iPad with WinSCAT in N=96 high-performing subjects was completed.     <p></p> - We started another NSBRI-funded study to increase administration flexibility of Cognition.     <p></p> - We recently completed data acquisition in a NASA funded study on the effects of elevated CO2 on cognitive performance.     <p></p> - Data collection was completed for an NSBRI head down-tilt and elevated CO2 study at DLR's envihab facility (SPACE-COT). We are currently preparing the manuscript for publication.     <p></p> - Finally, we supported NASA and NSBRI in formulating a customer supplier agreement for transitioning Cognition into operations.     <p></p> IMPACT OF KEY FINDINGS ON HYPOTHESES, TECH. REQUIREMENTS, OBJECTIVES AND SPECIFIC AIMS OF THE ORIGINAL PROPOSAL: Preliminary findings support the feasibility of Cognition administration in astronauts and astronaut surrogate populations, on both the Windows and iPad platform, and in space analog environments. Participant feedback provided during debriefs (N>60) provided helpful insights for current and future improvements of the battery. Cognition is currently deployed in several key studies funded by NSBRI, NASA, and the European Space Agency (ESA), and it was selected as a core component in the project to develop a standardized behavioral measures toolkit (SBMT) for spaceflight operations, demonstrating the need for and the success of the Cognition battery.     <p></p> PROPOSED RESEARCH PLAN FOR THE COMING YEAR: Post-flight data acquisition for the 12-month mission will conclude in the final year of the project. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The project will have substantial impact on progress in three major areas relevant to the needs of NASA and state of the knowledge.     <p></p> 1. Cognition markedly enhance astronauts' and flight physicians' ability to quickly (real-time) and objectively evaluate the neurocognitive status of astronauts relative to activities that can induce fatigue in space (i.e., acute sleep loss from prolonged duty, chronic sleep estriction, inadequate recovery sleep, slam shifts and circadian misalignment, high physical and/or cognitive workloads, EVAs, etc.); relative to fatigue countermeasures, e.g., different sleep-wake schedules, sleep-promoting and wake-promoting medications, light exposure for circadian associated with occult neurobehavioral risks in space, e.g., space fog, space asthenia/neurasthenia.     <p></p> 2. Cognition permits identification of important fatigue-related individual differences (i.e., differential vulnerability) in the nature and severity of cognitive performance deficits (e.g., from deficits in spatial orientation, to working memory, to abstract reasoning, to risk decision- making) during space flight, in a comprehensive and precise manner to permit optimal targeting of fatigue countermeasures to specific individuals, and to help predict the performance capability of individual astronauts relative to specific space flight tasks (i.e., align cognitive performance readiness relative to the need to conduct specific space flight tasks).     <p></p> 3. Cognition helps in the medical identification and treatment management course of neurologically-based performance deficits in space flight due to environmental stressors (e.g., exposure to high CO2, hypoxia, radiation); medically urgent events (e.g., head injury, papilledema, and/or the possibility of elevated intracranial pressure [ICP]); and neurobehavioral conditions brought on by prolonged stays in space (e.g., time in confinement, neural remodeling from sensorimotor alterations, affective disorders).     <p></p> Although the Cognition test battery is primarily developed for space flight, it will be a valuable tool in many Earth-based patient and non-patient population settings, where identification of suboptimal cognitive performance is important for safe operations (e.g., truck drivers, operators of heavy machinery) or for tracking therapeutic effectiveness. Cognition is optimized for repeated administration, a feature that many of the currently available test batteries are lacking. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23228</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.3: Behavioral Health and Performance</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 7 | Target End TRL: 7</td></tr>
+<tr><th>Project Start Date</th><td>2011-10-01</td></tr>
+<tr><th>Project End Date</th><td>2017-03-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>National Space Biomedical Research Institute (NSBRI) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Pulsar Informatics Inc — Philadelphia, Pennsylvania; University of Pennsylvania Health System — Pennsylvania; University of Pennsylvania — Philadelphia, Pennsylvania</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Pennsylvania (PA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Mathias Basner (Principal Investigator); Christopher G Mott (Co-Investigator); Daniel Mollicone (Co-Investigator); David F Dinges (Co-Investigator); Ruben C Gur (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: SUPPLEMENTAL REPORTING FOR FINAL REPORT (JULY 2017): Post-flight data collection in two 12-month mission astronauts/cosmonauts and two 6-month mission astronauts was finalized in September 2016. One year mission results were presented at the Human Research Program workshop in January 2017 in Galveston, TX and at a one year mission investigator workshop in Houston, TX in March 2017. AUGUST 2016 REPORT: Earlier this year, we completed in-flight data collection on N=7 astronauts (2 of them participating in the 12-month mission, Aim 5). Post-flight data collection is ongoing in two 12-month mission astronauts/cosmonauts and two 6-month mission astronauts.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>HEOMD HRP Infusion Story Cognition</strong></li><li><strong>Articles in Peer-reviewed Journals</strong> — Basner M, Rao H, Goel N, Dinges DF. &quot;Sleep deprivation and neurobehavioral dynamics.&quot; Curr Opin Neurobiol. 2013 Oct;23(5):854-63. Review. Epub 2013 Mar 20. http://dx.doi.org/10.1016/j.conb.2013.02.008 ; PubMed PMID: 23523374; PubMed Central PMCID: PMC3700596, Oct-2013</li><li><strong>Articles in Peer-reviewed Journals</strong> — Basner M, Spaeth AM, Dinges DF. &quot;Sociodemographic characteristics and waking activities and their role in the timing and duration of sleep.&quot; Sleep. 2014 Dec 1;37(12):1889-906. http://dx.doi.org/10.5665/sleep.4238 ; PubMed PMID: 25325472; PubMed Central PMCID: PMC4548514, Dec-2014</li><li><strong>Articles in Peer-reviewed Journals</strong> — Basner M, Mcguire S, Goel N, Rao H, Dinges DF. &quot;A new likelihood ratio metric for the psychomotor vigilance test and its sensitivity to sleep loss.&quot; J Sleep Res. 2015 Dec;24(6):702-13. Epub 2015 Jun 29. http://dx.doi.org/10.1111/jsr.12322 ; PubMed PMID: 26118830, Dec-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Goel N, Basner M, Rao H, Dinges DF. &quot;Circadian rhythms, sleep deprivation, and human performance.&quot; Prog Mol Biol Transl Sci. 2013;119:155-90. http://dx.doi.org/10.1016/B978-0-12-396971-2.00007-5 ; PubMed PMID: 23899598, Jan-2013</li><li><strong>Articles in Peer-reviewed Journals</strong> — Basner M, Savitt A, Moore TM, Port AM, McGuire S, Ecker AJ, Nasrini J, Mollicone DJ, Mott CM, McCann T, Dinges DF, Gur RC. &quot;Development and validation of the Cognition test battery for spaceflight.&quot; Aerospace Medicine and Human Performance. 2015 Nov;86(11):942-52. http://dx.doi.org/10.3357/AMHP.4343.2015 ; PubMed PMID: 26564759; PubMed Central PMCID: PMC4691281, Nov-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Yi B, Rykova M, Feuerecker M, Jäger B, Ladinig C, Basner M, Hörl M, Matzel S, Kaufmann I, Strewe C, Nichiporuk I, Vassilieva G, Rinas K, Baatout S, Schelling G, Thiel M, Dinges DF, Morukov B, Choukèr A. &quot;520-d Isolation and confinement simulating a flight to Mars reveals heightened immune responses and alterations of leukocyte phenotype.&quot; Brain Behav Immun. 2014 Aug;40:203-10. Epub 2014 Apr 2. http://dx.doi.org/10.1016/j.bbi.2014.03.018 ; PubMed PMID: 24704568, Aug-2014</li><li><strong>Articles in Peer-reviewed Journals</strong> — Moore TM, Basner M, Nasrini J, Hermosillo E, Kabadi S, Roalf DR, McGuire S, Ecker AJ, Ruparel K, Port AM, Jackson CT, Dinges DF, Gur RC. &quot;Validation of the Cognition Test Battery for spaceflight in a sample of highly educated adults.&quot; Aerosp Med Hum Perform. 2017 Oct 1;88(10):937-46. https://doi.org/10.3357/AMHP.4801.2017 ; PubMed PMID: 28923143, Oct-2017</li><li><strong>Articles in Peer-reviewed Journals</strong> — Goel N, Basner M, Dinges DF. &quot;Phenotyping of neurobehavioral vulnerability to circadian phase during sleep loss.&quot; Methods Enzymol. 2015;552:285-308. Epub 2014 Dec 26. http://dx.doi.org/10.1016/bs.mie.2014.10.024 ; PubMed PMID: 25707282, Feb-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Lee G, Moore TM, Basner M, Nasrini J, Roalf DR, Ruparel K, Port AM, Dinges DF, Gur RC. &quot;Age, sex, and repeated measures effects on NASA&#x27;s &quot;Cognition&quot; test battery in STEM educated adults.&quot; Aerosp Med Hum Perform. 2020 Jan 1;91(1):18-25. https://doi.org/10.3357/AMHP.5485.2020 ; PubMed PMID: 31852569, Jan-2020</li><li><strong>Articles in Peer-reviewed Journals</strong> — Abe T, Mollicone D, Basner M, Dinges DF. &quot;Sleepiness and safety: Where biology needs technology.&quot; Sleep and Biological Rhythms. 2014 Apr;12(2):74-84. PubMed PMID: 24955033; PubMed Central PMCID: PMC4061704 ; http://dx.doi.org/10.1111/sbr.12067 , Apr-2014</li><li><strong>Articles in Peer-reviewed Journals</strong> — Minkel J, Moreta M, Muto J, Htaik O, Jones C, Basner M, Dinges D. &quot;Sleep deprivation potentiates HPA axis stress reactivity in healthy adults.&quot; Health Psychol. 2014 Nov;33(11):1430-4. Epub 2014 May 12. http://dx.doi.org/10.1037/a0034219 ; PubMed PMID: 24818608 (originally reported as &quot;Epub 2014 May 12&quot; in October 2014, Ed., 11/10/15), Nov-2014</li><li><strong>Articles in Peer-reviewed Journals</strong> — Perlis ML, Grandner MA, Brown GK, Basner M, Chakravorty S, Morales KH, Gehrman PR, Chaudhary NS, Thase ME, Dinges DF. &quot;Nocturnal wakefulness as a previously unrecognized risk factor for suicide.&quot; Journal of Clinical Psychiatry. 2016 Jun;77(6):e726-33. http://dx.doi.org/10.4088/JCP.15m10131 ; PubMed PMID: 27337421, Jun-2016</li><li><strong>Articles in Peer-reviewed Journals</strong> — Basner M, Nasrini J, Hermosillo E, McGuire S, Dinges DF, Moore TM, Gur RC, Rittweger J, Mulder E, Wittkowski M, Donoviel D, Stevens B, Bershad EM. &quot;Effects of -12° head-down tilt with and without elevated levels of CO2 on cognitive performance: The SPACECOT study.&quot; J Appl Physiol (1985). 2018 Mar 1;124(3):750-60. Epub 2017 Dec 14. https://doi.org/10.1152/japplphysiol.00855.2017 ; PubMed PMID: 29357516 [reported originally in July 2017 as &quot;Epub ahead of print&quot;] , Mar-2018</li><li><strong>Articles in Peer-reviewed Journals</strong> — Basner M, Dinges DF. &quot;Lost in space: sleep.&quot; Lancet Neurology. 2014 Sep;13(9):860-2. http://dx.doi.org/10.1016/S1474-4422(14)70176-0 ; PubMed PMID: 25127233 (Comment on: Laura K Barger, Erin E Flynn-Evans, Alan Kubey, Lorcan Walsh, Joseph M Ronda, Wei Wang, Kenneth P Wright Jr, Charles A Czeisler. Prevalence of sleep deficiency and use of hypnotic drugs in astronauts before, during, and after spaceflight: an observational study. The Lancet Neurology, Volume 13, Issue 9, September 2014, Pages 904-912.), Sep-2014</li><li><strong>Articles in Peer-reviewed Journals</strong> — Boland EM, Rao H, Dinges DF, Smith RV, Goel N, Detre JA, Basner M, Sheline YI, Thase ME, Gehrman PR. &quot;Meta-analysis of the antidepressant effects of acute sleep deprivation.&quot; J Clin Psychiatry. 2017 Sep/Oct;78(8):e1020-e1034. https://doi.org/10.4088/JCP.16r11332 ; PubMed PMID: 28937707 , Sep-2017</li><li><strong>Articles in Peer-reviewed Journals</strong> — Lerchl K, Rakova N, Dahlmann A, Rauh M, Goller U, Basner M, Dinges DF, Beck L, Agureev A, Larina I, Baranov V, Morukov B, Eckardt KU, Vassilieva G, Wabel P, Vienken J, Kirsch K, Johannes B, Krannich A, Luft FC, Titze J. &quot;Agreement between 24-hour salt ingestion and sodium excretion in a controlled environment.&quot; Hypertension. 2015 Oct;66(4):850-7. Epub 2015 Aug 10. http://dx.doi.org/10.1161/HYPERTENSIONAHA.115.05851 ; PubMed PMID: 26259596; PubMed Central PMCID: PMC4567387, Oct-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Basner M, Dinges DF. &quot;An adaptive-duration version of the PVT accurately tracks changes in psychomotor vigilance induced by sleep restriction.&quot; Sleep. 2012 Feb 1;35(2):193-202. PubMed PMID: 22294809 ; http://dx.doi.org/10.5665/sleep.1620 , Feb-2012</li><li><strong>Articles in Peer-reviewed Journals</strong> — Basner M, Dinges DF, Mollicone DJ, Savelev I, Ecker AJ, Di Antonio A, Jones CW, Hyder EC, Kan K, Morukov BV, Sutton JP. &quot;Psychological and behavioral changes during confinement in a 520-day simulated interplanetary mission to Mars.&quot; PLoS One. 2014 Mar 27;9(3):e93298. http://dx.doi.org/10.1371/journal.pone.0093298 eCollection 2014. PubMed PMID: 24675720; PubMed Central PMCID: PMC3968121 , Mar-2014</li><li><strong>Articles in Peer-reviewed Journals</strong> — Basner M, McGuire S, Goel, N, Rao H, Dinges DF. &quot;A new likelihood ratio metric for the psychomotor vigilance test and its sensitivity to sleep loss.&quot; Journal of Sleep Research.2015 Jun 29. [Epub ahead of print] PubMed PMID: 26118830, Jun-2015</li><li><strong>Awards</strong> — Basner M. &quot;Journal Publication Award for the Most Outstanding Space Medicine Article published in the Aerospace Medicine and Human Performance Journal, April 2016.&quot; Apr-2016</li><li><strong>Articles in Peer-reviewed Journals</strong> — Dayal D, Jesudasen S, Scott R, Stevens B, Hazel R, Nasrini J, Donoviel D, Basner M. &quot;Effects of short-term -12° head-down tilt on cognitive performance.&quot; Acta Astronaut. 2020 Oct;175:582-90. https://doi.org/10.1016/j.actaastro.2020.05.058 , Oct-2020</li><li><strong>Abstracts for Journals and Proceedings</strong> — Schneiderman JS, Gur RC, Dinges DF, Mollicone DJ, Mott CG, McCann T, Roberts ZT, Hansen J, Savitt AP, Basner M. &quot;Individualized Neurocognitive Assessment Toolkit for Spaceflight Fatigue (NeuroCATS).&quot; SLEEP 2013—27th Associated Professional Sleep Societies LLC (APSS) Annual Meeting, Baltimore, MD, June 1-5, 2013. Sleep. 2013;36(Abstract Suppl):A64. Abstract 0168., Jun-2013</li><li><strong>Articles in Peer-reviewed Journals</strong> — Nasrini J, Hermosillo E, Dinges DF, Moore TM, Gur RC, Basner M. &quot;Cognitive performance during confinement and sleep restriction in NASA&#x27;s Human Exploration Research Analog (HERA).&quot; Front Physiol. 2020 Apr 28;11:394. https://doi.org/10.3389/fphys.2020.00394 ; PMID: 32411017; PMCID: PMC7198903 , Apr-2020</li><li><strong>Articles in Peer-reviewed Journals</strong> — Ma N, Dinges DF, Basner M, Rao, H. &quot;How acute total sleep loss affects the attending brain: a meta-analysis of neuroimaging studies.&quot; Sleep. 2015 Feb 1;38(2):233-40. http://dx.doi.org/10.5665/sleep.4404 ; PubMed PMID: 25409102; PubMed Central PMCID: PMC4288604, Feb-2015</li><li><strong>Articles in Peer-reviewed Journals</strong> — Johannes B, Sitev AS, Vinokhodova AG, Salnitski VP, Savchenko EG, Artyukhova AE, Bubeev YA, Morukov B, Tafforin C, Basner M, Dinges DF, Rittweger J. &quot;Wireless monitoring of changes in crew relations during long-duration mission simulation.&quot; PLoS One. 2015 Aug 7;10(8):e0134814. eCollection 2015. http://dx.doi.org/10.1371/journal.pone.0134814 ; PubMed PMID: 26252656; PubMed Central PMCID: PMC4529101, Aug-2015</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23228">https://techport.nasa.gov/projects/23228</a>
+    </div>
+  </div>
+</body>
+</html>

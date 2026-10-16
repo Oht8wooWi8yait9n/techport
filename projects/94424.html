@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mars In Situ Tomography System (MISTS) Development for Characterizing the Stratigraphy of Polar Layered Deposits | NASA TechPort Project 94424</title>
+  <meta name="description" content="We propose to miniaturize an X-ray microcomputed tomography (microCT) system for in situ analysis of layered martian ice. The Micro In Situ Tomography System (MISTS) will provide the microstructural information we would seek from an ice core: millimeter scale ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/94424">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 94424</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">PICASSO</span>
+          <span class="badge">TX08.3</span>
+        </div>
+        <h1>Mars In Situ Tomography System (MISTS) Development for Characterizing the Stratigraphy of Polar Layered Deposits</h1>
+        <div class="meta-id">NASA TechPort Project ID: 94424</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/94424" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>We propose to miniaturize an X-ray microcomputed tomography (microCT) system for in situ analysis of layered martian ice. The Micro In Situ Tomography System (MISTS) will provide the microstructural information we would seek from an ice core: millimeter scale stratigraphy of impurity layers and micron scale particle size, shape, and position. OBJECTIVE Mars has layered subsurface ice and polar layered deposits that contain a climate record relevant to studies of past habitability and climate science more generally. MicroCT provides non-destructive three-dimensional visualization and characterization of the internal features of multiphase materials with spatial resolution down to several microns. It has been used extensively in the study of depositional processes in sedimentary rock (e.g. Falvard and Paris, 2017) and more recently in ice (Obbard et al., 2009; Iverson et al., 2017). MicroCT can measure micron scale layer stratigraphy, particle size, shape, volume concentration, pore size, shape and distribution, all as a function of depth. The use of microCT to differentiate and identify depositional layers based on particle size and shape distribution in the ice has been demonstrated in the West Antarctic Ice Sheet (WAIS) core were used to identify the type and source of specific volcanic eruptions (Iverson et al., 2017). Application of the technique has been growing in part due to rapid advances in instrumentation technology and accessibility through commercially available benchtop systems. Typically a microCT system is located in a laboratory; however, in some situations it may be preferred (e.g. transport and curation of frozen samples) to bring the microCT to the samples. We propose to develop a miniaturized microCT system that can be used robotically to examine stratigraphy and sediment distribution in martian ice cores. TECHNICAL APPROACH The MISTS will be a two-step process. Immediately following collection, an ice core will be placed between source and detector and X-ray attenuation images collected. One of the challenges we foresee is the need to withdraw and image fractured cores. The ice coring drill will employ Honeybee Robotics' eccentric tubes core breakoff and retention technology, a metal bit with an internal breakoff and caching tube(s) made of an X-ray transparent polymer (Zancy, 2014). As the caching tube and core is drawn from the hole, it will pass though a surface mounted microCT system, which will image the sample in situ in the tube. Data (bitmap X-ray attenuation image files, vertical and azimuthal position, and X-ray source statistics) will be transferred to Earth, where tomographic images will be reconstructed. Tasks: 1. Determine optimal core diameter by weighing competing requirements such as sample size, tomographic spatial resolution, drilling and microCT power, and weight. 2. Specify X-ray source strength, integration time, detector resolution. 3. Identify microCT geometry, components (i.e. source and detector) and design. 4. Make design changes to current core breakoff and retention system, including the caching/analysis tube(s). 5. Build and test microCT system on caching tubes containing ice and sediment in the lab at cold temperatures. The proposed work is relevant to NASA PICASSO because we aim to design and develop a new miniaturized instrument to be used for in situ science in a planetary context. Under this project, the proposed instrument will advance from TRL 2 to TRL 4. REFERENCES Chen, S., I. Baker (2010) Hydrological Processes, 24(14): 2034-2040 Committee on the Planetary Science Decadal Survey (2011) National Research Council. Falvard, S., R. Paris (2017) Sedimentology, 64(2): 453-477 Iverson et al. (2017) Nature Scientific Reports, 7: 11457. Lieb-Lappen et al. (2017) Cold Regions Science and Technology 138: 24-35 Obbard et al. (2009) Journal of Glaciology, 55(194): 1113-1115 Zacny et al. (2008) Astrobiology, 8(3). DOI: 10.1089/ast.2007.0179</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Developing Instrument technology to improve measurements for future planetary science missions.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>94424</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Planetary Instrument Concepts for the Advancement of Solar System Observations (PICASSO)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.3: In Situ Instruments and Sensors</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2018-08-01</td></tr>
+<tr><th>Project End Date</th><td>2021-07-31</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Dartmouth College — Hanover, New Hampshire; Honeybee Robotics, Ltd. — Pasadena, California; University of Arizona — Tucson, Arizona</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Arizona (AZ), California (CA), New Hampshire (NH)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars, Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Rachel W Obbard (Principal Investigator); Christine M Bothe (Co-Investigator); Shane Byrne (Co-Investigator); Philippe C Sarrazin (Co-Investigator); Kris Zacny (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Erica N Montbach (Program Director) &lt;erica.n.montbach@nasa.gov&gt;; Shahid Aslam (Program Manager) &lt;shahid.aslam-1@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-03-03</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/94424">https://techport.nasa.gov/projects/94424</a>
+    </div>
+  </div>
+</body>
+</html>

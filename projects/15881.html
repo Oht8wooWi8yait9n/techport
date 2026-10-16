@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mars Ecopoiesis Test Bed | NASA TechPort Project 15881</title>
+  <meta name="description" content="Ecopoiesis is the concept of initiating life in a new place; more precisely, the creation of an ecosystem capable of supporting life. It is the concept of initiating &quot;terraforming&quot; using physical, chemical and biological means including the introduction of eco">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/15881">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 15881</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">NIAC</span>
+          <span class="badge">TX08.3.3</span>
+        </div>
+        <h1>Mars Ecopoiesis Test Bed</h1>
+        <div class="meta-id">NASA TechPort Project ID: 15881</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/15881" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Ecopoiesis is the concept of initiating life in a new place; more precisely, the creation of an ecosystem capable of supporting life. It is the concept of initiating "terraforming" using physical, chemical and biological means including the introduction of ecosystem-building pioneer organisms. The proposed concept will be subjected to extensive laboratory testing directed toward the ultimate emplacement of a test bed on (in) the surface of Mars to test (demonstrate) the activity of pioneer organisms selected on the basis of research on earth. To achieve this a device is proposed to penetrate and surround a sample of Martian regolith at a carefully selected site likely to experience transients of liquid water, completely seal itself to avoid planetary contamination, release carefully selected earth organisms (extremophiles like certain cyanobacteria), sense the presence or absence of a metabolic product (like O2), and report to a Mars-orbiting relay satellite. This will be the first major leap from laboratory studies into the implementation of experimental (as opposed to analytical) planetary in-situ research of greatest interest to planetary biology, ecopoiesis and terraforming.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>A Mars Ecopoiesis Test Bed concept is proposed for development in a three-phase program concluding with a device for studying the survival of terrestrial life forms on the surface of Mars prior to abiological planetary engineering. Ecopoiesis is the concept of initiating life in a new place; more precisely, the creation of an ecosystem capable of supporting life. It is the concept of initiating terraforming using physical, chemical and biological means including the introduction of ecosystem-building pioneer organisms. This will be the first major leap from laboratory studies into the implementation of experimental (as opposed to analytical) planetary in-situ research of greatest interest to planetary biology, ecopoiesis and terraforming.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>15881</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>NASA Innovative Advanced Concepts (NIAC)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.3.3: Sample Handling</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 1 | Target End TRL: 1</td></tr>
+<tr><th>Project Start Date</th><td>2014-07-01</td></tr>
+<tr><th>Project End Date</th><td>2015-06-01</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Redwire Space Technologies, Inc. — Greenville, Indiana</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Indiana (IN)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Eugene D Boland (Principal Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Vianni Ricano Cadenas (Program Manager) &lt;vianni.ricanocadenas@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Mars surface conditions where liquid water is absent were simulated for the purposes of laboratory research. A pressure-temperature (P-T) profile was maintained in which no combination of pressure or temperature corresponds to the liquid region of the water phase diagram. The triple point of pure water occurs at T = 0.1oC and P(H2O) = 6.01 mbar; therefore all temperatures and pressures must be kept below these values, respectively. A 35-day test was performed in a commercial planetary simulation system (Techshot, Inc., Greenville, IN) in which the minimum night-time temperature was -80oC, the maximum daytime temperature was +26oC, the simulated day-night light cycle in earth hours was 12-on and 12-off, and the total pressure of the pure CO2 atmosphere was maintained below 11 mbar. Any water present was allowed to equilibrate with the changing temperature and pressure. The gas phase was sampled into a CR1-A condensation-mirror low-pressure hygrometer, which uses liquid nitrogen (down to 77oK) to determine the dew point (Buck Technologies, Boulder, CO). Dew point was measured once every hour and recorded on a data logger, along with the varying temperature in the chamber, from which the partial pressure of water was calculated. The resulting calculated daily cycles were tracked on the water P-T diagram, and no points were found to fall within the liquid-phase region of the diagram. It is concluded that there was no liquid water present throughout the test except during the initial pump-down period when aqueous specimens were introduced on the first day (less than 1 hour). Mars regolith simulant was present during this test, and further investigation is needed to determine whether liquid water could have been present or absent in the regolith in the form of brine. Biological samples consisting of Cyanobacteria: Anabena sp., Chroococcidiopsis CCMEE171, Plectonema boryanum; Eubacteria: Bacillus subtilis, Pseudomonas aeruginosa, and Eukaryota: Chlorella ellipsoidia were maintained in the simulator under the above-described conditions. The exposed specimens were tested for intracellular esterase activity, chlorophyll content (where appropriate) and reproductive survival. All tests yielded low-level positive results in all cases. In parallel to these terrestrial studies a planned design study was undertaken for the proposed test bed . Design requirements include compact assembly for transport and installation on the planetary surface (multiple units per mission would be expected), protective internal package for the release of organisms, a means of atmosphere exchange, access to sunlight, a means of penetrating the planetary surface, and most importantly a means of acquiring regolith while meeting the requirements of planetary protection. In consultation with advisers a design was created, and a large-scale mock-up of this design was fabricated by additive manufacturing at Techshot, Inc. with moving parts that simulated the components of the design. The mock-up assembly has been demonstrated to interested parties. A means of detecting live metabolism will also be included in the test bed. Several options were reviewed, and it is concluded that, by the time the ecopoiesis test bed is ready for testing the optimum instrument will be the equivalent of a hand-held mass spectrometer for metabolic gas analysis. This will maximize versatility and reveal much more information than could a detector of a single product (such as molecular oxygen), and the simple output signals will be compatible with telemetry. The objectives of this project, (1) Model and test the availability of liquid water in Techshot&#x27;s Mars simulator facility, (2) Identify current candidate pioneer organisms for testing and initiate a selection program, (3) Create a mechanical and electronic design concept for Mars surface shallow penetrator with planetary protection, and (4) Identify electronic biological activity tests, were fulfilled by the completion of the Phase-1 research described in this final report.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>Mars Ecopoiesis Test Bed Concept</strong> — Concept diagram</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/15881">https://techport.nasa.gov/projects/15881</a>
+    </div>
+  </div>
+</body>
+</html>

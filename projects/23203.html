@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Distributed System for Spaceflight Biomedical Support | NASA TechPort Project 23203</title>
+  <meta name="description" content="Over the past three decades, scores of biomedical monitoring devices have been deployed aboard U.S. spacecraft and the International Space Station. These have enabled collection of heart rate, respiration rate, temperature, sleep/wake activity, carbon dioxide,">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23203">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23203</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.4</span>
+        </div>
+        <h1>Distributed System for Spaceflight Biomedical Support</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23203</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23203" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Over the past three decades, scores of biomedical monitoring devices have been deployed aboard U.S. spacecraft and the International Space Station. These have enabled collection of heart rate, respiration rate, temperature, sleep/wake activity, carbon dioxide, ultrasound images, and numerous other physiological and environmental parameters. However, nearly all such measurement devices were designed as stand-alone systems, unable to operate together, synchronize data streams, be easily augmented with new sensors, or coordinate in any way with therapeutic devices. Some systems under development are being designed to record multiple signals. However, even these composite systems remain as stand-alone devices. Currently, there is no flight-ready platform that can (i) automatically bring together data from disparate human and environment sensors for diagnosis, (ii) make acquired data available from nearly any location or display device, or (iii) intelligently incorporate computer aided diagnostic or therapeutic components of the spaceflight medical system.     <p></p> We thus developed a prototype platform, called SpaceMED, that can seamlessly integrate disparate biomedical and environmental sensors and effectors, including future decision-support and therapeutic systems. The SpaceMED v2.2 prototype software platform consists of three primary components: (1) MEDcomm: a suite of listener services that continuously monitor the external environment to detect and connect with both wired devices (e.g., ethernet, USB, A/V feeds) and wireless devices (e.g., Bluetooth, radio, WiFi), (2) MEDproxy: a middle layer that enables any data or control signals that are "published" to be delivered to the appropriate receiving systems (as well as being archived), and (3) MEDview: a graphical user interface for query and display of the collected data and to facilitate device control.     <p></p> In addition to developing the SpaceMED software, we demonstrated the integration of a range of hardware devices in SpaceMED. We integrated seven classes of commercial-off-the-shelf (COTS) hardware systems with SpaceMED, using a variety of communication standards: Bluetooth, 802.15.4 radio communication (using both ANT and TinyOS standards), and USB mass storage devices. The available devices--including sensors for 3- and 12-lead ECG (electrocardiogram), EMG (electromyography), heart rate, temperature, accelerometry, environmental carbon dioxide, and files stored on USB mass storage devices (e.g., Flash drives and memory sticks)--are automatically discovered, connections are created, and data is acquired and communicated through the system without human intervention. SpaceMED is able to deliver both file-based and telemetry-based data to NASA's Exploration Medical Capabilities Human Research Program element (ExMC's) Exploration Medical System Demonstration (EMSD) software, including a 12-lead ECG, file-based data such as the medical consumables tracking system files, digital still and video communication, near-infrared neuroimaging (NIN), carbon dioxide monitors, and radio-frequency identification (RFID) tagging devices. The system is designed to facilitate incorporation of future medical and environmental hardware.     <p></p> The SpaceMED prototype platform (1) demonstrates the feasibility of seamless interoperation of components not otherwise intended to work together, with minimal human intervention, (2) validates the approach for integrating telemetrically gathered physiological data streams from multiple devices and display of time-synchronized data from multiple nodes as the information is acquired, along with file-based data, (3) provides a prototype platform for future medical capabilities integration, including new sensors, decision support, therapeutic systems, and device control, (4) leverages previously funded projects from NASA Ames, NASA Glenn, NASA Johnson Space Center, and the National Space Biomedical Research Institute (NSBRI), and (5) provides spin-off potential for use in a variety of Earth-based clinical settings. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Impact: The integrated platform and devices, plus the autonomous operation of SpaceMED, will enable collection of data from throughout the spacecraft (typically unavailable to crews in-flight) while simultaneously avoiding data consolidation burdens currently placed on crew members and ground personnel. Real-time synchronization and integration of medical and environmental data and devices is expected to also facilitate early and efficient detection and treatment of medical conditions. For example, real-time access to ambient CO2 levels in International Space Station (ISS) nodes alongside multi-astronaut cardiac and respiratory data could motivate proactive CO2 scrubbing activities. Or, periodic and timely measures of optic nerve sheath diameter combined with cognitive performance data and concomitant measures of CO2 and exercise loads might help identify risk factors for intracranial hypertension, or even enable early identification of Vision Impairment and Intracranial Pressure (VIIP). SpaceMED could also potentially reduce training time by automating or consolidating medical system complexity. Integration of diagnostic and therapeutic elements will be essential for developing more autonomous medical systems for exploration-class missions, and SpaceMED provides a platform for doing just that.     <p></p> Earth Benefits: We expect SpaceMED will have substantial spin-off impact in Earth-based settings, as there are numerous similar medical data acquisition and consolidation needs in research, hospital and remote, rural and first-responder settings. Benefits are expected to range from efficiency improvements in primary and emergency care units, where monitors are constantly swapped in and out and patients are regularly moved, to streamlined data collection and management in smaller clinics and practices, to deployment in military and first responder settings where a lightweight, robust, distributed and easily upgradable architecture is essential and personnel for data management are sparse or unavailable. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23203</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.4: Contactless and Wearable Human Health and Performance Monitoring</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2010-06-01</td></tr>
+<tr><th>Project End Date</th><td>2014-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>National Space Biomedical Research Institute (NSBRI) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Massachusetts General Hospital — Charlestown, Massachusetts</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Massachusetts (MA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Gary E Strangman (Principal Investigator); Quan Zhang (Co-Investigator); Rob Montgomery (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Our project investigated whether a software platform could integrate as wide a variety of devices and data types as needed for spaceflight biomedical support. The SpaceMED v2.2 prototype system was successfully developed and consists of 3 separable software layers: 1. MEDcomm: listens for medical and environmental devices over multiple communication protocol standards, connects to the devices, collects and time-stamps data, and packages that data for robust communication to the MEDproxy layer. It supports USB mass storage, Bluetooth, WiFi, and Ethernet protocols, most any 802.15.4 radio bridge (e.g., devices using Zigbee or ANT+ protocols), and filesystem-accessible locations. Devices from 7 distinct manufacturers plus any device that makes data available in file format are supported. 2. MEDproxy: receives data from MEDcomm and routes it to the data archive and MEDview graphical displays. The data archive includes a table for telemetry data, a repository for file-based data, and a metadata store which provides pointers to the stored files and data channels. MEDproxy also hosts webservice and websocket data interfaces. 3. MEDview: runs inside a web browser for query and viewing of both real time and historical data from multiple medical sensors using nearly any computing platform (Windows, Linux, Mac, tablet, smart phones). The MEDproxy webservice uses a login page for security and customization. The search page enables selection of individual or multiple datasets for display, whether historical or real-time. Control of an external device can also be achieved via MEDview. These three modules can be co-located on the same computer (standalone configuration), or distributed across multiple computers or devices. A radio-frequency identification (RFID)-based system was also developed, for rapid association of devices with patients and/or locations. SpaceMED has demonstrated a throughput of over 20,000 samples per second for telemetry data, equivalent to 10 simultaneous 12-lead ECG systems running simultaneously at 250Hz. Long-duration benchmarking and physiology laboratory analog testing with human participants using 8 sensors over 4 hour experiments were also successfully conducted. Importantly, SpaceMED can be configured to automatically forward all acquired data to NASA&amp;#39;s Exploration Medical System Demonstration (EMSD). User training of NASA EMSD developers was conducted to facilitate SpaceMED integration and utilization with EMSD. The delivered SpaceMED v2.2 prototype is thus capable of highly automated collection, management, and display of both telemetry and multimedia data in real-time or via the data archive. Our integration efforts enable all data collected by SpaceMED to be automatically transferred to NASA&amp;#39;s EMSD databases. SpaceMED could serve as a smart operating system underlying biomedical and environmental devices, eventually to be integrated with guided-procedures, decision-support, and therapeutic systems.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Abstracts for Journals and Proceedings</strong> — Strangman GE, Montgomery RR, Jamieson IMD. &quot;Distributed system for spaceflight biomedical support.&quot; 18th IAA Humans in Space Symposium, Houston, TX, April 11-15, 2011. 18th IAA Humans in Space Symposium, Abstract book, April 2011., Apr-2011</li><li><strong>Articles in Other Journals or Periodicals</strong> — Strangman GE, Montgomery RR, Hiam A, Jamieson IMD. &quot;SpaceMED platform for integrated biomedical and environmental data management.&quot; Submitted as of August 2014. (NOTE: same status as of July 2015, Ed.), Aug-2014</li><li><strong>Abstracts for Journals and Proceedings</strong> — Strangman GE, Jamieson IMD, Montgomery RR. &quot;SpaceMED 2.1: prototype platform for spaceflight biomedical support.&quot; 2014 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-13, 2014. 2014 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 12-13, 2014. https://www.hou.usra.edu/meetings/hrp2014/pdf/3064.pdf , Feb-2014</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23203">https://techport.nasa.gov/projects/23203</a>
+    </div>
+  </div>
+</body>
+</html>

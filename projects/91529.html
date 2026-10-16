@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investigation of the Hall Effect Thruster Breathing Mode and Spoke Mode Instabilities in the Very Near Field | NASA TechPort Project 91529</title>
+  <meta name="description" content="One of the most practical forms of electric propulsion is the Hall Effect Thruster (HET), which makes use of electric and magnetic fields to create and eject a plasma. One of the most common HET designs is the stationary plasma thruster, in which an annular ch">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91529">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91529</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX01.2.2</span>
+        </div>
+        <h1>Investigation of the Hall Effect Thruster Breathing Mode and Spoke Mode Instabilities in the Very Near Field</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91529</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91529" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          One of the most practical forms of electric propulsion is the Hall Effect Thruster (HET), which makes use of electric and magnetic fields to create and eject a plasma. One of the most common HET designs is the stationary plasma thruster, in which an annular channel acts as an ionization zone where a radial magnetic field and axial electric field establish an electron Hall current. Despite the prevalence of this design in university and commercial settings, the physical mechanisms governing its operation are still not entirely understood. I propose to conduct research involving time-resolved plasma measurements in the very-near field of a modern high-power Hall thruster. The goal of this research is to directly observe the variation of plasma properties in the ionization zone of a Hall thruster so as to quantitatively characterize some of the major instabilities known to occur in these devices. In doing this, the impact of these instabilities on performance can be determined, providing the insight needed to design more efficient Hall thrusters. The two main types of instabilities that I plan to examine are the spoke and breathing mode instabilities. These two turbulent effects originate in the ionization zone of a Hall thruster and generally occur with frequencies on the order of tens of kilohertz. To capture these effects in any capacity, time-resolved diagnostic tools must be employed. Although these instabilities have been examined before, there is limited data characterizing them in a time-resolved manner and virtually no existing data doing so in the very-near field. For each instability, I propose to examine its steady-state behavior, origin, and effect on thruster performance. This research will be conducted at the Plasmadynamics and Electric Propulsion Laboratory (PEPL), where the material and personnel resources are well-suited for facilitating the proposed research. PEPL has the 6-m diameter, 9-m long cylindrical stainless steel clad Large Vacuum Test Facility, which has a pumping speed of 240,000 L/s on xenon using LN2 baffled cryopanels. To evaluate thruster efficiency, I will require diagnostic tools such as a Faraday probe, ExB probe, and retarding potential analyzer. These will allow me to measure current density profiles, current as a function of degree of ionization, and acceleration voltage. These quantities can then be used to determine various efficiencies, including mass utilization efficiency, current utilization efficiency, and divergence efficiency, as outlined by Liang and Gallimore. For time-resolved measurements, I propose to use a high-speed dual Langmuir probe (HDLP). Technical limitations for a single Langmuir probe generally prevent it from being swept at frequencies greater than 0.01 to 70 kHz for a Hall thruster plasma. A HDLP can be used to identify time-resolved electron density, potential, and ion flux in the channel, and has been used to do so sweeping at up to 400 kHz. This represents the highest frequency full sweep data published to date, providing unheard of temporal resolution. In-space propulsion is a major element of NASA's Technology Area Breakdown Structure (TABS), and specifically electric propulsion is a significant component of the In-Space Propulsion Systems Roadmap (ISPSR). The proposed research is therefore highly relevant in that it not only uses electric propulsion devices for a proposed investigation of plasma physics but it is intended to improve Hall thruster efficiency. In the ISPSR, two of the top three technical challenges highlighted are electric propulsion related. In particular, one of these challenges is related to high-power solar electric propulsion. The proposed research aims to explore the physics underpinning instabilities in Hall thrusters, and thus has the goal to provide new insight for next-generation Hall thruster designs. For this reason it will enable the development high-power solar Hall thruster propulsion solutions.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          In-space propulsion is a major element of NASA's Technology Area Breakdown Structure (TABS), and specifically electric propulsion is a significant component of the In-Space Propulsion Systems Roadmap (ISPSR). The proposed research is therefore highly relevant in that it not only uses electric propulsion devices for a proposed investigation of plasma physics but it is intended to improve Hall thruster efficiency. In the ISPSR, two of the top three technical challenges highlighted are electric propulsion related. In particular, one of these challenges is related to high-power solar electric propulsion. The proposed research aims to explore the physics underpinning instabilities in Hall thrusters, and thus has the goal to provide new insight for next-generation Hall thruster designs. For this reason it will enable the development high-power solar Hall thruster propulsion solutions.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91529</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.2.2: Electrostatic Propulsion</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2014-08-01</td></tr>
+<tr><th>Project End Date</th><td>2018-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Michigan-Ann Arbor — Ann Arbor, Michigan</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Michigan (MI)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Benjamin A Jorns (Principal Investigator) &lt;benjamin.a.jorns@jpl.nasa.gov&gt;; Ethan Dale (Co-Investigator) &lt;ethan.t.dale@jpl.nasa.gov&gt;; Wensheng Huang (Project Manager) &lt;wensheng.huang@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The Hall thruster breathing mode instability is investigated. Specifically, the discharge parameters are characterized during breathing, and the mechanism behind controlling the phenomenon is theorized based on this characterization. First, existing models of the breathing mode are explored and their deficiencies considered. An alternate zero-dimensional model is proposed that self-consistently predicts growth of the instability. To determine the validity of this model, potential high-speed diagnostics such as optical emission spectroscopy and high-speed Langmuir probing are evaluated. A time-resolved laser-induced fluorescence scheme coupled with an analysis using moments of the Boltzmann equation is developed as a non-invasive means to do perform this characterization. Time-resolved data is then collected and analyzed to assess the assumptions of the proposed model. It is found that the fundamental assumption of zero-dimensional fluctuations of ion density is poor, and thus the proposed model may not be physically realistic. A larger implication of this work is that any similar model may never produce meaningful criteria for the onset and growth of the breathing mode. A simple zero-dimensional predator-prey model is often cited in the literature, and thus this work definitely argues that such a model is inappropriate and the current physical understanding of this instability is flawed.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91529">https://techport.nasa.gov/projects/91529</a>
+    </div>
+  </div>
+</body>
+</html>

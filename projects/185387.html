@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Enhanced Digital Twin Framework for UAS Component Reliability in Support of In-Time Aviation Safety Management Systems (IASMS) | NASA TechPort Project 185387</title>
+  <meta name="description" content="AlarisPro proposes a novel framework for the integration of AI techniques with UAS component reliability data to create an AI Safety and Reliability (AISR) Digital Twin technology in support of In-Time Aviation Safety Management Systems (IASMS). As UAS operati">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/185387">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 185387</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX16</span>
+        </div>
+        <h1>AI-Enhanced Digital Twin Framework for UAS Component Reliability in Support of In-Time Aviation Safety Management Systems (IASMS)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 185387</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/185387" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          AlarisPro proposes a novel framework for the integration of AI techniques with UAS component reliability data to create an AI Safety and Reliability (AISR) Digital Twin technology in support of In-Time Aviation Safety Management Systems (IASMS). As UAS operations increase in the National Airspace Systems (NAS), there is a critical need for advanced predictive maintenance capabilities and real-time safety assessment tools. This approach leverages the convergence of high-fidelity sensor data, component degradation models, and advanced AI algorithms to create a robust prognostic framework that can significantly improve operational safety and system reliability.   The AISR Digital Twin maintains synchronization with its physical counterpart through continuous data assimilation techniques that optimize the balance between model predictions and sensor observations. The AISR Digital Twin architecture employs transfer learning methodologies to leverage knowledge across different UAS platforms and component types, allowing for rapid adaptation to new systems with limited historical data. This flexibility enables comprehensive safety assessments that account for propagation of component failures through interdependent systems. The integration with IASMS is facilitated through a real-time risk assessment engine that translates AISR Digital Twin outputs into actionable safety metrics.   This research demonstrates the significant potential of AI-enhanced AISR Digital Twin technology to transform UAS reliability assessment and advance IASMS capabilities. The framework provides a foundation for transitioning from reactive maintenance paradigms to proactive, condition-based strategies that optimize safety margins while reducing operational costs. This represents a significant advancement in aviation safety management, providing operators, manufacturers, and regulators with unprecedented visibility into current system and component health and future reliability projections.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          NASA's pursuit of In-Time Aviation Safety Management Systems (IASMS) can be significantly enhanced through AI applications to Unmanned Aircraft Systems (UAS) component reliability data within Digital Twin frameworks. These applications include:   Predictive Maintenance Revolution AI algorithms can process historical component failure data to predict maintenance needs before critical failures occur. By analyzing patterns invisible to human observers, these artifacts can transform reactive maintenance into proactive reliability management for UAS fleets and serve as the foundation for FAA regulatory safety requirements.   Anomaly Detection & Real-Time Risk Assessment Machine learning models can establish baseline performance parameters for UAS components thereby providing the inputs needed to establish minimum standards for components used in BVLOS operations and other expanded operational approvals. These same models enable flagging of deviations in real-time and the generation of immediate risk assessment data and mitigation steps during operations, substantially reducing in-flight issues.    Digital Twin Fidelity Enhancement Advanced AI techniques can continuously refine Digital Twin models by identifying discrepancies between simulated and actual component performance. This creates increasingly accurate virtual testing environments and reduces physical testing requirements that in the future can be utilized by both NASA and FAA in setting standards for future UAS to operate in the NAS.   These applications collectively establish a foundation for NASA's IASMS objectives, creating a safer, more efficient UAS operational ecosystem through the marriage of reliability data, Digital Twin technology, and advanced AI methodologies. Furthermore, the data-driven insights generated by this system can inform future UAS certification standards and operational requirements, creating a feedback loop that continuously improves aviation safety across the entire NAS. 1. Predictive Maintenance for Commercial Drone Fleets  AI algorithms can analyze reliability data from operational UAS to predict failures before they occur. By maintaining digital representations of each physical drone, companies can:  * Enable truly predictive maintenance capabilities, mitigating risks associated with component failures during critical flight phases and in densely populated areas  * Monitor component degradation patterns in real-time  * Develop predictive indicators that maintenance staff can recognize  * Schedule maintenance based on actual wear rather than fixed intervals  * Reduce unplanned downtime and extend component lifespans  * Create component-specific replacement strategies based on operational conditions   2. Insurance Risk Assessment Models  * Develop more accurate risk profiles for various UAS operations  * Adjust premiums based on maintenance practices and demonstrated reliability  * Incentivize safer operations through data-driven policy structures  * Reduce claim frequency by identifying high-risk operational patterns   3. Component Manufacturing Quality Control  * Identify design weaknesses through accelerated virtual lifecycle testing  * Optimize material choices based on operational data from field-deployed components  * Create closed-loop improvement cycles between deployed units and manufacturing processes   4. Regulatory Compliance and Certification  * Validate new designs through simulation before physical testing  * Establish data-driven certification standards based on real-world performance  * Monitor fleet-wide component reliability trends across different operators  * Develop more responsive and adaptive regulatory frameworks   5. Supply Chain Optimization  * Forecast component replacement needs based on fleet reliability data  * Optimize inventory levels and reduce carrying costs  * Identify quality variations across component suppliers  * Reduce operational disruptions through just-in-time parts availability
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>185387</td></tr>
+<tr><th>Acronym</th><td>IASMS</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX16: Air Traffic Management and Range Tracking Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2025-09-29</td></tr>
+<tr><th>Project End Date</th><td>2026-03-27</td></tr>
+<tr><th>Lead Organization / Center</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Anthony J Pucciarella (Principal Investigator); Ersin Ancel (Project Manager) &lt;ersin.ancel@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-19</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/185387">https://techport.nasa.gov/projects/185387</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Toolkit for UAM Communications Management | NASA TechPort Project 154690</title>
+  <meta name="description" content="Air/Ground (AG) communications (AG Comm) are well established for traditional National Airspace System participants, but for the Advanced Air Mobility (AAM) concept, the infrastructure, frequency bands, and related infrastructure build-outs are in their infanc">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/154690">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 154690</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX16</span>
+        </div>
+        <h1>A Toolkit for UAM Communications Management</h1>
+        <div class="meta-id">NASA TechPort Project ID: 154690</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/154690" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Air/Ground (AG) communications (AG Comm) are well established for traditional National Airspace System participants, but for the Advanced Air Mobility (AAM) concept, the infrastructure, frequency bands, and related infrastructure build-outs are in their infancy. Initially, AAM pilots will be in the cockpit and AG Comm will use existing voice channels. However, for UAM Maturity Level 4 (UML-4) and onwards, vehicles are controlled by remote pilot. AG Comm will require higher bandwidths than AG Comm does today for transmitting video and reproducing the cockpit on the remote pilots workstation (a digital twin of the aircraft).  TUCM targets this remote pilot concept, UML-4 and onwards. TUCM uses a combination of statistical and Machine Learning (ML) tools to estimate the signal strength as a vehicle traverses the airspace. The signal strength is a complicated function of direct line of sight, multipath interference due to reflections off the ground and nearby buildings, electromagnetic interference, and atmospheric effects. This problem is compounded by the movement of the vehicle. The signal strength computations are then packaged into a marketable toolkit that can be inserted as a module into existing AAM management tools, AAM simulations, or used as a stand-alone tool for engineering and health checking of communication systems. TUCMs purpose is to increase the resiliency and reliability of AAM AG Comm.  Air-ground (AG) communications has a century of history, yet as with other modern wireless communication applications, requirements for new AG wireless system throughput (data rate) and performance have grown. For example, for unmanned aircraft systems (UAS), both remotely piloted and completely autonomous UAS will require communication links with larger throughput than existing air traffic control (ATC) links.  Our proposed TUCM is focused on airspace operations within the AAM domain. AAM operations occur at low-altitude and they carry people, packages, food, or some combination of these items. TUCM is targeted for remote pilot operations.  Remote piloting puts stress on the UAM communications system.&nbsp;Not only must the complete state of the vehicle be transmitted to the remote pilot continuously, but video of an out-the-cockpit is transmitted.&nbsp;The bandwidth and communication rates increase over the current voice communications requirements.&nbsp;Using TUCM will enable scaling of demand and complexity of UAM operations, as well as increasing the resiliency of the communications network.  Objectives   	Technical Objective 1: Increase the Fidelity of Machine Learning Models 	Technical Objective 2: Increase the Fidelity of Statistical Models 	Technical Objective 3: Compare Results with Live Flight Tests 	Build the TUCM Tool and Commercialize It   Proposed Deliverables   	The TUCM Tool with Integrated Machine Learning Prediction and Statistical Estimation of Path Loss (including executable software) 	A Machine Learning Model that Accurately Predicts Path Loss 	Statistical Models that Approximate Path Loss
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          NASA Glenn Research Center actively investigates AG Comm issues for all aviation business models, including AAM.&nbsp;In addition, Langley and Ames Research Centers are testing concepts and platforms to support its High Density Vertiplex program associated with a UAM ecosystem.&nbsp;Both the ATM-X and the AAM Projects can productively use the TUCM tool. NASA also works with five state and local governments in MA, MN, TX, OH, and the City of Orlando to develop civic transportation plans to support emerging passenger-carrying air taxi services.  Target markets for TUCM include state and local governments planning AAM services.&nbsp;Provider of Support for UAM (PSUs) may also find the tool useful.&nbsp;Communication engineers can use the tool to site AAM AG Comm towers and to determine when a tower may need repair.&nbsp;Avionics suppliers and AAM vehicle manufacturers will also find the tool useful.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>154690</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX16: Air Traffic Management and Range Tracking Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 3 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2023-06-15</td></tr>
+<tr><th>Project End Date</th><td>2025-06-14</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Mosaic ATM, Inc. — Leesburg, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Ohio (OH), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Fred Wieland (Principal Investigator); Eric J Knoblock (Project Manager) &lt;eric.j.knoblock@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/154690">https://techport.nasa.gov/projects/154690</a>
+    </div>
+  </div>
+</body>
+</html>

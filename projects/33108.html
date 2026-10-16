@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compact 3D Wind Sensor for Unmanned Aerial Vehicles | NASA TechPort Project 33108</title>
+  <meta name="description" content="Accurate wide-area mapping of three-dimensional (3D) wind vectors plays an important role in our ability to understand climate processes, predict weather patterns and hazards, and unravel planetary atmospheric dynamics, both on Earth and extraterrestrially. To">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/33108">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 33108</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX08.1.1</span>
+        </div>
+        <h1>Compact 3D Wind Sensor for Unmanned Aerial Vehicles</h1>
+        <div class="meta-id">NASA TechPort Project ID: 33108</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/33108" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Accurate wide-area mapping of three-dimensional (3D) wind vectors plays an important role in our ability to understand climate processes, predict weather patterns and hazards, and unravel planetary atmospheric dynamics, both on Earth and extraterrestrially. To this end, NASA has several airborne Doppler lidar platforms (e.g., DAWN, MACAWS) that are capable of mapping 3D wind vectors. These systems are large, heavy, and costly, requiring full-sized crewed aircraft (e.g., DC-8) to operate them and provide 3D wind measurements only along a single direction, thus limiting their utility. To address this barrier, Boulder Nonlinear Systems (BNS) proposes a 3D wind sensor system with low size, weight, and power (SWaP) requirements that can be deployed on small unmanned aerial vehicles (UAVs) for wider coverage and cheaper operation. The proposed system is built around exclusive electro-optic beam scanner technology and many commercial off-the-shelf components from the telecom industry. Current mechanical beam scanning solutions are heavy, power hungry, and slow, and constitute a significant portion of the mass of 3D wind sensors and other optical sensor platforms. In contrast, BNS' non-mechanical beam scanner can reduce scanner mass by an order of magnitude and power consumption by three orders of magnitude, while simultaneously providing new mission capabilities such as fast random-access scanning and hemispherical sensor coverage. Phase I will fully characterize the impact of the beam scanner on Doppler lidar measurements and demonstrate recovery of 3D velocity vectors using an existing low-SWaP short-range Doppler lidar prototype developed for long-range rifle ballistics. In Phase II, BNS will partner with an existing lidar wind sensor contractor for development of the full UAV wind sensor prototype using either BNS' existing lidar prototype or integrating BNS' low-SWaP beam scanner onto the partner's wind sensing platform, as desired by NASA.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The full UAV-deployable 3D wind sensor platform that is to be developed in this two-phase effort is anticipated to have multiple applications relevant to current or upcoming NASA missions. Specific recent and ongoing relevant NASA missions include: - Hurricane and Severe Storm Sentinel (HS3) - Studies of Emissions and Atmospheric Composition, Clouds and Climate Coupling by Regional Surveys (SEAC4RS) - Development and Evaluation of Satellite Validation Tools by Experimenters (DEVOTE), - Genesis and Rapid Intensification Processes (GRIP). In more general terms, the proposed wind sensor will have applications in any airborne NASA mission seeking to better understand tropospheric wind patterns, weather dynamics, and climate processes while aiding calibration and validation of satellite-bound technologies for global wind measurement and extraterrestrial wind sensing missions (e.g., Venus). The technology developed in this project, especially the versatile lidar beam scanning system in Phase I, can be tailored for a number of other NASA sensor platforms as well, such as for differential absorption lidar (DIAL) or other absorption-based optical sensing techniques.<br /> <br />The 3D wind sensor and non-mechanical beam steering technology have numerous commercial applications outside of NASA as well. With the ability to incorporate forward looking wind sensing, the platform can provide a low-SWaP package for hazard prediction for commercial and private aviation. Additionally, the sensor would be well suited to deployment on wind farms for guiding and controlling power-generating wind turbines. The sensor is particularly well suited for this application because the low-SWaP package is ideal for mounting directly to a turbine or even packaging in an ocean-going buoy for sea-based wind farms. Such a buoy network would also have weather warning and prediction applications. The fundamental innovation of the non-mechanical beam steering technology has an even wider array of potential commercial applications. Within the Department of Defense, BNS plans to continue pursuing development of this technology for applications such as munitions seeker tracking, passive imaging, and conventional hard-target lidar. For civilian applications, lidar technology is being employed in a variety of applications such as automobile collision avoidance, autonomous robotics, noncontact structure analysis, topographical mapping and target identification. BNS is also increasingly generating interest from automotive manufacturers who wish to incorporate non-mechanical headlight steering.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>33108</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.1: Detectors and Focal Planes</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2015-06-17</td></tr>
+<tr><th>Project End Date</th><td>2015-12-17</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Meadowlark Optics Inc. — Lafayette, Colorado</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Steve Serati (Principal Investigator); Narasimha S Prasad (Project Manager) &lt;narasimha.s.prasad@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Compact 3D Wind Sensor for Unmanned Aerial Vehicles, Phase I Project Image</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart Image</li><li><strong>Briefing Chart</strong> — Compact 3D Wind Sensor for Unmanned Aerial Vehicles Briefing Chart</li><li><strong>Briefing Chart Image</strong> — Compact 3D Wind Sensor for Unmanned Aerial Vehicles, Phase I</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/33108">https://techport.nasa.gov/projects/33108</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dismantling Rubble Pile Asteroids with AoES (Area-of-Effect Soft-bots) | NASA TechPort Project 92614</title>
+  <meta name="description" content="This proposal seeks to develop a new type of soft robotic spacecraft which is specifically designed to move efficiently on the surface of, and in proximity to, rubble pile asteroids. These new spacecraft are termed Area-of-Effect Soft-bots (AoES) as they have ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/92614">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 92614</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">NIAC</span>
+          <span class="badge">TX07.1.2</span>
+        </div>
+        <h1>Dismantling Rubble Pile Asteroids with AoES (Area-of-Effect Soft-bots)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 92614</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/92614" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          This proposal seeks to develop a new type of soft robotic spacecraft which is specifically designed to move efficiently on the surface of, and in proximity to, rubble pile asteroids. These new spacecraft are termed Area-of-Effect Soft-bots (AoES) as they have large surface areas which enable mobility that is especially effective at small asteroids. The surface mobility is enabled by using adhesion between the soft robot and the asteroid surface. The adhesive forces also allow the AoES to anchor themselves in order to liberate material from the asteroid and launch it off the surface for collection by an orbiting resource processing spacecraft - forming the fundamental pieces of a resource utilization mission to a near-Earth asteroid (NEA). Furthermore, the large area necessary for the adhesion based mobility and anchoring also gives the AoES a relatively high area-to-mass ratio, enabling fuel-free orbit control using solar radiation pressure (SRP) forces. In total, this concept elegantly overcomes many of the difficulties typically encountered when trying to design a mission to retrieve a significant amount of material from an asteroid surface - in many cases using these perceived difficulties (e.g. microgravity, fast spin rates) to the advantage of the architecture. Development of AoES in order to make this mission architecture feasible therefore has the potential to drastically improve the capabilities of harvesting water and other resources from the variety of small, plentiful, easily accessible NEAs - enabling further exploration and economic profit in the solar system.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Development of AoES has the potential to drastically improve the capabilities of harvesting water and other resources from the variety of small, plentiful, easily accessible NEAs - enabling further exploration and economic profit in the solar system
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>92614</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>NASA Innovative Advanced Concepts (NIAC)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX07.1.2: Resource Acquisition, Isolation, and Preparation</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 2 | Target End TRL: 2</td></tr>
+<tr><th>Project Start Date</th><td>2017-04-01</td></tr>
+<tr><th>Project End Date</th><td>2018-01-31</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Colorado Boulder — Boulder, Colorado</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jay Mcmahon (Principal Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Vianni Ricano Cadenas (Program Manager) &lt;vianni.ricanocadenas@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced To</strong></li><li><strong>Closed Out</strong>: The Phase I study was focused on the major uncertainties in the basic feasibility of this concept, which fell into four categories: mission and system design, mobility, actuation, and materials. The motivating questions for Phase I, and brief summary of the results are: Mission and System Design: What are realistic size, power, mass, and shapes for the AoES? Basic system designs have been developed that produce an area-to-mass ratio in the range of 0.1-0.5 m2/kg. Mobility: Are the crawling, hopping, and landing processes possible as imagined in the Phase I proposal? In short, yes. Computational mechanics model show that both crawling and hopping are possible. Simulations of orbit and hopping control leveraging SRP forces indicate signi cant controllability is available with the area-to-mass ratios achieved in the system design. Actuation: Is it possible to actuate the soft robotic material as is necessary for the mobility concepts we want? Do actuators with enough strength and control with realistic power exist? Will they function while dirty? This project has been greatly improved by combining forces with Co-I Keplinger to use his HASEL actuators. These actuators allow us to answer yes to all of the previous questions and provide significant flexibility and performance in the AoES design. Materials: Are there any possible materials that can be used? Will adhesion exist for these materials? Can the material be kept from turning to glass? Silicone elastomer has some heritage for space applications and is our leading material. While the question of adhesion remains open, our design now incorporates electroadhesion which means the need for naturally arising van der Waals adhesive forces is not as necessary for feasibility. Possible thermal control solutions have been identi ed but require more testing. In short, our work has indicated that not only are there no major issues at this stage, but that there is even more promise to this concept than originally thought! However, there are still a number of outstanding questions that must be answered to ensure concept feasibility: Is adhesive anchoring actually useable? Can HASEL actuators be used in space? Will the digging and launching process work as predicted? Can the soft robotic materials be kept at proper operating temperatures? Can the AoES actually be autonomously steered to arrive safely on the asteroid surface? Can the soft robotic leg designs actually be built and actuated? Given the promise and massive upside of this concept, we believe further research and development should be directed toward the AoES concept.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Report PDF\Final Report URL</li><li><strong>[Closeout Link]</strong> Closeout Link</li><li><a href="https://www.nasa.gov/directorates/spacetech/niac/2017_Phase_I_Phase_II/Area_of_Effect_Soft_bots" target="_blank" rel="noopener noreferrer">NASA.gov Feature Article</a></li><li><strong>Project Image</strong> — Dismantling Rubble Pile Asteroid with AoES (Area-of-Effect Soft-bots) Credits: Jay McMahon</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/92614">https://techport.nasa.gov/projects/92614</a>
+    </div>
+  </div>
+</body>
+</html>

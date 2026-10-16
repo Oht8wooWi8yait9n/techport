@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenUSD + Interactivity for XR Experience Description (USDI-XRED) | NASA TechPort Project 158199</title>
+  <meta name="description" content="Current and near-future NASA missions are facing significant challenges that Extended Reality (XR) systems may help address. DigitalFish proposes a novel approach to fulfilling the content-infrastructure demands of current and future XR systems - OpenUSD and I">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158199">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158199</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX11</span>
+        </div>
+        <h1>OpenUSD + Interactivity for XR Experience Description (USDI-XRED)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158199</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158199" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Current and near-future NASA missions are facing significant challenges that Extended Reality (XR) systems may help address. DigitalFish proposes a novel approach to fulfilling the content-infrastructure demands of current and future XR systems - OpenUSD and Interactivity for XR Experience Description (USDI-XRED). Our solution offers a common representation for vendor-agnostic, high-fidelity XR experiences supporting distribution and consumption of and collaboration with peta-scale datasets. It builds on proven crossover technology from Media & Entertainment, with industry standard underpinnings backed by a broad industry working group, expanded and adapted for NASA’s unique needs within XR and interactivity across diverse devices.  USDI-XRED innovations include:   •	Extending USD with new schemas supporting XR, interactivity and interchange •	Providing a reference implementation and dataset exercising these extensions •	Introducing a validation layer for targeting the restricted functionality on any given deployment platform •	Demonstrating the suitability and sufficiency of the extensions through user testing •	Documenting a best-practices approach to scalable, vendor-agnostic XR content built on top of USD, the new schemas, and the new validation layer.  We will use the funding to:  •	Develop a system design and implementation extending core OpenUSD to support key elements for XR, interactivity and interchange. •	Provide an example scene dataset, relevant to one or more NASA mission objectives, demonstrating novel capabilities and supporting user testing. •	Validate the sufficiency, flexibility, and device independence of USDI-XRED’s interactivity model and validation layer through qualitative user testing.  Target markets include: media & entertainment, manufacturing, aerospace & defense, architecture / engineering / construction, oil and gas, education, health and medicine, public safety, defense, aviation, maritime and shipping, and industrial safety.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          As a general platform for XR content description, USDI-XRED is relevant to all XR application areas within NASA and non-NASA Government agencies. Some specific applications include:  1.	Astronaut mission and task training in simulated planetary, vehicular and extravehicular environments, simulating nominal and off-nominal conditions, enabling working in physically dangerous or impossible-under-gravity activities, and allowing task repetition and external observation while minimizing inherent distractors. 2.	Operations-support training, including engineering, maintenance and mission support. 3.	Remote operations support, including health and medicine. 4.	Remote collaboration for science, engineering and design. 5.	User-experience testing for not-yet-built physical systems, such as future vehicles or built habitats. 6.	Remote exploration via virtual presence. 7.	Relaxation and entertainment during extended missions. 8.	Many more opportunities exist beyond these.  NASA has a long history in XR for training, operations, engineering, collaboration and human-performance applications. In advancing XR for NASA’s mission needs, there is an opportunity for NASA to guide and support development for enterprise adoption. Critically, the existing COTS XR solutions are fragmented and incompatible, with no common standards. A key need for broad industry adoption is standards for cross-vendor and multi-device interoperability. NASA has an opportunity to guide such standards.  There are broad applications for USDI-XRED within Government and Commercial sectors.  As a general platform for XR content description, our system is relevant to all XR application areas within Government agencies. Specific application areas include: mission and task training, mission-support training, operations support training (including engineering and maintenance), health and wellness, medicine, scientific and engineering collaboration, and more. We are already aware of groups within Army, Air Force, DARPA, NGA, NIH and the Department of Veterans Affairs actively involved in XR R&D. In discussion with these groups and others we identify, we will ensure that the Phase III USDI-XRED system will meet their needs and identify steps we can take to ensure its deployability.   Commercially, there are opportunities both within business-to-business (B2B) and business-to-consumer (B2C) sectors. The B2B applications include:  1.	Immersive content production systems for enterprises developing media and entertainment and consumer products content. 2.	Scientific and data visualization within manufacturing, aerospace & defense, architecture / engineering / construction, oil and gas, education, health and medicine. 3.	Training and simulation within safety-critical fields, such as public safety, defense, aviation, maritime and shipping, and industrial safety. 4.	All enterprises that depend on training, simulation, visualization or digital media creation.  The B2C applications include media and entertainment, especially for games; tools for content creators; health and wellness; education and learning; remote and shared experiences (e.g., remote presence). New applications will emerge as XR is experienced for the first time by a new generation of immersive-content creators and consumers.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158199</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11: Software, Modeling, Simulation, and Information Processing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 2 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2024-08-07</td></tr>
+<tr><th>Project End Date</th><td>2025-09-08</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Cornell University — Mableton, Georgia; DigitalFish, Inc. — San Mateo, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Texas (TX)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Daniel Herman (Principal Investigator) &lt;Daniel.A.Herman@grc.nasa.gov&gt;; Francisco J Delgado (Project Manager) &lt;francisco.j.delgado@nasa.gov&gt;; Camille A Cellucci (Primary Point of Contact)</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158199">https://techport.nasa.gov/projects/158199</a>
+    </div>
+  </div>
+</body>
+</html>

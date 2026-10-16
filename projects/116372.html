@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deployable Lunar Hopper (Hopper-TP) | NASA TechPort Project 116372</title>
+  <meta name="description" content="The lunar deployable hopper project (Hopper) started as a Tipping Point proposal, submitted by Intuitive Machines (IM) in July of 2020. The project was kicked off in March of 2021. The project successfully developed, assembled, tested and operated a small robo">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/116372">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 116372</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">GCD</span>
+          <span class="badge">TX04.2.2</span>
+        </div>
+        <h1>Deployable Lunar Hopper (Hopper-TP)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 116372</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/116372" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <div style="font-family:'segoe ui';font-size:11pt"><p style="margin:0">The lunar deployable hopper project (Hopper) started as a Tipping Point proposal, submitted by Intuitive Machines (IM) in July of 2020. The project was kicked off in March of 2021. The project successfully developed, assembled, tested and operated a small robotic hopper. This deployable lunar hopper (µ-Nova "Grace") flew to the lunar surface in early 2025 on a Nova-C lander through a commercial mission (IM-2), leveraging mature landing system technologies developed for the Nova-C platform by Intuitive Machines. Due to the off-nominal landing orientation, the Hopper surface operations were constrained and it did not deploy from the lander. Hopper is intended to be deployed as a secondary payload from a NASA Commercial Lunar Payload Services (CLPS) lander, providing access to extreme environments and locations of interest on the lunar surface. At the cost of a secondary payload on a small CLPS lander, Hopper enables lunar surface science and human exploration by providing targeted access for different types of payloads and mission profiles to extreme locations on the lunar surface.  Among its technical capabilities, Hopper can operate in a Permanently Shadowed Region (PSR) for a limited duration, autonomously fly into and out of PSRs, carry up to a 10 kg payload (range dependent), and “hop" the payload up to 25 km (ballistic transfer with current tank configuration).  Communications with Hopper utilize the lander or orbital assets as a relay station.  The Hopper records payload data to its on-board computer and transmits the data once line-of-sight to the lander is restored.  The Hopper design is also scalable to larger payloads and travel range.</p></div>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          A deployable robotic hopper (𝜇-Nova) will provide access to extreme locations and environments not accessible by humans in EVA suits, rovers, or other technologies. 𝜇-Nova is enabling for lunar surface science by providing a low-cost secondary payload option for Commercial Lunar Payload Services (CLPS) landers. The platform is flexible to accommodate different payloads on different mission profiles.  The hopper will be able to operate in a permanently shadowed region (PSR) and will autonomously fly into and out of the PSR.  Other mission types enabled by the proposed technology include access into lunar pits with vertical sidewalls and regional prospecting of multiple dispersed surface sites. Because of the way it travels, μ-Nova can quickly traverse between sites of interest, leaving more time for principal investigators to process data and to make decisions about the mission.  This hopper significantly increases science return and lunar terrain accessibility. Through this Tipping Point demonstration, subsequent mission costs, system complexity and mass will be reduced. Additionally, the risk to future similar missions is reduced.​
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>116372</td></tr>
+<tr><th>Acronym</th><td>Hopper-TP</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Game Changing Development (GCD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX04.2.2: Above-Surface Mobility</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX04: Robotic Systems; TX07: Exploration Destination Systems; TX09: Entry, Descent, and Landing; TX17: GN&amp;C</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 5 | Current TRL: 5 | Target End TRL: 7</td></tr>
+<tr><th>Project Start Date</th><td>2021-03-01</td></tr>
+<tr><th>Project End Date</th><td>2025-05-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Nokia of America Corporation — Sunnyvale, California; Intuitive Machines — Houston, Texas; Arizona State University-Downtown Phoenix — Phoenix, Arizona</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Arizona (AZ), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Russell E Yates (Project Manager) &lt;russell.e.yates@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Mark N Thornblom (Program Manager) &lt;mark.n.thornblom@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-05-08</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Space Technology Mission Directorate Game Changing Development Program: FY22 Annual Review Presentation</strong></li><li><a href="https://www.space.com/the-universe/moon/crater-diving-hopper-gracie-will-launch-to-the-moon-aboard-private-athena-lander-this-month" target="_blank" rel="noopener noreferrer">Crater-diving hopper &#x27;Gracie&#x27; will launch to the moon aboard private Athena lander this month</a></li><li><a href="https://news.asu.edu/20210720-nasa-funds-hopper-explore-lunar-polar-craters" target="_blank" rel="noopener noreferrer">NASA funds hopper to explore lunar polar craters</a></li><li><a href="https://www.intuitivemachines.com/post/intuitive-machines-and-nasa-finalize-contract-for-extreme-lunar-mobility-spacecraft" target="_blank" rel="noopener noreferrer">Intuitive Machines and NASA Finalize Contract for Extreme Lunar Mobility Spacecraft</a></li><li><strong>Render of micro rover</strong> — A render of the Intuitive Machines hopping micro rover.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/116372">https://techport.nasa.gov/projects/116372</a>
+    </div>
+  </div>
+</body>
+</html>

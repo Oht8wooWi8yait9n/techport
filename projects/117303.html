@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edge Intelligence for Hyperspectral Applications in Earth Science for New Observing Systems | NASA TechPort Project 117303</title>
+  <meta name="description" content="We use the SpaceCube processor and the TRL-5 SpaceCube Low-power Edge Artificial Intelligence Resilient Node (SC-LEARN) coprocessor [1] powered by Google Coral Edge Tensor Processing Units (TPUs) to implement two AI science use cases in hyperspectral remote se">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/117303">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 117303</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">AIST</span>
+          <span class="badge">TX11.4</span>
+        </div>
+        <h1>Edge Intelligence for Hyperspectral Applications in Earth Science for New Observing Systems</h1>
+        <div class="meta-id">NASA TechPort Project ID: 117303</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/117303" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          We use the SpaceCube processor and the TRL-5 SpaceCube Low-power Edge Artificial Intelligence Resilient Node (SC-LEARN) coprocessor [1] powered by Google Coral Edge Tensor Processing Units (TPUs) to implement two AI science use cases in hyperspectral remote sensing. The first (daytime) application uses learned spectral signatures of clear-sky scenes to retrieve surface reflectance and therefore increase the efficiency of collecting land observations on our ~68% cloudy planet [2], which benefits Surface Biology and Geology (SBG) decadal survey objectives. The second (nighttime) application classifies artificial light sources after training against a catalog of lighting types. SC-LEARN was developed at GSFC for AI applications such as neural networks and is packaged in a small, low-power 1U CubeSat form factor. SC-LEARN will fly on STP-H9/SCENIC to the ISS with a Headwall Photonics HyperspecMV [3] hyperspectral imager. SCENIC is not dedicated to fixed objectives, rather investigators may reprogram SCENIC for experiments and demonstrations. In Year-1, we develop and test our science applications in a testbed environment on development boards and with actual SpaceCube hardware. We use SCENIC in Year-2 as an early flight opportunity to test and demonstrate our science application cases. We also take advantage of hyperspectral datasets from the TEMPO observatory, which will be available in Year-2, for use in further demonstrations in the testbed. Two flight builds for SCENIC are foreseen to allow us to take advantage of flight experience to refine the applications. Our targeted outcome is two fully developed science cases implemented on the innovative SC-LEARN AI platform and tested in space, with lessons learned, best practices, and an AI framework code to share. The framework code serves as a template for prototyping hyperspectral science applications for SC-LEARN that will enable others to prepare their applications more efficiently for porting onto SC-LEARN or similar hardware. By working two science cases, we assure that it is not overly specific towards a single target application. We aim to build a community of practice for AI developers in the Earth Science community. In doing so, we advance NOS objectives by advancing state-of-the-art technology to enable systems where data volume or latency considerations require Edge Intelligence. Our industry-government team is led by PI Dr. James Carr. He is PI of the successful StereoBit AIST-18 project. It is a Structure from Motion (SfM) application on SpaceCube that tracks motions of clouds in 3D [4]. Government partners are Dr. Christopher Wilson, Associate Branch Head of the Science Data Processing branch (Code 587), and Dr. Joanna Joiner, a NASA Earth Scientist. Dr. Wilson is the payload lead for STP-H9/SCENIC and has an established working relationship with Dr. Carr from StereoBit. Drs. Carr and Joiner belong to the TEMPO Science Team. Dr. Joiner is the author of the first science case, which has been demonstrated on conventional ground computers with data from the Hyperspectral Imager for the Coastal Oceans (HICO) instrument on ISS [5, 6]. Dr. Carr has proposed the second science case as a "green paper" activity for TEMPO [7] to take advantage of otherwise unutilized nighttime hours. Classification of nightlights has implications for the quality of the dark night sky on Earth, ecology, and human health. Dr. Virginia Kalb, Black Marble PI, is a Collaborator. Justin Goodwill (GSFC) is part of our team and the lead AI-application hardware/software developer for SC-LEARN on SCENIC. [1] https://digitalcommons.usu.edu/smallsat/2021/all2021/185/ [2] https://doi.org/10.1175/BAMS-D-12-00117.1 [3] https://cdn2.hubspot.net/hubfs/145999/June%202018%20Collateral/HyperspecMV0118.pdf [4] 10.1109/IGARSS39084.2020.9324477 [5] https://doi.org/10.31223/X5JK6H [6] https://doi.org/10.1117/12.2534883 [7] https://lweb.cfa.harvard.edu/atmosphere/publications/TEMPO-Green-Paper-Aug2021.pdf
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Advance Earth system science knowledge through the Identification, develop, and demonstrate innovative information systems technologies
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>117303</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Advanced Information Systems Technology (AIST)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.4: Information Processing and Artificial Intelligence</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2022-07-01</td></tr>
+<tr><th>Project End Date</th><td>2025-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>CARR ASTRONAUTICS CORPORATION — Greenbelt, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>James L Carr (Principal Investigator) &lt;james.l.carr@nasa.gov&gt;; James L Carr (Co-Investigator) &lt;james.l.carr@nasa.gov&gt;; Virginia L Kalb (Co-Investigator) &lt;virginia.l.kalb@nasa.gov&gt;; Joanna Joiner (Co-Investigator) &lt;joanna.joiner-1@nasa.gov&gt;; Christopher M Wilson (Co-Investigator) &lt;christopher.m.wilson@nasa.gov&gt;; Justin S Goodwill (Co-Investigator) &lt;justin.goodwill@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Michael S Seablom (Program Director) &lt;michael.s.seablom@nasa.gov&gt;; Laura J Rogers (Program Manager) &lt;laura.j.rogers@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-06-26</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/117303">https://techport.nasa.gov/projects/117303</a>
+    </div>
+  </div>
+</body>
+</html>

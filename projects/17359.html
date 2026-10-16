@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thermal Design for a Diffraction-Limited Doppler Spectrometer (iLocater) | NASA TechPort Project 17359</title>
+  <meta name="description" content="The Univ. of Notre Dame is building a new high-resolution spectrometer named &amp;ldquo;iLocater&amp;rdquo; to achieve unprecedented radial velocity (RV) precision for stellar Doppler measurements. iLocater will provide essential follow-up observations for NASA&amp;rsquo;">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/17359">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 17359</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX08.1.3</span>
+        </div>
+        <h1>Thermal Design for a Diffraction-Limited Doppler Spectrometer (iLocater)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 17359</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/17359" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The Univ. of Notre Dame is building a new high-resolution spectrometer named &ldquo;iLocater&rdquo; to achieve unprecedented radial velocity (RV) precision for stellar Doppler measurements. iLocater will provide essential follow-up observations for NASA&rsquo;s TESS space mission and identify high-priority exoplanets for transit spectroscopy with JWST. We request 0.6 FTE&rsquo;s of GSFC engineering support to design iLocater&rsquo;s opto-mechanical mounts and perform thermal simulations of the cryostat and radiation shield to optimize Doppler performance.</p> <p>The goal of this project is to design and build the most sensitive RV instrument ever constructed. &ldquo;iLocater&rdquo; will receive a well-corrected beam of starlight from an &ldquo;extreme&rdquo; adaptive optics (AO) system at the Large Binocular Telescope (LBT) and become the world&#39;s first diffraction-limited Doppler spectrometer (Fig. 1). With input images that have 30 times higher spatial resolution than &ldquo;seeing-limited&rdquo; designs (i.e., all radial velocity predecessors), iLocater will simultaneously achieve high spectral resolution (R=110,000), high throughput, and a compact optical design at low cost. By operating in a new wavelength range, the infrared, and simultaneously correcting for image-blurring effects introduced by Earth&rsquo;s turbulent atmosphere, iLocater will generate the first Doppler measurements with sufficient precision (20 cm/s) to detect the gravitational reflex motion caused by Earth-like planets orbiting the nearest stars. iLocater will directly support three NASA space missions through dedicated RV observations (TESS, JWST, WFIRST) .</p><p>The first goal of this proposal is to complete the design of iLocater&rsquo;s cryostat. The spectrograph is a cross-dispersed echelle that operates in the Y-band from 0.95-1.12 microns. The spectrograph will be evacuated (UHV 10<sup>-9</sup> Torr goal), surrounded by a precision temperature-controlled radiation shield, and enclosed in an outer chamber made of stainless steel.&nbsp; Trade studies between cryogen-fed and mechanical cryocooler designs will be performed.&nbsp; The second goal is to design customized designs for the mounting of the spectrograph optics.&nbsp; Proposal tasks include: fully incorporating the iLocater cryostat design into Solidworks and Comsol and initializing the thermal model by specifying conduction paths, thermal feedback channels, and ambient temperature fluctuations; designing mechanical mounts; incorporating mounts into the thermal model, and refining the radiation shield and mechanical design by minimizing thermal gradients.&nbsp; Deliverables are designs for the optical element mounts (including the detector and fiber feeds), plus designs for the cryostat and temperature control system.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>When spectrograph is complete in 2018, it will provide essential follow-up observations to the planets detection by the Transiting Exoplanet Survery Satellite (TESS; NASA Explorer Mission).&nbsp; The planets found to have the most Earthlike properties will then be targeted for transit spectroscopy with the James Webb Space Telescope.&nbsp; The spectrograph results will thus enable high-priority science objectives of both missions.</p> <p>The iLocater spectrograph can additionally be used to survery nearby stars for planets that will be imaged by the planned WFIRST coronagraph or a future exoplanet direct imaging flagship mission (which is a long-term goal of the NASA Astrophysics Division).</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>17359</td></tr>
+<tr><th>Acronym</th><td>iLocater</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.3: Optical Components</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 5 | Current TRL: 5 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2014-10-01</td></tr>
+<tr><th>Project End Date</th><td>2015-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Notre Dame — Notre Dame, Indiana; University of Arizona — Tucson, Arizona; University of Notre Dame — Notre Dame, Indiana</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Arizona (AZ), Indiana (IN), Maryland (MD)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Karl R Stapelfeldt (Principal Investigator) &lt;karl.r.stapelfeldt@jpl.nasa.gov&gt;; Stanley D Hunter (Project Manager) &lt;stanley.d.hunter@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-01-27</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="http://sciences.gsfc.nasa.gov/sed/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><a href="http://www.sciencemag.org/content/346/6211/809.full.pdf?sid=53e8da27-dd4c-4b63-8a06-0b88f64a4ecb" target="_blank" rel="noopener noreferrer">Improving Planet Finding Spectrometers (Article in Science Magazine)</a></li><li><strong>iLocator</strong> — iLocator</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/17359">https://techport.nasa.gov/projects/17359</a>
+    </div>
+  </div>
+</body>
+</html>

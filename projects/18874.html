@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assisted Medical Procedures (AMP) | NASA TechPort Project 18874</title>
+  <meta name="description" content="The Assisted Medical Procedures system (AMP) is an electronic system that will help crewmembers select the appropriate medical procedure for a particular medical encounter, as well as guide them through that procedure. The system will be used for all medical e">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/18874">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 18874</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.1</span>
+        </div>
+        <h1>Assisted Medical Procedures (AMP)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 18874</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/18874" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The Assisted Medical Procedures system (AMP) is an electronic system that will help crewmembers select the appropriate medical procedure for a particular medical encounter, as well as guide them through that procedure. The system will be used for all medical encounters, especially during periods of exploration missions when contact with ground resources (e.g., flight surgeon) will be either minimal or absent. During these periods of autonomous medical care, the crew will need such a system for medical events, be they urgent or non-urgent.    <p></p> Development of the AMP addresses several risks stated in the Critical Path Roadmap (CPR; also known as the NASA Bioastronautics Roadmap [NASA/SP-2004-6113]). The following list explains the risks and how the AMP will address them.    <p></p> Risk #17: Monitoring and Prevention.   The risk of serious medical events may increase due to inadequate monitoring and prevention capabilities.    <p></p> The AMP will enable astronaut crew medical officers (CMOs) to properly monitor the health of each crewmember and subsequently provide direction to prevent medical issues from arising during exploration missions.    <p></p> Risk #20: Ambulatory Care.   Impaired performance and increased risk to crew health and mission may occur due to lack of capability to diagnose and treat minor illnesses.    <p></p> The AMP will have clinical decision support (CDS) logic. Within the scope of this project, CDS is defined as an active knowledge system which uses patient data, both collected and stored, to generate case-specific diagnostic and treatment advice. The CDS within the AMP will then provide the CMO with treatment procedures to be executed on the ill crewmember. This action will decrease mission risk and increase crew performance.    <p></p> Risk #22: Medical Informatics, Technologies, and Support Systems.   Limited communication capability during space flight results in the compromised ability to provide medical care, and may have adverse consequences for crew health.    <p></p> The AMP will consist of CDS logic and procedure execution support logic that will enable CMOs to autonomously manage medical events, especially during periods of exploration missions when contact with ground resources (e.g., flight surgeon) is either minimal or absent.    <p></p> Risk #23: Medical Skill Training and Maintenance.   Inability to perform required medical procedures may result from inadequate crew medical skills or medical training.    <p></p> The AMP will be able to provide “just-in-time” instruction to CMOs in the absence of remote guidance instruction from ground-based subject matter experts (SMEs). The instruction material provided by the AMP will be generated by SMEs and thus fill any gaps in crew medical skills or medical training.    <p></p> The AMP is a component of the Exploration Medical System Demonstration (EMSD) Operational Concept Document [JSC 66295]). The initial project charter for the EMSD includes the execution of a Ground Demonstration, to be conducted in a ground-based flight analog environment, and a Flight Demonstration, to be conducted in-flight aboard the International Space Station (ISS).  <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          It is anticipated that the development of the AMP will result in innovations to interfaces with wireless medical peripherals (e.g., ECG monitors, pulse oximetry), informatics tools (e.g., electronic medical record, middleware), and to autonomous medical care in austere environments. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>18874</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.1: Medical Diagnosis and Prognosis</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2008-10-01</td></tr>
+<tr><th>Project End Date</th><td>2015-03-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Wyle Integrated Science and Engineering Group</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Victor W Hurst (Principal Investigator) &lt;victor.hurst@nasa.gov&gt;; Duane A Chin (Co-Investigator) &lt;duane.a.chin@nasa.gov&gt;; David A Rubin (Co-Investigator) &lt;david.a.rubin@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: DOCUMENTATION, DEVELOPMENT, AND PROGRESS The AMP was initially being developed as part the Advanced Integrated Clinical System (AICS)-Guided Medical Procedure System for the Constellation Program. The Exploration Medical Capability (ExMC) team generated an OpsCon document and, subsequently, a set of functional and technical requirements. All of these documents were reviewed and approved by the Johnson Space Center (JSC) Space Medicine Configuration Control Board in 2009 and 2010, respectively. These documents were then archived when the Constellation Program was canceled in 2010. Fiscal Year 2012 (FY12) brought the start of the EMSD project and the initial development of the AMP. The Exploration Medical Capabilities (ExMC) element generated a new OpsCon document for the AMP to reflect how it would be used for the EMSD. This document was approved by the ExMC Advisory Board and then used to generate functional and technical requirements. These requirements were reviewed by the ExMC Advisory Board and during the EMSD’s System Requirements Review in March 2012. The ExMC Team then used the finalized requirements to conduct a thorough market survey and Request for Proposal (RFP) process. Upon completion of the RFP process, the EMSD project team determined that no CDS solution existed that adequately satisfied the project requirements within budget constraints. Although CDS is an important aspect of the long term vision of the EMSD project, this class of software is still in the early stages of commercial development and the lack of solution within the project’s budget dictated that the requirement for this capability be removed from the project. The EMSD project team proposed this removal and ExMC management approved it. However, the system infrastructure of the EMSD, including the AMP, has been designed to support the integration of CDS software if, or when, a viable option exists. Completion of the RFP process also resulted in the EMSD project team electing to pursue the modification and use of WebPD, a procedure viewer created by S&amp;K Aerospace within the JSC-Engineering (ER) group. WebPD satisfied all core requirements of the AMP component as specified in the Statement of Work and the AMP System Requirements Document (SRD). The EMSD team adopted WebPD for the AMP with the knowledge that custom development would be required for full integration into the overall EMSD system. In addition, WebPD had no initial procurement cost and developers with the JSC-ER group were available to assist in development of the system to meet the needs of the EMSD project, including AMP development. The approach for modifying and integrating the AMP into the EMSD was finalized during the EMSD Preliminary Design Review in June 2013. Following the EMSD’s Critical Design Review in January 2014, the EMSD project team and Exploration Medical Capability (ExMC) Element Management concluded that the Flight Demonstration would not provide any unique opportunities for meeting project objectives nor would it present a justifiable return on investment. Accordingly, the project team recommended that the Flight Demonstration objective be removed from the project. ExMC Management, with concurrence from the NASA Human Research Program (HRP), removed the requirement for a Flight Demonstration and agreed that all verification and validation of the EMSD, including the AMP, would occur on the ground. The AMP user interface serves as the primary method for user interaction with the EMSD system. The project team reduced development time by modifying the existing WebPD graphical user interface to meet the needs of the EMSD system. The primary elements that make up the AMP user interface include a combination of text and numeric data fields, buttons, and list boxes for manual data entry, command execution and display; rich content fields for image and real-time media data capture, playback and display; and various windows areas for allowing user navigation. The AMP was designed to present an initial screen that requires users to enter their unique user identification and password credentials before granting access to any EMSD data and system functions. This allows the AMP to meet the various security requirements for the privacy and confidentiality of medical information captured by the EMSD, as well as allows user interface elements and screens to be tailored to the specific needs of each user. Once users have been authenticated, the AMP then allows users to continue on to only those AMP screens and system functions allowed based on the user’s role. This allows, for example, a user assigned to the CMO role to see more detailed medical information on multiple patients, as opposed to a user assigned to a patient role that may only see patient information specific to their own records. The AMP was designed to present a secondary screen that requires the user to select a patient on which to perform an exam. All patients displayed are pulled directly from the Open Electronic Medical Record (EMR) database, which contains each crew member’s identify and role. The AMP allows for the user and the patient to be the same crew member, as some exams may be self-administered. In addition to handling simple alphanumeric information, the AMP was designed to accommodate rich media content such as images, audio/video files, real time video input, and other proprietary device data and document files. A rich media area was incorporated into the AMP user interface which captures and displays rich media content. This rich media area can also be hidden and resized dynamically by the user, per user preference. Following the selection of a patient by the user/CMO, the AMP displays the Patient History screen, which presents a subset of patient medical history data that is pulled from the EMR. The type of data presented on this screen is determined by the ground medical support team and is configured pre-flight. Data that may be included on this screen includes, but is not limited to, patient vitals, medical history, medications, and allergies. The procedure selection screen of the AMP provides a list of all published procedures available to the user determined by his/her role within the EMR (e.g., physician CMO vs. non-physician CMO). This functionality allows for users to have access to procedures tailored to individual skill level and medical knowledge. Upon selecting a procedure for execution, the user is presented with multiple viewing areas, with the primary area containing the procedure execution steps. This procedure area displays each step in the procedure, along with fields for data entry, rich media links, and mechanisms for system command execution. The user also has the ability to skip to another step in the procedure, both before and after the current step. The AMP Graphic User Interface (GUI) displays and captures rich media content such as images, audio/video, and potentially other proprietary device data and document files. One of the AMP windows has been designed as the main EMSD application navigation menu, displaying user and patient metadata and allowing the user to navigate through various other AMP application screens. The AMP GUI also displays a tree view of all procedure steps and a list of completed procedure steps. The AMP GUI has the ability to nest a procedure within another. For example, a step within the Periodic Health Evaluation (PHE) procedure directs the user to collect ECG data. If the user proceeds with this step, the AMP automatically launches the ECG procedure. When the ECG procedure is complete, the AMP automatically brings the user back to the original PHE procedure. In general, at any point during a procedure execution, the user can start another procedure from the procedure selection screen on the AMP GUI. Also, manual data entry with the AMP is provided via free text fields, pull downs, and button selections. The inputs are stored locally within the AMP system and transmitted to the EMR upon completion of the procedure. Commanding is initiated via the AMP GUI. For example, to initiate ECG collection the AMP issues a command to start the ECG companion software. Upon completion of the ECG, the system initiates another command, resulting in a published message that triggers the transfer of the completed ECG data file. This commanding functionality could be used to initiate any compatible peripheral device software integrated into the system. Any text input or data read from a peripheral device by the EMSD is considered telemetry. This telemetry can be evaluated by the AMP system as collected to assist in the logical execution of the procedure. For example, pulse telemetry captured from a vitals device could be compared by the AMP system to a pre-set threshold value. If the vitals measurement exceeded that threshold, the procedure would prompt the user to perform an ECG. At the end of the procedure, the telemetry is submitted by the AMP to the EMR to update the patient’s medical visit within the EMR database. EMSD procedure authoring was initially performed using the Procedure Integrated Development Environment (PrIDE) software (originally developed by S&amp;K Aerospace for NASA-Space Medicine). PrIDE was eventually replaced with the Electronic Procedure Authoring Tool (EPAT). Both PrIDE and EPAT were developed within the JSC-ER group. EPAT provided the procedure author with the ability to: -Display a text instruction -Gather input from the user -Invoke a formal system function, e.g., capture an image, show an image, or show a video -Issue a system command -Verify that a system state is in a specified target, e.g., ECG status or video recording status In February 2015, the EMSD system was demonstrated at the NASA-Johnson Space Center to project stakeholders, including representatives of Human Research Program (HRP) management, Flight Analogs Project (FAP), the Behavioral Health and Performance (BHP) Group, the Astronaut Office, NASA-Flight Surgeons, and the Station Operations Data File (SODF) procedure standards group. Each demonstration consisted of an EMSD overview presentation to familiarize the attendees with the history and goals of the EMSD project followed by the “hands on” demonstration of the software system. Using the AMP Interface, attendees were walked through the log in, patient selection, procedure selection, and procedure execution aspects of the EMSD system. The information presented was well received by all attendees. CONCLUSION The work by the EMSD project team over the past three years has enabled ExMC to (1) identify and modify a software system to become the AMP system for the EMSD and (2) complete work that immediately addresses CPR Risks #17 and enables ExMC to better address CPR Risks #20, #22, and #23 in the coming years. FUTURE WORK The EMSD project serves as a proof-of-concept for an integrated medical data management system to be flown on an exploration mission. The EMSD system, including the AMP, is an illustration of the integrated medical data system concept and are meant to highlight potential functionality and uses of such a system. As expected, EMSD only gave a glimpse of what was possible, serving as a platform for those who experienced it to wonder what it could be made to do next. Many of the ideas collected and questions fielded point to a future EMSD (and AMP) design that is more than just a stand-alone medical data management system. In fact, it is clear that the future of in-flight medical care will require the integration of data collected from all vehicular and habitat systems. Future exploration crews will require intelligent data management systems capable of providing mission guidance through the thorough analysis of environmental, vehicular, behavioral, and medical data. Only through this comprehensive view of what each crew member is experiencing can efficient medical care be provided by the CMO and ground medical support. The commercial medical technology demonstrated in the EMSD (and AMP) is nascent but evolving rapidly. However, this technology is generally best suited for ground-based medicine, provided by a clinician, and in a clinical setting. It will be prudent for NASA to continue pursuing this technology and learning what modifications are necessary to provide future crewmembers with a medical system that best suits the needs of future missions.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Abstracts for Journals and Proceedings</strong> — Hurst V 4th, Garcia K, Jain V, Ham D, Menon A, Watkins S. &quot;Evaluation of current space medical capability for exploration space missions.&quot; 84th Annual Scientific Meeting, Aerospace Medical Association, Chicago, IL, May 12-16, 2013. Aviation, Space, and Environmental Medicine. 2013 Apr;84(4):376. See http://www.ingentaconnect.com/content/asma/asem for searching. , Apr-2013</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/18874">https://techport.nasa.gov/projects/18874</a>
+    </div>
+  </div>
+</body>
+</html>

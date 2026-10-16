@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>High Performance Atomic Clock (HPAC) | NASA TechPort Project 184400</title>
+  <meta name="description" content="The High-Performance Atomic Clock (HPAC) project will design, build, and test a prototype for a space clock with the potential for defining, developing, and realizing new time scales for the Moon (Lunar Time Coordinated, or LTC), Cislunar, or Mars (Mars Time C">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/184400">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 184400</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">ESDMD</span>
+          <span class="badge">MCO</span>
+          <span class="badge">TX05</span>
+        </div>
+        <h1>High Performance Atomic Clock (HPAC)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 184400</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/184400" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The High-Performance Atomic Clock (HPAC) project will design, build, and test a prototype for a space clock with the potential for defining, developing, and realizing new time scales for the Moon (Lunar Time Coordinated, or LTC), Cislunar, or Mars (Mars Time Coordinated, or MTC) and beyond.  This can form the backbone of a system to provide Earth-independent position, navigation, and timing (PNT) services at the Moon, Cislunar, and Mars and could serve as a universal solution to all future space PNT timing needs.  By locking a high-performance local oscillator to an environmentally insensitive transition in trapped mercury ions, this clock will have the short-term stability necessary for precise position determination in real time and the long-term stability needed to remain accurate over weeks/months without adjustments from earth.  Building on experience gained during the Deep Space Atomic Clock (DSAC) flight demonstration, HPAC aims to achieve an operational lifetime reaching as high as 15 years.  This will be of great benefit to establishing a PNT system on Mars, by reducing the cadence of launches required for replacement clocks from Earth.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The project addresses ESDMD gap #0104 by proving Earth-independent positioning, navigation, and timing (PNT) at Moon and Mars. </p><p>Today, spacecraft rely heavily on Earth-based atomic clocks and the Deep Space Network (DSN) for two-way tracking, a process that introduces significant delays, tens of minutes to hours depending on distance, and consumes valuable DSN resources. With the stability expected from HPAC, spacecraft can shift to one-way navigation, using onboard timing to calculate their own trajectories with far greater autonomy. This capability is critical for enabling future human missions to the Moon, Mars, and beyond, where crews will need near-real-time navigation support without waiting for Earth-based updates.  At Mars in particular, HPAC technology would eliminate reliance on DSN for daily trajectory updates, allowing crews and vehicles to operate safely with near-real-time navigation support despite the tens of minutes of communication delay.</p><p>In addition to supporting crewed exploration, HPAC-class technology also enhances the efficiency of the DSN by reducing its navigation workload, allowing the network to focus more on scientific data return and the growing demand from multiple simultaneous missions. The benefits extend well beyond NASA: compact, ultra-stable atomic clocks have potential applications in next-generation satellite constellations, GPS modernization, Earth science measurements, defense systems, and commercial communications. In this way, the High-Performance Atomic Clock will not only validate a revolutionary tool for deep space exploration but also will open the door to broader ground and space based technological and commercial impact.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>184400</td></tr>
+<tr><th>Acronym</th><td>HPAC</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Exploration Systems Development Mission Directorate (ESDMD)</td></tr>
+<tr><th>NASA Program</th><td>Mars Campaign Office (MCO)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX05: Communications, Navigation, and Orbital Debris Tracking and Characterization Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 4 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2025-07-01</td></tr>
+<tr><th>Project End Date</th><td>2029-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Mars, Moon and Cislunar, Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Eric R Tardiff (Principal Investigator) &lt;eric.tardiff@jpl.nasa.gov&gt;; Robert L Tjoelker (Co-Investigator) &lt;robert.l.tjoelker@jpl.nasa.gov&gt;; Andrey B Matsko (Project Manager) &lt;andrey.b.matsko@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Thomas W Inman (Program Director) &lt;thomas.w.inman@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-05-27</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>HPAC conceptual design</strong> — CAD representations of the MCO HPAC trapped mercury ion clock instrument.</li><li><strong>User Range Error</strong> — HPAC will yield a frequency drift orders of magnitude less than existing space clocks (DSAC demonstrated a record breaking 3e-16/day fractional frequency drift) and enable time and frequency deployment to support all navigation needs and many science applications. HPAC’s time deviation versus existing GNSS clocks, as illustrated in the figure and expressed in range, is less than a meter after 50 days of free running.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/184400">https://techport.nasa.gov/projects/184400</a>
+    </div>
+  </div>
+</body>
+</html>

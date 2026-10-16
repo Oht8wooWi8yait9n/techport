@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Optimization of Interplanetary Missions with, Hybrid Propulsion, Multi-Stage Spacecraft, Aerocapture, and Planetary Atmospheric Probes (EMTG) | NASA TechPort Project 90780</title>
+  <meta name="description" content="The purpose of this IRAD is to expand the capability of Goddard&amp;rsquo;s interplanetary trajectory preliminary design tool, the Evolutionary Mission Trajectory Generator (EMTG), to new classes of missions that use &amp;ldquo;hybrid&amp;rdquo; propulsion with both low-t">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/90780">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 90780</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX11.5.1</span>
+        </div>
+        <h1>Global Optimization of Interplanetary Missions with, Hybrid Propulsion, Multi-Stage Spacecraft, Aerocapture, and Planetary Atmospheric Probes (EMTG)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 90780</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/90780" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The purpose of this IRAD is to expand the capability of Goddard&rsquo;s interplanetary trajectory preliminary design tool, the Evolutionary Mission Trajectory Generator (EMTG), to new classes of missions that use &ldquo;hybrid&rdquo; propulsion with both low-thrust electric and high-thrust chemical propulsion systems. Such missions may also include multi-stage spacecraft and require the mission analyst to choose when to drop propulsion stages, and in some cases may employ aerocapture to reduce the required propellant mass. In parallel with these new modeling capabilities, we also propose to improve the efficiency and robustness of EMTG&rsquo;s multi-objective trade study optimizer.</p><p>This IRAD is specifically targeted to address the elements of EMTG that are inadequate to the design of missions to the outer solar system. EMTG is exceptionally capable of designing missions to planets and small bodies in the inner solar system, up to about 3 AU from the sun. However, as the PI and co-PIs have learned in the last year in which we have been working on New Frontiers proposals, there are several modeling and optimization capabilities that are critical to the design of outer-solar system missions that EMTG does not effectively handle. The purpose of this IRAD is to take advantage of the lessons that we have recently learned, and perform a much more efficient and exhaustive trade of mission design options for the next opportunity, which is expected to be a little over a year away.</p><p>This IRAD is divided into three independent tasks. Each provides a critical outer-planets capability to EMTG but each also has separate staffing and budget requirements.</p><p>Task #1 is to provide EMTG with the ability to model and optimize missions that employ hybrid-propulsion and/or multi-stage spacecraft. A &ldquo;hybrid-propulsion&rdquo; spacecraft is one that uses both low-thrust electric propulsion and high-thrust chemical propulsion at different times during the mission. A &ldquo;multi-stage&rdquo; spacecraft is one that drops empty tanks, expended thrusters, or other hardware at some point during the mission.&nbsp; Hybrid-propulsion spacecraft going to the outer solar system are likely to also be multi-stage because a large electric propulsion system is only likely to be useful during the part of the mission where the spacecraft is still near the sun and solar power is plentiful. It is possible to, at great cost, assemble a solution by hand but this is time consuming and expensive. Furthermore, it is possible that high-performing solutions were not identified. In Task #1, EMTG will not only be upgraded to properly model hybrid-propulsion and multi-stage vehicles but its optimization engine will be given the ability to choose (A) the number of stages and propulsion systems, (B) when the spacecraft should switch from one type of propulsion to another, and (C) when stages should be dropped. This will allow us to automate a process that is either very slow or impossible to do by hand. In turn, this could save a great deal of time and money in next mission design cycle. Moreover, the enhancements will allow for the potential to identify non-intuitive, enabling designs that would not have otherwise been uncovered because of the nature of the global, unbiased of the optimization algorithm.</p><p>Task #2 is to improve the efficiency and capability of EMTG&rsquo;s multi-objective trade study optimizer. EMTG currently has the ability to optimally trade mission characteristics such as flight time and target selection against systems parameters such as mass, power, and launch vehicle. However this trade study tool has a major limitation. In the current optimizer architecture, every trade study objective has to be minimized or maximized. This works very well for most trade study objectives &ndash; for example one always wants to deliver as much mass as possible and to make flight time, power system size, and propulsion system size as small as possible. However, other trade study parameters, such as launch and arrival date, are frequently desired as an even spread in order to fully and properly understand the trade space. We did not accommodate this critical functionality in the first version of the trade study tool and modifying it will require a significant effort. The ability to generate these new types of trade curves (<em>e.g.</em>, delivered payload mass versus launch date with multiple objectives) will allow deeper insight into the solution space, and enable proper evaluation of the fittest design for the mission at hand.&nbsp; Such trade curves have been needed multiple times for multiple missions. Furthermore we will need to expand the space of systems design choices that the trade study optimizer can make. Currently there is a wide range of options but they are hard-coded. Part of Task #2 will be to make it possible for EMTG to read the parameters of the various systems choices from a text file rather than requiring that they be hard-coded.</p><p>In addition, the multi-objective trade study optimizer will need to become faster and more efficient in order to handle the large trade study problems that we are now required to solve. The first version of the trade study optimizer is based on the Nondominated Sorting Genetic Algorithm II (NSGA-II) that was the state-of-the-art multi-objective optimization algorithm (MOGA) several years ago when we first began this work. However there are now other MOGAs available that are shown in the literature to perform better on many classes of problem. Part of Task #2 is to implement the newer algorithms in EMTG to improve speed and robustness.</p><p>Task #3 is specifically targeted to improve EMTG&rsquo;s ability to design missions to gas giants and their moons. Many such missions either employ aerocapture to reduce the propellant cost of capture at the target or require dropping a probe into the atmosphere of a planet or moon. In both cases the spacecraft or probe dives into the atmosphere of the body and uses drag to slow itself down instead of expending propellant. Atmospheric probes are of great science interest, and aerocapture is an enabling technology for missions to Uranus and Neptune and to moons with thick atmospheres such as Titan. However both atmospheric probes and orbiters that employ aerocapture must carry a thermal protection system (TPS) that can be quite massive. Any trajectory and systems analysis of missions that employ aerocapture and/or an atmospheric probe must include a means to estimate the mass of the thermal protection system as a function of the incoming trajectory and spacecraft specifications. There are currently no tools in the industry that can efficiently and autonomously perform this type of coupled analysis. As a hybrid trajectory and systems optimizer, EMTG is the ideal tool in which to add this capability.</p><p>The key work in Task #3 will be to develop simplified aerocapture and atmospheric probe models that can be evaluated very quickly and robustly in the context of an optimization run. The proposed approach is to create, using existing tools, a series of high-fidelity point designs for a combination of various parameters. The data can then be fitted to curves, relating entry velocity, entry mass, and required TPS mass. Analytical expressions for the first derivatives of these curve fits can then be obtained for use EMTG&rsquo;s gradient-based optimizer.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This technology can be used for trade studies in Phases A and B of any funded mission.</p><p>The purpose of this proposal is to expand the scope of missions that EMTG can be used to analyze and to increase the efficiency of work. Currently a hybrid propulsion or staged mission requires two separate mission designs for each possible mission case. This is labor intensive and expensive. Once this process is properly automated, analysts will be able to design better mission proposals in less time, enabling managers to make better decisions about which proposals to fund and select.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>90780</td></tr>
+<tr><th>Acronym</th><td>EMTG</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.5.1: Tools and Methodologies for Defining Mission Architectures and Mission Design</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 9</td></tr>
+<tr><th>Project Start Date</th><td>2016-10-01</td></tr>
+<tr><th>Project End Date</th><td>2017-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars, Outside the Solar System, Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jacob A Englander (Principal Investigator); Matthew Vavrina (Co-Investigator) &lt;matthew.a.vavrina@nasa.gov&gt;; Sean M Phillips (Co-Investigator) &lt;sean.m.phillips@nasa.gov&gt;; Kyle M Hughes (Co-Investigator) &lt;kyle.m.hughes@nasa.gov&gt;; Jeremy M Knittel (Co-Investigator); Jason W Mitchell (Project Manager) &lt;jason.w.mitchell@nasa.gov&gt;; Timothy D Beach (Project Manager) &lt;timothy.d.beach@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2018-10-10</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The purpose of the Goddard Space Flight Center&amp;rsquo;s Internal Research and Development (IRAD) program is to support new technology development and to address scientific challenges.&amp;nbsp; Each year, Principal Investigators (PIs) submit IRAD proposals and compete for funding for their development projects.&amp;nbsp; Goddard&amp;rsquo;s IRAD program supports eight Lines of Business: Astrophysics; Communications and Navigation; Cross-Cutting Technology and Capabilities; Earth Science; Heliophysics; Planetary Science; Science Small Satellites Technology; and Suborbital Platforms and Range Services. Task progress is evaluated twice a year at the Mid-term IRAD review and the end of the year. When the funding period has ended, the PIs compete again for IRAD funding or seek new sources of development and research funding or agree to external partnerships and collaborations.&amp;nbsp; In some cases, when the development work has reached the appropriate Technology Readiness Level (TRL) level, the product is integrated into an actual NASA mission or used to support other government agencies. The technology may also be licensed out to the industry. The completion of a project does not necessarily indicate that the development work has stopped.&amp;nbsp; The work could potentially continue in the future as a follow-on IRAD; or used in collaboration or partnership with Academia, Industry and other Government Agencies. If you are interested in partnering with NASA, see the TechPort Partnerships documentation available on the TechPort Help tab. http://techport.nasa.gov/help</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Sample EMTG mission</strong> — Picture of a sample EMTG mission.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/90780">https://techport.nasa.gov/projects/90780</a>
+    </div>
+  </div>
+</body>
+</html>

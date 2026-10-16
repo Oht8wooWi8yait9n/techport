@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compact Low-Power Driver for Deformable Mirror Systems | NASA TechPort Project 8819</title>
+  <meta name="description" content="This proposal describes a new concept to drive MEMS DMs using low-power, high-voltage multiplexing. Compared to other reported approaches, the proposed architecture will reduce power consumption by a factor of one hundred, to a level of a few hundred milliwatt">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/8819">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 8819</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX08.2.1</span>
+        </div>
+        <h1>Compact Low-Power Driver for Deformable Mirror Systems</h1>
+        <div class="meta-id">NASA TechPort Project ID: 8819</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/8819" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          This proposal describes a new concept to drive MEMS DMs using low-power, high-voltage multiplexing. Compared to other reported approaches, the proposed architecture will reduce power consumption by a factor of one hundred, to a level of a few hundred milliwatts. This estimate is supported by direct measurements obtained from prototype modules that were demonstrated in Phase I research. In the Phase II project we will scale up this innovative circuit DMs that Boston Micromachines Corporation (BMC) developed for NASA in support of the Terrestrial Planet Finding program. At the same time, we will reduce the driver's size in two successive stages of integration. In the first stage, we will implement a hybrid packaging approach in which a 993-actuator DM, HV amplifier, multiplexer components, and power supplies will all be co-located on a common multi-layered circuit board. With this driver we will demonstrate both low power consumption (~300mW) and high precision (~10pm). In the second stage of integration, we will design, fabricate, and test a High Voltage Application-Specific Integrated Circuit (HV-ASIC) version of the multiplexing architecture using a commercial foundry. We will combine a number of these 256 channel HV-ASIC modules into a driver for a 3063 actuator DM that is currently being developed by BMC to support NASA's coronography goals.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Small stroke, high precision deformable mirrors and associated drive electronics have a few commercial applications. The decrease in size, power and cost affect many of the vertical markets to which we currently supply our products. Space surveillance:BMC has success developing arrays up to 4096 elements for astronomy which can be used for space-based systems. Decreasing the size and weight of the electronics reduces payload, a high priority of satellite programs. These programs are funded by Department of Defense administrations with classified agendas. Unmanned Aerial Systems:In unmanned aerial systems, adaptive optics can enable improved battlefield performance. Images can be obtained that are more informative for reconnaissance purposes. By implementing multiplexed drive electronics, this can be implemented on smaller vehicles. Microscopy:Adaptive optics can increase resolution in confocal and optical microscopes. Specific modalities include two-photon excitation fluorescence(2PEF), coherent anti-stokes Raman spectroscopy(CARS), scanning laser ophthalmoscopy(SLO) and optical coherence tomography(OCT). Multiplexed drive electronics can reduce the component cost of the system and enable more users to purchase high-resolution equipment for cutting-edge science. Optical communication: Fiber optic communications systems are the primary beneficiaries of this new electronics architecture which can take advantage of our devices in an optical switching enhancement capacity.<br /> <br />Multiplexed drive electronics introduce a few very important and enabling advantages for NASA commercial applications in planned space-based telescopes and coronagraphs. The key commercial advantages to the systems to be produced in this work are: 1) their hundredfold improvement in power efficiency is a critical enabler for space-based operation; 2) their design is specifically suited to drive tip-tilt-piston MEMS DMs already developed by BMC for NASA, and is to our knowledge uniquely capable of achieving the 10pm precision required for the visible nulling coronagraph; and 3) the cost to produce the drivers proposed will be less than that of existing drivers for MEMS DMs in use by NASA, despite its substantial improvements over the state-of-the-art in compactness, power management, and precision. These compelling features, along with highly successful Phase I results, promise to make the proposed hardware commercially attractive to NASA for various space-based applications. BMC's track record of success with DM sales to NASA and to dozens of astronomical and space science institutions around the world bodes well for the ultimate commercial viability of the Phase II research outcomes.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>8819</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.2.1: Mirror Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-06-01</td></tr>
+<tr><th>Project End Date</th><td>2013-11-30</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Boston Micromachines Corporation — Cambridge, Massachusetts</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Massachusetts (MA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Outside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Paul A Bierden (Principal Investigator); Robert Jones (Project Manager) &lt;Robert.A.Jones@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/8819">https://techport.nasa.gov/projects/8819</a>
+    </div>
+  </div>
+</body>
+</html>

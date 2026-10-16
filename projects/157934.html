@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stress Testing and Hardening the NAS for Safe, Efficient, and Resilient Growth | NASA TechPort Project 157934</title>
+  <meta name="description" content="The Center for Air Transportation Resilience (CATRes) is a $6 million, three-year effort to improve the resilience of the US National Airspace System (NAS) in order to reduce the disruptive impact of major storms, facility outages, and other shocks. CATRes wil">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/157934">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 157934</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">ARMD</span>
+          <span class="badge">TACP</span>
+          <span class="badge">TX16.1</span>
+        </div>
+        <h1>Stress Testing and Hardening the NAS for Safe, Efficient, and Resilient Growth</h1>
+        <div class="meta-id">NASA TechPort Project ID: 157934</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/157934" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The Center for Air Transportation Resilience (CATRes) is a $6 million, three-year effort to improve the resilience of the US National Airspace System (NAS) in order to reduce the disruptive impact of major storms, facility outages, and other shocks. CATRes will proactively stress test and harden the NAS. Stress testing refers to proactively probing for vulnerabilities that could lead to widespread disruption. The vulnerabilities, once uncovered, should then be removed or mitigated–process we describe as hardening. Just as airline safety is produced through the combined efforts of airlines and government overseers to identify and mitigate risks before they lead to catastrophic accidents, CATRes seeks to improve NAS resilience through systematic stress testing and hardening. Technologies under development include a suite of models to predict NAS behavior and performance under a set of disruptions scenarios, decision support tools to plan and execute countermeasures to reduce disruption severity, and mechanisms to enable multiple aviation stakeholders to collaborate in order to anticipate, mitigate, and respond to future disruptions.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>These technologies will benefit aviation stakeholders and air travelers by reducing the cost, inconvenience, and stress resulting from major disruptions of the NAS. To illustrate this benefit, 14% of flight cancellations occur on the 1.7% of the days in the NAS that have major disruptions, and days with such large numbers of cancellations have outsized impacts on passenger travel experiences. By focusing on improving operations on such days, CATRes will make air travel "horror stories" much less common.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>157934</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Aeronautics Research Mission Directorate (ARMD)</td></tr>
+<tr><th>NASA Program</th><td>Transformative Aeronautics Concepts Program (TACP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX16.1: Safe All-Vehicle Access</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX16.4: Architectures and Infrastructure; TX16.X: Other Air Traffic Management and Range Tracking Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 1 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2024-08-01</td></tr>
+<tr><th>Project End Date</th><td>2027-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of California-Berkeley — Berkeley, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Mead &amp; Hunt; Mead &amp; Hunt; Mead &amp; Hunt; ATAC — Santa Clara, California; ATAC — Santa Clara, California; ATAC — Santa Clara, California; Patty Clark Aviation Advisors — New York; Patty Clark Aviation Advisors — New York; Patty Clark Aviation Advisors — New York; American Airlines — Fort Worth, Texas; American Airlines — Fort Worth, Texas; American Airlines — Fort Worth, Texas; Elizabeth City State University — Elizabeth City, North Carolina; Elizabeth City State University — Elizabeth City, North Carolina; Elizabeth City State University — Elizabeth City, North Carolina; Morgan State University — Baltimore, Maryland; Morgan State University — Baltimore, Maryland; Morgan State University — Baltimore, Maryland; University of Pennsylvania — Philadelphia, Pennsylvania; University of Pennsylvania — Philadelphia, Pennsylvania; University of Pennsylvania — Philadelphia, Pennsylvania; University of Michigan-Ann Arbor — Ann Arbor, Michigan; University of Michigan-Ann Arbor — Ann Arbor, Michigan; University of Michigan-Ann Arbor — Ann Arbor, Michigan; University of Maryland-College Park (UMCP) — College Park, Maryland; University of Maryland-College Park (UMCP) — College Park, Maryland; University of Maryland-College Park (UMCP) — College Park, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Maryland (MD), Michigan (MI), New York (NY), North Carolina (NC), Pennsylvania (PA), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Mark  Hansen (Principal Investigator); Megan  Ryerson (Co-Investigator); Raja  Sengupta (Co-Investigator); David  Lovell (Co-Investigator); Dorothy  Henderson Bell (Co-Investigator); Max Z Li (Co-Investigator); Anita  Cobb (Co-Investigator); Timothy J Niznik (Co-Investigator); Patricia  Clark (Co-Investigator); Roger  Mandeville (Co-Investigator); Kevin  Kupietz (Co-Investigator); John Schade (Co-Investigator); Oludare  Owolabi (Co-Investigator); Alexander  Estes (Co-Investigator); Blessing  Ojeme (Co-Investigator); Gelsomina Cappuccio (Project Manager) &lt;mina.cappuccio@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>John A Cavolowsky (Program Director) &lt;john.a.cavolowsky@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-02</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Increasing overall network resilience by reducing dependence on one mode (e.g., aviation)</strong></li><li><a href="https://arxiv.org/abs/2306.09836" target="_blank" rel="noopener noreferrer">Distributionally Robust Airport Ground Holding Problem under Wasserstein Ambiguity Sets</a></li><li><a href="https://arxiv.org/abs/2502.18687" target="_blank" rel="noopener noreferrer">Identification and Characterization for Disruptions in the U.S. National Airspace System (NAS)</a></li><li><strong>CATRes Motivation</strong> — This image describes the motivation behind the work of this ULI project called Center for Air Transport Resilience (CATRes). The 2 major disruption categories are highlighted in bold text. Towards the top of this image under the title “Weather-based Disruptions” are three photos representing examples of weather-based disruptions. The far-left picture represents a severe snow storm, the middle picture represents a thunderstorm impact on a plane, and the far right picture represents the effect of a major earthquake across a country. Towards the bottom of the image under the titles “Accident/Terror-based/IT disruptions” are 5 photos. The far-left picture represents a shotting at an airport, the two middle pictures represent outages, and the far right picture represents a crash at a major airport.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/157934">https://techport.nasa.gov/projects/157934</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Micro-Cathode Arc Thruster (μCAT) System Development | NASA TechPort Project 91011</title>
+  <meta name="description" content="The objective of this project is to develop a highly reliable smallsat class micro propulsion guidance, navigation, and control (GN&amp;amp;C) actuator that will be used as a component of the Goddard science-class SmallSats. To achieve this objective, we will part">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91011">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91011</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX01.2.2</span>
+        </div>
+        <h1>Micro-Cathode Arc Thruster (μCAT) System Development</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91011</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91011" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The objective of this project is to develop a highly reliable smallsat class micro propulsion guidance, navigation, and control (GN&amp;C) actuator that will be used as a component of the Goddard science-class SmallSats. To achieve this objective, we will partner with the George Washington University to jointly advance the technology readiness level of their Micro-Cathode Arc Thruster (&mu;CAT) system. A version of the &mu;CAT, jointly developed by the GWU/GSFC team, will be flying on the CANYVAL-X cubesat mission in the summer of 2017. The system is a modified version of the 1<sup>st</sup> test unit flown by USNA on the BRICSAT mission. These &mu;CAT units are protoflight units intended to provide basic on-orbit performance data, but are not designed for reliable, long duration, precision applications. We propose to build upon the performance data collected during these flight demonstrations to develop a fully-functional, flight-ready &mu;CAT that meets the specific needs of proposed Goddard science-class SmallSats. Specific goals of this research will be to improve reliability, thrust to power efficiency, scalable architectures for higher thrust levels, and precision of impulse bits. Our team will be leveraging our experience developing the CANYVAL-X unit and our relationship with GWU to develop a flight system to meet the needs of many proposed GSFC SmallSat missions. &nbsp;</p><p>The&nbsp;&mu;CAT&nbsp;is a novel variation of a vacuum arc thruster.&nbsp;The thruster exhaust is plasma, an ionized electrically neutral gas. The&nbsp;&mu;CAT works similar to a spark plug creating an electric arc between&nbsp;an anode and cathode. The arc forms a localized region of high temperature plasma at the &ldquo;cathode spot&rdquo;. A magnetic coil is used to cause the cathode spot to follow a circular path along the&nbsp;circumference of the cathode, resulting in uniform burning of the cathode over the operational life. The electric arc ablates some of the&nbsp;material off the cathode as high velocity plasma providing efficient,&nbsp;low-thrust. Each charge-discharge pulse of the electric arc creates&nbsp;a plasma exhaust or &ldquo;impulse bit&rdquo;. Thrust levels are controlled by&nbsp;increasing or decreasing the number of pulses each second. &mu;CAT protoflight units have ~1 mN impulse bit, and 25 mN thrust per head.</p><p>The &mu;CAT is a scalable technology and thrusters can&nbsp;be utilized in point configurations or combined in various array configurations for primary&nbsp;propulsion. The &mu;CAT propulsion system includes the&nbsp;thruster, an inductive power&nbsp;processing unit (PPU) and a control unit.&nbsp;The thruster geometry is a simple concentric design using a spring-driven&nbsp;cathode feed, making it highly reliable and efficient.&nbsp;The cathode is the propellant, and can be any conductive or even semi-conductive material. Using the cathode as propellant reduces thruster mass and eliminates build-up of discharge by-products associated with&nbsp;other vacuum arc propulsion technologies. Continuous thruster tests over several weeks indicate a cathode&nbsp;of 6cm length operating at 10 pulses-per-second would last about a year.</p><p>The following tasks will be required for this effort</p><ul><li>Task 1: Develop scalable and efficient &mu;CAT architectures that can be easily customized to meet performance requirements for proposed SmallSat constellation, and precision formation flying (PFF) design reference missions (DRM). For DSM-PFF this will include precision low-thrust for maneuvering, precision alignment, and formation acquisition and control in planned Earth orbit and deep space regimes.</li><li>Task 2: Develop a reliable, fully functional, scalable, and configurable &mu;CAT system to meet requirement of various DRM. &nbsp;Long life and high radiation environment capability with be investigated.</li><li>Task 3: Environmental testing and thrust performance characterization of &mu;CAT system.</li><li>Task 4: Investigate methods to improve the thrust to power efficiency</li></ul><p>&nbsp;</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>As the demand for SmallSats to become more capable and have farther reaching scientific goals, the need for them to have propulsion also becomes ever more vital.&nbsp; Mission paradigms looking to use the SmallSat platform include low-Earth orbit, but also higher altitude orbits, as well as lunar and interplanetary.&nbsp; These missions require precision orbit control and/or extended low-thrust maneuvers implying high performance (ISP and thrust precision) micro-propulsion technology. The current state-of-the-art for the majority of SmallSat propulsion systems, particularly for high-performance, low cost micro-propulsion, is at relatively low TRL.&nbsp; The main obstacles to any SmallSat technology are reliability, maturity, cost, ease of configuration customization and system safety.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91011</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.2.2: Electrostatic Propulsion</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2016-10-01</td></tr>
+<tr><th>Project End Date</th><td>2017-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Behnam Azimi (Principal Investigator) &lt;behnam.azimi@nasa.gov&gt;; Michael A Johnson (Project Manager) &lt;michael.a.johnson@nasa.gov&gt;; Jason W Mitchell (Project Manager) &lt;jason.w.mitchell@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2018-10-10</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The purpose of the Goddard Space Flight Center&amp;rsquo;s Internal Research and Development (IRAD) program is to support new technology development and to address scientific challenges.&amp;nbsp; Each year, Principal Investigators (PIs) submit IRAD proposals and compete for funding for their development projects.&amp;nbsp; Goddard&amp;rsquo;s IRAD program supports eight Lines of Business: Astrophysics; Communications and Navigation; Cross-Cutting Technology and Capabilities; Earth Science; Heliophysics; Planetary Science; Science Small Satellites Technology; and Suborbital Platforms and Range Services. Task progress is evaluated twice a year at the Mid-term IRAD review and the end of the year. When the funding period has ended, the PIs compete again for IRAD funding or seek new sources of development and research funding or agree to external partnerships and collaborations.&amp;nbsp; In some cases, when the development work has reached the appropriate Technology Readiness Level (TRL) level, the product is integrated into an actual NASA mission or used to support other government agencies. The technology may also be licensed out to the industry. The completion of a project does not necessarily indicate that the development work has stopped.&amp;nbsp; The work could potentially continue in the future as a follow-on IRAD; or used in collaboration or partnership with Academia, Industry and other Government Agencies. If you are interested in partnering with NASA, see the TechPort Partnerships documentation available on the TechPort Help tab. http://techport.nasa.gov/help</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://aetd.gsfc.nasa.gov" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>mCAT Thruster Head</strong> — mCAT Thruster Head</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91011">https://techport.nasa.gov/projects/91011</a>
+    </div>
+  </div>
+</body>
+</html>

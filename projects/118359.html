@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locating and Identifying Lunar Volatiles using Heat and Mass Transfer | NASA TechPort Project 118359</title>
+  <meta name="description" content="Locating and determining what lunar volatiles exist in the Moon&#x27;s PSR&#x27;s an inherent need to Volatile Mining efforts. The ability to find lunar volatiles, characterize icy regolith, map volatile density and determine volatile species is important for future ISR">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/118359">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 118359</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX07.1.1</span>
+        </div>
+        <h1>Locating and Identifying Lunar Volatiles using Heat and Mass Transfer</h1>
+        <div class="meta-id">NASA TechPort Project ID: 118359</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/118359" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Locating and determining what lunar volatiles exist in the Moon's PSR's an inherent need to Volatile Mining efforts. The ability to find lunar volatiles, characterize icy regolith, map volatile density and determine volatile species is important for future ISRU mining operations. A simple solution is to use the effects of heat and mass transfer incorporated in an in-situ sensor that provides data on ice type, volatile density, and volatile species. Attached to a lander or mobile system, this single sensor removes the need to physically collect samples for analysis and instead collects data In-situ with limited interaction with the environment. This reduces complexity to the hardware, improves mission efficiency (more data), and uses less energy to gain the same data as an excavator/oven system.<br /><br />A penetrometer is a probe that is mechanically forced into regolith, providing force data. Force curves relate to regolith strength and ice structure type. Relaxation data from the same penetrometer also provides insight into volatile concentrations. However, by modifying a penetrometer more definitive data can be gained. By embedding a thermocouple and a resistor heater into the penetrometer tip, temperature data is collected at various depths. By applying micro-watts of heat energy to the tip of penetrometer, the rate the tip cools correlate to thermal inertia in the icy regolith, providing insights into type of ice and volatile concentrations. Combining data from the penetrometer, thermocouple and the heater provides high confidence in ice type and bulk volatile concentration.<br /><br />An additional modification and technique provides volatile species and species density. The tip of the penetrometer has a small gas inlet port, the penetrometer shaft is a tube allowing gas to flow to the base of the penetrometer. A mass flow sensor at the base collects data on gas flow out into the PSR vacuum. Once at the desired depth, the heater is warmed at 5 K increments and mass flow data is collected. At each temperature specific volatiles sublimate and the gas flows up through the penetrometer. The permeability of lunar regolith is poor and the pressures created from such small quantities are low, the bulk of the produced gas flow up the penetrometer. For example, Hydrogen Sulfide (H2S) is volatile detected during the LCROSS impact. H2S also sublimates at a lower temperature than water. As the heater warms up, the Hydrogen Sulfide will sublimate through the mass flow sensor before water begins to sublimate. Once a higher temperature is reached water vapor then feeds through the mass flow sensor. Through experiments this affect can be characterized and used to provide data on volatile species and species density.<br /><br />This payload technology is estimated to weigh less than 10 kg’s. It could be fitted on a rover or lander arm and can be used to quickly assess an area of its volatile concentrations, the strength of the underlying regolith and what specific volatiles are there while also providing an estimated quantity. This could dramatical improve a prospector missions ability to collect more data in a specific amount of time, as this process can be conducted on the scale of minutes. In addition, it doesn’t kick up additional dust or required overly complex mechanisms that need to be thermally maintained in a PSR. <br /><br />At the Colorado School of Mines, Center for Space Resources (CSR), three ‘dirty’ vacuum chambers are frequently exposed to lunar simulant. Penetrometer experiments are accomplished at CSR as well, specifically focusing on determining ice concentrations in different lunar icy regolith types. The CSR is currently performing experiments on Thermal Mining, producing and performing experiments on Icy Regolith’s. The Center for Space Resources has the unique equipment and expertise to prove this method is viable for Lunar PSR resource prospecting.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This research will support volatile mining efforts. This could dramatical improve a prospector mission's ability to collect more data in a specific amount of time, as this process can be conducted on the scale of minutes. In addition, it doesn't kick up additional dust or required overly complex mechanisms that need to be thermally maintained.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>118359</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX07.1.1: Destination Resource Exploration</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2020-08-01</td></tr>
+<tr><th>Project End Date</th><td>2022-12-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Colorado School of Mines — Golden, Colorado</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Christopher B Dreyer (Principal Investigator); Curtis Purrington (Co-Investigator); Phillip B Abel (Project Manager) &lt;phillip.abel@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: As we reach out into the solar system, humans and spacecraft require access to water. Water enables human exploration, produces spacecraft propellant, and is utilized to process rock minerals. Water in the solar system exists in numerous cold bodies, such as lunar Permanently Shadowed Regions (PSR) where water and many other volatiles are concentrated. Unlike on Earth, water located in lunar PSRs is a solid mineral. Prospecting for solid minerals is generally accomplished by drilling and examining core samples. However, drilling is an energy and time intensive process. This body of work proposes a new prospecting method that leverages the unique properties of water ice through the application of thermal energy. Thermal energy is applied using a Thermal Probe with a thermally isolated tip. The probe is inserted into the lunar icy regolith simulant and a relatively small amount of thermal energy is applied to the tip. As heat transfers into the lunar icy regolith simulant, the temperature of the probe decays as a function of water weight percentage (wt%) and ice structure. However, with sufficient heat applied, the thermal response is independent of the ice structure as long as pore space exists within the icy regolith simulant. This is due to the heat application partially sublimating some water ice in the icy regolith simulant. The sublimated water creates a transient atmosphere in the pore space of the regolith simulant. The transient atmosphere temporarily allows heat transfer through convection in addition to conductivity and radiation. This increased heat transfer rate enables the determination of water weight percentage in icy regolith simulant within ±2%, regardless of the ice structure type.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/118359">https://techport.nasa.gov/projects/118359</a>
+    </div>
+  </div>
+</body>
+</html>

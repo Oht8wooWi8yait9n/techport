@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time Detection of Low Altitude Icing Conditions | NASA TechPort Project 158312</title>
+  <meta name="description" content="Our proposal addresses a pain point in the aviation sector, especially within Advanced Air Mobility (AAM) operations: a lack of high-fidelity detection of hazardous icing conditions. Leveraging novel weather sensors, including the Vaisala CL61, Meteomatics Met">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158312">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158312</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX08</span>
+        </div>
+        <h1>Real-Time Detection of Low Altitude Icing Conditions</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158312</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158312" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Our proposal addresses a pain point in the aviation sector, especially within Advanced Air Mobility (AAM) operations: a lack of high-fidelity detection of hazardous icing conditions. Leveraging novel weather sensors, including the Vaisala CL61, Meteomatics Meteodrone, and the Weather Scout UAS, alongside an atmospheric moisture classification ML algorithm, our project will seek to detect conditions conducive to icing and begin work towards an ML-based estimate of icing event likelihood. This will lead to development of a high-resolution short-range icing risk forecast model in Phase II, providing unprecedented safety and operational reliability in aviation, particularly in AAM corridors below 5,000 feet AGL.  The technology’s purpose is to respond to client identified pain point for in-cloud icing.  During a 2023 weather workshop by the non-profit AeroX, icing was identified as one of the highest impact weather hazards affecting the AAM industry. This finding was based on the risk to safety posed by icing as well as uncertainty in the timing and location of icing. Thus, the ability to safely operate AAM platforms in the national airspace system (NAS), efficiently, requires timely, high-resolution data to detect and avoid hazardous icing conditions.  The funding will research sensors that can detect icing potential and develop a framework to produce ML algorithms to produce real-time icing risk assessments for the safe integration and operation of AAM systems in the NAS. The proposed assessments will serve the emerging $68.1B (by 2032) middle-mile drone and air taxi industries to reduce weather-related disruptions, both real and perceived, enhance flight safety, and increase operational efficiency. The objective is when icing products produced for the NAS today depict icing conditions, potentially stopping flight operations without knowing whether icing really exists, the TruWeather system will be able to report, with certainty, either icing does, or does not exist.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This project supports NASA Mission Directives by supporting the NASA UAM Airspace research roadmap, section 5.10, Weather.  https://ntrs.nasa.gov/api/citations/20230002647/downloads/NASA-TM-20230002647_Final.pdf. The application also directly supports NASA’s objectives for AAM integration, offering significant benefits for piloted and autonomous AAM operations through improved route planning and situational awareness. This effort will not only improve current AAM operations but also provide invaluable data to entities like NOAA, FAA, and standards organization to support model verification and improvements, policymaking, and standards development for atmospheric observations and airframes.  The application will support research associated with developing methods and means of compliance in order for the FAA to implement ASTM F3673 − 23, Standard Specification for Performance for Weather Information Reports, Data Interfaces, and Weather Information Providers (WIPs). In summary, icing is central to the NASA mission where advanced sensors and ML algorithms, where an acute need for precise, real-time icing risk assessment exists for the safe integration and operation of AAM systems within the NAS.  The technology has a clear infusion path through TruWeather V360 that is already leveraged by NASA research today within AAM. The technology and models will assist NASA in understanding the presence of icing conditions to conduct research on future icing mitigation systems on AAM vehicles and the risk of AAM vehicles flying unexpectedly into icing conditions. The proposed system's capabilities to accurately detect icing conditions are crucial for reducing weather-related disruptions, enhancing flight safety, and operational efficiency for a smooth running, safe and efficient air traffic management system.  The AAM market was valued at $8.2 billion in 2022 and is expected to reach $68.1 billion by 2032, highlighting the significant growth potential and expanding market for AAM technologies and services. Targeting the burgeoning AAM market with advanced icing detection technology aligns with the current growth trajectory and addresses a critical need within the sector, ensuring enhanced safety, reliability, and efficiency in AAM operations. This creates a significant opportunity for the commercialization and widespread adoption of the proposed icing detection technology within the AAM ecosystem.  This technology will break a stalemate in improving icing detection and prediction products for commercial users that shuts down airspace today. This technology will change the icing paradigm by transitioning a step jump in capability where the technology is deployed by reducing icing uncertainty significantly and reducing unnecessary groundings due to “perceived” icing conditions without real measurements to validate the occurrence. By initially targeting AAM customers, particularly in cities like Chicago and New York where icing significantly impacts flight operations, we will establish a foundational customer base from which expansions to new sectors and markets occur. The proposed observations and icing risk model will have immediate benefits for urban air mobility (UAM), cargo delivery services, and DoD operations. Additionally, we aim to implement demonstration projects within key AAM corridors to showcase the practical applications and effectiveness of our solution in actual operating conditions. Engaging with regulatory bodies and Standards Development Organizations will also be crucial to our strategy, as we work to integrate our technology into recognized industry standards, fostering widespread adoption and implementation.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158312</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08: Sensors and Instruments</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 2 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2024-08-07</td></tr>
+<tr><th>Project End Date</th><td>2025-02-06</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>TruWeather Solutions — Syracuse, New York</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>New York (NY), Virginia (VA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Donald H Berchoff (Principal Investigator); Nancy L Mendonca (Project Manager) &lt;nancy.mendonca@nasa.gov&gt;; Thomas B Frooninckx (Primary Point of Contact) &lt;thomas.b.frooninckx@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158312">https://techport.nasa.gov/projects/158312</a>
+    </div>
+  </div>
+</body>
+</html>

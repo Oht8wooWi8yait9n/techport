@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D-SHIELD: Distributed Spacecraft with Heuristic Intelligence to Enable Logistical Decisions | NASA TechPort Project 96313</title>
+  <meta name="description" content="Distributed Space Missions (DSMs) can increase measurement samples over multiple, spatio-temporal vantage points. Smaller spacecraft can now carry imager/radar payloads, even if constrained by power and data downlink. Large numbers of spacecraft increase respo">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/96313">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 96313</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">AIST</span>
+          <span class="badge">TX11.5</span>
+        </div>
+        <h1>D-SHIELD: Distributed Spacecraft with Heuristic Intelligence to Enable Logistical Decisions</h1>
+        <div class="meta-id">NASA TechPort Project ID: 96313</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/96313" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Distributed Space Missions (DSMs) can increase measurement samples over multiple, spatio-temporal vantage points. Smaller spacecraft can now carry imager/radar payloads, even if constrained by power and data downlink. Large numbers of spacecraft increase responsiveness, revisit time and coverage, even with static payloads. Fully re-orientable payloads, tasked by autonomous decision-making, can further improve the capability to reactively observe phenomena. D-SHIELD is a suite of scalable software tools - Scheduler, Science Simulator, Analyzer. The goal is to schedule the payload operations of a large constellation, with multiple payloads per and across spacecraft, such that the collection of observational data and their downlink, constrained by the DSM's constraints (orbital mechanics), resources (e.g. power) and subsystems (e.g. attitude control), results in maximum science value for a selected use case. The constellation topology, spacecraft and ground network characteristics can be imported from design tools or existing constellations. D-SHIELD Scheduler is informed by D-SHIELD Science Simulator, that is based on a simplified Observing System Simulation Experiment developed for a relevancy scenario. It assimilates data from past observations of the DSM along with other sources, and predicts the relative, quantitative value of observations or operational decisions. We will also build a D-SHIELD Analyzer, to evaluate the performance of D-SHIELD for given user inputs, and compare options for its components (e.g., optimization algorithms). Analyzer will also assess the trades to run D-SHIELD onboard vs. ground vs. combination of both. D-SHIELD is thus a mission operations design tool that coordinates autonomous reactions to new events, observations of existing events with changed requirements, and off-nominal situations like failed observations or communications. To validate D-SHIELD, we will apply it to schedule representative constellations measuring spatio-temporal distributions of soil moisture, which varies on spatial scales of a few meters to many kilometers and time scales of minutes to weeks. Observations are accomplished most effectively via power-hungry microwave active and passive sensors (radars and radiometers) at frequency bands P to K. As soil moisture fields are sensitive to view geometry and dynamic, an ideal observational strategy requires that remote sensing instruments have a high degree of agility in their orientation and spatio-temporal sampling. Using a combination of prior/current observations and hydroecologic modeling predictions, the Science Simulator will task the next set of space assets based on anticipated events, such as heavy precipitation and flooding (rapid time scales) and droughts (not rapidly emerging but requiring well-planned long time series of observations). We will also ensure D-SHIELD's applicability to other relevancy scenarios like tropical cyclones, wildfires, urban floods. We have several ongoing projects complementing the proposed work. We have published an algorithmic framework that schedules the time-varying, full-body orientation of single-payload small spacecraft in a constellation. This scheduler can run at the ground station autonomously and schedules uplinked to the spacecraft, or onboard small spacecraft, such that the constellation can make decisions autonomously, without ground control. The algorithm also applies Disruption Tolerant Networking reliable and low-latency communication between constantly changing inter-satellite link. We are working on a flight mission which will demonstrate reactive measurements of plasma density by an autonomous swarm of four cross-linked spacecraft, due for launch in 2020-21. We have prototyped an agent-based simulator with centralized and decentralized planning algorithms. It can probabilistically assess the value of forming temporary coalitions to observe targets on the ground simultaneously from various platforms and sensors.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Advance Earth system science knowledge through the identification, development, and demonstration of innovative information systems technologies
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>96313</td></tr>
+<tr><th>Acronym</th><td>D-SHIELD</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Advanced Information Systems Technology (AIST)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.5: Mission Architecture, Systems Analysis, and Concept Development</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2020-02-01</td></tr>
+<tr><th>Project End Date</th><td>2024-06-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Planet Inc. — San Francisco, California; Planet Inc. — San Francisco, California; California State University-Monterey Bay (CSUMB) — Seaside, California; California State University-Monterey Bay (CSUMB) — Seaside, California; BrainAid — Mountain View, California; BrainAid — Mountain View, California; Massachusetts Institute of Technology Lincoln Laboratory (MIT-LL) — Lexington, Massachusetts; Massachusetts Institute of Technology Lincoln Laboratory (MIT-LL) — Lexington, Massachusetts; University of Southern California (USC) — Los Angeles, California; University of Southern California (USC) — Los Angeles, California; Texas A &amp; M University-College Station (Texas A&amp;M) — College Station, Texas; Texas A &amp; M University-College Station (Texas A&amp;M) — College Station, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Massachusetts (MA), Texas (TX)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Sreeja Roy-Singh (Principal Investigator) &lt;sreeja.nag@nasa.gov&gt;; Vincent G Ambrosia (Co-Investigator) &lt;vincent.g.ambrosia@nasa.gov&gt;; Mahta Moghaddam (Co-Investigator); James R Spackman (Co-Investigator) &lt;ryan.spackman@nasa.gov&gt;; Richard Levinson (Co-Investigator) &lt;rich.levinson@nasa.gov&gt;; William J Blackwell (Co-Investigator); Daniel S Valero (Co-Investigator); Jeremy Frank (Co-Investigator) &lt;frank@email.arc.nasa.gov&gt;; Vinay Ravindra (Co-Investigator) &lt;vinay.ravindra@nasa.gov&gt;; Kiruthika Devaraj (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Michael S Seablom (Program Director) &lt;michael.s.seablom@nasa.gov&gt;; Laura J Rogers (Program Manager) &lt;laura.j.rogers@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-06-26</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Link]</strong> Closeout Link</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/96313">https://techport.nasa.gov/projects/96313</a>
+    </div>
+  </div>
+</body>
+</html>

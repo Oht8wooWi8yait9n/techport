@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Combined artificial star, temperature lidar and magnetometer | NASA TechPort Project 94823</title>
+  <meta name="description" content="The objective of the project is to develop and field a combined artificial star, temperature lidar and magnetometer system. The goal is make a prototype of a low-cost portable system. This is both a mission concept maturation and technology maturation for risk">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/94823">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 94823</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX08.1.5</span>
+        </div>
+        <h1>Combined artificial star, temperature lidar and magnetometer</h1>
+        <div class="meta-id">NASA TechPort Project ID: 94823</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/94823" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The <strong> <em>objective of the project</em></strong> is to develop and field <em>a combined artificial star, temperature lidar and magnetometer system. The goal is make a prototype of a low-cost portable system.</em> This is both a mission concept maturation and technology maturation for risk reduction. The <strong> <em>time horizon</em></strong> for getting mission/customer funding for infusion is FY2018 - 2020.  The customers/applications are 1) NASA HQ optical communication 2) NASA astronomy/astrophysics 3) NASA Earth/Planetary magnetometry 4) NASA Heliophysics Earth Mesosphere Science 5) US Air Force.  All of these will lead to 1) a transportable combined communication/science ground facility 2) groundwork for spaceflight missions. The <strong> <em>innovative elements</em></strong> are:</p>  <ol><li>New GGAO optical communication ground station (funded via FY18 Technical Facilities Resource funds). Work is underway for the concrete pad, concrete telescope pedestal, dome, and equipment trailer. Gimballed telescope and fine steering mirror are in-hand. The artificial star allows real-time correction for atmospheric turbulence using adaptive optics.</li><li>New patent-pending (Case: GSC-18045-1) pulsed Raman laser[1].</li><li>R&amp;D leverage from NASA Heliophysics proposed mission – Atmospheric, Coupling and Dynamics across the Mesosphere (ACaDaMe). This includes sodium lidar system design, laser frequency-locking and narrow-band etalon receivers.</li><li>R&amp;D leverage from remote magnetometry NASA Minority University (Delaware State) grant: <a href="https://oscar.desu.edu/uncategorized/dr-renu-tripathi-receives-727691-nasa-research-grant/">https://oscar.desu.edu/uncategorized/dr-renu-tripathi-receives-727691-nasa-research-grant</a></li><li>The wavelength is 589 nm.</li></ol>  <p>The work plan is: 1) Demonstrate high-power, single-frequency (&gt;2 W) Nd:YVO4/GdYVO4 Raman laser operating at Na resonance (D2 line &#61; 589 nm wavelength) - with diode laser injection seeder that is frequency locked to a sodium gas cell;  2) Engineer and construct a robust version of 1); 3) Transport and operate at the Goddard Geophysical and Astronomical Observatory (GGAO) 4) Construct the remainder of the guide-star/lidar/magnetometer transmit and receive optics and optical receiver 5) Operate the guide-star guide-star/lidar/magnetometer 6) Operate system with an adaptive optics receiver.</p>  <p>[1] “Progress on Raman laser for sodium resonance fluorescence lidar” Steven Li ; Anthony Yu ; Michael Krainak ; Yingxin Bai ; Oleg Konoplev ; Molly Fahey ; Kenji Numata Proc. SPIE. 10511, Solid State Lasers XXVII: Technology and Devices</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The <strong><em>&#34;payoff&#34;</em></strong>  - 1) a transportable communication/science ground facility 2) groundwork for spaceflight missions - is to both GSFC science and engineering and to the US Air Force.</p>  <p>The application areas that benefit are: 1) Optical free-space communication – adaptive-optics enhancement for large telescope receiver optical-ground-stations <strong>for Exploration, 2) </strong>Enhanced-imaging for <strong>orbital debris </strong>tracking <strong>for Exploration</strong>, 3) Astronomy - artificial star for ground observations, 3) Earth/Planetary magnetometry – remote Larmor magnetometry, 4) Heliophysics Earth Mesosphere Science – stand-alone &amp; cal/val for ACaDaMe – temperature lidar on ISS, 5) US Air Force – artificial star and lidar</p>  <p>The <strong><em>return on investment</em></strong> is for optical communication funding to the center the NASA Space Network GRound Optical Operational Testbed (GROOT) program was proposed in the Communication and Navigation budget PPBE20 overguide (potentially several $M per year to Goddard). This will provide strategic positioning for the near-future optical Tracking and Data Relay Satellite System (TDRS). </p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>94823</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.5: Lasers</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2018-10-01</td></tr>
+<tr><th>Project End Date</th><td>2019-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Moon and Cislunar, Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Michael A Krainak (Principal Investigator) &lt;michael.a.krainak@nasa.gov&gt;; Michael E Purucker (Co-Investigator) &lt;michael.e.purucker@nasa.gov&gt;; Diego Janches (Co-Investigator) &lt;diego.janches@nasa.gov&gt;; Terence A Doiron (Project Manager) &lt;terence.a.doiron@nasa.gov&gt;; Michael A Johnson (Project Manager) &lt;michael.a.johnson@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-02</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: We developed a Q-switched narrow linewidth intra-cavity Raman laser for a balloon or space-based sodium lidar application. A novel Raman laser injection seeding scheme was experimentally verified. A Q-switched, diode pumped, c- cut Nd:YVO4 laser was designed to emit a fundamental wavelength at 1066.6 nm. This fundamental wavelength is used as the pump in an intra-cavity Raman conversion in a Gd0.2Y0.8VO4 composite material. By tuning the temperature of the crystal, we tuned the Raman shifting to the desired sodium absorption line. A diode end pumped, T-shaped laser cavity has been built for experimental investigation. The fundamental pump laser cavity is a twisted mode cavity to eliminate the spatial hole burning for effective injection seeding. The Raman laser cavity is a linear standing wave cavity because Raman gain medium does not suffer spatial hole burning as traditional laser gain medium. The linewidth and temporal profile of the Raman laser was experimentally investigated with narrow and broadband fundamental pump emission. We have, for the first time, demonstrated an injection seeded, high peak power, narrow linewidth intra-cavity Raman laser for potential use in a sodium resonance fluorescence lidar. The purpose of the Goddard Space Flight Center’s Internal Research and Development (IRAD) program is to support new technology development and to address scientific challenges. Each year, Principal Investigators (PIs) submit IRAD proposals and compete for funding for their development projects. Goddard’s IRAD program supports eight Lines of Business: Astrophysics; Communications and Navigation; Cross-Cutting Technology and Capabilities; Earth Science; Heliophysics; Planetary Science; Science Small Satellites Technology; and Suborbital Platforms and Range Services. Task progress is evaluated twice a year at the Mid-term IRAD review and the end of the year. When the funding period has ended, the PIs compete again for IRAD funding or seek new sources of development and research funding, or agree to external partnerships and collaborations. In some cases, when the development work has reached the appropriate Technology Readiness Level (TRL) level, the product is integrated into an actual NASA mission or used to support other government agencies. The technology may also be licensed out to the industry. The completion of a project does not necessarily indicate that the development work has stopped. The work could potentially continue in the future as a follow-on IRAD; or be used in collaboration or partnership with Academia, Industry, and other Government Agencies. If you are interested in partnering with NASA, see the TechPort Partnerships documentation available on the TechPort Help tab. http://techport.nasa.gov/help</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://etd.gsfc.nasa.gov" target="_blank" rel="noopener noreferrer">NASA Goddard Applied Engineering and Technology Directorate</a></li><li><a href="https://www.nasa.gov/feature/goddard/2017/nasa-aims-to-create-first-ever-space-based-sodium-lidar-to-study-poorly-understood" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><a href="https://twitter.com/intent/follow?screen_name&amp;#61;NASAGoddard" target="_blank" rel="noopener noreferrer">NASA Goddard Twitter</a></li><li><strong>European Laser Guide-Star</strong> — European Laser Guide-Star</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/94823">https://techport.nasa.gov/projects/94823</a>
+    </div>
+  </div>
+</body>
+</html>

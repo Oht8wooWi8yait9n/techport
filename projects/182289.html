@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optical Vortex Phase Mask Development and Testing | NASA TechPort Project 182289</title>
+  <meta name="description" content="The top priority of the 2020 Decadal Survey for Astronomy &amp; Astrophysics is the imaging and spectroscopy of terrestrial exoplanets around nearby stars. However, bright diffracted and scattered starlight makes it very difficult to discern much dimmer, close-in ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/182289">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 182289</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">SMD</span>
+          <span class="badge">SAT</span>
+          <span class="badge">TX08.1</span>
+        </div>
+        <h1>Optical Vortex Phase Mask Development and Testing</h1>
+        <div class="meta-id">NASA TechPort Project ID: 182289</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/182289" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The top priority of the 2020 Decadal Survey for Astronomy & Astrophysics is the imaging and spectroscopy of terrestrial exoplanets around nearby stars. However, bright diffracted and scattered starlight makes it very difficult to discern much dimmer, close-in exoplanets. High-precision wavefront correction and starlight suppression via stellar coronagraphy are therefore essential to be able to unveil faint exoplanets. One of the most promising coronagraphs is the optical vortex coronagraph, and in this proposal we have two aims in that regard: to broaden the technologies used for making high-performance optical vortex phase masks, and to bring one or more of those technologies up to the full performance level (a contrast of ~ 1e-10 for 20% bandwidth) needed by coronagraphs on the Habitable Worlds Observatory (HWO).   There are two main types of vortex phase mask, the scalar vortex and the vector vortex, and the best demonstrated contrast performance to date (~ 1e-9 for 10% bandwidth) has been achieved with the vector vortex coronagraph. While good progress has thus been made, there are further limitations that need to be overcome. The first is that starlight suppression need to be deepened by another order of magnitude, and the suppression bandwidth needs to be doubled. This will be addressed with improved mask modeling and manufacturing techniques. Beyond that, it would be highly desirable to eliminate the need to separate the two polarization states in a vector vortex coronagraph, without doubling the number of optics or dropping one polarization state. Finally, vector vortex phase masks currently rely on a single technological approach (liquid crystal polymers) that are supplied by a single vendor, making the supply chain fragile. The latter two issues can both be dealt with by developing alternate technologies, such as the scalar vortex coronagraph, which we have been developing under an APRA award (reaching ~ 2e-7 contrast for 10% bandwidth). We now have two promising theoretical solutions for scalar vortex masks that go much deeper, based on a pair of modified azimuthal dielectric phase ramps, and the new technology of microstructure masks, respectively. Here we therefore plan to combine efforts on all three of these mask types (vector liquid crystal polymer, scalar dielectric modified azimuthal phase ramps, and scalar microstructure), in order to make the final push to develop and compare all three types of vortex phase mask for testing in the HCIT, aiming both to reach final HWO-like performance levels, and to broaden the number of technologies and vendors that HWO will be able to rely on. Our main goal is to show that at least one of these technologies is able to reach the requisite contrast levels for HWO in the unobscured aperture case.  The integration time per exoplanet, and hence the number of terrestrial exoplanets to be characterized spectroscopically by HWO, depends on coronagraph throughput and bandwidth, as well as the stellar rejection level. Therefore, comparing these three vortex technologies one-to-one on the same testbed will be very valuable in several ways: the more advanced vector vortex coronagraph will lead the way to demonstrating HWO contrast levels, while the less developed but more efficient scalar vortex coronagraph will demonstrate higher throughput by at least a factor of 2, while decreasing instrument complexity and cost. Finally, establishing different technological approaches will serve to mitigate risk regarding long term mask availability. High-quality scalar vortex phase masks will also enable simpler wavefront sensing and control, as different polarization states will no longer interact differently with the vortex. Thus, as a result of this proposal, NASA will benefit from having demonstrated a successful coronagraphic approach with deeper rejection, broader bandwidth, higher throughput, shorter integration times, simpler wavefront control, and a simpler optical system.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The Strategic Astrophysics Technology program (SAT) supports focused development efforts for key technologies to the point at which they are ready to feed into major missions in the three science themes of the Astrophysics Division: Exoplanet Exploration, Cosmic Origins, and the Physics of the Cosmos. This program is specifically designed to address middle technology readiness level (TRL) "gaps" between levels 3 and 6: the maturation of technologies that have been established as feasible, but which are not yet sufficiently mature to incorporate into flight missions without introducing an unacceptable level of risk.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>182289</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Strategic Astrophysics Technology (SAT)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1: Remote Sensing Instruments and Sensors</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2024-10-01</td></tr>
+<tr><th>Project End Date</th><td>2027-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>California Institute of Technology (CalTech) — Pasadena, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Outside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>gene serabyn (Principal Investigator) &lt;gene.serabyn@jpl.nasa.gov&gt;; Arielle Bertrou-Cantou (Co-Investigator); James K Wallace (Co-Investigator) &lt;james.k.wallace@jpl.nasa.gov&gt;; Lorenzo Koenig (Co-Investigator) &lt;lorenzo.koenig@jpl.nasa.gov&gt;; Dimitri P Mawet (Co-Investigator); Carlos J Velazquez (Co-Investigator) &lt;carlos.j.velazquez@jpl.nasa.gov&gt;; Garreth J Ruane (Co-Investigator) &lt;garreth.ruane@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Dominic J Benford (Program Director) &lt;dominic.j.benford@nasa.gov&gt;; Dominic J Benford (Program Manager) &lt;dominic.j.benford@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-03-17</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>LCP Vortex Mask</strong> — Left: Orientation pattern of the liquid crystal polymer (LCP) molecules in an optical vortex layer. Center: The output electric (E) field directions such a mask produces. Right, an LCP vortex mask seen through crossed polarizers. Note that the mask is dark at all angles at which the output light is horizontally polarized (horizontal lines in the center panel), verifying its functionality. (Image Credit: Gene Serabyn, NASA JPL)</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/182289">https://techport.nasa.gov/projects/182289</a>
+    </div>
+  </div>
+</body>
+</html>

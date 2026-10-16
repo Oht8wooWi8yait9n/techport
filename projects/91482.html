@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application of the MCMC Method for the Calibration of DSMC Parameters to NASA EAST Results for Ionizing, Radiating Hypersonic Flows | NASA TechPort Project 91482</title>
+  <meta name="description" content="The reentry of a vehicle into a planetary atmosphere creates extreme Mach number conditions which produce a weakly ionized plasma and radiation. The greatest challenge for a vehicle flying at hypersonic speeds is the heat generated in the shock layer. Predicti">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91482">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91482</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX09.4.5</span>
+        </div>
+        <h1>Application of the MCMC Method for the Calibration of DSMC Parameters to NASA EAST Results for Ionizing, Radiating Hypersonic Flows</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91482</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91482" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The reentry of a vehicle into a planetary atmosphere creates extreme Mach number conditions which produce a weakly ionized plasma and radiation. The greatest challenge for a vehicle flying at hypersonic speeds is the heat generated in the shock layer. Predicting the effects of hypersonic heating is integral to heat shield design, but experimental tests are costly and have issues of reliability since it is extremely hard to match flight conditions. Thus, numerical models have been established that simulate reentry conditions and quantify the effects of hypersonic flow. Substantial progress has been made in the development of sophisticated numerical methods, but many of these models have not been validated nor their uncertainties quantified.   During the initial phases of reentry into Earths atmosphere, for example, a vehicle passes through the rarefied upper atmosphere. Even in the rarefied regime, heat soaking occurs and spacecraft dynamics and radio communications remain critical. Although peak heating in Earths atmosphere generally occurs at lower altitude in the continuum region, this may not be the case for hypersonic entry on other planets. Therefore, numerical models such as the direct simulation Monte Carlo (DSMC)1 technique have been developed that can model rarefied regimes. To model a hypersonic reentry problem accurately, non-continuum methods must resolve a non-equilibrium flow and account for high speed molecular collisions, chemical reactions, electronic excitation, ionization, and radiation. The numerical techniques that model these phenomena require experimental calibration of a number of parameters. Many of these parameters cannot be accurately measured under the extreme conditions of hypersonic flows, and are instead inferred from lower speed experiments. Much of the error in the non-continuum hypersonic numerical methods stems from inaccuracies in these input parameters. In order for these numerical models to be utilized reliably, one must quantify the uncertainty resulting from errors in experimental measurements of model parameters and the extrapolation to the hypersonic scenario of interest. 	 This program will utilize the unique NASA Ames Electric Arc Shock Tube (EAST) data in combination with a state of the art hypersonic shock tube DSMC code linked to a radiative transport code to obtain calibrated DSMC parameters through sophisticated statistical analysis methods. Among goals for this project are to: 1. Adapt the DSMC code by adding ionization to the current version. 2. Link the DSMC code to a line-by-line radiation solver and compare results to the unique NASA Ames EAST results. 3. Perform a sensitivity analysis of the linked DSMC/Radiation results.  4. Calibrate the essential DSMC parameters to the NASA EAST data using The University of Texas QUESO MCMC code.  5. Refine the model and recalibrate parameters to improve the prediction of hypersonic flows in space vehicle reentry scenarios.  	 The results of this project would represent the first time that hypersonic DSMC parameters have been calibrated to experimental data in such a systematic way. By then quantifying the uncertainty of the physical parameters, we can understand the range of errors in the DSMC model. Furthermore, since many of the Arrhenius reaction rates used in the TCE model have a high uncertainty, the calibrated parameters should close the loop between experiments and simulation and assist experimentalists in identifying which parameters are critical for future investigation. This is important for reentry vehicles because an improved understanding of hypersonic heating can result in the advancement of thermal protection system technology.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This project aims to improve numerical models for predicting the effects of hypersonic heating, which is integral to heat shield design.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91482</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.4.5: Integrated Modeling and Simulation for EDL</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2014-08-01</td></tr>
+<tr><th>Project End Date</th><td>2018-05-20</td></tr>
+<tr><th>Lead Organization / Center</th><td>The University of Texas at Austin — Austin, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>David I Goldstein (Principal Investigator); Kyle J Higdon (Co-Investigator) &lt;kyle.j.higdon@nasa.gov&gt;; Derek S Liechty (Project Manager) &lt;derek.s.liechty@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The current research focused on the development and sensitivity analyses of a direct simulation Monte Carlo (DSMC) code to understand the complex physical processes that occur during hypersonic entry into a rarefied atmosphere. Simulations were performed on 1-dimensional hypersonic shock scenarios that mimic the conditions of high altitude atmospheric entry to Earth and Saturn with the Computation of Hypersonic Ionizing Particles in Shocks (CHIPS) code. To model hypersonic entry problems accurately, the CHIPS code must resolve nonequilibrium flows and account for a number of complex gas dynamics processes at the molecular level. In this work, several high temperature models were added to the CHIPS code including charged particle models and electronic excitation. These models were refined using preliminary sensitivity analyses resulting in improved electronic excitation models and a new backward chemical reaction model. The CHIPS simulations completed in this work reproduced rarefied hypersonic shock tube experiments performed in the Electric Arc Shock Tube (EAST) at NASA Ames Research Center. The CHIPS results were post-processed by the NEQAIR line-by-line radiative solver to compare directly to spectra measured experimentally in EAST. The DSMC techniques used to model hypersonic phenomena required numerous experimentally calibrated parameters. Many of these parameters were inferred from lower temperature experiments, resulting in an unknown amount of uncertainty in the simulated results at the extreme conditions of hypersonic flow. A global Monte Carlo sensitivity analysis was performed by simultaneously varying the CHIPS input parameter values to understand the sensitivity of experimentally measured quantities simulated by the CHIPS and NEQAIR codes. The sensitivity of several of these output quantities was used to rank the input parameters, identifying the most important parameters for the simulation of the hypersonic scenario. It was concluded that experimentally measured radiation intensity is most sensitive to the following key processes: N+e−⇌N++e−+e−, NO+N+⇌N+NO+, N2+N⇌N+N+N, N+O⇌NO++e−, N+N⇌N2++e−, and Zelec for N, O, and N2+. In the future, this ranking can be used to identify which input parameters should be experimentally investigated, where model improvements could be beneficial, and aid in reducing the parameter space for DSMC calibrations to experimental data.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91482">https://techport.nasa.gov/projects/91482</a>
+    </div>
+  </div>
+</body>
+</html>

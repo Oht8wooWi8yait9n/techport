@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Implementing a Near-Optimal Optical Receiver for Inter-Planetary Communication | NASA TechPort Project 11533</title>
+  <meta name="description" content="Proposal Objective: Interplanetary communications signals are inherently weak at the receiver. In fact, for a desired data rate the received optical pulses may contain less than even a single photon. By exploiting both a novel optical receiver architecture and">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/11533">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 11533</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX05.1.1</span>
+        </div>
+        <h1>Implementing a Near-Optimal Optical Receiver for Inter-Planetary Communication</h1>
+        <div class="meta-id">NASA TechPort Project ID: 11533</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/11533" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Proposal Objective: Interplanetary communications signals are inherently weak at the receiver. In fact, for a desired data rate the received optical pulses may contain less than even a single photon. By exploiting both a novel optical receiver architecture and a newly demonstrated quantum switch, I propose to design, construct, and characterize a proof-of-principle implementation of a near-optimal optical transceiver suitable for Earth-Mars communications. Key Methods and Techniques: This proposal relies on two novel discoveries: (1) a new receiver architecture, recently proposed by Guha [1], which allows near-optimal communications using individual pulses which each contain far less than a single photon, and (2) an ultra-fast, low-loss, coherent, single-photon optical switch - exactly the type of revolutionary quantum switch recently developed in the Kumar group [2,3]. This proposal's key methods and techniques involve the successful exploitation of both innovations. Unlike typical receiver architectures, the Guha receiver assumes that loss has degraded a transmitted signal to the point where each transmitted pulse contains less than a single photon. By encoding the data to be transmitted into a large number of these very weak pulses, each in their own spatial mode, and then combining these many weak pulses into a single pulse bright enough to be detected, the Guha receiver can approach the optimal communications rate. This increase in system capacity is known as superadditivity [4]. Although the Guha receiver, in principle, allows for increased capacity there are practical problems with implementing a multi-spatial-mode inter-planetary communications system. In an Earth-Mars communication system, for example, any distinct spatial modes at the transmitter will completely overlap by the time the signal reaches the receiver. Fortunately, many of these problems can be avoided by redesigning the Guha receiver as a temporally, rather than spatially encoded architecture. Implementing the Guha architecture for temporally encoded signals requires a device which can manipulate, with very low loss and at very high speeds, the individual temporal modes of a single photon. In other words, a quantum optical switch is needed.  My group has recently demonstrated just such an all-optical, ultra-fast (200-ps switching window), low-loss (1.5dB), high switching contrast (120:1) device [2-3]. This single photon switch is a nonlinear optical loop mirror whose reflectivity is controlled by a separate pump pulse. I propose to combine multiple switches in a temporal Guha architecture in order to implement a proof-of-principle near-optimal optical receiver suitable for Earth-Mars communications. Significance of Proposed Research: Deep-space communications involve extremely high loss. While signal strength can be recovered by increasing detection time, this strongly limits the data rate. However, a recently proposed joint detection receiver has the potential to dramatically increase these rates, approaching the Holevo limit even when each transmitted pulse, after an enormous transmission loss, contains far less than a single photon. I propose to construct a proof-of-principle implementation of a modified Guha receiver using ultra-fast, low-loss, single photon switching technology. If successful, this project could lead to the deployment of high-rate communications systems for future NASA missions. References: [1] S. Guha, Phys. Rev. Lett. 106, 240502 (2011). [2] M. Hall et al., Phys. Rev. Lett. 106, 053901 (2011). [3] M. Patel et al., IEEE Summer Topical Meeting Series, p. 16-17, (July 2011). [4] M. Sasaki et al., Phys Rev. A., 54, 1869 (1996).
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Deep-space communications involve extremely high loss. While signal strength can be recovered by increasing detection time, this strongly limits the data rate. However, a recently proposed joint detection receiver has the potential to dramatically increase these rates, approaching the Holevo limit even when each transmitted pulse, after an enormous transmission loss, contains far less than a single photon. I propose to construct a proof-of-principle implementation of a modified Guha receiver using ultra-fast, low-loss, single photon switching technology suitable for Earth-Mars communications. If successful, this project could lead to the deployment of high-rate communications systems for future NASA missions.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>11533</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX05.1.1: Detector Development</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2012-08-01</td></tr>
+<tr><th>Project End Date</th><td>2016-05-09</td></tr>
+<tr><th>Lead Organization / Center</th><td>Northwestern University — Evanston, Illinois</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Illinois (IL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Gregory Kanter (Principal Investigator); Tim Rambo (Co-Investigator); Robert Romanofsky (Project Manager) &lt;Robert.R.Romanofsky@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Interplanetary optical communications are photon starved. Transmitted signals can broaden far beyond the aperture size of typical receivers due to diffraction over truly enormous distances. Peak power limits of transmitters define a range at which received signals could be attenuated to much less than a single photon per bit of transmitted information. However, a novel receiver architecture [1] has recently been reported for phase encoded signals which is capable of surpassing the maximum channel capacity that can be obtained via conventional detection techniques in this weak signal regime. This receiver can also alleviate peak power constraints on a typical deep-space optical transmitter. Below, I detail my investigation of this concept and it’s feasibility with existing fiber-based technology: describing how this receiver can be modified to better suit interplanetary communications and can be implemented using a network of low-loss, high-speed, single-photon switches of the type recently developed in my group[2,3]. To develop the techniques necessary for networking enough single-photon switches to construct the modified receiver, I collaborated on the construction of a quasi-determinsitic single-photon source which required a smaller, less complex, network of switches than the receiver. Such a quasi-deterministic source could also potentially be used in a single photon on-off keying scheme capable of surpassing the maximum conventionally achievable channel capacity in the low-light regime [4]. To test the potential realistic potential of a Green machine receiver, I constructed a two interferometer test-bed consisting of a switch and an UMZI with an 800-ps delay (as shown in Fig. 19). These two interferometers were sufficient to test the underlying switching and interference upon which a receiver would be built. The end to end spliced loss of the interferometers in the testbed was 0.5dB and the added loss of the external DWDMs for filtering reference reflections and further extinguishing the pump below the sensitivity of the classical detector was 1.4dB, connectorized. I later determined the external filtering losses could be as low as 0.8 dB spliced. I tested the transformation of this interferometer network using pairs of 200-ps FWHM, 800-ps separated, 1305-nm chopped CW signal pulses. I put a π phase-shift on the second pulse in every other pair to test the effect on both possible phase combinations for a two pulse codeword. In each signal pulse pair, the second pulse was switched into the short arm of the UMZI by a ~1554-nm, 1600-ps, chopped CW, pump pulse, so it would interfere with the leading pulse. These pulse pairs arrived at a rate of 5 MHz (chosen because of pump pulse duty cycle and amplification considerations). Factoring out the external filtering losses, I measured 1.7dB (out of a possible 3dB) signal gain in the leading temporal mode with a 97% contrast to the trailing temporal mode. Insertion loss of the interferometer system accounts for 0.5dB gain penalty, switching and stabilization accounts for 0.275dB, and the remaining 0.5dB penalty was due to filter connector losses. It should be noted that interference always maximized the amplitude of the pulse in the earlier temporal mode, but maximized in opposite spatial modes depending on whether the input pulses had matching or opposite phases. The maximum extinction between spatial modes in both of these cases was 99% for pulse pairs with like phases and 98% for pulse pairs with opposite phases. Data showing signal gain, temporal mode extinction and spatial mode extinction are shown in Fig.20. From the testbed data, I determined that the switching was actually sub-optimal—reduced to 91.5% extinction from 95%—the average phase error in the switch was ~.07 radians, and the average phase error in the UMZI was equal and opposite ~-0.07 radians. The effect of the reduced switching is that the extinction of one temporal mode to the next never reaches a maximum in Fig. 20. This sub-optimal switching can be easily explained as a reduction in power from the EDFA system which boosts the pump pulse to the intensities required for XPM. Over time, the fiber connectors in the path of the intense pump pulse become less transmissive (likely being degraded by the high, &gt;100 mW, average power), attenuating the power which couples into the switch, which in turn reduces switching. This could be fixed by cutting off all the fiber connectors after the gain fiber in the EDFA and splicing on replacements. The Green Machine transformation should be invariant with signal power, so a classical test was sufficient to characterize the interferometeric processing of the fiber network. However, the target regime for the signals is below the single photon level, so I also characterized the noise generated by this system at the single-photon level using a 50-MHz gate Nucrypt CPDS-2 avalanche photodiode SPD system. There were two sources of noise photons in this system: the Ref field, and the pump field. The Ref field noise was simply reflections of Ref photons off of optical components which were not completely leaked through the output filtering. I measured the noise photons generated by coupling the ~1 μW Ref into and out of the interferometers via 20-dB couplers to be a noise of 5.68×10-4 per detector gate (1.49×106 photons per second). Pump related noise could come from several sources, pump-wavelength photons leaking through the filters into signal detection fibers, inverse Raman scattering into the signal band, and Raman scattering beyond the bandwidth of the WDMs. I eliminated these first modes of pump noise using extra WDMs (to suppress the pump wavelength) and a bending-loss filter (to shed the longer wavelengths) which incurred an extra loss penalty of 0.24dB at 1305-nm when spliced. After installing this new filtering, I measured 1.3×10-3 noise photons per pump pulse (see Fig. 21). Adding extra 100 m of fiber before the switch proportionally increased the number of photons per pump pulse, confirming that it was, in fact, inverse Raman scattering to the signal band. Unfortunately, this Raman scattering comes in at two orders of magnitude higher than expected from previous reports[2-3]. Since the level of Raman scattering is on the same order of magnitude as the low end of the signal power range I have been modelling, it will clearly have some effect on receiver performance. There are two straightforward approaches for reducing the Raman Scattering, red-detuning the pump so the photons have to inverse scatter over a broader wavelength range (which is a more unlikely event), and cooling the fiber. A fellow student, Samantha Nowierski, investigated both of these techniques. She experimentally verified that red-detuning the pump by ~10 nm (from 1554- nm to 1564-nm) reduced Raman scattering at 1305-nm by a factor of ~3. She also modelled Raman in cooled fiber following the extensive theoretical treatment in [22] and experimentally verified her prediction that Raman scattering can be reduced by a factor of ~10 by liquid Nitrogen cooling the pump arm of the switch. Accounting for all of the performance parameters measured from the test-bed switching network and the extra ~1dB filtering losses required to suppress noise below the single-photon level, I modelled the performance of an N=3 Green Machine receiver and found that it could surpass ideal Homodyne detection as is using 32-slot codeword PPM. I also modelled the receiver accounting for repaired (to 95%) switching extinction and both Raman improvements. In this case of repaired switching, the required PPM order was lower, and only 16 slots were necessary to surpass ideal homodyne detection. See Fig. 22 for this comparison. Red detuning the pump reduces Raman below the level of the Ref noise photons, but provides only a small improvement in maximum PIE (~0.4 dB gain), leaving the system limited by the Ref noise source. With the Ref noise contribution at it’s current level, there is no benefit to liquid Nitrogen cooling the XPM fiber.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><a href="http://dx.doi.org/10.1103/physreva.93.052321" target="_blank" rel="noopener noreferrer">Functional quantum computing: An optical approach</a></li><li><strong>11533-1363186299413.jpg</strong> — Project Image Implementing a Near-Optimal Optical Receiver for Inter-Planetary Communication</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/11533">https://techport.nasa.gov/projects/11533</a>
+    </div>
+  </div>
+</body>
+</html>

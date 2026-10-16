@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>There’s an App for That: Core Flight System Software Development for Mars Ascent Vehicle and Lander Technologies | NASA TechPort Project 94961</title>
+  <meta name="description" content="ES52 proposes to develop core Flight System (cFS) application source code to be run on a JPL-developed Sphinx Flight Computer to control a specific hardware component (i.e. valve, IMU, camera), providing flight software that will ultimately be used by MAV and ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/94961">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 94961</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">MSFC IRAD</span>
+          <span class="badge">TX07.2.1</span>
+        </div>
+        <h1>There’s an App for That: Core Flight System Software Development for Mars Ascent Vehicle and Lander Technologies</h1>
+        <div class="meta-id">NASA TechPort Project ID: 94961</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/94961" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>ES52 proposes to develop core Flight System (cFS) application source code to be run on a JPL-developed Sphinx Flight Computer to control a specific hardware component (i.e. valve, IMU, camera), providing flight software that will ultimately be used by MAV and Lander Tech projects. This work will allow ES52 a broad view of implementing cFS on a representative set of hardware and develop mission-specific applications that have benefits to upcoming projects. It will also give ES52 an opportunity to consider the development of more generic sensor applications that can be used across many future projects and missions. Such generic applications will allow MSFC to contribute to the catalog of capability available with cFS, reducing time and cost to develop software for future missions. cFS is widely used by other NASA Centers, Space Agencies around the world, and commercial space partners, but MSFC has not had the opportunity to work in-depth with cFS on a full flight system. &nbsp;Building this capability in-house benefits MSFC by positioning the Center to capture additional flight software work on current and future projects; allowing MSFC flight software engineers to take a more active role in helping private partners develop flight software for the CATALYST missions; and enabling MSFC to be smarter buyers of software from commercial vendors.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The Core Flight System (cFS), developed at Goddard Space Flight Center (GSFC), provides a platform independent, reusable software architecture, which allows projects to focus software development efforts on mission-specific needs in the form of a cFS application, a source code module developed to perform a specific task. These applications can communicate across the cFS architecture to carry out the necessary mission tasks, such as commanding, hardware control, and fault detection.</p><p>Several NASA missions, including the Lunar Reconnaissance Orbiter (LRO), Global Precipitation Measurement (GPM), and Magnetospheric Multiscale (MMS), have successfully used cFS. cFS has also been used by the European Space Agency and various universities and commercial companies. In addition, cFS has also been chosen as the flight software architecture for the upcoming Mars Ascent Vehicle (MAV) and multiple Lander Technology projects and proves promising for future lander, habitat, small satellite and other applications.</p><p>Expertise in the development of mission-specific flight software that will interface with the Core Flight System (cFS) architecture is critical to securing flight software development work at MSFC on future missions to support landers, ascent vehicles, habitats and other potential applications. Currently, MSFC ES52 is component-level software for Lunar CATALYST partners, but this work has been largely isolated from full-scale flight system development. While this has provided the team to gain some basic working knowledge of cFS in a generic Linux environment, it has not afforded the opportunity to work through all the design considerations when building a flight system using the cFS architecture or work with understanding its performance on relevant flight computers and operating systems. In this project, ES52 proposes to use the Sphinx Flight Computer (currently baselined for the Mars Ascent Vehicle mission) as a hardware platform to run cFS and develop mission-specific application source code that will control a hardware component (i.e. valve, IMU, camera) to be used by the MAV and Lander Tech projects.</p><p>cFS comes with a series of built-in &lsquo;Core Applications&rsquo; that are ready to use out of the box.&nbsp;There are also a series of cFS applications that require customization based on the specific mission requirements. These applications provide a framework which can be extended and customized, which can save developers time.&nbsp;</p><p>A mission also requires the development of specific applications, shown in the figure as empty lots, since these applications must be created from the ground up. Software development time could be improved if more &ldquo;framework&rdquo; applications were available.</p><p>As such, ES52 proposes to survey the existing specific and high level cFS applications available across the Agency, and work with the MAV and Lander Tech projects to determine which area of the flight system needs to be addressed most and which application would provide the most benefits. ES52 will then use proven software development processes to define high level requirements for the application, and develop it with creating a framework application that will be beneficial to many future projects in mind.</p><p>The ES52 team will work with ES36 to get the MAV-provided hardware connected and running in a lab environment and to determine available sensors that can be used for development and testing. The teams will collaborate to install and run the cFS open source release on the Sphinx flight computer. The ES52 team will spend the majority of the time during this TIP project developing the cFS applications, with input and oversight from the MAV and Lander Tech projects. The application will likely focus on Guidance, Navigation, and Control sensors such as an Inertial Measurement Unit (IMU), but that is subject to change based on hardware availability and project needs.</p><p>While the work proposed is similar to what would normally be project-funded flight software development work, to date, MSFC has not been tasked with software development work on the MAV or Lander Tech projects outside of the Lunar CATALYST task currently funded through ED&rsquo;s Strategic Initiatives. Completing this project will allow MSFC to work with the projects to prototype code that will anticipate future project needs while demonstrating MSFC&rsquo;s expertise. In addition, MSFC would be able to consider cross-project needs and abstract project-specific code to begin building a portfolio of applications for future projects.&nbsp; By the end of the project, the overall technical objectives of the work are for ES52 to:</p><ol><li>Gain expertise implementing software using cFS in a more realistic flight environment on the Sphinx flight computer,</li><li>Apply this new expertise to develop flight software that will be delivered to the MAV and Lander Tech projects for future use, and</li><li>Consider ways to improve code for inclusion in a more generic portfolio of applications available at the start-up of a new project.</li></ol><p>Consideration of TRL for a software project is difficult to assess; however, the open source release of cFS (with a few exceptions on specific applications) has flown successfully on numerous projects and can be considered a TRL of 9. Anytime additional applications are created, they would need to be reassessed independently. As such, at project beginning, the application code would be non-existent with no TRL. By the end of the project, ES52 will have demonstrated working source code in a lab environment with an integrated flight computer and hardware sensor, placing it at a TRL 4.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>94961</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: MSFC IRAD (MSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX07.2.1: Logistics Management</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2018-10-01</td></tr>
+<tr><th>Project End Date</th><td>2019-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Office of the Chief Technologist (OCT)</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars, Others Inside the Solar System, Outside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Stefanie H Justice (Principal Investigator) &lt;stefanie.h.justice@nasa.gov&gt;; Stefanie H Justice (Project Manager) &lt;stefanie.h.justice@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>John W Dankanich (Program Manager) &lt;john.dankanich@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2019-03-19</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: TBD</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/94961">https://techport.nasa.gov/projects/94961</a>
+    </div>
+  </div>
+</body>
+</html>

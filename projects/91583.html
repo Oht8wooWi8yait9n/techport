@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Optimizing a Two-Step Laser Time-of-Flight Mass Spectrometer for In Situ Astrobiology Investigations | NASA TechPort Project 91583</title>
+  <meta name="description" content="The search for the presence of extant or extinct life on any planetary surface outside of Earth&#x27;s biosphere begins with the identification and characterization of biosignatures within geologic samples. I will identify the spectral characteristics of amino acid">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91583">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91583</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX08.3.4</span>
+        </div>
+        <h1>Optimizing a Two-Step Laser Time-of-Flight Mass Spectrometer for In Situ Astrobiology Investigations</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91583</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91583" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The search for the presence of extant or extinct life on any planetary surface outside of Earth's biosphere begins with the identification and characterization of biosignatures within geologic samples. I will identify the spectral characteristics of amino acids and other chains of basic organic compounds essential to life on Earth for use as analogs for the identification of extraterrestrial biosignatures. There are relatively few geologic samples of other planetary surfaces available to us on Earth, requiring most data acquisition to be performed in situ. Cost and engineering constraints placed on lander-based scientific instruments require these instruments to be compact, low-power, and environmentally versatile. I propose to test and optimize a two-step laser desorption time-of-flight mass spectrometer (L2MS) for organic and biosignature identification. I will test several desorption and ionization laser configurations on a suite of organic and inorganic sample classes to build the phase space of the optimal L2MS laser configurations. I will also apply several statistical algorithms to the data obtained with the L2MS and existing, complementary instrumentation available at NMSU, including IR and UV reflectance spectrometers and a laser-induced breakdown spectroscopy (LIBS) instrument to quantify the effectiveness of these instruments as biomarker identification tools and exploit the unique mineralogical and astrobiological results each instrument contributes. The L2MS operates by first desorbing material on a sample surface using a pulsed IR laser, and subsequently ionizing the analyte using a pulsed UV laser directed orthogonally to the IR laser. The desorbing laser pulse generates a neutral plume of analyte from a solid sample. After a tunable delay, the ionizing laser pulse intersects the neutral plume above the sample surface. When the laser energy exceeds a threshold value, ions are generated in the plume and accelerated into the instrument for mass analysis. I will determine the ideal desorbing and ionizing laser configurations by finding the optimal laser wavelengths, timing between desorption and ionization of the neutral plume, and geometric position of the ionizing laser relative to the desorption laser. The optimized L2MS configuration will be dependent on the molecular structure of the organic sample, and in order to reduce excessive fragmentation, I will determine the optimal configuration for several sample classes including synthetic PAHs, amino acids, nucleobases, peptides, and naturally occurring organics within field samples. The NASA Science Instruments, Observatories, and Sensor Systems Roadmap requires technological advancements in biological detection and characterization to achieve a ppb sensitivity and an in situ characterization of organic materials, and advancing the aforementioned technologies will ensure NASA's continued leadership in these areas. The completion of this project will address these NASA technology and astrobiology roadmap objectives through the development and optimization of the L2MS instrument, exploring the detection capabilities of the L2MS on a broad, systematic sample suite, and determining how results from several spectrometer instruments can be used to inform the laser configuration of the L2MS. This high priority, innovative technology development will create new capabilities for future NASA missions.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The NASA Science Instruments, Observatories, and Sensor Systems Roadmap requires technological advancements in biological detection and characterization to achieve a ppb sensitivity and an in situ characterization of organic materials, and advancing the aforementioned technologies will ensure NASA's continued leadership in these areas. The completion of this project will address these NASA technology and astrobiology roadmap objectives through the development and optimization of the L2MS instrument, exploring the detection capabilities of the L2MS on a broad, systematic sample suite, and determining how results from several spectrometer instruments can be used to inform the laser configuration of the L2MS. This high priority, innovative technology development will create new capabilities for future NASA missions.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91583</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.3.4: Environment Sensors</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2013-08-01</td></tr>
+<tr><th>Project End Date</th><td>2016-12-20</td></tr>
+<tr><th>Lead Organization / Center</th><td>New Mexico State University-Main Campus (NMSU) — Las Cruces, New Mexico</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>New Mexico (NM)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Outside the Solar System, Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Nancy J Chanover (Principal Investigator); Kyle Uckert (Co-Investigator) &lt;kyle.uckert@jpl.nasa.gov&gt;; Stephanie A Getty (Project Manager) &lt;stephanie.a.getty@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong>: The ability to acquire spectral measurements of geologic samples on other terrestrial bodies in situ is becoming increasingly important, especially in instances where sample return is impractical. I conducted an investigation into the capabilities of a two-step laser desorption time-of-flight mass spectrometer (L2MS) for in situ organic detection, which could be used on future landed missions to planetary bodies including Mars, Europa, Enceladus, Titan, or NEOs, to inventory the surficial organic species. I used complementary data sets to inform and optimize the L2MS to build the phase space of optimal instrument configurations and organic species. This is a crucial step for the detection of biosignatures on planetary surfaces using this innovative and promising space technology for the detection of fragile biomarkers. Developing an L2MS for non-destructive organic detection has helped address NASA technology roadmap objectives through the evaluation of biomarker detection results of several complementary instrumentation techniques. During my NSTR fellowship, I tested and optimized an L2MS for organic and biosignature identification. I tested several desorption and ionization laser configurations on a suite of organic and inorganic sample classes to build the phase space of the optimal L2MS laser configurations. I also applied several statistical algorithms to the data I obtained with the L2MS and existing, complementary instrumentation available at NMSU, including an acousto-optic tunable filter (AOTF) IR reflectance spectrometer, a laser-induced breakdown spectrometer (LIBS), a scanning electron microscope (SEM), an energy dispersive x-ray spectrometer (ERS), and an X-Ray Diffraction (XRD) &amp; X-Ray Fluorescence Spectrometer (XRF) (available at NASA GSFC) to quantify and compare the effectiveness of these instruments as biomarker identification tools. To determine the optimal configuration of the L2MS for a specific biosignature or class of prebiotic organic molecules, I measured a suite of samples using several IR desorption wavelengths, which correspond to absorption regions in IR reflectance spectra collected by the AOTF IR point spectrometer. Specifically, I addressed the following key questions: • What combination of in situ techniques is most effective in identifying endogenic and exogenic organics within samples? • How can a mass spectrometer be designed, implemented, and optimized to analyze key organic materials, including fragile biomarkers, at a planetary body, while simultaneously minimizing spacecraft resource requirements? • How can statistical algorithms be applied to data obtained with several complementary in situ instruments to infer the presence of extant or extinct life? I answered these scientific questions through the following technology research contributions: • laser configuration: I determined the ideal desorbing and ionizing laser configurations by optimizing the timing of the ionizing laser relative to the desorption laser. The energetics of the desorption process and spatial distributions of various complex organics within a plume can vary based on properties of the sample and of the molecule itself. An experimental effort to characterize gas-phase distributions at the LDMS inlet is critical in optimizing this instrument for biosignature detection. • laser wavelength: I determined the optimal wavelength of the UV and IR lasers used for ionization and desorption. The degree of fragmentation for a complex organic species is likely influenced by the energy of the ionizing and desorbing lasers. In addition to adjusting the pulse timing, I tested 2.7–3.1 μm and 3.0-3.4 µm tunable desorption lasers, a 3.45µm breadboard laser, and a 266 nm Nd:YAG ionization laser (commercial and breadboard) to determine which are best suited for this application. • systematic sample suite investigation: I expanded the suite of sample classes, to include synthetic PAHs, amino acids, nucleobases, peptides, and meteoritic powders, and field samples that are more closely analogous to some planetary surface materials. By collecting data on several minerals, containing both synthetic organic dopants and natural organic constituents, I was able to test the sensitivity of the optimized laser configuration to sample class, mineral matrix, and microstructural effects that may reflect details of formation or depositional processes on a parent body.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="http://dx.doi.org/10.1029/2022ea002370" target="_blank" rel="noopener noreferrer">The Development and Demonstration of the Portable Acousto‐Optic Spectrometer for Astrobiology in Cave Environments</a></li><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91583">https://techport.nasa.gov/projects/91583</a>
+    </div>
+  </div>
+</body>
+</html>

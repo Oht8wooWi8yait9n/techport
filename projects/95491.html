@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leveraging Dynamical Instabilities to Design Efficient Mission Trajectories | NASA TechPort Project 95491</title>
+  <meta name="description" content="Modern results in chaos theory have shown that many systems, including the n-body problem (n &gt; 2), demonstrate complex behavior which is extremely sensitive to initial conditions. Recently, there has been major progress in quantifying such complicated motions;">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/95491">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 95491</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX17.3.2</span>
+        </div>
+        <h1>Leveraging Dynamical Instabilities to Design Efficient Mission Trajectories</h1>
+        <div class="meta-id">NASA TechPort Project ID: 95491</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/95491" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Modern results in chaos theory have shown that many systems, including the n-body problem (n > 2), demonstrate complex behavior which is extremely sensitive to initial conditions. Recently, there has been major progress in quantifying such complicated motions; the trajectories can be understood by studying a network of invariant objects which the orbits move around. When some of the amplification of perturbations predicted by chaos theory happen in a direction needed for the goals of a mission, a small delta V at a carefully chosen time can have a large beneficial effect. This proposal aims to map out and characterize the geometric structures organizing sensitivity to initial conditions in some multi-body systems of interest. Combining this knowledge with the use of small impulsive maneuvers, we aim to design more efficient trajectories in these systems, especially for orbits traveling near a single resonance or transitioning between different resonances. Among the most important geometric objects organizing instabilities are normally hyperbolic invariant manifolds (NHIM); a type of instability known as diffusion is often observed near these structures. The first step in this project will be to identify NHIM's and other relevant structures near resonances of interest, and to mathematically investigate the specific mechanisms by which diffusion occurs at each resonance. Subsequent work will be done to find small maneuvers that decrease the time of flight required to move through these low-energy trajectories. The final component of this research will be the development of software and code to implement the mission design algorithms found in the previous parts of the project. These low-energy trajectory design methods are of possible use in the design of tours of planetary systems, such as the moons of Jupiter or Saturn, as well as potentially enabling new missions for deep space cubesats and other propellant-limited spacecraft.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>These low-energy trajectory design methods are of possible use in the design of tours of planetary systems, such as the moons of Jupiter or Saturn, as well as potentially enabling new missions for deep space cubesats and other propellant-limited spacecraft.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>95491</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX17.3.2: Dynamics Analysis, Modeling, and Simulation Tools</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2018-08-01</td></tr>
+<tr><th>Project End Date</th><td>2022-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Georgia Institute of Technology-Main Campus (GA Tech) — Atlanta, Georgia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Georgia (GA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Rafael de la Llave (Principal Investigator); Bhanu S Kumar (Co-Investigator) &lt;bhanu.s.kumar@jpl.nasa.gov&gt;; Rodney L Anderson (Project Manager) &lt;rodney.l.anderson@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Transitioned To</strong> (National Science Foundation): Mathematical Sciences Postdoctoral Research Fellowship received to continue work.</li><li><strong>Closed Out</strong>: Over the course of this fellowship, the primary goal of this research was to compute and characterize connections between the normally hyperbolic invariant manifolds organizing sensitivity to initial conditions in multi-body celestial models of interest. A normally hyperbolic invariant manifold (NHIM) is a higher dimensional geometric object which has natural pathways to and from the NHIM. Moreover, NHIMs in celestial systems generally themselves contain smaller dimensional invariant manifolds. For instance, in the planar circular restricted 3-body problem (PCRTBP), 2D NHIMs are foliated by 1D periodic orbits. And in higher-dimensional multi-body celestial models (e.g. periodically-forced PCRTBPs, spatial CRTBP), NHIMs are often composed entirely or largely of quasi-periodic orbits (also known as invariant tori). Our approach to the given objectives was to thus develop methods of studying these smaller dimensional invariant manifolds which usually comprise much of the NHIMs. For this, we started with the simpler case of the PCRTBP, and then moved into the more complex case of periodically forced PCRTBP models. In the PCRTBP, we developed an implementation of the parameterization method appropriate for use with maps defined by numerical integration, rather than closed form mathematical expressions. This gave us polynomial representations of stable and unstable manifolds to and from periodic orbits, which then can be combined with a Poincaré section and bisection to help find connections between them. For the more complicated periodically forced PCRTBP case, it was necessary to develop some new methodologies for computing the relevant invariant tori and connections between their manifolds, given the higher dimensionality of the model. For the computation of tori, we extended some tools which had been developed for computing tori in lower-dimensional non-celestial dynamical systems to the periodically-forced PCRTBP; the new tools have better computational efficiency as compared to torus computation methods used in previous astrodynamics studies, and are also likely extendable to the spatial CRTBP. For computing manifolds, we implemented a Fourier-Taylor parameterization method related to the PCRTBP one, and then developed a Levi-Civita regularization for periodically-forced PCRTBP models to use in manifold globalization. And for the computation of heteroclinic connections from one torus to another, we developed very fast GPU-assisted methods inspired by computer graphics techniques to help rapidly search the higher dimensional phase space for intersections of stable and unstable manifolds. The new tools developed are significant results in and of themselves. However, given the significant interest at NASA for Europa exploration, we also have been applying them to the case of transfers from Jupiter-Ganymede to Jupiter-Europa resonances in a Jupiter-Europa-Ganymede restricted 4-body model. Indeed, the intersection of stable and unstable manifolds of resonances creates the large scale instability and sensitivity to initial conditions which we sought to study in our original goal. We have found the Jupiter-Ganymede 4:3 to Jupiter-Europa 3:4 resonance pair to be a promising candidate for potential transfers, although we also discovered that the Jupiter-Ganymede 4:3 resonance experiences complicated phenomena when Europa is taken into account, requiring further (ongoing) study for a full characterization.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/strg#.VQb6T0jJzyE" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/95491">https://techport.nasa.gov/projects/95491</a>
+    </div>
+  </div>
+</body>
+</html>

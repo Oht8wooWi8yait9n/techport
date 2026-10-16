@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lunar Dynamic Power Conversion Study (DYNAPOW-STUDY) | NASA TechPort Project 184609</title>
+  <meta name="description" content="Lunar Dynamic Power Conversion Study (DYNAPOW-Study) is designed to address a draft Foundational Capability in the Advanced Power and Thermal category identified by NASA&#x27;s Space Technology Mission Directorate (STMD). This Foundational Capability is titled “Rad">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/184609">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 184609</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">GCD</span>
+          <span class="badge">TX03.1.4</span>
+        </div>
+        <h1>Lunar Dynamic Power Conversion Study (DYNAPOW-STUDY)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 184609</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/184609" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Lunar Dynamic Power Conversion Study (DYNAPOW-Study) is designed to address a draft Foundational Capability in the Advanced Power and Thermal category identified by NASA's Space Technology Mission Directorate (STMD).  This Foundational Capability is titled “Radioisotope based electrical and thermal energy generation utilizing non-plutonium sources." DYNAPOW aims to develop a roadmap for the maturation of Stirling-based dynamic power conversion technologies for spaceflight. This effort will include the following efforts.- Task 1. Perform a study to document the current watt-class state-of-the-art (SOA) Stirling-based radioisotope power systems and identify gaps hindering application of dynamic radioisotope power systems (RPS).- Task 2. This study will also evaluate the production rates for 238Pu-based and non-238Pu radioisotope fuels as potential heat source for lunar objectives, including mobility and scientific return. The report will also provide observations to the landscape of alternate isotopes and their applicability for use in spaceflight missions of varying durations and power levels.- Task 3. Develop a roadmap to increase the technology readiness level (TRL) of Stirling-based radioisotope power systems (RPSs) in the watt (W) class, with the goal of flying a mature technology that can enable future lunar science objectives and other spaceflight applications.A high-level description on how this mature Stirling-based technology could enhance development of kilowatt (kW) class fission surface power (FSP) will be included as complimentary to the roadmap. The deliverables of this study will also include proposal of follow-on efforts with a clear path to answer questions and develop confidence in baselining this technology for future lunar science and technology demonstration missions.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          A Stirling-based radioisotope power system (RPS) offers several advantages for future potential exploration missions in NASA's Moon to Mars Objectives by providing reliable and efficient power for future spacecraft, landers and surface operations. The study outcomes of Lunar Dynamic Power Conversion Study (DYNAPOW-Study) task intend to assess radioisotope heat source production rates and demands of 10-year outlook (2026 to 2036), and to identify current technology gaps and to enable future applications of Stirling-based radioisotope power systems (RPSs) to support space lunar industries and commercial ventures. The study recommendations will also inform the lunar and planetary science community and mission planners about current efforts to mature Stirling-based radioisotope power conversion technology and alternative isotopes that have recently been initiated in the broader community. By addressing these key areas, the DYNAPOW-Study will make a positive impact to unlock sustainable space industries, enabling long-term human presence on the Moon while fostering economic opportunities in space.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>184609</td></tr>
+<tr><th>Acronym</th><td>DYNAPOW-STUDY</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Game Changing Development (GCD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX03.1.4: Dynamic Energy Conversion</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX03: Aerospace Power and Energy Storage; TX14: Thermal Management Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 0 | Current TRL: 0 | Target End TRL: 0</td></tr>
+<tr><th>Project Start Date</th><td>2024-12-01</td></tr>
+<tr><th>Project End Date</th><td>2026-05-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Air Force Research Laboratory (AFRL) — Notre Dame, Indiana; Zeno Power Systems — St. Louis, Missouri; Blue Origin, LLC — Kent, Washington</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Ohio (OH)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge, Mars, Others Inside the Solar System, Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Su  Chi (Project Manager) &lt;su.c.chi@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Mark N Thornblom (Program Manager) &lt;mark.n.thornblom@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-07-17</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Lunar Dynamic Power Conversion Study (DYNAPOW-Study) is designed to address a draft Foundational Capability in the Advanced Power and Thermal category identified by NASA&#x27;s Space Technology Mission Directorate (STMD). This Foundational Capability is titled “Radioisotope based electrical and thermal energy generation utilizing non-plutonium sources.&quot; DYNAPOW aims to develop a roadmap for the maturation of Stirling-based dynamic power conversion technologies for spaceflight. This effort included the following efforts. - Task 1. Perform a study to document the current watt-class state-of-the-art (SOA) Stirling-based radioisotope power systems and identify gaps hindering application of dynamic radioisotope power systems (RPS). - Task 2. This study also evaluated the production rates for 238Pu-based and non-238Pu radioisotope fuels as potential heat source for lunar objectives, including mobility and scientific return. The reports uploaded to ASTRA provide observations to the landscape of alternate isotopes and their applicability for use in spaceflight missions of varying durations and power levels. - Task 3. Develop a roadmap to increase the technology readiness level (TRL) of Stirling-based radioisotope power systems (RPSs) in the watt (W) class, with the goal of flying a mature technology that can enable future lunar science objectives and other spaceflight applications. A high-level description on how this mature Stirling-based technology could enhance development of kilowatt (kW) class fission surface power (FSP) will be included as complimentary to the roadmap. The deliverables of this study also include proposal of follow-on efforts with a clear path to answer questions and develop confidence in baselining this technology for future lunar science and technology demonstration missions.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/184609">https://techport.nasa.gov/projects/184609</a>
+    </div>
+  </div>
+</body>
+</html>

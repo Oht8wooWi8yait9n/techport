@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noninvasive Biosensor Algorithms for Continuous Metabolic Rate Determination | NASA TechPort Project 23249</title>
+  <meta name="description" content="NASA is designing new spacesuits to meet the needs of future space exploration. Real-time measurement of metabolic rate during astronaut activity is a key function of the biosensor suite which is planned for the new spacesuit. This project is developing novel ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23249">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23249</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.4</span>
+        </div>
+        <h1>Noninvasive Biosensor Algorithms for Continuous Metabolic Rate Determination</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23249</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23249" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>NASA is designing new spacesuits to meet the needs of future space exploration. Real-time measurement of metabolic rate during astronaut activity is a key function of the biosensor suite which is planned for the new spacesuit. This project is developing novel near infrared spectroscopic (NIRS) algorithms and sensors for real-time assessment of metabolic rate (measured as the rate of oxygen consumption, VO2). This capability is intended to be incorporated into a smart system advising astronauts on their use of consumables during extravehicular activity (EVA). The specific aims of this project include the development of algorithms to calculate VO2 from NIRS spectra and validation of the algorithms during exercise in two different ground-based protocols which simulate plasma volume reduction during spaceflight. An additional aim of this project is to support the EVA suit testing program by developing small, lightweight and robust sensors which can be used within the spacesuit to evaluate metabolic cost of the suit itself, on individual muscles.</p><p>Over the last year we have made significant progress in developing the components of the algorithm to calculate VO2 from NIR spectra. We have completed the initial algorithm to estimate stroke volume and made advancements in improving the accuracy of our hematocrit calculation. We have further optimized our measurement of muscle oxygen saturation and demonstrated its high degree of accuracy under a number of potential confounding factors. Most important for space application, we demonstrated accuracy under conditions that simulate factors that occur during fluid shifts, i.e., variation in blood and water fraction, as well as changes in blood vessel size.</p><p>We completed data collection for a study of pharmacologically induced hypovolemia, one of the validation studies we will use to assess performance of our VO2 algorithms. Initial data analysis showed that noninvasively determined NIRS parameters, muscle oxygen saturation, and hydrogen ion threshold were not different between the hypovolemia and normovolemia exercise sessions. This result is in agreement with the finding that lactate at peak exercise was not different between the 2 groups.</p><p>With synergistic funds from the US Army Medical Research Command we continued to develop the solid state sensor and software to support it. The first systems were delivered to Johnson Space Center (JSC) for testing in the Exercise Physiology lab. Hardware and software usability was greatly improved over the fiber optic system according to the users.</p><p>This project has produced a prototype wearable sensor that terrestrial doctors and their patients can use to track and optimize exercise in the management of health and fitness, as well as during related applications in the care of critically ill patients. A company has been formed to commercialize the sensor. The company is on target to submit a 510(k) application to the FDA (Food and Drug Administration) in early 2011.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>This work will have direct Earth-based application. The fitness and exercise applications we are developing can be used to assist in the training and evaluation of elite and recreational athletes. This direct application of interest to NASA for assessing fitness in space may be useful to assess success of physical therapy in rehabilitating patients with muscle injury or atrophy.</p><p>The sensor, which also is of tremendous interest to the Army, will have application in emergency response vehicles, emergency rooms, and hospitals. Pre-hospital applications include assessing the severity of shock and triaging multiple casualties, as well as providing a sensor for a smart medical system to guide resuscitation from hemorrhage. In the Intensive Care Unit (ICU) we expect that this monitor will find application in helping provide early identification of patients with hemodynamic instability before they go into shock.</p><p>We are partnering with the Armed Forces Research Institute of Medical Science (AFRIMS) in Bangkok, Thailand to study the application of our sensor for the early identification of shock in children with Dengue hemorrhagic fever. This study is funded by Telemedicine &amp; Advanced Technology Research Center (TATRC). We have received IRB (institutional review board) approval and traveled to Bangkok to train the research nurses. Patient enrollment will begin in September.</p><p>The company formed to commercialize the sensor has received a Phase II STTR (Small Business Technology Transfer) grant from the US Army. This effort is focused on obtaining FDA clearance through the 510(k) mechanism, to market the sensor in the US. The company is on track to submit this application in early 2011.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23249</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.4: Contactless and Wearable Human Health and Performance Monitoring</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2007-10-01</td></tr>
+<tr><th>Project End Date</th><td>2010-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>National Space Biomedical Research Institute (NSBRI) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Wyle Integrated Science and Engineering Group; Reflectance Medical Inc.</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Massachusetts (MA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Babs R Soller (Principal Investigator); Stuart M Lee (Co-Investigator) &lt;stuart.lee-1@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2020-10-27</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Our collaborators in the JSC Cardiovascular lab implemented a technique to determine stroke volume during exercise using ultrasound imaging. Data collection using this technique has been completed for 31 subjects. Spectral data collection has been completed on 6 subjects, both pre- and post-bed rest. Additionally, spectral data collection has been completed on 5 subjects in the hypovolemia study. Data review and analysis is underway. Initial data review indicated that we needed to gain a better understanding of the impact of fluid shifts on our NIRS measurements. We conducted a stand test to determine the effect of postural changes on our NIRS measurements, including an independent assessment of blood volume using regional bioimpedance measurements. We learned in this study that it takes 15 min after a transition from standing to supine for the blood volume to normalize across all anatomical sites. We took advantage of this information in a study at UMass (University of Massachusetts) to investigate the sensor&amp;#39;s ability to measure SmO2 on different muscles through various fat thicknesses. After 15 min of supine rest to allow blood to normalize across the body we demonstrated on 6 subjects that SmO2 measurements were equal, despite the choice of muscle used for the measurement (shoulder, calf, upper thigh, or lower thigh). This study included fat thickness that ranged from 5-19 mm. We have received synergistic funding from non-NASA sources to develop a solid state, low profile sensor that can be worn in a space suit for determining metabolic rate. During this year we completed development of the prototype and demonstrated that it was equivalent to our fiber optic model in the measurement of muscle oxygen saturation and pH. With additional National Space Biomedical Research Institute (NSBRI) support we also developed the technology to run the sensor off a battery pack and augmented our system automation to include on-the-fly error checking and correction. The requirements for the additional automation features were the result of feedback from our NASA collaborators, based upon their previous experience using our original fiber optic system. In exercise studies we found that the optical signal can degrade during certain exercise periods. The new sensor is able to detect these problems and correct them within a few seconds, so no data is lost. SUPPLEMENTAL INFORMATION FOR October 2009-September 2010 (submitted November 2010): - Over the last twelve months spectral data collection has been completed on 15 subjects, both pre- and post-bed rest. The spectral data collected at JSC is uploaded to a shared server. All spectra are examined for spectral integrity. Spectral parameters SvO2, Hb, and SaO2 are then averaged over 30 sec intervals and matched to the VO2 data determined with the metabolic cart. When the stroke volume algorithm is completed, VO2 will be calculated from the spectra and compared to the gold standard measurement. - Data collection for the hypovolemia study was completed. A total of 12 subjects (8 male and 4 female) completed the study. NIRS data was processed the same way for the hypovolemia study as is described above for the bed rest studies. Additionally, the hydrogen ion threshold was calculated from the spectra for both the normovolemic and hypovolemic exercise sessions. There were no differences observed between normo and hypovolemic exercises in either H+ threshold or the values of SmO2 through the exercise stages. This is consistent with the observation of similar blood lactate at peak exercise. - Data collected from 10 healthy subjects were used to determine an initial model for stroke volume. This model was used to estimate VO2 for the same subjects. Estimated accuracy in calculating VO2 was not good enough, with larger errors occurring for exercise levels which are greater than 60% of maximum workload. The source of the error was traced to poor estimation of stroke volume at higher workloads. We continue to work on improving the estimation of stroke volume. - We made significant improvements in the accuracy and reproducibility of our algorithms to calculate muscle oxygen saturation and hemoglobin concentration. A paper describing the improvements in the SO2 model and its validation on simulated spectra and high fidelity phantom materials is in press at a biomedical optics journal. - Two solid state sensors were delivered to Johnson Space Center, along with significantly improved user interface software. The new user software incorporates many of the comments from JSC users of our earlier system. The new system reduces the calibration time, automatically resets the sensor during periods of low and high blood flow, and allows incorporation of user comments. Users in the JSC Cardiovascular and Exercise Laboratories were trained on the system. The new system and software were well received. Initial studies with the device have begun in the Exercise Lab. EDITOR&amp;#39;s NOTE (11/9/2010): Principal Investigator (PI) changed affiliation around October 2010 from University of Massachusetts Medical School to Reflectance Medical Inc. and a new grant number was issued. End date thus changed to 9/30/2010, per NSBRI, for Noninvasive Biosensor Algorithms for Continuous Metabolic Rate Determination, grant NCC 9-58-SMS 01301. See PI Soller and project Noninvasive Biosensor Algorithms for Continuous Metabolic Rate Determination--SMS01302 for subsequent reporting</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Abstracts for Journals and Proceedings</strong> — Ellerby GE C, Lee SM C, Stroud L, Norcross J, Gernhardt M, Soller BR. &amp;quot;Near-infrared spectroscopic measurements of calf muscle during walking at simulated reduced gravity-preliminary results.&amp;quot; 56th Annual Meeting of the American College of Sports Medicine, Seattle, WA, May 27-30, 2009. Med Sci Sports Exerc, 2009 May;41(5):58-9. http://dx.doi.org/10.1249/01.MSS.0000354741.74499.2d , May-2009</li><li><strong>Patents</strong> — US Patent 7,616,303 B2. Patent awarded November 10, 2009. Nov-2009 Yang Y, Soller BR, Soyemi OO, Shear MA. &amp;quot;Systems and Methods for Correcting Optical Reflectance Measurements.&amp;quot;</li><li><strong>Abstracts for Journals and Proceedings</strong> — Soller BR, Yang Y, Lee SM C, Wilson CA. &amp;quot;Comparison of noninvasively determined hydrogen ion and lactate thresholds during cycle exercise.&amp;quot; American College of Sports Medicine 55th Annual Meeting, Indianapolis, IN, May 28-31, 2008 Med Sci Sports Exerc. 2008;40(5 Suppl):S426. http://dx.doi.org/10.1249/01.mss.0000322816.61090.71 , then click LWW access., May-2008</li><li><strong>Papers from Meeting Proceedings</strong> — Soller B, Coates J, Ellerby G, Scott P, Peshlov B, Zou F, Ryan K, Convertino V. &amp;quot;Spectroscopic sensor for trauma care.&amp;quot; 60th Pittsburgh Conference on Analytical Chemistry and Applied Spectroscopy, Chicago, IL, March 8-13, 2009. Proceedings of the 60th Pittsburgh Conference on Analytical Chemistry and Applied Spectroscopy, Chicago, IL, March 2009., Mar-2009</li><li><strong>Papers from Meeting Proceedings</strong> — Soller BR, Ryan KL, Convertino VA. &amp;quot;Lightweight noninvasive trauma monitor for early indication of central hypovolemia and tissue acidosis.&amp;quot; HFM-182 Symposium on Use of Advanced Technologies and New Procedures in Medical Field Operations, Essen, Germany, April 19-21, 2010. Use of Advanced Technologies and New Procedures in Medical Field Operations. NATO Publication RTO-MP-HFM-182, p. 41-1-41-10, 2010., Apr-2010</li><li><strong>Articles in Peer-reviewed Journals</strong> — Ward KR, Tiba MH, Ryan KL, Filho IP, Rickards CA, Witten T, Soller BR, Ludwig DA, Convertino VA. &amp;quot;Oxygen transport characterization of a human model of progressive hemorrhage.&amp;quot; Resuscitation. 2010 Aug;81(8):987-93. http://dx.doi.org/10.1016/j.resuscitation.2010.03.027 ; PMID: 20418009, Aug-2010</li><li><strong>Patents</strong> — Patent Application 12/172,942. Patent July 2008. Jul-2008 Soller BR. &amp;quot;Physical Performance Monitoring and Monitors.&amp;quot;</li><li><strong>Patents</strong> — Patent Application 12/172,942. Patent Application, July 2008. Jul-2008 Soller BR. &amp;quot;Physical Performance Monitoring and Monitors.&amp;quot;</li><li><strong>Abstracts for Journals and Proceedings</strong> — Marengi N, Yang Y, Lee SM C, Wilson C, Soller BR. &amp;quot;Assessment of metabolic rate in a spacesuite: measuring oxygen consumption without a facemask.&amp;quot; Aerospace Medical Association 79th Annual Meeting, Boston, MA, May 11-15, 2008. Aviat Space Environ Med. 2008 Mar;79(3):294., Mar-2008</li><li><strong>Articles in Peer-reviewed Journals</strong> — Lee SM, Clarke MS, O&#x27;Connor DP, Stroud L, Ellerby G, Soller BR. &amp;quot;Near infrared spectroscopy-derived interstitial hydrogen ion concentration and tissue oxygen saturation during ambulation.&amp;quot; European Journal of Applied Physiology. 2011 Aug;111(8):1705-14. Epub 2011 Jan 7. http://dx.doi.org/10.1007/s00421-010-1797-8 ; PubMed PMID: 21212975 [Note reported originally in November 2010 as &amp;quot;submitted April 2010.&amp;quot;], Aug-2011</li><li><strong>Patents</strong> — International Patent PCT/US2009/053183. Patent awarded May 14, 2010. May-2010 Soller BR, Coates JP, Yang Y, Jin C. &amp;quot;Spectroscopic Sensors.&amp;quot;</li><li><strong>Abstracts for Journals and Proceedings</strong> — Zou FM, Peshlov B, Ross RR, Ellerby G, Scott P, Yang Y, Soller BR. &amp;quot;Feasibility of analyte prediction in phantoms using a theoretical model of near-infrared spectra.&amp;quot; SPIE BiOS Conference, San Francisco, CA, January 23-28, 2010. SPIE BiOS Conference, San Francisco, CA, January 23-28, 2010. , Jan-2010</li><li><strong>Abstracts for Journals and Proceedings</strong> — Everett ME, Lee SM C, Stroud L, Scott P, Hagan RD, Soller BR. &amp;quot;Time-to-fatigue and Intramuscular pH Measured via NIRS during Handgrip Exercise in Trained and Sedentary Individuals.&amp;quot; 56th Annual Meeting of the American College of Sports Medicine, Seattle WA, May 27-30, 2009. Med Sci Sports Exerc, 2009 May;41(5):205-6. http://dx.doi.org/10.1249/01.MSS.0000355183.35616.4d , May-2009</li><li><strong>Articles in Peer-reviewed Journals</strong> — Soller BR, Yang Y, Soyemi OO, Ryan KL, Rickards CA, Walz JM, Heard SO, Convertino VA. &amp;quot;Noninvasively determined muscle oxygen saturation is an early indicator of central hypovolemia in humans.&amp;quot; J Appl Physiol. 2008 Feb;104(2):475-81. PMID: 18006869, Feb-2008</li><li><strong>Abstracts for Journals and Proceedings</strong> — Lee SM C, Ellerby G, Stroud L, Soller BR. &amp;quot;Hydrogen ion threshold differs between the thigh and calf muscles during locomotion.&amp;quot; Integrated Physiology Conference, Hilton Head, SC, September 24-27, 2008. Integrated Physiology Conference. In press, 2008., Sep-2008</li><li><strong>Articles in Peer-reviewed Journals</strong> — Zou F, Jin C, Ross RR, Soller B. &amp;quot;Investigation of spectral interferences on the accuracy of broadband CW-NIRS tissue SO2 determination.&amp;quot; Biomedical Optics Express. 2010 Oct 1;1(3):748-61. http://dx.doi.org/10.1364/BOE.1.000748 , Oct-2010</li><li><strong>Articles in Peer-reviewed Journals</strong> — Soller BR, Yang Y, Lee SM, Wilson C, Hagan RD. &amp;quot;Noninvasive determination of exercise-induced hydrogen ion threshold through direct optical measurement.&amp;quot; J Appl Physiol. 2008 Mar;104(3):837-44. PMID: 18096753, Mar-2008</li><li><strong>Abstracts for Journals and Proceedings</strong> — Lee SM C, Ellerby G, Stroud L, Soller BR. &amp;quot;Hydrogen ion threshold differs between the thigh and calf muscles during locomotion.&amp;quot; Integrated Physiology Conference, Hilton Head, SC, September 24-27, 2008. Integrated Physiology Conference, Hilton Head, SC, September 24-27, 2008., Sep-2008</li><li><strong>Papers from Meeting Proceedings</strong> — Marengi N, Yang Y, Lee SM C, Wilson C, Heard SO, Soller BR. &amp;quot;Feasibility of using near infared spectroscopy in determining VO2 for preoperative risk assessment.&amp;quot; American Society of Anesthesiologists Annual Meeting, San Francisco, CA, October 13-17, 2007. Foundation for Anesthesia Education and Research (FAER) Symposium, Americal Society of Anesthesiologists Annual Meeting, October 2007., Oct-2007</li><li><strong>Papers from Meeting Proceedings</strong> — Soller B, Coates J, Ellerby G, Scott P, Peshlov B, Zou F, Ryan K, Convertino V. &amp;quot;Spectroscopic sensor for trauma care.&amp;quot; 60th Pittsburgh Conference on Analytical Chemistry and Applied Spectroscopy, Chicago, IL, March 2009. Proceedings of the 60th Pittsburgh Conference on Analytical Chemistry and Applied Spectroscopy, Chicago, IL, March 2009, in press, November 2008., Nov-2008</li><li><strong>Patents</strong> — US Patent 7,532,919. Patent, May 2009. May-2009 Soyemi O, Soller BR, Yang Y. &amp;quot;Measuring Tissue Oxygenation.&amp;quot;</li><li><strong>Abstracts for Journals and Proceedings</strong> — Jin C, Zou FM, Ellerby G, Scott P, Peshlov B, Soller BR. &amp;quot;Accurate, in-vivo NIR measurement of muscle SO2 through fat.&amp;quot; SPIE BiOS Conference, San Francisco, CA, January 23-28, 2010. SPIE BiOS Conference, San Francisco, CA, January 23-28, 2010., Jan-2010</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23249">https://techport.nasa.gov/projects/23249</a>
+    </div>
+  </div>
+</body>
+</html>

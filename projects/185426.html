@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fault Management Architecture for Distributed Systems | NASA TechPort Project 185426</title>
+  <meta name="description" content="Given the complex nature of current missions and spacecraft, an effective distributed onboard fault management system is pivotal to preempting failures, ensuring operational integrity, and sustaining the safety of space missions where real-time human oversight">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/185426">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 185426</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX10</span>
+        </div>
+        <h1>Fault Management Architecture for Distributed Systems</h1>
+        <div class="meta-id">NASA TechPort Project ID: 185426</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/185426" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Given the complex nature of current missions and spacecraft, an effective distributed onboard fault management system is pivotal to preempting failures, ensuring operational integrity, and sustaining the safety of space missions where real-time human oversight and intervention is either severely limited or not feasible. Distributed diagnosis across multiple modules that comprise the spacecraft can be achieved by designing local distributed subsystems based on global diagnosability analysis of the system, thus computing globally correct distributed diagnosis results with or without the use of a centralized coordinator. At its core, the essence of distributed onboard diagnosis lies in its ability to disseminate diagnostic capabilities across various subsystems and components within a spacecraft. This decentralization is not simply a design preference but a critical requirement, driven by the need for resiliency and redundancy in the face of component failures or external disruptions, and furthermore constrained by onboard data transmission limits and computational performance requirements. In an effort to address the aforementioned challenges, Qualtech Systems, Inc. (QSI) proposed the development of novel capabilities that work with QSI’s TEAMS tool suite towards evaluation and selection of potential fault management architecture while conforming to the requirements of a distributed system architecture that is being designed for the mission. These capabilities include novel algorithms and new software tools that leverage QSI’s TEAMS causal models and reasoning engines and will work effectively towards both developing the design and implementing the operations of a distributed fault management (FM) decision-making system such as for the Gateway vehicle and HelioSwarm NASA missions.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The proposed solution will be a natural extension of capabilities that QSI’s current customers use TEAMS® for addressing improvements in FM architecture design and its operations related challenges. The first use of the proposed capabilities is expected to be for the Gateway vehicle, where in the near-term several more modules are in the design for addition to the current Co-manifested Vehicle (CMV) configuration. The additional modules such as the iHAB, Orion, the Logistics modules etc. are likely to depend on the other modules for some of their functionality and will require a systematic approach towards a comprehensive FM architecture design that is both scalable and extendable to all of the modules of the entire set of vehicles for the Gateway mission. Likewise, the Deep Space Habitat (DSH), and selected subsystems of the Space Launch System (SLS) for which the TEAMS® suite of software is already being utilized, and Artemis Mission – Lunar Lander, Gateway, etc. and Moon to Mars mission for deep space, long term manned mission with significant autonomy, as well as Deep Space missions such as the Europa Orbiter and Mars Science Laboratory are key candidate programs for technology transition. The initial usage in these systems and subsystems will help refine and validate the technology with subsequent applications to larger systems. The SLS program, the Orion MPCV and Human Lander System (HLS) are envisioned as the next major users of this technology.  QSI’s TEAMS software suite is already in use for some of the aforementioned Gateway modules and other programs which will significantly aid in technology transition for those platforms. QSI is well positioned with its TEAMS® products with NASA ARC, MSFC, JSC and KSC, who have extensively utilized the TEAMS® Designer product for functional failure analysis of the Gateway CMV, Ares rocket, EFT-1, the SLS and for onboard fault diagnostics for Orion.   Comprehensive and efficient FM/ISHM analyses and architecture trade-studies are of critical importance to complex and expensive military systems, e.g., systems on military aircraft, surface ships, submarines, and even modern ground-fighting vehicles. Several key opportunities of technology transition to various DoD programs exist for this technology where TEAMS is already in use. QSI recently completed a Phase 2 program with the Army for designing the onboard fault management software for the Remote Combat Vehicle (RCV) where QSI is working with one of the Primes as a key solution provider in the remote and large autonomous vehicle and aircraft market. QSI has successfully demonstrated its technology usage for the platform for both onboard health assessment and guided troubleshooting using TEAMS-RT and TEAMS-RDS and is in consideration for technology insertion. A distributed FM architecture modified accordingly for the Army mission will significantly aid the assessment of the functional capability of the forward deployment of the RCV.  QSI is currently conducting multiple Phase 2 and Phase 3s with Navy PEO Carriers and the Marines who are current users of the TEAMS solution suite for system health assessment and maintenance training as part of the projects. PEO Carriers is reviewing the TEAMS solution for their newer platform of nuclear-powered carriers. The carriers have very complex and novel systems on-ship which operate autonomously where multiple different systems developed by different vendors work together to provide the full functionality of these complex systems. The proposed FM architecture capabilities can be readily transitioned to these programs given the need for a model-based systems engineering approach for FM architecture design and evaluation for these on-ship complex systems.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>185426</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX10: Autonomous Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2025-07-01</td></tr>
+<tr><th>Project End Date</th><td>2027-06-30</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Qualtech Systems, Inc. — Rocky Hill, Connecticut</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Connecticut (CT)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Mars, Others Inside the Solar System</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-05</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/185426">https://techport.nasa.gov/projects/185426</a>
+    </div>
+  </div>
+</body>
+</html>

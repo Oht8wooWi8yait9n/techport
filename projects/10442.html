@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adaptive bio-inspired navigation for planetary exploration | NASA TechPort Project 10442</title>
+  <meta name="description" content="Surface exploration of planetary environments with current robotic technologies relies heavily on human control and power-hungry active sensors to perform even the most elementary low-level functions. Ideally, a robot should be capable of autonomously explorin">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/10442">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 10442</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX04.1.2</span>
+        </div>
+        <h1>Adaptive bio-inspired navigation for planetary exploration</h1>
+        <div class="meta-id">NASA TechPort Project ID: 10442</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/10442" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Surface exploration of planetary environments with current robotic technologies relies heavily on human control and power-hungry active sensors to perform even the most elementary low-level functions. Ideally, a robot should be capable of autonomously exploring and interacting within an unknown environment without relying on human input or suboptimal sensors. Behaviors such as exploration of unknown environments, memorizing locations of obstacles or objects, building and updating a representation of the environment, and returning to a safe location, are all tasks that constitute typical activities efficiently performed by animals on a daily basis. Phase I of this proposal will focus on design of an adaptive robotic multi-component neural system that captures the behavior of several brain areas responsible for perceptual, cognitive, emotional, and motor behaviors. This system makes use of passive, potentially unreliable sensors (analogous to animal visual and vestibular systems) to learn while navigating unknown environments as well as build usable and correctable representations of these environments without requiring a Global Navigation Satellite System (GNSS). In Phase I, Neurala and the Boston University Neuromorphics Lab, will construct a virtual robot, or animat, to be developed and tested in an extraterrestrial virtual environment. The animat will use passive sensors to perform a spatial exploration task. The animat will start exploring from a recharging base, autonomously plan where to go based on past exploration and its current motivation, develop and correct an internal map of the environment with the locations of obstacles, select the shortest path of return to its recharging base before battery depletion, then extract the resulting explored map into a human-readable format. In Phase II Neurala will enhance and translate the model to low-power neuromorphic hardware and collaborate with iRobot to test the model in a robotics platform.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Technology developed in this project will have a transformative impact on space exploration, and is directly relevant in supporting the key attributes of autonomy to support NASA missions, stated in the OCT roadmap for Robotics, Tele-Robotics and Autonomous Systems (TA04) as, "the ability for complex decision making, including autonomous mission execution and planning, the ability to self-adapt as the environment in which the system is operating changes, and the ability to understand system state and react accordingly." This work addresses two space technology grand challenges which aim to enable transformational space exploration and scientific discovery: all access mobility and surviving extreme space environments. Development of a biologically-inspired, robust, low-power, multi-component brain system able to perform self-localization and mapping will enable robots to autonomously navigate novel terrains without the need of GNSS. By including the ability to learn about an environment as it explores, robotic agents will be able to autonomously negotiate novel terrains and send relevant, intelligently preprocessed information back to a human controller. Lastly, incorporating high-level decision making and conflict resolution will allow the robot to decide between exploration of its environment and returning to home base for a battery recharge.<br /> <br />One of the fundamental challenges of modern robotics is to build autonomous systems that are increasingly able to explore their environment and act upon choices in an intelligent way. The simultaneous localization and mapping (SLAM) problem exemplifies one such challenge. Currently, industry and academic solutions of the SLAM problem rely on accuracy of expensive sensors that are highly sensitive to noise and the complexity of real-world environments. These solutions are suboptimal since they require expensive, precise, and power-hungry sensors. The technology proposed herein mimics an animal's ability to solve the SLAM problem with noisy sensors and without the need of GNSS. Applications of this new technology include guidance systems for: - Robots navigating in GNSS-denied environment, such as collapsed building in disaster areas (e.g., earthquakes, nuclear power plants); - Robots for surveillance and scouting of indoor environments, such as urban war zones; - Microrobots for medical diagnosis, and - Robots for deep-ocean exploration.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>10442</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX04.1.2: State Estimation</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2012-02-13</td></tr>
+<tr><th>Project End Date</th><td>2013-02-14</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Neurala LLC — South Boston, Massachusetts</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia; Boston University — Boston, Massachusetts</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Massachusetts (MA), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Anatoli Gorchetchnikov (Principal Investigator); Mark A Motter (Project Manager)</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/10442">https://techport.nasa.gov/projects/10442</a>
+    </div>
+  </div>
+</body>
+</html>

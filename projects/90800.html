@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmallSat Constellation Inter-satellite Link System Simulator | NASA TechPort Project 90800</title>
+  <meta name="description" content="Goddard Space Flight Center Distributed Space Mission (DSM) seeks to design and develop the technologies required to achieve the mission goals.&amp;nbsp; For a constellation of small satellite performing a coordinate mission, there are inter-satellite links within">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/90800">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 90800</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX11.5.2</span>
+        </div>
+        <h1>SmallSat Constellation Inter-satellite Link System Simulator</h1>
+        <div class="meta-id">NASA TechPort Project ID: 90800</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/90800" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Goddard Space Flight Center Distributed Space Mission (DSM) seeks to design and develop the technologies required to achieve the mission goals.&nbsp; For a constellation of small satellite performing a coordinate mission, there are inter-satellite links within the constellation for the control and mission data transmission.&nbsp; This proposal is to develop a system simulator to support the design and optimization of the SmallSat constellation inter-satellite links.&nbsp;&nbsp; The system simulator is a tool to perform modeling and simulation of the constellation geometry, flight communication system and data transmission protocols for the determination of the optimal configuration of the inter-satellite links relative to the constraints of the mission.&nbsp; &nbsp;In Phase I, the simulator will address the need of Constellation Design Reference Mission (DRM-C) and Precision Formation Flying DRM (DRM-PFF).&nbsp; In Phase II, the development of the simulator will be extended to address generic constellation scenarios, from Low Earth Orbit (LEO) to deep space (Cis-lunar and beyond)</p><p><strong>The objectives of the study are:</strong></p><ul><li>Develop a SmallSat constellation inter-satellite link system simulator to support the design and optimization of the SmallSat constellation inter-satellite links.</li><li>Develop SmallSat Constellation inter-satellite link communication requirements</li><li>Develop the system simulator architecture that consists of:</li></ul><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - S, X and Ka-band flight system modeling including link quality and time varying behavior of the SmallSat constellation inter-satellite links&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; with MATLAB Simulink tool</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - SmallSat constellation geometry modeling with STK</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Switched packet IP network simulation to model the actual activity within the constellation switched packet IP network with QualNet tool</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Routing implementation</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Simulation of the desired user data flow pattern that will ultimately &lsquo;load&rsquo; the network.</p><ul><li>Identify SmallSat constellation case scenario to perform demonstration/testing of the network efficient (i.e. inter-satellite link performance) using the system simulator</li><li>Investigate the re-use of the software communication protocol for a testbed for prototype system-level testing</li></ul><p>&nbsp;&nbsp;&nbsp; <strong>Deliverables will include:</strong></p><ul><li>SmallSat Constellation inter-satellite link communication requirements</li><li>A SmallSat Constellation Inter-satellite link system simulator that consists of:</li></ul><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - S, X and Ka-band flight system software model</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Constellation geometry software model</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Constellation switched packet IP network simulation software model</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Routing protocol implementation software model</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Desired user data flow pattern software model</p><ul><li>SmallSat constellation case scenario design including constellation geometry, flight system parameters, constellation routing table, communication protocol parameters.</li><li>SmallSat constellationcase scenario demonstration/testing and report</li></ul><p><strong>Research and Development Plan</strong></p><p><strong>SmallSat Constellation inter-satellite link communication requirements</strong></p><p>In phase I, the SmallSat constellation inter-satellite link simulator requirements will be derived from the DRM-C and DRM-PFF missions.&nbsp;</p><p><strong>System Simulator Modeling Overview</strong></p><p>The simulator will model the flight communication system of the constellation inter-satellite links using STK/MATLAB Simulink tool.&nbsp; The constellation geometry and the trajectory dynamic will be modelled with STK tool.&nbsp; The small satellite network performance will be modelled with QualNet tool.</p><p>The software and communication protocols for control and data transmission management will borrows heavily from wireless IP networking standards.&nbsp;</p><p><strong>System Simulator Architecture</strong></p><p>The simulator architecture will consist of six major elements as shown in Table 1. System Simulator Architecture Elements (see project library)</p><p><!--[if gte vml 1]><v:shapetype  id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"  path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">  <v:stroke joinstyle="miter"/>  <v:formulas>   <v:f eqn="if lineDrawn pixelLineWidth 0"/>   <v:f eqn="sum @0 1 0"/>   <v:f eqn="sum 0 0 @1"/>   <v:f eqn="prod @2 1 2"/>   <v:f eqn="prod @3 21600 pixelWidth"/>   <v:f eqn="prod @3 21600 pixelHeight"/>   <v:f eqn="sum @0 0 1"/>   <v:f eqn="prod @6 1 2"/>   <v:f eqn="prod @7 21600 pixelWidth"/>   <v:f eqn="sum @8 21600 0"/>   <v:f eqn="prod @7 21600 pixelHeight"/>   <v:f eqn="sum @10 21600 0"/>  </v:formulas>  <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>  <o:lock v:ext="edit" aspectratio="t"/> </v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:467.4pt;  height:230.4pt'>  <v:imagedata src="file:///C:\\Users\\ywong2\\AppData\\Local\\Temp\\1\\msohtmlclip1\\01\\clip_image001.png"   o:title="Table_1"/> </v:shape><![endif]--><!--[if !vml]--><!--[endif]-->A small Satellite Constellation simulation scenario is shown Figure 1.(see project library)</p><p>The simulator inputs and outputs are shown in Table 2.&nbsp; Simulator Inputs and Outputs (see project library)</p><p>The system simulator will be able to simulate the network efficiency (i.e. inter-satellite link performance) of a constellation configurations for a variety of performance cost-based routing. The inputs to the simulator represent different combinations of mission requirements while the outputs represent how well those requirements are met based on the given constellation configuration. The end goal is that the mission designer is able to evaluate different mission configurations and their associated performance.&nbsp;&nbsp;</p><p>For the DRM-C and DRM-EEF missions, an analysis will be performed by the simulator to provide a solution to the inter-satellite link communication system design.&nbsp;</p><p><strong>Software Communication Protocol Reuse</strong></p><p>The software communication protocol developed in this task can be re-used for deployment on a testbed for prototype system-level testing and even for an on-orbit DSM mission and others.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>DSM mission contains inter-satellite links between the satellites in a constellation. &nbsp;The challenge with this mission is that the geometric configuration of the constellation and the configuration of the inter-satellite link communication system directly affect the quantity and timeliness with which science data is returned to the mission operations center (MOC).&nbsp;&nbsp; A simulation tool is needed to support the design and development of the inter-satellite links.&nbsp; The proposed SmallSat constellation inter-satellite link system simulator will model the constellation geometry, the flight communication system and the control and data transmission management protocols for the determination of the optimal configuration of the inter-satellite links relative to the constraints of the mission, &nbsp;&nbsp;such as constellation geometry and data throughput requirements.&nbsp; It is an essential tool for the development of a testbed for prototype system-level testing and development to validate the communication hardware and protocols in an integrated environment.&nbsp; It also is useful for the DSM mission system design.&nbsp; The software communication protocol developed in this task can be re-used for deployment on a testbed for prototype system-level testing and even for an on-orbit DSM mission and others.&nbsp; The primary customer for this study is cross cutting technology and capabilities.&nbsp;</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>90800</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.5.2: Tools and Methodologies for Performing Systems Analysis</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 7 | Target End TRL: 7</td></tr>
+<tr><th>Project Start Date</th><td>2016-10-01</td></tr>
+<tr><th>Project End Date</th><td>2017-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Moon and Cislunar, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Yen Fun Wong (Principal Investigator) &lt;yen.f.wong@nasa.gov&gt;; Michael A Johnson (Project Manager) &lt;michael.a.johnson@nasa.gov&gt;; Wesley A Powell (Project Manager) &lt;wesley.a.powell@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2018-10-10</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The purpose of the Goddard Space Flight Center&amp;rsquo;s Internal Research and Development (IRAD) program is to support new technology development and to address scientific challenges.&amp;nbsp; Each year, Principal Investigators (PIs) submit IRAD proposals and compete for funding for their development projects.&amp;nbsp; Goddard&amp;rsquo;s IRAD program supports eight Lines of Business: Astrophysics; Communications and Navigation; Cross-Cutting Technology and Capabilities; Earth Science; Heliophysics; Planetary Science; Science Small Satellites Technology; and Suborbital Platforms and Range Services. Task progress is evaluated twice a year at the Mid-term IRAD review and the end of the year. When the funding period has ended, the PIs compete again for IRAD funding or seek new sources of development and research funding or agree to external partnerships and collaborations.&amp;nbsp; In some cases, when the development work has reached the appropriate Technology Readiness Level (TRL) level, the product is integrated into an actual NASA mission or used to support other government agencies. The technology may also be licensed out to the industry. The completion of a project does not necessarily indicate that the development work has stopped.&amp;nbsp; The work could potentially continue in the future as a follow-on IRAD; or used in collaboration or partnership with Academia, Industry and other Government Agencies. If you are interested in partnering with NASA, see the TechPort Partnerships documentation available on the TechPort Help tab. http://techport.nasa.gov/help</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="http://aetd.gsfc.nasa.gov/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>Table 2. Simulator Inputs and Outputs</strong> — Simulator Inputs and Outputs</li><li><strong>Small Satellite Constellation Simulation Scenario</strong> — Small Satellite Constellation Simulation Scenario</li><li><strong>Table 1.   System Simulator Architecture Elements</strong> — System Simulator Architecture Elements</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/90800">https://techport.nasa.gov/projects/90800</a>
+    </div>
+  </div>
+</body>
+</html>

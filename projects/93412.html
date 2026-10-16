@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collective Inference based Data Analytics System for Post Operations Analysis | NASA TechPort Project 93412</title>
+  <meta name="description" content="Current-day capabilities for performing post operations analysis (POA) of air traffic operations at airports, airlines and FAA facilities are mostly limited to creating reporting type of analysis results which compare mean values of key performance indicators ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/93412">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 93412</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX01.1.3</span>
+        </div>
+        <h1>Collective Inference based Data Analytics System for Post Operations Analysis</h1>
+        <div class="meta-id">NASA TechPort Project ID: 93412</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/93412" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Current-day capabilities for performing post operations analysis (POA) of air traffic operations at airports, airlines and FAA facilities are mostly limited to creating reporting type of analysis results which compare mean values of key performance indicators against the respective expected nominal levels (e.g., average daily delay). This single point comparison method does not directly enable a POA analyst to identify the root-cause for a particular observed inefficiency, nor does it help in identifying a solution for mitigating that inefficiency. This SBIR develops a machine learning based approach for improving POA and for potentially making it more autonomous. We call this tool Collective Inference based Data Analytics System for POA (CIDAS-P). CIDAS-P will provide airport, airline, FAA and NASA personnel with a fast, flexible and streamlined process for analyzing the day-of-operations, rapidly pinpointing exact causes for any observed inefficiencies, as well as recommending actions to be taken to avoid the same inefficiencies in the future. It does this by developing an innovative, collective inference algorithm for cross-comparing performance of the same facility on different days as well as cross-comparing performance across different facilities. The algorithm leverages sophisticated probabilistic modeling techniques that consider the subtle nuances by which cross-facility and cross-day operational scenarios differ to enable apples-to-apples comparisons across traffic scenarios and identify what works well and what does not in similar situations. User acceptance of NASA Trajectory Based Operations research products stands to benefit from CIDAS-P because CIDAS-P's automated recommendations can help identify and fix problems with these products early on in their deployment life-cycle.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The proposed innovation, CIDAS-P, is applicable to NASA research in the areas of Trajectory Based Operations (TBO) and Airspace Technology Demonstrations (ATD). It provides a tool for evaluating performance of airport, TRACON and enroute traffic under the management of new NASA research-products developed by these projects. CIDAS-P can also be used as a 'grading' system for ATD-2 operations, for evaluating and classifying operation types in real-time to inform switching between multiple ATD-2 scheduling strategies (e.g., conservative gate-holding, aggressive gate pushbacks). As applied to NASA's Data Science research group's work on identifying operational anomalies, CIDAS-P can be used to rank or measure safety of operations during the identified anomalies, thus providing a hitherto missing capability to automatically identify scenarios falsely tagged as anomalous by the research group's algorithms.<br /> <br />A direct application for the proposed technology, CIDAS-P, is as a decision support tool (DST) to be used at airports, airlines or FAA facilities for analyzing root causes for observed operational efficiencies or irregularities at the end of a day of operations. ATAC is well-placed to provide an operational POA capability to airports, airlines and FAA facilities by integrating CIDAS-P into one of its commercial tools that have been or are been used by some of these entities for other purposes. Another alternative is for ATAC to license the CIDAS-P software to these entities for direct integration within their own tools. The proposed technology can also be infused into DSTs to support the FAA's Plan Execute Review Train and Improve (PERTI) initiative, whose goal is to translate post-event reviews into operational improvements in a repeatable manner. FAA recently started PERTI to address current impediments to improvements in NAS performance. PERTI defines new operational roles and processes to enable integration of analytics into training, operational planning, post-event analysis and training. The current-day manual POA process is inadequate to fulfill PERTI's ambitious goal of translating post-event reviews into operational improvements in a repeatable manner, and it is recognized that new automated POA tools are required. CIDAS-P, integrated into ATAC's commercial platforms or directly into FAA systems, fulfills this need.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>93412</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.1.3: Cryogenic Propulsion</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2017-06-09</td></tr>
+<tr><th>Project End Date</th><td>2017-12-08</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>ATAC — Santa Clara, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jason L Bertino (Principal Investigator); Chok Fung Lai (Project Manager) &lt;chok.f.lai@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong> — Collective Inference based Data Analytics System for Post Operations Analysis, Phase I Briefing Chart</li><li><strong>Briefing Chart Image</strong> — Collective Inference based Data Analytics System for Post Operations Analysis, Phase I Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/93412">https://techport.nasa.gov/projects/93412</a>
+    </div>
+  </div>
+</body>
+</html>

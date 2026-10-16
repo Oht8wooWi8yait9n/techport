@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OmniFlex - Modular Power for Mars Surface Missions | NASA TechPort Project 93682</title>
+  <meta name="description" content="NASA has a need to deploy an aggregate PV area of 2500 m2 on Mars - a very large area comparable to more than 60 of the largest wings ever deployed in GEO. Heritage large space (0-g) deployables are not applicable on Mars, as they require offloaders. If smalle">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/93682">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 93682</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX12.2.1</span>
+        </div>
+        <h1>OmniFlex - Modular Power for Mars Surface Missions</h1>
+        <div class="meta-id">NASA TechPort Project ID: 93682</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/93682" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          NASA has a need to deploy an aggregate PV area of 2500 m2 on Mars - a very large area comparable to more than 60 of the largest wings ever deployed in GEO. Heritage large space (0-g) deployables are not applicable on Mars, as they require offloaders. If smaller deployables were used, the number of deployables and mechanisms grows exponentially, as does cost, and mass when sized for 0.4-g and aeolian loads. A robot-erected, power farm from modular components is much more practical, and can have greater performance than any 0-g solar array. The proposed innovation, OmniFlex, a solar array without any deployment mechanism, can be thought of as a pre-deployed UltraFlex that has been perfectly optimized for large area landed PV farm installations. OmniFlex panels are very simple and low cost: Each is a pre-built hexagonal platform composed of a thin composite ribs emanating from a central hub, to which is bonded ultra-light flexible blankets composed of high efficiency PV bonded to a gossamer fabric scrim. The rib design allow stacking at a low (3.3-mm) pitch, enabling 190 panels to stack for launch at only 0.65 m high. OmniFlex is like Ikea for planetary power: Compactly shipped, easily erected, and cost effective. And yet performance is extraordinary, even with respect to the challenging subtopic goals. The technology is extremely light (>300 W/kg) and stacks hyper-efficiently (>100 kW/m3) for transport to Mars. The deployment of the power field will be by pick and place robotics, using modular OmniFlex units. The proposal details and demonstrates the practicality and performance of this approach for construction of a huge array farm on Mars (or the moon, or in-space). Individual units can be re-purposed on rovers, habitats, comm stations, etc. And with viable in-space assembly tech emerging, the potential for OmniFlex panels to be tiled onto robotically-assembled MW-scale truss structures looks extremely promising as an adjunct application.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The path to commercialization is straight-forward, via our proven commercialization partner OAG, who has significant interest in commercializing OmniFlex technology and post-Phase II commercialization would be in the form of sales directly from OAG. The most direct commercialization opportunities may come in the form of a demo-wing for a NASA or Commercial Mars (or Moon) precursor SEP mission or, more likely in the near term, a project enabled by NASA/OA CIRAS activity. Orbital ATK has begun a public-private partnership with NASA's Space Technology Mission Directorate (STMD) to establish a Commercial Infrastructure for Robotic Assembly and Services (CIRAS) in space. Orbital ATK will take the lead in maturing technologies necessary for robotic assembly of large space structures, such as solar-power structures for transport or communications. These capabilities include methods to connect (and disconnect) joints of a truss structure and address precision measuring and alignment and equipment placement via a robotic arm with various end effectors.<br /> <br />The entire space community is interested in higher performance and lower cost solar arrays. OmniFlex offers great promise for mass efficiency and compact stowage for launch, and is ideally configured for simplified robotic assembly, enabling practically unlimited scaling of power. Potential applications are equally relevant for NASA as for non-NASA customers such as Air Force and private commercial contractors. In-space assembly and OmniFlex technology may be part of a tipping point, a vital contribution to enable a new approach to fielding space hardware that will be critical to future exploration and commercialization of various opportunities including low earth orbit, moon, Mars, Deimos, and Asteroid Belt destinations for mining, science, hoteling, etc. OmniFlex is part of the first chapter, now being composed at NASA and by an emerging commercial space market, in the story of our nation?s future economic development of the solar system.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>93682</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX12.2.1: Lightweight Concepts</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2017-06-09</td></tr>
+<tr><th>Project End Date</th><td>2017-12-08</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Angstrom Designs, Inc. — Santa Barbara, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Casey P Hare (Principal Investigator); Casey Hare (Principal Investigator); Chuck Taylor (Project Manager) &lt;charles.b.taylor@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Briefing Chart</strong> — OmniFlex - Modular Power for Mars Surface Missions, Phase I Briefing Chart</li><li><strong>Briefing Chart Image</strong> — OmniFlex - Modular Power for Mars Surface Missions, Phase I Briefing Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/93682">https://techport.nasa.gov/projects/93682</a>
+    </div>
+  </div>
+</body>
+</html>

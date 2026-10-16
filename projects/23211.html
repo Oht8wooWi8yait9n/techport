@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathematical Modeling of Circadian/Performance Countermeasures | NASA TechPort Project 23211</title>
+  <meta name="description" content="We developed and refined our current mathematical model of circadian rhythms to incorporate melatonin as a marker rhythm. We used an existing physiologically based mathematical model of the diurnal variations in plasma melatonin levels. The revised model can p">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/23211">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 23211</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.2</span>
+        </div>
+        <h1>Mathematical Modeling of Circadian/Performance Countermeasures</h1>
+        <div class="meta-id">NASA TechPort Project ID: 23211</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/23211" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>We developed and refined our current mathematical model of circadian rhythms to incorporate melatonin as a marker rhythm. We used an existing physiologically based mathematical model of the diurnal variations in plasma melatonin levels. The revised model can predict melatonin amplitude, markers of melatonin phase (melatonin synthesis onset (Synon) and synthesis offset (Synoff)), melatonin suppression by light, and salivary melatonin concentrations. Our model has been validated on several independent data sets. A manuscript of this work has been published. We incorporated wavelength sensitivity into our current mathematical model. We have revised the light input to our model from lux to an irradiance measure (microW/cm2) for both polychromatic and monochromatic light exposures. We have developed a two-channel photoreceptor model, in which one channel is driven by rod/cone input and the other channel is driven by a melanopsin input with peak sensitivity in the short wavelength range (~480nm). Our model can predict the response of the circadian pacemaker to 1-pulse light exposures of 460nm and 555nm at different irradiances to generate fluence-response curves of circadian phase-shifts to polychromatic light. This work has been presented at scientific meetings. A manuscript of this work is in preparation. We developed schedule assessment and countermeasure design software. We have developed a schedule/countermeasure design program that allows a user to interactively design a schedule and to automatically design a mathematically optimal countermeasure regime (intensity, duration, and placement). We have demonstrated this tool to NASA personnel. We have substantially redesigned the user interface for CPSS, the software implementation of our mathematical model, based on feedback from NASA users and operational requirements. We have shown that our methods can be used to design a variety of schedules and countermeasures relevant to NASA operations including shifting sleep wake (slam shifting), sleep deprivation, and non-24 hour schedules. This work has been presented at scientific meetings. A manuscript is in progress. We have begun to explore inter-individual differences in performance. (1) We have begun developing methodologies for determining how optimal model structure may differ by individual. The benefit of the framework is that models are easily understandable by non-mathematicians and that the probability distributions can be approximated by existing data. (2) We have conducted data analysis to quantify differences in model parameter values and we have correlated these model parameter differences with individual characteristics such as age, gender, morningness-eveningness, habitual bedrest duration, and habitual sleep/wake times. We have demonstrated the trait-like characteristics in the robustness of parameters associated with the homeostatic process under experimental light interventions. This work has been presented at scientific meetings.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The development (1) of mathematical models of circadian rhythms, sleep, alertness, and performance and (2) of software based on these models that aid in schedule design can improve performance and alertness and thereby effectiveness and public safety for people who work at night, on rotating schedules, on non-24-hr schedules or extended duty schedules (pilots, train and truck drivers, shift workers, health care workers, public safety officers, etc.). Attempting to sleep at adverse circadian phases is difficult and sleep efficiency is poor. Attempting to work at adverse circadian phases and/or after long durations of time awake results in poor worker performance and productivity, increased accidents, and decreased safety for workers and for others affected by the workers. For example, the accidents at the Chernobyl and Three Mile Island nuclear reactors and the Exxon Valdez grounding all were partially caused by workers working at adverse circadian phases (~ 4 am). The mathematical modeling and the available Circadian Performance Simulation Software (CPSS) can be used to simulate and quantitatively evaluate different scenarios of sleep/wake schedules and light exposure to predict the resulting circadian phase and amplitude, subjective alertness, and performance. CPSS has been requested by members of academia, government, and industry (transportation (especially airline personnel), safety, medical, military). Its use could help produce improved schedules for working for people in space and on Earth.     The software also now includes optimal countermeasure design, so that countermeasures can be planned for times of predicted poor performance and alertness. The schedule/countermeasure design program allows a user to interactively design a schedule and to automatically design a mathematically optimal countermeasure regime (intensity, duration, and placement). This will be valuable to those who schedule people who work at night, on rotating schedules, on non-24-hr schedules, or extended duty schedules. Individuals can design countermeasures for their assigned work schedules so that their sleep and wake rhythms will be adjusted for optimal performance at desired times.     Using these tools, we have completed systematic simulation studies of the effect of circadian shifting on phase re-entrainment and performance recovery. For example, we examined the effect of light levels within cockpits and passenger cabins on circadian phase and performance during trans-meridian travel and polar flight paths for an article that appeared in The Wall Street Journal in 2004.     The mathematical modeling has been used for basic scientific research. Inclusion of mathematical models in the planning process to optimize measures to be studied in experimental protocols enables more efficient use of research resources and directs new research. If the modeling of existing data is unsatisfactory, then the model assumptions need to be revised. This revision may include identification of a new physiological process not previously described. As an example, an additional component (non-linear response to ocular light stimuli) was added to the circadian rhythms component of our mathematical model to describe data collected in our clinical research facilities, even before the anatomic and physiologic basis of this component of the mathematical model was found. Later experiments validated this mathematical finding. The mathematical model had demonstrated that previously unknown additional physiological processes were involved.     The modeling work on the differential effects of different wavelength of light on circadian rhythms and alertness can be used for designing artificial (indoor) lighting systems that can maximize circadian or alerting response.     The mathematical modeling efforts and CPSS have also been used in educational programs and in the popular press to teach students and teachers about circadian rhythms and sleep and their effects on alertness and performance.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>23211</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.2: Prevention and Countermeasures</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2004-06-01</td></tr>
+<tr><th>Project End Date</th><td>2008-08-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Brigham And Women&#x27;s Hospital, Inc. — Boston, Massachusetts</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Massachusetts (MA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Elizabeth B Klerman (Principal Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2020-10-27</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: We developed and refined our current mathematical model of circadian rhythms to incorporate melatonin as a marker rhythm. We used an existing physiologically based mathematical model of the diurnal variations in plasma melatonin levels. The revised model can predict melatonin amplitude, markers of melatonin phase (melatonin synthesis onset (Synon) and synthesis offset (Synoff)), melatonin suppression by light, and salivary melatonin concentrations. Our model has been validated on several independent data sets. A manuscript of this work has been published. We incorporated wavelength sensitivity into our current mathematical model. We have revised the light input to our model from lux to an irradiance measure (microW/cm2) for both polychromatic and monochromatic light exposures. We have developed a two-channel photoreceptor model, in which one channel is driven by rod/cone input and the other channel is driven by a melanopsin input with peak sensitivity in the short wavelength range (~480nm). Our model can predict the response of the circadian pacemaker to 1-pulse light exposures of 460nm and 555nm at different irradiances to generate fluence-response curves of circadian phase-shifts to polychromatic light. This work has been presented at scientific meetings. A manuscript of this work is in preparation. We developed schedule assessment and countermeasure design software. We have developed a schedule/countermeasure design program that allows a user to interactively design a schedule and to automatically design a mathematically optimal countermeasure regime (intensity, duration, and placement). We have demonstrated this tool to NASA personnel. We have substantially redesigned the user interface for CPSS, the software implementation of our mathematical model, based on feedback from NASA users and operational requirements. We have shown that our methods can be used to design a variety of schedules and countermeasures relevant to NASA operations including shifting sleep wake (slam shifting), sleep deprivation, and non-24 hour schedules. This work has been presented at scientific meetings. A manuscript is in progress. We have begun to explore inter-individual differences in performance. (1) We have begun developing methodologies for determining how optimal model structure may differ by individual. The benefit of the framework is that models are easily understandable by non-mathematicians and that the probability distributions can be approximated by existing data. (2) We have conducted data analysis to quantify differences in model parameter values and we have correlated these model parameter differences with individual characteristics such as age, gender, morningness-eveningness, habitual bedrest duration, and habitual sleep/wake times. We have demonstrated the trait-like characteristics in the robustness of parameters associated with the homeostatic process under experimental light interventions. This work has been presented at scientific meetings.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Awards</strong> — Dean DA 2nd. &quot;Mr. Dean (graduate student) designated a Partners Healthcare scholar and awarded an Association of Multi-cultural Members at Partners Educational Scholarship, 2005.&quot; May-2005</li><li><strong>Articles in Peer-reviewed Journals</strong> — Kronauer RE, Gunzelmann G, Van Dongen HP, Doyle FJ 3rd, Klerman EB. &quot;Uncovering physiologic mechanisms of circadian rhythms and sleep/wake regulation through mathematical modeling.&quot; J Biol Rhythms. 2007 Jun;22(3):233-45. Review. PMID: 17517913, Jun-2007</li><li><strong>Abstracts for Journals and Proceedings</strong> — Klerman EB, Dean DA 2nd, Gurdziel K, St Hilaire M, Kronauer RE. &quot;Mathematical modeling of human circadian physiology.&quot; Habitation 2006 Conference, Orlando, FL, 2006 February. Habitation 2006;10(3-4):197-8., Feb-2006</li><li><strong>Articles in Peer-reviewed Journals</strong> — Dean DA 2nd, Adler GK, Nguyen DP, Klerman EB. &quot;Biological time series analysis using a context free language: applicability to pulsatile hormone data.&quot; PLoS One. 2014 Sep 3;9(9):e104087. eCollection 2014. http://dx.doi.org/10.1371/journal.pone.0104087 ; PubMed PMID: 25184442; PubMed Central PMCID: PMC4153563, Sep-2014</li><li><strong>Abstracts for Journals and Proceedings</strong> — Dean DA 2nd, Nguyen DP, Schmid CH, Adler GK, Klerman EB, Brown EN. &quot;Computing cortisol secretion times with a biophysical model.&quot; 11th Biennial Meeting of the Society for Research in Biological Rhythms, Destin, FL, May 17-21, 2008. Program and Abstracts, 11th Biennial Meeting of the Society for Research in Biological Rhythms, Destin, FL, May 17-21, 2008. p. 135-136., May-2008</li><li><strong>Articles in Peer-reviewed Journals</strong> — Klerman EB. &quot;Clinical aspects of human circadian rhythms.&quot; J Biol Rhythms. 2005 Aug;20(4):375-86. Review. PMID: 16077156 , Aug-2005</li><li><strong>Articles in Peer-reviewed Journals</strong> — Klerman EB, Hilaire MS. &quot;On mathematical modeling of circadian rhythms, performance, and alertness.&quot; J Biol Rhythms. 2007 Apr;22(2):91-102. Review. http://dx.doi.org/10.1177/0748730407299200 ; PMID: 17440211 , Apr-2007</li><li><strong>Abstracts for Journals and Proceedings</strong> — St Hilarie M, Gronfier C, Klerman EB. &quot;Addition of a light effect to a physiologically-based model of melatonin.&quot; SLEEP 2006: 20th Anniversary Meeting of the Associated Professional Sleep Societies, Salt Lake City, Utah, June 17 - 22, 2006. Sleep. In Press, 2006., Apr-2006</li><li><strong>Abstracts for Journals and Proceedings</strong> — St Hilarie M, Klerman EB. &quot;A tool to analyze melatonin phase and amplitude using a physiologically based model of melatonin.&quot; SLEEP 2006: 20th Anniversary Meeting of the Associated Professional Sleep Societies, Salt Lake City, Utah, June 17 - 22, 2006. Sleep. In Press, 2006., Apr-2006</li><li><strong>Abstracts for Journals and Proceedings</strong> — Dean DA 2nd, Barger LK, Livingston G, Klerman EB. &quot;Understanding Bayesian network sensitivity in classifiers derived from human experimental data.&quot; Life Science Society Computational Systems Bioinformatics Conference. Stanford, CA, 2006 August. Life Science Society Computational Systems Bioinformatics Conference. Submitted for Publication, 2006 August., Aug-2006</li><li><strong>Abstracts for Journals and Proceedings</strong> — Dean DA 2nd, Barger LK, Livingston G, Klerman EB. &quot;Using Bayesian Networks to understand individual differences that affect the use of actigraphy as a predictor of sleep.&quot; SLEEP 2006: 20th Anniversary Meeting of the Associated Professional Sleep Societies, Salt Lake City, Utah, June 17 - 22, 2006. Sleep. In Press, 2006., Apr-2006</li><li><strong>Awards</strong> — Dean DA 2nd. &quot;Mr. Dean (graduate student) received Travel Sponsorship to attend Case Studies in Bayesian Statistics 8, a nationally recognized conference that reviews applications of Bayesian statistics, September 2005.&quot; Sep-2005</li><li><strong>Articles in Peer-reviewed Journals</strong> — Indic P, Gurdziel K, Kronauer RE, Klerman EB. &quot;Development of a two-dimension manifold to represent high dimension mathematical models of the intracellular Mammalian circadian clock.&quot; J Biol Rhythms. 2006 Jun;21(3):222-32. PMID: 16731662 , Jun-2006</li><li><strong>Abstracts for Journals and Proceedings</strong> — St Hilarie M, Klerman EB. &quot;A tool to analyze melatonin phase and amplitude using a physiologically based model of melatonin.&quot; Sleep 2006, 20th Anniversary Meeting of the Association of Professional Sleep Societies, Salt Lake City, UT, June 17-22, 2006. Sleep. 2006;29(Suppl):A53-4., Jun-2006</li><li><strong>Abstracts for Journals and Proceedings</strong> — St Hilaire MA, Klerman EB. &quot;Inter-individual variability in the parameters of a mathematical model of neurobehavioral performance and alertness.&quot; Sleep 2007, Annual Meeting, Minneapolis, MN, June 9-14, 2007. Sleep 2007;30(Suppl):A52., Jun-2007</li><li><strong>Abstracts for Journals and Proceedings</strong> — Dean DA 2nd, Klerman EB. &quot;Optimum scheduling of countermeasures.&quot; Society for Industrial and Applied Mathematics - Society for Mathematical Biology (SIAM-SMB) Joint Session on the Life Sciences, Raleigh, NC, July 31-August 4, 2006. Society for Industrial and Applied Mathematics - Society for Mathematical Biology (SIAM-SMB) Joint Session on the Life Sciences, in press June 2006., Jun-2006</li><li><strong>Abstracts for Journals and Proceedings</strong> — Dean DA 2nd, Forger DB, Klerman EB. &quot;Designing optimal light intervention schedules for experimental and operational settings.&quot; Associated Professional Sleep Societies 19th Annual Meeting, Denver, Colorado, June 18-23, 2005. Sleep. 2005;28A:A69., Jun-2005</li><li><strong>Abstracts for Journals and Proceedings</strong> — Klerman EB, Dean DA 2nd, Gurdziel K, St Hilaire M, Kronauer RE. &quot;Mathematical modeling of human circadian physiology applications in space and for the general public.&quot; 15th International Academy of Astronautics Humans in Space Symposium, Graz, Austria, 2005 May. 15th International Academy of Astronautics Humans in Space Symposium, 2005 May., May-2005</li><li><strong>Articles in Peer-reviewed Journals</strong> — Indic P, Forger DB, St Hilaire MA, Dean DA 2nd, Brown EN, Kronauer RE, Klerman EB, Jewett ME. &quot;Comparison of amplitude recovery dynamics of two limit cycle oscillator models of the human circadian pacemaker.&quot; Chronobiol Int. 2005;22(4):613-29. PMID: 16147894, Sep-2005</li><li><strong>Abstracts for Journals and Proceedings</strong> — St Hilaire MA, Klerman EB, Lockley SW, Brainard GC, Kronauer RE. &quot;Revision of a mathematical model of circadian photic resetting to incorporate spectral sensitivity.&quot; Associated Professional Sleep Societies 19th Annual Meeting, Denver, Colorado, June 18-23, 2005. Sleep. 2005;28A:A56., Jun-2005</li><li><strong>Abstracts for Journals and Proceedings</strong> — Dean DA, Wyatt JK, Dijk D, Czeisler CA, Klerman EB. &quot;Quantifying practice effects within groups and individuals: examples from a month long forced desynchrony protocol.&quot; Sleep 2008, Baltimore, MD, June 7-12, 2008. Sleep. 2008;31 Suppl:A54., Jun-2008</li><li><strong>Abstracts for Journals and Proceedings</strong> — Thompson P, Klerman EB, Dean DA 2nd. &quot;Identifying two-process performance models using limited data.&quot; Society for Industrial and Applied Mathematics - Society for Mathematical Biology (SIAM-SMB) Joint Session on the Life Sciences, Raleigh, NC, July 31-August 4, 2006. Society for Industrial and Applied Mathematics - Society for Mathematical Biology (SIAM-SMB) Joint Session on the Life Sciences. In Press, June 2006., Jun-2006</li><li><strong>Abstracts for Journals and Proceedings</strong> — Dean DA 2nd, Klerman EB. &quot;Using domain specific information to design optimal circadian adjustment schedules.&quot; 35th International Congress of Physiological Sciences, March 2005. 35th International Congress of Physiological Sciences, 2005., Mar-2005</li><li><strong>Articles in Peer-reviewed Journals</strong> — Indic P, Gurdziel K, Kronauer RE, Klerman EB. &quot;Development of a two-dimension manifold to represent high dimension mathematical models of the intracellular Mammalian circadian clock.&quot; J Biol Rhythms. 2006 Jun;21(3):222-32. PMID: 16731662, Jun-2006</li><li><strong>Articles in Peer-reviewed Journals</strong> — Dean DA 2nd, Fletcher A, Hursh SR, Klerman EB. &quot;Developing mathematical models of neurobehavioral performance for the “real world“.&quot; J Biol Rhythms. 2007 Jun;22(3):246-58. Review. PMID: 17517914, Jun-2007</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/23211">https://techport.nasa.gov/projects/23211</a>
+    </div>
+  </div>
+</body>
+</html>

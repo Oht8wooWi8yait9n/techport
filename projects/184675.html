@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight Computing Test Kit Study (CompKit-STUDY) | NASA TechPort Project 184675</title>
+  <meta name="description" content="PURPOSE: The HPSC processor development is nearing completion, and there is considerable interest across NASA is infusing it into future missions. NASA has also led a collaborative effort with industry and other agencies to develop an interoperable, modular, a">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/184675">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 184675</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">GCD</span>
+          <span class="badge">TX02.2.1</span>
+        </div>
+        <h1>Flight Computing Test Kit Study (CompKit-STUDY)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 184675</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/184675" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          PURPOSE: The HPSC processor development is nearing completion, and there is considerable interest across NASA is infusing it into future missions.  NASA has also led a collaborative effort with industry and other agencies to develop an interoperable, modular, and standard SpaceVPX avionics architecture within the Sensor Open Systems Architecture (SOSA) organizations.  To reduce risk for the infusion of a new processor into these missions there is a pressing need to prototype and demonstrate applications on flight-like avionics systems.  This flight-like system, referred to as the HPSC Test Kit, is comprised of a chassis, and HPSC single board computer, a power supply,  and other peripheral cards conforming to the SOSA standard.  This proposed 1-year seedling consists of two related thrusts.  First, an RFI will be developed to solicit from industry (a) potential HPSC Test Kit solutions and (b) bounds for cost and schedule.  This information will inform the development of an RFP for the HPSC Test Kits.  Subject Matter Experts (SMEs) form JPL and NASA will evaluate RFI responses and provide recommendations to JPL.  Based on these inputs, JPL will then prepare the HPSC Test Kit RFP.  Work will also continue by subject matters at NASA Centers and JPL on the development of card profiles within the SOSA Space Subcommittee  (S3C).  These profiles can then be referenced within an HPSC Test Kit RFP.  Note that the S3C effort is currently funded through mid-FY25 by NESC, funds within this study will extend that effort through the end of FY25.  Note that the S3C effort is currently funded through mid-FY25 by NESC, funds within this study will extend that effort through the end of FY25.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          ​NASA is seeking to spur the development of an industry wide ecosystem of standardized interoperable cards that can be used to implement complete spacecraft avionics systems based on the SOSA™ S3C profiles. To guarantee interoperability the SOSA™ Space Subcommittee, comprising members from NASA, USSF and industry, have been working on a spacecraft avionics standard derived from the VITA 78 (Space VPX) specification. Initial elements of the standard are documented in the recently released SOSA Standard Snapshot 3(see SOSA Space Appendix), which has garnered broad industry support. ​The development kit is part of a broader NASA effort to advance space-based computing through the Sensor Open System Architecture (SOSA™) and its Space Subcommittee (S3C). The SOSA™ S3C aims to create a standardized and interoperable framework for space systems, encouraging collaboration among government agencies, industry, and academia to develop interoperable hardware and software solutions. This effort will support the creation of turn-key systems for testing, development, and flight, enabling more efficient and cost-effective space mission planning and execution​​.​
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>184675</td></tr>
+<tr><th>Acronym</th><td>CompKit-STUDY</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Game Changing Development (GCD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX02.2.1: Spacecraft Command and Data Handling Systems</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX02: Flight Computing and Avionics; TX09: Entry, Descent, and Landing; TX10: Autonomous Systems; TX17: GN&amp;C</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 0 | Current TRL: 0 | Target End TRL: 0</td></tr>
+<tr><th>Project Start Date</th><td>2025-01-01</td></tr>
+<tr><th>Project End Date</th><td>2025-10-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia; Johnson Space Center (JSC) — Houston, Texas; Goddard Space Flight Center (GSFC) — Greenbelt, Maryland; Game Changing Development (GCD)</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Maryland (MD), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Mars, Others Inside the Solar System, Outside the Solar System, Moon and Cislunar</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jim D Butler (Project Manager) &lt;jim.d.butler@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Mark N Thornblom (Program Manager) &lt;mark.n.thornblom@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-07-17</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: This task advanced the development of the High-Performance Spaceflight Computing (HPSC) System Test Kit, a SOSA SpaceVPX-aligned platform intended to reduce mission risk, accelerate software readiness, and validate open standards for future avionics. The effort was conducted under NASA STMD Enable Domain sponsorship with JPL serving as the technical and implementation lead. There were 19 initial RFI submissions, establishing a broad view of industry capability. During the review process, the project became aware of an additional vendor with early access to the HPSC chip and plans to produce cards as part of the early adopter program. • Conducted an RFI process with multiple industry responses, compiling a structured evaluation matrix that compared technical completeness, integration readiness, sustainability, and cost realism. • Held a series of evaluation meetings with NASA and JPL stakeholders to review RFI submissions, identify viable vendors, and determine which responses should be carried forward. • Balanced considerations of vendor neutrality against potential advantages of early access to HPSC chips and cards, ensuring evaluation criteria remained fair while recognizing risks and benefits of vendor-specific early access. • Matured the draft Request for Proposal (RFP), incorporating slot profile compliance, integration assumptions, and vendor-neutral evaluation criteria. • Refined software requirements through subject-matter engagement, covering startup flows, diagnostics, and interface mapping. • Integrated evolving SOSA S3C Appendix guidance into the architecture, alongside updated feasibility assessments for SpaceVPX solid-state storage. • Coordinated internally to align funding, contract structuring, and solicitation release planning, with assignment of a subcontract manager (SCM) initiated. The RFI process revealed broad variance in vendor maturity and highlighted the need to weigh vendor neutrality against early-access advantages. Ultimately, neutrality was maintained in the solicitation, but the evaluation analysis informed balanced criteria. A key challenge was the dependency on the evolving SOSA Space Segment (S3C) standard. Because the draft appendix was delayed, milestones had to be adjusted to align the solicitation with an authoritative, published standard. This reinforced the importance of synchronizing NASA deliverables with external standards bodies to ensure consistency, credibility, and adoption. Additional lessons include the value of early definition of software packaging expectations, flexibility in sourcing compliant storage modules, and maintaining proactive engagement with standards bodies and vendors alike. The HPSC DEV KIT task successfully delivered the RFP framework and final report as planned, with schedule adjustments made to account for SOSA publication delays. The results provide NASA with a standards-aligned, vendor-neutral solicitation ready for execution in FY26, advancing the broader HPSC program objectives of reducing cost, risk, and schedule for next-generation avionics.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/184675">https://techport.nasa.gov/projects/184675</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploration Augmentation Module Project | NASA TechPort Project 14651</title>
+  <meta name="description" content="The Exploration Augmentation Module (EAM) project goal is to design and deliver a flight module that is to be deployed to Earth-Lunar Distant Retrograde Orbit (DRO).&amp;nbsp;&amp;nbsp;The EAM Project will, as a minimum, define, mature, and plan an implementation appr">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/14651">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 14651</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Canceled</span>
+          <span class="badge">ESDMD</span>
+          <span class="badge">MCO</span>
+          <span class="badge">TX07.2.1</span>
+        </div>
+        <h1>Exploration Augmentation Module Project</h1>
+        <div class="meta-id">NASA TechPort Project ID: 14651</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/14651" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The Exploration Augmentation Module (EAM) project goal is to design and deliver a flight module that is to be deployed to Earth-Lunar Distant Retrograde Orbit (DRO).&nbsp;&nbsp;The EAM Project will, as a minimum, define, mature, and plan an implementation approach&nbsp;that will develop a 30-60&nbsp; day crew habitat capability, airlock, and advanced EVA capabilities, and support deep space research that addresses these varied environmental and mission needs.&nbsp; This project was canceled for budgetary reasons.</p> <p>The EAM project goal is to design and deliver a flight module that is to be deployed to Earth-Lunar Distant Retrograde Orbit (DRO).&nbsp; At this location it will perform several functions: 1) perform deep-space research and exploration systems testing, 2) dock with the Asteroid Redirect Vehicle (ARV) and enable 30-to-60-day crewed asteroid utilization missions, and 3) serve as a deep space port for future deep space missions.&nbsp; The EAM may be launched first to ISS or to lunar DRO as early as FY2020 to support research needed for future deep space missions as well as to extend crew size, exploration functions and mission durations for the asteroid redirect mission.&nbsp;&nbsp; Acting as a deep space port, the EAM may be mated with an additional pressurized habitation module as early as the year 2028, as an augmentation for conducting possible longer duration missions in Earth-Lunar space or to Mars.&nbsp; Therefore, the EAM Project will, as a minimum, define, mature, and plan an implementation approach by the end of FY2014 that will develop a 30-60-crew habitat capability, airlock, and advanced EVA capabilities, and support deep space research that addresses these varied environmental and mission needs.</p><p>The EAM project end product will possibly include the delivery of the EAM protoflight module for launch in the FY2019 time frame, as well as the flight planning and hardware to accommodate the progressive in-orbit build-up and modifications that will support the exploration capability demonstrations (possibly on ISS), the 30-to-60-day Asteroid Utilization Missions, and the augmented long-duration deep space configurations to support either extended Earth-Lunar missions or deep space excursions such as missions to Mars. The EAM configuration is still under assessment.&nbsp; The major functions of the EAM are to provide habitation for 30-60 days for a crew of four in deep space docked with the Orion spacecraft; provide EVA capability; provide capability for testing exploration systems (Environmental Controll and Life Support Systems, long duration food storage, radiation mitigation, teleoperations of robotic systems, spacecraft autonomy, etc.) in deep space; provide for exploration of redirected asteroid into DRO, including sample curation and emplacement of instrument;, and to provide a first foothold in deep space for future exploration missions including docking ports for visiting vehicles.</p><p>NASA&#39;s Advanced Exploration Systems (AES) is pioneering new approaches for rapidly developing prototype systems, demonstrating key capabilities, and validating operational concepts for future human missions beyond Earth orbit. AES activities are uniquely related to crew safety and mission operations in deep space, and are strongly coupled to future vehicle development.&nbsp; Early integration and testing of prototype systems reduces risk and improves affordability of exploration mission elements. The prototype systems developed in AES are to be demonstrated in ground-based test-beds, field tests, and in-flight experiments. In addition to developing building blocks for future missions, AES explores innovative ways to drive a rapid pace of progress, streamline project management, and use limited resources and the NASA workforce more effectively.</p><p>For its education and public outreach goal, the EAM project directly contributes to the development of the sciences, technologies, engineering and math (STEM) workforce in disciplines needed to achieve NASA&#39;s strategic goals. The eXploration Habitat (X-Hab) academic innovation challenge is a university-level challenge designed to engage and retain students in STEM, as well as to train and develop the STEM workforce of the future needed to implement U.S. space exploration policy.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>An EAM system is a technically greater challenge than ISS in the areas of logistics, radiation, communications, autonomous systems, storage &amp; disposal, and volume utilization. Advancing the state-of-the-art to meet EAM project objectives will make available enhancing technologies for ISS as well.</p> <p>An EAM system could be enhanced to enable other NASA unfunded and planned missions, such as the Asteroid Redirect Mission (ARM), by providing an asset that would improve performance for these missions.</p> <p>The development of EAM systems technologies in cis-lunar space offers an incremental extension of the business opportunities for commercial space at ISS -- especially with respect to commercial cargo.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>14651</td></tr>
+<tr><th>Project Status</th><td>Canceled</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Exploration Systems Development Mission Directorate (ESDMD)</td></tr>
+<tr><th>NASA Program</th><td>Mars Campaign Office (MCO)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX07.2.1: Logistics Management</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 5 | Current TRL: 5 | Target End TRL: 8</td></tr>
+<tr><th>Project Start Date</th><td>2013-10-01</td></tr>
+<tr><th>Project End Date</th><td>2015-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Kennedy Space Center (KSC) — Kennedy Space Center, Florida; University of Colorado Boulder — Boulder, Colorado; University of Wisconsin-Madison — Madison, Wisconsin; University of Vermont — Burlington, Vermont; University of South Alabama — Mobile, Alabama; Oklahoma State University-Main Campus — Stillwater, Oklahoma; Jacobs Engineering Group, Inc. — Dallas, Texas; NASA Headquarters (HQ) — Washington, District of Columbia; Marshall Space Flight Center (MSFC) — Huntsville, Alabama; Langley Research Center (LaRC) — Hampton, Virginia; Goddard Space Flight Center (GSFC) — Greenbelt, Maryland; Glenn Research Center (GRC) — Cleveland, Ohio; Naval Sea Systems Command (NAVSEA) — Washington, District of Columbia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL), Colorado (CO), District of Columbia (DC), Florida (FL), Maryland (MD), Ohio (OH), Oklahoma (OK), Rhode Island (RI), Texas (TX), Vermont (VT), Virginia (VA), Wisconsin (WI)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Lora J Bailey (Principal Investigator) &lt;lora.j.bailey@nasa.gov&gt;; Lora J Bailey (Project Manager) &lt;lora.j.bailey@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Thomas W Inman (Program Director) &lt;thomas.w.inman@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-01-27</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: To request closeout information for this project, please send an email with the Subject “TechPort Closeout Report Request” to hq-aes@mail.nasa.gov and specify which project closeout report you are requesting.</li><li><strong>Canceled</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="http://ntrs.nasa.gov/search.jsp" target="_blank" rel="noopener noreferrer">Engineering Polymer Blends for Impact Damage Mitigation</a></li><li><a href="https://www.aiaa.org/meetingpapers/" target="_blank" rel="noopener noreferrer">NASA Habitat Demonstration Unit (HDU) Deep Space Habitat Analog</a></li><li><a href="http://arc.aiaa.org/series/6.ices" target="_blank" rel="noopener noreferrer">Development of a Water Recovery System Resource Tracking Model</a></li><li><a href="http://ntrs.nasa.gov/search.jsp" target="_blank" rel="noopener noreferrer">Overview of Evolved Structural Prototypes in support of the Deep Space Habitat with Material and Sensor Strands Development</a></li><li><a href="https://www.aiaa.org/meetingpapers/" target="_blank" rel="noopener noreferrer">Habitat Concepts for Deep Space Exploration</a></li><li><a href="http://ntrs.nasa.gov/search.jsp" target="_blank" rel="noopener noreferrer">Design, Fabrication, and Testing of a Composite Rack Prototype in support of the Deep Space Habitat Program</a></li><li><a href="http://ntrs.nasa.gov/search.jsp" target="_blank" rel="noopener noreferrer">Design, Fabrication and Testing of a Smart Rail Prototype for the Deep Space Habitat Demonstrator</a></li><li><a href="https://www.aiaa.org/meetingpapers/" target="_blank" rel="noopener noreferrer">SLS-Derived Lab: Precursor to Deep Space Human Exploration</a></li><li><a href="https://www.aiaa.org/meetingpapers/" target="_blank" rel="noopener noreferrer">A Novel Approach for Engaging Academia in Collaborative Projects with NASA through the X-Hab Academic Innovation Challenge</a></li><li><a href="https://www.aiaa.org/meetingpapers/" target="_blank" rel="noopener noreferrer">Space Launch System Co-Manifested Payload Options for Habitation</a></li><li><strong>Exploration Augmentation Module (EAM) Concept</strong> — Conceptual Model of the Exploration Augmentation Module (EAM)</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/14651">https://techport.nasa.gov/projects/14651</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Characterizing a Polarization Detector for the Goddard Miniature Coronagraph (GMC) | NASA TechPort Project 40633</title>
+  <meta name="description" content="The purpose of the project is to characterize an appropriate detector for the Goddard Miniature Coronagraph (GMC) that is of low risk, yet able to provide high temporal and spatial resolution for making temperature and flow-speed measurement in the solar coron">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/40633">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 40633</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX13.2.3</span>
+        </div>
+        <h1>Characterizing a Polarization Detector for the Goddard Miniature Coronagraph (GMC)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 40633</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/40633" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The purpose of the project is to characterize an appropriate detector for the Goddard Miniature Coronagraph (GMC) that is of low risk, yet able to provide high temporal and spatial resolution for making temperature and flow-speed measurement in the solar corona. The detector being studied is a CCD camera with the capability to measure the polarized light of the corona. This will eliminate the need for the polarization wheel mechanism, which is typically used in traditional coronagraphs. Use of a polarization detector will reduce the mass and volume of GMC and lower the risk as well because one less mechanism will be employed. The characterization will involve observing the full moon and the 2016 total solar eclipse to optimize the exposure times of the coronal images taken using different filters. <p/><p>Coronagraphs are the key heliophysics instruments that image the corona and traneint objects such as coronal mass ejections (CMEs), which have wide ranging impact on the interplanetary spacecraft to geospace and life on Earth. Coronagraphs need to block the photospheric light of the Sun, so the corona (about a million times dimmer than the photosphere) can be imaged. Blocking the photospheric light is possible by an external occulting disk (occulter) in front of the objective lens of the solar telescope. One of the constants problems in coronagraphs is the photospheric light diffracted by the external occulter that enters into the coronagraph system due to scattering by the optical elements. By suitably designing the occulters and stops the intensity of diffracted and scattered light needs to be reduced. The optical design of traditional coronagraphs, developed by trial and error, has been driven by the level of diffracted stray light from the external occulter. It is now possible to model the stray light using state-of-the art optical design software. Research at Goddard has demonstrated that it is possible to build a miniature coronagraph reducing the mass, volume, and cost by 50% compared to traditional coronagraphs without compromising on the performance. The challenge in such a miniature coronagraph is controlling stray light and diffraction using clever design of the occulter and the baffles. This project is aimed at further miniaturization of the Goddard Miniature Coronagraph by eliminating the polarization wheel mechanism with the use of a polarization camera. Traditional coronagraphs use a filter wheel and a polarization wheel mechanisms. By eliminating the polarization wheel, one of the mechanisms is eliminated and hence the risk is reduced. Furthermore, the mass of the instrument is also reduced. When a coronagraph is used for measuing the electron temperature and flow speed, one has to make images at four different filters. For each filter, the light intensity needs to be measured with three different polarization angles. For measuring the temperature and flow speed of the corona, the filter images need to be as close in time as possible. Using a polarization detector eliminates one of the mechanisms (polarization wheel) and allows us to do better science because images with various filters can be obtained much closer in time. For an exposure time of 10 sec, the polarization camera will cut down the sweep time by 30 sec. The core of the technology involves mounting a polarization strip to the front of the CCD and taking images that constain the polarization elements. Four neighboring pixels measure the polarized intensity at four different angles. Combining these pixels, one obtains the polarized signal that is needed for the scientific measurements. The quantum efficiency of most of the CCDs is low in the blue end. The filters to be used for scientific measurements are close to the blue range. The quantum efficiency of the best available CCDs range from 0.4 to 0.55. In order to obtain the optimal exposure times for the four filters, the full moon will be observed with polarization detector and the four filters mounted on a solar telescope. The moon imaging will also validate the SNR performance of the instrument/camera. </p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>N/A</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>40633</td></tr>
+<tr><th>Acronym</th><td>GMC</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX13.2.3: Nondestructive Inspection, Evaluation, and Root Cause Analysis</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 3 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2015-10-01</td></tr>
+<tr><th>Project End Date</th><td>2016-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Natchimuthuk Gopalswamy (Principal Investigator) &lt;natchimuthuk.gopalswamy-1@nasa.gov&gt;; Nikolaos Paschalidis (Project Manager) &lt;nikolaos.paschalidis@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-02</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="http://sciences.gsfc.nasa.gov/sed/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>The polarization camera to be charcterized</strong> — The polarization camera as attached to a solar telescope. This is the setup to be used for observing the upcoming total solar eclipses</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/40633">https://techport.nasa.gov/projects/40633</a>
+    </div>
+  </div>
+</body>
+</html>

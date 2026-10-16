@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Development of High Contrast Lenslets for Integral Field Spectroscopy | NASA TechPort Project 11951</title>
+  <meta name="description" content="A key goal of NASA&#x27;s Exoplanet Exploration Program (ExEP) is to discover Earth-like exoplanets and to determine their spectra for spectral signatures of life. Toward that goal there is on-going development of several competing architectures for how to suppress">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/11951">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 11951</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX08.1.1</span>
+        </div>
+        <h1>Development of High Contrast Lenslets for Integral Field Spectroscopy</h1>
+        <div class="meta-id">NASA TechPort Project ID: 11951</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/11951" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>A key goal of NASA's Exoplanet Exploration Program (ExEP) is to discover Earth-like exoplanets and to determine their spectra for spectral signatures of life. Toward that goal there is on-going development of several competing architectures for how to suppress the starlight and achieve the high contrast necessary to directly image an Earth-like planet in the habitable zone around a nearby star, including coronagraphs, external occulters, and nulling interferometers operating at optical wavelengths.</p>  <p>Regardless of the starlight suppression technology chosen, any future planet imaging mission must have a highly capable science instrument able to perform both imaging and spectroscopy in order to detect and characterize the target planets. The ideal instrument for making these measurements is an integral field spectrograph (IFS), an instrument that obtains a spectrum at every spatial element in the field of view. The current state of the art for these instruments does not yet achieve the challenging performance requirements needed for imaging of Earth-like exoplanets due to a variety of challenging systematics. In particular, current lenslet designs introduce too high a level of crosstalk between adjacent spectra to operate at very high contrasts.</p>  <p>In space, an IFS science camera will be used to investigate the properties of exoplanets while monitoring and diagnosing wavefront errors introduced by the telescope optical assembly.</p>  <p>This research will develop a critical technology needed to build a prototype IFS to advance coronagraphy and extreme wavefront sensing and control algorithms in NASA's High Contrast Imaging Testbed (HCIT). Once built, this laboratory IFS will be used as a facility class instrument within the HCIT.</p>  <p> </p>  <p> </p>  <p> </p>  <p>The work builds upon awards from the FY12 IRAD program and the Nancy Grace Roman Technology Fellowship program.</p>  <p>As part of those programs, NASA Goddard Space Flight Center designed the <em>Prototype Imaging Spectrograph for Coronagraphic Exoplanet Studies</em> (PISCES) integral field spectrograph to be integrated into the JPL HCIT. However, during this the design phase, it became apparent that even though lenslet-based integral field spectrographs exist on the ground, <em>high contrast</em> lenslet arrays are still at a low TRL.  This work will design, model, fabricate, and performance assess a specialized lenslet array in order to meet the requirements of a high contrast imaging mission.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The NASA ExEP is tasked with developing the science cases and technology innovations needed for future space telescopes that will directly image Earth-like extrasolar planets in the 2020s. Internal coronagraphs with precision wavefront control are critical to realizing this goal. ExEP performs technology demonstrations of internal coronagraphs in the HCIT, a vacuum test facility located at NASA Jet Proplusion Lab (JPL). ExEP HCIT's mission is to support visitor experiments that have been funded by the NASA ROSES Strategic Astrophysics Technology (SAT) program under the Technology Development for Exoplanet Missions (TDEM) line. Research groups from Univ. of Arizona, Princeton Univ., NASA Ames Research Center, and JPL have used the facility for targeted programs. Various internal coronagraph concepts have made performance demonstrations in imaging mode using monochromatic light or narrow bandpass filters. However, the latest ground-based high contrast instruments all employ IFSs like PISCES that are highly advantageous for separating the instrument speckle pattern from a planetary signal.</p>  <p>The proposal will develop the lenslet array needed to provide this instrument backend camera to the ExEP HCIT. This instrument concept is universally recognized as the desired flight instrument configuration for the Terrestrial Planet Finder (TPF) mission. PISCES will support characterization of achievable wavefront control for all coronagraph types. It will be initially used to characterize the performance of the band-limited Lyot and Vector Vortex coronagraphs that have already achieved good contrast performance in 20% bandpasses. After instrument commissioning, PISCES will be made a part of the HCIT facility infrastructure that will be built into an end-to-end simulator of a TPF-like mission.</p>  <p>This technology development may have applications to the Department of Energy, the Department of Agriculture, and the Department of Defense. Each of these government agencies would have uses for compact integral field spectrographs.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>11951</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.1: Detectors and Focal Planes</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 2 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2012-10-01</td></tr>
+<tr><th>Project End Date</th><td>2016-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Michael W Mcelwain (Principal Investigator) &lt;michael.w.mcelwain@nasa.gov&gt;; Stanley D Hunter (Project Manager) &lt;stanley.d.hunter@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-02</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The purpose of the Goddard Space Flight Center’s Internal Research and Development (IRAD) program is to support new technology development and to address scientific challenges. Each year, Principal Investigators (PIs) submit IRAD proposals and compete for funding for their development projects. Goddard’s IRAD program supports eight Lines of Business: Astrophysics; Communications and Navigation; Cross-Cutting Technology and Capabilities; Earth Science; Heliophysics; Planetary Science; Science Small Satellites Technology; and Suborbital Platforms and Range Services. Task progress is evaluated twice a year at the Mid-term IRAD review and the end of the year. When the funding period has ended, the PIs compete again for IRAD funding or seek new sources of development and research funding or agree to external partnerships and collaborations. In some cases, when the development work has reached the appropriate Technology Readiness Level (TRL) level, the product is integrated into an actual NASA mission or used to support other government agencies. The technology may also be licensed out to the industry. The completion of a project does not necessarily indicate that the development work has stopped. The work could potentially continue in the future as a follow-on IRAD; or used in collaboration or partnership with Academia, Industry and other Government Agencies. If you are interested in partnering with NASA, see the TechPort Partnerships documentation available on the TechPort Help tab. http://techport.nasa.gov/help</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="http://sciences.gsfc.nasa.gov/sed/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>Development of High Contrast Lenslets for Integral Field Spectroscopy Project</strong> — WFIRST</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/11951">https://techport.nasa.gov/projects/11951</a>
+    </div>
+  </div>
+</body>
+</html>

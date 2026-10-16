@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Networked ATM for Efficient Routing | NASA TechPort Project 33951</title>
+  <meta name="description" content="Uncertainties in weather forecasts and traffic congestion sometimes result in inefficient planned flight paths for aircraft operating in the National Airspace System (NAS). Over the past several years, NASA developed two decision support tools to identify oppo">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/33951">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 33951</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX05.5.2</span>
+        </div>
+        <h1>Networked ATM for Efficient Routing</h1>
+        <div class="meta-id">NASA TechPort Project ID: 33951</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/33951" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Uncertainties in weather forecasts and traffic congestion sometimes result in inefficient planned flight paths for aircraft operating in the National Airspace System (NAS). Over the past several years, NASA developed two decision support tools to identify opportunities for efficient re-routes. The Dynamic Weather Routing (DWR) system uses information generated on the ground to identify candidate flights for re-routing and the airline operations center (AOC) sends the proposed change to the flight deck for subsequent negotiation with air traffic control (ATC). The Traffic Aware Strategic Aircrew Requests (TASAR) system is flight deck-based, using information available on the aircraft and software in the electronic flight bag (EFB) to suggest alternative routes. DWR successfully completed operational tests at ZFW and American Airlines and TASAR will soon begin operational evaluations at Alaska Airlines and Virgin America. Our concept proposes a more capable architecture that can take full advantage of emerging communications technologies to integrate AOC and flight deck capabilities. This approach offers a more robust, extensible architecture that can be tailored to an individual airline's operational model while simultaneously offering an upgrade path for adding more capability over time. Our solution aims to combine the best features of DWR and TASAR and adds more capability via enhanced data communications. Our solution fully integrates with the AOC but retains full access to the superior information from the flight deck. This enables our architecture to use the best available data, allocate data processing and analytical functions to where they can be performed most efficiently, and allows the airline to choose where it wants decision making to occur.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Our concept offers NASA two applications with significant value both near term and in the ATM+2 environment. In the near term, our architecture will identify improvements to existing NASA technologies such as DWR and TASAR. Our concept shows how to add benefits with the potential for improved communications technologies and increased cockpit access to low cost, reliable wireless. Strategically, our concept offers an early success for the Networked ATM subproject under the SMART NAS project. By developing an architecture that includes AOCs, our team offers NASA an alternate pathway to deployment of its ATM technology, without the delays and constraints of the FAA's Acquisition Management System and associated institutional barriers. In the longer term, our architecture offers the potential to add more functionality by providing a networked ATM solution that integrates communications, data collection, and optimized analysis that will support advanced concepts, including TBO and real time system wide safety assurance. Our architecture would support more extensive trajectory negotiation during a flight, which is a necessary complement to pre-departure trajectory negotiations. We offer an evolutionary pathway that generates near-term airline benefits at low cost. That success will encourage additional investments in advanced ATM concepts such as TBO.<br /> <br />Our concept has immediate application to airlines that want to improve operating efficiency and reduce costs and fuel consumption. A recent benefit study of DWR conducted by LMI estimated that a lower bound estimate of benefits from DWR alone would be at least $800 per aircraft, or over $3 million annually (Stouffer, et. al.). Our concept offers the potential for greater benefits by identifying more opportunities and increases the probability of successfully executing the improved route. Our approach also increases the number of airlines that would be interested as it offers a flexible solution that can be tailored to the airline preferred operating mode. Our concept provides a convenient mechanism for deploying the solution in the AOC using existing software services provided by our Sabre partner, or another provider of similar services. For some airlines, an EFB solution might be preferred and our concepts supports that implementation at low cost.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>33951</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX05.5.2: Quantum Communications</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 2 | Target End TRL: 2</td></tr>
+<tr><th>Project Start Date</th><td>2015-06-17</td></tr>
+<tr><th>Project End Date</th><td>2015-12-17</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Robust Analytics — Crofton, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Peter F Kostiuk (Principal Investigator); Matthew C Underwood (Project Manager) &lt;matthew.c.underwood@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li><li><strong>Advanced To</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li><li><strong>Briefing Chart</strong> — Networked ATM for Efficient Routing, Phase I Briefing Chart</li><li><strong>Briefing Chart Image</strong> — Networked ATM for Efficient Routing Briefing Chart</li><li><strong>Final Summary Chart Image</strong> — Networked ATM for Efficient Routing, Phase I Project Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/33951">https://techport.nasa.gov/projects/33951</a>
+    </div>
+  </div>
+</body>
+</html>

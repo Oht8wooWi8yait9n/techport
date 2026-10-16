@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automaton Rover for Extreme Environments (AREE) | NASA TechPort Project 94070</title>
+  <meta name="description" content="Venus, with its sulfuric acid clouds, temperatures of over 450&#x27;, and surface pressure of 92 bar, is one of the most hostile planetary environments in the solar system. Only a handful of Soviet Venera and Vega landers have successfully reached the surface of Ve">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/94070">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 94070</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">NIAC</span>
+          <span class="badge">TX08.3.6</span>
+        </div>
+        <h1>Automaton Rover for Extreme Environments (AREE)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 94070</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/94070" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Venus, with its sulfuric acid clouds, temperatures of over 450', and surface pressure of 92 bar, is one of the most hostile planetary environments in the solar system. Only a handful of Soviet Venera and Vega landers have successfully reached the surface of Venus. Even these robust probes only survived for 23 to 127 minutes before the electronics failed in the hostile environment. However, an entirely mechanical design, utilizing hardened metals could survive, collect, and return valuable long term longitudinal science data from the surface of Venus for weeks, if not months. This science data is critical for informing models of dynamic planetary systems. Automata are a centuries old concept. These unique devices are purely mechanical, self-operating machines capable of performing sequences of operations and instructions. Almost 2,300 years ago the ancient Greeks built the Antikythera automaton. This purely mechanical computer enabled accurate predictions of past and future astronomical events without utilizing any electronics. We propose a paradigm shift by replacing electronics with a fully mechanical systems design to enable exploration of the most extreme environments within the solar system. The specific mission context of Venus is explored in this proposal, but automata are applicable to other extreme environments in the solar system including Mercury, Jupiter's radiation belts, the interiors of gas giants, the mantle of the Earth and volcanoes throughout the solar system. AREE is unexplored as it offers a paradigm shift in spacecraft architecture, yet is still credible as automatons have operated on earth for centuries. It is exciting to think about how a new application of ancient technology could revolutionize the exploration of extreme environments, and allow mankind to unlock the secrets of Venus and other hostile environments across the solar system.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Automata could be the key for unlocking the secrets for some of the most extreme environments in the solar system such as the surface of Venus. AREE, the Automaton Rover for Extreme Environments replaces vulnerable electronics with an entirely mechanical design. By utilizing high temperature alloys, the rover would survive for weeks if not months, allowing it to collect and return valuable long term longitudinal science data from the surface of Venus. This science data is critical for informing models of dynamic planetary systems.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>94070</td></tr>
+<tr><th>Acronym</th><td>AREE</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>NASA Innovative Advanced Concepts (NIAC)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.3.6: Extreme Environments Related to Critical System Health Management</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2016-07-01</td></tr>
+<tr><th>Project End Date</th><td>2017-06-01</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>California Institute of Technology (CalTech) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jonathan F Sauder (Principal Investigator) &lt;jonathan.sauder@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Vianni Ricano Cadenas (Program Manager) &lt;vianni.ricanocadenas@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Mechanical automata and computers have not been considered a serious avenue of scientific research since before early work on computers in the 1950s. Even then, much of the prior research into mechanical computers did not make it into the literature as it was related to the war effort and considered classified. The first phase of the project was to create a point design and exhaustively research the literature on the varied topics requiring greater refinement. At every opportunity, subject matter experts were engaged to provide input on the feasibility of various ideas and brainstorm for creative solutions to novel problems. The Jet Propulsion Laboratory employs many individuals who specialize in varied topics ranging from materials science, mechanism design, extreme environments, radar, science, spacecraft systems, and mission architectures, and the names of those consulted are listed in the end of this report. The concept was showcased at forums within JPL, such as the Mechanical Systems Division Seminar, and external, including the Venus Exploration Analysis Group (VExAG), IEEE Aerospace Conference (paper submission), and AIAA SciTech (featured presentation). This exposure allowed for the generation of additional ideas and knowledge of what has been done before and where there are holes in current capabilities. Midway through the project an A-team Study (an early formulation team in the JPL Innovation Foundry) was used help to leverage the breadth and depth of experience at JPL and collate ideas and concerns from various disciplines. The study incorporated a presentation of the point design and shorts talks from relevant experts in various relevant fields. Through discussion, the workshop narrowed down the primary science objectives (seismic and geologic), provided insight on the most robust architecture, and provided guidance on next steps. The final phase of the project involved comparing what we think could be done with an automaton to the current state of the art in fields like high temperature electronics 2.2 Assessment Against Phase One Goals The goal of the Phase One study was to generally determine the feasibility and value of using an automaton to explore Venus. Three main questions were brought forth in the original proposal and are repeated below along with an assessment of the Phase One finding. 1) Can an automaton explore and record data from the surface of a hostile world? A viable systems architecture was developed for the automaton rover, however, it is not practical to make a purely mechanical rover. High temperature electronics are incorporated where they have sufficient maturity and application, such as instrumentation. A system by system breakdown is provided in Section 4.0. 2) Can information gathered be communicated to Earth? An in depth trade was performed to determine the feasibility of getting information back to Earth and understand how to communicate science data using the limited resources. See Section 4.5. 3) What science questions can most effectively be answered with low bit rate communication? Radar scientists and engineers at JPL were brought on to determine the value of low bit rate longitudinal science on Venus and the question was addressed as part of the workshop held on the automaton concept. Science return is discussed in Section 3.0. 2.3 Key Findings The Phase 1 study showed that there are no technological or physical barriers preventing an automaton rover within the Venus context. The key areas investigated were computing elements, mass and volume constraints from the EDL system, power generation, power storage, communication link to Earth, science instruments, materials, and control, which are all discussed later in this document. The study also revealed that a fully mechanical rover, while feasible, is not practical. This conclusion resulted from an A-team Study held to explore AREE in more detail combined with a review of high temperature electronic technologies. Fundamentally, building a mechanical computer with 1,000+ transistors would require a technology investment similar to if not greater than high temperature electronics already in development without significant increase in performance. With input from MEMS experts at Sandia National Laboratories, it was determined that mechanical computing elements would not be lower mass, lower power, or smaller than high temperature electronics under development. However, mechanisms are still an enabling technology in a Venus mission context. Clever mechanisms can be combined with high temperature electronics to enable a platform that is more capable than either technology by itself. For example, one may consider simple addition. An electronic adder requires 576 transistors to combine two 16-bit numbers11. To add numbers larger than 16 bits, multiple iterations through software would be required. However, a mechanical analog differential adder can solve the same problem using only 5 gears. By finding these areas where mechanical solutions are relatively simple, the load on the computer can be reduced, thereby enabling a mission. Of course, a differential adder can only perform the adding operation, whereas a processor made up of many transistors can perform many other functions. But for an automaton, where the system is designed to carry out a specialized series of actions, this flexibility is not required.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Report PDF\Final Report URL</li><li><strong>[Closeout Link]</strong> Closeout Link</li><li><a href="https://www.nasa.gov/feature/automaton-rover-for-extreme-environments-aree" target="_blank" rel="noopener noreferrer">NASA.gov Feature Article</a></li><li><strong>Project Image</strong> — An automaton rover combines ancient mechanical computers with modern manufacturing technology to create a design without electronics, enabling exploration of the most extreme environments in the solar system. Credits: Jet Propulsion Laboratory/California Institute of Technology, background from ESA.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/94070">https://techport.nasa.gov/projects/94070</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulated Excavation Environment for Lunar Operations Follow-on (SEELO) | NASA TechPort Project 146627</title>
+  <meta name="description" content="As more lunar In-Situ Resource Utilization (ISRU) missions are planned and developed, a need was identified for a simulation environment with accurate regolith interaction mechanics that is less computationally expensive than commercially available multiphysic">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/146627">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 146627</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">KSC IRAD</span>
+          <span class="badge">TX04.6.2</span>
+        </div>
+        <h1>Simulated Excavation Environment for Lunar Operations Follow-on (SEELO)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 146627</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/146627" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>As more lunar In-Situ Resource Utilization (ISRU) missions are planned and developed, a need was identified for a simulation environment with accurate regolith interaction mechanics that is less computationally expensive than commercially available multiphysics tools. The purpose of the Simulated Excavation Environment for Lunar Operations (SEELO) project was to develop an interactive simulation environment that efficiently models lunar ISRU excavation operations, including soil deformation, while running in faster-than-real-time.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The SEELO simulation enables the development of robust machine learned models and policies to execute and improve certain ISRU operations. SEELO is also intended to enable various projects and capabilities such as validation of excavation mechanisms and testing/validation of mission architectures or robotic systems for ISRU. ISRU missions currently in the planning stages and leveraging the data generated by this simulation in a wide variety of mission architectures will significantly improve the fidelity of planning efforts. The skills required to develop this simulation, both for ISRU concept testing and machine learning to enable autonomy, are valuable and transferable to other dynamical systems and environments at KSC.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>146627</td></tr>
+<tr><th>Acronym</th><td>SEELO</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: KSC IRAD (KSC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX04.6.2: Modeling and Simulation for Robots</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX07.1.2: Resource Acquisition, Isolation, and Preparation</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 4 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2022-03-01</td></tr>
+<tr><th>Project End Date</th><td>2023-02-28</td></tr>
+<tr><th>Lead Organization / Center</th><td>Kennedy Space Center (KSC) — Kennedy Space Center, Florida</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Florida (FL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Mars, Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Michael A Dupuis (Principal Investigator) &lt;michael.a.dupuis@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Kelvin R Ruiz (Program Manager) &lt;kelvin.r.ruiz@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2023-09-11</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: One of the focuses of the SEELO follow-on was to solidify core functionalities while ensuring the stability, maintainability, expandability, and computational efficiency of the product. These core functionalities included, but were not limited to, representative lunar terrain excavation, interactive robot dynamics, and a seamless user interface/user experience (UI/UX) design. The follow-on project developed a feature to allow for excavation in the lunar accurate terrain. Previously, SEELO had two types of terrain: custom terrain that could be excavated, and low-fidelity accurate terrain to the south pole of the Moon based on data from the Lunar Reconnaissance Orbiter (LRO). A feature was developed so that when a user selected a section of the lunar accurate terrain to become the work area, it would be replaced by a section of high-resolution diggable terrain. This unified the previously separate functions of SEELO’s accurate generation of south pole lunar terrain, and detailed excavation of regolith. Details of the high-fidelity work area terrain were updated. A surface roughness feature was developed that took the existing flat work area and deformed the vertices using Perlin noise. This deformation was then parameterized, and control was given over to the user. Research was subsequently performed on lunar micro cratering, i.e. craters too small to appear in the low-fidelity Lunar Orbiter Laser Altimeter (LOLA) data. A system was created that would generate crater templates, then “stamp” the templates into the simulated terrain. The project upgraded robot physical dynamics and robot-to-terrain interaction. This involved proper physical representation of articulated components, such that it mimicked realistic physical characteristics of vehicular dynamics based on predefined environmental parameters. Enhancements in dynamics representation fidelity allowed for greater accuracy in the calculation of related physical quantities (e.g. wheel angular velocity, actuator power consumption, etc.) and tightly coupled interactions between the robot and its operational environment. The fidelity of excavation was also significantly improved on high-fidelity terrain. Each of the physics-related calculations were tied to the physics engine timescale, meaning calculations were guaranteed to be accurate at any user-provided time scale. A feature that allows the user to integrate externally developed Universal Robot Description Format (URDF) robot models was also upgraded. The URDF model is a collection of files that describe a robot&amp;#39;s physical characteristics used in the Robot Operating System (ROS). To achieve this functionality, the team implemented a tool called ROS#. This software package allows the user to import URDF models into the editor and incorporate them within the simulation environment. As part of the UI/UX cleanup effort, the team identified and resolved significant bugs within the Block Engine 2 programming interface, an essential tool in supplying user-defined instructions for simulated lunar missions. These fixes involved considerable updates to key areas, such as the Mission Management System, the Save/Load System, and the UI Management System. The software development team also extensively researched methods for improving the runtime performance of SEELO’s excavation operations, which were the slowest features of the simulation. Using the built-in profiler tool, the limiting factor for performance was determined to be the systems’ physics calculations. To reduce overhead calculations and improve visual fidelity, a user-adjustable slider was added to the mission manager to adjust the maximum time step, or the maximum allowed time that physics calculations may run per frame. The maximum time step is measured as the target minimum refresh rate of the simulation. Additionally, sliders for both maximum time step and time scale (or simulation run speed) were implemented for active missions. These active sliders allow adjustable simulation speed and target minimum refresh rate during live missions as opposed to these parameters being exclusively set at mission start.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/146627">https://techport.nasa.gov/projects/146627</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automated Airfoil Table Generation for VTOL Aircraft | NASA TechPort Project 185412</title>
+  <meta name="description" content="The design and development of VTOL air vehicles, especially AAM, is making rapid progress with numerous innovative configurations. The industry is, however, facing serious challenges in achieving its goal toward affordable high performance/low noise VTOL that ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/185412">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 185412</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX11</span>
+        </div>
+        <h1>Automated Airfoil Table Generation for VTOL Aircraft</h1>
+        <div class="meta-id">NASA TechPort Project ID: 185412</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/185412" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The design and development of VTOL air vehicles, especially AAM, is making rapid progress with numerous innovative configurations. The industry is, however, facing serious challenges in achieving its goal toward affordable high performance/low noise VTOL that can be timely certified for operation. Design and analysis of modern VTOL has been a major hurdle due to extremely high computational demands. Comprehensive rotorcraft analysis tools are widely used for VTOL design and analysis. To manage costs, comprehensive tools use C81 airfoil tables for quick turnaround. Hence, the ability to quickly and accurately generate C81 tables is vital. The proposed work aims at creating a high fidelity airfoil table generator to effectively support VTOL design. The tool to be developed will be versatile in terms of supporting the unique requirements of VTOL design and analysis. The tool will also be streamlined, efficient, automated along with a friendly graphical user interface.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The automated high fidelity airfoil table generator to be developed will expedite the VTOL vehicle modeling and augment comprehensive rotorcraft analysis. Airfoil coefficient tables are an essential part of VTOL design and comprehensive analysis and, therefore, any application involved with NASA's VTOL design, test and evaluation, training, and operation efforts will find great benefit from the proposed research. The airfoil table tool will have a strong, positive impact on NASA applications, such as (1) Revolutionary Vertical Lift Technology (RVLT) Project where the comprehensive analysis, augmented with airfoil table generator, can be applied for creating innovative vertical lift technology (e.g., novel rotor systems and flight operations, etc.) to support VTOL design and development. (2) Air mobility pathfinders project where a comprehensive analysis tool can be used in the AAM aerodynamic interaction investigation to effectively support optimum flight planning and scheduling and enhance flight safety. (3) NASA conceptual AAM configuration design and analysis where a comprehensive analysis tool can be applied for optimum design and test. (4) AAM operation center where a comprehensive analysis tool can be used to expedite the test and evaluation processes. (5) VTOL analysis for emergency response applications, such as fire fighting, resupply, and rescue where the analysis can be used for flight planning and mission simulation to enhance the flight safety and efficiency. (6) Dragonfly mission that uses a rotorcraft-lander to explore Titan where a comprehensive analysis tool (FLIGHTLAB) with its accurate prediction of aerodynamic interaction and rotor wake dynamics has been used for flight dynamics and control analysis. The airfoil table tool to be developed will expedite the Titan lander design iterations and the simulated test and evaluation efforts.  The automated high fidelity airfoil table generation tool will augment comprehensive rotorcraft analysis and significantly expedite the process. Any application involved with VTOL design, testing, training, and operation will benefit from the proposed research. The tool to be developed will potentially benefit numerous non-NASA applications, e.g., (1) U.S. Army drone teaming operations where comprehensive analysis augmented with the airfoil table generator will support accurate teaming and safe flight through modeling of mutual aerodynamic interaction between the drones and the parent aircraft. (2) U.S. Army Future Vertical Lift program is developing a family of military rotorcraft to modernize its aviation where comprehensive analysis has been extensively used. The augmented comprehensive analysis will strongly enhance the support throughout all stages of design and development. (3) USAF transformative vertical lift program (AFWERC Agility Prime) can benefit from the augmented tool for accelerated prototype eVTOL development (4) Disaster relief with VTOL vehicle for fire fighting, resupply, and rescue where the augmented tool can be used for flight planning and mission simulation to enhance flight safety and efficiency. (5) FAA AAM certification support with simulated tests of performance, stability, loads, noise, and failure/recovery simulation using augmented tool. (6) FAA certification of AAM flight in turbulent air environments (e.g., rooftop landing) through simulated tests with the augmented tool. (7) Heliport design where comprehensive analysis can provide prediction of AAM downwash/outwash over landing spots as well as AAM approach and takeoff. (8) U.S. Navy shipboard rotorcraft/drone landing simulation and analysis support (9) Wind turbine design using augmented analysis tool for high performance/low noise
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>185412</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11: Software, Modeling, Simulation, and Information Processing</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX13: Ground, Test, and Surface Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2025-09-29</td></tr>
+<tr><th>Project End Date</th><td>2026-03-27</td></tr>
+<tr><th>Lead Organization / Center</th><td>Langley Research Center (LaRC) — Hampton, Virginia</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Chengjian He (Principal Investigator); Brandon L Litherland (Project Manager) &lt;brandon.l.litherland@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-19</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/185412">https://techport.nasa.gov/projects/185412</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Low Thrust Trajectory Design for GSFC Missions Project | NASA TechPort Project 14761</title>
+  <meta name="description" content="The Evolutionary Mission Trajectory Generator (EMTG) is a global trajectory optimization tool. EMTG is intended for use in designing interplanetary missions which perform multiple planetary flybys and either low-thrust or high-thrust propulsive maneuvers on th">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/14761">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 14761</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX11.5.1</span>
+        </div>
+        <h1>Low Thrust Trajectory Design for GSFC Missions Project</h1>
+        <div class="meta-id">NASA TechPort Project ID: 14761</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/14761" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The Evolutionary Mission Trajectory Generator (EMTG) is a global trajectory optimization tool. EMTG is intended for use in designing interplanetary missions which perform multiple planetary flybys and either low-thrust or high-thrust propulsive maneuvers on the way to destinations in the solar system. EMTG is designed to work with minimal user oversight. The user must input only the starting location, the destination, the allowable range of launch dates, the allowable flight time, and minimal information about the spacecraft hardware (launch vehicle, propulsion, power). EMTG then autonomously searches for the optimal sequence of planetary flybys and propulsive maneuvers which delivers the most payload to the destination. EMTG is easy to use and capable of designing a wide variety of missions. This report focuses on the development of EMTG&#39;s low-thrust mission design capabilities.<br />&nbsp;</p> <p>The problem to be solved here is that of designing complex interplanetary trajectories to destinations which are difficult to reach via direct flights and chemical propulsion. Some targets, such as Mars and Venus, are reachable using direct flights with chemical propulsion technology. Others, such as the Mercury, the outer planets, main-belt asteroids, comets, and many other scientifically interesting targets are not easily accessible, i.e. the &Delta;v required to reach them via direct chemical flights is too high and therefore payloads of useful size cannot be easily delivered. There are two ways to mitigate this problem. One is by using more efficient propulsion systems, such as low-thrust solar electric propulsion (SEP). The other is to find more efficient paths to the destination, possibly including gravity assist maneuvers, also known as planetary flybys. Even better solutions might be found by combining these techniques. Unfortunately these trajectory optimization problems are very difficult to solve. The multiple-flyby interplanetary trajectory optimization problem is characterized by having a highly nonlinear objective function, several nonlinear constraints to enforce feasibility (i.e. preventing the spacecraft from coming dangerously close to a planet) and many locally optimal solutions. The large number of locally optimal solutions makes finding the global optimum very difficult. The low-thrust trajectory optimization problem is characterized by a very large number of nonlinear decision variables and constraints. Problems which involve both planetary flybys and low-thrust propulsion suffer combine the two sets of challenges &ndash; they have many locally optimal solutions and also many (hundreds to thousands) of decision variables and many (tens to hundreds) of nonlinear constraints. There are several methods that have been previously used to solve this type of problem. The most successful of these has been to search for combinations of planetary flybys using a grid search method or intuition and a highly simplified trajectory model, as in the case of Jet Propulsion Lab&rsquo;s STOUR and STOUR-LTGA. A higher fidelity tool such as MALTO, GMAT, or Copernicus is then used to refine the solution. The main problem with traditional design techniques is the risk of never considering the combination of choices that produces the optimal solution. When one uses a low-fidelity grid search, it is possible that the globally optimal solution will not be captured in the grid. In turn the higher-fidelity local optimization tools like MALTO, GMAT, and Copernicus will only converge to a locally optimal solution in the neighborhood of the user-supplied initial guess. None of the existing methods allow for fully autonomous global optimization of missions that include flybys, low-thrust propulsion, or combinations of the two.<br />&nbsp;</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The EMTG is intended for use in preliminary mission design, i.e. in the proposal phase. This is a tool to make proposals more complete and less costly. Therefore, by definition, it is not really suited for reducing the cost of existing funded missions but rather for reducing the cost of future missions.<br />&nbsp;</p> <p>The EMTG can be used to rapidly explore low-thrust mission concepts, reducing the cost of mission proposals and allowing users to explore more mission options, possibly leading to reduced mission cost and/or improved capability.<br />&nbsp;</p> <p>Any entity wishing to design low-thrust missions may find this tool useful. However its primary utility is in designing interplanetary missions, so NASA is the most likely user.<br />&nbsp;</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>14761</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.5.1: Tools and Methodologies for Defining Mission Architectures and Mission Design</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 4 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2013-10-01</td></tr>
+<tr><th>Project End Date</th><td>2015-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Illinois at Urbana-Champaign — Urbana, Illinois</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Illinois (IL), Maryland (MD)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jacob A Englander (Principal Investigator); Steven P Hughes (Co-Investigator) &lt;steven.p.hughes@nasa.gov&gt;; Dennis W Woodfork (Project Manager) &lt;dennis.w.woodfork@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-01-27</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="http://sourceforge.net/projects/emtg/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>Low Thrust Trajectory Design for GSFC Missions Project </strong> — Mars Sample Return Trajectory</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/14761">https://techport.nasa.gov/projects/14761</a>
+    </div>
+  </div>
+</body>
+</html>

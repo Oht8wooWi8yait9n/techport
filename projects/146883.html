@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>End-to-End Trajectory Optimization | NASA TechPort Project 146883</title>
+  <meta name="description" content="Human exploration of the Solar System is in our DNA. NASA is currently planning missions to the Moon (Artemis Program) in preparation for longer missions to Mars and beyond. These space missions are becoming increasingly complex with more and more players invo">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/146883">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 146883</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">JSC CIF</span>
+          <span class="badge">TX15.2.1</span>
+        </div>
+        <h1>End-to-End Trajectory Optimization</h1>
+        <div class="meta-id">NASA TechPort Project ID: 146883</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/146883" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Human exploration of the Solar System is in our DNA. NASA is currently planning missions to the Moon (Artemis Program) in preparation for longer missions to Mars and beyond. These space missions are becoming increasingly complex with more and more players involved in the logistics. For instance, Artemis III will utilize Orion to get astronauts to the vicinity of the Moon, while HLS will take astronauts down to the surface. Artemis IV+ will utilize Gateway—NASA’s planned space station around the Moon—as an intermediate outpost before traveling down to the surface. Successful planning and implementation of these missions will require performance optimization and efficient utilization of resources between not only different mission design teams but also the different companies involved in development of the different vehicles. Having technology like the end-to-end mission design optimization capability will be critical to smoothing the mission design process between them, as well as finding performance benefits to save critical resources and improve mission coverage that wouldn’t be accessible otherwise</p><p>The above motivation identifies a need for a generalized, robust, user-friendly and accessible end-to-end mission design optimization tool. Our solution to developing this capability was to interface two JSC tools—Copernicus and Genesis. Copernicus is a trajectory design and optimization software used for in-space trajectories around multiple bodies. It is the backbone for Orion mission design here at JSC and is being used in all aspects of Artemis, HLS, Gateway, and PPE mission design (at several NASA centers: JSC, MSFC, GRC, and others). Genesis is another flight mechanics tool used to model ascent, entry, descent, and landing trajectories around a single planetary body. It includes a suite of atmospheric and powered flight guidance algorithms. Each of these tools has a specific area of the mission design process that it excels at. By utilizing them both, we can gain performance benefits not seen by either on their own.</p><p>Year 1 was focused on combining these 2 software packages—essentially allowing Copernicus to incorporate the ascent/descent capabilities of Genesis into the optimization problem—and developing this end-to-end mission design capability. As we were building this initial capability during Year 1, we found that the guidance within Genesis was very sensitive to initial conditions.</p><p>As a result, for Year 2 we focused on increasing the robustness of this capability by building the initial guess generator (IGG). IGG produces initial guesses based on simplifying assumptions and the physics of the problem. The idea was to build in some of the expertise of trajectory design into the IGG tool so that the user could quickly and reliably have a good starting guess when running a case. An additional benefit of developing IGG is that it enabled us to parallelize our scans, which improved the speed and convergence of our runs. Overall this tool enabled us to increase the speed, reliability, and robustness of our end-to-end mission capability.</p><p>Year 3 of our project focuses on utilizing the end-to-end mission design and optimization capabilities developed in the previous 2 years to analyze specific mission scenarios—scaling up from proof of concept to real analyses—capturing any resulting performance benefits, as well as addressing the Big Data challenges we’re faced with—namely, how we’re going to manage and interpret all the data that’s generated. For instance, Artemis I mission design generated millions of trajectories (terabytes of data), which were difficult to access and distill in a meaningful and efficient way. Strategies and tools such as Machine Learning for data management, visualization, and interpretation are needed and will be explored.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p><i>Why do we want end-to-end optimization?</i> Traditionally, friction points exist where different mission design teams (e.g., a launch/ascent team, an on-orbit team, and a descent/landing team) all design and optimize their portion of the trajectory independently and meet at a shared handoff point, rather than optimizing the full mission profile. Our goal is to unconstrain that handoff point to not only gain performance benefits but to also improve the iterative mission design process itself. Potential performance benefits include decreased propellant usage, better abort coverage, and increased mission availability.</p><p> </p><ul><li><strong>Improve efficiency of the mission design process and integration of different teams. </strong>By unconstraining the handoff points between different mission design teams, this technology will improve the mission design process itself—both from a time efficiency perspective, but also from a performance efficiency perspective.</li></ul><p> </p><ul><li><strong>Aid mission architecture decisions, pre-flight product development, and real-time operational support. </strong>Copernicus is already used in all aspects of Orion mission design—from pre-mission design to real-time on-console support. Utilizing the added benefits of Genesis in-the-loop with Copernicus will only improve data products used in decision making.</li></ul><p> </p><ul><li><strong>Advance human spaceflight toward onboard abort autonomy.</strong> Moving towards the goal of providing astronauts the ability to design and execute aborts on their own, this technology is a necessary stepping stone. The example scenario being a crew member who has lost comm with Mission Control and needs to run this tool to come up with abort options and execute a burn back to Earth for safe return.</li></ul>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>146883</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: JSC CIF (JSC CIF)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX15.2.1: Trajectory Design and Analysis</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX09.4.5: Integrated Modeling and Simulation for EDL; TX11.4.2: Intelligent Data Understanding; TX11.5.2: Tools and Methodologies for Performing Systems Analysis; TX13.4.1: Mission Planning</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2023-10-01</td></tr>
+<tr><th>Project End Date</th><td>2024-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>The Charles Stark Draper Laboratory, Inc. — Cambridge, Massachusetts</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Kristin D Nichols (Principal Investigator) &lt;kristin.d.nichols@nasa.gov&gt;; Daniel A Matz (Co-Investigator) &lt;daniel.a.matz@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>PI’s notes</strong> — My personal favorite aspect of this project is the collaborative integration of different mission design teams and tools. Instead of pitting the tools against each other as competitors, we have recognized that each of them has their own unique strengths and weaknesses. By utilizing the tools in the particular regimes where they shine and combining them with other tools that shine in other regimes, we are able to create a capability that is much greater than any of the individual tools on their own. This project highlights the best of what can happen when we work together, complement each other’s strengths, and work towards a common goal.</li><li><strong>PI&#x27;s note</strong> — My personal favorite aspect of this project is the collaborative integration of different mission design teams and tools. Instead of pitting the tools against each other as competitors, we have recognized that each of them has their own unique strengths and weaknesses. By utilizing the tools in the particular regimes where they shine and combining them with other tools that shine in other regimes, we are able to create a capability that is much greater than any of the individual tools on their own. This project highlights the best of what can happen when we work together, complement each other’s strengths, and work towards a common goal.</li><li><strong>Artemis II Trajectory Scenario </strong> — An Artemis II trajectory scenario is shown below. This particular Genesis plugin to Copernicus enables visualization of the Orion Crew Module (CM) and Service Module (SM) trajectories on Earth’s surface. The plugin also identifies if a given state at CM/SM separation will cause the CM to skip out of the atmosphere and finds a range of bank angles that avoids skip out. It will be used to expand abort and early return capability of Orion and to constrain re-entries to avoid keep out zones.</li><li><strong>Artemis II Trajectory Scenario</strong> — This particular Genesis plugin to Copernicus enables visualization of the Orion Crew Module (CM) and Service Module (SM) trajectories on Earth’s surface. The plugin also identifies if a given state at CM/SM separation will cause the CM to skip out of the atmosphere and finds a range of bank angles that avoids skip out. It will be used to expand abort and early return capability of Orion and to constrain re-entries to avoid keep out zones.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/146883">https://techport.nasa.gov/projects/146883</a>
+    </div>
+  </div>
+</body>
+</html>

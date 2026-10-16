@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Active Spacecraft Jitter Cancellation Using Deployable Panels | NASA TechPort Project 185505</title>
+  <meta name="description" content="Samara Aerospace proposes to advance spacecraft attitude control and jitter mitigation through its Multifunctional Structures for Attitude Control (MSAC) technology. MSAC integrates distributed strain actuators into deployable spacecraft structures, such as so">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/185505">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 185505</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX17</span>
+        </div>
+        <h1>Active Spacecraft Jitter Cancellation Using Deployable Panels</h1>
+        <div class="meta-id">NASA TechPort Project ID: 185505</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/185505" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Samara Aerospace proposes to advance spacecraft attitude control and jitter mitigation through its Multifunctional Structures for Attitude Control (MSAC) technology. MSAC integrates distributed strain actuators into deployable spacecraft structures, such as solar panels, to enable active jitter cancellation and large-angle slewing. This approach eliminates bulky, failure-prone flywheel-based control systems and passive vibration isolation methods, reducing spacecraft mass, volume, and complexity while improving precision pointing performance. MSAC achieves active noise cancellation by dynamically actuating deployable structures in response to disturbance forces, significantly improving settling time and stability for high-sensitivity payloads. This capability is particularly beneficial for missions requiring ultra-stable imaging, laser communications, and fine-pointing instruments. Unlike traditional reaction wheels and control moment gyroscopes, MSAC scales with spacecraft size—larger deployable panels provide greater attitude control authority, enabling both enhanced power generation and improved agility in a single system. In this Phase I SBIR, Samara Aerospace will demonstrate and quantify MSAC’s active noise-canceling capabilities using an existing two-panel test platform. The project will also validate controller scalability through simulation, ensuring MSAC can support spacecraft ranging from 50 to 500 kg. Key deliverables include a comprehensive performance report detailing jitter reduction and settling time improvements achieved with MSAC. MSAC has the potential to enhance stability for NASA deep-space observatories, large deployable structures, and high-precision science missions. Beyond NASA, the technology is well-suited for commercial satellite constellations, optical communication networks, and next-generation small satellite platforms that demand low-jitter, high-agility performance.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          MSAC supports NASA’s need for ultra-stable platforms, particularly for deep-space observatories, where jitter suppression is critical for exoplanet detection, astrophysics research, and dark matter studies. Missions like HWO, Roman, and future space interferometers require precision pointing and vibration suppression to enable high-contrast imaging and faint-object detection. MSAC’s active jitter cancellation capabilities reduce optical distortions and settling times, improving observation efficiency and scientific return. For missions with large deployable structures, such as star shades, solar sails, and flexible aperture telescopes, MSAC provides greater control authority by actively countering structural flexing and disturbances. This ensures precise alignment and maneuverability, supporting advanced mission architectures that demand formation flying or precision positioning. MSAC also enhances NASA’s optical communication infrastructure, where high pointing stability is essential for laser-based data transfer. By reducing jitter and disturbances, MSAC improves inter-satellite and deep-space optical links, enabling higher throughput, lower signal loss, and more reliable space-to-ground communications—critical for Lunar or Martian networks. MSAC’s scalability makes it an ideal solution for a broad range of NASA spacecraft, from small satellites to large modular platforms. By enabling spacecraft to scale power and agility together, MSAC allows for greater standardization, adaptability, and resilience across diverse mission profiles, including Earth science, space situational awareness, and high-power science payloads. By simplifying spacecraft architecture, reducing mechanical failure points, and lowering overall mission costs, MSAC technology makes next-generation NASA missions more efficient, flexible, and accessible. This supports NASA’s broader objectives of advancing deep-space exploration, expanding commercial space access, and increasing longevity. Beyond NASA, MSAC offers significant advantages for commercial satellite operators, small satellite manufacturers, and government agencies. Its scalability and cost-effectiveness make it ideal for large-scale commercial constellations, where reducing satellite mass and volume lowers launch costs and increases deployment efficiency. For optical communications networks, MSAC’s active jitter cancellation improves link stability and data throughput, enabling faster, more reliable laser communications. Small satellite manufacturers, particularly startups and emerging players, can leverage MSAC’s affordability and precision to enhance performance while maintaining cost-competitiveness in a rapidly growing market. Government and defense agencies benefit from MSAC’s high-precision attitude control and dynamic agility, making it ideal for ISR, space domain awareness, and electronic warfare payloads. Additionally, Earth observation missions gain higher imaging stability at a lower cost, allowing commercial operators to increase image resolution and data quality without expensive, power-hungry reaction wheel systems. By eliminating the trade-offs between power, agility, and stability, MSAC provides a flexible, cost-effective alternative to legacy attitude control systems, unlocking new possibilities for high-performance commercial and government space missions.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>185505</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX17: GN&amp;C</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2025-09-29</td></tr>
+<tr><th>Project End Date</th><td>2026-03-27</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Moon and Cislunar, Mars, Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Fnu Vedant (Principal Investigator); Maryam Bakhtiari-Nejad (Project Manager) &lt;maryam.bakhtiarinejad@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-19</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/185505">https://techport.nasa.gov/projects/185505</a>
+    </div>
+  </div>
+</body>
+</html>

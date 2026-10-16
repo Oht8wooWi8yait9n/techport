@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safe Temporal Assignment, Requirements, Deconfliction, and Optimization Model (STARDOM) | NASA TechPort Project 185386</title>
+  <meta name="description" content="Safe Temporal Assignment, Requirements, Deconfliction, and Optimization Model (STARDOM) is a novel approach to managing Urban Air Mobility (UAM) airspace through time-based reservations rather than traditional first-come, first-served or distance-based separat">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/185386">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 185386</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX16</span>
+        </div>
+        <h1>Safe Temporal Assignment, Requirements, Deconfliction, and Optimization Model (STARDOM)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 185386</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/185386" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Safe Temporal Assignment, Requirements, Deconfliction, and Optimization Model (STARDOM) is a novel approach to managing Urban Air Mobility (UAM) airspace through time-based reservations rather than traditional first-come, first-served or distance-based separation. By assigning precise arrival times at waypoints/fixes, STARDOM dynamically mitigates collision risk, eases congestion, and improves efficiency for high-density UAM operations. This approach incorporates real-time flight data, probabilistic risk modeling, and adaptive speed adjustments to ensure each aircraft meets its designated time of arrival at each fix, significantly reducing the chance of conflict. Under NASA SBIR Phase I funding, Concept Solutions, LLC will develop and validate key components of this technology: 1.	A digital framework for time-based allocation of route segments and waypoints, 2.	Probabilistic collision-risk assessments using Monte Carlo simulations, and 3.	Preliminary metrics for safety, efficiency, and scalability in busy airspace scenarios. The primary market for STARDOM is NASA and FAA research programs, eVTOL and UAM operators, and broader Advanced Air Mobility stakeholders looking to integrate large-scale, on-demand urban flight into the National Airspace System (NAS). By shifting toward precise temporal reservations, STARDOM seeks to enable safer, more efficient, and data-driven UAM operations and pave the way for sustainable, large-scale urban aviation.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          STARDOM aligns directly with NASA’s ongoing efforts to integrate Urban Air Mobility (UAM) into the National Airspace System in a safe, scalable way. By shifting from distance-based to time-based separation, STARDOM supports NASA’s In-Time Aviation Safety Management System (IASMS) research by enabling real-time collision risk monitoring and proactive deconfliction. Its probabilistic risk models, fed by high-fidelity flight and environmental data, offer a dynamic way to identify and mitigate operational hazards before they escalate into safety threats.  STARDOM further advances NASA’s trajectory-based operations (TBO) vision by scheduling flights according to precise time-of-arrival targets at each waypoint. This enhances overall airspace efficiency and paves the way for increasingly automated or autonomous UAM operations—key elements of NASA’s Advanced Air Mobility and Future Aviation Systems Safety initiatives. The approach also supports concept exploration for high-density traffic corridors, vertiport integration, and robust ConOps development, offering NASA a framework to validate how UAM flights can coexist safely with conventional aircraft under demanding urban conditions. STARDOM’s time-based scheduling framework has broad commercialization potential for advanced air mobility markets beyond NASA’s research and development domain. Commercial eVTOL and cargo drone operators can use STARDOM to optimize their flight networks, reducing congestion and lowering operational costs while ensuring safety through dynamic, probabilistic risk calculations. Manufacturers of next-generation aircraft—including air taxis, delivery drones, and regional electric commuter planes—can integrate STARDOM’s real-time, time-slot assignment capabilities into their flight management systems, enabling scalable operations in crowded urban environments. In addition, private traffic management providers could incorporate STARDOM’s algorithms into service platforms to enhance route planning, capacity forecasting, and proactive deconfliction services. Regional and municipal authorities might adopt these solutions to regulate low-altitude airspace around vertiports and high-traffic corridors, creating a streamlined process to manage large fleets of urban aircraft. Beyond air passenger mobility, STARDOM’s framework can be adapted for emergency response applications, such as disaster relief or medical evacuations, where precise arrival times and safe route deconfliction are critical. As growing numbers of cities worldwide invest in UAM infrastructure, STARDOM’s time-based management approach positions operators and agencies to better handle surging traffic demands, reduce ground delays, and improve public acceptance through safer, more predictable flight operations. This sets the stage for global implementation, with potential partners ranging from major Avionics & Sensors providers and logistics companies to city planners, emergency services, and emerging air mobility startups.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>185386</td></tr>
+<tr><th>Acronym</th><td>STARDOM</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX16: Air Traffic Management and Range Tracking Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2025-09-29</td></tr>
+<tr><th>Project End Date</th><td>2026-03-27</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Dennis Rowe (Principal Investigator); Daniel E Hulse (Project Manager) &lt;daniel.e.hulse@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-19</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/185386">https://techport.nasa.gov/projects/185386</a>
+    </div>
+  </div>
+</body>
+</html>

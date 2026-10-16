@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultralight Core Shell Architectures for Aerospace Applications | NASA TechPort Project 91553</title>
+  <meta name="description" content="Understanding the impact of integrating nanomaterials into current technology is of great importance to design composite structures to meet our application needs. The reliable addition of nanomaterials to materials currently being used will improve electronics">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91553">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91553</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX12.1.1</span>
+        </div>
+        <h1>Ultralight Core Shell Architectures for Aerospace Applications</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91553</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91553" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>Understanding the impact of integrating nanomaterials into current technology is of great importance to design composite structures to meet our application needs. The reliable addition of nanomaterials to materials currently being used will improve electronics. Reinforcing current materials with nanotechnology will boost their performance and allow for the use of lighter structures. The better the understanding of how nano and bulk materials work together, the more we can tailor their properties to optimize their performance. There is a constant search for lightweight, chemically stable, and mechanically/thermally/electrically robust materials that can withstand the harsh environments encountered by aerospace technology. In this proposal, a research initiative is presented that focuses on the development and investigation of coaxial graphene on copper wires for aerospace applications. A characterization of the mechanical properties of these graphene-coated wires will be performed. Thermal properties, electronic properties, and corrosion resistance will also be explored. Many theoretical predictions have been made regarding the use of graphene on bulk materials, however minimal experimental research in this field has been done. Currently, there is a dearth of experimental validation of these predictions. This study provides experiments that will predict the material's behavior under harsh environments that aerospace technology encounters. This project will test a range of wire diameters to determine how thin the wire can be for graphene growth, yet still be strong enough to withstand the physical demands of aerospace applications. It is hypothesized that the addition of nanomaterials to copper wires will improve mission performance and increase payload mass fraction. These wires will allow for the use of a thinner gauge of wire than is currently used, decreasing the mass of wire needed, but with an improvement in performance. Graphene coated copper wires will exhibit higher conductivity, more corrosion resistance and lighter weight than traditional copper wires. A decrease in total mass of wires required allows aircraft and spacecraft to travel further and opens up new mission opportunities. One of the most beneficial uses for this novel material is in aerospace applications. For instance, the Boeing 747 and 787 currently use 4,000 lbs and 8,000 lbs, respectively, of metallic data and power cables. Reinforcing conventional copper wires with graphene will allow for the use of a thinner gauge of wire, reducing the weight of wires required, yet still creating a material that performs better than the current technology. The copper wires that are commonly used today are in the range of about 1.6 mm in diameter, however this project will study wires around the 50 micron diameter scale with properties surpassing the thicker, heavier wires. By adding nanotechnology to copper wires, this material meets many of the goals in both the "Materials, Structures, Mechanical Systems, and Manufacturing" technology area, section 12.1.1 "Materials-Lightweight Structures", and the "Nanotechnology" technology area, section 10.1.1 "Engineered Materials and Structures-Lightweight Structures". The lightweight structures category ranked highest of all the Nanotechnology high priority level 3 technologies.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>It is hypothesized that the addition of nanomaterials to copper wires will improve mission performance and increase payload mass fraction. These wires will allow for the use of a thinner gauge of wire than is currently used, decreasing the mass of wire needed, but with an improvement in performance. Graphene coated copper wires will exhibit higher conductivity, more corrosion resistance and lighter weight than traditional copper wires. A decrease in total mass of wires required allows aircraft and spacecraft to travel further and opens up new mission opportunities. One of the most beneficial uses for this novel material is in aerospace applications. For instance, the Boeing 747 and 787 currently use 4,000 lbs and 8,000 lbs, respectively, of metallic data and power cables. Reinforcing conventional copper wires with graphene will allow for the use of a thinner gauge of wire, reducing the weight of wires required, yet still creating a material that performs better than the current technology.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91553</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX12.1.1: Lightweight Structural Materials</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2015-08-01</td></tr>
+<tr><th>Project End Date</th><td>2018-12-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Rice University — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Outside the Solar System, Moon and Cislunar, Sun</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jun Lou (Principal Investigator); Emily Hacopian (Co-Investigator); Mary A Meador (Project Manager) &lt;maryann.meador@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Understanding the impact of integrating nanomaterials into current technology is of great importance to design composite structures to meet our application’s needs. The reliable addition of nanomaterials to materials currently being used will improve electronics. Replacing current materials with nanotechnology will boost their performance and allow for the use of lighter weight structures. The better the understanding of how nanomaterials behave, the more we can tailor their properties and optimize their performance. There is a constant search for lightweight, chemically stable, and mechanically/thermally/electrically robust materials that can withstand the harsh environments encountered by aerospace technology. In this proposal, a research initiative is presented that focuses on the development and investigation of carbon based multi-functional materials for aerospace applications. A characterization of the mechanical properties of these materials will be performed. Thermal properties, electronic properties, and electrocatalytic activity will also be explored. The goal of this project is to improve the properties of carbon nanotube paper and graphene oxide paper to broaden their capabilities in electronic applications. The incorporation of carbon based nanomaterials will greatly increase the surface area of the electrode and lead to higher catalytic activity. The use of readily available, commercial products will ensure that the starting point of the sensor is mechanically strong and easily obtainable. Modification of a commercially available product will also allow for low cost, large scale sensor manufacturing. Many studies require the use of polymers in the nanocomposites, making materials unstable at high temperatures. This study aims to bind carbon nanomaterials with functionalization and metal oxide nanomaterials. Metal oxides have been shown to provide excellent magnetic, electrical, catalytic and mechanical properties in nanocomposite materials. A metal oxide/carbon nanomaterial based electrode will be created as a sensor to detect various types of molecules, such as heavy metal ions and glucose oxidation. It is necessary to develop highly sensitive, rapid, and simple sensors for molecule detection that are created with a low cost, scalable method</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91553">https://techport.nasa.gov/projects/91553</a>
+    </div>
+  </div>
+</body>
+</html>

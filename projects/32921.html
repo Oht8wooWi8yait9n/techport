@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consistent Practices for Characterizing the Detection Limits of Inspection Systems (POD) | NASA TechPort Project 32921</title>
+  <meta name="description" content="NASA-STD-5009 requires that successful flaw detection by NDE methods be statistically qualified for use on fracture critical metallic components using Probability of Detection (POD) studies, but does not standardize practices. This task works towards standardi">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/32921">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 32921</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Canceled</span>
+          <span class="badge">OSMA</span>
+          <span class="badge">NDE</span>
+          <span class="badge">TX12.4.5</span>
+        </div>
+        <h1>Consistent Practices for Characterizing the Detection Limits of Inspection Systems (POD)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 32921</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/32921" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>NASA-STD-5009 requires that successful flaw detection by NDE methods be statistically qualified for use on fracture critical metallic components using Probability of Detection (POD) studies, but does not standardize practices. This task works towards standardizing calculations and record retention with a web-based tool, the NASA POD Standards Library, or NPSL. Best practices for test methods and specimen storage will also be provided with appendices to NASA-STD-5009, which is currently unded revision. Additionally, this appendix will describe how POD specimens used to qualify NDE systems will be cataloged, stored and protected from corrosion, damage, or loss.</p>  <p><strong>Background</strong></p>  <p>Flaw detection capability is established for inspection systems on the basis of Probability of Detection (POD). The commonly accepted metric for an adequate inspection system is as follows: for a minimum flaw size which is smaller than the critical defect being sought, there is 90% probability of detection with 95% confidence (90/95 POD). Inspection systems that are incapable of meeting the 90/95 POD requirement at or below the critical defect level for fracture critical components are deemed unsuitable for that inspection. </p>  <p>To provide an efficient and accurate methodology that yields estimates of POD and confidence bounds for Hit-Miss or signal amplitude testing the directed design of experiments for probability of detection (DOEPOD) method has been developed. In DOEPOD, signal amplitudes are reduced to Hit-Miss data by defining a signal threshold. The directed DOEPOD method uses a nonparametric approach for the analysis of inspection data which, unlike other methods, does not rely on simlifying assumptions regarding the general form of a POD function. This differs with other methods that define a POD curve based on a curve fit and does not assume increasing detection with increasing flaw sizes that can often be proven untrue. For a given sample set, the DOEPOD procedure identifies whether the minimum requirement of 90% probability of detection with 95% confidence is demonstrated for a minimum flaw size and for all greater flaw sizes (90/95 POD). These procedures are sequentially executed to minimize the number of samples needed to demonstrate that there is a 90/95 POD lower confidence bound at a given flaw size and that the POD is monotonic for flaw sizes exceeding that 90/95 POD flaw size.</p>  <p>This work provides strong experimental and simulation evidence that a 90/95 POD flaw size will be identified by DOEPOD 95% of the time if it exists, and the procedures will yield a determination that the POD is non-monotonic 97% of the time when it is non-monotonic. Based on this evidence, the DOEPOD methodology may be used to reduce mission risk by quantifiably meeting the requirements of NASA-STD-5009, “Nondestructive Evaluation Requirements for Fracture Critical Metallic Components.”</p>  <p> </p>  <p><strong>Approach</strong></p>  <p>A total of 860 metal specimens have been produced with a selection of fatigue cracks, fastener hole cracks, lack of weld fusion, and electrical discharge machined (EDM) flaws. The metals used in this study are common throughout aerospace, and include aluminum, titanium, nickel-chromium alloy, and stainless steel. Flat plates and tubes with programmed defects are being examined. These specimens are being examined with x-ray radiography with differing film densities, digital radiography, ultrasound (including phased array), eddy current (including automated methods), florescent penetrant testing (L3 & L4), magnetic particle testing, and visual testing. </p>  <p> </p>  <p><strong>Customers</strong></p>  <p>All NASA centers and missions utilizing failure critical components.</p>  <p> </p>  <p><strong>Products</strong></p>  <p>The data set generated by this study is vast. Specialized web-based software, termed the NNWG NDE Standards Library (NPSL), is being developed to archive and analyze all data and results. While this web application is being developed and validated to provide analytical support for this study, it will also be expanded upon to provide a centralized and living NDE capability database. Further, it will also provide NDE experts with a standard POD analysis tool for future studies. </p>  <p>Lessons learned during this study will be published in guidance documents for designing statistically adequate POD tests, as new standards, or as appendices to NASA-STD-5009. A comparison to other POD estimation methods will be made to identify validation gaps in methods used for failure critical inspections increasing overall mission success. (NASA/TM–2014-218183). </p>  <p> </p>  <p><strong>Project Manager</strong></p>  <p>Charles Nichols<br /> Johnson Space Center/White Sands Test Facility<br /> (575) 524-5389<br /> <a href="mailto:charles.nichols@nasa.gov">charles.nichols@nasa.gov</a></p>  <p> </p>  <p><strong>Technical Point of Contact</strong></p>  <p>Edward R. Generazio<br /> Langley Research Center<br /> (575) 864-4968<br /> <a href="mailto:edward.r.generazio@nasa.gov">edward.r.generazio@nasa.gov</a></p>  <p> </p>  <p><strong>Accomplishments</strong></p>  <ul><li> 	<p>100 percent of the flawed samples have been manufactured and delivered for testing.</p> 	</li><li> 	<p>Publication of DOEPOD methodology. 70% of the specimens have been tested.</p> 	</li><li> 	<p><em>DOEPOD v.1.2 </em>and manual available.</p> 	</li><li> 	<p>Familiarization training on LaRC/GSFC file structure and <em>DOEPOD</em> complete.</p> 	</li><li> 	<p>Electronic/hard copy data consolidated</p> 	</li><li> 	<p>NPSL software requirements agreed to including cataloging and searching capabilities.</p> 	</li><li> 	<p>POD literature review and draft ‘Best Practices’ completed.</p> 	</li><li>Review outsourced to POD experts (Brown, Aldrin, Volovoi) and NESC NDE TDT statused. 	<p> </p> 	</li></ul>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Although required for fracture critical metallic components per NASA-STD-5009 and used throught the Agency to qualify inspection capabilities, the conduct of and tools for Probability of Detection (POD) analyses are not standardized. Software used for POD analyses are not validated meeting Agency standards spelled out in NPR 7150.2B. Because of this and lack of configuration control, the results of analyses completed today on the same data set do not arrive at the same results. Further, no system exists for cateloging POD data nor specimens used across the agency to provide tracability and reduce needless rework. Specimens used in POD studies are costly to produce and many have been damaged through mishandling and improper storage. This project applies NASA's common 90/95 POD methods and (1) drafts an appendix to the NASA-STD-5009, focusing on best practices for performing POD analyses and storing NDT specimens. (2) An online database, meeting Agency backup and software requirements, will be produced to catelog POD reports, log data, and track specimen locations. (3) The online tool will later be enhanced, perhaps in collaboration with AFRL, with common analysis routines used in POD studies. This software will be validated meeting the stringent standards set forth in NPR 7150.2B and will be configuration controlled.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>32921</td></tr>
+<tr><th>Acronym</th><td>POD</td></tr>
+<tr><th>Project Status</th><td>Canceled</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Office of Safety and Mission Assurance (OSMA)</td></tr>
+<tr><th>NASA Program</th><td>Nondestructive Evaluation Program (NDE)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX12.4.5: Nondestructive Evaluation and Sensors</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4 | Target End TRL: 9</td></tr>
+<tr><th>Project Start Date</th><td>2015-10-01</td></tr>
+<tr><th>Project End Date</th><td>2018-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>White Sands Test Facility (WSTF) — Las Cruces, New Mexico</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama; Langley Research Center (LaRC) — Hampton, Virginia; Johnson Space Center (JSC) — Houston, Texas; Goddard Space Flight Center (GSFC) — Greenbelt, Maryland; Air Force Research Laboratory (AFRL) — Notre Dame, Indiana; NDE Services, Inc. — Centennial, Colorado; Aerospace Structural Integrity, Inc. — Hobe Sound, Florida; Engineering &amp; Inspection Unlimited (E&amp;I) — Fort Lauderdale, Florida</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL), Colorado (CO), Florida (FL), Maryland (MD), New Mexico (NM), Texas (TX), Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jess M Waller (Principal Investigator) &lt;jess.m.waller@nasa.gov&gt;; Mika L Myers (Principal Investigator) &lt;mika.l.myers@nasa.gov&gt;; Edward Generazio (Principal Investigator); Floyd W Spencer (Principal Investigator); Jordan N Wladyka (Principal Investigator) &lt;jordan.a.wladyka@nasa.gov&gt;; Ward D Rummel (Principal Investigator); Justin S Jones (Co-Investigator) &lt;justin.s.jones@nasa.gov&gt;; Jill E George (Co-Investigator) &lt;jill.e.george@nasa.gov&gt;; John C Aldrin (Co-Investigator) &lt;john.c.aldrin@nasa.gov&gt;; Bradford H Parker (Co-Investigator) &lt;bradford.h.parker@nasa.gov&gt;; Laura J Sanchez Lozada (Co-Investigator) &lt;laura.lozada@nasa.gov&gt;; Jennifer L Petry (Co-Investigator) &lt;jennifer.deleon-1@nasa.gov&gt;; Judy M Corbett (Co-Investigator) &lt;judy.m.corbett@nasa.gov&gt;; Kenneth L Hodges (Co-Investigator) &lt;kenneth.l.hodges@nasa.gov&gt;; Eric R Burke (Co-Investigator) &lt;eric.r.burke@nasa.gov&gt;; Steve Cargill (Co-Investigator); Charles T Nichols (Project Manager) &lt;charles.nichols@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Terrence W Wilcutt (Program Director); Jason P Moore (Program Manager) &lt;jason.p.moore@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-02</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Draft appendices to NASA-STD-5009 was completed to identify the overall POD process for NASA partner organizations. Specimen storage best practices were also provided, addressing a longstanding shortcoming with costly NASA physical reference standards. An online database was generated (TRL-2 to TRL-8), providing a single location for obtaining a listing of all existing physical reference standards - potentially saving the agency over one million dollars in the first 5 years. Center tribalism must be overcome, and agency-wide funding provided, to populate and sustain the database bringing it to full adoption and TRL-9. Further, additional support and push are required at the top level to fully implement all NASA-STD-5009 appendices.</li><li><strong>Canceled</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>2016 Presentation to the OSMA NDE Program at NASA Goddard</strong></li><li><a href="http://ntrs.nasa.gov/search.jsp?R=20110015149" target="_blank" rel="noopener noreferrer">Binomial Test Method for Determining Probability of Detection Capability for Fracture Critical Applications</a></li><li><a href="http://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20140005337.pdf" target="_blank" rel="noopener noreferrer">Interrelationships Between Probability of Detection Methodologies, NASA/TM–2014-218183</a></li><li><a href="https://daa.jsc.nasa.gov/showrecord.cfm?controlno=35822" target="_blank" rel="noopener noreferrer">TechPort Public Release Document</a></li><li><a href="https://sma.nasa.gov/sma-disciplines/nondestructive-evaluation" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><a href="http://www.anypatents.com/patents/US8108178" target="_blank" rel="noopener noreferrer">US Patent 8108178, Directed Design of Experiments for Validating Probability of Detection Capability of a Testing System</a></li><li><a href="http://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20150013987.pdf" target="_blank" rel="noopener noreferrer">Directed Design of Experiments for Validating Probability of Detection Capability of NDE Systems (DOEPOD), NASA TM 2015-218696</a></li><li><a href="http://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/20150013943.pdf" target="_blank" rel="noopener noreferrer">NASA DOEPOD NDE Capabilities Data Book, NASA TM 2015-218770</a></li><li><strong>NASA POD Standards Library (NPSL) logo</strong> — NASA POD Standards Library (NPSL) logo</li><li><strong>POD evaluates inspection effectiveness</strong> — Probability of Detection evaluates the effectiveness of inspection techniques and inspectors</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/32921">https://techport.nasa.gov/projects/32921</a>
+    </div>
+  </div>
+</body>
+</html>

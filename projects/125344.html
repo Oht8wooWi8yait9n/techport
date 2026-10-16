@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numerical Simulation of Fields in Cavities with Detailed Antenna Modeling | NASA TechPort Project 125344</title>
+  <meta name="description" content="Electro Magnetic Applications, Inc. (EMA) and the Applied Research Institute (ARI) at the University of Illinois at Urbana-Champaign propose to continue the development and validation of a user-friendly software tool for the estimation of field distributions w">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/125344">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 125344</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX05</span>
+        </div>
+        <h1>Numerical Simulation of Fields in Cavities with Detailed Antenna Modeling</h1>
+        <div class="meta-id">NASA TechPort Project ID: 125344</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/125344" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Electro Magnetic Applications, Inc. (EMA) and the Applied Research Institute (ARI) at the University of Illinois at Urbana-Champaign propose to continue the development and validation of a user-friendly software tool for the estimation of field distributions within rocket fairings due to antennas radiating internal and external to the enclosures. The tool will include a Power Balance (PwB) method solver, a full-wave three-dimensional solver, and a multi-conductor transmission line solver. The full-wave solver will include a rigorous mode and a sub grid mode. With the rigorous mode, the entire geometry will be meshed at the same fidelity, which was demonstrated to be feasible during the Phase I contract for fairings measuring 5 meters in diameter by 15 meters long up to 15 GHz. The sub grid mode will provide an option where the user can mesh part of the problem with a finer mesh and the rest of the problem at a coarser mesh. The results from the sub grid region (i.e., the finer mesh region) will drive the larger part of the problem while still capturing reflections from structures located inside the sub grid region. This capability will allow the user to trade off accuracy and run time when so desired. The full-wave solver computational engine will be ported to run on graphical processing units (GPUs). This hardware acceleration will allow for faster solution time and larger problems that can be solved with the full-wave tool.A series of measurements will be performed with a representative rocket fairing structure. Measurements performed will include shielding effectiveness, electric field distributions, antenna-to-antenna coupling, and antenna-to-cable coupling. Performing systematic measurements that build in complexity from an empty fairing to a fairing loaded with a payload, cable harnesses, acoustic blankets, and other components will provide valuable validation data for EMA3D Cable.  NASA must understand electromagnetic effects that impact payloads located under rocket fairings. Field distributions within fairings due to antennas must be understood. If a system is damaged, the payload could have degraded performance. Fairings provide some level of protection from exterior signals, but also create a reverberant environment that can result in high field strengths.  NASA cannot currently solve these complex problems with other software tools. The tools either do not scale well with increasing problem size, have stringent mesh requirements that require excessive time to clean CAD models, or have extremely difficult workflows.  Our team proposes to develop a software tool that efficiently models these complex problems with a multi-fidelity solution. In the design stage, a Power Balance solution is available for quick estimates. As more details are available, the FDTD/cable solvers provide high fidelity solutions requiring minimal CAD cleanup. GPU acceleration will be added to massively accelerate simulation times. A systematic validation campaign will be conducted.   	Implement a Power Balance solver in EMA3D Cable to provide NASA with a tool for assessing shielding effectiveness and field distributions early in a fairing design.&nbsp; 	Implement robust GPU acceleration for EMA3D Cable to massively accelerate simulations.&nbsp; 	Perform a systematic measurement-based validation campaign using a scaled rocket fairing structure loaded with representative payloads, cable harnesses, acoustic blankets, antennas, and other components.&nbsp; 	Provide in-depth training for EMA3D Cable using a multi-fidelity approach and examples from the validation task   Deliverables:   	EMA3D Cable Software (At contract start, At 12 month review, at contract conclusion) 	Updated User&#39;s Manuals and On-Site Training&nbsp;(At contract start, At 12 month review, at contract conclusion) 	Validation Package showing comparisons between measured data and simulation for many types of field distribution, antenna-to-antenna coupling, and antenna-to-cable coupling problems.&nbsp;
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The resulting capability will allow NASA analysts and eventually commercial customers to model field distributions and shielding effectiveness problems for rocket fairings due to internal and external antennas that are radiating prior or during a launch. This tool will be applicable during all stages of the design (from concept to launch) and will represent a major costs savings for NASA.  Commercial and other government agencies face similar challenges where antennas are located inside of fairings or radomes. For example, military radars can create dangerously strong standing fields inside of radomes that can start fires and cause interference to other avionics. Automotive radar companies need to understand how collision avoidance radars perform behind vehicle fascia.&nbsp;
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>125344</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX05: Communications, Navigation, and Orbital Debris Tracking and Characterization Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 6 | Current TRL: 6 | Target End TRL: 8</td></tr>
+<tr><th>Project Start Date</th><td>2022-02-17</td></tr>
+<tr><th>Project End Date</th><td>2025-10-01</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Kennedy Space Center (KSC) — Kennedy Space Center, Florida</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Illinois at Urbana-Champaign — Urbana, Illinois; Electro Magnetic Applications — Lakewood, Colorado</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO), Florida (FL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Matthew J Miller (Principal Investigator) &lt;matthew.j.miller@nasa.gov&gt;; Sheldon M Lauderdale (Project Manager) &lt;sheldon.m.lauderdale@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li><li><strong>Briefing Chart</strong></li><li><strong>Briefing Chart Image</strong> — Briefing Chart Image</li><li><strong>Final Summary Chart Image</strong> — Final Summary Chart Image</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/125344">https://techport.nasa.gov/projects/125344</a>
+    </div>
+  </div>
+</body>
+</html>

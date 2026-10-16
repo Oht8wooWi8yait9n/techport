@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calibration of Satellite Antenna Arrays using Signals of Opportunity | NASA TechPort Project 11515</title>
+  <meta name="description" content="Beamforming arrays offer important advantages for NASAs remote sensing applications, including the ability to perform beamforming, scanning, and nulling. Due to increasing science needs and growing levels of terrestrial Radio Frequency Interference, or RFI, th">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/11515">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 11515</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX08.1.4</span>
+        </div>
+        <h1>Calibration of Satellite Antenna Arrays using Signals of Opportunity</h1>
+        <div class="meta-id">NASA TechPort Project ID: 11515</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/11515" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Beamforming arrays offer important advantages for NASAs remote sensing applications, including the ability to perform beamforming, scanning, and nulling. Due to increasing science needs and growing levels of terrestrial Radio Frequency Interference, or RFI, the spatial nulling capability is appealing and even necessary for future Earth observation missions. However, placing deep nulls in specific directions requires precise knowledge of the arrays radiation pattern, and this is not easily obtained. Current calibration techniques have difficulty accounting for antenna element interactions and platform scattering, and thus the ideal solution would be for a satellite to automatically measure its own antenna array response as it performs its normal operations. Moreover, the satellite should not use calibration signals, but rather make use of the RFI sources themselves as signals of opportunity for calibration. I have previously studied the problem of angle of arrival estimation using a poorly calibrated antenna response. From my experience in this area, I see the opportunity to extend current approaches to enable calibration. Through a combination of subspace algorithms, fusing of diverse measurements, and blind signal separation algorithms, the required array responses and associated angles of arrival should be obtainable, even from low Earth orbit. Online and in-situ array calibration, if proven applicable, will be a powerful enabler for higher sensitivity remote measurements. Moreover, beamforming arrays are becoming as common as wifi, the required processing power is available in packages as small as our phones, and thus the developed techniques could benefit many cutting edge systems, large and small, common and specific.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Online and in-situ array calibration, if proven applicable, will be a powerful enabler for higher sensitivity remote measurements. Moreover, beamforming arrays are becoming as common as wifi, the required processing power is available in packages as small as our phones, and thus the developed techniques could benefit many cutting edge systems, large and small, common and specific.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>11515</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.4: Microwave, Millimeter Waves, and Submillimeter Waves</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2012-09-01</td></tr>
+<tr><th>Project End Date</th><td>2016-08-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ohio State University-Main Campus (OSU) — Columbus, Ohio</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Glenn Research Center (GRC) — Cleveland, Ohio</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Ohio (OH)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Inder Gupta (Principal Investigator); Andrew Kintz (Co-Investigator) &lt;andrew.kintz@nasa.gov&gt;; Obed S Sands (Project Manager) &lt;obed.s.sands@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Arrays of independent antenna elements enable adaptive antenna patterns [1]. Adaptive antenna patterns dynamically form beams towards signals of interest, and the beams increase the Signal to Noise Ratio (SNR). Moreover, adaptive antenna patterns attenuate signals that are not of interest, (interference). Thus, antenna arrays enhance the Signal to Interference plus Noise (SINR) ratio, which is critical for both communications and metrology. Recently, wireless communications have grown exponentially. The trend is expected to continue, with Cisco predicting an 800% increase in mobile communications between 2015 and 2020 [2]. Although wireless communications are prohibited worldwide in bands such as the Earth Exploration Satellite Service band, many individuals around the world have nevertheless built or modified radio equipment to transmit in these bands. Even radio equipment with relatively low power can overwhelm natural radiation that NASA and the European Space Agency measure through recent missions such as Soil Moisture Ocean Salinity (SMOS) [3] and Soil Moisture Active Passive (SMAP) [4]. While regulatory authorities can shut down prohibited transmitters, global regulatory enforcement has failed to prevent interference with SMOS and SMAP, and interference is likely to become more pervasive as wireless communications continues its explosive growth. Antenna arrays offer the potential to suppress manmade interference, as well as localize the interferers. Consequently, SMOS’s main instrument is a 69 element antenna array, and advanced array signal processing has been applied to locate and mitigate sources of interference [5]. However, optimal performance can only be obtained when the array is perfectly calibrated such that the in-situ (on platform) antenna gain and phase are perfectly known as functions of direction, frequency, and signal polarization. Imperfect calibration degrades the SINR [6] and interferer location estimates [7], and it distorts the apparent effect of the antenna array on the signal of interest. Under the fellowship, we extensively studied antenna array calibration. In simulations, we found that an antenna element’s gain and phase is significantly perturbed by mounting the array on a platform, (Fig. 1). In state of the art practice, the perturbations may be measured by installing the array on the host satellite and measuring the in-situ antenna pattern in a large anechoic chamber. Such a chamber is used by the European Space Agency [8], Fig. 2, but the measurement facilities are expensive, the logistics are challenging, and this approach is poorly suited for many missions that involve many international partners or simply do not have the resources for such testing. Alternatively, in-situ antenna array patterns may be simulated. However, even full wave electromagnetics solutions cannot perfectly capture in-situ effects on the antenna array patterns. In simulations, we found that in-situ antenna array calibration could be accomplished with unknown signals of opportunity. In other words, we used the interferers themselves as calibration sources. In contrast to usual calibration sources, the positions of the interferers are assumed to be unknown. Therefore, calibration requires measuring the responses of the antenna elements relative to each other, as well as the angle to the transmitters. Although the array cannot accurately measure the angle to the transmitters at any single observation due to mismatch between the true and expected antenna array patterns, a satellite’s orbit over the transmitter provides significant diversity in the look angles towards the interferer. Estimating the angle towards the interferer from diverse observations provides many location estimates that can be averaged to find the approximate location of the emitter. Indeed, we found that localizing the emitter was the primary challenge for in-situ calibration using signals of opportunity, since the relative responses of the antenna elements are easily measured for one or more signals [9]. As we studied localization more, we found that the Direct Mapping Method (DMM) [10], effectively locates emitters in spite of measurement errors. Accurate emitter position estimates from DMM enable in-situ antenna array calibration with signals of opportunity [11]. We conducted experiments on DMM and in-situ array calibration in an anechoic chamber [12]. One anechoic chamber experiment is shown in Fig. 3. Fig. 3 shows a seven element antenna mounted to a generic aircraft platform. The aircraft platform was itself mounted on two rotators, and emitters were placed along the opposite wall of the anechoic chamber. The emitters transmitted signals while the platform was rotated and a data acquisition system recorded the signals received by the various antenna elements. The rotator angles were also carefully recorded during the data collections, just as an aircraft or spacecraft would record its own position and orientation. The recorded signals were then post processed at The Ohio State University. The experiments demonstrated that we could localize the emitters and apply in-situ array calibration with experimental hardware. The in-situ array calibration was performed with one set of data collections and tested with a separate set of data. The calibrated array manifold improved the position estimates and the Signal to Noise plus interference ratio. In Fig. 4, the left plot shows the DMM spectrum for two simultaneous emitters. This DMM spectrum was calculated using the measured antenna patterns for the seven-element antenna array on a 4’ ground plane. The right plot shows the DMM spectrum that was calculated using the in-situ calibrated antenna array patterns. The calibration data sets had observed a single active emitter at a time while the platform was rotated to emulate a straight flight path over the emitter. The test data set observed two simultaneous, co-channel emitters. The left plot shows that the emitter positions were not visible with the measured antenna patterns, but the right plot shows that the calibrated antenna array manifold clearly revealed the emitter locations. These results demonstrated that the array calibration was successful with experimental hardware. Later research extended the in-situ calibration method to signals whose polarization was unknown. Multiple emitters still pose a challenge during the calibration step. Therefore, we investigated how we could improve localization of multiple emitters with an imperfectly calibrated antenna array manifold. We developed the Nullspace MUSIC approach, in which one emitter is nulled by the antenna array so that a second emitter can be estimated with minimal interference. We found that Nullspace MUSIC improved Direction of Arrival accuracy for mixed polarization emitters in the presence of mismatch between the true and assumed antenna array patterns. This development led to my first journal paper [13], and it is the core of my PhD dissertation. Finally, we found that Nullspace MUSIC and DMM can be combined into Nullspace DMM, which is a particularly robust method of locating multiple simultaneous emitters during the flight of a single, independent, airborne direction finding system. These developments are discussed extensively in my PhD dissertation, which will be completed in autumn, 2016.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>11515-1363116049100.jpg</strong> — Project Image Calibration of Satellite Antenna Arrays using Signals of Opportunity</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/11515">https://techport.nasa.gov/projects/11515</a>
+    </div>
+  </div>
+</body>
+</html>

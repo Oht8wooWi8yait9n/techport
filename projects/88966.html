@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experimental Demonstration and System Analysis for Plasmonic Force Propulsion | NASA TechPort Project 88966</title>
+  <meta name="description" content="One of NASA&#x27;s strategic goals is expanding scientific understanding of the Earth and the universe. NASA envisions a broad class of scientific missions where extremely fine pointing and positioning of spacecraft is required, such as a single Earth observing spa">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/88966">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 88966</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">NIAC</span>
+          <span class="badge">TX14.1.3</span>
+        </div>
+        <h1>Experimental Demonstration and System Analysis for Plasmonic Force Propulsion</h1>
+        <div class="meta-id">NASA TechPort Project ID: 88966</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/88966" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          One of NASA's strategic goals is expanding scientific understanding of the Earth and the universe. NASA envisions a broad class of scientific missions where extremely fine pointing and positioning of spacecraft is required, such as a single Earth observing spacecraft, deployable X-ray telescopes, exoplanet observatories, and constellations of spacecraft for Earth and deep space observations. In recognizing this, the National Research Council emphasized the need for micro-propulsion for extremely fine pointing and positioning of micro-satellites for astrophysics missions. But the full potential of these small spacecraft remains untapped because they lack maneuverability. Plasmonic force propulsion provides attitude control capability for small spacecraft with minimal power penalty and minimal mass and volume penalty. Phase I results estimate a 1-2 order of magnitude improvement over the state-of-the-art in small spacecraft proximity and pointing precision control, creating new capabilities for small spacecraft enabling NASA science and exploration missions that were previously impossible. The goal of our Phase II study is to incorporate system-level issues (i.e., thrust#noise, thermal management, thrust throttling, off-axis illumination, and plasmonic effect sensitivity) and experimental results from demonstration of nanoparticle expulsion to validate/refine our model predictions. By including these issues in our analysis our goal is to show that plasmonic space propulsion can provide the level of proximity and attitude control envisioned for future NASA nano/picosatellite missions, a level that is better than state-of-the-art approaches. Our objective is to compare higher fidelity proximity/translational and attitude control predictions for plasmonic space propulsion with state-of-the-art approaches. Specific improvements to the fidelity of our predictions include (1) incorporation of experimental plasmonic force measurements, (2) incorporation of thermal, E&M, and vibration effects on the plasmonic effect sensitivity, and (3) incorporation of off-axis illumination. Our approach is to couple results from experiments and sub-system models to quantify key propulsion metrics (noise, throttleability, etc.) and the#corresponding effect of those metrics on precision pointing and attitude control of a nano/picosatellite. We will re-evaluate mass, volume, and power requirements for plasmonic propulsion incorporating our refined assumptions, and compare with other state of-the-art control techniques. This approach to Phase II builds off the approach, models and analysis of Phase I. We will create a technology development roadmap, considering cost, risk, performance, and development time of key technologies. Our team is composed of experts in plasmonics, space propulsion, and astrodynamics. The proposed plan of work can be achieved within the proposed schedule because the proposed tasks build upon existing models and simulation tools already available to us. While the focus of the project is plasmonics for space propulsion, the proposed research will have wider application and relevance to optical nanotechnology with many non-aerospace spin-offs, such as plasmonic solar cells, thermoplasmonics for cancer thermal therapy, compact biological sensors, and photonic integrated circuits for optical communications. Plasmonics is an exploding new field of science and technology that is rapidly impacting every facet of optics and photonics, and is predicted to be one of the highest impact fields of the 21st century.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Plasmonic force propulsion provides attitude control capability for small spacecraft with minimal power penalty and minimal mass and volume penalty. Phase I results estimate a 1-2 order of magnitude improvement over the state-of-the-art in small spacecraft proximity and pointing precision control, creating new capabilities for small spacecraft enabling NASA science and exploration missions that were previously impossible.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>88966</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>NASA Innovative Advanced Concepts (NIAC)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX14.1.3: Thermal Conditioning for Sensors, Instruments, Samples, and High-Efficiency Electric Motors</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 2 | Target End TRL: 2</td></tr>
+<tr><th>Project Start Date</th><td>2016-08-01</td></tr>
+<tr><th>Project End Date</th><td>2018-07-31</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Missouri-Columbia — Columbia, Missouri</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Missouri University of Science and Technology — Rolla, Missouri</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Missouri (MO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Joshua Rovey (Principal Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Vianni Ricano Cadenas (Program Manager) &lt;vianni.ricanocadenas@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Link]</strong> Closeout Link</li><li><a href="https://www.nasa.gov/feature/experimental-demonstration-and-system-analysis-for-plasmonic-force-propulsion" target="_blank" rel="noopener noreferrer">NASA.gov Feature Article</a></li><li><strong>Project Image</strong> — Schematic of proposed plasmonic force propulsion concept. Sunlight is focused onto a deep-subwavelength metallic nanostructure. The resonant interaction of the light with the nanostructure excites surface plasmon polaritons that generate a strong gradient optical force field. Nanoparticles are accelerated by the force field and expelled at high velocity. Nanoparticle acceleration is not due to photon pressure, but rather the strong gradient optical force field setup by surface plasmon polaritons excited by the strongly resonant light-matter interaction. Credits: J. Rovey</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/88966">https://techport.nasa.gov/projects/88966</a>
+    </div>
+  </div>
+</body>
+</html>

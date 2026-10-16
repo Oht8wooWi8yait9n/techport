@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computational Model for Spacecraft/Habitat Volume (Spacecraft Optimization Layout and Volume (SOLV)) (PI=Thaxton) | NASA TechPort Project 93294</title>
+  <meta name="description" content="A key design challenge for future long-duration exploration missions is determining the appropriate volume of a spacecraft/habitat to accommodate habitability functions and ensure optimal crew health, performance, and safety. Because spacecraft/habitat volume ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/93294">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 93294</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.6.3</span>
+        </div>
+        <h1>Computational Model for Spacecraft/Habitat Volume (Spacecraft Optimization Layout and Volume (SOLV)) (PI=Thaxton)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 93294</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/93294" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          A key design challenge for future long-duration exploration missions is determining the appropriate volume of a spacecraft/habitat to accommodate habitability functions and ensure optimal crew health, performance, and safety. Because spacecraft/habitat volume directly drives mass and cost, this information is needed early in the design process. This proposal is in response to the NASA Research Announcement (NRA) NNJ13ZSA002N A.2.i: Computational Modeling and Simulation for Habitat/Vehicle Design and Assessment, and it addresses the Human Research Program (HRP) Program Requirements Document (PRD) Risk of Incompatible Vehicle/Habitat Design. The objective of this proposal is to develop a constraint-driven, optimization-based model that can be used to estimate and evaluate spacecraft/habitat volume. The computational model development will be completed through four Specific Aims: Estimate spacecraft/habitat volume based on mission parameters and constraints, provide layout assumptions for a given volume, assess volumes based on a set of performance metrics, and inform risk characteristics associated with a volume. To accomplish this, the proposed team has been structured to leverage expertise from diverse fields, including architecture and habitation design, human factors engineering, industrial engineering, optimization-based modeling, and simulation. The proposed work will also leverage technical products developed from the HRP-hosted 2012 Habitable Volume Workshop, as well as work performed in the follow-on exploratory project in 2013, including critical task volume estimations and input/output definitions for the computational model. Lessons learned from the development of the Integrated Medical Model (IMM) developed by the Exploration Medical Capability Element (ExMC) of the HRP will also be applied to the proposed work -- lessons ranging from model development approach to compliance with NASA STD 7009, Standard for Models and Simulation. Model validation and verification will be a continuous process occurring throughout model development. The guidelines of NASA-STD-7009 will be followed in establishing parameters and vetting the credibility of the model at all stages of development. The outcome of the proposed work will directly answer to HRP’s Risk of Incompatible Vehicle/Habitat Design and the associated Space Human Factors Engineering (SHFE) SHFE-HAB-09 Gap on technologies, tools, and methods for data collection, modeling, and analysis for design and assessment of vehicles/habitats. A computational model for spacecraft/habitat volume will be an invaluable tool for designers, mission planners, integrators, and evaluators who are shaping space habitats and working toward a truly habitable environment for future long-duration exploration missions. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Earth industries that are concerned with habitability in confined environments for long durations (e.g., shipping, submarines, oil and gas rigs, Antarctic research stations) may benefit from the task-based approach in development for determining overall volume needs. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>93294</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.6.3: Habitability and Environment</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2014-07-02</td></tr>
+<tr><th>Project End Date</th><td>2017-02-05</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Lockheed Martin Space Systems (LMSS) — Palo Alto, California; University of North Carolina at Charlotte — Charlotte, North Carolina</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Sherry S Thaxton (Principal Investigator) &lt;sherry.s.thaxton@nasa.gov&gt;; Simon M Hsiang (Co-Investigator); Jerry G Myers (Co-Investigator) &lt;jerry.g.myers@nasa.gov&gt;; Thomas J Williams (Project Manager) &lt;thomas.j.williams-1@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: In this reporting period, significant efforts were taken to define the central problem of Spacecraft Optimization Layout and Volume (SOLV), establish a layout evaluation methodology, and outline an overarching model logic map that would govern how the SOLV model would progress from development to deployment. Refinements were made to the Critical Task Volume Database in this year. Revision 2 of the database was released on 11/10/16. Additional volume data were collected in the areas of medical, exercise, extravehicular activity (EVA), body waste, food prep, and group meet and eat tasks. The team also completed a task attribute analysis that “rated” each task against the 16 attributes as identified by SOLV. Some attributes, such as “Gradient Cuboid,” “Operational Adjacency,” and “Share Functional Equipment,” are taken into account as formal constraints in the SOLV code. Rating of attributes for all others was captured in the Task Attributes spreadsheet. Of the 16 task attributes, the team determined that Privacy, Reconfigurability, and Task Time most significantly contributed to whether a task volume could share space or overlap with another. Based on the three ratings for each task, normalized, the team created a concurrency table that defined the overlap allowable for each task. This table was then incorporated into the SOLV code to drive the overlap constraint in the layout generation. Lastly, the team also refined the functional adjacency map initially developed in previous years, to determine task adjacency relationships that would help drive the packing layouts. As part of SOLV’s layout evaluation methodology, the team is deploying surveys across the NASA Subject Matter Expert (SME) community to collect expert opinions and judgement on SOLV’s layout evaluation factors and metrics, in order to establish a factor weighting and scoring system, and drive the model logic for evaluating layout performance. Surveys will be conducted in three main phases: • Factor Priority Surveys ; • Interaction Effects Surveys ; • Manual Layout Evaluation Surveys. To date, we have completed the Factor Priority surveys for non-astronaut SMEs via three main sessions and multiple splinters. Data collection from astronauts will take place in June 2017. All received responses have been processed, submitted through export control, and sent to the University of North Carolina-Charlotte (UNCC) teammates. Data analysis of the survey results at UNCC is ongoing, and initial work indicated that additional post-processing of the data would be required to improve the consistency of the responses and find patterns within responses that were deemed “inconsistent.” Upon completion of the analysis of results from the Factor Priority surveys, top primary design factors could be identified. These factors would then help scope the next two phases of the surveys for interaction effects and manual layout evaluation. In all, 15 subjects from five Subject Matter Expert (SME) groups participated in the Factor survey, generating 28 responses. During this year, the team also made significant progress on the code development for each of the SOLV modules. The final SOLV model must integrate the following modules: • Gradient Cuboid code -- Converts task volume inputs into gradient cuboids and governs how they can interact. • Overlap Packing code -- Generates layouts of the gradient cuboids. • Layout Evaluation code – Establishes the model weighting system and the model response surface via Canonical Correlation Analysis (CANCORR), and contains hard-codes of the Data Envelopment Analysis (DEA) and Choquet Integral (CI) functions that establish the model scoring system for layout evaluation. • Assessment Report – A “scorecard” that provides evaluation results and design information for every volume and layout solution generated by SOLV. This enables the user to compare options and choose the best starting point for his/her design. • Additional code and scripts that integrate the modules to enable smooth model functions from user input to scorecard output. To date, work is ongoing in refining the Gradient Cuboid code and the Overlap Packing code. CANCORR, DEA, and CI analyses have begun, and will continue to be refined as the team deploys the surveys across NASA SME community. To integrate the SOLV modules and enable automated feeding of data from one code to the next, we worked to build an input-output flow that helped define all the ins and outs for every code, and the mechanisms for the data flow. Gradient Cuboid code provides an interface to pull data from the Critical Task Volume Database (CTVD) and allows the user to design and output representative volume (gradient cuboid) for each critical task. Key design improvements were made to the Gradient Cuboid code in this past year in the areas of data upload, user interface, and exporting format. For example, the code now loads CTVD as a native Excel spreadsheet; there is no longer a need to convert the database into .csv format, which can be a messy process. Also, the code now allows a user to select individual task volume data for a given critical task, and specify number of cuboids for each critical task to export to the Overlap Packing module. The code can graphically display the representative gradient cuboid and its allowable overlap as dashed lines for improved visualization, and export to the Overlap Packing module all the selected gradient cuboids as a MATLAB structure vector wrapped in a .mat file. Overlap Packing code serves as a layout design mechanism. It generates an initial set of layout designs via mathematical optimization. The latest mathematical optimization formulation for overlap packing was developed based on a design use case, and the results were demonstrated at the End-of-Year Review user demo session on 5/3/2017. Key design improvements made in this year included improvement in the application of packing constraints, and exporting capabilities. For example, the code can now generate up to 8 packing layouts, and export their physical data to the Model Weighting and Scoring Code for layout evaluation. The code can also now generate interactive 3D PDF files for greater user visualization of the packing layouts. This will be very useful when the team administers the Manual Layout Evaluation surveys to the NASA SME community. The Layout Evaluation module integrates and calibrates the physical data from the output of the Overlap Packing code with the psychophysical data from the surveys. As data from the survey continue to come in, the design of the analysis flow has evolved to the following steps: • Survey Analysis: From the pairwise comparisons of 13 design factors in the Analytic Hierarchy Process (AHP) surveys, the team was able to identify the six top design factors believed to have the greatest impact to the “goodness” of a layout. • CANCORR: This analysis method seeks to find the linear combination of two variables with the greatest correlation. It uses adjacency distances between the tasks as input variable, and design scores for each factor as output variable, to identify the main drivers of performance. • DEA: This analysis method uses the main driver variables identified from CANCORR to look for designs with the best efficiency scores. These “frontier” designs represent the most efficient designs that use the least amount of resource while obtaining high design factor scores. • CI: This analysis method uses the top factors, the most efficient designs, and pairwise comparisons from the AHP Surveys to obtain an overall score of each design for each of the four metrics, taking into account the primary, secondary, and tertiary interactions of the factors. CI are represented with step-plots of score versus fuzzy measure. Development of the SOLV Assessment Report format began in the latter part of the past year; therefore, much work remains to be done in this area. This report, formatted in Excel, would provide a basis for a heuristic assessment of the overall costs and benefits achieved for a given solution. The report is organized into a User Guide, a Main Scorecard, and Supplemental Information on each layout performance metric and layout solution. In November 2016, the team met multiple times to update project goals for NASA-STD-7009A Credibility Scores. The discussion resulted in a reassessment of project credibility levels as defined by 7009A. In March 2017, the baseline Verification and Validation (V&amp;V) Plan was updated. It captures the plans for verification and validation of the model in adherence to NASA-STD-7009A, and would serve as the repository of V&amp;V results throughout the SOLV development process. The team also met on 4/12/2017 to formulate verification testing strategies for each module of SOLV. The team discussed how to perform error estimation, how to characterize data uncertainties, and how to test for parameter sensitivities of the model end-to-end. Resulting plans will be refined and incorporated into SOLV-003. A formal internal End-of-Year Review was held at Johnson Space Center on May 3, 2017. A preliminary user demo was conducted during the review to demonstrate functionalities and the mechanisms of the modules, as well as format and structure of SOLV inputs and outputs. Review results were officially documented within the Human Research Program (HRP) quarterly deliverable for May 2017. The review also identified 26 actions and critical next steps for next year. NOTE (5/31/2017): Dr. Sherry Thaxton is no longer Principal Investigator as of Feb. 6, 2017. New Principal Investigator will be: Maijinn Chen, M. Arch. (KBRwyle). Project continues with M. Chen as PI. See that project for subsequent reporting.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Abstracts for Journals and Proceedings</strong> — Thaxton S, Chen M, Hsiang S, Lim C, Myers J, Wald S. &quot;Spacecraft Optimization Layout and Volume (SOLV): Development of a Model to Assess Habitat Volume.&quot; 2017 IEEE Aerospace Conference, Big Sky, MT, March 4-11, 2017. 2017 IEEE Aerospace Conference, Big Sky, MT, March 4-11, 2017., Mar-2017</li><li><strong>Abstracts for Journals and Proceedings</strong> — Thaxton SS, Chen M, Hsiang S, Myers J. &quot;Spacecraft Optimization Layout and Volume (SOLV): Development of a Model to Assess Spacecraft/Habitat Volume.&quot; Presented at 2016 NASA Human Research Program Investigators&#x27; Workshop, Galveston, TX, February 8-11, 2016. 2016 NASA Human Research Program Investigators&#x27; Workshop, Galveston, TX, February 8-11, 2016., Feb-2016</li><li><strong>Abstracts for Journals and Proceedings</strong> — Thaxton S, Chen M, Hsiang S, Lim C, Myers J, Wald S. &quot;Spacecraft Optimization Layout and Volume (SOLV): Development of a Model to Assess Spacecraft/Habitat Volume.&quot; 2017 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 23-26, 2017. 2017 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 23-26, 2017., Jan-2017</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/93294">https://techport.nasa.gov/projects/93294</a>
+    </div>
+  </div>
+</body>
+</html>

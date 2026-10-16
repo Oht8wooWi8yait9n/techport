@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Active Collision Avoidance for Planetary Landers | NASA TechPort Project 14742</title>
+  <meta name="description" content="Present day robotic missions to other planets require precise, a priori knowledge of the terrain to pre-determine a landing spot that is safe. Landing sites can be miles from the mission objective, or, mission objectives may be tailored to suit landing sites. ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/14742">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 14742</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">MSFC CIF</span>
+          <span class="badge">TX08.1.4</span>
+        </div>
+        <h1>Active Collision Avoidance for Planetary Landers</h1>
+        <div class="meta-id">NASA TechPort Project ID: 14742</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/14742" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Present day robotic missions to other planets require precise, a priori knowledge of the terrain to pre-determine a landing spot that is safe. Landing sites can be miles from the mission objective, or, mission objectives may be tailored to suit landing sites. Future robotic exploration missions should be capable of autonomously identifying a safe landing target within a specified target area selected by mission requirements. Such autonomous landing systems must (1) 'see' the surface, (2) identify a target, and (3) land the vehicle. Recent advances in radar technology have resulted in small, lightweight, low power radars that are used for collision avoidance and cruise control systems in automobiles. Such radar systems can be adapted for use as active hazard avoidance systems for planetary landers. The focus of this CIF proposal is to leverage earlier work on collision avoidance systems for MSFC's Mighty Eagle lander and evaluate the use of automotive radar systems for collision avoidance in planetary landers. Advancements in radar technology have resulted in commercial, automotive collision avoidance radars. These radar systems typically use 37GHz or 77GHz interferometry to identify hazards around a vehicle. This is done by developing a high-resolution 'topographic' map of the area surrounding the vehicle and identifying potential changes in the surrounding area. The technology should not be confused with older radar systems, which do not use interferometry. Automotive interferometric systems are designed to be lightweight, consume little electric power, and are small enough to fit into fenders of vehicles. These systems have enormous potential in performing the same functions for planetary landers. Compared to systems dependent on optical wavelengths, suspended dust, small particles and aerosols are transparent to radar's much longer wavelengths. The automotive collision avoidance systems are not inhibited by dust clouds as are optical systems, are relatively small, and do not consume much power – three key characteristics that make them good candidates for a collision avoidance system. Radar systems, from vendors like Delphi Automotive, are available with the full complement of hardware, processing software and visualization systems. We emphasize the importance of the existing software base. Replicating the investment represented by these packages is prohibitive. Freescale Semiconductors, an industry leader in advanced integrated circuits, have recently announced the availability of a single chip automotive radar solution at different frequencies. These single-chip solutions are state-of-the-art technologies that integrate the entire front-end of a radar system into a single surface mount device, that occupies less that 1 sq. cm. This product significantly miniaturizes a potential collision avoidance system. However, these radars are calibrated for use in an automotive application. Radar reflectivity and target detection is based on known radar cross sections for typical vehicular use. In our effort, we will evaluate a Delphi or similar radar solution for MSFC's Mighty Eagle and Lunar Surface Testbed. In the first year evaluation will with a static platform. The evaluation will consist of understanding the radar signature (at automotive radar frequencies) of a simulated lunar surface and also evaluate the performance of the built-in target detection capability of a COTS radar system. In addition, we will begin evaluation of the Freescale Semiconductor solution. This will enhance our in-house capability to design and build our own system that will incorporate the knowledge gained from using the Delphi system in the terrain field. There are several significant elements in the evaluation. Here we specifically note the following to give some indication of the range and nature of the elements. (1) What interference to other spacecraft systems might happen? (2) How does placement on the spacecraft affect the performance of the radar? (3) What is the distance-object size-surface morphology-particle size-particle shape-particle composition detectability performance? (4) How sensitive are the tests to moisture in the simulant? The later point is a practical concern that must be addressed in order to evaluate the other elements. We are aware that rocket exhaust can interfere with radar frequencies. The significant of this effect at the target wavelengths with our instrument/lander geometry for an interferometric system will be evaluated.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>Hazard Avoidance is one of the great technical challenges for autonomous missions to planetary objectives of high scientific interest (inside craters or near outcrops for example). The importance of this problem is well known and validated by the Agency's investment in systems such as ALHAT. For appropriate mission profiles the proposed radar system is thought to be less expensive, lower weight, use less electric power, and to be more technically capable than systems such as the LIDAR system considered for ALHAT. These considerations are vital for small, low cost missions.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>14742</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Center Innovation Fund: MSFC CIF (MSFC CIF)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.4: Microwave, Millimeter Waves, and Submillimeter Waves</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2013-10-01</td></tr>
+<tr><th>Project End Date</th><td>2014-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Doug Rickman (Principal Investigator) &lt;Douglas.L.Rickman@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Phillip A Williams (Program Director) &lt;phillip.a.williams@nasa.gov&gt;; Alyssa C Barlis (Program Manager) &lt;alyssa.barlis@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced To</strong>: FY15 CIF &quot;Radar Hazard Identification for Planetary Landers Stage 2&quot;</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Figure 1</strong> — Dust Cloud as the mighty Eagle Traverses the Lunar Terrain Testbed at MSFC</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/14742">https://techport.nasa.gov/projects/14742</a>
+    </div>
+  </div>
+</body>
+</html>

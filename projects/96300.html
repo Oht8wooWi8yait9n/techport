@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Towards the Next Generation of Land Surface Remote Sensing: A Comparative Analysis of Passive Optical, Passive Microwave, Active Microwave, and LiDAR Retrievals | NASA TechPort Project 96300</title>
+  <meta name="description" content="The central objective of this proposal is to create a terrestrial hydrology mission planning tool to help inform experimental design with relevance to terrestrial snow, soil moisture, and vegetation using passive and active microwave remote sensing, LiDAR remo">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/96300">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 96300</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">AIST</span>
+          <span class="badge">TX11.5</span>
+        </div>
+        <h1>Towards the Next Generation of Land Surface Remote Sensing: A Comparative Analysis of Passive Optical, Passive Microwave, Active Microwave, and LiDAR Retrievals</h1>
+        <div class="meta-id">NASA TechPort Project ID: 96300</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/96300" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The central objective of this proposal is to create a terrestrial hydrology mission planning tool to help inform experimental design with relevance to terrestrial snow, soil moisture, and vegetation using passive and active microwave remote sensing, LiDAR remote sensing, passive optical remote sensing, hydrologic modeling, and data assimilation. Accurate estimation of land surface states and fluxes – including soil moisture, snow, vegetation, surface runoff – has been identified as a priority in the most recent decadal survey and can only be viewed globally (in an operational sense) with the use of satellite-based sensors. The development of a simulation tool that can quantify the utility of mission data for research and applications is directly relevant to these planning efforts. Leveraging the existing capabilities of the NASA Land Information System (LIS) and the Tradespace Analysis Tool for Constellations (TAT-C), a comprehensive environment for conducting observing system simulation experiments (OSSEs) will be developed to quantify the added value associated with different sensor and orbital configurations as related to snow, soil moisture, and vegetation and the subsequent hydrologic response of the coupled snow-soil moisture-vegetation system. It will allow for quantitative assessment of different orbital configurations (e.g., polar versus geostationary), number of sensors (e.g., single sensor versus constellation), and the associated costs with installing space-based instrumentation. In addition, the integrated system will provide insights into the advantages (and disadvantages) of different configurations including simultaneous measurements. The goal of the OSSE is to maximize the utility in experimental design in terms of greatest benefit to global, freshwater resource characterization. The integrated system will enable a true end-to-end OSSE that can help to quantify the value of observations based on their utility to science research and applications and to guide mission designs and configurations. Synthetic passive microwave (radiometry), active microwave (RADAR), passive optical (VIS/NIR), and active infrared (LiDAR) observations will be generated to provide information related to the coupled snow-soil moisture-vegetation integration in the terrestrial environment. This suite of synthetic observations will then be assimilated into NASA LIS to systematically assess the added value (or lack thereof) associated with an observation in space and time. Science and mission planning questions addressed as part of this proposal include, but are not limited to: 1. How can sensor viewing be optimized to best capture and characterize the integrated snow-soil moisture-vegetation response? Further, how would the efficacy of these sensors behave during extreme (e.g., flood, drought, rain-on-snow, post-wildfire, atmospheric river) events and non-extreme (e.g., climatological) events? 2. How might observations be coordinated (in space and time) to maximize utility, inform experimental design, and mission planning? 3. What is the added utility associated with an additional observation? Further, what is the marginal gain associated with adaptive (a.k.a., dynamic) viewing relative to a more traditional, fixed (a.k.a., static) viewing strategy? 4. What is the tradeoff space between different mixes of sensor types (i.e., passive MW, RADAR, and LiDAR), swath widths, fields-of-view, and error characteristics that maximizes scientific return while minimizing mission cost and mission risk? This project is relevant to several current and planned NASA research interests. This project will leverage a suite of existing NASA data products and models, and therefore, add value to previously incurred costs associated with their development.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Advance Earth system science knowledge through the identification, development, and demonstration of innovative information systems technologies
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>96300</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Advanced Information Systems Technology (AIST)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.5: Mission Architecture, Systems Analysis, and Concept Development</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2020-01-01</td></tr>
+<tr><th>Project End Date</th><td>2022-12-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Maryland-College Park (UMCP) — College Park, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Barton A Forman (Principal Investigator); Yeosang Yoon (Co-Investigator) &lt;yeosang.yoon@nasa.gov&gt;; Sujay V Kumar (Co-Investigator) &lt;sujay.v.kumar@nasa.gov&gt;; Rhae Sung Kim (Co-Investigator) &lt;rhaesung.kim@nasa.gov&gt;; Jonathan P Verville (Co-Investigator) &lt;jonathan.p.verville@nasa.gov&gt;; Yonghwan Kwon (Co-Investigator); Takeia Bradley (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Michael S Seablom (Program Director) &lt;michael.s.seablom@nasa.gov&gt;; Laura J Rogers (Program Manager) &lt;laura.j.rogers@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-08-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Link]</strong> Closeout Link</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/96300">https://techport.nasa.gov/projects/96300</a>
+    </div>
+  </div>
+</body>
+</html>

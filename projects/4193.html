@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modeling Cable-Harness Effects on Spacecraft Structures | NASA TechPort Project 4193</title>
+  <meta name="description" content="The proposed research involves modeling the effects of cable-harnesses and wiring on the dynamics of spacecraft structures. As space structure mass decreases due to the use of lightweight materials, the complex cabling systems used on these structures are beco">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/4193">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 4193</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX12.5</span>
+        </div>
+        <h1>Modeling Cable-Harness Effects on Spacecraft Structures</h1>
+        <div class="meta-id">NASA TechPort Project ID: 4193</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/4193" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The proposed research involves modeling the effects of cable-harnesses and wiring on the dynamics of spacecraft structures. As space structure mass decreases due to the use of lightweight materials, the complex cabling systems used on these structures are becoming a greater percentage of the spacecraft mass, and are changing the dynamic responses of the structures. The goal of this proposal is to develop a scientific basis for describing the effect of power and signal cables attached to lightweight, flexible spacecraft structures in order to determine precise analytical models of such systems to gain understanding of the important physical characteristics that affect their dynamic response. In order to characterize the effects of cable harnesses on spacecraft structures, multiple modeling methods will be developed. The analytical methods proposed include homogenization, the theory of combined dynamical systems, and model updating. Homogenization utilizes the repeating nature of the cable attachment points to simplify the equations used to compare the energy of each section to a fundamental beam model. The theory of combined dynamical systems combines the lumped parameters (attachment points) with the distributed parameters (the structure and cables) and then requires singularity and Green's functions to develop equations. Model updating compares experimental results to existing finite element approximations and adjusts the approximations to more accurately describe the experimentally determined response. In addition to analytical methods, experimental methods will be used to observe and study the effect of cables on structures, and to validate the models developed. An increasingly complex wiring system will be attached to a beam. The dynamic response of the cabled beam will be observed and measured. Specific goals for the first year of research include a method of describing structural cable effects using beam homogenization, culminating in validated homogenization models of cable-harnessed structures; a database of experimental results characterizing the dynamic response of cable-harnessed structures to vibration input; a thorough understanding of experimental requirements and the ability to design and execute a sound and repeatable set of experiments to validate models; and significant progress on methods of describing structural cable effects using the theory of combined dynamical systems and model updating for finite element analysis. This research aligns with Space Technology Area 12.2 (Structures), as well as 11.2 (Modeling). The vibration of space structures is certainly significant in the study of aeronautics and exploration structures, as any structure being propelled into space will experience vibration and is highly likely to have wiring and cables attached. By understanding the vibration modes and effects of these cabled space structures, we will be able to create precise models to predict spacecraft motion and reduce unwanted vibration. In addition, most spacecraft and satellite control systems are dependent on knowing the motion of the object; by further refining our knowledge of spacecraft vibration, we should be able to more accurately model spacecraft and satellite movement, and thus improve the accuracy of space control systems and operations. This research will contribute to the understanding of the dynamics of these systems, and will allow a greater degree of confidence in models for the systems used in exploration systems and space operations. It could be used to make space structures more robust and stable, control systems more accurate, and eventually improve NASA's space and aeronautic technologies.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The vibration of space structures is certainly significant in the study of aeronautics and exploration structures, as any structure being propelled into space will experience vibration and is highly likely to have wiring and cables attached. By understanding the vibration modes and effects of these cabled space structures, we will be able to create precise models to predict spacecraft motion and reduce unwanted vibration. In addition, most spacecraft and satellite control systems are dependent on knowing the motion of the object; by further refining our knowledge of spacecraft vibration, we should be able to more accurately model spacecraft and satellite movement, and thus improve the accuracy of space control systems and operations. This research will contribute to the understanding of the dynamics of these systems, and will allow a greater degree of confidence in models for the systems used in exploration systems and space operations. It could be used to make space structures more robust and stable, control systems more accurate, and eventually improve NASA's space and aeronautic technologies.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>4193</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX12.5: Structural Dynamics</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-08-01</td></tr>
+<tr><th>Project End Date</th><td>2015-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Virginia Polytechnic Institute and State University (VA Tech) — Blacksburg, Virginia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Virginia (VA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Daniel Inman (Principal Investigator); Kaitlin S Spak (Co-Investigator) &lt;kaitlin.s.spak@jpl.nasa.gov&gt;; Gregory S Agnes (Project Manager) &lt;gregory.s.agnes@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-02-13</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: This research focused on the dynamic response of spaceflight cables and their effects on space structures. Due to the high mass ratio of cables on lightweight spacecraft, the dynamic response of cabled structures must be understood and modeled for accurate spacecraft control. Models of cable behavior were reviewed and categorized into three major classes consisting of thin rod models, semi-continuous models, and beam models. A shear beam model can predict natural frequencies, frequency response, and mode shapes for a cable if effective homogenous cable parameters are used as inputs. Thus, a method for determining these parameters from straightforward cable measurements was developed. Upper and lower bounds for cable properties of area, density, bending stiffness, shear rigidity, and attachment stiffness were calculated and shown to be effective in cable models for natural frequency prediction. The parameter calculation method can be applied to any stranded cable for which the constituent material properties can be determined. In addition to determining cable parameters for homogenous cable-as-beam modeling, the effect of bakeout on spaceflight cables was investigated. Natural frequencies and damping values were experimentally identified before and after the bakeout process. After bakeout, spaceflight cables showed reduced natural frequencies and increased damping, so a bakeout correction factor is recommended for bending stiffness calculations. On the modeling front, a cable model was developed using the distributed transfer function method (DTFM) by adding shear, tension, and damping terms to existing Euler Bernoulli models. The cable model was then extended to model a cabled structure. Both the cable and cabled beam models include attachment points that can incorporate linear and rotational stiffness and damping. Cable damping mechanisms were explored and incorporated to the model. From this aspect of the research, time hysteretic damping was shown to be capable of matching multiple modes of the cable response, and was superior to both viscous and structural damping for modeling cable damping. The DTFM models are combined with the determined cable parameters and damping expressions to yield frequency ranges that agree with experimental data. The developed cabled beam model matches experimental data more closely than the currently used distributed mass model. The experimental work conducted for this research included dynamic testing of cables, cabled beams, and the connection method used for cable attachment. Cables were excited with a modal shaker and scanned with a scanning laser vibrometer to determine natural frequencies and mode shapes for a two-point and four-point fixture. Cables were then attached to an aluminum beam to provide cable mass ratios of 5 to 27%, and the same procedure was followed to determine the natural frequencies and mode shapes of the cabled structure. Solid rods were also tested in all fixtures to compare the stranded cables and show the additional complexity of the transfer functions due to the stranded nature of the cables. Additional experiments were run to characterize the stiffness property of the cable attachment method. The combination of theoretical and experimental work served to determine the effectiveness of the methods and models developed, as well as allow for detailed experimental observation and analysis of cable effects. This work extends the understanding of cable dynamics and presents methods and models to aid in the analysis of stranded cables and cabled structures. Conclusions and contributions of this work are as follows: • Developed a method to calculate cable properties that are suitable to use for modeling purposes from direct physical measurements of cables. Cable parameters of mass properties, bending stiffness, and shear rigidity were determined for typical spaceflight cables. • Created a standard run procedure for testing of cables with verification of factors that would influence cable dynamic response and showed that machine made cables did not fully eliminate variability in the dynamic response. • Produced a database of cable responses for typical spaceflight cables from over 70 trials of dynamic testing which are available for further investigation. • Determined the effect of bakeout on spaceflight cable response, identified bakeout as a source of frequency response changes, and quantified the amount of frequency shift and damping ratio changes due to bakeout. • Extended the distributed transfer function shear model to include shear effects, tension, and a variety of damping mechanisms to model cables or other damped shear beams. • Developed a distributed transfer function cabled beam model that combines the shear beam cable model with attachment point models that have the capability to include both linear and rotational stiffness and damping. • Compared the developed distributed transfer function cabled beam models to the currently used distributed mass models to show the slight improvement in frequency prediction and identification of additional modes by the new distributed transfer function cabled beam model. • Investigated the influence of the attachment points, verified that the attachment points did not act as pinned constraints, and revealed results for the attachment stiffness as a function of frequency. Although this research was focused on spaceflight cables, the methods and models developed are applicable to many types of stranded cable and thus have application outside the realm of space structure design.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>4193-1363192676697.jpg</strong> — Project Image Modeling Cable-Harness Effects on Spacecraft Structures</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/4193">https://techport.nasa.gov/projects/4193</a>
+    </div>
+  </div>
+</body>
+</html>

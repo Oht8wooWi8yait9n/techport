@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q-Deploy-Processor and FPGA Rapid-Deployment Platform | NASA TechPort Project 9519</title>
+  <meta name="description" content="For NASA and other organizations, development using reconfigurable technologies can be time consuming and difficult, with expensive to over-budget development cycles and longer time-to-deployment. The proposed Q-Deploy Processor and FPGA Rapid-Deployment Platf">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/9519">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 9519</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX02.1.5</span>
+        </div>
+        <h1>Q-Deploy-Processor and FPGA Rapid-Deployment Platform</h1>
+        <div class="meta-id">NASA TechPort Project ID: 9519</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/9519" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          For NASA and other organizations, development using reconfigurable technologies can be time consuming and difficult, with expensive to over-budget development cycles and longer time-to-deployment. The proposed Q-Deploy Processor and FPGA Rapid-Deployment Platform, with the endorsement of a leading prime who is heavily involved with NASA programs and allocations, will give NASA a standardized and commercially available system providing an environment and infrastructure for accelerated development and rapid deployment of highly reliable applications on reconfigurable computing platforms. The Q-Deploy system will leverage and extend proven reconfigurable software technologies developed under DOD contracts and promotes the development of reusable and easily testable functions, with an expanding library of tested features that address normal system-level functions and requirements. The existing technologies will be expanded for operation in Triple Modular Redundancy (TMR) soft-core processors within FPGA(s) to provide added reliability for applications in environments such as those of interest to NASA. This expansion enhances reliability, and when combined with other capabilities, enables the possibility of, for example, "replacing" a faulty processor in an operational system. Reliability will be further enhanced by providing the Hardware Object Refresh Manager to refresh objects in a managed and prioritized manner to combat module failures due to, for example, radiation induced bit swaps without the requirement of device reset or downtime. Q-Deploy's innovative approach for reliable, rapid development and deployment of reconfigurable technologies will provide a flexible, modifiable, and extendable platform usable by multiple developers for NASA and other organizations.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The DOD has a significant focus on space and satellite technologies as outlined in the DOD's 2015 and 2020 future planning. Organizations such as the AFRL Space Vehicles Directorate, Navy SPAWAR and US Army Space Missile Defense Command (SMDC) are among a few of the DOD organizations that have various satellite technology initiatives. The Q-Deploy technologies can benefit these DOD programs and the vendors who are in need of rapid, cost-effective, development and deployment of high-reliability, high-performance applications using reconfigurable technologies. Other industries benefitting from Q-Deploy Processor and FPGA Rapid-Deployment Platform include the commercial satellite industry, as well as the telecommunications industry which provides voice and video communications around the world.<br /> <br />The Q-Deploy platform provides useful technology that is broadly applicable and can help accelerate development and deployment in various NASA programs where reconfigurable FPGA-based technology development is planned or underway. Applications that can benefit from Q-Deploy include fault detection and resolution, power management, command, control, communications, data gathering and analysis, compression, various sensors and interfaces, encryption, and other computationally intensive algorithms. Programs that can benefit include internal payload development efforts, numerous science programs, hardware compression and encryption algorithm development, and new command and telemetry and storage technologies on various spacecraft, with potential benefits to facilitate human exploration beyond LEO. The proposed Q-Deploy can save NASA and other organizations providing reconfigurable technology development for NASA millions of dollars in development costs with faster time-to deployment. Additionally, the Q-Deploy technologies may also enable potential NASA vendors with technology useful to NASA, but who lack knowledge of one or more of the necessary functions that Q-Deploy provides. Organizations of all sizes will benefit from the increased flexibility, rapid development and deployment from using Q-Deploy's innovative platform, documentation, and a specification for an example system allowing development teams to quickly come up to speed with the technology.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>9519</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX02.1.5: High-Performance Field-Programmable Gate Arrays</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2011-02-18</td></tr>
+<tr><th>Project End Date</th><td>2011-09-29</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>QuickFlex, Inc. — San Antonio, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Richard Ivy (Principal Investigator); Elwood F Agasid (Project Manager) &lt;elwood.f.agasid@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/9519">https://techport.nasa.gov/projects/9519</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testing Mechanical Countermeasures for Cephalad Fluid Shifts | NASA TechPort Project 34482</title>
+  <meta name="description" content="Current evidence suggests that NASA&#x27;s spaceflight-associated neuro-opthalmological syndrome (SANS/VIIP) risk is related to an elevation in intracranial pressure (ICP) during spaceflight, either consequent to or aggravated by cephalad fluid shifts in microgravi">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/34482">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 34482</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.2</span>
+        </div>
+        <h1>Testing Mechanical Countermeasures for Cephalad Fluid Shifts</h1>
+        <div class="meta-id">NASA TechPort Project ID: 34482</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/34482" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Current evidence suggests that NASA's spaceflight-associated neuro-opthalmological syndrome (SANS/VIIP) risk is related to an elevation in intracranial pressure (ICP) during spaceflight, either consequent to or aggravated by cephalad fluid shifts in microgravity. From recent data, SANS occurs in >50% of astronauts, to varying degrees, and can lead to long term visual changes. Although its cause is unknown, its importance is high enough to motivate studies of potential countermeasures. The key objectives of this project were therefore: (1) to test and help validate two commercial devices as mechanical countermeasures for cephalad fluid shifts to potentially treat elevated ICP, (2) identify any potential adverse consequences during use or following release of such countermeasures, and (3) optimize deployment procedures for such countermeasures.     <p></p> The Russians currently use Braslet—an elastic thigh band—to help sequester blood in the legs and alleviate symptoms resulting from cephalad fluid shifts. While promising, this device has not been tested as a SANS countermeasure. Lower body negative pressure (LBNP) is an alternative approach, which draws fluid into the legs using vacuum mechanism. Both have drawbacks, however. Braslet devices are custom-built, difficult to obtain, and have limited calibration options. LBNP is typically bulky and hence could only be used at limited times. As an alternative to Braslet, we tested the Kaatsu thigh cuff system. This commercially available system is designed for enhanced muscle training on Earth. In addition, we investigated use of a LymphaPress compression garment configured to provide a vascular resistance for fluid return from the lower body (as opposed to enhanced fluid return for which the device was designed for clinically). In Experiments 1 and 2 we conducted tests using both countermeasures (at different inflation pressures) in healthy subjects undergoing -6 degrees head-down tilt (HDT). We characterized cerebral blood volume and flow, intraocular pressure, structural eye parameters, and cerebral vascular parameter changes associated with application, maintenance, and following release of each countermeasure. In Experiment 3, we tested the Kaatsu system in neurointensive care unit patients with invasive ICP devices implanted to monitor and treat elevated ICP.     <p></p> Together, the data from these studies suggested that—at the chosen inflation pressures--neither countermeasure exhibited significant potential as a treatment for, or mitigator of, cephalad fluid shifts and elevated ICP. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Impact: This project provided the first tests of commercial, user-friendly and safety-tested devices as countermeasures potentially suitable for SANS.     <p></p> Results include: (1) an assessment of both thigh cuffs and a compression garment as a SANS countermeasure, (2) assessment of the influence of these devices on cerebrovascular and ocular parameters, (3) parameterization of countermeasure deployment and rebound effects on multiple physiological variables, and (4) information regarding optimized deployment of the countermeasures.     <p></p> Earth Benefits: Currently, there are few treatment methods for elevated ICP, which affects patients with traumatic brain injury, stroke, hydrocephalus, and cancer patients. None of the current methods involve non-invasive mechanical devices—instead focusing on surgical procedures or medications. This work therefore has the potential to identify one or more countermeasures and/or protocols—within a novel class of countermeasures—that could be used to help manage intracranial fluids and pressure. Since these approaches do not require drugs, they avoid the potential side effects, drug-drug interactions, or longer-lasting effects that often come from medication use. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>34482</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.2: Prevention and Countermeasures</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2015-06-01</td></tr>
+<tr><th>Project End Date</th><td>2017-05-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>National Space Biomedical Research Institute (NSBRI) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Massachusetts General Hospital — Charlestown, Massachusetts; GE Global Research — Niskayuna, New York; Baylor College of Medicine — Houston, Texas</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Massachusetts (MA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Gary E Strangman (Principal Investigator); Aaron Dentinger (Co-Investigator); Chethan P Venkatasubba Rao (Co-Investigator); Aaron Baggish (Co-Investigator); Quan Zhang (Co-Investigator); Adam M Cohen (Co-Investigator); Eric Rosenthal (Co-Investigator); Eric Bershad (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Current evidence suggests that NASA&#x27;s spaceflight associated neuro-opthalmological syndrome (SANS/VIIP) risk may be related to an elevation in intracranial pressure (ICP) during spaceflight compared to the upright position on Earth, either consequent to or aggravated by cephalad fluid shifts in microgravity. The key objectives of this project were: (1) to test and assess two commercial devices as mechanical countermeasures for cephalad fluid shifts and modify cerebral and/or ocular parameters, (2) to identify any potential adverse consequences during use or following release of such countermeasures, and (3) to optimize deployment procedures for such countermeasures. Specifically, this project sought to test the Kaatsu thigh cuff muscle training system, as an alternative to the Braslet, and a reconfigured Lymphapress system, originally designed for fluid management in edema patients. In year 2 of the project we initiated and completed three human experiments. In Experiment 1, we tested n=18 healthy subjects during a -6 degree head-down tilt protocol. Subjects were monitored during two 3-hour sessions (one for each countermeasure, randomized order) consisting of 20-min periods in each of the following orientations, in sequence: +50 degree HUT (head up tilt), supine, -6 degree HDT, -6 degree HDT during countermeasure deployment, -6 degree HDT post-deployment of the countermeasure, supine, and briefly again at 50 degree HUT. All subjects were tested with Kaatsu at 180 SKU deployment pressure and Lymphapress at 34-36 mmHg pressures, in counterbalanced orders. Experiment 2 tested n=12 healthy subjects identically as in Experiment 1, however, with higher countermeasure pressures: Kaatsu at a deployment pressure of 300 SKU and Lymphapress at pressures of 43-45 mmHg. In Experiment 3, the Kaatsu system was tested in n=5 patients in the NeuroICU in collaboration with Dr. Eric Bershad with invasive ICP monitoring for 20 min baseline, 20 min Kaatsu deployment, and 20 min post-deployment at 250 SKU. Neither of the investigated mechanical countermeasure devices caused adverse effects in subjects and were well tolerated throughout trials. Kattsu cuffs were deemed less obtrusive and more practical to deploy due to their small size and compliance. The Lymphapress system was overall less practical to deploy due to its size and mode of application that required subjects to wear large inflatable compression pants—sufficiently so to preclude their use in NeuroICU patients with unstable ICP in Experiment 3. Experiments 1 and 2 demonstrated significant sequestration of blood in the legs during Kaatsu deployment, whereas Lymphapress deployment did not. No significant changes in cerebral or ocular parameters (cerebral blood volume, cerebral blood flow velocity, intraocular pressure) were observed during or following either countermeasure. We believe the negative findings were in part due to distinct design issues associated with each commercial device.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Articles in Peer-reviewed Journals</strong> — Strangman GE, Ivkovic V, Zhang Q. &quot;Wearable brain imaging with multi-modal physiological recording.&quot; J Appl Physiol (1985). 2018 Mar 1;124(3):564-72. Epub 2017 Jul 13. https://doi.org/10.1152/japplphysiol.00297.2017 ; PubMed PMID: 28705994 [reported originally in July 2017 as &quot;Epub ahead of print&quot;], Mar-2018</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/34482">https://techport.nasa.gov/projects/34482</a>
+    </div>
+  </div>
+</body>
+</html>

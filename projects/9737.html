@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fortran Testing and Refactoring Infrastructure | NASA TechPort Project 9737</title>
+  <meta name="description" content="Tech-X proposes to develop a comprehensive Fortran testing and refactoring infrastructure that allows developers and scientists to leverage the benefits of comprehensive Integrated Developer Environment (IDE) tools. An intriguing aspect of the infrastructure i">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/9737">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 9737</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX11.1.7</span>
+        </div>
+        <h1>Fortran Testing and Refactoring Infrastructure</h1>
+        <div class="meta-id">NASA TechPort Project ID: 9737</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/9737" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Tech-X proposes to develop a comprehensive Fortran testing and refactoring infrastructure that allows developers and scientists to leverage the benefits of comprehensive Integrated Developer Environment (IDE) tools. An intriguing aspect of the infrastructure is the integration of performance measurement, unit testing, and refactoring tools with the many other features of an IDE, which will allow developers to get immediate feedback about the overall application and reduce their development cycle time. Our goal is to promote modern software engineering methodology to a broad spectrum of Fortran users. The infrastructure will facilitate refactoring newly developed and legacy codes correctly and accurately for single and multi-processor applications. Major benefits to refactoring include creating robust codes that are more easily ported to different hardware and software platforms, promoting extensibility, facilitating better collaboration, and encouraging best software engineering practices. For example, refactoring code to remove common blocks allows porting to multi-core architectures with increased thread safety. By packaging pFUnit (Fortran Unit Test Tool) into the Eclipse, combining with improved versions of Photran IDE and the Parallel Tools Platform plugins, the proposed integration we will be able to quickly contribute to the Fortran developer community, whose feedback we hope to use to guide our product development.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Ultimately, The Fortran testing and refactoring infrastructure can be used with all software engineering projects written in FORTAN 77, Fortran90, Fortran95 and Fortran2003. Consequently, there are a large number of non-Nasa related applications written in Fortran that could benefit from our Fortran testing and refactoring framework. The Fortran developer community at large will benefit by being able to use improved mechanisms that have been available for some time to the C and C++ communities to test and refactor Fortran codes which will result in more robust, scalable and extensible codes. More specifically, the proposing firm is fortunate to be co-located with the Climate and Global Dynamics Division (CGD) at the National Center for Atmospheric Research who is administrating the Community Earth System Model (CESM). CESM is a fully-coupled, global climate model that provides state-of-the-art computer simulations of the Earth's past, present, and future climate states supported by NSF and DOE. The firm is also leading the DOE SciDAC project, FACETS, to integrate fusion codes some of which are Fortran codes which would benefit from the proposed tools. NASTRAN variants, Computational Fluid Dynamics (CFD), combustion and geophysical data processing codes written in Fortran may benefit from our work regardless of whether they are commercial or academic ventures. We plan to work closely with the team developing the Photran Eclipse Plugin to have the broadest impact.<br /> <br />While process study missions (e.g. CALIPSO/CloudSat) are critical to improve underlying climate model physics, future mission observations (e.g. CLARREO) are critical to determine the impact of those climate model improvements on the accuracy of predicting future climate change. Since the proposed tools will make it easier for NASA scientists to develop and optimize climate modeling codes, the proposed project in a sense supports all climate-related current and future missions to ensure that studies address serious accuracy issues in climate change observation and prediction. Beyond mission-related research, the proposed project has applications for all modeling efforts supported by NASA High-End Computing and the Modeling, Analysis and Prediction programs. One of our specific early adopter targets is a coupled atmosphere-ocean model called modelE developed at the NASA Goddard Institute for Space Studies (GISS). Other potential NASA applications from GISS are four mesoscale dynamics models including the Goddard Cumulus Ensemble. From Goddard Space Flight Center, the GEOS system of models could apply the proposed tools. Fortran codes in other NASA disciplines such as the CFD Codes for Turbomachinery (Glenn Research Center) are also potential applications. Related climate code targets with fringe connections to NASA include the Community Atmospheric Model and the Weather Research and Forecasting Model.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>9737</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.1.7: Frameworks, Languages, Tools, and Standards</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 8 | Target End TRL: 8</td></tr>
+<tr><th>Project Start Date</th><td>2011-06-01</td></tr>
+<tr><th>Project End Date</th><td>2014-05-31</td></tr>
+<tr><th>Project Phase</th><td>2</td></tr>
+<tr><th>Lead Organization / Center</th><td>Tech-X Corporation — Boulder, Colorado</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO), Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>David Alexander (Principal Investigator); David M Alexander (Principal Investigator); Tom L Clune (Project Manager) &lt;Thomas.L.Clune@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-01-22</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Document]</strong> Final Summary Chart</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/9737">https://techport.nasa.gov/projects/9737</a>
+    </div>
+  </div>
+</body>
+</html>

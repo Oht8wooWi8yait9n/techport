@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Flood Risk From Advanced Modeling and Remote Sensing in Collaboration With Google Earth Engine | NASA TechPort Project 18686</title>
+  <meta name="description" content="As predictive accuracy of the climate response to greenhouse emissions improves, measurements of sea level rise are being coupled with modeling to better understand coastal vulnerability to flooding. Predictions of rising intensity of storm rainfall and larger">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/18686">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 18686</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">AIST</span>
+          <span class="badge">TX11.2.4</span>
+        </div>
+        <h1>Global Flood Risk From Advanced Modeling and Remote Sensing in Collaboration With Google Earth Engine</h1>
+        <div class="meta-id">NASA TechPort Project ID: 18686</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/18686" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          As predictive accuracy of the climate response to greenhouse emissions improves, measurements of sea level rise are being coupled with modeling to better understand coastal vulnerability to flooding. Predictions of rising intensity of storm rainfall and larger tropical storms also imply increased inland flooding, and many studies conclude this is already occurring in some regions. Most rivers experience some flooding each year: the seasonal discharge variation from low to high water can be 2-3 orders of magnitude. The mean annual flood is an important threshold: its level separates land flooded each year from land only affected by large floods. We lack adequate geospatial information on a global basis defining floodplains within the mean annual flood limit and the higher lands still subject to significant risk (e.g. with exceedance probability of greater than 3.3%; the 30 yr floodplain). This lack of knowledge concerning changing surface water affects many disciplines and remote sensing data sets, where, quite commonly, a static water 'mask' is employed to separate water from land. For example, inland bio-geochemical cycling of C and N is affected by flooding, but floodplain areas are not well constrained. Measurements and computer models of flood inundation over large areas have been difficult to incorporate because of a scarcity of observations in compatible formats, and a lack of the detailed boundary conditions, in particular floodplain topography, required to run hydrodynamic models. However, the available data now allow such work, and the computational techniques needed to ingest such information are ready for development. Optical and SAR sensing are providing a near-global record of floodplain inundation, and passive microwave radiometry is producing a calibrated record of flood-associated discharge values, 1998-present. Also, global topographic data are of increasingly fine resolution, and techniques have been developed to facilitate their incorporation into modeling. Several of us have already demonstrated the new capability to accurately model and map floodplains on a continent scale using input discharges of various sizes and exceedance probabilities. Work is needed to accomplish global-scale products, wherein results are extended to all continents, and downscaled to be locally accurate and useful. Floodplain mapping technologies and standards vary greatly among nations (many nations have neither): the planned effort will provide a global flood hazard infrastructure on which detailed local risk assessment can build. Our project brings together an experienced team of modeling, remote sensing, hydrology, and information technology scientists at JPL and the University of Colorado with the Google Earth Engine team to implement and disseminate a Global Floodplains and Flood Risk digital map product. This project addresses major priorities listed in the AIST program: with Google, we would identify, develop, and demonstrate advanced information system technologies that increases the accessibility and utility of NASA science data and enables new information products. The work will address the Core Topic 'Data-Centric Technologies', including 'Technologies that provide opportunities for more efficient interoperations with observations data systems, such as high end computing and modeling systems; and Capabilities that advance integrated Earth science missions by enabling discovery and access to Service Oriented Architecture'. It will also address the Special Subtopic 'Technology Enhancements for Applied Sciences Applications' in regard to natural disasters, and contribute to the GEOSS architecture for the use of remote sensing products in disaster management and risk assessment.
+        </div>
+
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>18686</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Advanced Information Systems Technology (AIST)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.2.4: Science Modeling</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2015-04-01</td></tr>
+<tr><th>Project End Date</th><td>2017-05-16</td></tr>
+<tr><th>Lead Organization / Center</th><td>NASA Headquarters (HQ) — Washington, District of Columbia</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Colorado Boulder — Boulder, Colorado; Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Colorado (CO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Robert Brakenridge (Principal Investigator); Paul D Bates (Co-Investigator); Konstantinos Andreadis (Co-Investigator) &lt;konstantinos.m.andreadis@jpl.nasa.gov&gt;; Chandra Tjandrasa (Co-Investigator); Albert J Kettner (Co-Investigator); Guy J Schumann (Co-Investigator)</td></tr>
+<tr><th>Program Management Contacts</th><td>Michael S Seablom (Program Director) &lt;michael.s.seablom@nasa.gov&gt;; Laura J Rogers (Program Manager) &lt;laura.j.rogers@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-07-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong></li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>[Closeout Link]</strong> Closeout Link</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/18686">https://techport.nasa.gov/projects/18686</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ionic Liquid Propellants for Micro-propulsion | NASA TechPort Project 94981</title>
+  <meta name="description" content="The increasing use of nanosatellites, colloquially &amp;quot;CubeSats,&amp;quot; necessitates the development of new micro-propulsion technologies. NASA&amp;#39;s 2015 Technology Roadmap specifically mentions several candidates, including electrospray propulsion (TA 2. 2.">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/94981">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 94981</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">MSFC IRAD</span>
+          <span class="badge">TX01.2.2</span>
+        </div>
+        <h1>Ionic Liquid Propellants for Micro-propulsion</h1>
+        <div class="meta-id">NASA TechPort Project ID: 94981</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/94981" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The increasing use of nanosatellites, colloquially &quot;CubeSats,&quot; necessitates the development of new micro-propulsion technologies. NASA&#39;s 2015 Technology Roadmap specifically mentions several candidates, including electrospray propulsion (TA 2. 2.1.5). Research into this technology has produced propulsion systems that have been successfully demonstrated on orbit, but work remains to be done in optimizing both&nbsp; hardware&nbsp; design and propellant selection.</p><p>UTSI has developed novel femtosecond laser based microfabrication processes capable of forming emitters with nano-scale dimensions. UTSI has invested in the development of this capability and sees a synergistic application of this core capability (manufacturing, materials, etc) to the fabrication of micro-electric propulsion thrusters for CubeSat applications. UTSI has already begun development of an electrospray thruster, called the Micro Scalable Thrusters for Adaptive&nbsp;&nbsp; Mission&nbsp;&nbsp; Profiles&nbsp;in Space (&micro;STAMPS)<strong>. </strong>The proposed system has emitter pitch that is an order of magnitude smaller than current state of the art thrusters, increasing thrust density by a factor of ~100 and has ultra-sharp emitter tips reducing applied voltages by a factor of~ 10. UTSI is in the process of fabricating these &micro;STAMPS devices.</p><p>Ionic liquids (IL) are green propellants that enable the electrospray devices that UTSI is committed to develop. Through UTSI&#39;s early research effort a gap has been identified in the range of available ionic liquids and their pertinent properties related to propulsion systems. Since MSFC has a leading role in NASA&#39;s IL development, we are proposing a collaborative effort to concurrently develop novel propellants for micro&shy;electrospray thrusters. The outcome of the proposed activity will not only provide a systematic compatibility characterization of IL for this application, it will also enable a green micro-electrospray thruster that supports MSFC&#39;s efforts to develop propulsion systems for small satellites .</p><p>It is envisioned that these micro-propulsion thrusters offer a reduced volume propulsion solution for CubeSats by being inserted into the walls/structures of cubesats/smallsats, as well as reducing operation voltage and interference with other electronics. If the proper IL is developed, longer thruster lifetime will result , enabling longer missions. The proposed activity will also demonstrate the application of UTSI&#39;s advanced microfabrication capabilities toward the development of a micro-propulsion system. What is proposed includes a modest investment by MSFC to support the IL propellant development and in-kind contribution by UTSI.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The &micro;STAMPS thruster technology is based on well-known electrospray concepts. When a conductive fluid is in the presence of a strong electric field, the surface deforms from the spherical shape associated with surface tension and forms a Taylor cone that generates a jet of charged liquid droplets at the tip of the cone. These droplets are accelerated by the field produced between an array of needles, around which the cones form, and extractor and accelerator grids to produce thrust. A<em> </em>notional concept of the &micro;STAMPS thruster emitter and extraction&nbsp;&nbsp; grid<strong>. &nbsp;</strong>The subcomponents of the &micro;STAMPS thruster, namely the array of needles and the&nbsp; extractor and accelerator grids, as well as propellant storage and delivery microfluidics, can all be patterned via direct-write femtosecond laser microfabrication (FLM) methods developed at UTSI. Unlike conventional photolithography, FLM methods allow designs containing microscopic features to be etched directly, in a single step, on virtually any material (metals, ceramics, glass materials and polymers), without a photomask. Compared to picosecond and nanosecond laser based methods, femtosecond lasers provide superior materials ablation efficiency, as well as superior quality in terms of attainable minimum</p><p>feature sizes&nbsp; and&nbsp; part finish. With femtosecond lasers, one can attain smaller and sharper features, with virtually no heat-induced artifacts (such as melt spatters, cracks, burrs) that are commonly observed with longer pulse laser technologies. Such attributes make femtosecond lasers the best suited technology for applications involving microfabrication. With this technology, emitters exhibiting 100 nm radius tips, and arranged in arrays of several millions within a square centimeter<strong> </strong>are routinely fabricated. Grids of 5 um OD through-holes in 1-to-2 mil thick metal sheets have been demonstrated. And complex microfluidics for lab-on-a-chip devices have been reported. Emitters, grids, and microfluidics prepared using FLM methods have all been demonstrated using the state of the art facility located at the UTSI Center for Laser Applications.</p><p>The selection of an appropriate propellant is an important part of designing electrospray thrusters. The propellant must be conductive in order to form Taylor cones that produce charged droplets that are accelerated by an electrostatic field. As propellant is ejected from the needle tip, it is replenished by capillary action, so high surface tension and low viscosity are required properties. Additional desirable properties are similar anion and cation masses, low electrical permittivity, low hygroscopicity, low vapor pressure , and high materials compatibility. ILs are well suited for use in electrospray thrusters.&nbsp; Being entirely composed of ILs are naturally conductive. The presence of both positively and negatively&nbsp; charged species allows for the thruster to be sequentially&nbsp; operated&nbsp; at&nbsp; opposite&nbsp; polarities,&nbsp; which prevents charging of the spacecraft and removes the&nbsp; need&nbsp; for&nbsp; neutralizers.&nbsp; !Ls&nbsp; can&nbsp; have almost no vapor pressure, enabling&nbsp; them&nbsp; to&nbsp; be&nbsp; stored&nbsp; on&nbsp; spacecraft&nbsp; without&nbsp; the&nbsp; use&nbsp; of heavy pressure vessels. !Ls also have high electrochemical stability, allowing&nbsp; greater electrostatic potential&nbsp; to&nbsp; be&nbsp; applied&nbsp; and&nbsp; generally&nbsp; have&nbsp; wide&nbsp; liquidus&nbsp; ranges&nbsp; that &nbsp;exceed the&nbsp; temperature&nbsp; regime&nbsp; imposed&nbsp; on&nbsp; spacecraft.&nbsp; Despite these attractive properties,&nbsp;&nbsp; only two ILs, 1-ethyl-3-methyimidazolium tetrafluoroborate (EMI BF<sub>4</sub>) and 1-ethyl-3- methyimidazolium bis(trifluoromethylsulfate)imide&nbsp; (EMI&nbsp; TFSI)&nbsp; have been&nbsp; widely&nbsp; studied for use as propellants. Of these ILs, (EMI BF<sub>4</sub>) readily hydrolyzes in the presence of water which produces HF which corrodes thruster hardware. State of the art&nbsp; micro-propulsion systems are expected to be particularly sensitive to HF corrosion given the extensive use of materials such as Silicon, Silicon Dioxide, and metals in their fabrication.&nbsp; We propose conducting a systematic study to optimize hardware geometry and propellant selection. This effort will advance electrospray propulsion by furthering our understanding of hardware design and propellant selection.</p><p>&nbsp;</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>94981</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: MSFC IRAD (MSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX01.2.2: Electrostatic Propulsion</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 2 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2018-06-01</td></tr>
+<tr><th>Project End Date</th><td>2018-12-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Tennessee Space Institute — TULLAHOMA, Tennessee</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL), Tennessee (TN)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Moon and Cislunar, Others Inside the Solar System, Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Trevor M Moeller (Principal Investigator) &lt;trevor.moeller@nasa.gov&gt;; Eric T Fox (Co-Investigator) &lt;eric.t.fox@nasa.gov&gt;; Trevor M Moeller (Project Manager) &lt;trevor.moeller@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>John W Dankanich (Program Manager) &lt;john.dankanich@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2020-07-30</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: TBD</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/94981">https://techport.nasa.gov/projects/94981</a>
+    </div>
+  </div>
+</body>
+</html>

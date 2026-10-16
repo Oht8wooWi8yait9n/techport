@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultra-Wideband Receiver Package For The North America Array (UWR for the NAA) | NASA TechPort Project 91795</title>
+  <meta name="description" content="The North America Array (NAA), also known as the next-generation Very Large Array (ngVLA), is a concept for a radio astronomical interferometric array operating in the frequency range 1.2 GHz to 116 GHz and designed to provide substantial improvements in sensi">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91795">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91795</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">JPL IRAD</span>
+          <span class="badge">TX08.1.1</span>
+        </div>
+        <h1>Ultra-Wideband Receiver Package For The North America Array (UWR for the NAA)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91795</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91795" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The North America Array (NAA), also known as the next-generation Very Large Array (ngVLA), is a concept for a radio astronomical interferometric array operating in the frequency range 1.2 GHz to 116 GHz and designed to provide substantial improvements in sensitivity, angular resolution, and frequency coverage above the current Very Large Array (VLA). JPL is in a unique position both to enable the North America Array and to benefit from it. &nbsp;With its frequency coverage, the North America Array would cover all of the deep space communication frequency allocations and all of the planetary radar frequency allocations. &nbsp;Under this effort we are designing an ultra-wideband receiver package designed to operate across the 8 to 48 GHz frequency range in contrast to the current VLA which covers this frequency range with five receiver packages. &nbsp;Reducing the number of receiving systems required to cover the full frequency range would reduce operating costs. The objective of this work is to develop a prototype integrated feed-receiver package with a sensitivity performance comparable to current narrower band systems on radio telescopes and the DSN, but with a design that meets the requirement of low long-term operational costs.&nbsp;</p><p>This effort focuses on the development of a prototype ultra-wideband feed-receiver package for the North America Array. &nbsp;Much like the case for the Deep Space Network (DSN), operational costs are increasingly recognized as a factor in determining the viability for current and future radio telescopes. &nbsp;For the North America Array to achieve the required sensitivity, the feed-receiver systems will have to be cryogenically cooled, but in order to minimize operational costs associated with the cryogenics, the number of such feed-receiver systems should be minimized. &nbsp;Similarly, integrated and easily serviceable feed-receiver systems are expected to reduce maintenance costs and downtime. &nbsp;These considerations lead us to target the development of an integrated, cryogenically-cooled feed-receiver package with a continuous instantaneous frequency coverage of 8-48 GHz which delivers a sensitivity performance comparable to current narrower band systems on radio telescopes and the DSN. The aforementioned receiver should be low cost, easy to manufacture and easy to service. &nbsp; In concert with other groups developing systems at lower frequencies, we would demonstrate that key components of the North America Array are sufficiently mature in time for the 2020 Astronomy Decadal Survey. Once the NAA is included in the Decadal Survey, the ultimate goal is to receive strong backing from the radio astronomy community such that the National Science Foundation decides to fund&nbsp;its construction.&nbsp;The DSN and current radio telescope receiving systems define the state-of-the-art in receivers. &nbsp;DSN receivers have extremely low system temperatures, typically 25 K or better, but in fairly narrow bands (mostly at S-, X-, and Ka bands) with typical bandwidths no larger than 10%. &nbsp;The Very Large Array (VLA), operated by the National Radio Astronomy Observatory (NRAO), employs five different receiving systems which mostly cover the 8&ndash;49 GHz frequency range (8-10 GHz, 13-15 GHz, 20.2-22.2 GHz, 31-33 GHz and 40-42 GHz). &nbsp;These systems have typical receiver temperatures of 25 K or so over octave or narrower bandwidths. &nbsp;By contrast, our proposed ultra-wideband receiving system design will relax the sensitivity requirement slightly in order to obtain a much larger frequency coverage and lower associated long-term operational costs.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>JPL is in a unique position both to enable the North America Array and to benefit from it. &nbsp;With its frequency coverage, the North America Array would cover all of the deep space communication frequency allocations and all of the planetary radar frequency allocations. &nbsp;Radio astronomical facilities have been used in the past to augment the DSN (e.g., the use of the Very Large Array during the Voyager encounter at Neptune), and radio astronomical facilities are used routinely during bistatic planetary radar observations. &nbsp;Technical expertise within the DSN can be applied to develop sensitive, wide-band radio receivers, which are needed to minimize operational costs, and JPL&rsquo;s technical expertise can explore options to produce unparalleled fields of view. &nbsp;Moreover, there is potential science overlap between the North America Array and current and future NASA missions (e.g., Spitzer, James Webb Space Telescope). &nbsp;The Technology Development for the North America Array Initiative is designed to position JPL scientists and technologists to have leading roles in the development of this concept in order to ensure future access to this telescope and to provide the scientific and technical maturity necessary for a high ranking in the 2020 Astronomy Decadal Survey.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91795</td></tr>
+<tr><th>Acronym</th><td>UWR for the NAA</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: JPL IRAD (JPL IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX08.1.1: Detectors and Focal Planes</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2015-10-01</td></tr>
+<tr><th>Project End Date</th><td>2018-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), New Mexico (NM)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Others Inside the Solar System, Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Jose E Velazco (Principal Investigator); Larry DâAddario (Co-Investigator); Fred Y Hadaegh (Project Manager) &lt;fred.y.hadaegh@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Fred Y Hadaegh (Program Manager) &lt;fred.y.hadaegh@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-04-24</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Ultra-Wideband Receiver Package image</strong> — Image showing the various components of the Ultra-Wideband Receiver Package.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91795">https://techport.nasa.gov/projects/91795</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semi-Autonomous Telerobotic Manipulation for On-Orbit Spacecraft Servicing and Assembly over Time-Delayed Telemetry | NASA TechPort Project 11482</title>
+  <meta name="description" content="Despite the prevalence of this telerobotic surgery of humans, we still do not have the capability to service (refuel and repair) or assemble spacecraft on-orbit with telerobotic systems. Whether we intend to service active spacecraft on-orbit, or assemble new ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/11482">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 11482</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX04.4.3</span>
+        </div>
+        <h1>Semi-Autonomous Telerobotic Manipulation for On-Orbit Spacecraft Servicing and Assembly over Time-Delayed Telemetry</h1>
+        <div class="meta-id">NASA TechPort Project ID: 11482</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/11482" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Despite the prevalence of this telerobotic surgery of humans, we still do not have the capability to service (refuel and repair) or assemble spacecraft on-orbit with telerobotic systems. Whether we intend to service active spacecraft on-orbit, or assemble new larger spacecraft on-orbit, the ability to do so with telerobotic systems could yield a new paradigm for spacecraft development and design. This would remove the constraints imposed on spacecraft designs by launch vehicles and enable the development of larger and previously-impossible space structures. Developing sufficiently capable and robust telerobotic systems for on-orbit operations is a technological challenge that and will require novel methods in order to yield a practical solution. My proposed research will begin with the augmentation of classical telerobotic systems with algorithms and approaches normally used in autonomous robotics. I will draw on my own research experience and familiarity in both of these subfields of robotics in order to develop new fundamental research in semi-autonomous telerobotics. My research plan includes: (1) incorporating more sophisticated sensing and motion-planning into telerobots, (2) developing algorithms and systems for multi-scale autonomy, and (3) using machine-learning to feed telerobotic experience back into the semi-autonomous systems. I believe we can develop a new class of robust semi-autonomous robotic platforms that will enable us to perform far more complex tasks than we could previously with telerobotic systems under high-latency telemetry.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Whether we intend to service active spacecraft on-orbit, or assemble new larger spacecraft on-orbit, the ability to do so with telerobotic systems could yield a new paradigm for spacecraft development and design.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>11482</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX04.4.3: Remote Interaction</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2012-09-01</td></tr>
+<tr><th>Project End Date</th><td>2016-08-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johns Hopkins University — Baltimore, Maryland</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Louis Whitcomb (Principal Investigator); Jonathan R Bohren (Co-Investigator); Brian Roberts (Project Manager) &lt;brian.roberts@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: As we deploy robotic systems into more unstructured real-world environments, the tasks which those robots are expected to perform grow very quickly in complexity. We demand a greater number of possible operations, more variable environmental conditions, and larger spaces of objects and materials which need to be manipulated. With these increases in complexity, however, come even greater increases in the number of potential task failure modes. When the cost of task failure is high, like in the case of surgery or on orbit robotic operations, effective and efficient task recovery is essential The levels of cognitive reasoning and scene understanding in these situations currently necessitates a human operator directly controlling the robotic platform. Direct teleoperation is appropriate for situations when the robot is sufficiently close to the human operator, but there are numerous contexts in which this is not the case. In space logistics and exploration, there are many complex tasks which we wish to be able to perform under unavoidable time delay between the human operator and remote robot This project aims to advance the state-of-the art in semi-autonomous telemanipulation under multisecond (2s – 10s) closed-loop delay. Such delays are commonly observed in sustained ground-to-Earth-orbit communication. This project also develops a methodology for gradually introducing and improving semi autonomous control in critical applications such as on-orbit telerobotics. Specifically, this work includes: 1) The development of a systems framework for semi-autonomous teleoperation through Intent-Prediction based Traded Control, 2) An evaluation of the usability and efficacy of that framework with an increasingly complex assembly task, and 3) A demonstration of how simple semi-autonomous behaviors can be used to bootstrap more advanced ones using machine learning. The first part of this work involved a pilot study of a simple semi-autonomous grasping task with real robotic hardware and network limitations imposed by the terrestrial internet. While we only collected data from a single untrained user, this pilot study provided invaluable insight into the practical considerations which make semi-autonomous teleoperation difficult. The second and third parts of this work included the development of a remote- and local-classification scheme for semi-autonomous structure assembly, respectively. The final version of this architecture is diagrammed in Figure 1. Each part reports the results from a multi-user study in which we evaluated the usability of the system, its potential to improve user performance, and its decrease user workload. In each study, we found our semi-autonomous architecture enabled significant performance improvements and workload reduction, but only the results from the second study were statistically significant. The fourth, and final part of this work included the integration of machine learning into the architecture in order to enable iterative improvements on the performance of the system. This part represents a &quot;meta&quot; loop-closure, where we show that we can bootstrap more complex and higher-performing semi-autonomous interfaces from simpler ones.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>11482-1363264677333.jpg</strong> — Project Image Semi-Autonomous Telerobotic Manipulation for On-Orbit Spacecraft Servicing and Assembly over Time-Delayed Telemetry</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/11482">https://techport.nasa.gov/projects/11482</a>
+    </div>
+  </div>
+</body>
+</html>

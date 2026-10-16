@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space Environment Automated Alerts and Anomaly Analysis Assistant (SEA^5) for NASA (SEA5) | NASA TechPort Project 14523</title>
+  <meta name="description" content="We propose to develop a comprehensive analysis and dissemination system (Space Environment Automated Alerts&amp;nbsp; &amp;amp; Anomaly Analysis Assistant: SEA 5 ) that will provide past, present, and predicted space environment information for specific missions, orbi">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/14523">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 14523</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX13.2.3</span>
+        </div>
+        <h1>Space Environment Automated Alerts and Anomaly Analysis Assistant (SEA^5) for NASA (SEA5)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 14523</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/14523" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>We propose to develop a comprehensive analysis and dissemination system (Space Environment Automated Alerts&nbsp; &amp; Anomaly Analysis Assistant: <strong>SEA<sup>5</sup></strong>) that will provide past, present, and predicted space environment information for specific missions, orbits, and user-specified locations throughout the heliosphere, geospace, and on the ground.&nbsp; The targeted outcome of this project is to build an extensible software system for NASA that provides an unprecedented capability for:</p><ol><li>viewing space environment conditions for specific missions/orbits</li><li>providing automated space weather alerts for specific missions/orbits.</li><li>assimilating and displaying spacecraft anomaly information</li><li>managing and displaying spacecraft/mission data</li></ol><p><strong>OBJECTIVES</strong></p><p>NASA has a strong program of exploration, technology development, and scientific research, in which satellite missions play a pivotal role.&nbsp; The continued growth, success, and sustainability of the agency hinge on its ability to efficiently manage existing assets in space, as well as plan for future missions both manned and robotic.&nbsp; With such substantial investments being made by the agency, significant space environment specification and forecasting capabilities are clearly needed to not only safeguard NASA&rsquo;s current and future missions, but also maximize the scientific return of these missions. Existing space weather resources provide global and large-scale environmental information, but presently there are no highly-tailored services that target specific missions, specific orbits, or specific locations in space for any given time period.&nbsp; This critical agency challenge is documented in a report commissioned by NASA&rsquo;s Innovative Partnership Program entitled Space Weather Information System Requirements for NASA Robotic Missions, Pulkkinen (2010).</p><p>We will build a software system to assist NASA robotic missions operators that will allow users to select a specific spacecraft and/or orbit of interest, and be presented with an interface displaying space environmental conditions for the selected spacecraft, orbit, and time.&nbsp; The system will also provide automated and customizable alert functionality, allowing users to define individual threshold and alert criteria, and be notified whenever events of interest are detected for any specific mission/orbit.&nbsp; To help assist in spacecraft anomaly resolution, as well as mission planning and design, our system will also allow users to identify and flag specific time periods and locations. This will enable our system to build and archive a catalog of anomalous events that can later be utilized to identify space-weather-related spacecraft anomalies.&nbsp; Figure 1 illustrates the <strong>SEA<sup>5</sup></strong> interface as it displays space environment and anomaly information tailored to the currently selected spacecraft.</p><p>Furthermore, <strong>SEA<sup>5</sup></strong> will illustrate a spacecraft&rsquo;s proximity to boundaries separating regions with different environmental conditions, such as the Earth&rsquo;s magnetopause and auroral boundaries.&nbsp; Regions with enhanced space weather activity encompassing current or expected spacecraft locations will be clearly identified: for example, users could be informed of projected Coronal Mass Ejection paths or regions with enhanced ionospheric scintillation.&nbsp; In practice, a user accessing the <strong>SEA<sup>5</sup></strong> interface would either select a specific mission from the catalog or input their own unique mission portfolio, subsequently obtaining a customized display of present space weather parameters, predicted levels of activity, impending solar storms, expected impacts, cumulative exposure, etc. for that particular mission and time selection. &nbsp;Mission planners will be able to select a virtual mission, and simulate the specific space weather environment the spacecraft would be exposed to as if it were in orbit. This project will take full advantage of our team&rsquo;s extensive experience with designing flexible interfaces for space weather visualizations that are readily accessible to researchers and non-experts alike.</p><p>GSFC has unique space weather modeling capabilities, highly specialized in-house technical expertise, and direct access to an abundance of data resources, which collectively and uniquely position the Center to provide an unrivaled capability for optimizing return from and reducing risk for all missions.&nbsp; We anticipate immediate benefits for NASA as a whole, and ultimately for anyone interested in tailored space environment information for specific spacecraft and/or orbits (e.g., DoD).&nbsp; &nbsp;Interest in this capability is routinely expressed thought the community, and reiterated annually at the NASA Robotic Mission Operator Workshop hosted at GSFC.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>&ndash;Unprecedented awareness and understanding space environmental impacts on mission and technological systems</p><p>&ndash;New capabilities for missions to react to present and predicted changes in the space environment</p><p>&ndash;Optimized observational campaigns based on real-time forecasts of mission-relevant heliophysical phenomena</p><p>&ndash;Fundamental cause-effect correlations between space environment events and spacecraft anomalies/events will be revealed that could otherwise remain undiscovered</p><p>&ndash;Expanded knowledge base of specific mission and system performance in a wide range of space environmental conditions</p><p>&ndash;Enable high-performance space computing activities by providing real-time space environment info for spacecraft-specific local conditions.&nbsp; Hybrid systems like GSFC&rsquo;s SpaceCube could reconfigure processing systems to adapt to the space environment on the fly</p><p>&nbsp;</p><p>Our initial one-year deliverable will include an extensible and operational software framework that supports two or three specific NASA GSFC spacecraft, as well as generic/user-defined orbit functionality.&nbsp; An interactive web-based user interface prototype will also be delivered. Future development could include increased mission support with the ultimate goal of supporting ALL NASA missions past and present.&nbsp; Additional funding opportunities could arise from collaborations will external agencies (NOAA, DoD) as well the private sector,&nbsp; as the functionality and utility of the <strong>SEA<sup>5</sup></strong> system would have broader impacts for non-NASA satellite and mission operators.</p><p>Collaborations with private sector</p><p>Collaborations with external agencies (e.g. NOAA and DoD)</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>14523</td></tr>
+<tr><th>Acronym</th><td>SEA5</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX13.2.3: Nondestructive Inspection, Evaluation, and Root Cause Analysis</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 4 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2013-10-01</td></tr>
+<tr><th>Project End Date</th><td>2017-09-01</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Justin M Boblitt (Principal Investigator) &lt;justin.boblitt@nasa.gov&gt;; Maria M Kuznetsova (Co-Investigator) &lt;maria.m.kuznetsova@nasa.gov&gt;; Nikolaos Paschalidis (Project Manager) &lt;nikolaos.paschalidis@nasa.gov&gt;; Jacqueline J Le Moigne (Project Manager) &lt;Jacqueline.J.LeMoigne-Stewart@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-01-27</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The purpose of the Goddard Space Flight Center&amp;rsquo;s Internal Research and Development (IRAD) program is to support new technology development and to address scientific challenges.&amp;nbsp; Each year, Principal Investigators (PIs) submit IRAD proposals and compete for funding for their development projects.&amp;nbsp; Goddard&amp;rsquo;s IRAD program supports eight Lines of Business: Astrophysics; Communications and Navigation; Cross-Cutting Technology and Capabilities; Earth Science; Heliophysics; Planetary Science; Science Small Satellites Technology; and Suborbital Platforms and Range Services. Task progress is evaluated twice a year at the Mid-term IRAD review and the end of the year. When the funding period has ended, the PIs compete again for IRAD funding or seek new sources of development and research funding or agree to external partnerships and collaborations.&amp;nbsp; In some cases, when the development work has reached the appropriate Technology Readiness Level (TRL) level, the product is integrated into an actual NASA mission or used to support other government agencies. The technology may also be licensed out to the industry. The completion of a project does not necessarily indicate that the development work has stopped.&amp;nbsp; The work could potentially continue in the future as a follow-on IRAD; or used in collaboration or partnership with Academia, Industry and other Government Agencies. If you are interested in partnering with NASA, see the TechPort Partnerships documentation available on the TechPort Help tab. http://techport.nasa.gov/help</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="http://sciences.gsfc.nasa.gov/sed/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>SEA5 System Overview</strong> — SEA5 Design Overview</li><li><strong>SEA5 3D Environmental Hazard Viewer</strong> — Full-screen view of SEA5&#x27;s 3D Environmental Hazard Viewer, in this case showing a 24-hour orbit of Solar Dynamics Observatory (SDO) and the particular locations where SDO had experienced space weather conditions that exceeded user defined thresholds.</li><li><strong>SEA5 Interface Mock-Up</strong> — SEA5 Interface Mock-Up</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/14523">https://techport.nasa.gov/projects/14523</a>
+    </div>
+  </div>
+</body>
+</html>

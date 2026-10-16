@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spacecraft Formation Dynamics, Design and Control on Quasi-periodic Tori | NASA TechPort Project 118507</title>
+  <meta name="description" content="Flying spacecraft in formations presents several advantages over traditional single spacecraft missions. Smaller, inexpensive spacecraft can be used to complete complex tasks and provide more flexibility when investigating unknown environments. Currently, larg">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/118507">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 118507</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX17.1.1</span>
+        </div>
+        <h1>Spacecraft Formation Dynamics, Design and Control on Quasi-periodic Tori</h1>
+        <div class="meta-id">NASA TechPort Project ID: 118507</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/118507" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Flying spacecraft in formations presents several advantages over traditional single spacecraft missions. Smaller, inexpensive spacecraft can be used to complete complex tasks and provide more flexibility when investigating unknown environments. Currently, large fuel costs required for formation maintenance significantly reduce the lifetime of multi-spacecraft operations. Simplifying assumptions made when designing formation control algorithms cause controllers to constantly adjust for modeling errors. This project aims to remedy this problem by using an innovative means to encapsulate complex spacecraft dynamics and use this formulation to design formations and develop control policies. This research will use the geometric description of a torus to represent the motion of spacecraft around its primary. Almost all bounded motion can be described using torus angles. That is, a set of torus angles maps to a position and velocity for an orbiting spacecraft. This allows us to unify motion in a diverse set of complicated dynamics by utilizing this description. Representing motion with tori is also advantageous as the trajectories of the torus angles are typically much simpler than the corresponding motion in Cartesian space. Hence, by using toroidal manifolds to capture spacecraft motion, more fuel-efficient control can be performed while still preserving simplicity in the algorithms. Previous work in designing passive formations on tori will be leveraged. Passive formations allow nature to bound spacecraft motion and therefore don’t require fuel to maintain their structure. These formations require exact placement of spacecraft on to their respective tori, but due to uncertainty in the environment, this is not feasible from an open-loop prospective.  Control laws will be developed to drive spacecraft to these passive formations, allowing nature to perform most of the formation maintenance.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Flying spacecraft in formations presents several advantages over traditional single spacecraft missions. Smaller, inexpensive spacecraft can be used to complete complex tasks and provide more flexibility when investigating unknown environments. Currently, large fuel costs required for formation maintenance significantly reduce the lifetime of multi-spacecraft operations. Simplifying assumptions made when designing formation control algorithms cause controllers to constantly adjust for modeling errors.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>118507</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX17.1.1: Guidance Algorithms</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2019-08-01</td></tr>
+<tr><th>Project End Date</th><td>2023-11-23</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Colorado Boulder — Boulder, Colorado</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Colorado (CO)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Daniel Scheeres (Principal Investigator); Damennick Henry (Co-Investigator); Jose J Rosales (Project Manager) &lt;jose.j.rosales@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: The high-level goal of this research is to develop systematic approaches for designing and controlling spacecraft formations in a wide variety of dynamical environments. Driving the development of these methodologies is the exploitation of invariant tori, structures which exists within the phase space of many systems that spacecraft travel in. We focus on quasi-periodic tori, which describe the underlying topology of quasi-periodic orbits. By unifying spacecraft dynamics with quasi-periodic tori, the same approaches used to understand relative motion around the Earth can be leveraged to study the motion in more complex environments such as the three-body problem or around irregularly shaped bodies. From a dynamics perspective, two major technical contributions were achieved as a result of this work. Specifically, developed as part of this research was 1) a relative motion formulation for close-proximity operations for a formation on the same quasi-periodic orbit and 2) analytical expressions for “frequency-matched” formations that effectively generalize the semi-major axis matching condition for bounded relative motion in more complex environments. Each of these contributions led directly to formation design strategies. In particular, we developed the expansion map, a quasi-periodic tori inspired tool that effectively solves a “lead-follower” formation problem on quasi-periodic orbits, allowing a formation traveling on the same quasi-periodic orbit to naturally maintain specific relative distance or speed bounds. The frequency-matched relative motion dynamics enabled us to design long-term loitering orbits that naturally remain bounded. As a preliminary step towards leveraging quasi-periodic tori for solving formation control problems, several fundamental transfer design tools were developed. These include: 1) multi-parameter continuation techniques for leveraging the high-dimensional stable and unstable manifolds of normally hyperbolic tori for impulsive maneuver design and 2) tools to compute heteroclinic connections, or zero-propellant transfers, between families of quasi-periodic orbits which constitute codimension-2 normally hyperbolic invariant manifolds in the phase space. With these tools in hand, several formation control problems were considered. In particular, we solved reconfiguration problems wherein a group of spacecraft were rephased to advantageous locations on quasi-periodic orbits. We also developed control strategies for driving formations to frequency-matched quasi-periodic orbits under navigation and maneuver execution errors. The final contributions of this research were toward applying these formation tools and techniques in higher-fidelity models. In particular, we sought to reformulate our tools for use in periodically-forced models which more accurately capture the dynamics in spacecraft environments. As an initial step, we have developed new tools for computing families of invariant tori in this class of model, applying them in a Sun-Earth-Moon restricted four-body model. Future and ongoing work will seek to apply our formation design and control tools around these tori.</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/118507">https://techport.nasa.gov/projects/118507</a>
+    </div>
+  </div>
+</body>
+</html>

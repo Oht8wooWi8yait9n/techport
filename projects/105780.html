@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dependable RISC-V Soft-Core Processor Investigation for SpaceCube v3.0 Mini | NASA TechPort Project 105780</title>
+  <meta name="description" content="The objective of this project is to investigate RISC-V soft-core processors and demonstrate their capability for flight by integrating them into the SpaceCube v3.0 Mini (SC3-Mini), which features a Xilinx UltraScale FPGA. With complex, next-gen sensors produci">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/105780">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 105780</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">GSFC IRAD</span>
+          <span class="badge">TX02.1.3</span>
+        </div>
+        <h1>Dependable RISC-V Soft-Core Processor Investigation for SpaceCube v3.0 Mini</h1>
+        <div class="meta-id">NASA TechPort Project ID: 105780</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/105780" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>The objective of this project is to investigate RISC-V soft-core processors and demonstrate their capability for flight by integrating them into the SpaceCube v3.0 Mini (SC3-Mini), which features a Xilinx UltraScale FPGA. With complex, next-gen sensors producing ever-increasing volumes of data, there is a growing need for high-performance, reliable onboard processing capabilities that the SC3-Mini offers to provide data reduction/compression, onboard product generation, automated health and status monitoring, etc. However, the proprietary MicroBlaze soft-core processor traditionally used on SC3-Mini has significant limitations due to its antiquated architecture, restricted configurability, and limited adoption in industry. Therefore, this project aims to explore open-source RISC-V soft-core processor implementations, which can leverage a widely-adopted and growing hardware/software ecosystem that is able to construct highly configurable processors to meet the variety of mission requirements.</p>  <p>Additionally, the RISC-V ecosystem supports a variety of specialized computational units capable of speeding up intensive workloads such as Artificial Intelligence and Machine Learning tasks. This project will investigate several of these accelerators, including the Gemmini systolic array generator and NVIDIA Deep Learning Accelerator, and build them into integrated solutions capable of running on the SpaceCube platform.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The transition from the proprietary MicroBlaze architecture on SpaceCube v3.0 Mini (SC3-Mini) to open-source RISC-V will be a critical step in expanding NASA’s on-orbit computational capabilities, allowing the SC3-Mini to accommodate a variety of computational needs for different missions. Novel RISC-V processors implementations, such as Rocket Chip, have numerous advantages over the current MicroBlaze implementation on the SC3-Mini from both hardware and software perspectives. From the hardware point-of-view, Rocket Chip offers enhanced performance and configurability. More specifically, the MicroBlaze processor is only single core, though this core can be configured in a variety of ways with respect to cache size, pipeline stages, memory management units, etc. In contrast, the Rocket Chip RISC-V processors can be customized to 1, 2, 4, and 8 cores with 32- or 64-bit architectures and varying cache and memory bus width sizes. Therefore, for missions requiring high-performance and parallel processing, a multicore RISC-V can be implemented, while for missions requiring relatively less processing power, a single-core RISC-V implementation can be used to save on resource utilization and power. Furthermore, the RISC-V instruction set architecture (ISA) is highly extensible, allowing for custom instructions to be implemented in the microarchitecture. This feature provides the means for the tight integration of custom hardware accelerator engines to increase processing speed for application-specific algorithms for onboard science data processing. From a software perspective, the rapid adoption of RISC-V has also led to an ever-growing open-source community that continues to create software and enable support for RISC-V, which significantly exceeds the community developing for the proprietary MicroBlaze. Moreover, because the base instructions in the RISC-V ISA are standardized and fixed, software developers can guarantee long-term code portability even as the microarchitecture evolves with new extensions. This long-term portability is critical for NASA missions that can span years or even decades and thus require the support of legacy flight software.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>105780</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: GSFC IRAD (GSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX02.1.3: High-Performance Processors</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX02.3.3: Avionics Performance, Reliability, and Fault-Tolerance Analysis and Modeling; TX11.4.8: Edge Computing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 5 | Target End TRL: 5</td></tr>
+<tr><th>Project Start Date</th><td>2021-10-01</td></tr>
+<tr><th>Project End Date</th><td>2023-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Moon and Cislunar, Others Inside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>James P Mackinnon (Principal Investigator) &lt;james.mackinnon@nasa.gov&gt;; Sebastian Sabogal (Co-Investigator) &lt;sebastian.sabogal@nasa.gov&gt;; Michael L Monaghan (Co-Investigator) &lt;michael.l.monaghan@nasa.gov&gt;; Justin S Goodwill (Co-Investigator) &lt;justin.goodwill@nasa.gov&gt;; James P Mackinnon (Co-Investigator) &lt;james.mackinnon@nasa.gov&gt;; Michael A Johnson (Project Manager) &lt;michael.a.johnson@nasa.gov&gt;; Karin B Blank (Project Manager) &lt;karin.b.blank@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Bhanu P Sood (Program Manager) &lt;bhanu.sood@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-02</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: This effort developed a RISC-V softcore processor framework for the SpaceCube line of space-based computers. We combined an open-source softcore RISC-V implementation developed by Berkeley, with a variety of methods to accelerate AI/ML workloads, and included both FPGA accelerated and Hardware based techniques. We have shown that an open-source RISC-V processor (e.g., RocketChip) can be combined with an FPGA AI/ML accelerator (e.g., the AMD/Xilinx DPU) to give orders of magnitude speedup on AI/ML workloads on SpaceCube computers. As missions get increasingly complex instruments, they will require high performance processors and the use of next-generation AI/ML techniques to deal with data volume and decision-making tasks which will in turn require computers and softcore CPU frameworks capable of running these algorithms like the one developed in this effort. The purpose of the Goddard Space Flight Center’s Internal Research and Development (IRAD) program is to support new technology development and to address scientific challenges. Each year, Principal Investigators (PIs) submit IRAD proposals and compete for funding for their development projects. Goddard’s IRAD program supports eight Lines of Business: Astrophysics; Communications and Navigation; Cross-Cutting Technology and Capabilities; Earth Science; Heliophysics; Planetary Science; Science Small Satellites Technology; and Suborbital Platforms and Range Services. Task progress is evaluated twice a year at the Mid-term IRAD review and the end of the year. When the funding period has ended, the PIs compete again for IRAD funding or seek new sources of development and research funding, or agree to external partnerships and collaborations. In some cases, when the development work has reached the appropriate Technology Readiness Level (TRL) level, the product is integrated into an actual NASA mission or used to support other government agencies. The technology may also be licensed out to the industry. The completion of a project does not necessarily indicate that the development work has stopped. The work could potentially continue in the future as a follow-on IRAD; or be used in collaboration or partnership with Academia, Industry, and other Government Agencies. If you are interested in partnering with NASA, see the TechPort Partnerships documentation available on the TechPort Help tab. http://techport.nasa.gov/help</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.facebook.com/NASA.GSFC" target="_blank" rel="noopener noreferrer">NASA Goddard Facebook</a></li><li><a href="http://www.nasa.gov/centers/goddard/home/index.html" target="_blank" rel="noopener noreferrer">NASA Goddard Website</a></li><li><a href="https://etd.gsfc.nasa.gov/" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><a href="https://twitter.com/intent/follow?screen_name&amp;#61;NASAGoddard" target="_blank" rel="noopener noreferrer">NASA Goddard Twitter</a></li><li><strong>RISC-V Soft Core Processor on SpaceCube v3.0 Mini</strong> — This effort aims to incorporate high-performance RISC-V processors into SpaceCube technology for enhanced onboard science data processing.</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/105780">https://techport.nasa.gov/projects/105780</a>
+    </div>
+  </div>
+</body>
+</html>

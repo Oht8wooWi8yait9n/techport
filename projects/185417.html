@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geared Motor Exploration for the Research Aircraft for eVTOL Enabling techNologies (RAVEN) | NASA TechPort Project 185417</title>
+  <meta name="description" content="In the past several years, a number of large-scale prototype electric Vertical Takeoff and Landing (eVTOL) aircraft have been flight tested by aircraft manufacturers to achieve their commercial product development goals for the Advanced Air Mobility (AAM) mark">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/185417">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 185417</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX15</span>
+        </div>
+        <h1>Geared Motor Exploration for the Research Aircraft for eVTOL Enabling techNologies (RAVEN)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 185417</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/185417" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          In the past several years, a number of large-scale prototype electric Vertical Takeoff and Landing (eVTOL) aircraft have been flight tested by aircraft manufacturers to achieve their commercial product development goals for the Advanced Air Mobility (AAM) market. Owing to intellectual property and propriety information concerns, however, relatively few large-scale eVTOL aircraft have been flight tested for research purposes to produce data that can be published to benefit the broader aeronautics community. The corresponding lack of available flight test data makes it difficult for researchers to validate and improve computational tools that are needed for advancing the state of the art in eVTOL aircraft design.  The proposed Phase I effort will advance the development of the Research Aircraft for eVTOL Enabling techNologies (RAVEN). RAVEN is an eVTOL aircraft with a gross weight of over 1000 lbs that is being developed to conduct flight research related to acoustics, flight dynamics and control, interactional aerodynamics, and autonomy for AAM aircraft. The work in Phase I will focus on conceptual design of a geared drive system to enable hovering flight at reduced proprotor rotational speeds, thereby further increasing RAVEN’s applicability for eVTOL acoustics research. An additional goal in the design of the geared drive system is to enhance RAVEN’s operational robustness by reducing aircraft weight and power consumption to increase range and endurance, lower heat loads, and increase margin for weight growth.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          The RAVEN aircraft provides NASA with a cost-effective flight research platform to advance technologies in flight control, autonomy, acoustics, and electric propulsion for AAM aircraft. By leveraging RAVEN, NASA can collect flight and vehicle data at a relevant scale to validate models and test new technologies without the need for full-scale piloted flight demonstrators.  NASA researchers have indicated strong support for RAVEN to address the need for publicly available flight test data relevant to AAM research. Existing industry partnerships impose significant restrictions on data usage and dissemination, limiting their value for government-sponsored research.  RAVEN directly supports key NASA research objectives, including: (1) Flight Dynamics & Control: Model validation for highly coupled aero-propulsive eVTOL systems, advanced control algorithms, system identification, and ride quality assessments. (2) AAM Noise Research: Noise characterization, prediction tool validation, and human annoyance metric development. (3) Automation & Autonomy: Testing of high-risk autonomy algorithms and contingency management systems. (4) Electrified Propulsion Research: Development of electric propulsion integration methods, battery safety technologies, and optimization tools. (5) System Safety & Hazard Identification: Real-time hazard identification, wake separation criteria development, and integrated vehicle health management system development.  Several NASA ARMD projects including FDC, TTT, RVLT, and SWS have expressed strong interest in RAVEN as a flight test asset. RAVEN would enable an eVTOL flight research capability for FDC, and TTT would benefit as a primary research partner. RVLT is interested in flight dynamics tool validation, and SWS requires AAM-relevant flight data for standards development. RAVEN is well suited for each of these goals. Prior work related to RAVEN has been funded by FDC, TTT, CAS, and the NASA Langley Aeronautics Research Directorate. The RAVEN aircraft presents commercialization opportunities across federal, academic, commercial, and defense markets. As AAM service providers prepare for operations, federal institutions such as the FAA are expected to provide guidance on standards and certification criteria. As a low-cost, “open” eVTOL research platform, RAVEN is well suited to be a flight demonstrator for developing certification standards related to battery performance, autonomy, and flight operations. Alongside NASA stakeholders, academic researchers have a clear and present need for flight data relevant to eVTOL AAM research. Academic institutions also have a growing need to support workforce development in electric and VTOL aircraft. The RAVEN project presents an opportunity for academic institutions to integrate and fly a derivative of the RAVEN aircraft to generate relevant flight test data and to provide students with eVTOL aircraft design, integration, and testing experience.  In the commercial sector, as AAM technology advances, companies require cost-effective airborne testbeds to validate new propulsion, automation, and control solutions. RAVEN provides a modular, low-cost alternative to full-scale demonstrators, accelerating technology adoption. Additionally, RAVEN’s low-cost design facilitates its scalability for cargo transport operations, for example supporting logistics providers such as UPS and FedEx.  Lastly, RAVEN’s rapid production and deployment capabilities offer the DoD a cost-effective solution for logistics and tactical missions. Its modular design allows for mission-specific configurations, including hybrid propulsion configurations for extended range. With no direct competitors offering a comparable low-cost eVTOL test platform, RAVEN is well-positioned to support AAM research, workforce development, commercial operations, and defense applications.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>185417</td></tr>
+<tr><th>Acronym</th><td>RAVEN</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX15: Flight Vehicle Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2025-09-29</td></tr>
+<tr><th>Project End Date</th><td>2026-10-28</td></tr>
+<tr><th>Lead Organization / Center</th><td>Armstrong Flight Research Center (AFRC) — Edwards, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA), Georgia (GA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Brian J German (Principal Investigator) &lt;brian.j.german@nasa.gov&gt;; Jason A Lechniak (Project Manager) &lt;jason.a.lechniak@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-19</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/185417">https://techport.nasa.gov/projects/185417</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscale EVTOL Testbed for safeTy critical softwarE development and scalability Research (SETTER) | NASA TechPort Project 158025</title>
+  <meta name="description" content="The electric vertical takeoff and landing (eVTOL) market for Urban Air Mobility (UAM) and Advanced Air Mobility (AAM) applications is still in its fledgling stages in early 2024, despite several players in the market (notably Joby Aviation, CityAirbus, Archer,">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158025">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158025</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX15</span>
+        </div>
+        <h1>Subscale EVTOL Testbed for safeTy critical softwarE development and scalability Research (SETTER)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158025</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158025" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The electric vertical takeoff and landing (eVTOL) market for Urban Air Mobility (UAM) and Advanced Air Mobility (AAM) applications is still in its fledgling stages in early 2024, despite several players in the market (notably Joby Aviation, CityAirbus, Archer, and Volocopter). However, there is a distinct lack of openly available data on how safety critical software algorithms are deployed in practice and how well they perform. Furthermore, whereas there are a great number of small-scale eVTOL unmanned aerial systems (UAS), there are very few that are specifically set up as representative subscale UAM aircraft. This is especially the case for motor tilt and rotor blade pitch collective subsystems which are rarely found as commercial off-the-shelf (COTS) items. This proposal seeks directly to bridge these gaps through the development of “SETTER”: a Subscale EVTOL Testbed for safeTy critical softwarE development and scalability Research. SETTER is planned to be a Phase 1 and 2 STTR proposal, wherein a subscale eVTOL aircraft will be built and flown extensively during Phase 2. These tests will primarily serve to explore the following items: 1. A wide array of failure mode mitigation strategies in the presence of failures to any major DEP subsystem. 2. Aerodynamic and flight dynamics performance optimization through control allocation strategies.  3. The ability to predict full-scale flight dynamics using sub-scale prototypes. SETTER will be designed to have low enough cost, size, and ease of manufacture to be considered a highly attritable testbed with low overhead to enable fast and frequent flight testing. SETTER will be designed with a high degree of modularity in mind, so that testing of different configurations can be accommodated without full re-designs. All designs will be open sourced with accompanying documentation. This Phase 1 STTR proposal is comprised of all preparatory activities required to physically realize SETTER in Phase 2.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          This proposal directly addresses three strategic thrusts from NASA's Aeronautics Research Mission directorate (ARMD): #1 (Safe, Efficient Growth in Global Operations, #3 (Ultra-Efficient Subsonic Transports), and #4 (Safe, Quiet, and Affordable Vertical Lift Air Vehicles). Investment requiremens for companies in the Urban Air Mobility (UAM) and Advanced Air Mobility (AAM) sectors are high, limiting the space to just a few major players.  Developing a subscale test platform that closely replicates full-scale systems directly addresses the thrust (#4) to make affordable vertical lift air vehicles and grow global operations. Further, by reducing the cost of experiments through subscale vehicles that can be operated in relevant environments, efficiency improvements through aerodynamics, control allocation, and other methods can be realized (#1, #3). Finally, safety is a critical aspect of all full-sized urban operations, particularly as there is a high likelihood of fatalities in the air and on the ground in the event of a mishap. Multirotor eVTOL aircraft are typically targeted toward operators, not highly experienced pilots, meaning the software plays an even more critical function in system safety. Bench and simulation testing can reduce software development costs significantly, but tests in a relevant environment are necessary to ensure the systems handle unexpected phenomena. A flexible subscale aircraft like SETTER directly addresses the need to ensure the safe and efficient operation of UAM/AAM eVTOL systems while significantly reducing the cost of reaching those goals (#1, #3, #4). The eVTOL market for UAM and AAM is still in its fledgling stages in 2024, in part due to setbacks during COVID-19 . In 2024, the UAM market is estimated at USD 3.60BB  and is expected to reach USD 30.7BB by 2031  and USD 45.40BB by 2036 . This will be a vast market with several large players racing to take the lead. While these players are making headlines for flight certification (e.g., Joby Aviation completing the 3rd stage of FAA certification process ), the cost to reach these milestones is incredibly high, in part due to the lack of subscale UAS that closely replicate the target full-scale systems. There exists a market opportunity for developing a flexible subscale platform that can replicate more than one full-scale eVTOL. The proposal team intends to release the design of SETTER as open-source, with accompanying documentation necessary to replicate the vehicle. This path to commercialization enables strong proliferation into the community, as evidenced by open-source autopilot proliferation versus closed-source systems. Open-source release of the design includes the reference implemented example(s) and scaling mechanisms for those. The optoXense and Georgia Tech team have the expertise for developing and properly scaling alternate configurations that can apply to other UAM/AAM market players. Offering services for developing new SETTER configurations and operating the vehicle as a research testbed provide critical skillsets that startup companies in this space can choose to outsource. These offerings are consistent with consultancy offered by research institute professors and small businesses. Further, by leveraging optoXense Mobel-Based Systems Engineering (MBSE) tools, the offering team has a unique advantage to reduce resources while providing high quality results, leveraging on the drive to MBSE.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158025</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX15: Flight Vehicle Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 3 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2024-08-07</td></tr>
+<tr><th>Project End Date</th><td>2025-09-08</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Armstrong Flight Research Center (AFRC) — Edwards, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Georgia Institute of Technology-Main Campus (GA Tech) — Atlanta, Georgia; optoXense, Inc. — San Ramon, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Joel Dunham (Principal Investigator); Jasmine N Dorr (Project Manager) &lt;jasmine.n.dorr@nasa.gov&gt;; George D Lu (Primary Point of Contact)</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-20</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158025">https://techport.nasa.gov/projects/158025</a>
+    </div>
+  </div>
+</body>
+</html>

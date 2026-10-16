@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Set-Based Modeling, Visualization, &amp; Trade-Space Exploration for Superior Conceptual System Design | NASA TechPort Project 185671</title>
+  <meta name="description" content="This proposal first explains how TCC’s set-based analysis addresses the “cross-cutting challenges” that Topic 17.02 lists that must be addressed to successfully perform conceptual design of the complex system / mission design projects that NASA faces. It then ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/185671">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 185671</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX11</span>
+        </div>
+        <h1>Set-Based Modeling, Visualization, &amp; Trade-Space Exploration for Superior Conceptual System Design</h1>
+        <div class="meta-id">NASA TechPort Project ID: 185671</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/185671" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          This proposal first explains how TCC’s set-based analysis addresses the “cross-cutting challenges” that Topic 17.02 lists that must be addressed to successfully perform conceptual design of the complex system / mission design projects that NASA faces. It then explains how it enables the necessary cross-tool integration. And further, it explains how the set-based design is delivered as an active solver that defines the set of possibilities in a way that you can input narrower decisions and measurements and see the impact on the conceptual design space, thereby bridging the “phase transition boundaries”.  In those explanations, it is fully covering all that is asked for by Topic 17.02.  The proposal then sets out Technical Objectives supporting NASA's request of delivering "a working prototype suitable for demonstrations with a compelling case for NASA. Use and development of the model—including any and all work performed to verify and validate it—shall be documented.” It follows with a Work Plan for Phase I that constructs a prototype of such a "compelling case" that can be reviewed by NASA engineers providing feedback on what more will be needed in Phase II for that case to be truly compelling.  The proposal then outlines the related R&D in the areas of set-based modeling and analysis, conceptual modeling and analysis, model-based systems engineering, and the handling of uncertainty in modeling and analysis.  Finally, the proposal lays out the significant market opportunity that exists, the substantial positive impact that the technology could have on the world, and the role that organizations like NASA could play in exposing that potential.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Our technology is a unique and innovative solution to all of the cross-cutting challenges listed by Topic 17.02, bridging the described phase transition boundaries, and enabling cross-tool integration.  As such, it is applicable to all the design and analysis work that NASA does in the early conceptual design phases.  That includes applying to "the next grand observatory mission the Habitable Worlds Observatory (HWO), where the infusion of new and advanced systems modeling tools and methods would be a potential game changer in terms of rapidly navigating architecture trades, requirements development and flow down, and design optimization".  Beyond the system and mission design applications envisioned by this solicitation, broader use within the product design and development organizations within NASA is possible. Use of our tools and methodologies have been shown to increase product development productivity 2X-4X and to cut product development cycle times in half. Much of that comes from eliminating the high levels of rework that tend to be caused by the decisions made early in the design process before all the required knowledge is available. But some of that comes from the superior Problem-Solving methodology that is one component of our larger methodologies. The reusable set-based knowledge is not only of benefit to future programs, but also tends to be valuable for the existing program in quickly solving problems without violating the design intent behind the prior decision-making. Outside of NASA, TCC’s set-based software is applicable to any complex system design or mission design. To date, TCC has had most interest from companies where they have to get their designs right or people die:  the aerospace and medical device industries.  In those industries, it is not an option to ship faulty products because it is considered too expensive to fix the designs properly – they have to pay those costs and fix those designs. So, making the right decisions in the early conceptual design phases is critical, and thus justifies the adoption of innovative alternatives for superior trade space exploration and design optimization during conceptual design.  On the downside, those industries’ practices tend to be highly regulated and government contract driven such that adoption of new practices tends to be very slow and cautious. TCC has to be prepared to endure a long adoption period (and has been enduring that), but is hopeful that more innovative organizations like Sandia National Labs or NASA might lead the way to more rapid adoption.  Economically, wide adoption of TCC’s set-based approach, increasing system development productivity four-fold and cutting development times in half, could have tremendous positive impact on the entire world. Reducing the waste of late process rework that consumes 60-70% of our engineering capacity worldwide would alone be a tremendous boost. But cutting time-to-market in half for new (and better optimized) innovations would be a far bigger impact, exponentially accelerating the rate of innovation.  TCC’s current focus is on acquiring customers like the DOE National Labs and NASA who are publicly-funded and thus have incentive to publish their results, particularly from innovative new methodologies that could benefit all the organizations that supply to the US government. The lack of public case studies written by TCC customers is the primary hurdle remaining to widespread adoption of set-based practices.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>185671</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11: Software, Modeling, Simulation, and Information Processing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 5 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2025-09-29</td></tr>
+<tr><th>Project End Date</th><td>2026-03-27</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD), Texas (TX)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Brian M Kennedy (Principal Investigator) &lt;brian.m.kennedy@jpl.nasa.gov&gt;; John M Van Eepoel (Project Manager) &lt;john.m.vaneepoel@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-19</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/185671">https://techport.nasa.gov/projects/185671</a>
+    </div>
+  </div>
+</body>
+</html>

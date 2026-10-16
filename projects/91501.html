@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Astro-Interferometric Modeling and Spatio-Spectral Reconstruction | NASA TechPort Project 91501</title>
+  <meta name="description" content="The increasing demand for higher-resolution astrophysical observations has led to the ongoing development of a spatio-spectral, or double-Fourier, interferometry technique, which was then extended for wide-field imaging. The practicality of this technique is c">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/91501">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 91501</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX11.2.4</span>
+        </div>
+        <h1>Astro-Interferometric Modeling and Spatio-Spectral Reconstruction</h1>
+        <div class="meta-id">NASA TechPort Project ID: 91501</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/91501" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          The increasing demand for higher-resolution astrophysical observations has led to the ongoing development of a spatio-spectral, or double-Fourier, interferometry technique, which was then extended for wide-field imaging.  The practicality of this technique is currently being examined with analytical models and experimental testing at GSFC with the Spatio-spectral Interferometer Computational Optical Model (SsICOM) and the Wide-Field Imaging Interferometry Testbed (WIIT), respectively.  The proposed research intends to perform case studies to compare and analyze the model outputs with experimental measurements in order to characterize and quantify instrumental effects on image quality, as well as continue development and testing of the spatial-spectral image synthesis algorithm that reconstructs an image from the raw interferometric data.  These hardware and software models will verify the validity of the interferometric imaging technique such that its status can be promoted to NASA Technology Readiness Level 6 (TRL6) with continued research.  Wide-field spatio-spectral interferometry is the imaging technique that will be employed by future space-based infrared and ultraviolet interferometric observatories.  Such interferometers are on NASA's high-priority technologies list (TABS 8.2.4) because they will provide the high-resolution and spectroscopic capabilities needed to answer some of the most basic astrophysical questions through identification of planetary systems and habitable planets, discovery of how stars and planets, including our own solar system, are formed, and discernment into how the universe works in general.  Continued modeling, simulation, and maturation of this interferometric imaging technique are also considered high-priority (TABS 11.2.4a) because early science modeling and algorithmic development allows the conception of larger, long-term projects, such as a space-borne infrared wide-field spatio-spectral interferometer, to be eventually realized.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          These hardware and software models will verify the validity of an interferometric imaging technique such that its status can be promoted to NASA Technology Readiness Level 6 (TRL6) with continued research.  Wide-field spatio-spectral interferometry is the imaging technique that will be employed by future space-based infrared and ultraviolet interferometric observatories.  Such interferometers are on NASA's high-priority technologies list (TABS 8.2.4) because they will provide the high-resolution and spectroscopic capabilities needed to answer some of the most basic astrophysical questions through identification of planetary systems and habitable planets, discovery of how stars and planets, including our own solar system, are formed, and discernment into how the universe works in general.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>91501</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11.2.4: Science Modeling</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2014-08-01</td></tr>
+<tr><th>Project End Date</th><td>2018-10-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>University of Rochester — Rochester, New York</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>New York (NY)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Outside the Solar System</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>James R Fienup (Principal Investigator); Alexander S Iacchetta (Co-Investigator); David T Leisawitz (Project Manager) &lt;david.t.leisawitz@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Advanced From</strong></li><li><strong>Closed Out</strong>: NASA’s astrophysics roadmap deems interferometry necessary to achieve future science goals, particularly when the desired spatial resolution will require a telescope that is so large that it would be difficult to fabricate and test, too heavy to launch, and too costly. Interferometry can overcome these issues and provide high spatial resolution at the cost of lengthier data collection times. In addition to high spatial resolution, astrophysicists require spectral information to gain a better understanding of the material composition of the sources being imaged. Spatio-spectral interferometry combines the aperture synthesis aspect of Michelson stellar interferometry with the spectral measurement capabilities of Fourier transform spectroscopy, making it a great candidate for future space-borne interferometers. In order for spatio-spectral interferometric imaging to be a viable technique for future space missions, it must first be well understood. Our work on wide-field spatio-spectral interferometry is meant to advance and probe the technique, and bring it closer to technology readiness level 6. We have been developing algorithms that allow us to perform validation on simulated data as well as experimental data from NASA Goddard’s state-of-the-art Wide-field Imaging Interferometry Testbed (WIIT), which resides in the well-controlled environment of the Advanced Interferometry and Metrology laboratory. We fully developed the theory behind spatio-spectral interferometric measurements and the associated image synthesis algorithm. We used this knowledge to create a method of simulating the interferometric measurements and demonstrate the image synthesis algorithm on simulated data. Although image synthesis had been demonstrated prior to our work, we showed how the effective optical transfer function affects recovered spectra in addition to showing that deconvolution can be used to recover spectra that are more consistent with the original source spectra. We also contributed to the advancement and understanding of WIIT. We performed a phase retrieval experiment to recover the underlying aberrations imparted by WIIT’s imaging camera. We also developed an algorithm that allows WIIT’s scene projector, the calibrated hyperspectral image projector (CHIP), to display more complicated hyperspectral scenes than had previously been produced by CHIP for WIIT datasets. We also improved the preprocessing of WIIT data. We created an image registration algorithm that could recover unknown translations and rotations by combing the chirp z-transform algorithm with nonlinear optimization. The same algorithm could also perform deconvolution using our phase retrieval results, allowing for improved registration accuracy. The chirp z-transform was used to reorient all of the WIIT measurements to a single reference frame. We also developed a procedure for removing known systematic errors from the measurements to improve the overall quality of WIIT data. Finally, we developed a phase referencing algorithm that allows us to relate WIIT data taken at different baseline lengths and orientations, which is essential for performing image synthesis on experimental data. Throughout the fellowship, we had difficulty synthesizing testbed datasets. We discovered that there were unanticipated signatures in the data that we attributed to our difficulty. Over the last month we determined that the unanticipated signal features were time varying. From this realization, we found that the detrimental features of the signal are attributable to the source projector CHIP and fluctuations in the intensity of its light source throughout data collection. We provided possible solutions to this problem. Ideally, we should have a source that is more stable. If that is not possible, another solution would include monitoring the source intensity during data collection with a frequency at least as high as CHIP’s frame rate so that the unwanted time-varying signal could be processed out of the data.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/91501">https://techport.nasa.gov/projects/91501</a>
+    </div>
+  </div>
+</body>
+</html>

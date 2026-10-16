@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DeGaP: A Deep Gaussian Process Surrogate Model for Cleaning Data from Spatially Distributed Sensor Networks | NASA TechPort Project 158197</title>
+  <meta name="description" content="Spatiotemporal data from space and ground-based instruments are used in research and as a validation source for physical models throughout NASA fundamental space science and sensors on the ground and in space. While there are a wide range of measurement types ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/158197">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 158197</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX11</span>
+        </div>
+        <h1>DeGaP: A Deep Gaussian Process Surrogate Model for Cleaning Data from Spatially Distributed Sensor Networks</h1>
+        <div class="meta-id">NASA TechPort Project ID: 158197</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/158197" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Spatiotemporal data from space and ground-based instruments are used in research and as a validation source for physical models throughout NASA fundamental space science and sensors on the ground and in space. While there are a wide range of measurement types and uses, all data suffers from non-physical errors that must be identified, and removed, before its use in science and operations. It is important that these data gaps be filled with scientifically-derived proxies automatically, and with as little latency as possible, for timely hazard detection.  Our proposed innovation is to develop a Deep Gaussian Process surrogate model (DeGaP) that is used to fill in gaps due to either bad or missing data, while retaining the high precision and fidelity of the original measurements along with uncertainty quantification (UQ) of the filled-in measurements. Deep Gaussian Processes are a powerful technique to model complex system behavior while enabling uncertainty to be fundamentally incorporated by virtue of the stochastic structure of the model.   In Phase I, we will  a) develop a prototype of the DeGaP model using a ground-based magnetic field sensor network, MagStar. b) quantify the accuracy and uncertainty of the model predictions in terms of spatial and temporal proximity to other magnetometers in the network c) host a web service for continuous dissemination of the DeGaP model output wherein gaps and transient disturbances in the magnetic field data are replaced and uncertainty quantification provided for the filled-in data.  Potential applications  for the Phase 1 development include the Space Weather Modeling Framework (SWMF) running at CCMC, World Magnetic Model at NOAA and space-based magnetometers.  Potential private sector market for the product is the U.S. bulk power industry, entities that support US power utilities in regulatory response, and entities that need machine-learning (ML) ready data sets from sensor networks for ML models in production.
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          Phase 1 immediately supports the following models and missions: •	Space Weather Modeling Framework (SWMF) running at CCMC. SWMF is a magnetohydrodynamics (MHD) model of the geospace environment that can be used to simulate geomagnetic storm conditions, including magnetic variations on the ground. As MHD models advance, they can be used not just for specification of the magnetic field, but also in a predictive capacity. Measurements of the magnetic field provide validation data for the footprint of the simulation on the ground. A cleaned, annotated, and gap-filled data set is important for effectively characterizing model versus measurement error.  •	World Magnetic Model (NOAA). The World Magnetic Model is used as a tool for specifying the changing characteristics of the magnetic field over decades, and provides local estimates of the magnetic field strength, orientation and declination at a given point on the globe. It is used in multiple scientific disciplines including geohazards, space science, geo-orientation, and near-Earth satellite environment assessment to provide baseline magnetic field values. When comparing this model to local measurements of the geomagnetic field, it is critical to understand whether observed differences are real, or due to environmental errors.   •	Space-based magnetometers. Magnetometers are commonly used on satellite missions, both as scientific sensors and for orientation and navigation. In Phase II, after validation on the simpler ground-based magnetic field measurements, this product will be expanded to identify and fill erroneous measurements in space-based magnetic sensors.  The private sector market for the product is the U.S. bulk power industry, including generation, transmission and distribution. The power transmission sector is comprised of 7584 businesses with $380bn in total annual revenue.  Power transmission companies with transformer assets above 210kV are subject to FERC regulations TPL-007-1 and EOP-010-1, which makes them our primary addressable market for the Phase 1 data set.  The entities that support US power utilities in regulatory response also have a strong need for tools to help them respond to the space weather hazard. Planning and coordination groups such as ERCOT, ISO-NE, WECC, and BPA, which are comprised of power utilities, often support regulatory response for planning and operations. NOAA-SWPC is responsible for the prediction and alerts of space weather events to power grid operators, and would also benefit from improved, more reliable data to ingest in their hazard models. CPI has an existing relationship with NOAA-SWPC established in 2019 under a Cooperative Research and Development Agreement (CRADA). This product will improve our magnetic field data delivery and strengthen the potential for long-term use in operational settings.  There is also a new potential market in the growing artificial intelligence / machine learning (AI/ML) community, which needs validated, labeled, and cleaned data sets. While the volume of data produced by sensor networks has grown exponentially, there is considerable processing required to render the data ready for AI/ML applications. The DeGaP model, deployed within a continuous data processing framework, is a scalable solution for providing high-volume, high-fidelity, validated and cleaned data along with UQ, meeting the ever-increasing need for machine-learning ready data sets for AI/ML applications in production.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>158197</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11: Software, Modeling, Simulation, and Information Processing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 2 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2025-07-30</td></tr>
+<tr><th>Project End Date</th><td>2027-07-29</td></tr>
+<tr><th>Project Phase</th><td>1</td></tr>
+<tr><th>Lead Organization / Center</th><td>Goddard Space Flight Center (GSFC) — Greenbelt, Maryland</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Maryland (MD), Virginia (VA)</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Sudha Kapali (Principal Investigator); Michael Khasin (Project Manager) &lt;michael.khasin@nasa.gov&gt;; Sharon Galloway (Primary Point of Contact)</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-08-19</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/158197">https://techport.nasa.gov/projects/158197</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spacecraft Architecture Aide (SPAIDE) | NASA TechPort Project 157932</title>
+  <meta name="description" content="Project Objective This proposal seeks to develop a first-generation digital assistant, or aide, for spacecraft design with the objective of enhancing the Advanced Concepts Office’s Space Systems Design Team activities with semantic-based machine intelligence (">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/157932">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 157932</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">MSFC IRAD</span>
+          <span class="badge">TX11</span>
+        </div>
+        <h1>Spacecraft Architecture Aide (SPAIDE)</h1>
+        <div class="meta-id">NASA TechPort Project ID: 157932</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/157932" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p><strong>Project Objective</strong> </p><p>This proposal seeks to develop a first-generation digital assistant, or aide, for spacecraft design with the objective of enhancing the Advanced Concepts Office’s Space Systems Design Team activities with semantic-based machine intelligence (AI/ML) algorithms. The aide will provide guidance and feedback on design decisions based on ontological knowledge graphs, opening the door to future integration of deep learning models trained on data for both conceptual and flown spacecraft.</p><p><strong>Project Description</strong> </p><p>The Advanced Concepts Office’s (ACO) Space Systems Design Team employs concurrent engineering processes to architect and ideate complex space systems. All team members have a common, domain-specific, and shared understanding that is leveraged to effectively communicate, collaborate, and mature the concepts. These understandings consist of vernacular, concepts, technologies, functions, historical reach back, etc., with individual team members extending the understanding with specific disciplinary expertise, e.g., thermal design. Once the concept reaches sufficient level of maturity, the ACO Design Team hands it off to other teams to continue its evolution. The handoff includes many products that describes aspects about the system. These include composition, connectivity, configuration, concepts of operation, and quantification of capabilities and characteristics.</p><p>Researchers at the ACO understood that there is a strong parallel to the primary motivations behind the World Wide Web (WWW): the need to connect people to levels of information efficiently. Therefore, this research effort consisted of synthesizing implicit knowledge, design processes, and system model descriptions and transcribing them into models by leveraging mature digital technologies developed by the WWW Consortium (W3C), specifically the suite of ontological modelling for the Semantic Web, a key recent milestone of the development of the WWW. The vision is that pairing ontological digital technologies with the ability to reason on them would be a benefit to ACO design team members as well as other engineering teams. As such, an overarching goal of this effort was to explore mature digital technologies developed for the WWW and tailor their use to augment space system design processes to mature these complex systems more completely and efficiently.</p><p>ACO researchers formulated the technical approach by leveraging mature digital technologies as much as possible and tailoring their use to space systems design sessions, processes, and deliverables. The approach consisted of:</p><ol><li>Explicitly capturing these knowledge concepts via interviewing subject-matter experts (SMEs),</li><li>Encoding captured knowledge in formal modelling languages, specifically JPL’s Ontological Modelling Language (OML) and W3C’s Ontological Web Language (OWL), and </li><li>Demonstrating how these ontological models can aid these concurrent engineering processes by testing and evaluating it on select, prior concepts.</li></ol><p>Additionally, ACO partnered with researchers at the University of Alabama in Huntsville’s (UAH) Complex Systems Integration Lab (CSIL).</p><p><strong>Project Results and Conclusions</strong> </p><p>Through reviewing prior studies and interviewing SMEs, ACO and UAH researchers developed an initial version of the Common Space Systems Ontology (CoSSO) that captures many recurring and common concepts utilized by aerospace engineers. Some of these concepts include components and functions as well as their relationships. These concepts and relationships were encoded in OML and converted to OWL, further refining, iterating, and extending ACO’s initial version of CoSSO; the latest iteration was published at AIAA’s 2025 SciTech (<a href="https://doi.org/10.2514/6.2025-1212">https://doi.org/10.2514/6.2025-1212</a>).</p><p>Another key accomplishment was that CoSSO was evaluated against specific Nuclear Thermal Propulsion and Nuclear Electric Propulsion concepts developed for humans to Mars missions. Furthermore, various initial reasoning algorithms have been exercised to test both CoSSO’s primitive concepts as well as its usage to describe both concepts.</p><p>WWW technologies have been successfully utilized and tailored to augment early-phase space systems design processes as part of NASA’s efforts to develop digital engineering technologies and competencies. Through subsequent efforts, CoSSO will continue to be developed and shared across NASA and other academic partners. </p><p>Future work entails evolving software solutions to deploy CoSSO as part of live concurrent design sessions to assess its ability to augment the design team’s activities by providing suggestions from reasoning algorithms.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The vision for SPAIDE is that pairing ontological digital technologies with the ability to reason on them would significantly benefit the process of concept design and formulation. By leveraging mature digital technologies developed for the WWW and tailoring their use to space system design, these processes could be executed to address higher levels of complexity more completely and efficiently.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>157932</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: MSFC IRAD (MSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX11: Software, Modeling, Simulation, and Information Processing</td></tr>
+<tr><th>Additional Taxonomy Areas</th><td>TX11.4: Information Processing and Artificial Intelligence; TX11.5: Mission Architecture, Systems Analysis, and Concept Development</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2024-01-01</td></tr>
+<tr><th>Project End Date</th><td>2025-01-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Alabama in Huntsville (UAH) — Huntsville, Alabama</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>N/A</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Manuel J Diaz (Principal Investigator) &lt;manuel.j.diaz@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>John W Dankanich (Program Manager) &lt;john.dankanich@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Ontology-Based Functional Analysis of an Aerospace System</strong></li><li><strong>Overview of the SPAIDE Effort</strong> — The figure depicts the approach to the SPAIDE research effort linking databases and repositories to design activities such as trades studies, decisions, and definition through the use of knowledge graphs and computational reasoning</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/157932">https://techport.nasa.gov/projects/157932</a>
+    </div>
+  </div>
+</body>
+</html>

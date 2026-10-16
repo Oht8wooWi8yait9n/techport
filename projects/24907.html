@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CREWS: Crew Recommender for Effective Work in Space | NASA TechPort Project 24907</title>
+  <meta name="description" content="Team composition, the configuration of member attributes and their relationships, is a critical enabling feature of fostering effective teamwork and likely to play an important role in the effectiveness of future long-duration space exploration (LDSE). Limited">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/24907">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 24907</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.3</span>
+        </div>
+        <h1>CREWS: Crew Recommender for Effective Work in Space</h1>
+        <div class="meta-id">NASA TechPort Project ID: 24907</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/24907" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Team composition, the configuration of member attributes and their relationships, is a critical enabling feature of fostering effective teamwork and likely to play an important role in the effectiveness of future long-duration space exploration (LDSE). Limited research on team composition in environments analogous to LDSE exists, and currently how team composition can be used to optimize crew functioning and performance is unclear. Our research aims to: (1) identify the effects of team composition on team functioning in LDSE and the critical factors of team composition driving this effect, (2) identify particular patterns of this effect with different team compositions, (3) identify methods for composing teams for LDSE, (4) develop a predictive team composition model for use in composing teams and identify potential issues with already composed teams, and (5) provide recommendations for composing teams for LDSE. To address these critical aims, we propose a 3-year, multi-method research effort, in which we: (1) develop an agent-based model of team composition for LDSE based on empirical data linking key model inputs (e.g., individual difference variables, network relational factors, task characteristics) to team functioning (e.g., social integration, team processes, team cohesion, team conflict) in LDSE-relevant contexts; (2) conduct virtual experiments using characteristics and relationships identified in Phase I to identify the team functioning patterns that arise under different member compositions, and create a predictive model of team composition; and (3) conduct an initial validation of the model developed in Phase 2 in the Human Exploration Research Analog (HERA) and NASA Extreme Environment Mission Operations (NEEMO) analogue environments using specific manipulations of key factors (e.g., compositions; situational characteristics). Research products critical to closing Team Gap 8 will be developed including a predictive model of team composition in LDSE, evidence in support of the model, and a mockup of a proposed interface to assist in the staffing and management of LDSE crew and mission teams. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          While the primary objectives of this project are to be applied to astronaut crews in LDSE contexts, results from this research may also benefit teams on Earth in similar ICE (Isolated, Confined, and Extreme) conditions. Teams such as those sent to winter-overs in Antarctica or submarine crews that spend months underwater would be analogous environments in which the results of this research may prove useful. In a general sense, our findings could have implications for composing optimal teams that are not in ICE conditions, such as work teams at an organization, teams of students working on a project, teams of scientists, and squadrons of military personnel, to give but a few examples. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>24907</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.3: Behavioral Health and Performance</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2015-07-01</td></tr>
+<tr><th>Project End Date</th><td>2022-09-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>DePaul University — Chicago, Illinois; Northwestern University — Evanston, Illinois</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Illinois (IL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Noshir S Contractor (Principal Investigator) &lt;noshir.s.contractor@nasa.gov&gt;; Leslie A Dechurch (Co-Investigator); Suzanne T Bell (Co-Investigator); Alexandra M Whitmire (Project Manager) &lt;alexandra.m.whitmire@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: Team composition, the configuration of member attributes and their relationships, is a critical enabling feature of fostering effective teamwork and likely to play an important role in the effectiveness of future long-duration space exploration (LDSE). Limited research on team composition in environments analogous to LDSE exists, and currently how team composition can be used to optimize crew functioning and performance is unclear. In the past year, we continued to make progress on each of our three research aims (as identified in previous task book and annual reports): (1) to develop an agent-based model of team composition for LDSE based on empirical data linking key model inputs (e.g., individual difference variables, network relational factors, task characteristics) to team functioning (e.g., social integration, team processes, team cohesion, team conflict) in LDSE-relevant contexts; (2) to conduct virtual experiments using characteristics and relationships identified in Phase I to identify the team functioning patterns that arise under different member compositions, and create a predictive model of team composition; and (3) to conduct an initial validation of the model we developed in LDSE analogs. In addition to the above tasks, we have also worked to incorporate additional data into our models and analyses, in order to establish credibility and robustness of our results. This has included both the incorporation of new data from HERA (Campaign 6), as well as adjusting models originally developed using HERA to also incorporate data from NEK SIRIUS (Nezemnyy Eksperimental’nyy Kompleks / Scientific International Research In a Unique terrestrial Station) analog missions. These steps help ensure that our model is appropriate given the availability of new data. Progress on Research Aim #1: Our first research aim is to develop an agent-based model of team composition for LDSE based on empirical data linking key model inputs (e.g., individual difference variables, network relational factors, task characteristics) to team functioning (e.g., social integration, team processes, team cohesion, team conflict) in LDSE-relevant contexts. Over the reporting period, we continued to make incremental developments and refinements on the agent-based model (ABM) we developed of social relationships within crews. We split our model into two parts: one part focusing on positive and negative relationships (task affect and hindrance) between crew members, and the other part focusing on claiming and granting leadership between crew members. Within each of the two parts, we implemented code to model the interaction between different types of ties: interactions between positive and negative relationships, and interactions between relationships claiming leadership and relationships granting leadership. Progress on Research Aim #2: Our second research aim is to conduct virtual experiments using characteristics and relationships identified in Phase I to identify the team functioning patterns that arise under different member compositions, and create a predictive model of team composition. During the past reporting period, using the new model fit, we began conducting these virtual experiments using computational simulation. In these virtual experiments, we examine how different hypothetical team compositions (team member’s demographics, relationships, task schedules) would perform during LDSE according to our model. Using optimization methods, we have developed a way to select high-performance teams based out of a pool of different potential crew members. Progress on Research Aim #3: Our third research aim is to conduct an initial validation of the model developed in LDSE analogs. This year, we analyzed results of the validation test of the model conducted in Campaign 5, and began compiling the results for presentation and publication. Our ABM was used to preemptively recommend “best” and “worst” pairings of crew members for the Rover and Phobos tasks in mission. Using surveys gathered over the course of each mission, we were able to evaluate the outcomes of using both “best” and “worst” pairings (the change in social relationships, their satisfaction with each pairing, viability). By performing new statistical analyses, we were able to demonstrate the viability of using our ABM to identify best pairings in advance of a future mission. These results will be presented at the upcoming International Astronautical Congress in October 2021.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Abstracts for Journals and Proceedings</strong> — Contractor NS, Bell S, DeChurch LA, Brown S, Hernandez I, Forbush E, Jones BR. &quot;CREWS: Crew Recommender for Effective Work in Space.&quot; Poster presented at the 2016 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 8-11, 2016. 2016 NASA Human Research Program Investigators’ Workshop, Galveston, TX, February 8-11, 2016., Feb-2016</li><li><strong>Abstracts for Journals and Proceedings</strong> — Antone B, Gruest V, DeChurch LA, Bell S, Contractor NS. &quot;Team Performance in Long Duration Space Missions: SIRIUS ‘19.&quot; 2020 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 27-30, 2020. Abstracts. 2020 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 27-30, 2020., Jan-2020</li><li><strong>Abstracts for Journals and Proceedings</strong> — Ng J, Antone B, Gibson Z, Bell S, DeChurch LA, Contractor N. &quot;Crew recommender for effective work in space: CREWS.&quot; Presented at 32nd Annual Meeting of the Society for Industrial and Organizational Psychology Conference, Orlando, FL, April 27-29, 2017. 32nd Annual Meeting of the Society for Industrial and Organizational Psychology Conference, Orlando, FL, April 27-29, 2017., Apr-2017</li><li><strong>Abstracts for Journals and Proceedings</strong> — DeChurch LA, Larson L, Gómez-Zará D, Jones BR, Contractor N, Johnson J. &quot;Leadership Emergence in Space Multiteam Systems.&quot; Team, Training, and Performance Metrics. Presented at 2017 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 23-26, 2017. 2017 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 23-26, 2017., Jan-2017</li><li><strong>Abstracts for Journals and Proceedings</strong> — Contractor N, DeChurch L, Antone W, Twyman M, Gibson Z, Sawant, A, Gado H, Bell S. &quot;Teamstar: A tool for evaluating and mitigating space team risk.&quot; Poster presented at the 2018 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2018. 2018 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2018., Jan-2018</li><li><strong>Abstracts for Journals and Proceedings</strong> — Contractor N. &quot;Pairing Teams for, and (Re)pairing Teams during Long-Duration Space Exploration.&quot; Understanding and Enabling Human Travel to the Moon and Mars. Panel discussion conducted at the 2021 American Association for the Advancement of Science (AAAS) Annual Meeting, Virtual, February 8-11, 2021. 2021 American Association for the Advancement of Science (AAAS) Annual Meeting, Virtual, February 8-11, 2021., Feb-2021</li><li><strong>Awards</strong> — Bell S. (Suzanne Bell) &quot;Scientist of the Month, Association for Women in Science, Chicago, May 2016..&quot; May-2016</li><li><strong>Significant Media Coverage</strong> — Morris A. &quot;Press Release titled, &#x27;Students Use NetLogo to Plan Mars Mission, Model New Societies.&#x27; &quot; Northwestern University McCormick School of Engineering News, June 17, 2015., Jun-2015</li><li><strong>Significant Media Coverage</strong> — Bell ST. (interview of Suzanne Bell) &quot;Interview titled &#x27;Putting together a team to travel to Mars.&#x27; &quot; Interview on Morning Shift, Chicago Public Radio NPR, September 29, 2015., Sep-2015</li><li><strong>Papers from Meeting Proceedings</strong> — DeChurch L A, Gokhmana IA, Plummera G, Vazquez M, Bell S, Contractor NS. &quot;Deciding on Mars: The effects of isolation on autonomous team decision-making.&quot; 70th International Astronautical Congress (IAC) 2019, Washington D.C., United States, October 21-25, 2019. 70th International Astronautical Congress (IAC) 2019, Washington D.C., United States, October 21-25, 2019. Paper #51272., Oct-2019</li><li><strong>Abstracts for Journals and Proceedings</strong> — Antone B, DeChurch LA, Morton D, Bell S, Contractor NS. &quot;A Network-Based Method to Recommend Optimal Team Compositions for Space Exploration.&quot; Presented at 36th Society for Industrial and Organizational Psychology (SIOP), Virtual, April 14-17, 2021. Abstracts. 36th Society for Industrial and Organizational Psychology (SIOP), Virtual, April 14-17, 2021., Apr-2021</li><li><strong>Abstracts for Journals and Proceedings</strong> — Antone B, Lungeanu A, DeChurch LA, Bell ST, Contractor NS. &quot;Re-pairing to repair: A countermeasure that enhances crew relations in deep space.&quot; IAC 2021: 72nd International Astronautical Congress, Dubai, United Arab Emirates, October 25-29, 2021. Abstracts. IAF/IAA Space Life Sciences Symposium 2021 at the 72nd International Astronautical Congress, IAC 2021; Dubai, United Arab Emirates; October 25-29, 2021, Code 177571. https://www.scopus.com/record/display.uri?eid=2-s2.0-85127431246&amp;origin=inward&amp;txGid=7797eb5d7f8e2b985ea24a11cf5511b6 , Oct-2021</li><li><strong>Abstracts for Journals and Proceedings</strong> — Antone B, Lungeanu A, Bell ST, DeChurch LA, Contractor NS. &quot;CREWS: A successful crew composition countermeasure validated in HERA.&quot; Presented at 2021 NASA Human Research Program Investigators’ Workshop, Virtual, February 1-4, 2021. Abstracts. 2021 NASA Human Research Program Investigators’ Workshop, Virtual, February 1-4, 2021., Feb-2021</li><li><strong>Abstracts for Journals and Proceedings</strong> — Contractor NS, Gibson Z, Antone W, Ng J, DeChurch LA, Bell ST. &quot;Composing effective space crews: Predicting crew camaraderie (CREWS).&quot; Presented at 2017 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 23-26, 2017. 2017 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 23-26, 2017., Jan-2017</li><li><strong>Abstracts for Journals and Proceedings</strong> — Burns T, Antone W, Weiss J, Larson L, Bell S, DeChurch L. &quot;Identity in isolation: How teams bond or break.&quot; Poster presented at the 2018 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2018.. 2018 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2018., Jan-2018</li><li><strong>Abstracts for Journals and Proceedings</strong> — Antone B, DeChurch L, Bell ST, Contractor N. &quot;Repairing teams for the moon.&quot; In M. Marcinkowski &amp; S. Bell (co-chairs). Moon 2024: Translating Research to Practice for Upcoming Artemis Lunar Exploration. Symposium to be presented at the Society for Industrial and Organizational Psychology 2020 Virtual Conference, Austin, TX , June 16-30, 2020. Society for Industrial and Organizational Psychology 2020 Virtual Conference, Austin, TX , June 16-30, 2020. Virtual online., Jun-2020</li><li><strong>Abstracts for Journals and Proceedings</strong> — Outland N, Brown SG, Colaneri T, Vasquez M, Weiss J, Wocjik H, Bell S. &quot;The relationship between team composition and team effectiveness moderated by LDSE-relevant context features.&quot; Presented at the 2018 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2018. 2018 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2018., Jan-2018</li><li><strong>Books/Book Chapters</strong> — Antone B, Lungeanu A, Bell S, DeChurch L, Contractor N. &quot;Computational modeling of long-distance space exploration: A guide to predictive and prescriptive approaches to the dynamics of team composition.&quot; in &quot;Psychology and Human Performance in Space Programs: Research at the Frontier, vol. 1.&quot; Ed. L.B. Landon, K.J. Slack, E. Salas. CRC Press, 2021. p. 107-130. (eBook Published 9 October 2020.) Book doi: https://doi.org/10.1201/9780429440878 , Jan-2021</li><li><strong>Abstracts for Journals and Proceedings</strong> — Larson LE, Jones BR, DeChurch LA. &quot;Language, leadership, and identity construction in multiteam systems.&quot; Paper presented at 2017 Academy of Management Conference, Atlanta, GA, August 10-13, 2017. 2017 Academy of Management Conference, Atlanta, GA, August 10-13, 2017., Aug-2017</li><li><strong>Abstracts for Journals and Proceedings</strong> — Niler A, Gibson ZM, DeChurch, LA. &quot;The social forces behind leadership network formation in multiteam systems.&quot; Paper presented at the 2017 Academy of Management Conference, Atlanta, GA, August 10-14, 2017. 2017 Academy of Management Conference, Atlanta, GA, August 10-13, 2017., Aug-2017</li><li><strong>Abstracts for Journals and Proceedings</strong> — Antone W, Lungeanu A, Gibson Z, DeChurch L, Bell S, Contractor N. &quot;Team dynamics: Using simulation as a tool to develop theory.&quot; Poster presented at the 2018 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2018. 2018 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 22-25, 2018., Jan-2018</li><li><strong>Abstracts for Journals and Proceedings</strong> — Schecter A, Mell J. &quot;The antecedents and implications of information sharing processes in multiteam systems.&quot; Paper presented at the 2017 Academy of Management Conference, Atlanta, GA, August 10-13, 2017. 2017 Academy of Management Conference, Atlanta, GA, August 10-13, 2017., Aug-2017</li><li><strong>Abstracts for Journals and Proceedings</strong> — Burns T, Mikayla M, Bell ST, DeChurch L, Contractor N. &quot;Crew gender composition for moon 2024.&quot; M. Marcinkowski &amp; S. Bell (co-chairs). Moon 2024: Translating Research to Practice for Upcoming Artemis Lunar Exploration. Symposium to be presented at the Society for Industrial and Organizational Psychology 2020 Virtual Conference, Austin, TX , June 16-30, 2020. Society for Industrial and Organizational Psychology 2020 Virtual Conference, Austin, TX , June 16-30, 2020. Virtual online., Jun-2020</li><li><strong>Abstracts for Journals and Proceedings</strong> — Contractor NS, Gokhman IA, Larson LE, Bell ST, DeChurch LA. &quot;Leadership networks in space crews.&quot; Presented at 2017 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 23-26, 2017. 2017 NASA Human Research Program Investigators’ Workshop, Galveston, TX, January 23-26, 2017., Jan-2017</li><li><strong>Awards</strong> — Bell S. (Suzanne Bell) &quot;Named as one of 2016’s Top 10 Chicago Women in Science by Make it Better Magazine, January 2017.&quot; Jan-2017</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/24907">https://techport.nasa.gov/projects/24907</a>
+    </div>
+  </div>
+</body>
+</html>

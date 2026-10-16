@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CFD Modeling of the Self-Reacting Friction Stir Welding (SR- FSW) Process: Correlating Thermal, Mechanical, and Viscoplastic Flow Phenomena with Weld Quality and Hardness | NASA TechPort Project 95035</title>
+  <meta name="description" content="CFDRC in partnership with MSFC EM32 proposes to develop, validate against experimental data, and deliver a physics-based self-reacting friction stir welding, SR-FSW, modeling and simulation software suite. Initial studies by CFDRC, commissioned by EM31/EM32, h">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/95035">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 95035</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">MSD</span>
+          <span class="badge">MSFC IRAD</span>
+          <span class="badge">TX09.4.5</span>
+        </div>
+        <h1>CFD Modeling of the Self-Reacting Friction Stir Welding (SR- FSW) Process: Correlating Thermal, Mechanical, and Viscoplastic Flow Phenomena with Weld Quality and Hardness</h1>
+        <div class="meta-id">NASA TechPort Project ID: 95035</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/95035" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>CFDRC in partnership with MSFC EM32 proposes to develop, validate against experimental data, and deliver a physics-based self-reacting friction stir welding, SR-FSW, modeling and simulation software suite. Initial studies by CFDRC, commissioned by EM31/EM32, have shown promise for parametric modeling in certain welding regimes of SR-FSW. Additional work is required in order to validate specific elements of the model with a goal to delivering a versatile, flexible, user friendly software modeling suite. This project is designed to deliver such an analytical tool suite that will cut costs and reduce time of development and testing of welding articles for the SLS space launch system and support the NASA mission. We therefore request CAN funding to support this mission plan by EM32 in partnership with CFDRC, a proven NASA partner and contractor.</p><p>The objective of the proposed effort is to refine and validate the CFDRC thermomechanical model of SR-FSW, improve usability and confidence through application studies, and transfer the resulting capability to NSFC EM32. The model is implemented via add-on modules for a commercial-quality, computational fluid dynamics based multiphysics software package. This working environment provides model geometry building and meshing with CAD geometry import, graphical interfaces for model setup, and visualization of model results. The software tool will incorporate pin-tool geometry and configuration details such as scrolls, threading, reservoirs, and spacing (pin to shoulder). Workpiece details such as flat, structured gridded, and curved geometries, and pin tool and workpiece materials, will be considered. The direct results of the developed models will be temperature and material velocity distributions near the pin tool as a function of process conditions. Capabilities to extract information from the model necessary to predict derived quantities, such as hardness distributions in the weld, will be implemented and these estimates will be evaluated.</p><p>The modeling capability resulting from this effort will allow engineers to easily input parameters corresponding to these configurations and simulate SR-FSW across many ranges of interest. The resulting predictive models will enable rapid assessment of the impact of workpiece materials and dimensions and SR-FSW tooling design on the complex, difficult to monitor physical processes occurring during the weld, thereby cutting costs and reducing development and testing times which currently depend on repeatedly welding article after article for each possible parameter and weld schedule development. The anticipated use scenarios include performing simulations to define the windows of opportunity for process and tool development, accelerate initial screening efforts by defining the parameter ranges to be investigated, and investigate root causes of observed shifts in tested weld quality with tool and process changes.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>The proposed effort directly addresses a need described under section 2.1.2 &ldquo;Technologies Supporting Advanced Manufacturing, Structures and Materials,&rdquo; of the CAN. In particular, there is a recognized need for better analytical tools to support advanced manufacturing of metallic structures, &ldquo;with a special emphasis on understanding friction stir weld processes and lightweight alloys.&rdquo; CFDRC in partnership with EM32-MSFC proposes to develop, validate with experimental data, and deliver an accurate self-reacting friction stir welding, SR-FSW, modeling and simulation software tool to predict the effects of process parameters, pin tool design, and welded material.</p><p>Initial studies by CFDRC, commissioned by EM31/EM32, have shown promise and relatively high accuracy in certain welding regimes of SR-FSW. Additional work is required in order to deliver a versatile, flexible, user friendly software modeling suite. This project is designed to deliver such an analytical tool suite that will cut costs and reduce time of development and testing of welding articles for the SLS space launch system and the NASA mission.&nbsp;NASA MSFC has developed the self-reacting friction stir welding (SR-FSW) equipment and welding processes to perform critical key steps in fabricating Space Launch System, SLS structural components. SR-FSW enables butt joint welding without a backing &lsquo;anvil&rsquo; and is used to weld structural parts such as the core stage, EUS upper stage, liquid oxygen tank, and upper stage adapter. Weld schedules and tooling are designed and developed on the benchtop scale, and tested and verified on full scale components in the MSFC facilities, before transfer to the Michoud Assembly Facility.</p><p>SR-FSW process testing and characterization efforts include thermal measurements by both thermography&nbsp;and thermocouples embedded in the workpiece. The welds are characterized by hardness and tensile stress testing, micro-tensile destructive tests, ARAMIS speckle-DIC (digital image correlation) strain maps, and micro Vickers hardness mapping of weld cross sections. As a result of these efforts, extensive data sets are available for temperature distributions away from the FSW pin tool, weld fracture locations, strengths, yield stresses, and hardness variation across the weld cross section.&nbsp;</p><p>Recent SR-FSW activities in EM32 have focused on adapting proven processes to joining new materials, specifically replacing aluminum alloy AA2195 with thicker panels of AA2219 as the working material to meet SLS component strength and weight requirements. The challenges met during this transition between working materials are one motivating factor for developing predictive models of the process. The nature of friction stir welding provides another impetus for modeling, since the mechanically affected zone of the starting material that becomes the weld &lsquo;nugget&rsquo; is not accessible for real-time monitoring during welding. Detailed models can provide valuable information and insight into the processes occurring in this region. In addition to working material changes, other challenges faced by EM32 include transferring process learning derived from benchtop-scale experiments to joining sections of full scale components and variability resulting from varying machine configurations. The proposed models can address these challenges, and the related issues arising from transferring processes from laboratory-scale flat test articles to joining full-scale panels with structural reinforcements such as grids and ribs.</p><p>MSFC EM32, ER43 and ET10 have collaborated to develop a thermal-only model of SR-FSW to complement the process characterization and provide additional insight into the effects of clamps and chill bars on benchtop tests. This modeling matches the thermography and thermocouple process characterization very well and has already provided deep insight into the stir zone, SZ, nugget, and thermomechanically affected regions. CFDRC has developed a preliminary model for SR-FSW of Al2219 alloy and provided the initial results to EM32. The CFDRC model uses a computational fluid dynamics (CFD) approach to simulate the coupled material flow, heat generation, and temperature fields resulting from the welding process. This model has been verified against other simulations and experimental data for conventional FSW, and agrees well with the temperature distributions observed at MSFC. This progress by the team members has shown that a coupled thermomechanical model with viscoplastic material transport, such as the proposed full CFD Research model, will provide even deeper insight and greater predictive capability.</p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>95035</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Mission Support Directorate (MSD)</td></tr>
+<tr><th>NASA Program</th><td>Center Independent Research &amp; Development: MSFC IRAD (MSFC IRAD)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09.4.5: Integrated Modeling and Simulation for EDL</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 1 | Current TRL: 1 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2018-10-01</td></tr>
+<tr><th>Project End Date</th><td>2019-04-30</td></tr>
+<tr><th>Lead Organization / Center</th><td>CFD Research Corporation — Huntsville, Alabama</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Marshall Space Flight Center (MSFC) — Huntsville, Alabama; Office of the Chief Technologist (OCT)</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Alabama (AL)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Earth, Others Inside the Solar System, Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>J V Cole (Principal Investigator); Fredrick N Michael (Co-Investigator) &lt;fredrick.n.michael@nasa.gov&gt;; J V Cole (Project Manager)</td></tr>
+<tr><th>Program Management Contacts</th><td>John W Dankanich (Program Manager) &lt;john.dankanich@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2019-03-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: TBD</li></ul>
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/95035">https://techport.nasa.gov/projects/95035</a>
+    </div>
+  </div>
+</body>
+</html>

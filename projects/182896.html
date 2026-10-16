@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Automated Anisotropic Metric-Based Mesh Adaption for Hypersonic Flow | NASA TechPort Project 182896</title>
+  <meta name="description" content="Design of reentry vehicles is driven by aeroheating concerns at elevated flow enthalpies. Therefore, accurate simulation of hypersonic flow phenomena such as detached bow shocks is of critical importance to reduce conservatism in design and unlock improved per">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/182896">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 182896</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Active</span>
+          <span class="badge">STMD</span>
+          <span class="badge">SBIR/STTR</span>
+          <span class="badge">TX09</span>
+        </div>
+        <h1>3D Automated Anisotropic Metric-Based Mesh Adaption for Hypersonic Flow</h1>
+        <div class="meta-id">NASA TechPort Project ID: 182896</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/182896" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Design of reentry vehicles is driven by aeroheating concerns at elevated flow enthalpies. Therefore, accurate simulation of hypersonic flow phenomena such as detached bow shocks is of critical importance to reduce conservatism in design and unlock improved performance. Adaptive mesh refinement (AMR) is an enabling technology to efficiently reduce numerical error in hypersonic reacting flow simulations by providing mesh resolution only where it is needed, based on flow phenomena or an engineering quantity of interest. During Phase I, in collaboration with Mississippi State University, ATA has developed a novel toolset for metric-aligned Hypersonic Anisotropic Adaptive Mesh Refinement (HAAMR). HAAMR was implemented in Loci/CHEM, an ITAR-restricted reacting flow CFD solver developed by MSU and made freely available to NASA, DoD, and their contractors. HAAMR showed similar results to NASAs Data Parallel Line Relaxation (DPLR) structured mesh CFD solver, for 2D non-reacting flow Earth reentry verification cases.  The Phase II effort will focus on extending HAAMR capabilities to 3D meshes, as well as improving results when coupling HAAMR with additional physics models that are already present in Loci/CHEM, such as reacting flows and walls, thermodynamic nonequilibrium, and ionized flows. The proposed Phase II innovations twill result in comparable flow physics modeling capabilities to DPLR; however, the unstructured mesh methods of HAAMR and Loci/CHEM will enable efficient simulation of more complex 3D geometries. When coupled with ongoing and upcoming adjacent ATA research efforts, including implementation of shock layer radiation coupling, innovations in kinetic mechanism reduction for reacting and combusting flows, and creation of efficiently trained multi-fidelity machine learning (ML) aerothermal surrogate models, Loci/CHEM will present a leading-edge CFD solution that will directly address identified needs for innovations in simulating reentry and hypersonic flows  HAAMR will couple a state-of-the-art compressible flow solver (Loci/CHEM) and the heritage AFLR meshing code into a single framework for problem-specific anisotropic adaptive mesh refinement (AMR), targeted toward hypersonic reacting-flow problems. Without AMR, accurate aerothermal simulations on complex geometry involve a difficult and time-consuming process to generate grids.  Current hypersonic AMR workflows have multiple shortcomings that are addressed by HAAMR by generating shock-aligned meshes for accurate surface heat flux results, creating anisotropic cells to reduce computational cost, adding flow solver enhancements to improve stability on hypersonic AMR problems, and integrating the toolset into a single code to simplify end-user workflow. HAAMR will also be an enabling technology when coupled with adjacent ATA research efforts, including shock layer radiation, kinetic mechanism reduction for reacting and combusting flows, and efficiently trained multi-fidelity machine learning aerothermal surrogate models, to address identified needs when simulating hypersonic flows.  The team proposes to achieve the following objectives in Phase II:  1. High Quality 3D Metric-Based Meshing Generation:  The team will enhance the 3D metric-aligned anisotropic mesh-generation capability within AFLR to be comparable to its 2D capability, integrating arbitrary 3D surface refinement and improving the 3D mesh quality to match the needs of HAAMR.  2. Robust and Accurate Simulation of Hypersonic Flows on Highly Anisotropic Meshes:  The team will implement further enhancements to numerical methods in Loci/CHEM, improving solver stability and accuracy for anisotropic AMR grids across a wide range of flow physics relevant to hypersonic problems.  3. Automation of the 2D and 3D Anisotropic Mesh Refinement Process:  The team will enhance the HAAMR framework to work on 3D problems, and integrate all components into Loci/CHEM to greatly simplify the workflow.  4. Demonstration of the Value Added by Unstructured Metric-Based Anisotropic AMR  The team will use HAAMR to model reacting flow versions of the 2D problems examined in Phase I, and model multiple 3D bodies of interest, such as the Space Shuttle, SLS-like launch vehicle, and the Sandia Glide Body. A quantitative assessment will be made, comparing HAAMR with current NASA approaches in terms of solution time, mesh size, and accuracy.  Proposed deliverables:  1. Interim reports 2. Final report 3. Software source code and documentation
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          In fielding a new class of launch, and reentry vehicles, particularly on programs such as Artemis, NASA will rely on simulation-based qualification of new designs, a paradigm that places extreme demands on CFD solvers, in particular, to populate comprehensive aerodynamic databases from full-vehicle, full-trajectory simulations involving evolving vehicle geometry. Even with the vast HPC resources available, HAAMR will be a critical enabling technology to reduce risk and ensure mission range and survivability of these next-generation systems.  DoD will heavily rely on CFD solvers to support hypersonic programs such as the Hypersonic Attack Cruise Missile, the Army Long Range Hypersonic Weapon, and the Navy Conventional Prompt Strike. In all those instances, HAAMR will be an enabling technology to effectively analyze a range of configurations and requirements to ensure a quicker, lower-risk deployment of those systems in the field.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>182896</td></tr>
+<tr><th>Project Status</th><td>Active</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Small Business Innovation Research/Small Business Tech Transfer (SBIR/STTR)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX09: Entry, Descent, and Landing</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 4 | Current TRL: 6 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2025-02-11</td></tr>
+<tr><th>Project End Date</th><td>2027-02-10</td></tr>
+<tr><th>Lead Organization / Center</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Mississippi State University — Mississippi State, Mississippi; ATA Engineering, Inc. — San Diego, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Foundational Knowledge</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Azariah Comish (Principal Investigator); Aaron M Brandis (Project Manager) &lt;aaron.m.brandis@nasa.gov&gt;; Daniele Gallardo (Primary Point of Contact)</td></tr>
+<tr><th>Program Management Contacts</th><td>Jason L Kessler (Program Director) &lt;jason.l.kessler@nasa.gov&gt;; Carlos Torrez (Program Manager) &lt;carlos.torrez@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2026-07-29</td></tr>
+          </tbody>
+        </table>
+
+        
+        
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/182896">https://techport.nasa.gov/projects/182896</a>
+    </div>
+  </div>
+</body>
+</html>

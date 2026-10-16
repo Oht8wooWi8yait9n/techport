@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Non-intrusive Ocular Monitoring Framework to Model Ocular Structure and Functional Changes due to Long-term Spaceflight | NASA TechPort Project 97109</title>
+  <meta name="description" content="Unique neuro-ocular structural and functional changes affect a subset of astronauts who have completed prolonged spaceflight missions and due to its unique pathology, a new case definition was proposed and the condition was renamed Spaceflight Associated Neuro">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/97109">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 97109</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SOMD</span>
+          <span class="badge">HRP</span>
+          <span class="badge">TX06.3.1</span>
+        </div>
+        <h1>A Non-intrusive Ocular Monitoring Framework to Model Ocular Structure and Functional Changes due to Long-term Spaceflight</h1>
+        <div class="meta-id">NASA TechPort Project ID: 97109</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/97109" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Unique neuro-ocular structural and functional changes affect a subset of astronauts who have completed prolonged spaceflight missions and due to its unique pathology, a new case definition was proposed and the condition was renamed Spaceflight Associated Neuro-ocular Syndrome (SANS). In this project we investigate two interconnected computational frameworks to develop a diagnostic system as well as a mapping mechanism to assist NASA scientists and clinical experts to more comprehensively study the SANS phenomenon and predict the risk of its development in prolonged spaceflight. Therefore, the first aim (Aim 1) of this project is to develop novel computational tools to establish mappings between the observed ocular structure and visual function, pre-, in-, and post-flight, in order to provide NASA scientists and clinicians with better means to investigate SANS etiology and its progression. The second aim (Aim 2) of this project is to integrate Contrast Sensitivity (CS), Visual Fields (VF), and our novel distortion assessment mechanism into a validated and compact diagnostic tool to better measure ocular function (SANS 301 : Laboratory development of mechanical countermeasures).    <p></p>   We will focus our efforts in each aim on a sub-set of functionalities that allow for the establishment of the interconnected computational framework enabling the pursuit of long-term research to predict the risk of development of SANS and monitor its progression.     <p></p>   Omnibus Aim 1: Structure-Function Mapping    <p></p>   Research Task-1.1: Design a novel mapping between Optical Coherence Tomography (OCT), Magnetic Resonance Imaging (MRI), Contrast Sensitivity (CS), and Visual Fields (VF) perimetry.     <p></p>   Research Task-1.2: Conduct studies on retrospective data from NASA Lifetime Surveillance of Astronaut Health (LSAH) and Life Sciences Data Archive (LSDA) on the three populations (astronauts, head-down-tilt bed rest, and idiopathic intracranial hypertension (IIH)) patient.    <p></p>   These findings will be significant in two ways:     <p></p>   (1) They will allow us to predict measures within a smaller sample set, if a larger analog sample set has known structure-function maps.    <p></p>   (2) They will enable us to design predictive mechanisms to study disease progression both in astronauts and in terrestrial analogs terrestrial analogs.     <p></p>   Expected Outcomes: (1.i) understanding how OCT/MRI correlates with VF, (1.ii) translational parametrization of mappings across cohorts, and (1.iii) ability to predict the risk of development of SANS and monitor its progression by utilizing the proposed mappings.     <p></p>   Omnibus Aim 2: Address SANS 301 Knowledge Gap     <p></p>   Research Task-2.1: Integrate VF and CS assessments into a VR-mediated framework.     <p></p>   Research Task-2.2: Validate VR-based VF/CS on the terrestrial analog populations.     <p></p>   Expected Outcomes: (2.i) a novel Virtual Reality (VR)-based VF/CS assessment and (2.ii) a compact diagnostic tool. <p></p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          During the previous year of the project, our team has made contributions on the two aims as follows:    <p></p> Aim 1- The first aim (Aim 1) of this project is to develop novel computational tools to establish mappings between the observed ocular structure and visual function, pre-, in-, and post-flight, in order to provide NASA scientists and clinicians with better means to investigate SANS etiology and its progression (SANS 1).    <p></p> Contributions: 1- Design a novel mapping between OCT, MRI, CS, and VF. 2- Conduct studies on retrospective data from NASA Lifetime Surveillance of Astronaut Health (LSAH) and Life Sciences Data Archive (LSDA) on the three populations.    <p></p> Technical Details: In order to establish a comprehensive mapping between different ophthalmic domains we started by designing a conditional generative adversarial network (GAN) to map across the publicly available data we had at our disposal, i.e., fluorescein angiography (FA) and fundus photographs. The GAN comprises of two generator modules and four discriminator modules to take fundus photographs and produce anatomically accurate FA images inferred from the fundus images.     <p></p> Impact: We have shown novel deep architectures in ophthalmic applications could improve diagnostic accuracy, that attention maps can improve transferability of learned models across datasets, and deep architectures could effectively extract shared feature representations across ophthalmic image modalities to translate from one domain to another. These discoveries have paved the way for our team to tackle the main problem of mapping between the domain of ocular structure to the visual function.     <p></p> Significance: (1) Understanding how ocular structure correlates with visual function. (2) Parametrization of mappings. (3) Predict the risk of SANS.    <p></p> Aim 2- The second aim (Aim 2) of this project is to integrate CS, VF, and our novel distortion assessment mechanism into a validated and compact diagnostic tool to better measure ocular function (SANS 3).    <p></p> Contributions: 1- Integrate VF/CS assessments into a VR-mediated framework. 2- Validate VR-based VF/CS on the terrestrial analog populations.    <p></p> Technical Details: We present a methodology that comprises a calibration step, four different visual function tests that measure different aspects of user perception, and then a composite pipeline that simulates the modeled deficits for validation. In order to properly utilize the virtual assessment, the environment would need to be calibrated at the beginning of each session. Simple calibrations such as adjusting lens distance, interpupillary distance, and headset adjustments are done at the start. After these adjustments, the fixation and tracking capabilities of the eyes are tested, first binocularly and then monocularly. These performance metrics are saved alongside the user demography information. After the calibration phase, the user's visual assessment can commence. Visual acuity (VA), contrast sensitivity (CS), and visual distortions are assessed through a variety of procedures. For VA, binocular distant VA as well as dynamic VA is measured under mesopic (natural light) conditions. Instead of using images of conventional charts, we render individual characters in front of the user at predetermined distances and scale it based on user response. The results are reported in logMAR scale among others. The contrast sensitivity is measured using gabor patches as stimuli. In this test, the user gaze follows a gabor patch that alters its contrast and spatial frequency based on user performance. At the end, the contrast sensitivity expressed in logCS among other contrast sensitivity units. The amsler grid test is adapted to VR to measure the perceptual distortions in age-related macular degeneration (AMD) patients. At the start of the exam, the amsler grid is displayed infront of both eyes. While looking at a fixation point in grid, if the straight grid lines appear to be distorted the user emulates the metamorphopsia of the deficient eye on the healthy eye. This grid manipulation is modeled as a gaussian mixture of different scotoma parameters. The results are reported as the image of the altered amsler grid.    <p></p> Impact: In addition, we have developed a new approach mediated by advances in virtual reality (VR) for better assessment of metamorphopsia to enable remote monitoring of the progression of AMD \cite{zaman2020mixed}. These findings in conjunction with the findings of Aim 1 motivate and inform the objectives of this project, by allowing our team to maintain a correspondence between how the ocular structural changes could impact visual function assessments.    <p></p> Significance: (1) A novel VR-based VF/CS assessment. (2) A compact diagnostic tool. <p></p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>97109</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Operations Mission Directorate (SOMD)</td></tr>
+<tr><th>NASA Program</th><td>Human Research Program (HRP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX06.3.1: Medical Diagnosis and Prognosis</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 3 | Target End TRL: 4</td></tr>
+<tr><th>Project Start Date</th><td>2020-08-27</td></tr>
+<tr><th>Project End Date</th><td>2023-02-28</td></tr>
+<tr><th>Lead Organization / Center</th><td>Johnson Space Center (JSC) — Houston, Texas</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>University of Nevada-Reno — Reno, Nevada</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Nevada (NV)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Alireza Tavakkoli (Principal Investigator); Michael L Webster (Co-Investigator); Michael B Stenger (Project Manager) &lt;michael.b.stenger@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>David K Baumann (Program Director) &lt;david.k.baumann@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2024-02-09</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: We have initiated the data request form from NASA shortly after the award notification was announced on August 14, 2020. On the same day the study was submitted to NASA Institutional Review Board (IRB) under protocol STUDY00000269. On September 22nd the Principal Investigator (PI) presented the data request to the LHSA Advisory Board. October 28, 2020 the NASA IRB approved the study protocol. On December 18, 2020 the University of Nevada Reno (UNR) Research Integrity office approved the NASA Reliance Acknowledgement document and the full IRB approved the project on January 21, 2021. The final data request signature was delivered to NASA on June 6th to complete the data request action and download the provided data from NASA LSAH/LSDA repositories. We have shown novel deep architectures in ophthalmic applications could improve diagnostic accuracy, that attention maps can improve transferability of learned models across datasets, and deep architectures could effectively extract shared feature representations across ophthalmic image modalities to translate from one domain to another. These discoveries have paved the way for our team to tackle the main problem of mapping between the domain of ocular structure to the visual function. In addition, we have developed a new approach mediated by advances in virtual reality (VR) for better assessment of metamorphopsia to enable remote monitoring of the progression of age-related macular degeneration (AMD). These findings in conjunction with the findings of Aim 1 motivate and inform the objectives of this project, by allowing our team to maintain a correspondence between how the ocular structural changes could impact visual function assessments. As of the writing of this report, the retrospective data has not been received. However, we have utilized publicly available data for some preliminary validation of the work done so far. In addition to this limitation, the CoVID-19 pandemic has prevented our team from collecting prospective data from patient analog and control subjects. The publicly available data we have used in this year only included multiple modalities of ocular physiology. Therefore, the current models are fully capable of mapping between various ocular structure modalities. Despite this limitation, the models are designed without any specific restrictions on the domain of data (i.e., structure or function). Therefore, we anticipate that with the availability of additional modalities during the second year more comprehensive models can be trained to map across visual function and ocular structure domains.</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>Abstracts for Journals and Proceedings</strong> — Ong J, Zaman N, Kamran SA, Waisberg E, Tavakkoli A, Lee AG, Webster M. &quot;A multi-modal visual assessment system for monitoring Spaceflight Associated Neuro-Ocular Syndrome (SANS) during long duration spaceflight.&quot; 2021 Optica Fall Vision Meeting, Virtual, September 20-October 3, 2021. Abstract Issue. 2021 Optica Fall Vision Meeting. J Vis. 2022 Feb 1;22(3):6. https://doi.org/10.1167/jov.22.3.6 , Feb-2022</li><li><strong>Papers from Meeting Proceedings</strong> — Kamran SA, Hossain KF, Tavakkoli A, Zuckerbrod SL, Sander KM, Baker SA. &quot;RV-GAN: Segmenting Retinal Vascular Structure in Fundus Photographs using a Novel Multi-scale Generative Adversarial Network.&quot; 24th International Conference on Medical Image Computing and Computer Assisted (MICCAI) Intervention, Virtual, September 27-October 1, 2021. Proceedings of the 24th International Conference on Medical Image Computing and Computer Assisted (MICCAI) Intervention, Virtual, September 27-October 1, 2021. In press, as of July 2021., Jul-2021</li><li><strong>Articles in Peer-reviewed Journals</strong> — Waisberg E, Ong J, Zaman N, Kamran SA, Lee AG, Tavakkoli A. &quot;A non-invasive approach to monitor anemia during long-duration spaceflight with retinal fundus images and deep learning.&quot; Life Sci Space Res (Amst). 2022 May;33:69-71. https://doi.org/10.1016/j.lssr.2022.04.004 ; PMID: 35491031, May-2022</li><li><strong>Papers from Meeting Proceedings</strong> — Kamran SA, Hossain KF, Tavakkoli A, Zuckerbrod SL, Sanders KM, Baker SA. &quot;RV-GAN: Segmenting retinal vascular structure in fundus photographs using a novel multi-scale generative adversarial network.&quot; 24th International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI 2021), Virtual, September 27-October 1, 2021. Proceedings of MICCAI 2021. Lecture Notes in Computer Science, vol 12908. Springer, Cham. https://doi.org/10.1007/978-3-030-87237-3_4 , Sep-2021</li><li><strong>Papers from Meeting Proceedings</strong> — Kamran SA, Hossain KF, Tavakkoli A, Zuckerbrod SL, Baker SA. &quot;Vtgan: Semi-supervised retinal image synthesis and disease prediction using vision transformers.&quot; 2021 IEEE/CVF International Conference on Computer Vision Workshops (ICCVW), Montreal, Canada, October 11-17, 2021. Proceedings of the 2021 IEEE/CVF International Conference on Computer Vision Workshops (ICCVW), 2021 Nov 24:3228-3238, http://dx.doi.org/10.1109/ICCVW54120.2021.00362 , Nov-2021</li><li><strong>Papers from Meeting Proceedings</strong> — Kamran, S. A., Hossain, K. F., Tavakkoli, A., &amp; Zuckerbrod, S. L. &quot;Attention2angiogan: Synthesizing fluorescein angiography from retinal fundus images using generative adversarial networks.&quot; 25th International Conference on Pattern Recognition (ICPR), Virtual, January 12-15, 2021. Proceedings of the 25th International Conference on Pattern Recognition (ICPR), 2021 Jan 12:9122-9129. https://doi.ieeecomputersociety.org/10.1109/ICPR48806.2021.9412428 , Jan-2021</li><li><strong>Abstracts for Journals and Proceedings</strong> — Zaman N, Ong J, Tavakkoli A, Zuckerbrod S, Webster M. &quot;Adaptation to prominent monocular metamorphopsia using binocular suppression.&quot; Optica Fall Vision Meeting, Virtual, September 20-October 3, 2021. Abstract Issue. 2021 Optica Fall Vision Meeting. J Vis. 2022 Feb 1;22(3):11. https://doi.org/10.1167/jov.22.3.11 , Feb-2022</li><li><strong>Articles in Peer-reviewed Journals</strong> — Ong J, Tavakkoli A, Strangman G, Zaman N, Kamran SA, Zhang Q, Ivkovic V, Lee AG. &quot;Neuro-ophthalmic imaging and visual assessment technology for spaceflight associated neuro-ocular syndrome (SANS).&quot; Surv Ophthalmol. 2022 Apr 21;S0039-6257(22)00048-0. Review. https://doi.org/10.1016/j.survophthal.2022.04.004 ; PMID: 35461882, Apr-2022</li><li><strong>Dissertations and Theses</strong> — Zaman N. (Nasif Zaman) &quot;EyeSightVR: An Immersive and Automated Tool for Comprehensive Assessment of Visual Function.&quot; University of Nevada, Reno, May 2021., May-2021</li><li><strong>Abstracts for Journals and Proceedings</strong> — Kamran SA, Hossain KF, Tavakkoli A, Ong J, Zuckerbrod SL. &quot;A generative adversarial deep neural network to translate between ocular imaging modalities while maintaining anatomical fidelity.&quot; 2021 Optica Fall Vision Meeting, Virtual, September 20-October 3, 2021. Abstract Issue. 2021 Optica Fall Vision Meeting. J Vis. 2022 Feb 1;22(3):3. https://doi.org/10.1167/jov.22.3.3 , Feb-2022</li><li><a href="https://taskbook.nasaprs.com" target="_blank" rel="noopener noreferrer">Project Website</a></li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/97109">https://techport.nasa.gov/projects/97109</a>
+    </div>
+  </div>
+</body>
+</html>

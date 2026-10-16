@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UST-Lite Mars relay radio technology development | NASA TechPort Project 182839</title>
+  <meta name="description" content="UST-Lite is the next-generation of Mars relay software-defined radios (SDRs). It is designed from the ground up to be modular and to have a small form factor, making it adaptable to a wide variety of mission needs, including small, power-constrained missions. ">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/182839">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 182839</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">SMD</span>
+          <span class="badge">MEP</span>
+          <span class="badge">TX05</span>
+        </div>
+        <h1>UST-Lite Mars relay radio technology development</h1>
+        <div class="meta-id">NASA TechPort Project ID: 182839</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/182839" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          <p>UST-Lite is the next-generation of Mars relay software-defined radios (SDRs). It is designed from the ground up to be modular and to have a small form factor, making it adaptable to a wide variety of mission needs, including small, power-constrained missions. UST-Lite supports legacy ultra-high frequency (UHF) proximity communications at low megabits per second, as well as emerging S-band and X-band proximity communications with data rates up to hundreds of megabits per second. </p><p>The goal of this technology development effort is to develop the next-generation Mars Relay Radio by leveraging recent maturation of the UST-Lite JPL SDR platform to provide continued and improved access to the Mars Relay Network (MRN) into the coming decades, aligned to Mars Exploration Program (MPE) strategic needs. The objectives are:</p><ol><li>Develop and build an engineering model (EM) of the next-generation Mars relay radio.</li><li>Advance the MRN’s capability with support for higher data rates, advanced protocols, and new proximity link frequency bands.</li><li>Enable access to the MRN for low-cost missions that are mass and/or power constrained.</li><li>Conduct tests in a relevant Mars environment to demonstrate functionality and performance to TRL-6 maturity.</li><li>Demonstrate compatibility with legacy UHF radios using the Proximity-1 protocol.</li><li>Prepare and support the technology transfer of the Mars Relay Radio design to an industry partner.</li><li>Formulate plans and seek opportunities for technology demonstration as a payload on future Mars orbiters (e.g. the Indian Space Research Organization's Mars Orbiter Mission-2).</li></ol><p>Objectives 1-3 above are expected to be completed in fiscal year 2025, with objectives 4-5 completing in fiscal year 2026. Objectives 6-7 will be performed in parallel throughout the effort. This effort is a $2M investment over a span of two years to mature the technology for flight availability, meaning the technology is sufficiently mature for final development and manifestation on a future Mars mission. </p><p>The UST-Lite SDR is built upon JPL’s Common Instrument Electronics (CIE) initiative which incorporates innovations in two key technology areas to enable significant reduction in size weight and power (SWaP) while extending capabilities. The first is the utilization of the Xilinx Kintex UltraScale field programmable gate array (FPGA), which provides a 5-fold increase in logic cell count while reducing footprint (about 12% smaller) and consuming less power (about 2-Watt less). The second is the use of an emerging class of multi-gigahertz data converters, allowing a paradigm shift from traditional heterodyne-based radio architectures to a direct waveform sampling / synthesis approach. The on-chip digital processing provided in this new class of high-rate converters eliminates several analog components such as mixers, amplifiers, and filters by processing signals directly in the digital domain. This simplifies the design of front-end radio frequency (RF) electronics and significantly reduces component count and design complexity. It further adds flexibility and adaptability by moving hardware elements into the software / firmware domain, which can be reprogrammed to meet to new mission requirements or adapt to unexpected challenges, even after launch.</p><p>This technology development effort expands the UST-Lite product line by adding a UHF RF module and an optional S/X-band RF module. UST-Lite’s modularity enables integration of new RF slices to support different frequency bands without requiring changes to the underlying digital or power hardware. UST-Lite can also be integrated with direct-with-Earth RF equipment. For example, a future Mars orbiter may want to consider a quad-band radio which supports the legacy UHF relay link augmented with S-band or high-rate X-band proximity link to surface assets on Mars, while the same radio also supports X-band for standard uplink commands and downlink telemetry on Ka-band for high-rate data transfers with the Deep Space Network (DSN). Other relay combinations are also possible. No other space-qualified radio currently has the same multi-band features that the UST-Lite is positioned to support.</p>
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          <p>As Mars missions become more diverse, the Mars Exploration Program needs communication systems that can be easily reconfigured or scaled to meet specific mission demands, including the ability to update and upgrade capabilities post-launch. UST-Lite is designed with significantly reduced size, weight and power (SWaP), making it suitable for small-scale Mars missions or as a component in larger missions where payload efficiency is crucial (2 kg mass reduction for equivalent UHF relay radio). The new UHF and S/X-band units will be designed to be compatible with the small form factor of the UST-Lite. Based on the Consultative Committee for Space Data Systems (CCSDS) standards, UST-Lite’s SDR architecture ensures interoperability and allows for reprogramming post-launch, providing the flexibility to accommodate new collaborators and adapt to evolving mission needs.   </p>
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>182839</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Science Mission Directorate (SMD)</td></tr>
+<tr><th>NASA Program</th><td>Mars Exploration Program (MEP)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX05: Communications, Navigation, and Orbital Debris Tracking and Characterization Systems</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 3 | Current TRL: 4 | Target End TRL: 6</td></tr>
+<tr><th>Project Start Date</th><td>2025-06-01</td></tr>
+<tr><th>Project End Date</th><td>2026-03-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Jet Propulsion Laboratory (JPL) — Pasadena, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>California (CA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>Masatoshi M Kobayashi (Principal Investigator) &lt;masatoshi.m.kobayashi@jpl.nasa.gov&gt;; Neil F Chamberlain (Primary Point of Contact) &lt;neil.f.chamberlain@jpl.nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Erica N Montbach (Program Director) &lt;erica.n.montbach@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-02</td></tr>
+          </tbody>
+        </table>
+
+        
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><strong>CAD Rendering of the Proposed UST-Lite Mars Relay Radios</strong> — CAD Rendering of the Proposed UST-Lite Mars Relay Radios</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/182839">https://techport.nasa.gov/projects/182839</a>
+    </div>
+  </div>
+</body>
+</html>

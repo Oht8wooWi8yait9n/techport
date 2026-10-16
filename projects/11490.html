@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Science Data Understanding for Autonomous Rover Exploration | NASA TechPort Project 11490</title>
+  <meta name="description" content="Autonomous rover traversal speed and capabilities are rapidly increasing, but communications bandwidth for planetary exploration remains limited. In order to maximize the scientific return of exploration robotics, techniques must be developed that enable rover">
+  <link rel="canonical" href="https://techport.nasa.gov/projects/11490">
+  <style>
+    :root {
+      --primary: #0b3d91;
+      --primary-dark: #061f4a;
+      --accent: #fc3d21;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .breadcrumb {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: #ffffff;
+      padding: 28px 32px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-active { background: #10b981; color: #ffffff; }
+    .header h1 { font-size: 1.65rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px; }
+    .meta-id { font-size: 0.9rem; opacity: 0.9; font-family: monospace; }
+    .content { padding: 32px; }
+    .action-banner {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-banner-text { font-size: 0.9rem; color: #0c4a6e; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    h2 {
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin: 28px 0 14px 0;
+    }
+    h2:first-of-type { margin-top: 0; }
+    h3 { font-size: 1.05rem; color: var(--text); margin: 18px 0 8px 0; }
+    .prose {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 20px;
+      color: #1e293b;
+    }
+    .prose p { margin-bottom: 10px; }
+    .prose p:last-child { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; margin-bottom: 20px; }
+    th, td {
+      text-align: left;
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.925rem;
+    }
+    th { width: 28%; color: var(--text-muted); font-weight: 600; background: #f8fafc; }
+    ul.item-list { padding-left: 20px; margin-bottom: 16px; }
+    ul.item-list li { margin-bottom: 6px; }
+    .subcard {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      background: #ffffff;
+    }
+    .subcard-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .code-pill {
+      font-family: monospace;
+      font-weight: 700;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">NASA TechPort Catalog</a> /
+      <a href="../technologies.html">Technology Projects</a> /
+      <span>Project 11490</span>
+    </div>
+
+    <div class="card">
+      <div class="header">
+        <div class="badge-row">
+          <span class="badge badge-active">Completed</span>
+          <span class="badge">STMD</span>
+          <span class="badge">STRG</span>
+          <span class="badge">TX03.3.1</span>
+        </div>
+        <h1>Science Data Understanding for Autonomous Rover Exploration</h1>
+        <div class="meta-id">NASA TechPort Project ID: 11490</div>
+      </div>
+
+      <div class="content">
+        <div class="action-banner">
+          <div class="action-banner-text">
+            <strong>Official NASA Source:</strong> Space Technology Mission Directorate (STMD) TechPort Portfolio
+          </div>
+          <a href="https://techport.nasa.gov/projects/11490" target="_blank" rel="noopener noreferrer" class="btn">
+            View Official Project on NASA TechPort &rarr;
+          </a>
+        </div>
+
+        <h2>Project Description</h2>
+        <div class="prose">
+          Autonomous rover traversal speed and capabilities are rapidly increasing, but communications bandwidth for planetary exploration remains limited. In order to maximize the scientific return of exploration robotics, techniques must be developed that enable rovers to build a world view that allows them to recognize anomalies and make navigation decisions based on expected science yield. Rovers will need to be able to navigate beyond their visible horizon, make observations without human oversight, and develop their own understanding of the world in order to accurately and successfully explore autonomously. This proposed research will create methods and algorithms for rovers to assemble an integrated model of their environment using onboard scientific instruments. We outline a system in which the rover gradually learns from its observations, updating internal maps that describe both the physical nature of the surrounding world as well as scientific characteristics. Using this map, the rover would then be able to make intelligent decisions about whether to explore areas of low understanding or those likely to have high science yield.  In order to accomplish this, we propose three main advances to the field of autonomous science. First, the rover must be able to make use of varied scientific instrument readings and merge these observations with traditional maps such as those created using stereo vision. Then, using this information, the rover will analyze data captured throughout its traversal and use variations in observations to classify distinct terrain types, such as sand dunes or solid rock. Finally, the rover will use these regional classifications and prior scientific findings to determine locations that will maximize information gain or the likelihood of scientific discovery. We further propose a system in which human input is used both for initial training and periodic corrections in order to increase the rate at which the system learns as well as minimize the error within the rover's maps.  A system such as this would greatly increase the amount of autonomy possible in both planetary and terrestrial exploration missions in which human contact is limited. This work directly applies to the STR fields of Sensing Non-Geometric Terrain Properties (TA04 4.1.4), and Semi Automatic Systems (TA04 4.5.12), with related work in Planning/Scheduling Resources (TA04 4.5.4) and 3-D Path Planning with Uncertainty (TA04 4.2.4).
+        </div>
+
+        
+        <h2>Anticipated Benefits &amp; Mission Applications</h2>
+        <div class="prose">
+          A system such as this would greatly increase the amount of autonomy possible in both planetary and terrestrial exploration missions in which human contact is limited.
+        </div>
+        
+
+        <h2>Technical Metadata &amp; Portfolio Classification</h2>
+        <table>
+          <tbody>
+            <tr><th>Project ID</th><td>11490</td></tr>
+<tr><th>Project Status</th><td>Completed</td></tr>
+<tr><th>Responsible Mission Directorate</th><td>Space Technology Mission Directorate (STMD)</td></tr>
+<tr><th>NASA Program</th><td>Space Technology Research Grants (STRG)</td></tr>
+<tr><th>Primary Technology Taxonomy (TX)</th><td>TX03.3.1: Management and Control</td></tr>
+<tr><th>Technology Readiness Level (TRL)</th><td>Start TRL: 2 | Current TRL: 3 | Target End TRL: 3</td></tr>
+<tr><th>Project Start Date</th><td>2012-08-01</td></tr>
+<tr><th>Project End Date</th><td>2016-07-31</td></tr>
+<tr><th>Lead Organization / Center</th><td>Carnegie Mellon University — Pittsburgh, Pennsylvania</td></tr>
+<tr><th>Supporting Organizations / Partners</th><td>Ames Research Center (ARC) — Moffett Field, California</td></tr>
+<tr><th>Work Locations (U.S. States)</th><td>Pennsylvania (PA)</td></tr>
+<tr><th>Exploration Destination Types</th><td>Mars</td></tr>
+<tr><th>Project Leadership &amp; Investigators</th><td>David Wettergreen (Principal Investigator); Greydon Foil (Co-Investigator) &lt;greydon.t.foil@jpl.nasa.gov&gt;; Terrence W Fong (Project Manager) &lt;terry.fong@nasa.gov&gt;</td></tr>
+<tr><th>Program Management Contacts</th><td>Matthew C Deans (Program Director) &lt;matthew.c.deans-1@nasa.gov&gt;; Hung D Nguyen (Program Manager) &lt;hung.d.nguyen@nasa.gov&gt;</td></tr>
+<tr><th>Last Updated</th><td>2025-12-18</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Technology Transition &amp; Outcomes</h2><ul class='item-list'><li><strong>Closed Out</strong>: My recent work has focused on adaptive sampling, or methods to use prior collected samples to inform the system where it might be best to sample next. My work aims to encompass the entire rover narrative, from choosing sampling sites form orbital data, to picking sampling targets directly in front of the rover, all the way down to choosing when and where to collect detailed microscopic samples. In order to do this, I take advantage of contextual information about the scene, such as rover navcam images, satellite imagery, or any contextual microscopic scans that have already been performed. Contextual data is often noisy and imperfect, but correlations with the underlying mineralogical signal lead to improved performance when compared against existing state of the art adaptive sampling methods. In my research thus far, I have focused on leveraging existing Baysian optimization literature to model the correlations between expected reward and contextual data. These models use Gaussian processes to estimate both the expected reward and the uncertainty in that expectation. A number of approaches can then be used to choose sampling sites given this reward function, such as choosing the sites with the highest expected reward, the sites with the highest uncertainty, or the sites with the greatest chance to improve over your best estimate by a certain amount. Formulating the problem this way has allowed me to largely ignore specifics in sensor noise models. Results have been positive, with my approach improving over the often-used Maximum Entropy Sampling, as well as a number of baseline approaches. My main metrics for success are the entropy of the resulting sample set (a higher entropy means a more diverse set of samples) and the reconstruction error of the scene using the sample set (a more “complete” set of samples best lowers the error in the scene). I am in the process of testing my approach on all of my use cases, but initial results are favorable.</li><li><strong>Transitioned To</strong> (Mesh Robotics, LLC): Greydon will be transferring the techniques he has developed to his new employer, Mesh Robotics, which is a spin-off company from CMU</li></ul>
+        <h2>Publications, References &amp; Library Items</h2><ul class='item-list'><li><a href="https://www.nasa.gov/directorates/spacetech/home/index.html" target="_blank" rel="noopener noreferrer">Project Website</a></li><li><strong>11490-1363264359720.jpg</strong> — Project Image Science Data Understanding for Autonomous Rover Exploration</li></ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      NASA TechPort &bull; National Aeronautics and Space Administration
+      <br>
+      Canonical Source URL: <a href="https://techport.nasa.gov/projects/11490">https://techport.nasa.gov/projects/11490</a>
+    </div>
+  </div>
+</body>
+</html>
