@@ -989,7 +989,7 @@ def render_programs_html(programs: list, active_project_count: int) -> str:
     """Render NASA Technology Programs Directory (/technologies)."""
     live_url = f"{TECHPORT_HOST}/technologies"
     prog_cards = []
-    for p in sorted(programs, key=lambda x: (not x.get("isActive", False), x.get("title") or "")):
+    for p in sorted(programs, key=lambda x: (not x.get("isActive", False), x.get("title") or "", int(x.get("programId") or 0))):
         pid = p.get("programId")
         title = p.get("title") or ""
         acr = p.get("acronym") or ""
@@ -1493,6 +1493,20 @@ def render_index_html(stats: dict, catalog_items: list) -> str:
 """
 
 
+def load_existing_lastmod(sitemap_path: str) -> dict:
+    """Load existing URL -> lastmod mappings to prevent unnecessary diff churn."""
+    mapping = {}
+    if os.path.exists(sitemap_path):
+        try:
+            with open(sitemap_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            for m in re.finditer(r"<loc>(.*?)</loc>\s*<lastmod>(.*?)</lastmod>", content):
+                mapping[m.group(1).strip()] = m.group(2).strip()
+        except Exception:
+            pass
+    return mapping
+
+
 def write_sitemap_files(pages: list, xml_path: str, direct_xml_path: str, urls_path: str, direct_urls_path: str = None, alias_xml_path: str = None):
     """Write XML sitemaps and plain-text URL lists for a given page set."""
     mirror_entries = []
@@ -1547,6 +1561,7 @@ def main():
     include_completed = os.environ.get("INCLUDE_COMPLETED") == "1" or "--all-statuses" in sys.argv
     session = create_session()
     today_iso = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    existing_lastmod = load_existing_lastmod(SITEMAP_FILE)
 
     # 1. Harvest all domains
     projects = harvest_projects(session, include_completed=include_completed)
@@ -1556,9 +1571,22 @@ def main():
     opportunities_data = api_get(session, "/api/opportunities", cache_name="opportunities.json")
     impact_stories = harvest_impact_stories(session)
 
-    programs = programs_data.get("programs") or []
-    opportunities = opportunities_data.get("opportunities") or []
-    shortfalls = strategy_data.get("shortfalls") or []
+    programs = sorted(
+        programs_data.get("programs") or [],
+        key=lambda x: (not x.get("isActive", False), x.get("title") or "", int(x.get("programId") or 0)),
+    )
+    opportunities = sorted(
+        opportunities_data.get("opportunities") or [],
+        key=lambda x: int(x.get("opportunityId") or 0),
+    )
+    shortfalls = sorted(
+        strategy_data.get("shortfalls") or [],
+        key=lambda x: int(x.get("shortfallId") or 0),
+    )
+    impact_stories = sorted(
+        impact_stories or [],
+        key=lambda x: int(x.get("impactStoryId") or 0),
+    )
     detailed_tx = taxonomy_data.get("detailed_by_id") or {}
 
     os.makedirs(PROJECTS_DIR, exist_ok=True)
@@ -1671,7 +1699,7 @@ def main():
             f.write(render_impact_story_html(story))
         mirror_url = f"{GH_PAGES_BASE}/impactStories/{sid}"
         live_url = f"{TECHPORT_HOST}/impactStories/{sid}"
-        page_entry = {"mirror_url": mirror_url, "live_url": live_url, "lastmod": today_iso}
+        page_entry = {"mirror_url": mirror_url, "live_url": live_url, "lastmod": existing_lastmod.get(mirror_url, today_iso)}
         sitemap_pages.append(page_entry)
         active_sitemap_pages.append(page_entry)
 
@@ -1698,10 +1726,11 @@ def main():
 
     with open(os.path.join(BASE_DIR, "impactStories.html"), "w", encoding="utf-8") as f:
         f.write(render_impact_stories_index_html(impact_stories))
+    stories_idx_mirror = f"{GH_PAGES_BASE}/impactStories"
     stories_idx_entry = {
-        "mirror_url": f"{GH_PAGES_BASE}/impactStories",
+        "mirror_url": stories_idx_mirror,
         "live_url": f"{TECHPORT_HOST}/impactStories",
-        "lastmod": today_iso,
+        "lastmod": existing_lastmod.get(stories_idx_mirror, today_iso),
     }
     sitemap_pages.append(stories_idx_entry)
     active_sitemap_pages.append(stories_idx_entry)
@@ -1713,10 +1742,11 @@ def main():
     with open(os.path.join(BASE_DIR, "taxonomy.html"), "w", encoding="utf-8") as f:
         f.write(render_taxonomy_html(taxonomy_data, rel_root="."))
 
+    tx_mirror = f"{GH_PAGES_BASE}/taxonomy/8817"
     tx_entry = {
-        "mirror_url": f"{GH_PAGES_BASE}/taxonomy/8817",
+        "mirror_url": tx_mirror,
         "live_url": f"{TECHPORT_HOST}/taxonomy/8817",
-        "lastmod": today_iso,
+        "lastmod": existing_lastmod.get(tx_mirror, today_iso),
     }
     sitemap_pages.append(tx_entry)
     active_sitemap_pages.append(tx_entry)
@@ -1753,10 +1783,11 @@ def main():
     print(f"[*] Rendering STMD Strategy & {len(shortfalls)} Civil Space Shortfalls...")
     with open(os.path.join(BASE_DIR, "strategy.html"), "w", encoding="utf-8") as f:
         f.write(render_strategy_html(strategy_data))
+    strat_mirror = f"{GH_PAGES_BASE}/strategy"
     strat_entry = {
-        "mirror_url": f"{GH_PAGES_BASE}/strategy",
+        "mirror_url": strat_mirror,
         "live_url": f"{TECHPORT_HOST}/strategy",
-        "lastmod": today_iso,
+        "lastmod": existing_lastmod.get(strat_mirror, today_iso),
     }
     sitemap_pages.append(strat_entry)
     active_sitemap_pages.append(strat_entry)
@@ -1793,10 +1824,11 @@ def main():
     print(f"[*] Rendering {len(opportunities)} NASA Funding Opportunities...")
     with open(os.path.join(BASE_DIR, "opportunities.html"), "w", encoding="utf-8") as f:
         f.write(render_opportunities_html(opportunities))
+    opp_mirror = f"{GH_PAGES_BASE}/opportunities"
     opp_entry = {
-        "mirror_url": f"{GH_PAGES_BASE}/opportunities",
+        "mirror_url": opp_mirror,
         "live_url": f"{TECHPORT_HOST}/opportunities",
-        "lastmod": today_iso,
+        "lastmod": existing_lastmod.get(opp_mirror, today_iso),
     }
     sitemap_pages.append(opp_entry)
     active_sitemap_pages.append(opp_entry)
@@ -1835,10 +1867,11 @@ def main():
     print(f"[*] Rendering {len(programs)} NASA Technology Programs...")
     with open(os.path.join(BASE_DIR, "technologies.html"), "w", encoding="utf-8") as f:
         f.write(render_programs_html(programs, active_project_count))
+    prog_mirror = f"{GH_PAGES_BASE}/technologies"
     prog_entry = {
-        "mirror_url": f"{GH_PAGES_BASE}/technologies",
+        "mirror_url": prog_mirror,
         "live_url": f"{TECHPORT_HOST}/technologies",
-        "lastmod": today_iso,
+        "lastmod": existing_lastmod.get(prog_mirror, today_iso),
     }
     sitemap_pages.append(prog_entry)
     active_sitemap_pages.append(prog_entry)
