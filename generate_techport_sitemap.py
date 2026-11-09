@@ -1615,15 +1615,17 @@ def main():
         if is_active:
             active_project_count += 1
 
+        mirror_url = f"{GH_PAGES_BASE}/projects/{pid}"
+        live_url = f"{TECHPORT_HOST}/projects/{pid}"
+        lastmod = format_date_iso(proj.get("modifiedDate") or proj.get("lastUpdated"), today_iso)
+        prev_lastmod = existing_lastmod.get(mirror_url)
+
         out_html_path = os.path.join(PROJECTS_DIR, f"{pid}.html")
-        if force_render or not os.path.exists(out_html_path):
+        if force_render or not os.path.exists(out_html_path) or (prev_lastmod and lastmod != prev_lastmod):
             html_str = render_project_html(proj)
             with open(out_html_path, "w", encoding="utf-8") as f:
                 f.write(html_str)
 
-        mirror_url = f"{GH_PAGES_BASE}/projects/{pid}"
-        live_url = f"{TECHPORT_HOST}/projects/{pid}"
-        lastmod = format_date_iso(proj.get("modifiedDate") or proj.get("lastUpdated"), today_iso)
         page_entry = {"mirror_url": mirror_url, "live_url": live_url, "lastmod": lastmod}
         sitemap_pages.append(page_entry)
         if is_active:
